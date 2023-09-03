@@ -276,3 +276,8 @@ ul,
 ol {
   margin-top: 1em;
 }
+
+.site-title {
+  font-size: var(--bsb-site-title--font-size, 1.625rem);
+  font-weight: var(--bsb-site-title--font-weight, 700);
+}
