@@ -1,0 +1,10 @@
+{
+	"author"      : "Controlled Chaos",
+	"email"       : "",
+	"website"     : "https://github.com/ControlledChaos/bs-bludit",
+	"version"     : "1.0.0",
+	"releaseDate" : "2018-09-23",
+	"license"     : "Nope",
+	"compatible"  : "3.0",
+	"notes"       : "Basic starter theme for Bludit CMS."
+}
