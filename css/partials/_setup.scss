@@ -1,0 +1,32 @@
+///
+/// General styles
+///
+
+html {
+	scroll-behavior: smooth;
+	overflow-x: hidden;
+}
+
+body {
+	font-family: var( --bsb-font-stack, var( --bsb-sans-stack ) );
+	font-size: var( --bsb-font-size, 1rem );
+	line-height: var( --bsb-line-height, 1.5 );
+	background: var( --bsb-bg-color );
+	color: var( --bsb-text-color );
+}
+
+.serif {
+	font-family: var( --bsb-serif-stack );
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol {
+	margin-top: 1em;
+}
