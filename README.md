@@ -1,2 +1,8 @@
-# bs-bludit
+# BS Bludit
+
 Basic starter theme for Bludit CMS.
+
+![Tested on PHP version 8.2.4](https://img.shields.io/badge/PHP_tested-8.2.4-8892bf.svg?style=flat-square)
+![SCSS Ready](https://img.shields.io/badge/SCSS-Ready-bf4080.svg?style=flat-square)
+
+![BS Bludit theme cover image](https://github.com/ControlledChaos/bs-bludit/raw/main/cover.jpg)
