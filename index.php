@@ -22,15 +22,19 @@ if ( $WHERE_AM_I == 'home' ) {
 
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="<?php echo Theme::lang() ?>">
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Include Favicon -->
+	<?php echo Theme :: favicon( 'img/favicon.png' ); ?>
 
 	<!-- Dynamic title tag -->
-	<?php echo Theme :: metaTags( 'title' ); ?>
+	<?php echo Theme :: metaTagTitle(); ?>
 
 	<!-- Dynamic description tag -->
-	<?php echo Theme :: metaTags( 'description' ); ?>
+	<?php echo Theme :: metaTagDescription(); ?>
 
 	<!-- Include CSS Styles from this theme -->
 	<?php echo Theme :: css( 'css/style.min.css' ); ?>
