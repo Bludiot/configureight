@@ -28,6 +28,12 @@
 					$page->description()
 				);
 			} ?>
+			<footer class="page-info">
+				<p>
+				<span class="page-info-entry"><span class="bi bi-calendar"></span> <?php echo $page->date(); ?></span>
+        		<span class="page-info-entry"><span class="bi bi-clock-history"></span> <?php echo $L->get( 'Reading time' ) . ': ' . $page->readingTime(); ?></span>
+				</p>
+			</footer>
 		</header>
 
 		<div class="page-content" itemprop="articleBody">
@@ -43,24 +49,5 @@
 </article>
 
 <?php
-/**
- * Page navigation
- *
- * Allows users to navigate paginated content.
- */
-if ( Paginator :: numberOfPages() > 1 ) : ?>
-	<nav class="paginator">
-		<ul class="pagination">
-		<?php if ( Paginator :: showPrev() ) : ?>
-			<li class="page-item">
-				<a class="page-link" href="<?php echo Paginator :: previousPageUrl(); ?>" tabindex="-1"><?php echo $L->get( 'Previous' ); ?></a>
-			</li>
-		<?php endif; ?>
-		<?php if ( Paginator :: showNext() ) : ?>
-			<li class="page-item">
-				<a class="page-link" href="<?php echo Paginator :: nextPageUrl(); ?>"><?php echo $L->get( 'Next' ); ?></a>
-			</li>
-		<?php endif; ?>
-		</ul>
-	</nav>
-<?php endif;
+// Get page navigation.
+include( THEME_DIR_PHP . 'navigation/pagination.php' );
