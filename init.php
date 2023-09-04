@@ -7,9 +7,11 @@
  * @since      1.0.0
  */
 
+namespace BS_Init;
+
 // Stop if accessed directly.
 if ( ! defined( 'BLUDIT' ) ) {
-  die( 'You are not allowed to access this file.' );
+	die( 'You are not allowed to access this file.' );
 }
 
 // For later plugin development.
