@@ -24,6 +24,8 @@
 	<?php echo Theme :: metaTagTitle(); ?>
 	<?php echo Theme :: metaTagDescription(); ?>
 
+	<?php echo Theme :: cssBootstrapIcons(); ?>
 	<?php echo Theme :: css( 'css/style.min.css' ); ?>
+
 	<?php Theme :: plugins( 'siteHead' ); ?>
 </head>
