@@ -13,12 +13,14 @@
 // Site title element.
 if ( 'home' == $WHERE_AM_I ) {
 	$site_title = sprintf(
-		'<h1 class="site-title">%s</h1>',
+		'<h1 class="site-title"><a href="%s">%s</a></h1>',
+		$site->url(),
 		$site->title()
 	);
 } else {
 	$site_title = sprintf(
-		'<p class="site-title">%s</p>',
+		'<p class="site-title"><a href="%s">%s</a></p>',
+		$site->url(),
 		$site->title()
 	);
 }
@@ -30,7 +32,9 @@ if ( 'home' == $WHERE_AM_I ) {
 			<?php if ( ! empty( $site->logo() ) ) : ?>
 			<div class="site-logo">
 				<figure>
-					<img src="<?php echo $site->logo(); ?>" alt="<?php echo $site->title(); ?>" width="80">
+					<a href="<?php echo $site->url(); ?>">
+						<img src="<?php echo $site->logo(); ?>" alt="<?php echo $site->title(); ?>" width="80">
+					</a>
 					<figcaption class="screen-reader-text"><?php echo $site->title(); ?></figcaption>
 				</figure>
 			</div>

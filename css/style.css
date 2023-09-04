@@ -378,6 +378,9 @@ h2 a:active {
   font-weight: var(--bsb-site-title--font-weight, bold);
   line-height: 1.2;
 }
+.site-title a {
+  color: inherit !important;
+}
 
 .site-description {
   margin: var(--bsb-site-description--margin, 0);
