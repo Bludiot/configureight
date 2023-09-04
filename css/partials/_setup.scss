@@ -8,7 +8,7 @@ html {
 }
 
 body {
-	font-family: var( --bsb-font-stack, var( --bsb-sans-stack ) );
+	font-family: var( --bsb-font-stack, var( --bsb-sans-stack, sans-serif ) );
 	font-size: var( --bsb-font-size, 1rem );
 	line-height: var( --bsb-line-height, 1.5 );
 	background: var( --bsb-bg-color );
@@ -16,7 +16,41 @@ body {
 }
 
 .serif {
-	font-family: var( --bsb-serif-stack );
+	font-family: var( --bsb-serif-stack, serif );
+}
+
+// Text meant only for screen readers.
+.screen-reader-text {
+	border: 0;
+	clip: rect( 1px, 1px, 1px, 1px );
+	-webkit-clip-path: inset(50%);
+	        clip-path: inset(50%);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute !important;
+	width: 1px;
+	word-wrap: normal !important;
+}
+
+.no-js {
+	.hide-if-no-js {
+		display: none;
+	}
+}
+
+.js {
+	.hide-if-js {
+		display: none;
+	}
+}
+
+.wrapper-general {
+	width: var( --bsb-wrapper--general--width, 100% );
+	max-width: var( --bsb-wrapper--general--max-width, 100% );
+	margin: var( --bsb-wrapper--general--margin, 0 );
+	padding: var( --bsb-wrapper--general--padding, 0 );
 }
 
 h1,
@@ -31,7 +65,23 @@ ol {
 	margin-top: 1em;
 }
 
-.site-title {
-	font-size: var( --bsb-site-title--font-size, 1.625rem );
-	font-weight: var( --bsb-site-title--font-weight, 700 );
+a {
+	text-decoration: var( --bsb-link--text-decoration, underline );
+	color: var( --bsb-link--color );
+}
+
+h1,
+h2 {
+	font-size: var( --bsb-heading--primary--font-size );
+	font-weight: var( --bsb-heading--primary--font-weight, bold );
+
+	a {
+		text-decoration: none;
+		color: var( --bsb-heading--link--color, var( --bsb-link--color ) );
+
+		&:visited,
+		&:active {
+			color: var( --bsb-link--color );
+		}
+	}
 }

@@ -1,0 +1,75 @@
+///
+/// Page header styles
+///
+
+.site-header {
+	padding: var( --bsb-site-header--padding );
+
+	.site-header-wrap {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1rem;
+
+		@media screen and ( max-width: 960px ) {
+			flex-direction: column;
+			justify-content: center;
+		}
+	}
+}
+
+.site-branding {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+
+	@media screen and ( max-width: 960px ) {
+		flex-direction: column;
+		justify-content: center;
+		text-align: center;
+	}
+}
+
+.site-logo {
+	min-width: var( --bsb-site-logo--min-width, 80px );
+
+	img {
+		display: block;
+	}
+}
+
+.site-title {
+	margin: var( --bsb-site-title--margin, 0 );
+	font-size: var( --bsb-site-title--font-size, 1.625rem );
+	font-weight: var( --bsb-site-title--font-weight, bold );
+	line-height: 1.2;
+}
+
+.site-description {
+	margin: var( --bsb-site-description--margin, 0 );
+}
+
+.site-navigation {
+	max-width: 50vw;
+
+	ul {
+		margin: 0;
+		list-style: none;
+		display: flex;
+		gap: 0.25em 1em;
+		justify-content: flex-end;
+		flex-wrap: wrap;
+
+		@media screen and ( max-width: 960px ) {
+			justify-content: center;
+		}
+
+		li {
+			margin: 0;
+
+			a {
+				text-decoration: none;
+			}
+		}
+	}
+}
