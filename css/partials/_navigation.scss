@@ -1,0 +1,45 @@
+///
+/// Navigation styles
+///
+
+.site-navigation {
+	max-width: 50vw;
+
+	ul {
+		margin: 0;
+		list-style: none;
+		display: flex;
+		gap: 0.25em 1em;
+		justify-content: flex-end;
+		flex-wrap: wrap;
+
+		@media screen and ( max-width: 960px ) {
+			justify-content: center;
+		}
+
+		li {
+			margin: 0;
+
+			a {
+				text-decoration: none;
+			}
+		}
+	}
+}
+
+.nav-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.page-navigation {
+	width: 100%;
+	margin-top: 2rem;
+
+	.pagination-list {
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+	}
+}

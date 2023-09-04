@@ -1,0 +1,17 @@
+///
+/// Form fields & buttons styles
+///
+
+.button {
+	display: inline-block;
+	padding: var( --bsb-button--padding, 0.5em 1em );
+	background-color: var( --bsb-button--background-color, inherit );
+	border-style: var( --bsb-button--border-style, solid );
+	border-width: var( --bsb-button--border-width, 1px );
+	border-color: var( --bsb-button--border-color, var( --bsb-box--border-color, var( --bsb-text-color ) ) );
+	font-family: var( --bsb-button--font-family, inherit );
+	font-size: var( --bsb-button--font-size, 1.0125em );
+	font-weight: var( --bsb-button--font-weight, 600 );
+	text-decoration: var( --bsb-button--text-decoration, none );
+	color: var( --bsb-button--text-color, inherit );
+}

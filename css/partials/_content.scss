@@ -1,0 +1,26 @@
+///
+/// Content styles
+///
+
+.site-main {
+	padding: 0 2rem;
+}
+
+.page-info {
+	font-size: var( --bsb-page-info--font-size, 0.85em );
+
+	.page-info-entry {
+		&:not( :last-of-type ) {
+			margin-right: 0.5em;
+		}
+	}
+}
+
+h1,
+h2 {
+	& + .page-info {
+		p {
+			margin-top: 0;
+		}
+	}
+}

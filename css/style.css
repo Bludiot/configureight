@@ -244,6 +244,7 @@ b, strong, optgroup {
 }
 
 :root {
+  --bsb-text-color: #333333;
   --bsb-link--color: #0044aa;
   --bsb-sans-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --bsb-serif-stack: "Hoefler Text", "Baskerville Old Face", Garamond, Times, "Times New Roman", serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
@@ -336,14 +337,27 @@ h2 a:active {
   color: var(--bsb-link--color);
 }
 
-.site-header {
-  padding: var(--bsb-site-header--padding);
+.button {
+  display: inline-block;
+  padding: var(--bsb-button--padding, 0.5em 1em);
+  background-color: var(--bsb-button--background-color, inherit);
+  border-style: var(--bsb-button--border-style, solid);
+  border-width: var(--bsb-button--border-width, 1px);
+  border-color: var(--bsb-button--border-color, var(--bsb-box--border-color, var(--bsb-text-color)));
+  font-family: var(--bsb-button--font-family, inherit);
+  font-size: var(--bsb-button--font-size, 1.0125em);
+  font-weight: var(--bsb-button--font-weight, 600);
+  -webkit-text-decoration: var(--bsb-button--text-decoration, none);
+          text-decoration: var(--bsb-button--text-decoration, none);
+  color: var(--bsb-button--text-color, inherit);
 }
+
 .site-header .site-header-wrap {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
+  padding: var(--bsb-site-header--padding);
 }
 @media screen and (max-width: 960px) {
   .site-header .site-header-wrap {
@@ -380,6 +394,7 @@ h2 a:active {
 }
 .site-title a {
   color: inherit !important;
+  text-decoration: none;
 }
 
 .site-description {
@@ -407,4 +422,36 @@ h2 a:active {
 }
 .site-navigation ul li a {
   text-decoration: none;
+}
+
+.nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.page-navigation {
+  width: 100%;
+  margin-top: 2rem;
+}
+.page-navigation .pagination-list {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.site-main {
+  padding: 0 2rem;
+}
+
+.page-info {
+  font-size: var(--bsb-page-info--font-size, 0.85em);
+}
+.page-info .page-info-entry:not(:last-of-type) {
+  margin-right: 0.5em;
+}
+
+h1 + .page-info p,
+h2 + .page-info p {
+  margin-top: 0;
 }
