@@ -44,24 +44,8 @@ if ( 'home' == $WHERE_AM_I ) {
 				<p class="site-description"><?php echo $site->slogan(); ?></p>
 			</div>
 		</div>
-		<nav class="site-navigation" role="directory" itemscope itemtype="http://schema.org/SiteNavigationElement">
-			<ul>
-				<li>
-					<a href="#">Menu Item</a>
-				</li>
-				<li>
-					<a href="#">Menu Item</a>
-				</li>
-				<li>
-					<a href="#">Menu Item</a>
-				</li>
-				<li>
-					<a href="#">Menu Item</a>
-				</li>
-				<li>
-					<a href="#">Menu Item</a>
-				</li>
-			</ul>
-		</nav>
+		<?php
+		// Get the main navigation menu.
+		include( THEME_DIR_PHP . 'navigation/main-nav.php' ); ?>
 	</div>
 </header>
