@@ -1,6 +1,6 @@
 # BS Bludit
 
-Basic starter theme for Bludit CMS.
+Basic starter theme for developing your own theme for Bludit CMS.
 
 ![Tested on PHP version 8.2.4](https://img.shields.io/badge/PHP_tested-8.2.4-8892bf.svg?style=flat-square)
 ![SCSS Ready](https://img.shields.io/badge/SCSS-Ready-bf4080.svg?style=flat-square)
