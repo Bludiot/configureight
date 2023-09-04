@@ -19,11 +19,11 @@
 
 	<main class="wrapper-general site-main">
 		<?php
-		if ( 'page' == $WHERE_AM_I ) :
+		if ( 'page' == $WHERE_AM_I ) {
 			include( THEME_DIR_PHP . 'content/page.php' );
-		elseif ( 'home' == $WHERE_AM_I ) :
+		} elseif ( 'home' == $WHERE_AM_I ) {
 			include( THEME_DIR_PHP . 'content/home.php' );
-		endif; ?>
+		} ?>
 	</main>
 
 	<?php Theme :: plugins( 'siteBodyEnd' ); ?>
