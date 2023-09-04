@@ -11,7 +11,7 @@
  */
 
 // Site title element.
-if ( $WHERE_AM_I == 'home' ) {
+if ( 'home' == $WHERE_AM_I ) {
 	$site_title = sprintf(
 		'<h1 class="site-title">%s</h1>',
 		$site->title()

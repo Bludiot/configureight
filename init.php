@@ -13,4 +13,4 @@ if ( ! defined( 'BLUDIT' ) ) {
 }
 
 // For later plugin development.
-// if ( $themePlugin == false ) {}
+// if ( ! $themePlugin ) {}
