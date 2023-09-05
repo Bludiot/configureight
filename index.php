@@ -9,7 +9,7 @@
 
 ?>
 <!DOCTYPE html>
-<html lang="<?php echo Theme :: lang() ?>">
+<html class="no-js" lang="<?php echo Theme :: lang() ?>" xmlns:og="http://opengraphprotocol.org/schema/">
 <?php include( THEME_DIR_PHP . 'utility/head.php' ); ?>
 <body>
 

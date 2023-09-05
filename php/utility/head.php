@@ -18,6 +18,8 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 	<?php
+	echo "<script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>\n";
+
 	if ( file_exists( THEME_DIR_IMG . 'favicon.png' ) ) {
 		echo Theme :: favicon( 'img/favicon.png' );
 	} ?>
