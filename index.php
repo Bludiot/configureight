@@ -21,7 +21,7 @@
 		<?php
 		if ( 'page' == $WHERE_AM_I ) {
 			include( THEME_DIR_PHP . 'content/page.php' );
-		} elseif ( 'home' == $WHERE_AM_I ) {
+		} elseif ( 'home' == $WHERE_AM_I || 'blog' == $WHERE_AM_I ) {
 			include( THEME_DIR_PHP . 'content/home.php' );
 		} ?>
 	</main>
