@@ -10,6 +10,9 @@ html {
 body {
 	font-family: var( --bsb-font-stack, var( --bsb-sans-stack, sans-serif ) );
 	font-size: var( --bsb-font-size, 1rem );
+	font-weight: var( --bsb-font-weight, normal );
+	font-style: var( --bsb-font-style, normal );
+	letter-spacing: var( --bsb-letter-spacing, normal );
 	line-height: var( --bsb-line-height, 1.5 );
 	background: var( --bsb-bg-color );
 	color: var( --bsb-text-color );
@@ -62,7 +65,7 @@ h6,
 p,
 ul,
 ol {
-	margin-top: 1em;
+	margin-top: var( --bsb-element-margin-top, 1em );
 }
 
 a {
