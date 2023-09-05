@@ -12,7 +12,7 @@
 <article class="site-article" role="article">
 
 	<?php if ( empty( $content) ) : ?>
-		<?php $language->p( 'No pages found' ); ?>
+		<?php include( THEME_DIR_PHP . 'content/no-posts.php' ); ?>
 	<?php endif; ?>
 
 	<?php foreach ( $content as $page ) : ?>

@@ -455,3 +455,17 @@ h1 + .page-info p,
 h2 + .page-info p {
   margin-top: 0;
 }
+
+.no-posts-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+}
+.no-posts-found h1 {
+  font-size: 2.5em;
+}
+.no-posts-found p {
+  font-size: 1.5em;
+}

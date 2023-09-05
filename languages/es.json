@@ -4,5 +4,7 @@
 		"name"        : "BS Theme",
 		"description" : "Tema inicial básico para desarrollar su propio tema para Bludit CMS."
 	},
-	"home-link-label" : "Inicio"
+	"home-link-label"   : "Inicio",
+	"no-posts-heading"  : "Aún No Hay Publicaciones",
+	"no-posts-message"  : "Lo sentimos, no hemos comenzado a publicar publicaciones. Por favor, vuelva más tarde."
 }

@@ -24,3 +24,20 @@ h2 {
 		}
 	}
 }
+
+// No posts template.
+.no-posts-found {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	min-height: 50vh;
+
+	h1 {
+		font-size: 2.5em;
+	}
+
+	p {
+		font-size: 1.5em;
+	}
+}
