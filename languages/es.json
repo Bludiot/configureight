@@ -1,0 +1,8 @@
+{
+	"theme-data" :
+	{
+		"name"        : "BS Theme",
+		"description" : "Tema inicial básico para desarrollar su propio tema para Bludit CMS."
+	},
+	"home-link-label" : "Inicio"
+}
