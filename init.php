@@ -47,7 +47,7 @@ function page_description() {
 	if ( $page->description() ) {
 		$page_desc = $page->description();
 	} else {
-		$page_desc  = substr( strip_tags( $page->content() ), 0, 140 );
+		$page_desc  = substr( strip_tags( $page->content() ), 0, 85 );
 		$page_desc .= '&hellip;';
 	}
 	return $page_desc;
