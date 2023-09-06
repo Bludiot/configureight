@@ -10,5 +10,7 @@
 
 ?>
 <footer class="site-footer">
-	<p class="copyright">&copy;<?php echo date( 'Y' ) . ' ' . $site->title() . ' | '; $L->p( 'copyright-message' ); ?></p>
+	<div class="wrapper-general">
+		<p class="copyright">&copy;<?php echo date( 'Y' ) . ' ' . $site->title() . ' | '; $L->p( 'copyright-message' ); ?></p>
+	</div>
 </footer>
