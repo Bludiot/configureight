@@ -7,9 +7,17 @@
  * @since      1.0.0
  */
 
+use function BS_Init\user_logged_in;
+
+// Classes for the html element.
+$html_class = 'no-js';
+if ( user_logged_in() ) {
+	$html_class = 'no-js user-logged-in';
+}
+
 ?>
 <!DOCTYPE html>
-<html class="no-js" lang="<?php echo Theme :: lang() ?>" xmlns:og="http://opengraphprotocol.org/schema/">
+<html class="<?php echo $html_class; ?>" lang="<?php echo Theme :: lang() ?>" xmlns:og="http://opengraphprotocol.org/schema/">
 <?php include( THEME_DIR_PHP . 'utility/head.php' ); ?>
 <body>
 
@@ -27,5 +35,8 @@
 	</main>
 
 	<?php Theme :: plugins( 'siteBodyEnd' ); ?>
+	<?php if ( user_logged_in() ) {
+		include( THEME_DIR_PHP . 'utility/toolbar.php' );
+	} ?>
 </body>
 </html>

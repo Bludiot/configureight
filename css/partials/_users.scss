@@ -1,0 +1,47 @@
+///
+/// User tools, profiles, comments
+///
+
+.user-toolbar {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 2rem;
+	overflow: visible;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: var( --nsn-toolbar--padding, 0 1rem );
+	line-height: 2rem;
+	font-size: var( --bsb-toolbar--font-size, 0.875rem );
+	background-color: var( --bsb-toolbar--background-color, #333333 );
+	color: var( --bsb-toolbar--text-color, #ffffff );
+
+	a {
+		display: inline-block;
+		color: var( --bsb-toolbar--link--text-color, #ffffff );
+		text-decoration: var( --bsb-toolnar--link--text-decoration, none );
+
+		&:hover,
+		&focus {
+			color: var( --bsb-toolbar--link-action--text-color, #ffffff );
+		}
+
+		&:not( :last-of-type ) {
+			margin-right: 1rem;
+		}
+
+		&#profile-link {
+			display: inline-flex;
+			align-items: center;
+			transform: translateY( 4px );
+
+			img {
+				display: block;
+				margin: var( --bsb-toolbar--profile-pic--margin, 0 0.5em 0 0 );
+				border-radius: var( --bsb-toolbar--profile-pic--border-radius, 50% );
+			}
+		}
+	}
+}

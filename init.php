@@ -14,5 +14,12 @@ if ( ! defined( 'BLUDIT' ) ) {
 	die( 'You are not allowed to access this file.' );
 }
 
-// For later plugin development.
-// if ( ! $themePlugin ) {}
+function user_logged_in() {
+
+	$login = new \Login();
+
+	if ( $login->isLogged() ) {
+		return true;
+	}
+	return false;
+}

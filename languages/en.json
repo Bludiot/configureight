@@ -6,5 +6,9 @@
 	},
 	"home-link-label"   : "Home",
 	"no-posts-heading"  : "No Posts Yet",
-	"no-posts-message"  : "Sorry, we have not begun to publish posts. Please check back later."
+	"no-posts-message"  : "Sorry, we have not begun to publish posts. Please check back later.",
+	"dashboard-link"       : "Dashboard",
+	"edit-link"            : "Edit",
+	"new-content-link"     : "New Content",
+	"profile-link-default" : "Profile"
 }

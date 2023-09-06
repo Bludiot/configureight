@@ -6,5 +6,9 @@
 	},
 	"home-link-label"   : "Inicio",
 	"no-posts-heading"  : "Aún No Hay Publicaciones",
-	"no-posts-message"  : "Lo sentimos, no hemos comenzado a publicar publicaciones. Por favor, vuelva más tarde."
+	"no-posts-message"  : "Lo sentimos, no hemos comenzado a publicar publicaciones. Por favor, vuelva más tarde.",
+	"dashboard-link"       : "Panel",
+	"edit-link"            : "Editar",
+	"new-content-link"     : "Nuevo Contenido",
+	"profile-link-default" : "Perfilar"
 }

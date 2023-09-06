@@ -261,6 +261,9 @@ html {
   scroll-behavior: smooth;
   overflow-x: hidden;
 }
+html.user-logged-in {
+  margin-top: 2rem;
+}
 
 body {
   font-family: var(--bsb-font-stack, var(--bsb-sans-stack, sans-serif));
@@ -471,4 +474,43 @@ h2 + .page-info p {
 }
 .no-posts-found p {
   font-size: 1.5em;
+}
+
+.user-toolbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2rem;
+  overflow: visible;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--nsn-toolbar--padding, 0 1rem);
+  line-height: 2rem;
+  font-size: var(--bsb-toolbar--font-size, 0.875rem);
+  background-color: var(--bsb-toolbar--background-color, #333333);
+  color: var(--bsb-toolbar--text-color, #ffffff);
+}
+.user-toolbar a {
+  display: inline-block;
+  color: var(--bsb-toolbar--link--text-color, #ffffff);
+  -webkit-text-decoration: var(--bsb-toolnar--link--text-decoration, none);
+          text-decoration: var(--bsb-toolnar--link--text-decoration, none);
+}
+.user-toolbar a:hover, .user-toolbar afocus {
+  color: var(--bsb-toolbar--link-action--text-color, #ffffff);
+}
+.user-toolbar a:not(:last-of-type) {
+  margin-right: 1rem;
+}
+.user-toolbar a#profile-link {
+  display: inline-flex;
+  align-items: center;
+  transform: translateY(4px);
+}
+.user-toolbar a#profile-link img {
+  display: block;
+  margin: var(--bsb-toolbar--profile-pic--margin, 0 0.5em 0 0);
+  border-radius: var(--bsb-toolbar--profile-pic--border-radius, 50%);
 }

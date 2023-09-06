@@ -5,6 +5,10 @@
 html {
 	scroll-behavior: smooth;
 	overflow-x: hidden;
+
+	&.user-logged-in {
+		margin-top: 2rem;
+	}
 }
 
 body {
