@@ -454,7 +454,7 @@ h2 a:active {
   font-size: var(--bsb-page-info--font-size, 0.85em);
 }
 .page-info .page-info-entry:not(:last-of-type) {
-  margin-right: 0.5em;
+  margin: var(--bsb-page-info-entry--margin, 0 0.5em 0 0);
 }
 
 h1 + .page-info p,
@@ -514,7 +514,7 @@ h2 + .page-info p {
   color: var(--bsb-toolbar--link-action--text-color, #ffffff);
 }
 .user-toolbar a:not(:last-of-type) {
-  margin-right: 1rem;
+  margin: var(--bsb-toolbar--link--margin, 0 1rem 0 0);
 }
 .user-toolbar a#profile-link {
   display: inline-flex;

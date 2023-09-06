@@ -11,3 +11,25 @@
 	direction: rtl;
 	unicode-bidi: embed;
 }
+
+.page-info {
+	.page-info-entry {
+		&:not( :last-of-type ) {
+			margin: var( --bsb-page-info-entry--margin--rtl, 0 0 0 0.5em );
+		}
+	}
+}
+
+.user-toolbar {
+	a {
+		&:not( :last-of-type ) {
+			margin: var( --bsb-toolbar--link--margin--rtl, 0 0 0 1rem );
+		}
+
+		&#profile-link {
+			img {
+				margin: var( --bsb-toolbar--profile-pic--margin--rtl, 0 0 0 0.5em );
+			}
+		}
+	}
+}

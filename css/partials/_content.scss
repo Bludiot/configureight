@@ -11,7 +11,7 @@
 
 	.page-info-entry {
 		&:not( :last-of-type ) {
-			margin-right: 0.5em;
+			margin: var( --bsb-page-info-entry--margin, 0 0.5em 0 0 );
 		}
 	}
 }
