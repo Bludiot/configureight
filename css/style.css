@@ -462,6 +462,18 @@ h2 + .page-info p {
   margin-top: 0;
 }
 
+.page-description {
+  margin: var(--bsb-page-description--margin, 0);
+}
+.page-description.page-description-single {
+  margin: var(--bsb-page-description-single--margin, 0);
+  font-size: var(--bsb-page-description-single--font-size, 1.25rem);
+}
+
+.page-cover.page-cover-single {
+  margin: var(--bsb-page-cover-single--margin, 1rem 0 0 0);
+}
+
 .no-posts-found {
   display: flex;
   flex-direction: column;
@@ -517,6 +529,7 @@ h2 + .page-info p {
 
 .site-footer {
   margin: var(--bsb-site-footer--margin, 2rem 0 0 0);
+  padding: var(--bsb-site-footer--padding, 2rem);
 }
 .site-footer .copyright {
   text-align: var(--bsb-copyright--text-align, center);

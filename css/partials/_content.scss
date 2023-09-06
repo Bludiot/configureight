@@ -25,6 +25,21 @@ h2 {
 	}
 }
 
+.page-description {
+	margin: var( --bsb-page-description--margin, 0 );
+
+	&.page-description-single {
+		margin: var( --bsb-page-description-single--margin, 0 );
+		font-size: var( --bsb-page-description-single--font-size, 1.25rem );
+	}
+}
+
+.page-cover {
+	&.page-cover-single {
+		margin: var( --bsb-page-cover-single--margin, 1rem 0 0 0 );
+	}
+}
+
 // No posts template.
 .no-posts-found {
 	display: flex;
