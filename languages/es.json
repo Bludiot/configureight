@@ -10,5 +10,6 @@
 	"dashboard-link"       : "Panel",
 	"edit-link"            : "Editar",
 	"new-content-link"     : "Nuevo Contenido",
-	"profile-link-default" : "Perfilar"
+	"profile-link-default" : "Perfilar",
+	"copyright-message"    : "Reservados todos los derechos"
 }

@@ -38,5 +38,6 @@ if ( user_logged_in() ) {
 	<?php if ( user_logged_in() ) {
 		include( THEME_DIR_PHP . 'utility/toolbar.php' );
 	} ?>
+	<?php include( THEME_DIR_PHP . 'footer/footer.php' ); ?>
 </body>
 </html>

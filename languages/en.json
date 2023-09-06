@@ -10,5 +10,6 @@
 	"dashboard-link"       : "Dashboard",
 	"edit-link"            : "Edit",
 	"new-content-link"     : "New Content",
-	"profile-link-default" : "Profile"
+	"profile-link-default" : "Profile",
+	"copyright-message"    : "All rights reserved"
 }
