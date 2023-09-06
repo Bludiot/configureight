@@ -1,0 +1,13 @@
+///
+/// RTL stylesheet
+///
+/// Overrides directional styles
+/// in the main stylesheet.
+///
+/// The `rtl` class is on the body tag.
+///
+
+.rtl {
+	direction: rtl;
+	unicode-bidi: embed;
+}

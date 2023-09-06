@@ -8,6 +8,8 @@
  * @since      1.0.0
  */
 
+use function BS_Init\is_rtl;
+
 ?>
 <head>
 	<meta charset="UTF-8">
@@ -28,6 +30,9 @@
 
 	<?php echo Theme :: cssBootstrapIcons(); ?>
 	<?php echo Theme :: css( 'css/style.min.css' ); ?>
+	<?php if ( is_rtl() ) {
+		echo Theme :: css( 'css/style-rtl.min.css' );
+	} ?>
 
 	<?php Theme :: plugins( 'siteHead' ); ?>
 </head>
