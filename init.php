@@ -129,3 +129,23 @@ function body_classes() {
 
 	return implode( ' ', $classes );
 }
+
+/**
+ * Asset file suffix
+ *
+ * Gets minified file if not in debug mode.
+ *
+ * @since  1.0.0
+ * @return string Returns an empty string or
+ *                `.min` string.
+ */
+function asset_min() {
+
+	if (
+		( defined( 'DEBUG_MODE' ) && DEBUG_MODE ) ||
+		( defined( 'BS_BLUDIT_DEBUG' ) && BS_BLUDIT_DEBUG )
+	) {
+		return '';
+	}
+	return '.min';
+}

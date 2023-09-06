@@ -9,6 +9,9 @@
  */
 
 use function BS_Init\is_rtl;
+use function BS_Init\asset_min;
+
+$suffix = asset_min();
 
 ?>
 <head>
@@ -29,9 +32,9 @@ use function BS_Init\is_rtl;
 	<?php echo Theme :: metaTagDescription(); ?>
 
 	<?php echo Theme :: cssBootstrapIcons(); ?>
-	<?php echo Theme :: css( 'css/style.min.css' ); ?>
+	<?php echo Theme :: css( "css/style{$suffix}.css" ); ?>
 	<?php if ( is_rtl() ) {
-		echo Theme :: css( 'css/style-rtl.min.css' );
+		echo Theme :: css( "css/style-rtl{$suffix}.css" );
 	} ?>
 
 	<?php Theme :: plugins( 'siteHead' ); ?>
