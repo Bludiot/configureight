@@ -6,21 +6,19 @@
 	padding: 0 2rem;
 }
 
+.page-header {
+	h1,
+	h2 {
+		font-size: var( --bsb-ppage-header--heading--font-size, 2rem );
+	}
+}
+
 .page-info {
 	font-size: var( --bsb-page-info--font-size, 0.85em );
 
 	.page-info-entry {
 		&:not( :last-of-type ) {
 			margin: var( --bsb-page-info-entry--margin, 0 0.5em 0 0 );
-		}
-	}
-}
-
-h1,
-h2 {
-	& + .page-info {
-		p {
-			margin-top: 0;
 		}
 	}
 }
@@ -34,10 +32,24 @@ h2 {
 	}
 }
 
-.page-cover {
-	&.page-cover-single {
-		margin: var( --bsb-page-cover-single--margin, 1rem 0 0 0 );
+.page-content {
+	img[style="float: right;"],
+	img[style="float: right"],
+	img[style="float:right;"],
+	img[style="float:right"] {
+		margin: 0 0 1em 1em;
 	}
+
+	img[style="float: left;"],
+	img[style="float: left"],
+	img[style="float:left;"],
+	img[style="float:left"] {
+		margin: 0 1em 1em 0;
+	}
+}
+
+.page-cover {
+	margin: var( --bsb-page-cover-single--margin, 1rem 0 0 0 );
 }
 
 // No posts template.
