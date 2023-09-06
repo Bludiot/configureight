@@ -14,6 +14,9 @@ if ( ! defined( 'BLUDIT' ) ) {
 	die( 'You are not allowed to access this file.' );
 }
 
+// Get the theme configuration file.
+require_once( THEME_DIR_PHP . 'utility/config.php' );
+
 /**
  * User logged in
  *
@@ -134,6 +137,7 @@ function body_classes() {
  * Asset file suffix
  *
  * Gets minified file if not in debug mode.
+ * Third party (e.g. jQuery) may be exempted.
  *
  * @since  1.0.0
  * @return string Returns an empty string or
@@ -143,7 +147,7 @@ function asset_min() {
 
 	if (
 		( defined( 'DEBUG_MODE' ) && DEBUG_MODE ) ||
-		( defined( 'BS_BLUDIT_DEBUG' ) && BS_BLUDIT_DEBUG )
+		( defined( 'BSB_CONFIG' ) && BSB_CONFIG['debug'] )
 	) {
 		return '';
 	}
