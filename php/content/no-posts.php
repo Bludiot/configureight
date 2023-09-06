@@ -13,5 +13,5 @@
 
 	<h1><?php $L->p( 'no-posts-heading' ); ?></h1>
 
-	<p><?php $L->p( 'no-posts-message' ); ?></h1></p>
+	<p class="page-subtitle"><?php $L->p( 'no-posts-message' ); ?></h1></p>
 </div>
