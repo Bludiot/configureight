@@ -42,7 +42,7 @@ if ( $user->nickname() ) {
 	</div>
 	<div class="user-info">
 		<a id="profile-link" href="<?php echo DOMAIN_ADMIN;?>edit-user/<?php echo Session :: get( 'username' ); ?>">
-			<img src="<?php echo $user->profilePicture(); ?>" width="24px"> <?php echo $name; ?>
+			<img src="<?php echo $user->profilePicture(); ?>" width="24"> <?php echo $name; ?>
 		</a>
 	</div>
 </section>
