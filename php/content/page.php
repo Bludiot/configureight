@@ -26,9 +26,7 @@
 
 	<?php if ( $page->coverImage() ) : ?>
 	<figure class="page-cover page-cover-single">
-		<a href="<?php echo $page->permalink(); ?>">
-			<img src="<?php echo $page->coverImage(); ?>" />
-		</a>
+		<img src="<?php echo $page->coverImage(); ?>" />
 		<figcaption class="screen-reader-text"><?php echo $page->title(); ?></figcaption>
 	</figure>
 	<?php endif ?>
