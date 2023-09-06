@@ -7,19 +7,14 @@
  * @since      1.0.0
  */
 
+use function BS_Init\body_classes;
 use function BS_Init\user_logged_in;
-
-// Classes for the html element.
-$html_class = 'no-js';
-if ( user_logged_in() ) {
-	$html_class = 'no-js user-logged-in';
-}
 
 ?>
 <!DOCTYPE html>
-<html class="<?php echo $html_class; ?>" lang="<?php echo Theme :: lang() ?>" xmlns:og="http://opengraphprotocol.org/schema/">
+<html dir="auto" class="no-js" lang="<?php echo Theme :: lang() ?>" xmlns:og="http://opengraphprotocol.org/schema/">
 <?php include( THEME_DIR_PHP . 'utility/head.php' ); ?>
-<body>
+<body class="<?php echo body_classes(); ?>">
 
 	<?php Theme :: plugins( 'siteBodyBegin' ); ?>
 

@@ -52,3 +52,80 @@ function page_description() {
 	}
 	return $page_desc;
 }
+
+/**
+ * Is RTL language
+ *
+ * @since  1.0.0
+ * @return boolean Returns true if site is in RTL language.
+ */
+function is_rtl() {
+
+	$rtl = [
+		'ar',
+		'fa',
+		'he',
+		'ks',
+		'ku',
+		'pa',
+		'ps',
+		'sd',
+		'ug',
+		'ur'
+	];
+	$lang = \Theme :: lang();
+
+	if ( in_array( $lang, $rtl ) ) {
+		return true;
+	}
+	return false;
+}
+
+/**
+ * Body classes
+ *
+ * For the class attribute on the `<body>` element.
+ *
+ * @since  1.0.0
+ * @return string Returns a string of classes.
+ */
+function body_classes() {
+
+	global $site, $url, $page;
+
+	$classes = [];
+
+	if ( is_rtl() ) {
+		$classes[] = 'rtl';
+	} else {
+		$classes[] = 'ltr';
+	}
+
+	if ( user_logged_in() ) {
+		$classes[] = 'user-logged-in';
+	} else {
+		$classes[] = 'user-logged-out';
+	}
+
+	if ( 'home' == $url->whereAmI() ) {
+		$classes[] = 'home';
+
+		if ( ! $site->homepage() ) {
+			$classes[] = 'blog';
+		}
+	}
+
+	if ( 'blog' == $url->whereAmI() ) {
+		$classes[] = 'blog';
+	}
+
+	if ( 'page' == $url->whereAmI() ) {
+		if ( $page->isStatic() ) {
+			$classes[] = 'page';
+		} else {
+			$classes[] = 'post';
+		}
+	}
+
+	return implode( ' ', $classes );
+}
