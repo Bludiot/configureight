@@ -5,10 +5,6 @@
 html {
 	scroll-behavior: smooth;
 	overflow-x: hidden;
-
-	&.user-logged-in {
-		margin-top: 2rem;
-	}
 }
 
 body {
@@ -20,6 +16,10 @@ body {
 	line-height: var( --bsb-line-height, 1.5 );
 	background: var( --bsb-bg-color );
 	color: var( --bsb-text-color );
+
+	&.user-logged-in {
+		margin-top: 2rem;
+	}
 }
 
 .serif {
