@@ -18,11 +18,20 @@
 
 		<?php if ( $page->description() ) {
 			printf(
-				'<p class="page-description">%s</p>',
+				'<p class="page-description page-description-single">%s</p>',
 				$page->description()
 			);
 		} ?>
 	</header>
+
+	<?php if ( $page->coverImage() ) : ?>
+	<figure class="page-cover page-cover-single">
+		<a href="<?php echo $page->permalink(); ?>">
+			<img src="<?php echo $page->coverImage(); ?>" />
+		</a>
+		<figcaption class="screen-reader-text"><?php echo $page->title(); ?></figcaption>
+	</figure>
+	<?php endif ?>
 
 	<div class="page-content" itemprop="articleBody">
 		<?php echo $page->contentBreak(); ?>
