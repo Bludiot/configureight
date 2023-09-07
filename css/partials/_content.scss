@@ -3,14 +3,18 @@
 ///
 
 .site-main {
-	padding: 0 2rem;
+	padding: var( --bsb-site-main--padding );
 }
 
 .page-header {
 	h1,
 	h2 {
-		font-size: var( --bsb-ppage-header--heading--font-size, 2rem );
+		font-size: var( --bsb-page-header--heading--font-size );
 	}
+}
+
+.page-subtitle {
+	font-size: var( --bsb-page-subtitle--font-size, 1.5em );
 }
 
 .page-info {
@@ -33,18 +37,18 @@
 }
 
 .page-content {
-	img[style="float: right;"],
-	img[style="float: right"],
-	img[style="float:right;"],
-	img[style="float:right"] {
-		margin: 0 0 1em 1em;
-	}
-
 	img[style="float: left;"],
 	img[style="float: left"],
 	img[style="float:left;"],
 	img[style="float:left"] {
-		margin: 0 1em 1em 0;
+		margin: var( --bsb-page-content--img--float-left--margin, 0 1em 1em 0 );
+	}
+
+	img[style="float: right;"],
+	img[style="float: right"],
+	img[style="float:right;"],
+	img[style="float:right"] {
+		margin: var( --bsb-page-content--img--float-right--margin, 0 0 1em 1em );
 	}
 }
 
@@ -54,17 +58,13 @@
 
 // No posts template.
 .no-posts-found {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	min-height: 50vh;
+	display: var( --bsb-no-posts--display, flex );
+	flex-direction: var( --bsb-no-posts--flex-direction, column );
+	align-items: var( --bsb-no-posts--align-items, center );
+	justify-content: var( --bsb-no-posts--justify-content, center );
+	min-height: var( --bsb-no-posts--min-height, 50vh );
 
 	h1 {
-		font-size: 2.5em;
-	}
-
-	p {
-		font-size: 1.5em;
+		font-size: var( --bsb-no-posts--heading--font-size, 2.5em );
 	}
 }

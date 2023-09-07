@@ -3,17 +3,17 @@
 ///
 
 .user-toolbar {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 2rem;
-	overflow: visible;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	padding: var( --nsn-toolbar--padding, 0 1rem );
-	line-height: 2rem;
+	position: var( --bsb-toolbar--position, fixed );
+	top: var( --bsb-toolbar--top, 0 );
+	left: var( --bsb-toolbar--left, 0 );
+	width: var( --bsb-toolbar--width, 100% );
+	height: var( --bsb-toolbar--height, 2rem );
+	overflow: var( --bsb-toolbar--overflow, visible );
+	display: var( --bsb-toolbar--display, flex );
+	justify-content: var( --bsb-toolbar--justify-content, space-between );
+	align-items: var( --bsb-toolbar--align-items, center );
+	padding: var( --bsb-toolbar--padding, 0 1rem );
+	line-height: var( --bsb-toolbar--line-height, 2rem );
 	font-size: var( --bsb-toolbar--font-size, 0.875rem );
 	background-color: var( --bsb-toolbar--background-color, #333333 );
 	color: var( --bsb-toolbar--text-color, #ffffff );
@@ -33,12 +33,12 @@
 		}
 
 		&#profile-link {
-			display: inline-flex;
-			align-items: center;
-			transform: translateY( 4px );
+			display: var( --bsb-toolbar--profile-link--display, inline-flex );
+			align-items: var( --bsb-toolbar--profile-link--align-items, center );
+			transform: var( --bsb-toolbar--profile-link--transform, translateY( 4px ) );
 
 			img {
-				display: block;
+				display: var( --bsb-toolbar--profile-pic--display, block );
 				margin: var( --bsb-toolbar--profile-pic--margin, 0 0.5em 0 0 );
 				border-radius: var( --bsb-toolbar--profile-pic--border-radius, 50% );
 			}

@@ -3,7 +3,7 @@
 ///
 
 .button {
-	display: inline-block;
+	display: var( --bsb-button--display, inline-block );
 	padding: var( --bsb-button--padding, 0.5em 1em );
 	background-color: var( --bsb-button--background-color, inherit );
 	border-style: var( --bsb-button--border-style, solid );

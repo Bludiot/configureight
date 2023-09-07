@@ -5,6 +5,7 @@
 .site-footer {
 	margin: var( --bsb-site-footer--margin, 2rem 0 0 0 );
 	padding: var( --bsb-site-footer--padding, 2rem );
+	background-color: var( --bsb-site-footer--bg-color, inherit );
 
 	.copyright {
 		text-align: var( --bsb-copyright--text-align, center );

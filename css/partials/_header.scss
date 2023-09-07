@@ -3,30 +3,34 @@
 ///
 
 .site-header {
+	background-color: var( --bsb-site-header--bg-color, inherit );
 
 	.site-header-wrap {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		gap: 1rem;
-		padding: var( --bsb-site-header--padding );
+		display: var( --bsb-site-header-wrap--display, flex );
+		flex-direction: var( --bsb-site-header-wrap--flex-direction, row );
+		align-items: var( --bsb-site-header-wrap--align-items, center );
+		justify-content: var( --bsb-site-header-wrap--justify-content, space-between );
+		gap: var( --bsb-site-header-wrap--gap, 1rem );
+		padding: var( --bsb-site-header-wrap--padding );
 
-		@media screen and ( max-width: 960px ) {
-			flex-direction: column;
-			justify-content: center;
+		@media screen and ( max-width: $break_tablet ) {
+			flex-direction: var( --bsb-site-header-wrap--flex-direction-tablet, column );
+			justify-content: var( --bsb-site-header-wrap--justify-content--tablet, center );
 		}
 	}
 }
 
 .site-branding {
-	display: flex;
-	align-items: center;
-	gap: 1rem;
+	display: var( --bsb-site-branding--display, flex );
+	flex-direction: var( --bsb-site-branding--flex-direction, row );
+	align-items: var( --bsb-site-branding--align-items, center );
+	justify-content: var( --bsb-site-branding--justify-content, flex-start );
+	gap: var( --bsb-site-branding--gap, 1rem );
 
-	@media screen and ( max-width: 960px ) {
-		flex-direction: column;
-		justify-content: center;
-		text-align: center;
+	@media screen and ( max-width: $break_tablet ) {
+		flex-direction: var( --bsb-site-branding--flex-direction--tablet, column );
+		justify-content: var( --bsb-site-branding--justify-content--tablet, center );
+		text-align: var( --bsb-site-branding--text-align--tablet, center );
 	}
 }
 
@@ -34,7 +38,7 @@
 	min-width: var( --bsb-site-logo--min-width, 80px );
 
 	img {
-		display: block;
+		display: var( --bsb-site-logo--display, block );
 	}
 }
 
@@ -45,8 +49,8 @@
 	line-height: 1.2;
 
 	a {
-		color: inherit !important;
-		text-decoration: none;
+		color: var( --bsb-site-title--a--color, inherit ) !important;
+		text-decoration: var( --bsb-site-title--a--text-decoration, none );
 	}
 }
 

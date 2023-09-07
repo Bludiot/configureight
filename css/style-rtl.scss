@@ -27,20 +27,20 @@
 }
 
 .page-content {
-	img[style="float: right;"],
-	img[style="float: right"],
-	img[style="float:right;"],
-	img[style="float:right"] {
-		float: left !important;
-		margin: 0 1em 1em 0;
-	}
-
 	img[style="float: left;"],
 	img[style="float: left"],
 	img[style="float:left;"],
 	img[style="float:left"] {
 		float: right !important;
-		margin: 0 0 1em 1em;
+		margin: var( --bsb-page-content--img--float-left--margin--rtl, 0 0 1em 1em );
+	}
+
+	img[style="float: right;"],
+	img[style="float: right"],
+	img[style="float:right;"],
+	img[style="float:right"] {
+		float: left !important;
+		margin: var( --bsb-page-content--img--float-right--margin--rtl, 0 1em 1em 0 );
 	}
 }
 
