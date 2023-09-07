@@ -1,0 +1,27 @@
+///
+/// SCSS variables
+///
+
+// Media queries.
+$break_tablet: 960px !default;
+$break_phone: 649px !default;
+
+// General colors.
+$white: #ffffff !default;
+$off_white: #eeeeee !default;
+$black: #000000 !default;
+$near_black: #1e1e1e !default;
+$dark_gray: #333333 !default;
+$medium_gray: #555555 !default;
+$light_gray: #888888 !default;
+$pale_gray: #cccccc !default;
+$red: #dd0000 !default;
+$orange: #ee6600 !default;
+$yellow: #f8ce30 !default;
+$green: #4b9960 !default;
+$blue: #0000ff !default;
+$violet:  #551a8b !default;
+$error: $red !default;
+$notify: $orange !default;
+$warning: $yellow !default;
+$success: $green !default;
