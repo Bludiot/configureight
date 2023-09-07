@@ -346,7 +346,7 @@ h2 a {
 h1 a:visited, h1 a:active,
 h2 a:visited,
 h2 a:active {
-  color: var(--bsb-link--action--color, var(--bsb-link--text-color));
+  color: var(--bsb-link--action--text-color, var(--bsb-link--text-color));
 }
 
 .button {
@@ -517,6 +517,14 @@ h2 a:active {
 
 .site-sidebar {
   padding: var(--bsb-site-sidebar--padding, 2rem 0 0 0);
+  background-color: var(--bsb-site-sidebar--bg-color, inherit);
+  color: var(--bsb-site-sidebar--text-color, inherit);
+}
+.site-sidebar a {
+  color: var(--bsb-site-sidebar--link--text-color, var(--bsb-link--text-color));
+}
+.site-sidebar a:visited, .site-sidebar a:active {
+  color: var(--bsb-site-sidebar--link--action--text-color, var(--bsb-site-sidebar--link--text-color, var(--bsb-link--text-color)));
 }
 
 .user-toolbar {

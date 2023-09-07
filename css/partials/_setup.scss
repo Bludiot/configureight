@@ -88,7 +88,7 @@ h2 {
 
 		&:visited,
 		&:active {
-			color: var( --bsb-link--action--color, var( --bsb-link--text-color ) );
+			color: var( --bsb-link--action--text-color, var( --bsb-link--text-color ) );
 		}
 	}
 }

@@ -4,4 +4,15 @@
 
 .site-sidebar {
 	padding: var( --bsb-site-sidebar--padding, 2rem 0 0 0 );
+	background-color: var( --bsb-site-sidebar--bg-color, inherit );
+	color: var( --bsb-site-sidebar--text-color, inherit );
+
+	a {
+		color: var( --bsb-site-sidebar--link--text-color, var( --bsb-link--text-color ) );
+
+		&:visited,
+		&:active {
+			color: var( --bsb-site-sidebar--link--action--text-color, var( --bsb-site-sidebar--link--text-color, var( --bsb-link--text-color ) ) );
+		}
+	}
 }
