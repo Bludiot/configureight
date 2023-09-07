@@ -13,13 +13,18 @@
  *
  * @since 1.0.0
  */
-define(
-	'BSB_CONFIG',
-	[
-		'debug'   => true,
-		'toolbar' => true
-	]
-);
+if ( ! defined( 'BSB_CONFIG' ) ) {
+	define(
+		'BSB_CONFIG',
+		[
+			'debug'     => true,
+			'toolbar'   => true,
+			'byline'    => true,
+			'post_date' => true,
+			'read_time' => true
+		]
+	);
+}
 
 // Set debug mode.
 if ( BSB_CONFIG['debug'] ) {
