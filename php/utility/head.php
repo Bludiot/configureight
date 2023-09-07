@@ -28,8 +28,8 @@ $suffix = asset_min();
 	// Change `<html>` class to `js` if JavaScript is enabled.
 	echo "<script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>\n";
 
-	if ( file_exists( THEME_DIR_IMG . 'favicon.png' ) ) {
-		echo Theme :: favicon( 'img/favicon.png' );
+	if ( file_exists( THEME_DIR . 'assets/images/favicon.png' ) ) {
+		echo Theme :: favicon( 'assets/images/favicon.png' );
 	} ?>
 	<?php echo Theme :: metaTagTitle(); ?>
 	<?php echo Theme :: metaTagDescription(); ?>
@@ -37,9 +37,9 @@ $suffix = asset_min();
 	<?php echo Theme :: jquery(); ?>
 
 	<?php echo Theme :: cssBootstrapIcons(); ?>
-	<?php echo Theme :: css( "css/style{$suffix}.css" ); ?>
+	<?php echo Theme :: css( "assets/css/style{$suffix}.css" ); ?>
 	<?php if ( is_rtl() ) {
-		echo Theme :: css( "css/style-rtl{$suffix}.css" );
+		echo Theme :: css( "assets/css/style-rtl{$suffix}.css" );
 	} ?>
 
 	<?php Theme :: plugins( 'siteHead' ); ?>

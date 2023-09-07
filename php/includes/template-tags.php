@@ -239,5 +239,5 @@ function footer_scripts() {
 
 	$suffix = asset_min();
 
-	echo \Theme :: js( "js/theme{$suffix}.js" );
+	echo \Theme :: js( "assets/js/theme{$suffix}.js" );
 }
