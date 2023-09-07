@@ -73,6 +73,7 @@ function is_rtl() {
  */
 function asset_min() {
 
+	// Get non-minified file if in debug mode.
 	if (
 		( defined( 'DEBUG_MODE' ) && DEBUG_MODE ) ||
 		( defined( 'BSB_CONFIG' ) && BSB_CONFIG['debug'] )
@@ -148,13 +149,48 @@ function body_classes() {
 }
 
 /**
+ * Get user toolbar
+ *
+ * Includes the toolbar file if user is
+ * logged in and config value is true.
+ *
+ * @since  1.0.0
+ * @global object $L Language class
+ * @return mixed Returns the toolbar markup or null.
+ */
+function get_toolbar() {
+
+	// Get any globals used in the toolbar template.
+	global $L;
+
+	if ( user_logged_in() ) {
+		ob_start();
+		include( THEME_DIR_PHP . 'utility/toolbar.php' );
+		return ob_get_clean();
+	}
+	return null;
+}
+
+/**
+ * Print user toolbar
+ *
+ * Echoes `get_toolbar()`.
+ *
+ * @since  1.0.0
+ * @return void
+ */
+function user_toolbar() {
+	echo get_toolbar();
+}
+
+/**
  * Page description
  *
  * Gets the page description or
  * an excerpt of the content.
  *
  * @since  1.0.0
- * @global object $page
+ * @global object $page Page class
  * @return string Returns the description.
  */
 function page_description() {

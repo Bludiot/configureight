@@ -7,8 +7,9 @@
  * @since      1.0.0
  */
 
+// Import namespaced functions.
 use function BS_Init\body_classes;
-use function BS_Init\user_logged_in;
+use function BS_Init\user_toolbar;
 
 ?>
 <!DOCTYPE html>
@@ -30,9 +31,7 @@ use function BS_Init\user_logged_in;
 	</main>
 
 	<?php Theme :: plugins( 'siteBodyEnd' ); ?>
-	<?php if ( user_logged_in() ) {
-		include( THEME_DIR_PHP . 'utility/toolbar.php' );
-	} ?>
+	<?php user_toolbar(); ?>
 	<?php include( THEME_DIR_PHP . 'footer/footer.php' ); ?>
 </body>
 </html>
