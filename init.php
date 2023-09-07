@@ -83,4 +83,4 @@ function asset_min() {
 	return '.min';
 }
 
-require_once( THEME_DIR_PHP . 'includes/template-tags.php' );
+require_once( THEME_DIR . 'includes/template-tags.php' );
