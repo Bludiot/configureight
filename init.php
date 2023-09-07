@@ -205,3 +205,16 @@ function page_description() {
 	}
 	return $page_desc;
 }
+
+/**
+ * Pint footer scripts
+ *
+ * @since  1.0.0
+ * @return void
+ */
+function footer_scripts() {
+
+	$suffix = asset_min();
+
+	echo \Theme :: js( "js/theme{$suffix}.js" );
+}

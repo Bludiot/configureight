@@ -10,6 +10,7 @@
 // Import namespaced functions.
 use function BS_Init\body_classes;
 use function BS_Init\user_toolbar;
+use function BS_Init\footer_scripts;
 
 ?>
 <!DOCTYPE html>
@@ -31,7 +32,8 @@ use function BS_Init\user_toolbar;
 	</main>
 
 	<?php Theme :: plugins( 'siteBodyEnd' ); ?>
-	<?php user_toolbar(); ?>
 	<?php include( THEME_DIR_PHP . 'footer/footer.php' ); ?>
+	<?php user_toolbar(); ?>
+	<?php footer_scripts(); ?>
 </body>
 </html>
