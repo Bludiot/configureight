@@ -184,6 +184,33 @@ function user_toolbar() {
 }
 
 /**
+ * Print site logo
+ *
+ * @since  1.0.0
+ * @global $site
+ * @return mixed Returns null if no logo set.
+ */
+function site_logo() {
+
+	global $site;
+
+	if ( empty( $site->logo() ) ) {
+		return null;
+	}
+
+	?>
+	<div class="site-logo">
+		<figure>
+			<a href="<?php echo $site->url(); ?>">
+				<img src="<?php echo $site->logo(); ?>" alt="<?php echo $site->title(); ?>" width="80">
+			</a>
+			<figcaption class="screen-reader-text"><?php echo $site->title(); ?></figcaption>
+		</figure>
+	</div>
+	<?php
+}
+
+/**
  * Page description
  *
  * Gets the page description or

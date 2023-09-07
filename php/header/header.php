@@ -10,6 +10,10 @@
  * @since      1.0.0
  */
 
+use function BS_Init\{
+	site_logo
+};
+
 // Site title element.
 if ( 'home' == $WHERE_AM_I ) {
 	$site_title = sprintf(
@@ -28,16 +32,7 @@ if ( 'home' == $WHERE_AM_I ) {
 <header id="masthead" class="site-header" role="banner" itemscope="itemscope" itemtype="http://schema.org/Organization">
 	<div class="wrapper-general site-header-wrap">
 		<div class="site-branding">
-			<?php if ( ! empty( $site->logo() ) ) : ?>
-			<div class="site-logo">
-				<figure>
-					<a href="<?php echo $site->url(); ?>">
-						<img src="<?php echo $site->logo(); ?>" alt="<?php echo $site->title(); ?>" width="80">
-					</a>
-					<figcaption class="screen-reader-text"><?php echo $site->title(); ?></figcaption>
-				</figure>
-			</div>
-			<?php endif; ?>
+			<?php site_logo(); ?>
 			<div class="site-title-description">
 				<?php echo $site_title; ?>
 				<p class="site-description"><?php echo $site->slogan(); ?></p>
