@@ -13,8 +13,7 @@
 // Site title element.
 if ( 'home' == $WHERE_AM_I ) {
 	$site_title = sprintf(
-		'<h1 class="site-title"><a href="%s">%s</a></h1>',
-		$site->url(),
+		'<h1 class="site-title">%s</h1>',
 		$site->title()
 	);
 } else {
