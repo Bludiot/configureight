@@ -10,3 +10,7 @@ Basic starter theme for developing your own theme for Bludit CMS.
 ![RTL language support](https://img.shields.io/badge/RTL-Ready-00aa00.svg?style=flat-square "RTL language support")
 
 ![BS Bludit theme cover image](https://github.com/ControlledChaos/bs-bludit/raw/main/cover.jpg)
+
+## Overview
+
+The BS Bludit is a starter theme, a boilerplate for developing themes for Bludit CMS.
