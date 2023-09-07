@@ -8,8 +8,10 @@
  * @since      1.0.0
  */
 
-use function BS_Init\is_rtl;
-use function BS_Init\asset_min;
+use function BS_Init\{
+	is_rtl,
+	asset_min
+};
 
 $suffix = asset_min();
 

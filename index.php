@@ -8,9 +8,11 @@
  */
 
 // Import namespaced functions.
-use function BS_Init\body_classes;
-use function BS_Init\user_toolbar;
-use function BS_Init\footer_scripts;
+use function BS_Init\{
+	body_classes,
+	user_toolbar,
+	footer_scripts
+};
 
 ?>
 <!DOCTYPE html>
