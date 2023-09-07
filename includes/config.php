@@ -8,6 +8,11 @@
  * @since      1.0.0
  */
 
+// Stop if accessed directly.
+if ( ! defined( 'BLUDIT' ) ) {
+	die( 'You are not allowed to access this file.' );
+}
+
 /**
  * Configuration constant
  *

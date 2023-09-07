@@ -10,6 +10,11 @@
 
 namespace BSB_Tags;
 
+// Stop if accessed directly.
+if ( ! defined( 'BLUDIT' ) ) {
+	die( 'You are not allowed to access this file.' );
+}
+
 // Import namespaced functions.
 use function BSB_Init\{
 	is_rtl,
