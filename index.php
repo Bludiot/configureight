@@ -8,8 +8,9 @@
  */
 
 // Import namespaced functions.
-use function BS_Init\{
+use function BSB_Tags\{
 	body_classes,
+	site_schema,
 	user_toolbar,
 	footer_scripts
 };
@@ -22,14 +23,18 @@ use function BS_Init\{
 
 	<?php Theme :: plugins( 'siteBodyBegin' ); ?>
 
-	<div id="page" class="site" itemscope="itemscope" itemtype="WebPage">
+	<div id="page" class="site" itemscope="itemscope" itemtype="<?php site_schema(); ?>">
 
 		<?php include( THEME_DIR_PHP . 'header/header.php' ); ?>
 
 		<main class="wrapper-general site-main" itemscope itemprop="mainContentOfPage">
 			<?php
 			if ( 'page' == $WHERE_AM_I ) {
-				include( THEME_DIR_PHP . 'content/page.php' );
+				if ( $page->template() ) {
+					include( THEME_DIR_PHP . 'content/' . $page->template() . '.php' );
+				} else {
+					include( THEME_DIR_PHP . 'content/page.php' );
+				}
 			} else {
 				include( THEME_DIR_PHP . 'content/home.php' );
 			} ?>
