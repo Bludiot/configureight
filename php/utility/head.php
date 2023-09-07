@@ -33,7 +33,7 @@ $suffix = asset_min();
 	<?php echo Theme :: metaTagTitle(); ?>
 	<?php echo Theme :: metaTagDescription(); ?>
 
-	<?php echo Theme :: js( 'js/jquery.min.js' ); ?>
+	<?php echo Theme :: jquery(); ?>
 
 	<?php echo Theme :: cssBootstrapIcons(); ?>
 	<?php echo Theme :: css( "css/style{$suffix}.css" ); ?>
