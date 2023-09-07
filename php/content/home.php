@@ -9,7 +9,7 @@
  */
 
 // Import namespaced functions.
-use function BS_Init\{
+use function BSB_Tags\{
 	page_description,
 	get_author
 };
@@ -45,11 +45,28 @@ use function BS_Init\{
 
 				<footer class="page-info">
 					<p>
-						<span class="page-info-entry"><span class="bi bi-pencil" role="img"></span> <?php echo get_author(); ?></span>
+						<?php if ( BSB_CONFIG['byline'] ) : ?>
+						<span class="page-info-entry">
+							<span class="bi bi-pencil" role="img"></span>
+							<?php echo get_author(); ?>
+						</span>
 						<br />
-						<span class="page-info-entry"><span class="bi bi-calendar" role="img"></span> <?php echo $page->date(); ?></span>
+						<?php endif ?>
+
+						<?php if ( BSB_CONFIG['post_date'] ) : ?>
+						<span class="page-info-entry">
+							<span class="bi bi-calendar" role="img"></span>
+							<?php echo $page->date(); ?>
+						</span>
 						<br />
-						<span class="page-info-entry"><span class="bi bi-clock-history" role="img"></span> <?php echo $L->get( 'Reading time' ) . ': ' . $page->readingTime(); ?></span>
+						<?php endif ?>
+
+						<?php if ( BSB_CONFIG['read_time'] ) : ?>
+						<span class="page-info-entry">
+							<span class="bi bi-clock-history" role="img"></span>
+							<?php echo $L->get( 'Reading time' ) . ': ' . $page->readingTime(); ?>
+						</span>
+						<?php endif ?>
 					</p>
 				</footer>
 			</div>
