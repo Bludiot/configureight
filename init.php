@@ -207,6 +207,37 @@ function page_description() {
 }
 
 /**
+ * Get page author
+ *
+ * @since  1.0.0
+ * @global $page
+ * @return string
+ */
+function get_author() {
+
+	global $page;
+
+	$user   = $page->username();
+	$author = new \User( $user );
+
+	if ( $author->nickname() ) {
+		$name = $author->nickname();
+	} elseif ( $author->firstName() && $author->lastName() ) {
+		$name = sprintf(
+			'%s %s',
+			$author->firstName(),
+			$author->lastName()
+		);
+	} elseif ( $author->firstName() ) {
+		$name = $author->firstName();
+	} else {
+		$name = ucwords( str_replace( [ '-', '_', '.' ], ' ', $user ) );
+	}
+
+	return $name;
+}
+
+/**
  * Pint footer scripts
  *
  * @since  1.0.0

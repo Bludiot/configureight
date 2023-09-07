@@ -9,7 +9,10 @@
  */
 
 // Import namespaced functions.
-use function BS_Init\page_description;
+use function BS_Init\{
+	page_description,
+	get_author
+};
 
 ?>
 <article class="site-article" role="article">
@@ -42,9 +45,11 @@ use function BS_Init\page_description;
 
 				<footer class="page-info">
 					<p>
-						<span class="page-info-entry"><span class="bi bi-calendar"></span> <?php echo $page->date(); ?></span>
+						<span class="page-info-entry"><span class="bi bi-pencil" role="img"></span> <?php echo get_author(); ?></span>
 						<br />
-						<span class="page-info-entry"><span class="bi bi-clock-history"></span> <?php echo $L->get( 'Reading time' ) . ': ' . $page->readingTime(); ?></span>
+						<span class="page-info-entry"><span class="bi bi-calendar" role="img"></span> <?php echo $page->date(); ?></span>
+						<br />
+						<span class="page-info-entry"><span class="bi bi-clock-history" role="img"></span> <?php echo $L->get( 'Reading time' ) . ': ' . $page->readingTime(); ?></span>
 					</p>
 				</footer>
 			</div>
