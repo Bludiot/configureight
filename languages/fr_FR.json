@@ -1,0 +1,15 @@
+{
+	"theme-data" :
+	{
+		"name"        : "BS Theme",
+		"description" : "Thème de démarrage de base pour développer votre propre thème pour Bludit CMS."
+	},
+	"home-link-label"   : "Maison",
+	"no-posts-heading"  : "Pas Encore de Messages",
+	"no-posts-message"  : "Désolé, nous n'avons pas commencé à publier des articles. Veuillez revenir plus tard.",
+	"dashboard-link"       : "Tableau de Bord",
+	"edit-link"            : "Modifier",
+	"new-content-link"     : "Nouveau Contenu",
+	"profile-link-default" : "Profil",
+	"copyright-message"    : "Tous droits réservés"
+}
