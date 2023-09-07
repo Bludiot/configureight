@@ -20,9 +20,9 @@ use function BS_Init\{
 <?php include( THEME_DIR_PHP . 'utility/head.php' ); ?>
 <body class="<?php echo body_classes(); ?>">
 
-	<div id="page" class="site" itemscope="itemscope" itemtype="WebPage">
+	<?php Theme :: plugins( 'siteBodyBegin' ); ?>
 
-		<?php Theme :: plugins( 'siteBodyBegin' ); ?>
+	<div id="page" class="site" itemscope="itemscope" itemtype="WebPage">
 
 		<?php include( THEME_DIR_PHP . 'header/header.php' ); ?>
 
@@ -30,15 +30,19 @@ use function BS_Init\{
 			<?php
 			if ( 'page' == $WHERE_AM_I ) {
 				include( THEME_DIR_PHP . 'content/page.php' );
-			} elseif ( 'home' == $WHERE_AM_I || 'blog' == $WHERE_AM_I ) {
+			} else {
 				include( THEME_DIR_PHP . 'content/home.php' );
 			} ?>
 		</main>
 
-		<?php Theme :: plugins( 'siteBodyEnd' ); ?>
 		<?php include( THEME_DIR_PHP . 'footer/footer.php' ); ?>
 	</div>
-	<?php user_toolbar(); ?>
-	<?php footer_scripts(); ?>
+	<?php
+
+	user_toolbar();
+	Theme :: plugins( 'siteBodyEnd' );
+	footer_scripts();
+
+	?>
 </body>
 </html>
