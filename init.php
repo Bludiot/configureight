@@ -15,7 +15,7 @@ if ( ! defined( 'BLUDIT' ) ) {
 }
 
 // Get the theme configuration file.
-require_once( THEME_DIR_PHP . 'utility/config.php' );
+require_once( THEME_DIR . 'includes/config.php' );
 
 /**
  * User logged in

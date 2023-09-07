@@ -18,7 +18,7 @@ use function BSB_Tags\{
 <article class="site-article" role="article">
 
 	<?php if ( empty( $content) ) : ?>
-		<?php include( THEME_DIR_PHP . 'content/no-posts.php' ); ?>
+		<?php include( THEME_DIR . 'templates/content/no-posts.php' ); ?>
 	<?php endif; ?>
 
 	<?php foreach ( $content as $page ) : ?>
@@ -78,4 +78,4 @@ use function BSB_Tags\{
 
 <?php
 // Get page navigation.
-include( THEME_DIR_PHP . 'navigation/pagination.php' );
+include( THEME_DIR . 'templates/navigation/pagination.php' );

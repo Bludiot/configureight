@@ -131,7 +131,7 @@ function get_toolbar() {
 
 	if ( user_logged_in() ) {
 		ob_start();
-		include( THEME_DIR_PHP . 'utility/toolbar.php' );
+		include( THEME_DIR . 'templates/utility/toolbar.php' );
 		return ob_get_clean();
 	}
 	return null;

@@ -18,29 +18,29 @@ use function BSB_Tags\{
 ?>
 <!DOCTYPE html>
 <html dir="auto" class="no-js" lang="<?php echo Theme :: lang() ?>" xmlns:og="http://opengraphprotocol.org/schema/">
-<?php include( THEME_DIR_PHP . 'utility/head.php' ); ?>
+<?php include( THEME_DIR . 'templates/utility/head.php' ); ?>
 <body class="<?php echo body_classes(); ?>">
 
 	<?php Theme :: plugins( 'siteBodyBegin' ); ?>
 
 	<div id="page" class="site" itemscope="itemscope" itemtype="<?php site_schema(); ?>">
 
-		<?php include( THEME_DIR_PHP . 'header/header.php' ); ?>
+		<?php include( THEME_DIR . 'templates/header/header.php' ); ?>
 
 		<main class="wrapper-general site-main" itemscope itemprop="mainContentOfPage">
 			<?php
 			if ( 'page' == $WHERE_AM_I ) {
 				if ( $page->template() ) {
-					include( THEME_DIR_PHP . 'content/' . $page->template() . '.php' );
+					include( THEME_DIR . 'templates/content/' . $page->template() . '.php' );
 				} else {
-					include( THEME_DIR_PHP . 'content/page.php' );
+					include( THEME_DIR . 'templates/content/page.php' );
 				}
 			} else {
-				include( THEME_DIR_PHP . 'content/home.php' );
+				include( THEME_DIR . 'templates/content/home.php' );
 			} ?>
 		</main>
 
-		<?php include( THEME_DIR_PHP . 'footer/footer.php' ); ?>
+		<?php include( THEME_DIR . 'templates/footer/footer.php' ); ?>
 	</div>
 	<?php
 

@@ -40,6 +40,6 @@ if ( 'home' == $WHERE_AM_I ) {
 		</div>
 		<?php
 		// Get the main navigation menu.
-		include( THEME_DIR_PHP . 'navigation/main-nav.php' ); ?>
+		include( THEME_DIR . 'templates/navigation/main-nav.php' ); ?>
 	</div>
 </header>
