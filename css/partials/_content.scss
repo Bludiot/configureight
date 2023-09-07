@@ -6,6 +6,24 @@
 	padding: var( --bsb-site-main--padding );
 }
 
+.blog-wrap {
+	display: flex;
+	gap: 2rem;
+
+	&:not( :first-of-type ) {
+		margin-top: 2rem;
+	}
+
+	.page-cover-home {
+		width: 180px;
+		min-width: 180px;
+	}
+
+	h2 {
+		margin: 0;
+	}
+}
+
 .page-header {
 	h1,
 	h2 {

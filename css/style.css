@@ -463,6 +463,21 @@ h2 a:active {
   padding: var(--bsb-site-main--padding);
 }
 
+.blog-wrap {
+  display: flex;
+  gap: 2rem;
+}
+.blog-wrap:not(:first-of-type) {
+  margin-top: 2rem;
+}
+.blog-wrap .page-cover-home {
+  width: 180px;
+  min-width: 180px;
+}
+.blog-wrap h2 {
+  margin: 0;
+}
+
 .page-header h1,
 .page-header h2 {
   font-size: var(--bsb-page-header--heading--font-size);
