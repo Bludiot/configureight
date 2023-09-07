@@ -8,7 +8,7 @@
  * @since      1.0.0
  */
 
-use function BS_Init\{
+use function BSB_Init\{
 	is_rtl,
 	asset_min
 };
@@ -25,6 +25,7 @@ $suffix = asset_min();
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 	<?php
+	// Change `<html>` class to `js` if JavaScript is enabled.
 	echo "<script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>\n";
 
 	if ( file_exists( THEME_DIR_IMG . 'favicon.png' ) ) {

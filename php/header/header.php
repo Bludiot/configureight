@@ -10,7 +10,7 @@
  * @since      1.0.0
  */
 
-use function BS_Init\{
+use function BSB_Tags\{
 	site_logo
 };
 
