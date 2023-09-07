@@ -18,7 +18,7 @@ body {
 	color: var( --bsb-text-color );
 
 	&.user-logged-in {
-		margin-top: 2rem;
+		margin-top: var( --bsb-toolbar--height );
 	}
 }
 
@@ -69,26 +69,26 @@ h6,
 p,
 ul,
 ol {
-	margin-top: var( --bsb-element-margin-top, 1em );
+	margin-top: var( --bsb-element--margin-top, 1em );
 }
 
 a {
 	text-decoration: var( --bsb-link--text-decoration, underline );
-	color: var( --bsb-link--color );
+	color: var( --bsb-link--text-color );
 }
 
 h1,
 h2 {
-	font-size: var( --bsb--primary--font-size );
-	font-weight: var( --bsb--primary--font-weight, bold );
+	font-size: var( --bsb--heading-primary--font-size );
+	font-weight: var( --bsb--heading-primary--font-weight, bold );
 
 	a {
-		text-decoration: var( --bsb--link--text-decoration );
-		color: var( --bsb--link--color );
+		text-decoration: var( --bsb-link--text-decoration );
+		color: var( --bsb-link--text-color );
 
 		&:visited,
 		&:active {
-			color: var( --bsb-link--action--color, var( --bsb-link--color ) );
+			color: var( --bsb-link--action--color, var( --bsb-link--text-color ) );
 		}
 	}
 }

@@ -7,13 +7,13 @@
 	top: var( --bsb-toolbar--top, 0 );
 	left: var( --bsb-toolbar--left, 0 );
 	width: var( --bsb-toolbar--width, 100% );
-	height: var( --bsb-toolbar--height, 2rem );
+	height: var( --bsb-toolbar--height );
 	overflow: var( --bsb-toolbar--overflow, visible );
 	display: var( --bsb-toolbar--display, flex );
 	justify-content: var( --bsb-toolbar--justify-content, space-between );
 	align-items: var( --bsb-toolbar--align-items, center );
 	padding: var( --bsb-toolbar--padding, 0 1rem );
-	line-height: var( --bsb-toolbar--line-height, 2rem );
+	line-height: var( --bsb-toolbar--line-height, var( --bsb-toolbar--height ) );
 	font-size: var( --bsb-toolbar--font-size, 0.875rem );
 	background-color: var( --bsb-toolbar--background-color, #333333 );
 	color: var( --bsb-toolbar--text-color, #ffffff );
