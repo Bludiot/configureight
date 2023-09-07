@@ -8,6 +8,7 @@
  * @since      1.0.0
  */
 
+// Import namespaced functions.
 use function BS_Init\page_description;
 
 ?>
