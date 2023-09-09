@@ -19,7 +19,7 @@ if ( ! defined( 'BLUDIT' ) ) {
  *
  * @since 1.0.0
  */
-define( 'BSB_MIN_PHP_VERSION', '9.4' );
+define( 'BSB_MIN_PHP_VERSION', '7.4' );
 
 /**
  * Minimum PHP version
