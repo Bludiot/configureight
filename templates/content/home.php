@@ -14,68 +14,64 @@ use function BSB_Tags\{
 	get_author
 };
 
+// If no posts.
+if ( empty( $content) ) {
+	include( THEME_DIR . 'templates/content/no-posts.php' );
+}
+
+// If posts, print for each.
+foreach ( $content as $post ) :
+
 ?>
-<article class="site-article" role="article">
+<article class="site-article blog-wrap" role="article">
+	<?php if ( $post->coverImage() ) : ?>
+	<figure class="page-cover page-cover-home">
+		<a href="<?php echo $post->permalink(); ?>">
+			<img src="<?php echo $post->coverImage(); ?>" />
+		</a>
+		<figcaption class="screen-reader-text"><?php echo $post->title(); ?></figcaption>
+	</figure>
+	<?php endif ?>
 
-	<?php if ( empty( $content) ) : ?>
-		<?php include( THEME_DIR . 'templates/content/no-posts.php' ); ?>
-	<?php endif; ?>
+	<div class="page-summary">
 
-	<?php foreach ( $content as $page ) : ?>
+		<header class="page-header">
+			<h2><a href="<?php echo $post->permalink(); ?>"><?php echo $post->title(); ?></a></h2>
+		</header>
 
-		<?php Theme :: plugins( 'pageBegin' ); ?>
+		<?php echo page_description(); ?>
 
-		<div class="blog-wrap">
-			<?php if ( $page->coverImage() ) : ?>
-			<figure class="page-cover page-cover-home">
-				<a href="<?php echo $page->permalink(); ?>">
-					<img src="<?php echo $page->coverImage(); ?>" />
-				</a>
-				<figcaption class="screen-reader-text"><?php echo $page->title(); ?></figcaption>
-			</figure>
-			<?php endif ?>
+		<footer class="page-info">
+			<p>
+				<?php if ( BSB_CONFIG['byline'] ) : ?>
+				<span class="page-info-entry">
+					<span class="bi bi-pencil" role="img"></span>
+					<?php echo get_author(); ?>
+				</span>
+				<br />
+				<?php endif ?>
 
-			<div class="page-summary">
+				<?php if ( BSB_CONFIG['post_date'] ) : ?>
+				<span class="page-info-entry">
+					<span class="bi bi-calendar" role="img"></span>
+					<?php echo $post->date(); ?>
+				</span>
+				<br />
+				<?php endif ?>
 
-				<header class="page-header">
-					<h2><a href="<?php echo $page->permalink(); ?>"><?php echo $page->title(); ?></a></h2>
-				</header>
-
-				<?php echo page_description(); ?>
-
-				<footer class="page-info">
-					<p>
-						<?php if ( BSB_CONFIG['byline'] ) : ?>
-						<span class="page-info-entry">
-							<span class="bi bi-pencil" role="img"></span>
-							<?php echo get_author(); ?>
-						</span>
-						<br />
-						<?php endif ?>
-
-						<?php if ( BSB_CONFIG['post_date'] ) : ?>
-						<span class="page-info-entry">
-							<span class="bi bi-calendar" role="img"></span>
-							<?php echo $page->date(); ?>
-						</span>
-						<br />
-						<?php endif ?>
-
-						<?php if ( BSB_CONFIG['read_time'] ) : ?>
-						<span class="page-info-entry">
-							<span class="bi bi-clock-history" role="img"></span>
-							<?php echo $L->get( 'Reading time' ) . ': ' . $page->readingTime(); ?>
-						</span>
-						<?php endif ?>
-					</p>
-				</footer>
-			</div>
-		</div>
-
-		<?php Theme :: plugins( 'pageEnd' ); ?>
-	<?php endforeach; ?>
+				<?php if ( BSB_CONFIG['read_time'] ) : ?>
+				<span class="page-info-entry">
+					<span class="bi bi-clock-history" role="img"></span>
+					<?php echo $L->get( 'Reading time' ) . ': ' . $post->readingTime(); ?>
+				</span>
+				<?php endif ?>
+			</p>
+		</footer>
+	</div>
 </article>
+<?php endforeach; ?>
 
 <?php
+
 // Get page navigation.
 include( THEME_DIR . 'templates/navigation/pagination.php' );
