@@ -14,6 +14,40 @@ if ( ! defined( 'BLUDIT' ) ) {
 	die( 'You are not allowed to access this file.' );
 }
 
+/**
+ * Constant: Minimum PHP version
+ *
+ * @since 1.0.0
+ */
+define( 'BSB_MIN_PHP_VERSION', '9.4' );
+
+/**
+ * Minimum PHP version
+ *
+ * Checks the PHP version running on the current host
+ * against the minimum version required by this theme.
+ *
+ * @since  1.0.0
+ * @return boolean Returns false if the minimum is not met.
+ */
+function min_php_version() {
+
+	if ( version_compare( phpversion(), BSB_MIN_PHP_VERSION, '<' ) ) {
+		return false;
+	}
+	return true;
+}
+
+// Die if PHP minimum is not met.
+if ( ! min_php_version() ) {
+
+	$die = sprintf(
+		$L->get( 'Minimum PHP version of %s is not met.' ),
+		BSB_MIN_PHP_VERSION
+	);
+	die( $die );
+}
+
 // Get the theme configuration file.
 require_once( THEME_DIR . 'includes/config.php' );
 
