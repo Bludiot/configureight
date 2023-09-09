@@ -1,6 +1,10 @@
 <?php
 /**
- * Home page template
+ * Posts page template
+ *
+ * Used for posts loop, whether on the
+ * home page or blog page when a static
+ * home page is used.
  *
  * @package    BS Bludit
  * @subpackage Templates
