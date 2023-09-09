@@ -21,6 +21,7 @@ use function BSB_Init\{
 	user_logged_in,
 	asset_min
 };
+
 /**
  * Body classes
  *
@@ -111,6 +112,7 @@ function site_schema() {
 		$itemtype = 'CheckoutPage';
 	} elseif ( 'blog' == $url->whereAmI() || ( 'home' == $url->whereAmI() && ! $site->homepage() ) ) {
 		$itemtype = 'Blog';
+	// @todo Search condition.
 	// } elseif ( 'search' == $url->whereAmI() ) {
 		// $itemtype = 'SearchResultsPage';
 	} else {
