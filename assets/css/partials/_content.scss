@@ -86,3 +86,29 @@
 		font-size: var( --bsb-no-posts--heading--font-size, 2.5em );
 	}
 }
+
+// Blog transition demo.
+.blog {
+	article {
+		opacity: 0;
+		transition: opacity .25s;
+		transition-delay: .25s;
+	}
+
+	&.page-loaded {
+		article {
+			opacity: 1;
+		}
+	}
+}
+@for $blog_article from 1 through 12 {
+	.blog {
+		&.page-loaded {
+			article {
+				&:nth-of-type( #{$blog_article} ) {
+					transition-delay: ( $blog_article + 0 ) * .15s;
+				}
+			}
+		}
+	}
+}
