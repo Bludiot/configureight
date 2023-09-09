@@ -62,6 +62,32 @@ function is_rtl() {
 }
 
 /**
+ * Is blog page
+ *
+ * Whether the current page is displaying
+ * a blog posts loop.
+ *
+ * @since  1.0.0
+ * @global object $page
+ * @global object $site
+ * @global object $url
+ * @return boolean Returns true if in a blog loop.
+ */
+function is_blog_page() {
+
+	global $page, $site, $url;
+
+	$blog_page = false;
+
+	if ( 'page' == $url->whereAmI() && $page->slug() == str_replace( '/', '', $site->getField( 'uriBlog' ) ) ) {
+		$blog_page = true;
+	} elseif ( 'home' == $url->whereAmI() && 'page' != $url->whereAmI() ) {
+		$blog_page = true;
+	}
+	return $blog_page;
+}
+
+/**
  * Asset file suffix
  *
  * Gets minified file if not in debug mode.

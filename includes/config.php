@@ -26,6 +26,10 @@ if ( ! defined( 'BSB_CONFIG' ) ) {
 			'toolbar'     => true,
 			'blog_in_nav' => true,
 			'home_in_nav' => true,
+
+			// Options: `list` & `grid`.
+			'posts_loop'  => 'list',
+
 			'byline'      => true,
 			'post_date'   => true,
 			'read_time'   => true

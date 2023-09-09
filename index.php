@@ -8,12 +8,25 @@
  */
 
 // Import namespaced functions.
+use function BSB_Init\{
+	is_blog_page
+};
+
 use function BSB_Tags\{
 	body_classes,
 	site_schema,
 	user_toolbar,
 	footer_scripts
 };
+
+// Layout class for the `<main>` element.
+$main_view = 'page-view';
+if ( is_blog_page() ) {
+	$main_view = 'list-view';
+	if ( 'grid' == BSB_CONFIG['posts_loop'] ) {
+		$main_view = 'grid-view';
+	}
+}
 
 ?>
 <!DOCTYPE html>
@@ -29,10 +42,14 @@ use function BSB_Tags\{
 
 		<?php include( THEME_DIR . 'templates/header/header.php' ); ?>
 
-		<main class="wrapper-general site-main" itemscope itemprop="mainContentOfPage">
+		<main class="wrapper-general site-main <?php echo $main_view; ?>" itemscope itemprop="mainContentOfPage">
 			<?php
 			if ( 'page' == $WHERE_AM_I && $page->slug() == str_replace( '/', '', $site->getField( 'uriBlog' ) ) ) {
-				include( THEME_DIR . 'templates/content/posts.php' );
+				if ( 'grid' == BSB_CONFIG['posts_loop'] ) {
+					include( THEME_DIR . 'templates/content/posts-grid.php' );
+				} else {
+					include( THEME_DIR . 'templates/content/posts.php' );
+				}
 			} elseif ( 'page' == $WHERE_AM_I ) {
 				if ( $page->template() ) {
 					include( THEME_DIR . 'templates/content/' . $page->template() . '.php' );
@@ -40,7 +57,11 @@ use function BSB_Tags\{
 					include( THEME_DIR . 'templates/content/page.php' );
 				}
 			} else {
-				include( THEME_DIR . 'templates/content/posts.php' );
+				if ( 'grid' == BSB_CONFIG['posts_loop'] ) {
+					include( THEME_DIR . 'templates/content/posts-grid.php' );
+				} else {
+					include( THEME_DIR . 'templates/content/posts.php' );
+				}
 			} ?>
 		</main>
 
