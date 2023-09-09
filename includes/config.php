@@ -40,4 +40,5 @@ if ( ! defined( 'BSB_CONFIG' ) ) {
 // Set debug mode.
 if ( BSB_CONFIG['debug'] ) {
 	define( 'DEBUG_MODE', true );
+	ini_set( 'display_errors', 1 );
 }
