@@ -20,7 +20,10 @@
 		<?php foreach ( $staticContent as $nav_item ) :
 
 		// Front page label.
-		if ( $nav_item->slug() == $site->getField( 'homepage' ) ) {
+		if (
+			$nav_item->slug() == $site->getField( 'homepage' ) ||
+			$nav_item->slug() == str_replace( '/', '', $site->getField( 'uriBlog' ) )
+		) {
 			$nav_item_title = '';
 		} else {
 			$nav_item_title = $nav_item->title();
@@ -40,7 +43,7 @@
 		if ( ! empty( $site->getField( 'homepage' ) ) && ! empty( $blog_uri ) ) {
 			printf(
 				'<li><a href="%s">%s</a></li>',
-				$site->url() . str_replace( '/', '', $blog_uri ),
+				$site->url() . str_replace( '/', '', $blog_uri ) . '/',
 				ucwords( str_replace( [ '/', '-', '_' ], ' ', $blog_uri ) )
 			);
 		}
