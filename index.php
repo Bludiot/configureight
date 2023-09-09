@@ -32,7 +32,7 @@ use function BSB_Tags\{
 		<main class="wrapper-general site-main" itemscope itemprop="mainContentOfPage">
 			<?php
 			if ( 'page' == $WHERE_AM_I && $page->slug() == str_replace( '/', '', $site->getField( 'uriBlog' ) ) ) {
-				include( THEME_DIR . 'templates/content/home.php' );
+				include( THEME_DIR . 'templates/content/posts.php' );
 			} elseif ( 'page' == $WHERE_AM_I ) {
 				if ( $page->template() ) {
 					include( THEME_DIR . 'templates/content/' . $page->template() . '.php' );
@@ -40,7 +40,7 @@ use function BSB_Tags\{
 					include( THEME_DIR . 'templates/content/page.php' );
 				}
 			} else {
-				include( THEME_DIR . 'templates/content/home.php' );
+				include( THEME_DIR . 'templates/content/posts.php' );
 			} ?>
 		</main>
 

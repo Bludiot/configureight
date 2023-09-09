@@ -27,7 +27,7 @@ foreach ( $content as $post ) :
 	<?php if ( $post->coverImage() ) : ?>
 	<figure class="page-cover page-cover-home">
 		<a href="<?php echo $post->permalink(); ?>">
-			<img src="<?php echo $post->coverImage(); ?>" />
+			<img src="<?php echo $post->coverImage(); ?>" loading="lazy" />
 		</a>
 		<figcaption class="screen-reader-text"><?php echo $post->title(); ?></figcaption>
 	</figure>
