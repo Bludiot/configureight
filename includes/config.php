@@ -22,11 +22,13 @@ if ( ! defined( 'BSB_CONFIG' ) ) {
 	define(
 		'BSB_CONFIG',
 		[
-			'debug'     => true,
-			'toolbar'   => true,
-			'byline'    => true,
-			'post_date' => true,
-			'read_time' => true
+			'debug'       => true,
+			'toolbar'     => true,
+			'blog_in_nav' => true,
+			'home_in_nav' => true,
+			'byline'      => true,
+			'post_date'   => true,
+			'read_time'   => true
 		]
 	);
 }

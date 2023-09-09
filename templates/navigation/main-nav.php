@@ -41,19 +41,25 @@
 		// Add blog link if home is static content.
 		$blog_uri = $site->getField( 'uriBlog' );
 		if ( ! empty( $site->getField( 'homepage' ) ) && ! empty( $blog_uri ) ) {
-			printf(
-				'<li><a href="%s">%s</a></li>',
-				$site->url() . str_replace( '/', '', $blog_uri ) . '/',
-				ucwords( str_replace( [ '/', '-', '_' ], ' ', $blog_uri ) )
-			);
+
+			// If true in config file.
+			if ( BSB_CONFIG['blog_in_nav'] ) {
+				printf(
+					'<li><a href="%s">%s</a></li>',
+					$site->url() . str_replace( '/', '', $blog_uri ) . '/',
+					ucwords( str_replace( [ '/', '-', '_' ], ' ', $blog_uri ) )
+				);
+			}
 		}
 
-		// Add a home link.
-		printf(
-			'<li><a href="%s">%s</a></li>',
-			$site->url(),
-			$L->get( 'home-link-label' )
-		);
+		// Add a home link if true in config file.
+		if ( BSB_CONFIG['home_in_nav'] ) {
+			printf(
+				'<li><a href="%s">%s</a></li>',
+				$site->url(),
+				$L->get( 'home-link-label' )
+			);
+		}
 		?>
 	</ul>
 </nav>
