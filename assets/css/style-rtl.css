@@ -10,6 +10,32 @@
   margin: var(--bsb-toolbar--profile-pic--margin--rtl, 0 0 0 0.5em);
 }
 
+.site-navigation ul li ul {
+  right: unset;
+  left: -9999em;
+}
+.site-navigation ul li ul:after {
+  right: auto;
+  left: 1rem;
+}
+@media screen and (max-width: 960px) {
+  .site-navigation ul li ul:after {
+    right: unset;
+    left: calc(50% - 0.5rem);
+  }
+}
+
+.site-navigation ul li:hover ul {
+  right: auto;
+  left: 0;
+}
+@media screen and (max-width: 960px) {
+  .site-navigation ul li:hover ul {
+    left: auto;
+    right: calc(-80px + 50%);
+  }
+}
+
 .page-content img[style="float: left;"],
 .page-content img[style="float: left"],
 .page-content img[style="float:left;"],

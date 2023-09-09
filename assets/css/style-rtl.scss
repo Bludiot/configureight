@@ -7,6 +7,8 @@
 /// The `rtl` class is on the body tag.
 ///
 
+@import 'modules/_variables';
+
 .rtl {
 	direction: rtl;
 	unicode-bidi: embed;
@@ -23,6 +25,31 @@
 				margin: var( --bsb-toolbar--profile-pic--margin--rtl, 0 0 0 0.5em );
 			}
 		}
+	}
+}
+
+.site-navigation ul li ul {
+	right: unset;
+	left: -9999em;
+
+	&:after {
+		right: auto;
+		left: 1rem;
+
+		@media screen and ( max-width: $break_tablet ) {
+			right: unset;
+			left: calc( 50% - 0.5rem );
+		}
+	}
+}
+
+.site-navigation ul li:hover ul {
+	right: auto;
+	left: 0;
+
+	@media screen and ( max-width: $break_tablet ) {
+		left: auto;
+		right: calc( -80px + 50% );
 	}
 }
 

@@ -454,7 +454,7 @@ h2 a:active {
   display: block;
   position: absolute;
   top: 100%;
-  right: 9999em;
+  right: -9999em;
   width: 160px;
   transform: translateY(0);
   opacity: 0;
@@ -488,6 +488,7 @@ h2 a:active {
 }
 .site-navigation ul li ul li {
   margin: var(--bsb-site-nav--sub-item--margin, 0);
+  text-align: center;
   color: var(--bsb-site-nav--sub-list--text-color, #ffffff);
 }
 .site-navigation ul li ul li a {
