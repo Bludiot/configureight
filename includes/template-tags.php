@@ -199,7 +199,9 @@ function page_description() {
 		$page_desc = $page->description();
 	} else {
 		$page_desc  = substr( strip_tags( $page->content() ), 0, 85 );
-		$page_desc .= '&hellip;';
+		if ( ! empty( $page->content() ) && ! ctype_space( $page->content() ) ) {
+			$page_desc .= '&hellip;';
+		}
 	}
 	return $page_desc;
 }
