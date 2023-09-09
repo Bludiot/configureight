@@ -19,28 +19,57 @@
 	<ul class="nav-list main-nav-list">
 		<?php foreach ( $staticContent as $nav_item ) :
 
-		// Front page label.
+		$nav_entry = '';
+		$home_uri  = $site->getField( 'homepage' );
+		$blog_uri  = $site->getField( 'uriBlog' );
+
+		/**
+		 * Do not list static front page or
+		 * blog not on the home page because
+		 * they are added at the end of the
+		 * top-level entries.
+		 */
 		if (
-			$nav_item->slug() == $site->getField( 'homepage' ) ||
+			$nav_item->slug() == $home_uri ||
 			$nav_item->slug() == str_replace( '/', '', $site->getField( 'uriBlog' ) )
 		) {
-			$nav_item_title = '';
-		} else {
-			$nav_item_title = $nav_item->title();
-			$nav_item_title = sprintf(
+			$nav_entry = '';
+
+		// Parent item & children submenu.
+		} elseif ( $nav_item->hasChildren() ) {
+
+			$children = $nav_item->children();
+			$sub_menu = '<ul class="nav-list main-nav-sub-list">';
+
+			foreach ( $children as $child ) {
+				$sub_menu .= sprintf(
+					'<li><a href="%s">%s</a></li>',
+					$child->permalink(),
+					$child->title()
+				);
+			}
+			$sub_menu .= '</ul>';
+
+			$nav_entry = sprintf(
+				'<li><a href="%s">%s</a>%s</li>',
+				$nav_item->permalink(),
+				$nav_item->title(),
+				$sub_menu
+			);
+
+		// Page without children.
+		} elseif ( ! $nav_item->parent() ) {
+			$nav_entry = sprintf(
 				'<li><a href="%s">%s</a></li>',
 				$nav_item->permalink(),
 				$nav_item->title()
 			);
 		}
-
-			echo $nav_item_title;
-
+		echo $nav_entry;
 		endforeach;
 
 		// Add blog link if home is static content.
-		$blog_uri = $site->getField( 'uriBlog' );
-		if ( ! empty( $site->getField( 'homepage' ) ) && ! empty( $blog_uri ) ) {
+		if ( ! empty( $home_uri ) && ! empty( $blog_uri ) ) {
 
 			// If true in config file.
 			if ( BSB_CONFIG['blog_in_nav'] ) {
