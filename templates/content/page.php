@@ -1,6 +1,6 @@
 <?php
 /**
- * Page template
+ * Static page template
  *
  * @package    BS Bludit
  * @subpackage Templates
