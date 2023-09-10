@@ -16,6 +16,7 @@ use function BSB_Tags\{
 	body_classes,
 	site_schema,
 	user_toolbar,
+	content_template,
 	footer_scripts
 };
 
@@ -43,26 +44,7 @@ if ( is_blog_page() ) {
 		<?php include( THEME_DIR . 'templates/header/header.php' ); ?>
 
 		<main class="wrapper-general site-main <?php echo $main_view; ?>" itemscope itemprop="mainContentOfPage">
-			<?php
-			if ( 'page' == $WHERE_AM_I && $page->slug() == str_replace( '/', '', $site->getField( 'uriBlog' ) ) ) {
-				if ( 'grid' == BSB_CONFIG['posts_loop'] ) {
-					include( THEME_DIR . 'templates/content/posts-grid.php' );
-				} else {
-					include( THEME_DIR . 'templates/content/posts.php' );
-				}
-			} elseif ( 'page' == $WHERE_AM_I ) {
-				if ( $page->template() ) {
-					include( THEME_DIR . 'templates/content/' . $page->template() . '.php' );
-				} else {
-					include( THEME_DIR . 'templates/content/page.php' );
-				}
-			} else {
-				if ( 'grid' == BSB_CONFIG['posts_loop'] ) {
-					include( THEME_DIR . 'templates/content/posts-grid.php' );
-				} else {
-					include( THEME_DIR . 'templates/content/posts.php' );
-				}
-			} ?>
+			<?php include( THEME_DIR . content_template() ); ?>
 		</main>
 
 		<?php include( THEME_DIR . 'templates/footer/footer.php' ); ?>

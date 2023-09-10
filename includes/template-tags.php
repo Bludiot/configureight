@@ -184,6 +184,41 @@ function site_logo() {
 }
 
 /**
+ * Content template
+ *
+ * @since  1.0.0
+ * @global object $page
+ * @global object $site
+ * @global object $url
+ * @return string Returns the relevant template.
+ */
+function content_template() {
+
+	global $page, $site, $url;
+
+	if ( 'page' == $url->whereAmI() && $page->slug() == str_replace( '/', '', $site->getField( 'uriBlog' ) ) ) {
+		if ( 'grid' == BSB_CONFIG['posts_loop'] ) {
+			$template = 'templates/content/posts-grid.php';
+		} else {
+			$template = 'templates/content/posts.php';
+		}
+	} elseif ( 'page' == $url->whereAmI() ) {
+		if ( $page->template() ) {
+			$template = 'templates/content/' . $page->template() . '.php';
+		} else {
+			$template = 'templates/content/page.php';
+		}
+	} else {
+		if ( 'grid' == BSB_CONFIG['posts_loop'] ) {
+			$template = 'templates/content/posts-grid.php';
+		} else {
+			$template = 'templates/content/posts.php';
+		}
+	}
+	return $template;
+}
+
+/**
  * Page description
  *
  * Gets the page description or
