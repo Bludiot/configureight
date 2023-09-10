@@ -2,8 +2,24 @@
 /// Content styles
 ///
 
-.site-main {
-	padding: var( --bsb-site-main--padding );
+body {
+	&:not( .template-no-sidebar ) {
+		.content-wrapper {
+			display: flex;
+			gap: 2rem;
+		}
+	}
+
+	&.template-sidebar-bottom {
+		.content-wrapper {
+			flex-direction: column;
+		}
+	}
+}
+
+.page-main {
+	width: 100%;
+	padding: var( --bsb-page-main--padding );
 }
 
 .blog-wrap {

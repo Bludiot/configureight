@@ -2,17 +2,40 @@
 /// Aside/sidebar content
 ///
 
-.site-sidebar {
-	padding: var( --bsb-site-sidebar--padding, 2rem 0 0 0 );
-	background-color: var( --bsb-site-sidebar--bg-color, inherit );
-	color: var( --bsb-site-sidebar--text-color, inherit );
+body {
+	&:not( .template-sidebar-bottom ) {
+		.page-sidebar {
+			width: 320px;
+			padding: var( --bsb-page-sidebar--padding, 2rem 0 0 0 );
+		}
+	}
+
+	&.template-sidebar-bottom {
+		.page-sidebar {
+			padding: var( --bsb-page-sidebar-bottom--padding, 2rem 2rem 0 2rem );
+		}
+	}
+}
+
+.page-sidebar {
+	background-color: var( --bsb-page-sidebar--bg-color, inherit );
+	color: var( --bsb-page-sidebar--text-color, inherit );
 
 	a {
-		color: var( --bsb-site-sidebar--link--text-color, var( --bsb-link--text-color ) );
+		color: var( --bsb-page-sidebar--link--text-color, var( --bsb-link--text-color ) );
 
 		&:visited,
 		&:active {
-			color: var( --bsb-site-sidebar--link--action--text-color, var( --bsb-site-sidebar--link--text-color, var( --bsb-link--text-color ) ) );
+			color: var( --bsb-page-sidebar--link--action--text-color, var( --bsb-page-sidebar--link--text-color, var( --bsb-link--text-color ) ) );
 		}
+	}
+
+	ul {
+		padding: var( --bsb-page-sidebar--ul--padding );
+		list-style: var( --bsb-page-sidebar--ul--list-style, none );
+	}
+
+	ol {
+		padding: var( --bsb-page-sidebar--ol--padding, 0 0 0 1em );;
 	}
 }

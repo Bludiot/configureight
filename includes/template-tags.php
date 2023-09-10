@@ -263,7 +263,7 @@ function content_template() {
 
 		// Page with template applied, excluding `no-sidebar` template.
 		} elseif ( $page->template() ) {
-			$template = 'templates/content/' . str_replace( [ ' ', 'no-sidebar' ], '', $page->template() ) . '.php';
+			$template = 'templates/content/' . str_replace( [ ' ', 'no-sidebar', 'sidebar-bottom' ], '', $page->template() ) . '.php';
 
 		// Static page.
 		} elseif ( $page->isStatic() ) {

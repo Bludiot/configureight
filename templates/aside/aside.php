@@ -9,6 +9,6 @@
  */
 
 ?>
-<aside class="site-sidebar wrapper-general">
+<aside class="page-sidebar">
 	<?php Theme :: plugins( 'siteSidebar' ); ?>
 </aside>

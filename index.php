@@ -36,21 +36,23 @@ if ( is_blog_page() ) {
 
 	<?php Theme :: plugins( 'siteBodyBegin' ); ?>
 
-	<div id="page" class="site" itemscope="itemscope" itemtype="<?php site_schema(); ?>">
+	<div class="page-wrap" itemscope="itemscope" itemtype="<?php site_schema(); ?>">
 
 		<?php Theme :: plugins( 'pageBegin' ); ?>
 
 		<?php include( THEME_DIR . 'templates/header/header.php' ); ?>
 
-		<main class="wrapper-general site-main <?php echo $main_view; ?>" itemscope itemprop="mainContentOfPage">
-			<?php include( THEME_DIR . content_template() ); ?>
-		</main>
+		<div id="content" class="wrapper-general content-wrapper">
+			<main class="page-main <?php echo $main_view; ?>" itemscope itemprop="mainContentOfPage">
+				<?php include( THEME_DIR . content_template() ); ?>
+			</main>
 
-		<?php
-		if ( ! str_contains( $page->template(), 'no-sidebar' ) ) {
-			include( THEME_DIR . 'templates/aside/aside.php' );
-		}
-		?>
+			<?php
+			if ( ! str_contains( $page->template(), 'no-sidebar' ) ) {
+				include( THEME_DIR . 'templates/aside/aside.php' );
+			}
+			?>
+		</div>
 
 		<?php include( THEME_DIR . 'templates/footer/footer.php' ); ?>
 

@@ -54,3 +54,7 @@
 .page-info .page-info-entry:not(:last-of-type) {
   margin: var(--bsb-page-info-entry--margin--rtl, 0 0 0 0.5em);
 }
+
+.page-sidebar ol {
+  padding: var(--bsb-page-sidebar--ol--padding--rtl, 0 1em 0 0);
+}

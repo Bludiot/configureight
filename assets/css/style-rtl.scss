@@ -78,3 +78,10 @@
 		}
 	}
 }
+
+// Aside/sidebar content.
+.page-sidebar {
+	ol {
+		padding: var( --bsb-page-sidebar--ol--padding--rtl, 0 1em 0 0 );;
+	}
+}

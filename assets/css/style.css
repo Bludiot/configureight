@@ -257,7 +257,7 @@ b, strong, optgroup {
   --bsb-site-header-wrap--padding: 1rem 2rem;
   --bsb-site-logo--min-width: 80px;
   --bsb-site-nav--max-width: 50vw;
-  --bsb-site-main--padding: 0 2rem;
+  --bsb-page-main--padding: 0 2rem;
   --bsb-page-header--heading--font-size: 2rem;
   --bsb-toolbar--height: 2rem;
 }
@@ -521,8 +521,17 @@ h2 a:active {
   justify-content: var(--bsb-pagination-list--justify-content, space-between);
 }
 
-.site-main {
-  padding: var(--bsb-site-main--padding);
+body:not(.template-no-sidebar) .content-wrapper {
+  display: flex;
+  gap: 2rem;
+}
+body.template-sidebar-bottom .content-wrapper {
+  flex-direction: column;
+}
+
+.page-main {
+  width: 100%;
+  padding: var(--bsb-page-main--padding);
 }
 
 .blog-wrap {
@@ -664,16 +673,30 @@ h2 a:active {
   transform: translateY(0.05em);
 }
 
-.site-sidebar {
-  padding: var(--bsb-site-sidebar--padding, 2rem 0 0 0);
-  background-color: var(--bsb-site-sidebar--bg-color, inherit);
-  color: var(--bsb-site-sidebar--text-color, inherit);
+body:not(.template-sidebar-bottom) .page-sidebar {
+  width: 320px;
+  padding: var(--bsb-page-sidebar--padding, 2rem 0 0 0);
 }
-.site-sidebar a {
-  color: var(--bsb-site-sidebar--link--text-color, var(--bsb-link--text-color));
+body.template-sidebar-bottom .page-sidebar {
+  padding: var(--bsb-page-sidebar-bottom--padding, 2rem 2rem 0 2rem);
 }
-.site-sidebar a:visited, .site-sidebar a:active {
-  color: var(--bsb-site-sidebar--link--action--text-color, var(--bsb-site-sidebar--link--text-color, var(--bsb-link--text-color)));
+
+.page-sidebar {
+  background-color: var(--bsb-page-sidebar--bg-color, inherit);
+  color: var(--bsb-page-sidebar--text-color, inherit);
+}
+.page-sidebar a {
+  color: var(--bsb-page-sidebar--link--text-color, var(--bsb-link--text-color));
+}
+.page-sidebar a:visited, .page-sidebar a:active {
+  color: var(--bsb-page-sidebar--link--action--text-color, var(--bsb-page-sidebar--link--text-color, var(--bsb-link--text-color)));
+}
+.page-sidebar ul {
+  padding: var(--bsb-page-sidebar--ul--padding);
+  list-style: var(--bsb-page-sidebar--ul--list-style, none);
+}
+.page-sidebar ol {
+  padding: var(--bsb-page-sidebar--ol--padding, 0 0 0 1em);
 }
 
 .user-toolbar {
