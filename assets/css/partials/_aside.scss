@@ -5,6 +5,8 @@
 body {
 	&:not( .template-sidebar-bottom ) {
 		.page-sidebar {
+			display: flex;
+			flex-direction: column;
 			width: 320px;
 			padding: var( --bsb-page-sidebar--padding, 2rem 0 0 0 );
 		}
@@ -20,6 +22,35 @@ body {
 .page-sidebar {
 	background-color: var( --bsb-page-sidebar--bg-color, inherit );
 	color: var( --bsb-page-sidebar--text-color, inherit );
+
+	.plugin {
+		margin: var( --bsb-page-sidebar--plugin--margin, 1.5rem 0 0 0 );
+		order: 100;
+
+		&.plugin-search {
+			order: 1;
+		}
+
+		&.plugin-categories {
+			order: 2;
+		}
+
+		&.plugin-tags {
+			order: 3;
+
+			ul {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0 1em;
+			}
+		}
+	}
+
+	h2,
+	h3 {
+		margin: var( --bsb-page-sidebar--heading--margin, 0 );
+		font-size: var( --bsb-page-sidebar--heading--font-size, 1.375rem );
+	}
 
 	a {
 		color: var( --bsb-page-sidebar--link--text-color, var( --bsb-link--text-color ) );
