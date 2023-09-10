@@ -649,6 +649,21 @@ h2 a:active {
   transition-delay: 1.8s;
 }
 
+.theme-icon {
+  display: inline-block;
+  vertical-align: baseline;
+  line-height: 1;
+}
+.theme-icon svg {
+  fill: currentColor;
+  height: 1em;
+}
+
+.sticky-icon.sticky-icon-heading svg {
+  height: 0.725em;
+  transform: translateY(0.05em);
+}
+
 .site-sidebar {
   padding: var(--bsb-site-sidebar--padding, 2rem 0 0 0);
   background-color: var(--bsb-site-sidebar--bg-color, inherit);

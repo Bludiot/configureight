@@ -112,3 +112,26 @@
 		}
 	}
 }
+
+// Theme icons.
+.theme-icon {
+	display: inline-block;
+	vertical-align: baseline;
+	line-height: 1;
+
+	svg {
+		fill: currentColor;
+		height: 1em;
+	}
+}
+
+// Sticky post icon.
+.sticky-icon {
+	&.sticky-icon-heading {
+
+		svg {
+			height: 0.725em;
+			transform: translateY( 0.05em );
+		}
+	}
+}

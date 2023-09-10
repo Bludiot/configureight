@@ -251,6 +251,37 @@ function content_template() {
 }
 
 /**
+ * Sticky icon
+ *
+ * @since  1.0.0
+ * @global object $page Page class
+ * @return mixed Echoes the icon, or returns the icon or empty.
+ */
+function sticky_icon( $echo = '', $class = '', $title = '' ) {
+
+	// Access global variables.
+	global $L, $page;
+
+	$icon = '';
+	if ( $page->sticky() ) {
+		$icon = sprintf(
+			'<span class="theme-icon sticky-icon %s" title="%s" role="img">%s</span><span class="screen-reader-text">%s </span>',
+			$class,
+			$title,
+			'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M160 456c0 1.25 .2813 2.467 .8438 3.576l24 47.1c2.938 5.891 11.38 5.906 14.31 0l24-47.1C223.6 458.7 224 457 224 456V383.1H160V456zM298 214.3l-12.25-118.3H328c13.25 0 24-10.75 24-23.1V23.1C352 10.75 341.3 0 328 0h-272C42.75 0 32 10.75 32 23.1v47.1C32 85.25 42.75 95.1 56 95.1h42.22L85.97 214.3C37.47 236.8 0 277.3 0 327.1c0 13.25 10.75 23.1 24 23.1h336c13.25 0 24-10.75 24-23.1C384 276.8 346 236.6 298 214.3z"/></svg>',
+			$L->get( 'Sticky Post:' )
+		);
+	}
+
+	// Echo or return the icon
+	if ( $echo == 'true' ) {
+		echo $icon;
+	} else {
+		return $icon;
+	}
+}
+
+/**
  * Page description
  *
  * Gets the page description or

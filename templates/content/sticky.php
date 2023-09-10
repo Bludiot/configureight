@@ -8,11 +8,16 @@
  * @since      1.0.0
  */
 
+// Import namespaced functions.
+use function BSB_Tags\{
+	sticky_icon
+}
+
 ?>
 <article class="site-article" role="article">
 
 	<header class="page-header">
-		<h1><?php echo $page->title(); ?></h1>
+		<h1><?php sticky_icon( 'true', 'sticky-icon-heading' ); ?> <?php echo $page->title(); ?></h1>
 
 		<?php if ( $page->description() ) {
 			printf(

@@ -14,6 +14,7 @@
 
 // Import namespaced functions.
 use function BSB_Tags\{
+	sticky_icon,
 	page_description,
 	get_author
 };
@@ -25,6 +26,19 @@ if ( empty( $content) ) {
 
 // If posts, print for each.
 foreach ( $content as $post ) :
+
+// Maybe a sticky icon.
+$sticky = '';
+if ( $post->sticky() ) {
+	$sticky = sprintf(
+		'%s ',
+		sticky_icon(
+			'false',
+			'sticky-icon-heading',
+			$L->get( 'Post is sticky' )
+		)
+	);
+}
 
 ?>
 <article class="site-article blog-wrap" role="article">
@@ -40,7 +54,7 @@ foreach ( $content as $post ) :
 	<div class="page-summary">
 
 		<header class="page-header">
-			<h2><a href="<?php echo $post->permalink(); ?>"><?php echo $post->title(); ?></a></h2>
+			<h2><a href="<?php echo $post->permalink(); ?>"><?php echo $sticky . $post->title(); ?></a></h2>
 		</header>
 
 		<?php echo page_description(); ?>
