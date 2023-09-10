@@ -88,6 +88,18 @@ function body_classes() {
 		}
 	}
 
+	// Page templates.
+	if (
+		! empty( $page->template() ) &&
+		! ctype_space( $page->template() )
+	) {
+		$templates = explode( ' ', $page->template() );
+
+		foreach ( $templates as $template ) {
+			$classes[] = "template-{$template}";
+		}
+	}
+
 	// Return a string of space-separated classes.
 	return implode( ' ', $classes );
 }
