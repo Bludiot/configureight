@@ -215,12 +215,26 @@ function content_template() {
 			$template = 'templates/content/posts.php';
 		}
 
-	// Standard page template.
+	// Page templates.
 	} elseif ( 'page' == $url->whereAmI() ) {
-		if ( $page->template() ) {
+
+		// Static home page.
+		if ( $site->getField( 'homepage' ) && $page->slug() == $site->getField( 'homepage' ) ) {
+			$template = 'templates/content/front-page.php';
+
+		// Page with template applied.
+		} elseif ( $page->template() ) {
 			$template = 'templates/content/' . $page->template() . '.php';
+
+		// Static page.
 		} elseif ( $page->isStatic() ) {
 			$template = 'templates/content/page.php';
+
+		// Sticky page (post).
+		} elseif ( $page->sticky() ) {
+			$template = 'templates/content/sticky.php';
+
+		// Default (post) page.
 		} else {
 			$template = 'templates/content/post.php';
 		}
