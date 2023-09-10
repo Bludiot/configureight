@@ -48,6 +48,7 @@ if ( is_blog_page() ) {
 		</main>
 
 		<?php include( THEME_DIR . 'templates/footer/footer.php' ); ?>
+
 		<?php Theme :: plugins( 'pageEnd' ); ?>
 	</div>
 	<?php
