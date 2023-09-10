@@ -92,3 +92,30 @@ h2 {
 		}
 	}
 }
+
+// Text selection.
+::-o-selection {
+	color: #222222;
+	background: #ffdd00;
+	text-shadow: none;
+}
+::-ms-selection {
+	color: #222222;
+	background: #ffdd00;
+	text-shadow: none;
+}
+::-webkit-selection {
+	color: #222222;
+	background: #ffdd00;
+	text-shadow: none;
+}
+::-moz-selection {
+	color: #222222;
+	background: #ffdd00;
+	text-shadow: none;
+}
+::selection {
+	color: #222222;
+	background: #ffdd00;
+	text-shadow: none;
+}

@@ -1,17 +1,204 @@
 ///
-/// Form fields & buttons styles
+/// Form styles
 ///
 
+form * + * {
+	margin: var( --bsb-form--adjacent--margin, 1em 0 0 );
+}
+
+fieldset {
+	margin: var( --bsb-fieldset--margin );
+	padding: var( --bsb-fieldset--padding );
+	border: var( --bsb-fieldset--border );
+}
+
+legend {
+	padding: var( --bsb-legend--padding );
+	font-size: var( --bsb-legend-font-size );
+	font-weight: var( --bsb-legend-font-weight );
+}
+
+label {}
+
+input,
+textarea,
+select,
+button,
 .button {
-	display: var( --bsb-button--display, inline-block );
-	padding: var( --bsb-button--padding, 0.5em 1em );
-	background-color: var( --bsb-button--background-color, inherit );
-	border-style: var( --bsb-button--border-style, solid );
-	border-width: var( --bsb-button--border-width, 1px );
-	border-color: var( --bsb-button--border-color, var( --bsb-box--border-color, var( --bsb-text-color ) ) );
-	font-family: var( --bsb-button--font-family, inherit );
-	font-size: var( --bsb-button--font-size, 1.0125em );
-	font-weight: var( --bsb-button--font-weight, 600 );
-	text-decoration: var( --bsb-button--text-decoration, none );
-	color: var( --bsb-button--text-color, inherit );
+	width: 100%;
+	max-width: 640px;
+	padding: var( --bsb-form-element--padding );
+	font: inherit;
+	font-weight: var( --bsb-form--font-weight );
+	background-color: var( --bsb-form--bg-color );
+	border: var( --bsb-form-element--border );
+	color: var( --bsb-text-color );
+
+	&:focus,
+	&.focus {
+		border-color: var( --bsb-form--action-border-color );
+	}
+}
+
+label + input:not([type="checkbox"]):not([type="radio"]),
+label ~ input:not([type="checkbox"]):not([type="radio"]),
+label + button,
+label ~ button,
+label + textarea,
+label ~ textarea,
+label + select,
+label ~ select {
+	margin: var( --bsb-label-field--margin );
+	display: block;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="text"],
+input[type="password"],
+input[type="url"],
+input[type="tel"] {}
+
+input[type="search"] {}
+
+input[type="radio"],
+input[type="checkbox"] {
+	width: auto;
+	cursor: pointer;
+}
+
+.site-content button,
+.button,
+button[type="submit"],
+input[type="submit"],
+input[type="button"],
+input[type="reset"],
+input[type="image"] {
+	display: inline-block;
+	width: auto;
+	padding: var( --bsb-button--padding, var( --bsb-form-element--padding, 1em ) );
+	line-height: var( --bsb-button--line-height, 1 );
+	cursor: pointer;
+	font-weight: var( --bsb-button--font-weight, bold );
+	background-color: var( --bsb-button--bg-color );
+	border-color: var( --bsb-button--border-color, var( --bsb-form--border-color ) );
+	color: var( --bsb-button--text-color, var( --bsb-text-color ) );
+	text-decoration: none;
+
+	svg {
+		width: var( --bsb-button--svg-icon--width );
+		height: var( --bsb-button--svg-icon--height );
+		vertical-align: baseline;
+		fill: currentColor;
+	}
+
+	&:hover,
+	&.hover,
+	&:focus,
+	&.focus {
+		background-color: var( --bsb-button--action-bg-color );
+		border-color: var( --bsb-button--action-border-color );
+		color: var( --bsb-button--action-text-color );
+	}
+}
+
+input[type="number"] {
+	width: auto;
+	padding: var( --bsb-input--type-number--padding, 0.6em 1em );
+}
+
+input[type="range"] {
+	padding: var( --bsb-input--type-range--padding, 1.3em 1em );
+	cursor: pointer;
+}
+
+input[type="date"] {}
+
+button:disabled,
+button[disabled],
+input:disabled,
+input[disabled] {
+	opacity: var( --bsb-button--disabled--opacity, 0.5 );
+	cursor: not-allowed !important;
+}
+
+textarea {
+	min-height: var( --bsb-textarea--min-height );
+	margin: var( --bsb-textarea--margin );
+	padding: var( --bsb-textarea--padding );
+	font: inherit;
+	font-size: var( --bsb-textarea--font-size );
+}
+
+select {
+	margin: var( --bsb-select--margin );
+	padding: var( --bsb-select--padding );
+	font: inherit;
+}
+
+option {
+	appearance: none;
+}
+
+*::-webkit-input-placeholder {
+	color: var( --bsb-form--placeholder-color );
+}
+
+*::-o-placeholder {
+	color: var( --bsb-form--placeholder-color );
+}
+
+*:-moz-placeholder {
+	color: var( --bsb-form--placeholder-color );
+}
+
+*::-moz-placeholder {
+	color: var( --bsb-form--placeholder-color );
+}
+
+*:-ms-input-placeholder {
+	color: var( --bsb-form--placeholder-color );
+}
+
+*::placeholder {
+	color: var( --bsb-form--placeholder-color );
+}
+
+// Search form.
+.search-form {
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: var( --bsb-searchform--wrapper--display, flex );
+	-ms-flex-wrap: nowrap;
+	flex-wrap: var( --bsb-searchform--wrapper--flex-wrap, nowrap );
+	margin: var( --bsb-searchform--wrapper--margin, 1em 0 );
+}
+
+h2 + .search-form,
+h3 + .search-form {
+	margin: var( --bsb-heading-searchform--margin, 0.5em 0 0 );
+}
+
+.search-form input[type="search"],
+.search-form input[type="submit"] {
+	display: inline-block;
+	margin: var( --bsb-searchform--input--margin, 0 );
+}
+
+.search-label {
+	display: inline-block;
+	margin: var( --bsb-searchform--label--margin, 0 0.3em 0 0 );
+}
+
+.search-submit {
+	transform: translateX( -1px );
+}
+
+.search-form {
+	input[type="search"] {
+		&:focus {
+			z-index: 1;
+		}
+	}
 }

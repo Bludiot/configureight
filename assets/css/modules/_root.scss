@@ -14,6 +14,39 @@
 	--bsb-text-color: #333333;
 	--bsb-link--text-color: #0044aa;
 	--bsb-heading--link--text-decoration: none;
+	--bsb-box-border-color: #{$pale_gray};
+
+	// Forms & buttons.
+	--bsb-fieldset--margin: 1em 0 0;
+	--bsb-fieldset--padding: 1em 1.5em;
+	--bsb-fieldset--border: solid 1px var( --bsb-form--border-color );
+	--bsb-legend--padding: 0 0.5em;
+	--bsb-legend-font-size: 1em;
+	--bsb-legend-font-weight: 700;
+
+	--bsb-form-element--padding: 1em;
+	--bsb-form-element--border: solid 1px var(--bsb-form--border-color);
+	--bsb-label-field--margin: 0;
+	--bsb-form--font-weight: 400;
+	--bsb-form--bg-color: var( --bsb-bg-color, inherit );
+	--bsb-form--border-color: var( --bsb-box-border-color );
+	--bsb-form--action-border-color: #{$blue};
+	--bsb-form--placeholder-color: #{$light_gray};
+
+	--bsb-textarea--min-height: 200px;
+	--bsb-textarea--margin: 1em 0 0;
+	--bsb-textarea--padding: 1em;
+	--bsb-select--margin: 1em 0 0;
+	--bsb-select--padding: 0.5em 1em;
+
+	--bsb-button--font-weight: 700;
+	--bsb-button--bg-color: var( --bsb-bg-color, inherit );
+	--bsb-button--action-bg-color: #{$pale_gray};
+	--bsb-button--border-color: var( --bsb-form--border-color );
+	--bsb-button--text-color: var( --bsb-form--text-color );
+	--bsb-button--action-text-color: var( --bsb-form--text-color );
+	--bsb-button--svg-icon--width: 1em;
+	--bsb-button--svg-icon--height: 1em;
 
 	// Layout.
 	--bsb-wrapper--general--max-width: 1280px;
