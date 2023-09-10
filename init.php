@@ -109,6 +109,7 @@ function is_rtl() {
  */
 function is_blog_page() {
 
+	// Access global variables.
 	global $page, $site, $url;
 
 	$blog_page = false;

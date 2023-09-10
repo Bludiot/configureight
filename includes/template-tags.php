@@ -35,7 +35,7 @@ use function BSB_Init\{
  */
 function body_classes() {
 
-	// Get global variables.
+	// Access global variables.
 	global $page, $site, $url;
 
 	// Set up classes.
@@ -97,6 +97,7 @@ function body_classes() {
  */
 function site_schema() {
 
+	// Access global variables.
 	global $page, $site, $url;
 
 	// Change page slugs and template names as needed.
@@ -133,7 +134,7 @@ function site_schema() {
  */
 function get_toolbar() {
 
-	// Get any globals used in the toolbar template.
+	// Access global variables.
 	global $L;
 
 	if ( user_logged_in() ) {
@@ -160,11 +161,12 @@ function user_toolbar() {
  * Print site logo
  *
  * @since  1.0.0
- * @global $site
+ * @global object $site
  * @return mixed Returns null if no logo set.
  */
 function site_logo() {
 
+	// Access global variables.
 	global $site;
 
 	if ( empty( $site->logo() ) ) {
@@ -194,20 +196,26 @@ function site_logo() {
  */
 function content_template() {
 
+	// Access global variables.
 	global $page, $site, $url;
 
+	// Blog template when a static home page is used.
 	if ( 'page' == $url->whereAmI() && $page->slug() == str_replace( '/', '', $site->getField( 'uriBlog' ) ) ) {
 		if ( 'grid' == BSB_CONFIG['posts_loop'] ) {
 			$template = 'templates/content/posts-grid.php';
 		} else {
 			$template = 'templates/content/posts.php';
 		}
+
+	// Standard page template.
 	} elseif ( 'page' == $url->whereAmI() ) {
 		if ( $page->template() ) {
 			$template = 'templates/content/' . $page->template() . '.php';
 		} else {
 			$template = 'templates/content/page.php';
 		}
+
+	// Default to posts loop.
 	} else {
 		if ( 'grid' == BSB_CONFIG['posts_loop'] ) {
 			$template = 'templates/content/posts-grid.php';
@@ -230,6 +238,7 @@ function content_template() {
  */
 function page_description() {
 
+	// Access global variables.
 	global $page;
 
 	if ( $page->description() ) {
@@ -247,11 +256,12 @@ function page_description() {
  * Get page author
  *
  * @since  1.0.0
- * @global $page
+ * @global object $page
  * @return string
  */
 function get_author() {
 
+	// Access global variables.
 	global $page;
 
 	$user   = $page->username();
