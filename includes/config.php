@@ -23,16 +23,24 @@ if ( ! defined( 'BSB_CONFIG' ) ) {
 		'BSB_CONFIG',
 		[
 			'debug'       => true,
+			'head'        => [
+				'favicon'  => 'favicon.gif',
+				'keywords' => [
+					'one',
+					'two',
+					'three'
+				]
+			],
 			'toolbar'     => true,
 			'blog_in_nav' => true,
 			'home_in_nav' => true,
 
 			// Options: `list` & `grid`.
 			'posts_loop'  => 'list',
-
 			'byline'      => true,
 			'post_date'   => true,
-			'read_time'   => true
+			'read_time'   => true,
+			'copyright'   => true
 		]
 	);
 }

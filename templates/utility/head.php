@@ -8,12 +8,26 @@
  * @since      1.0.0
  */
 
+// Import namespaced functions.
 use function BSB_Init\{
 	is_rtl,
 	asset_min
 };
+use function BSB_Tags\{
+	favicon_tag
+};
 
 $suffix = asset_min();
+
+// Get keywords from config file.
+$keywords = '';
+if (
+	is_array( BSB_CONFIG['head'] ) &&
+	array_key_exists( 'keywords', BSB_CONFIG['head'] ) &&
+	is_array( BSB_CONFIG['head']['keywords'] )
+) {
+	$keywords = implode( ' ', BSB_CONFIG['head']['keywords'] );
+}
 
 ?>
 <head>
@@ -26,13 +40,12 @@ $suffix = asset_min();
 
 	<?php
 	// Change `<html>` class to `js` if JavaScript is enabled.
-	echo "<script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>\n";
+	echo "<script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>\n"; ?>
 
-	if ( file_exists( THEME_DIR . 'assets/images/favicon.png' ) ) {
-		echo Theme :: favicon( 'assets/images/favicon.png' );
-	} ?>
+	<?php echo favicon_tag(); ?>
 	<?php echo Theme :: metaTagTitle(); ?>
 	<?php echo Theme :: metaTagDescription(); ?>
+	<?php echo Theme :: keywords( $keywords ); ?>
 
 	<?php echo Theme :: jquery(); ?>
 

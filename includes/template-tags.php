@@ -23,6 +23,57 @@ use function BSB_Init\{
 };
 
 /**
+ * Favicon exists
+ *
+ * Checks the theme config file to
+ * find the icon file.
+ *
+ * @since  1.0.0
+ * @return boolean Returns true if the icon file is found.
+ */
+function favicon_exists() {
+
+	$favicon = '';
+	if (
+		is_array( BSB_CONFIG['head'] ) &&
+		array_key_exists( 'favicon', BSB_CONFIG['head'] ) &&
+		! empty( BSB_CONFIG['head']['favicon'] )
+	) {
+		$favicon = 'assets/images/' . BSB_CONFIG['head']['favicon'];
+	}
+
+	if ( file_exists( THEME_DIR . $favicon ) ) {
+		return true;
+	}
+	return false;
+}
+
+/**
+ * Favicon tag
+ *
+ * Returns the site icon meta tag.
+ *
+ * @since  1.0.0
+ * @return mixed Returns the icon tag or null.
+ */
+function favicon_tag() {
+
+	if ( favicon_exists() ) {
+
+		// Get the image file extension.
+		$info = pathinfo( THEME_DIR . 'assets/images/' . BSB_CONFIG['head']['favicon'] );
+		$type = $info['extension'];
+
+		return sprintf(
+			'<link rel="icon" href="%s" type="image/%s">',
+			DOMAIN_THEME . 'assets/images/' . BSB_CONFIG['head']['favicon'],
+			$type
+		);
+	}
+	return null;
+}
+
+/**
  * Body classes
  *
  * For the class attribute on the `<body>` element.
