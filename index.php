@@ -54,7 +54,9 @@ if ( is_blog_page() ) {
 	<?php
 
 	user_toolbar();
+
 	Theme :: plugins( 'siteBodyEnd' );
+
 	footer_scripts();
 
 	?>
