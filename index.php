@@ -11,7 +11,6 @@
 use function BSB_Init\{
 	is_blog_page
 };
-
 use function BSB_Tags\{
 	body_classes,
 	site_schema,
@@ -52,13 +51,11 @@ if ( is_blog_page() ) {
 		<?php Theme :: plugins( 'pageEnd' ); ?>
 	</div>
 	<?php
-
 	echo user_toolbar();
 
 	Theme :: plugins( 'siteBodyEnd' );
 
 	footer_scripts();
-
 	?>
 </body>
 </html>
