@@ -53,7 +53,7 @@ if ( is_blog_page() ) {
 	</div>
 	<?php
 
-	user_toolbar();
+	echo user_toolbar();
 
 	Theme :: plugins( 'siteBodyEnd' );
 

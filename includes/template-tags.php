@@ -55,6 +55,11 @@ function body_classes() {
 		$classes[] = 'user-logged-out';
 	}
 
+	// User toolbar.
+	if ( user_toolbar() ) {
+		$classes[] = 'toolbar-active';
+	}
+
 	// Home page.
 	if ( 'home' == $url->whereAmI() ) {
 		$classes[] = 'home';
@@ -148,13 +153,14 @@ function get_toolbar() {
 /**
  * Print user toolbar
  *
- * Echoes `get_toolbar()`.
- *
  * @since  1.0.0
- * @return void
+ * @return mixed Returns the `get_toolbar()` function or false.
  */
 function user_toolbar() {
-	echo get_toolbar();
+	if ( user_logged_in() && BSB_CONFIG['toolbar'] ) {
+		return get_toolbar();
+	}
+	return false;
 }
 
 /**

@@ -277,7 +277,7 @@ body {
   background: var(--bsb-bg-color);
   color: var(--bsb-text-color);
 }
-body.user-logged-in {
+body.toolbar-active {
   margin-top: var(--bsb-toolbar--height);
 }
 

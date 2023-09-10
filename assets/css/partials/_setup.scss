@@ -17,7 +17,7 @@ body {
 	background: var( --bsb-bg-color );
 	color: var( --bsb-text-color );
 
-	&.user-logged-in {
+	&.toolbar-active {
 		margin-top: var( --bsb-toolbar--height );
 	}
 }
