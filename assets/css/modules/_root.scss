@@ -11,8 +11,8 @@
 	--bsb-heading--heading-primary--font-weight: 700;
 
 	// General.
-	--bsb-text-color: #333333;
-	--bsb-link--text-color: #0044aa;
+	--bsb-text-color: #{$text_color};
+	--bsb-link--text-color: #{$blue};
 	--bsb-heading--link--text-decoration: none;
 	--bsb-box-border-color: #{$pale_gray};
 
@@ -61,7 +61,8 @@
 	--bsb-site-nav--max-width: 50vw;
 
 	// Content.
-	--bsb-page-main--padding: 0 2rem;
+	--bsb-content-wrap--padding: 0 2rem;
+	--bsb-page-main--padding: 0;
 	--bsb-page-header--heading--font-size: 2rem;
 
 	// Toolbar.

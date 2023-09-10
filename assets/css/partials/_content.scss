@@ -17,6 +17,11 @@ body {
 	}
 }
 
+.content-wrapper {
+	width: 100%;
+	padding: var( --bsb-content-wrap--padding );
+}
+
 .page-main {
 	width: 100%;
 	padding: var( --bsb-page-main--padding );

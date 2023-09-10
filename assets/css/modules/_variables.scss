@@ -19,9 +19,12 @@ $red: #dd0000 !default;
 $orange: #ee6600 !default;
 $yellow: #f8ce30 !default;
 $green: #4b9960 !default;
-$blue: #0000ff !default;
+$blue: #0044aa !default;
 $violet:  #551a8b !default;
 $error: $red !default;
 $notify: $orange !default;
 $warning: $yellow !default;
 $success: $green !default;
+
+// Color types.
+$text_color: $dark_gray;
