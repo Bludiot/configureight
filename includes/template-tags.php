@@ -106,21 +106,48 @@ function site_schema() {
 	global $page, $site, $url;
 
 	// Change page slugs and template names as needed.
-	if ( 'profile' == $page->template() ) {
+	if ( str_contains( $page->template(), 'profile' ) ) {
 		$itemtype = 'ProfilePage';
-	} elseif ( 'about' == $page->slug() || 'about-us' == $page->slug() || 'about' == $page->template() ) {
+
+	} elseif (
+		'about'    == $page->slug() ||
+		'about-us' == $page->slug() ||
+		str_contains( $page->template(), 'about' )
+	) {
 		$itemtype = 'AboutPage';
-	} elseif ( 'contact' == $page->slug() || 'contact-us' == $page->slug() || 'contact' == $page->template() ) {
+
+	} elseif (
+		'contact'    == $page->slug() ||
+		'contact-us' == $page->slug() ||
+		str_contains( $page->template(), 'contact' )
+	) {
 		$itemtype = 'ContactPage';
-	} elseif ( 'faq' == $page->slug() || 'faqs' == $page->slug() || 'faq' == $page->template() ) {
+
+	} elseif (
+		'faq'  == $page->slug() ||
+		'faqs' == $page->slug() ||
+		str_contains( $page->template(), 'faq' )
+	) {
 		$itemtype = 'QAPage';
-	} elseif ( 'cart' == $page->slug() || 'shopping-cart' == $page->slug() || 'cart' == $page->template() || 'checkout' == $page->template() ) {
+
+	} elseif (
+		'cart'          == $page->slug() ||
+		'shopping-cart' == $page->slug() ||
+		str_contains( $page->template(), 'cart' ) ||
+		str_contains( $page->template(), 'checkout' )
+	) {
 		$itemtype = 'CheckoutPage';
-	} elseif ( 'blog' == $url->whereAmI() || ( 'home' == $url->whereAmI() && ! $site->homepage() ) ) {
+
+	} elseif (
+		'blog'   == $url->whereAmI() ||
+		( 'home' == $url->whereAmI() && ! $site->homepage() )
+	) {
 		$itemtype = 'Blog';
+
 	// @todo Search condition.
 	// } elseif ( 'search' == $url->whereAmI() ) {
 		// $itemtype = 'SearchResultsPage';
+
 	} else {
 		$itemtype = 'WebPage';
 	}
@@ -222,9 +249,9 @@ function content_template() {
 		if ( $site->getField( 'homepage' ) && $page->slug() == $site->getField( 'homepage' ) ) {
 			$template = 'templates/content/front-page.php';
 
-		// Page with template applied.
+		// Page with template applied, excluding `no-sidebar` template.
 		} elseif ( $page->template() ) {
-			$template = 'templates/content/' . $page->template() . '.php';
+			$template = 'templates/content/' . str_replace( [ ' ', 'no-sidebar' ], '', $page->template() ) . '.php';
 
 		// Static page.
 		} elseif ( $page->isStatic() ) {

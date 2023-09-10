@@ -46,6 +46,12 @@ if ( is_blog_page() ) {
 			<?php include( THEME_DIR . content_template() ); ?>
 		</main>
 
+		<?php
+		if ( ! str_contains( $page->template(), 'no-sidebar' ) ) {
+			include( THEME_DIR . 'templates/aside/aside.php' );
+		}
+		?>
+
 		<?php include( THEME_DIR . 'templates/footer/footer.php' ); ?>
 
 		<?php Theme :: plugins( 'pageEnd' ); ?>
