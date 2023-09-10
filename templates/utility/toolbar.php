@@ -15,7 +15,7 @@
 
 // Edit link.
 $edit_link = '';
-if ( 'page' == $WHERE_AM_I ) {
+if ( 'page' == $url->whereAmI() ) {
 	$edit_link = sprintf(
 		'<a href="%s">%s</a>',
 		DOMAIN_ADMIN . 'edit-content/' . $page->slug(),

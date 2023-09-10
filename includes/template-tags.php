@@ -29,7 +29,7 @@ use function BSB_Init\{
  *
  * @since  1.0.0
  * @global object $site Site class.
- * @global object $url  Url class.
+ * @global object $url Url class.
  * @global object $page Page class.
  * @return string Returns a string of classes.
  */
@@ -135,12 +135,14 @@ function site_schema() {
  *
  * @since  1.0.0
  * @global object $L Language class
+ * @global object $page Page class
+ * @global object $url Url class
  * @return mixed Returns the toolbar markup or null.
  */
 function get_toolbar() {
 
 	// Access global variables.
-	global $L;
+	global $L, $page, $url;
 
 	if ( user_logged_in() ) {
 		ob_start();
@@ -167,7 +169,7 @@ function user_toolbar() {
  * Print site logo
  *
  * @since  1.0.0
- * @global object $site
+ * @global object $site Site class
  * @return mixed Returns null if no logo set.
  */
 function site_logo() {
@@ -195,9 +197,9 @@ function site_logo() {
  * Content template
  *
  * @since  1.0.0
- * @global object $page
- * @global object $site
- * @global object $url
+ * @global object $page Page class
+ * @global object $site Site class
+ * @global object $url Url class
  * @return string Returns the relevant template.
  */
 function content_template() {
@@ -264,7 +266,7 @@ function page_description() {
  * Get page author
  *
  * @since  1.0.0
- * @global object $page
+ * @global object $page Page class
  * @return string
  */
 function get_author() {
