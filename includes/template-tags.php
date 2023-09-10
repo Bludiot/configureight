@@ -211,8 +211,10 @@ function content_template() {
 	} elseif ( 'page' == $url->whereAmI() ) {
 		if ( $page->template() ) {
 			$template = 'templates/content/' . $page->template() . '.php';
-		} else {
+		} elseif ( $page->isStatic() ) {
 			$template = 'templates/content/page.php';
+		} else {
+			$template = 'templates/content/post.php';
 		}
 
 	// Default to posts loop.
