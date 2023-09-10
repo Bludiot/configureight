@@ -7,6 +7,10 @@ body {
 		.content-wrapper {
 			display: flex;
 			gap: 2rem;
+
+			@media screen and ( max-width: $break_tablet ) {
+				flex-direction: column;
+			}
 		}
 	}
 

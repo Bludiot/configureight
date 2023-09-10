@@ -7,6 +7,10 @@
 	padding: var( --bsb-site-footer--padding, 2rem );
 	background-color: var( --bsb-site-footer--bg-color, inherit );
 
+	.site-footer-text {
+		text-align: var( --bsb-site-footer-text--text-align, center );
+	}
+
 	.copyright {
 		text-align: var( --bsb-copyright--text-align, center );
 		font-size: var( --bsb-copyright--font-size, 0.8125rem );

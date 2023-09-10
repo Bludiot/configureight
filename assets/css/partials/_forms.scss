@@ -57,9 +57,10 @@ input[type="email"],
 input[type="text"],
 input[type="password"],
 input[type="url"],
-input[type="tel"] {}
-
-input[type="search"] {}
+input[type="tel"],
+input[type="search"] {
+	min-width: 160px;
+}
 
 input[type="radio"],
 input[type="checkbox"] {
