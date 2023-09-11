@@ -1,25 +1,16 @@
 <?php
 /**
- * Posts page grid template
+ * Posts page template
  *
  * Used for posts loop, whether on the
  * home page or blog page when a static
  * home page is used.
- *
- * The BSB_CONFIG['posts_loop'] constant
- * must be set to `grid` to use this.
  *
  * @package    BS Bludit
  * @subpackage Templates
  * @category   Content
  * @since      1.0.0
  */
-
-// Import namespaced functions.
-use function BSB_Tags\{
-	page_description,
-	get_author
-};
 
 // If no posts.
 if ( empty( $content) ) {
@@ -29,6 +20,15 @@ if ( empty( $content) ) {
 
 // If posts, print for each.
 foreach ( $content as $post ) :
+
+if ( $post->description() ) {
+	$description = $post->description();
+} else {
+	$description = substr( strip_tags( $post->content() ), 0, 85 );
+	if ( ! empty( $post->content() ) && ! ctype_space( $post->content() ) ) {
+		$description .= '&hellip;';
+	}
+}
 
 ?>
 <article class="site-article blog-wrap" role="article">
@@ -47,18 +47,10 @@ foreach ( $content as $post ) :
 			<h2><a href="<?php echo $post->permalink(); ?>"><?php echo $post->title(); ?></a></h2>
 		</header>
 
-		<?php echo page_description(); ?>
+		<?php echo $description; ?>
 
 		<footer class="page-info">
 			<p>
-				<?php if ( BSB_CONFIG['byline'] ) : ?>
-				<span class="page-info-entry">
-					<span class="bi bi-pencil" role="img"></span>
-					<?php echo get_author(); ?>
-				</span>
-				<br />
-				<?php endif ?>
-
 				<?php if ( BSB_CONFIG['post_date'] ) : ?>
 				<span class="page-info-entry">
 					<span class="bi bi-calendar" role="img"></span>

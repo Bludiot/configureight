@@ -11,7 +11,24 @@
 ?>
 <div class="no-posts-found">
 
-	<h1><?php $L->p( 'no-posts-heading' ); ?></h1>
-
-	<p class="page-subtitle"><?php $L->p( 'no-posts-message' ); ?></h1></p>
+	<?php
+	if ( 'search' == $WHERE_AM_I ) {
+		printf(
+			'<h1>%s</h1>',
+			$L->get( 'no-search-heading' )
+		);
+		printf(
+			'<p class="page-subtitle">%s</p>',
+			$L->get( 'no-search-message' )
+		);
+	} else {
+		printf(
+			'<h1>%s</h1>',
+			$L->get( 'no-posts-heading' )
+		);
+		printf(
+			'<p class="page-subtitle">%s</p>',
+			$L->get( 'no-posts-message' )
+		);
+	} ?>
 </div>

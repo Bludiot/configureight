@@ -44,11 +44,18 @@ if ( is_blog_page() ) {
 
 		<div id="content" class="wrapper-general content-wrapper">
 			<main class="page-main <?php echo $main_view; ?>" itemscope itemprop="mainContentOfPage">
-				<?php include( THEME_DIR . content_template() ); ?>
+				<?php
+				if ( 'search' == $url->whereAmI() ) {
+					include( THEME_DIR . 'templates/content/search.php' );
+				} else {
+					include( THEME_DIR . content_template() );
+				} ?>
 			</main>
 
 			<?php
-			if ( ! str_contains( $page->template(), 'no-sidebar' ) ) {
+			if ( 'search' == $url->whereAmI() ) {
+				include( THEME_DIR . 'templates/aside/aside.php' );
+			} elseif ( ! str_contains( $page->template(), 'no-sidebar' ) ) {
 				include( THEME_DIR . 'templates/aside/aside.php' );
 			}
 			?>

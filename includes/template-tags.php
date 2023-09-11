@@ -79,9 +79,9 @@ function favicon_tag() {
  * For the class attribute on the `<body>` element.
  *
  * @since  1.0.0
+ * @global object $page Page class.
  * @global object $site Site class.
  * @global object $url Url class.
- * @global object $page Page class.
  * @return string Returns a string of classes.
  */
 function body_classes() {
@@ -141,6 +141,7 @@ function body_classes() {
 
 	// Page templates.
 	if (
+		'search' != $url->whereAmI() &&
 		! empty( $page->template() ) &&
 		! ctype_space( $page->template() )
 	) {
@@ -161,12 +162,20 @@ function body_classes() {
  * Conditional Schema attributes for `<div id="page"`.
  *
  * @since  1.0.0
+ * @global object $page Page class.
+ * @global object $site Site class.
+ * @global object $url Url class.
  * @return string Returns the relevant itemtype.
  */
 function site_schema() {
 
 	// Access global variables.
 	global $page, $site, $url;
+
+	if ( 'search' == $url->whereAmI() ) {
+			echo 'SearchResultsPage';
+			return;
+	}
 
 	// Change page slugs and template names as needed.
 	if ( str_contains( $page->template(), 'profile' ) ) {
@@ -206,10 +215,6 @@ function site_schema() {
 		( 'home' == $url->whereAmI() && ! $site->homepage() )
 	) {
 		$itemtype = 'Blog';
-
-	// @todo Search condition.
-	// } elseif ( 'search' == $url->whereAmI() ) {
-		// $itemtype = 'SearchResultsPage';
 
 	} else {
 		$itemtype = 'WebPage';
@@ -384,7 +389,7 @@ function sticky_icon( $echo = '', $class = '', $title = '' ) {
 function page_description() {
 
 	// Access global variables.
-	global $page;
+	global $content, $page;
 
 	if ( $page->description() ) {
 		$page_desc = $page->description();

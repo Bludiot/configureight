@@ -22,6 +22,7 @@ use function BSB_Tags\{
 // If no posts.
 if ( empty( $content) ) {
 	include( THEME_DIR . 'templates/content/no-posts.php' );
+	return;
 }
 
 // If posts, print for each.
