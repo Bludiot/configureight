@@ -349,6 +349,9 @@ function content_template() {
  * Sticky icon
  *
  * @since  1.0.0
+ * @param  boolean $echo Whether to echo or return the icon.
+ * @param  string $class Add classes to the icon markup.
+ * @param  string $title Text for the title attribute.
  * @global object $page Page class
  * @return mixed Echoes the icon, or returns the icon or empty.
  */
