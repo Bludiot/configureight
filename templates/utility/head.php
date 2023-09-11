@@ -41,13 +41,12 @@ if (
 	<?php
 	// Change `<html>` class to `js` if JavaScript is enabled.
 	echo "<script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>\n"; ?>
+	<?php echo Theme :: jquery(); ?>
 
 	<?php echo favicon_tag(); ?>
 	<?php echo Theme :: metaTagTitle(); ?>
 	<?php echo Theme :: metaTagDescription(); ?>
 	<?php echo Theme :: keywords( $keywords ); ?>
-
-	<?php echo Theme :: jquery(); ?>
 
 	<?php echo Theme :: cssBootstrapIcons(); ?>
 	<?php echo Theme :: css( "assets/css/style{$suffix}.css" ); ?>
