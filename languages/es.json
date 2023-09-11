@@ -7,6 +7,8 @@
 	"home-link-label"   : "Inicio",
 	"no-posts-heading"  : "Aún No Hay Publicaciones",
 	"no-posts-message"  : "Lo sentimos, no hemos comenzado a publicar publicaciones. Por favor, vuelva más tarde.",
+	"no-search-heading"  : "No se Encontraron Coincidencias",
+	"no-search-message"  : "Lo sentimos, no pudimos encontrar ningún contenido que coincida con su consulta de búsqueda.",
 	"dashboard-link"       : "Panel",
 	"edit-link"            : "Editar",
 	"new-content-link"     : "Nuevo Contenido",

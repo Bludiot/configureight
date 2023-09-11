@@ -7,6 +7,8 @@
 	"home-link-label"   : "Heim",
 	"no-posts-heading"  : "Noch keine Beiträge",
 	"no-posts-message"  : "Leider haben wir noch nicht mit der Veröffentlichung von Beiträgen begonnen. Bitte schauen Sie später noch einmal vorbei.",
+	"no-search-heading"  : "Keine Treffer Gefunden",
+	"no-search-message"  : "Leider konnten wir keine Inhalte finden, die Ihrer Suchanfrage entsprechen.",
 	"dashboard-link"       : "Armaturenbrett",
 	"edit-link"            : "Bearbeiten",
 	"new-content-link"     : "Neuer Inhalt",

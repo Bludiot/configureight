@@ -7,6 +7,8 @@
 	"home-link-label"   : "Home",
 	"no-posts-heading"  : "No Posts Yet",
 	"no-posts-message"  : "Sorry, we have not begun to publish posts. Please check back later.",
+	"no-search-heading"  : "No Matches Found",
+	"no-search-message"  : "Sorry, we could not find any content matching your search query.",
 	"dashboard-link"       : "Dashboard",
 	"edit-link"            : "Edit",
 	"new-content-link"     : "New Content",
