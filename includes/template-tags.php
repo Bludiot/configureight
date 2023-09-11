@@ -446,5 +446,6 @@ function footer_scripts() {
 
 	$suffix = asset_min();
 
+	echo \Theme :: js( "assets/js/jquery.fitvids{$suffix}.js" );
 	echo \Theme :: js( "assets/js/theme{$suffix}.js" );
 }
