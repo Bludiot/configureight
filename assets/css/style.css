@@ -771,6 +771,7 @@ h3 + .search-form {
 }
 .site-navigation ul li ul li a:hover, .site-navigation ul li ul li a:focus {
   background-color: #555555;
+  color: var(--bsb-site-nav--sub-list--action--text-color, #ffffff);
 }
 .site-navigation ul li:hover ul {
   right: 0;

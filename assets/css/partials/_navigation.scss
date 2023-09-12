@@ -81,6 +81,7 @@
 						&:hover,
 						&:focus {
 							background-color: #555555;
+							color: var( --bsb-site-nav--sub-list--action--text-color, #ffffff );
 						}
 					}
 				}
