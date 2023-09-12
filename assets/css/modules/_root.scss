@@ -13,6 +13,7 @@
 	// General.
 	--bsb-text-color: #{$text_color};
 	--bsb-link--text-color: #{$blue};
+	--bsb-link--action--text-color: #{lighten( $blue, 12% )};
 	--bsb-heading--link--text-decoration: none;
 	--bsb-box-border-color: #{$pale_gray};
 
@@ -64,6 +65,14 @@
 	--bsb-content-wrap--padding: 0 2rem;
 	--bsb-page-main--padding: 0;
 	--bsb-page-header--heading--font-size: 2rem;
+	--bsb-article--tags-list--text-decoration: none;
+	--bsb-article--tags-list--font-size: 0.8125rem;
+	--bsb-article--tags-list--font-weight: 600;
+	--bsb-article--tags-list--bg-color: var( --bsb-link--text-color );
+	--bsb-article--tags-list--text-color: #ffffff;
+
+	--bsb-article--tags-list--action--bg-color: #{lighten( $blue, 12% )};
+	--bsb-article--tags-list--action--text-color: #ffffff;
 
 	// Toolbar.
 	--bsb-toolbar--height: 2rem;

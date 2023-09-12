@@ -101,9 +101,19 @@ body {
 	a {
 		color: var( --bsb-page-sidebar--link--text-color, var( --bsb-link--text-color ) );
 
+		&:hover,
+		&:focus {
+			color: var( --bsb-page-sidebar--link--action--text-color, var( --bsb-link--action--text-color ) );
+		}
+
 		&:visited,
 		&:active {
-			color: var( --bsb-page-sidebar--link--action--text-color, var( --bsb-page-sidebar--link--text-color, var( --bsb-link--text-color ) ) );
+			color: var( --bsb-page-sidebar--link--text-color, var( --bsb-link--text-color ) );
+
+			&:hover,
+			&:focus {
+				color: var( --bsb-page-sidebar--link--action--text-color, var( --bsb-link--action--text-color ) );
+			}
 		}
 	}
 

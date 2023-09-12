@@ -87,6 +87,17 @@ ol {
 a {
 	text-decoration: var( --bsb-link--text-decoration, underline );
 	color: var( --bsb-link--text-color );
+	transition: var( --bsb-link--transition, all 0.15s );
+
+	&:visited,
+	&:active {
+		color: var( --bsb-link--text-color );
+
+		&:hover,
+		&:focus {
+			color: var( --bsb-link--action--text-color );
+		}
+	}
 }
 
 h1,
@@ -95,14 +106,14 @@ h2 {
 	font-weight: var( --bsb--heading-primary--font-weight, bold );
 
 	a {
-		text-decoration: var( --bsb-link--text-decoration );
-		color: var( --bsb-link--text-color );
-
-		&:visited,
-		&:active {
-			color: var( --bsb-link--action--text-color, var( --bsb-link--text-color ) );
-		}
+		text-decoration: var( --bsb-link--text-decoration, none );
 	}
+}
+
+.inline-list {
+	display: inline-flex;
+	gap: 0 0.5em;
+	margin: 0;
 }
 
 // Text selection.

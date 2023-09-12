@@ -250,6 +250,7 @@ b, strong, optgroup {
   --bsb-heading--heading-primary--font-weight: 700;
   --bsb-text-color: #333333;
   --bsb-link--text-color: #0044aa;
+  --bsb-link--action--text-color: #005ce7;
   --bsb-heading--link--text-decoration: none;
   --bsb-box-border-color: #cccccc;
   --bsb-fieldset--margin: 1em 0 0;
@@ -288,6 +289,13 @@ b, strong, optgroup {
   --bsb-content-wrap--padding: 0 2rem;
   --bsb-page-main--padding: 0;
   --bsb-page-header--heading--font-size: 2rem;
+  --bsb-article--tags-list--text-decoration: none;
+  --bsb-article--tags-list--font-size: 0.8125rem;
+  --bsb-article--tags-list--font-weight: 600;
+  --bsb-article--tags-list--bg-color: var( --bsb-link--text-color );
+  --bsb-article--tags-list--text-color: #ffffff;
+  --bsb-article--tags-list--action--bg-color: #005ce7;
+  --bsb-article--tags-list--action--text-color: #ffffff;
   --bsb-toolbar--height: 2rem;
 }
 
@@ -363,6 +371,13 @@ a {
   -webkit-text-decoration: var(--bsb-link--text-decoration, underline);
           text-decoration: var(--bsb-link--text-decoration, underline);
   color: var(--bsb-link--text-color);
+  transition: var(--bsb-link--transition, all 0.15s);
+}
+a:visited, a:active {
+  color: var(--bsb-link--text-color);
+}
+a:visited:hover, a:visited:focus, a:active:hover, a:active:focus {
+  color: var(--bsb-link--action--text-color);
 }
 
 h1,
@@ -372,14 +387,14 @@ h2 {
 }
 h1 a,
 h2 a {
-  -webkit-text-decoration: var(--bsb-link--text-decoration);
-          text-decoration: var(--bsb-link--text-decoration);
-  color: var(--bsb-link--text-color);
+  -webkit-text-decoration: var(--bsb-link--text-decoration, none);
+          text-decoration: var(--bsb-link--text-decoration, none);
 }
-h1 a:visited, h1 a:active,
-h2 a:visited,
-h2 a:active {
-  color: var(--bsb-link--action--text-color, var(--bsb-link--text-color));
+
+.inline-list {
+  display: inline-flex;
+  gap: 0 0.5em;
+  margin: 0;
 }
 
 ::-o-selection {
@@ -801,6 +816,9 @@ body.template-sidebar-bottom .content-wrapper {
   width: 100%;
   padding: var(--bsb-page-main--padding);
 }
+.page-main.blog-view {
+  padding: 2rem 2rem 0 2rem;
+}
 
 .blog-wrap {
   display: flex;
@@ -867,6 +885,25 @@ body.template-sidebar-bottom .content-wrapper {
 }
 .no-posts-found h1 {
   font-size: var(--bsb-no-posts--heading--font-size, 2.5em);
+}
+
+.site-article .tags-list {
+  gap: var(--bsb-article--tags-list--display, 0 0.1875em);
+}
+.site-article .tags-list a {
+  display: var(--bsb-article--tags-list--display, inline-block);
+  padding: var(--bsb-article--tags-list--padding, 0.175em 0.325em 0.325em 0.325em);
+  line-height: var(--bsb-article--tags-list--line-height, 1);
+  font-size: var(--bsb-article--tags-list--font-size);
+  font-weight: var(--bsb-article--tags-list--font-weight);
+  -webkit-text-decoration: var(--bsb-article--tags-list--text-decoration);
+          text-decoration: var(--bsb-article--tags-list--text-decoration);
+  background-color: var(--bsb-article--tags-list--bg-color);
+  color: var(--bsb-article--tags-list--text-color);
+}
+.site-article .tags-list a:hover, .site-article .tags-list a:focus {
+  background-color: var(--bsb-article--tags-list--action--bg-color);
+  color: var(--bsb-article--tags-list--action--text-color);
 }
 
 .blog article {
@@ -1019,8 +1056,14 @@ body.template-sidebar-bottom .page-sidebar {
 .page-sidebar a {
   color: var(--bsb-page-sidebar--link--text-color, var(--bsb-link--text-color));
 }
+.page-sidebar a:hover, .page-sidebar a:focus {
+  color: var(--bsb-page-sidebar--link--action--text-color, var(--bsb-link--action--text-color));
+}
 .page-sidebar a:visited, .page-sidebar a:active {
-  color: var(--bsb-page-sidebar--link--action--text-color, var(--bsb-page-sidebar--link--text-color, var(--bsb-link--text-color)));
+  color: var(--bsb-page-sidebar--link--text-color, var(--bsb-link--text-color));
+}
+.page-sidebar a:visited:hover, .page-sidebar a:visited:focus, .page-sidebar a:active:hover, .page-sidebar a:active:focus {
+  color: var(--bsb-page-sidebar--link--action--text-color, var(--bsb-link--action--text-color));
 }
 .page-sidebar ul {
   padding: var(--bsb-page-sidebar--ul--padding);

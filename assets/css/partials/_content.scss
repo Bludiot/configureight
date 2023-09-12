@@ -29,6 +29,10 @@ body {
 .page-main {
 	width: 100%;
 	padding: var( --bsb-page-main--padding );
+
+	&.blog-view {
+		padding: 2rem 2rem 0 2rem;
+	}
 }
 
 .blog-wrap {
@@ -109,6 +113,29 @@ body {
 
 	h1 {
 		font-size: var( --bsb-no-posts--heading--font-size, 2.5em );
+	}
+}
+
+.site-article {
+	.tags-list {
+		gap: var( --bsb-article--tags-list--display, 0 0.1875em );
+
+		a {
+			display: var( --bsb-article--tags-list--display, inline-block );
+			padding: var( --bsb-article--tags-list--padding, 0.175em 0.325em 0.325em 0.325em );
+			line-height: var( --bsb-article--tags-list--line-height, 1 );
+			font-size: var( --bsb-article--tags-list--font-size );
+			font-weight: var( --bsb-article--tags-list--font-weight );
+			text-decoration: var( --bsb-article--tags-list--text-decoration );
+			background-color: var( --bsb-article--tags-list--bg-color );
+			color: var( --bsb-article--tags-list--text-color );
+
+			&:hover,
+			&:focus {
+				background-color: var( --bsb-article--tags-list--action--bg-color );
+				color: var( --bsb-article--tags-list--action--text-color );
+			}
+		}
 	}
 }
 
