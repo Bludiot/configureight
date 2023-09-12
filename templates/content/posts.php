@@ -101,8 +101,6 @@ $tags_list = function() use ( $post ) {
 				<br />
 				<?php endif ?>
 
-				<br />
-
 				<?php if ( has_tags() ) : ?>
 				<span class="page-info-entry">
 					<?php echo $tags_list(); ?>
