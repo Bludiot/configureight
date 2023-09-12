@@ -83,9 +83,12 @@ function min_php_version() {
 if ( ! min_php_version() ) {
 
 	$die = sprintf(
-		$L->get( 'Minimum PHP version of %s is not met.' ),
+		'Minimum PHP version of %s is not met.',
 		BSB_MIN_PHP_VERSION
 	);
+	if ( strstr( $L->get( 'die-php-version' ), '%replace%' ) ) {
+		$die = str_replace( '%replace%', BSB_MIN_PHP_VERSION, $L->get( 'die-php-version' ) );
+	}
 	die( $die );
 }
 

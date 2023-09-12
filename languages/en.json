@@ -5,6 +5,7 @@
 		"description" : "Basic starter theme for developing your own theme for Bludit CMS."
 	},
 	"direct-access"        : "You are not allowed to access this file.",
+	"die-php-version"      : "Minimum PHP version of %replace% is not met.",
 	"home-link-label"      : "Home",
 	"no-posts-heading"     : "No Posts Yet",
 	"no-posts-message"     : "Sorry, we have not begun to publish posts. Please check back later.",
