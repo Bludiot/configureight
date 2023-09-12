@@ -381,6 +381,26 @@ function page_description() {
 }
 
 /**
+ * Page has tags
+ *
+ * Whether a page has tags attached.
+ *
+ * @since  1.0.0
+ * @global object $page Page class
+ * @return boolean Returns true if tags are attached.
+ */
+function has_tags() {
+
+	// Access global variables.
+	global $page;
+
+	if ( $page->tags( true ) ) {
+		return true;
+	}
+	return false;
+}
+
+/**
  * Get page author
  *
  * @since  1.0.0
