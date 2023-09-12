@@ -888,7 +888,14 @@ body.template-sidebar-bottom .content-wrapper {
   font-size: var(--bsb-no-posts--heading--font-size, 2.5em);
 }
 
+.site-article .page-info-author {
+  font-weight: var(--bsb-page-info-author--font-weight, 600);
+}
+.site-article .page-info-date {
+  font-weight: var(--bsb-page-info-date--font-weight, 600);
+}
 .site-article .tags-list {
+  margin: var(--bsb-article--tags-list--margin, 0.75em 0 0 0);
   gap: var(--bsb-article--tags-list--display, 0 0.1875em);
 }
 .site-article .tags-list a {

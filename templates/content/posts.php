@@ -88,21 +88,20 @@ $tags_list = function() use ( $post ) {
 		<footer class="page-info">
 			<p>
 				<?php if ( BSB_CONFIG['byline'] ) : ?>
-				<span class="page-info-entry">
+				<span class="page-info-entry page-info-author">
 					<?php echo get_author(); ?>
 				</span>
-				<!-- br / -->
 				<?php endif ?>
 
 				<?php if ( BSB_CONFIG['post_date'] ) : ?>
-				<span class="page-info-entry">
+				<span class="page-info-entry page-info-date">
 					<?php echo $post->date(); ?>
 				</span>
 				<br />
 				<?php endif ?>
 
 				<?php if ( has_tags() ) : ?>
-				<span class="page-info-entry">
+				<span class="page-info-entry page-info-tags">
 					<?php echo $tags_list(); ?>
 				</span>
 				<?php endif ?>

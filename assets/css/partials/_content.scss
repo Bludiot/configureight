@@ -117,7 +117,17 @@ body {
 }
 
 .site-article {
+
+	.page-info-author {
+		font-weight: var( --bsb-page-info-author--font-weight, 600 );
+	}
+
+	.page-info-date {
+		font-weight: var( --bsb-page-info-date--font-weight, 600 );
+	}
+
 	.tags-list {
+		margin: var( --bsb-article--tags-list--margin, 0.75em 0 0 0 );
 		gap: var( --bsb-article--tags-list--display, 0 0.1875em );
 
 		a {
