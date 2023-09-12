@@ -35,6 +35,10 @@
 		) {
 			$nav_entry = '';
 
+		// Do not list the 404 error page.
+		} elseif ( $nav_item->slug() == str_replace( '/', '', $site->getField( 'pageNotFound' ) ) ) {
+			$nav_entry = '';
+
 		// Parent item & children submenu.
 		} elseif ( $nav_item->hasChildren() ) {
 
