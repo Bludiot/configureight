@@ -16,6 +16,7 @@
 use function BSB_Tags\{
 	sticky_icon,
 	page_description,
+	has_tags,
 	get_author
 };
 
@@ -41,6 +42,30 @@ if ( $post->sticky() ) {
 	);
 }
 
+$tags_list = function() use ( $post ) {
+
+	$tags  = $post->tags( true );
+	$links = [];
+	$sep   = ' ';
+
+	if ( has_tags() ) {
+		$html = '<ul class="inline-list tags-list">';
+		foreach ( $tags as $tagKey => $tagName ) {
+
+			$links[] = sprintf(
+				'<a href="%s" class="tag-list-entry" rel="tag">%s</a>',
+				DOMAIN_TAGS . $tagKey,
+				$tagName
+			);
+		}
+		$html .= implode( $sep, $links );
+		$html .= '</ul>';
+
+		return $html;
+	}
+	return '';
+};
+
 ?>
 <article class="site-article blog-wrap" role="article">
 	<?php if ( $post->coverImage() ) : ?>
@@ -64,24 +89,23 @@ if ( $post->sticky() ) {
 			<p>
 				<?php if ( BSB_CONFIG['byline'] ) : ?>
 				<span class="page-info-entry">
-					<span class="bi bi-pencil" role="img"></span>
 					<?php echo get_author(); ?>
 				</span>
-				<br />
+				<!-- br / -->
 				<?php endif ?>
 
 				<?php if ( BSB_CONFIG['post_date'] ) : ?>
 				<span class="page-info-entry">
-					<span class="bi bi-calendar" role="img"></span>
 					<?php echo $post->date(); ?>
 				</span>
 				<br />
 				<?php endif ?>
 
-				<?php if ( BSB_CONFIG['read_time'] ) : ?>
+				<br />
+
+				<?php if ( has_tags() ) : ?>
 				<span class="page-info-entry">
-					<span class="bi bi-clock-history" role="img"></span>
-					<?php echo $L->get( 'Reading time' ) . ': ' . $post->readingTime(); ?>
+					<?php echo $tags_list(); ?>
 				</span>
 				<?php endif ?>
 			</p>
