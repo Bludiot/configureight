@@ -82,10 +82,17 @@ function min_php_version() {
 // Die if PHP minimum is not met.
 if ( ! min_php_version() ) {
 
+	// Default message.
 	$die = sprintf(
 		'Minimum PHP version of %s is not met.',
 		BSB_MIN_PHP_VERSION
 	);
+
+	/**
+	 * Translated message looks for `%replace%`
+	 * in the JSON language string `die-php-version`
+	 * and replaces it with the minimumPHP version.
+	 */
 	if ( strstr( $L->get( 'die-php-version' ), '%replace%' ) ) {
 		$die = str_replace( '%replace%', BSB_MIN_PHP_VERSION, $L->get( 'die-php-version' ) );
 	}
