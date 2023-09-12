@@ -191,9 +191,7 @@ function is_blog_page() {
 
 	$blog_page = false;
 
-	if ( 'page' == $url->whereAmI() && $page->slug() == str_replace( '/', '', $site->getField( 'uriBlog' ) ) ) {
-		$blog_page = true;
-	} elseif ( 'home' == $url->whereAmI() && 'page' != $url->whereAmI() ) {
+	if ( 'blog' == $url->whereAmI() ) {
 		$blog_page = true;
 	}
 	return $blog_page;
