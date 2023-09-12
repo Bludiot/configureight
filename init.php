@@ -147,6 +147,32 @@ function is_rtl() {
 }
 
 /**
+ * Favicon exists
+ *
+ * Checks the theme config file to
+ * find the icon file.
+ *
+ * @since  1.0.0
+ * @return boolean Returns true if the icon file is found.
+ */
+function favicon_exists() {
+
+	$favicon = '';
+	if (
+		is_array( BSB_CONFIG['head'] ) &&
+		array_key_exists( 'favicon', BSB_CONFIG['head'] ) &&
+		! empty( BSB_CONFIG['head']['favicon'] )
+	) {
+		$favicon = 'assets/images/' . BSB_CONFIG['head']['favicon'];
+	}
+
+	if ( file_exists( THEME_DIR . $favicon ) ) {
+		return true;
+	}
+	return false;
+}
+
+/**
  * Is blog page
  *
  * Whether the current page is displaying
