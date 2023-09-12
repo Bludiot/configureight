@@ -22,9 +22,9 @@ use function BSB_Tags\{
 // Layout class for the `<main>` element.
 $main_view = 'page-view';
 if ( is_blog_page() ) {
-	$main_view = 'list-view';
+	$main_view = 'blog-view list-view';
 	if ( 'grid' == BSB_CONFIG['posts_loop'] ) {
-		$main_view = 'grid-view';
+		$main_view = 'blog-view grid-view';
 	}
 }
 
