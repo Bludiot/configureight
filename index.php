@@ -38,9 +38,9 @@ if ( is_blog_page() ) {
 
 	<div class="page-wrap" itemscope="itemscope" itemtype="<?php site_schema(); ?>">
 
-		<?php Theme :: plugins( 'pageBegin' ); ?>
-
 		<?php include( THEME_DIR . 'templates/header/header.php' ); ?>
+
+		<?php Theme :: plugins( 'pageBegin' ); ?>
 
 		<div id="content" class="wrapper-general content-wrapper">
 			<main class="page-main <?php echo $main_view; ?>" itemscope itemprop="mainContentOfPage">
@@ -61,9 +61,10 @@ if ( is_blog_page() ) {
 			?>
 		</div>
 
+		<?php Theme :: plugins( 'pageEnd' ); ?>
+
 		<?php include( THEME_DIR . 'templates/footer/footer.php' ); ?>
 
-		<?php Theme :: plugins( 'pageEnd' ); ?>
 	</div>
 	<?php
 	echo user_toolbar();

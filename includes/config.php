@@ -10,7 +10,7 @@
 
 // Stop if accessed directly.
 if ( ! defined( 'BLUDIT' ) ) {
-	die( 'You are not allowed to access this file.' );
+	die( $L->get( 'direct-access' ) );
 }
 
 /**
