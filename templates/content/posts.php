@@ -42,6 +42,15 @@ if ( $post->sticky() ) {
 	);
 }
 
+// Thumbnail image.
+$thumb_src = '';
+if ( $post->thumbCoverImage() ) {
+	$thumb_src = $post->thumbCoverImage();
+} elseif ( $post->coverImage() ) {
+	$thumb_src = $post->coverImage();
+}
+
+// Tags list.
 $tags_list = function() use ( $post ) {
 
 	$tags  = $post->tags( true );
@@ -68,10 +77,10 @@ $tags_list = function() use ( $post ) {
 
 ?>
 <article class="site-article blog-wrap" role="article">
-	<?php if ( $post->coverImage() ) : ?>
+	<?php if ( ! empty( $thumb_src ) ) : ?>
 	<figure class="page-cover page-cover-home">
 		<a href="<?php echo $post->permalink(); ?>">
-			<img src="<?php echo $post->coverImage(); ?>" loading="lazy" />
+			<img src="<?php echo $thumb_src; ?>" loading="lazy" />
 		</a>
 		<figcaption class="screen-reader-text"><?php echo $post->title(); ?></figcaption>
 	</figure>
