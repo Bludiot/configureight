@@ -198,6 +198,32 @@ function is_blog_page() {
 }
 
 /**
+ * Blog URL
+ *
+ * @since  1.0.0
+ * @global object $site
+ * @return string Returns the URL of the blog page(s).
+ */
+function blog_url() {
+
+	// Access global variables.
+	global $site;
+
+	$site_url = $site->getField( 'url' );
+	$blog_uri = $site->getField( 'uriBlog' );
+	$blog_url = $site_url;
+
+	if ( ! empty( $blog_uri ) ) {
+		$blog_url = sprintf(
+			'%s%s/',
+			$site_url,
+			str_replace( '/', '', $blog_uri )
+		);
+	}
+	return $blog_url;
+}
+
+/**
  * Asset file suffix
  *
  * Gets minified file if not in debug mode.
