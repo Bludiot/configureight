@@ -41,6 +41,9 @@ if ( ! defined( 'BSB_CONFIG' ) ) {
 
 			// Options: `list` & `grid`.
 			'posts_loop'  => 'list',
+
+			// Options: `prev_next` & `numerical`.
+			'pagination'  => 'numerical',
 			'byline'      => true,
 			'post_date'   => true,
 			'read_time'   => true,

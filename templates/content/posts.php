@@ -114,4 +114,8 @@ $tags_list = function() use ( $post ) {
 <?php
 
 // Get page navigation.
-include( THEME_DIR . 'templates/navigation/pagination.php' );
+if ( 'numerical' == BSB_CONFIG['pagination'] ) {
+	include( THEME_DIR . 'templates/navigation/page-numerical.php' );
+} else {
+	include( THEME_DIR . 'templates/navigation/page-prev-next.php' );
+}

@@ -1,6 +1,6 @@
 <?php
 /**
- * Page navigation template
+ * Prev/next page navigation template
  *
  * Allows users to navigate paginated content.
  *
@@ -10,11 +10,22 @@
  * @since      1.0.0
  */
 
+// Import namespaced functions.
+use function BSB_Init\{
+	blog_url
+};
+
+if ( ! isset( $_GET['page'] ) ) {
+	$getPage = 1;
+} else {
+	$getPage = $_GET['page'];
+}
+
 if ( Paginator :: numberOfPages() > 1 ) :
 
 ?>
 <nav class="page-navigation">
-	<ul class="nav-list pagination-list">
+	<ul class="nav-list pagination-list pagination-prev-next">
 	<?php if ( Paginator :: showPrev() ) : ?>
 		<li id="prev-page">
 			<a class="button" href="<?php echo Paginator :: previousPageUrl(); ?>" tabindex="-1"><?php echo $L->get( 'Previous' ); ?></a>

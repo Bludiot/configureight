@@ -792,7 +792,35 @@ h3 + .search-form {
 .page-navigation .pagination-list {
   width: var(--bsb-pagination-list--width, 100%);
   display: var(--bsb-pagination-list--display, flex);
-  justify-content: var(--bsb-pagination-list--justify-content, space-between);
+  gap: var(--bsb-pagination-list--gap, 0 0.5em);
+  justify-content: center;
+}
+.page-navigation .pagination-list.pagination-prev-next {
+  justify-content: var(--bsb-pagination-list--prev-next--justify-content, space-between);
+}
+.page-navigation .pagination-list a {
+  display: inline-block;
+  padding: 0 0.5em;
+  -webkit-text-decoration: var(--bsb-pagination-list--link--text-decoration, none);
+          text-decoration: var(--bsb-pagination-list--link--text-decoration, none);
+  font-weight: var(--bsb-pagination-list--link--font-weight, inherit);
+  border: var(--bsb-pagination-list--link--border, solid 1px transparent);
+}
+.page-navigation .pagination-list a:hover, .page-navigation .pagination-list a:focus {
+  border: var(--bsb-pagination-list--link--active--border, solid 1px #888888);
+}
+.page-navigation .pagination-list a.page-active {
+  font-weight: var(--bsb-pagination-list--link--active--font-weight, 600);
+  border: var(--bsb-pagination-list--link--active--border, solid 1px #888888);
+}
+.page-navigation .pagination-list a .page-icon {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1;
+}
+.page-navigation .pagination-list a .page-icon svg {
+  height: 1em;
+  fill: currentColor;
 }
 
 body:not(.template-no-sidebar) .content-wrapper {
