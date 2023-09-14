@@ -9,7 +9,7 @@
  */
 
 // Import namespaced functions.
-use function BSB_Init\{
+use function BSB_Func\{
 	is_rtl,
 	asset_min
 };

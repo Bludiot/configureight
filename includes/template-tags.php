@@ -16,7 +16,7 @@ if ( ! defined( 'BLUDIT' ) ) {
 }
 
 // Import namespaced functions.
-use function BSB_Init\{
+use function BSB_Func\{
 	is_rtl,
 	user_logged_in,
 	text_replace,

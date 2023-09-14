@@ -13,7 +13,7 @@
  */
 
 // Import namespaced functions.
-use function BSB_Init\{
+use function BSB_Func\{
 	blog_data
 };
 use function BSB_Tags\{

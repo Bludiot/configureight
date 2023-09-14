@@ -11,7 +11,7 @@
  */
 
 // Import namespaced functions.
-use function BSB_Init\{
+use function BSB_Func\{
 	blog_url
 };
 

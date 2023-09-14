@@ -8,7 +8,7 @@
  * @since      1.0.0
  */
 
-namespace BSB_Init;
+namespace BSB_Func;
 
 /**
  * User logged in

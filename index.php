@@ -8,7 +8,7 @@
  */
 
 // Import namespaced functions.
-use function BSB_Init\{
+use function BSB_Func\{
 	is_blog_page
 };
 use function BSB_Tags\{

@@ -48,7 +48,7 @@
  * reading code comments.
  */
 
-namespace BSB;
+namespace BSB_Theme;
 
 // Stop if accessed directly.
 if ( ! defined( 'BLUDIT' ) ) {
