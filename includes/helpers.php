@@ -88,16 +88,39 @@ function text_replace( $get = '', $string = '' ) {
  */
 function favicon_exists() {
 
-	$favicon = '';
+	// Look for icons in the CMS root directory.
+	$favicon_png = PATH_ROOT . 'favicon.png';
+	$favicon_gif = PATH_ROOT . 'favicon.gif';
+	$favicon_ico = PATH_ROOT . 'favicon.ico';
+
+	$root_favicon = false;
+	if ( file_exists( $favicon_png ) ) {
+		$root_favicon = true;
+	} elseif ( file_exists( $favicon_gif ) ) {
+		$root_favicon = true;
+	} elseif ( file_exists( $favicon_ico ) ) {
+		$root_favicon = true;
+	}
+
+	// Return true if an icon in the root.
+	if ( $root_favicon ) {
+		return true;
+	}
+
+	/**
+	 * Look for icon the the theme's image directory
+	 * as set in the config file.
+	 */
 	if (
 		is_array( BSB_CONFIG['head'] ) &&
 		array_key_exists( 'favicon', BSB_CONFIG['head'] ) &&
 		! empty( BSB_CONFIG['head']['favicon'] )
 	) {
-		$favicon = 'assets/images/' . BSB_CONFIG['head']['favicon'];
+		$favicon = THEME_DIR . 'assets/images/' . BSB_CONFIG['head']['favicon'];
 	}
 
-	if ( file_exists( THEME_DIR . $favicon ) ) {
+	// Return true if an icon in the root.
+	if ( file_exists( $favicon ) ) {
 		return true;
 	}
 	return false;

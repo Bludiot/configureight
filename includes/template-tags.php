@@ -37,13 +37,27 @@ function favicon_tag() {
 
 	if ( favicon_exists() ) {
 
+		$favicon_png = PATH_ROOT . 'favicon.png';
+		$favicon_gif = PATH_ROOT . 'favicon.gif';
+		$favicon_ico = PATH_ROOT . 'favicon.ico';
+
+		if ( file_exists( $favicon_png ) ) {
+			$favicon = DOMAIN_BASE . 'favicon.png';
+		} elseif ( file_exists( $favicon_gif ) ) {
+			$favicon = DOMAIN_BASE . 'favicon.gif';
+		} elseif ( file_exists( $favicon_ico ) ) {
+			$favicon = DOMAIN_BASE . 'favicon.ico';
+		} else {
+			$favicon = DOMAIN_THEME . 'assets/images/' . BSB_CONFIG['head']['favicon'];
+		}
+
 		// Get the image file extension.
-		$info = pathinfo( THEME_DIR . 'assets/images/' . BSB_CONFIG['head']['favicon'] );
+		$info = pathinfo( $favicon );
 		$type = $info['extension'];
 
 		return sprintf(
 			'<link rel="icon" href="%s" type="image/%s">',
-			DOMAIN_THEME . 'assets/images/' . BSB_CONFIG['head']['favicon'],
+			$favicon,
 			$type
 		);
 	}
