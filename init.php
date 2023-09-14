@@ -257,7 +257,7 @@ function blog_data() {
 		$site->title()
 	);
 
-	// Default data array;
+	// Default data array.
 	$data = [
 		'num_posts'   => count( $content ),
 		'location'    => 'home',
