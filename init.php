@@ -179,9 +179,9 @@ function favicon_exists() {
  * a blog posts loop.
  *
  * @since  1.0.0
- * @global object $page
- * @global object $site
- * @global object $url
+ * @global object $page Page class
+ * @global object $site Site class
+ * @global object $url Url class
  * @return boolean Returns true if in a blog loop.
  */
 function is_blog_page() {
@@ -201,7 +201,7 @@ function is_blog_page() {
  * Blog URL
  *
  * @since  1.0.0
- * @global object $site
+ * @global object $site SIte class
  * @return string Returns the URL of the blog page(s).
  */
 function blog_url() {
@@ -221,6 +221,80 @@ function blog_url() {
 		);
 	}
 	return $blog_url;
+}
+
+/**
+ * Blog data
+ *
+ * Gets data for the blog, especially when
+ * using a static front page.
+ *
+ * @since  1.0.0
+ * @global array  $content array of site content
+ * @global object $L Language class
+ * @global object $page Page class
+ * @global object $site Site class
+ * @global object $url Url class
+ * @return array  Returns an array of blog data.
+ */
+function blog_data() {
+
+	// Access global variables.
+	global $content, $L, $page, $site, $url;
+
+	// Null if in search results (global errors).
+	if ( 'search' == $url->whereAmI() ) {
+		return null;
+	}
+
+	$static_field = $site->getField( 'uriBlog' );
+	$static_key   = str_replace( '/', '', $static_field );
+
+	// Default blog description.
+	$description = sprintf(
+		'%s %s',
+		$L->get( 'blog-data-description' ),
+		$site->title()
+	);
+
+	// Default data array;
+	$data = [
+		'num_posts'   => count( $content ),
+		'location'    => 'home',
+		'key'         => false,
+		'url'         => blog_url(),
+		'slug'        => false,
+		'template'    => false,
+		'title'       => false,
+		'description' => $description,
+		'cover'       => false,
+	];
+
+	if ( empty( $static_field ) ) {
+		return $data;
+
+	} else {
+
+		// Get data from the static blog page.
+		$blog_page = buildPage( $static_key );
+
+		// Description from the static blog page.
+		if (
+			! empty( $blog_page->description() ) ||
+			! ctype_space( $blog_page->description() )
+		) {
+			$description = $blog_page->description();
+		}
+
+		$data['location']    = 'page';
+		$data['key']         = $blog_page->key();
+		$data['slug']        = $blog_page->slug();
+		$data['template']    = $blog_page->template();
+		$data['title']       = $blog_page->title();
+		$data['description'] = $description;
+		$data['cover']       = $blog_page->coverImage();
+	}
+	return $data;
 }
 
 /**

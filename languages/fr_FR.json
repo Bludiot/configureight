@@ -7,6 +7,7 @@
 	"direct-access"        : "Vous n'êtes pas autorisé à accéder à ce fichier.",
 	"die-php-version"      : "Version PHP minimale de %replace% n’est pas respecté.",
 	"home-link-label"      : "Maison",
+	"blog-data-description" : "Derniers messages de",
 	"no-posts-heading"     : "Pas Encore de Messages",
 	"no-posts-message"     : "Désolé, nous n'avons pas commencé à publier des articles. Veuillez revenir plus tard.",
 	"no-search-heading"    : "Aucun Résultat",

@@ -13,6 +13,9 @@
  */
 
 // Import namespaced functions.
+use function BSB_Init\{
+	blog_data
+};
 use function BSB_Tags\{
 	sticky_icon,
 	page_description,
@@ -20,11 +23,28 @@ use function BSB_Tags\{
 	get_author
 };
 
+// Get blog data.
+$blog_data = blog_data();
+
 // If no posts.
 if ( empty( $content) ) {
 	include( THEME_DIR . 'templates/content/no-posts.php' );
 	return;
 }
+
+// Print header if on static blog page.
+if ( 'home' != $url->whereAmI() && 'blog' == $url->whereAmI() ) :
+?>
+<header class="page-header">
+	<h1><?php echo $blog_data['title']; ?></h1>
+
+	<?php printf(
+		'<p class="page-description blog-description">%s</p>',
+		$blog_data['description']
+	); ?>
+</header>
+<?php
+endif;
 
 // If posts, print for each.
 foreach ( $content as $post ) :

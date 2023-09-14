@@ -20,6 +20,7 @@ use function BSB_Init\{
 	is_rtl,
 	user_logged_in,
 	favicon_exists,
+	blog_data,
 	asset_min
 };
 
@@ -98,7 +99,19 @@ function body_classes() {
 
 	// If blog, not home.
 	if ( 'blog' == $url->whereAmI() ) {
-		$classes[] = 'blog';
+		$classes[] = 'blog blog-not-home';
+
+		// Get blog data.
+		$blog_data = blog_data();
+
+		// Templates for the static blog page.
+		if ( $blog_data['template'] ) {
+			$templates = explode( ' ', $blog_data['template'] );
+
+			foreach ( $templates as $template ) {
+				$classes[] = "template-{$template}";
+			}
+		}
 	}
 
 	// If singular content.
@@ -120,10 +133,12 @@ function body_classes() {
 		! empty( $page->template() ) &&
 		! ctype_space( $page->template() )
 	) {
-		$templates = explode( ' ', $page->template() );
+		if ( $page->template() ) {
+			$templates = explode( ' ', $page->template() );
 
-		foreach ( $templates as $template ) {
-			$classes[] = "template-{$template}";
+			foreach ( $templates as $template ) {
+				$classes[] = "template-{$template}";
+			}
 		}
 	}
 
