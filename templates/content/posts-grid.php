@@ -17,6 +17,7 @@
 
 // Import namespaced functions.
 use function BSB_Tags\{
+	posts_loop_header,
 	page_description,
 	get_author
 };
@@ -27,19 +28,7 @@ if ( empty( $content) ) {
 	return;
 }
 
-// Print header if on static blog page.
-if ( 'home' != $url->whereAmI() && 'blog' == $url->whereAmI() ) :
-?>
-<header class="page-header">
-	<h1><?php echo $blog_data['title']; ?></h1>
-
-	<?php printf(
-		'<p class="page-description blog-description">%s</p>',
-		$blog_data['description']
-	); ?>
-</header>
-<?php
-endif;
+echo posts_loop_header();
 
 // If posts, print for each.
 foreach ( $content as $post ) :

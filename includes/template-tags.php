@@ -19,6 +19,7 @@ if ( ! defined( 'BLUDIT' ) ) {
 use function BSB_Init\{
 	is_rtl,
 	user_logged_in,
+	text_replace,
 	favicon_exists,
 	blog_data,
 	asset_min
@@ -336,12 +337,90 @@ function content_template() {
 }
 
 /**
+ * Posts loop header
+ *
+ * prints a header section in a posts loop
+ * page: posts, category, tag.
+ *
+ * @since  1.0.0
+ * @global object $L Language class
+ * @global object $url Url class.
+ * @return mixed
+ */
+function posts_loop_header() {
+
+	// Access global variables.
+	global $L, $url;
+
+	// Null if in search results (global errors).
+	if ( 'search' == $url->whereAmI() ) {
+		return null;
+	}
+
+	// Header variables.
+	$heading     = '';
+	$description = '';
+	$class       = '';
+	$format_slug =  ucwords( str_replace( [ '-', '_' ], '', $url->slug() ) );
+	$blog_data   = blog_data();
+
+	// Conditional heading & description.
+	if (
+		'blog' == $url->whereAmI() &&
+		'page' == $blog_data['location']
+	) {
+		$class       = 'blog-page-description';
+		$heading     = $blog_data['title'];
+		$description = $blog_data['description'];
+
+	} elseif ( 'category' == $url->whereAmI() ) {
+		$class       = 'category-page-description';
+		$heading     = $format_slug;
+		$description = text_replace( 'posts-loop-desc-cat', $format_slug );
+
+	} elseif ( 'tag' == $url->whereAmI() ) {
+		$class       = 'tag-page-description';
+		$heading     = $format_slug;
+		$description = text_replace( 'posts-loop-desc-tag', $format_slug );
+	}
+
+	// SEt up the header markup.
+	$html = '<header class="page-header">';
+
+	if ( ! empty( $heading ) && ! ctype_space( $heading ) ) {
+		$html .= sprintf(
+			'<h1>%s</h1>',
+			$heading
+		);
+	}
+
+	if ( ! empty( $description ) && ! ctype_space( $description ) ) {
+		$html .= sprintf(
+			'<p class="page-description %s">%s</p>',
+			$class,
+			$description
+		);
+	}
+	$html .= '</header>';
+
+	// Print nothing if site home or singular page.
+	if (
+		'home' == $url->whereAmI() ||
+		'page' == $url->whereAmI()
+	) {
+		return '';
+	}
+	return $html;
+}
+
+/**
  * Sticky icon
  *
  * @since  1.0.0
  * @param  boolean $echo Whether to echo or return the icon.
  * @param  string $class Add classes to the icon markup.
  * @param  string $title Text for the title attribute.
+ * @global object $L Language class
  * @global object $page Page class
  * @return mixed Echoes the icon, or returns the icon or empty.
  */
