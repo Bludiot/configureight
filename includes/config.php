@@ -25,11 +25,7 @@ if ( ! defined( 'BSB_CONFIG' ) ) {
 			'debug'       => true,
 			'head'        => [
 				'favicon'  => 'favicon.gif',
-				'keywords' => [
-					'one',
-					'two',
-					'three'
-				]
+				'keywords' => []
 			],
 			'toolbar'     => true,
 			'blog_in_nav' => true,
