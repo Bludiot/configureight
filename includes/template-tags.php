@@ -3,8 +3,8 @@
  * Template tags
  *
  * @package    BS Bludit
- * @subpackage Templates
- * @category   Functions
+ * @subpackage Includes
+ * @category   Templates
  * @since      1.0.0
  */
 
