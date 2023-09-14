@@ -29,10 +29,10 @@ body {
 .page-main {
 	width: 100%;
 	padding: var( --bsb-page-main--padding );
+}
 
-	&.blog-view {
-		padding: 2rem 2rem 0 2rem;
-	}
+.home .blog-view {
+	padding: 2rem 2rem 0 2rem;
 }
 
 .blog-wrap {
@@ -50,6 +50,12 @@ body {
 
 	h2 {
 		margin: 0;
+	}
+}
+
+body:not( .home ) {
+	.blog-wrap {
+		margin-top: 1rem;
 	}
 }
 

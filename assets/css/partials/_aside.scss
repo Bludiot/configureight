@@ -14,7 +14,15 @@ body {
 
 	&.template-sidebar-bottom {
 		.page-sidebar {
-			padding: var( --bsb-page-sidebar-bottom--padding, 2rem 2rem 0 2rem );
+			width: 100%;
+			display: grid;
+			grid-template-columns: repeat( 2, 1fr );
+			gap: 1.5rem;
+			padding: var( --bsb-page-sidebar-bottom--padding, 2rem 0 0 0 );
+
+			@media screen and ( max-width: $break_phone ) {
+				display: block;
+			}
 		}
 	}
 
@@ -24,15 +32,11 @@ body {
 			@media screen and ( max-width: $break_tablet ) {
 				width: 100%;
 				display: grid;
-				grid-template-columns: repeat( 3, 1fr );
+				grid-template-columns: repeat( 2, 1fr );
 				gap: 1.5rem;
 			}
 
 			@media screen and ( max-width: $break_phone ) {
-				grid-template-columns: repeat( 2, 1fr );
-			}
-
-			@media screen and ( max-width: $break_small ) {
 				display: block;
 			}
 		}
