@@ -246,7 +246,7 @@ function get_toolbar() {
 
 	if ( user_logged_in() ) {
 		ob_start();
-		include( THEME_DIR . 'templates/utility/toolbar.php' );
+		include( THEME_DIR . 'views/utility/toolbar.php' );
 		return ob_get_clean();
 	}
 	return null;
@@ -310,9 +310,9 @@ function content_template() {
 	// Blog template when a static home page is used.
 	if ( 'page' == $url->whereAmI() && $page->slug() == str_replace( '/', '', $site->getField( 'uriBlog' ) ) ) {
 		if ( 'grid' == BSB_CONFIG['posts_loop'] ) {
-			$template = 'templates/content/posts-grid.php';
+			$template = 'views/content/posts-grid.php';
 		} else {
-			$template = 'templates/content/posts.php';
+			$template = 'views/content/posts.php';
 		}
 
 	// Page templates.
@@ -320,31 +320,31 @@ function content_template() {
 
 		// Static home page.
 		if ( $site->getField( 'homepage' ) && $page->slug() == $site->getField( 'homepage' ) ) {
-			$template = 'templates/content/front-page.php';
+			$template = 'views/content/front-page.php';
 
 		// Page with template applied, excluding `no-sidebar` template.
 		} elseif ( $page->template() ) {
-			$template = 'templates/content/' . str_replace( [ ' ', 'no-sidebar', 'sidebar-bottom' ], '', $page->template() ) . '.php';
+			$template = 'views/content/' . str_replace( [ ' ', 'no-sidebar', 'sidebar-bottom' ], '', $page->template() ) . '.php';
 
 		// Static page.
 		} elseif ( $page->isStatic() ) {
-			$template = 'templates/content/page.php';
+			$template = 'views/content/page.php';
 
 		// Sticky page (post).
 		} elseif ( $page->sticky() ) {
-			$template = 'templates/content/sticky.php';
+			$template = 'views/content/sticky.php';
 
 		// Default (post) page.
 		} else {
-			$template = 'templates/content/post.php';
+			$template = 'views/content/post.php';
 		}
 
 	// Default to posts loop.
 	} else {
 		if ( 'grid' == BSB_CONFIG['posts_loop'] ) {
-			$template = 'templates/content/posts-grid.php';
+			$template = 'views/content/posts-grid.php';
 		} else {
-			$template = 'templates/content/posts.php';
+			$template = 'views/content/posts.php';
 		}
 	}
 	return $template;

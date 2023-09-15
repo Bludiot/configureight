@@ -31,14 +31,14 @@ if ( is_blog_page() ) {
 ?>
 <!DOCTYPE html>
 <html dir="auto" class="no-js" lang="<?php echo Theme :: lang() ?>" xmlns:og="http://opengraphprotocol.org/schema/">
-<?php include( THEME_DIR . 'templates/utility/head.php' ); ?>
+<?php include( THEME_DIR . 'views/utility/head.php' ); ?>
 <body class="<?php echo body_classes(); ?>" itemid="<?php echo $page->uuid(); ?>" data-uuid="<?php echo $page->uuid(); ?>">
 
 	<?php Theme :: plugins( 'siteBodyBegin' ); ?>
 
 	<div class="page-wrap" itemscope="itemscope" itemtype="<?php site_schema(); ?>">
 
-		<?php include( THEME_DIR . 'templates/header/header.php' ); ?>
+		<?php include( THEME_DIR . 'views/header/header.php' ); ?>
 
 		<?php Theme :: plugins( 'pageBegin' ); ?>
 
@@ -46,7 +46,7 @@ if ( is_blog_page() ) {
 			<main class="page-main <?php echo $main_view; ?>" itemscope itemprop="mainContentOfPage">
 				<?php
 				if ( 'search' == $url->whereAmI() ) {
-					include( THEME_DIR . 'templates/content/search.php' );
+					include( THEME_DIR . 'views/content/search.php' );
 				} else {
 					include( THEME_DIR . content_template() );
 				} ?>
@@ -54,16 +54,16 @@ if ( is_blog_page() ) {
 
 			<?php
 			if ( 'search' == $url->whereAmI() ) {
-				include( THEME_DIR . 'templates/aside/aside.php' );
+				include( THEME_DIR . 'views/aside/aside.php' );
 			} elseif ( ! str_contains( $page->template(), 'no-sidebar' ) ) {
-				include( THEME_DIR . 'templates/aside/aside.php' );
+				include( THEME_DIR . 'views/aside/aside.php' );
 			}
 			?>
 		</div>
 
 		<?php Theme :: plugins( 'pageEnd' ); ?>
 
-		<?php include( THEME_DIR . 'templates/footer/footer.php' ); ?>
+		<?php include( THEME_DIR . 'views/footer/footer.php' ); ?>
 
 	</div>
 	<?php

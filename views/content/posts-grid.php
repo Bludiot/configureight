@@ -1,10 +1,13 @@
 <?php
 /**
- * Posts page template
+ * Posts page grid template
  *
  * Used for posts loop, whether on the
  * home page or blog page when a static
  * home page is used.
+ *
+ * The BSB_CONFIG['posts_loop'] constant
+ * must be set to `grid` to use this.
  *
  * @package    BS Bludit
  * @subpackage Templates
@@ -12,23 +15,23 @@
  * @since      1.0.0
  */
 
+// Import namespaced functions.
+use function BSB_Tags\{
+	posts_loop_header,
+	page_description,
+	get_author
+};
+
 // If no posts.
 if ( empty( $content) ) {
-	include( THEME_DIR . 'templates/content/no-posts.php' );
+	include( THEME_DIR . 'views/content/no-posts.php' );
 	return;
 }
 
+echo posts_loop_header();
+
 // If posts, print for each.
 foreach ( $content as $post ) :
-
-if ( $post->description() ) {
-	$description = $post->description();
-} else {
-	$description = substr( strip_tags( $post->content() ), 0, 85 );
-	if ( ! empty( $post->content() ) && ! ctype_space( $post->content() ) ) {
-		$description .= '&hellip;';
-	}
-}
 
 ?>
 <article class="site-article blog-wrap" role="article">
@@ -47,10 +50,18 @@ if ( $post->description() ) {
 			<h2><a href="<?php echo $post->permalink(); ?>"><?php echo $post->title(); ?></a></h2>
 		</header>
 
-		<?php echo $description; ?>
+		<?php echo page_description(); ?>
 
 		<footer class="page-info">
 			<p>
+				<?php if ( BSB_CONFIG['byline'] ) : ?>
+				<span class="page-info-entry">
+					<span class="bi bi-pencil" role="img"></span>
+					<?php echo get_author(); ?>
+				</span>
+				<br />
+				<?php endif ?>
+
 				<?php if ( BSB_CONFIG['post_date'] ) : ?>
 				<span class="page-info-entry">
 					<span class="bi bi-calendar" role="img"></span>
@@ -74,4 +85,4 @@ if ( $post->description() ) {
 <?php
 
 // Get page navigation.
-include( THEME_DIR . 'templates/navigation/pagination.php' );
+include( THEME_DIR . 'views/navigation/pagination.php' );

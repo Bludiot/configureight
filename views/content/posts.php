@@ -29,7 +29,7 @@ $blog_data = blog_data();
 
 // If no posts.
 if ( empty( $content) ) {
-	include( THEME_DIR . 'templates/content/no-posts.php' );
+	include( THEME_DIR . 'views/content/no-posts.php' );
 	return;
 }
 
@@ -133,7 +133,7 @@ $tags_list = function() use ( $post ) {
 
 // Get page navigation.
 if ( 'numerical' == BSB_CONFIG['pagination'] ) {
-	include( THEME_DIR . 'templates/navigation/page-numerical.php' );
+	include( THEME_DIR . 'views/navigation/page-numerical.php' );
 } else {
-	include( THEME_DIR . 'templates/navigation/page-prev-next.php' );
+	include( THEME_DIR . 'views/navigation/page-prev-next.php' );
 }
