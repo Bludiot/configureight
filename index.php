@@ -32,7 +32,7 @@ if ( is_blog_page() ) {
 <!DOCTYPE html>
 <html dir="auto" class="no-js" lang="<?php echo Theme :: lang() ?>" xmlns:og="http://opengraphprotocol.org/schema/">
 <?php include( THEME_DIR . 'templates/utility/head.php' ); ?>
-<body class="<?php echo body_classes(); ?>" itemid="<?php echo $page->uuid(); ?>">
+<body class="<?php echo body_classes(); ?>" itemid="<?php echo $page->uuid(); ?>" data-uuid="<?php echo $page->uuid(); ?>">
 
 	<?php Theme :: plugins( 'siteBodyBegin' ); ?>
 
