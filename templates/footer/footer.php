@@ -9,7 +9,7 @@
  */
 
 $copyright = sprintf(
-	'<p class="copyright" itemscope="itemscope" itemtype="http://schema.org/CreativeWork">&copy; <span itemprop="copyrightYear">%s</span> <span itemprop="copyrightHolder">%s.</span> %s</p>',
+	'<p class="copyright" itemscope="itemscope" itemtype="https://schema.org/CreativeWork">&copy; <span itemprop="copyrightYear">%s</span> <span itemprop="copyrightHolder">%s.</span> %s</p>',
 	date( 'Y' ),
 	$site->title(),
 	$L->get( 'copyright-message' )

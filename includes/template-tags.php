@@ -224,7 +224,7 @@ function site_schema() {
 	} else {
 		$itemtype = 'WebPage';
 	}
-	echo $itemtype;
+	echo 'https://schema.org/' . $itemtype;
 }
 
 /**

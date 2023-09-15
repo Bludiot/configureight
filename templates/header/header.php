@@ -29,7 +29,7 @@ if ( 'home' == $WHERE_AM_I ) {
 }
 
 ?>
-<header id="masthead" class="site-header" role="banner" itemscope="itemscope" itemtype="http://schema.org/Organization">
+<header id="masthead" class="site-header" role="banner" itemscope="itemscope" itemtype="https://schema.org/Organization">
 	<div class="wrapper-general site-header-wrap">
 		<div class="site-branding">
 			<?php site_logo(); ?>
