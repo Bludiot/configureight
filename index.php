@@ -15,6 +15,7 @@ use function BSB_Tags\{
 	body_classes,
 	site_schema,
 	user_toolbar,
+	page_id,
 	content_template,
 	footer_scripts
 };
@@ -36,7 +37,7 @@ if ( is_blog_page() ) {
 
 	<?php Theme :: plugins( 'siteBodyBegin' ); ?>
 
-	<div class="page-wrap" itemscope="itemscope" itemtype="<?php site_schema(); ?>">
+	<div id="<?php echo page_id(); ?>" class="page-wrap" itemscope="itemscope" itemtype="<?php site_schema(); ?>">
 
 		<?php include( THEME_DIR . 'views/header/header.php' ); ?>
 

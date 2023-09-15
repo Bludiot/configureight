@@ -294,6 +294,50 @@ function site_logo() {
 }
 
 /**
+ * Page ID
+ *
+ * Returns an ID based on the page type
+ * and the page key.
+ *
+ * @since  1.0.0
+ * @global object $page Page class
+ * @global object $url Url class
+ * @return mixed Returns the page ID or null.
+ */
+function page_id() {
+
+	// Access global variables.
+	global $page, $url;
+
+	// Null if in search results (global errors).
+	if ( 'search' == $url->whereAmI() ) {
+		return null;
+	}
+
+	// Conditional page ID, static or not.
+	$id = '';
+	if (
+		( 'blog' == $url->whereAmI() && 'home' != $url->whereAmI() ) ||
+		( 'home' == $url->whereAmI() && 'page' != $url->whereAmI() )
+	) {
+		$id = 'blog-page';
+		if ( ! isset( $_GET['page'] ) ) {
+			$id .= '-' . 1;
+		} else {
+			$id .= '-' . $_GET['page'];
+		}
+
+	} elseif ( $page->isStatic() && 'blog' != $url->whereAmI() ) {
+		$id = 'page-' . $page->key();
+	} else {
+		$id = 'post-' . $page->key();
+	}
+
+	// String replace not necessary but just in case...
+	return strtolower( str_replace( [ '_', ' ' ], '-', $id ) );
+}
+
+/**
  * Content template
  *
  * @since  1.0.0
