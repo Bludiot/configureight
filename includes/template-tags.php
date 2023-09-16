@@ -244,14 +244,17 @@ function site_schema() {
  *
  * @since  1.0.0
  * @global object $page Page class
+ * @global object $site Site class
+ * @global object $url Url class
  * @return string Returns the header markup.
  */
 function page_header() {
 
 	// Access global variables.
-	global $page;
+	global $page, $site, $url;
 
 	$wrapper     = 'header';
+	$heading     = 'h1';
 	$description = $page->description();
 	$sticky_icon = '';
 
@@ -266,6 +269,13 @@ function page_header() {
 		$wrapper = 'div';
 	}
 
+	// Site title is `h1` on front page; only one per page.
+	if ( 'page' == $url->whereAmI() ) {
+		if ( $page->key() == $site->getField( 'homepage' ) ) {
+			$heading = 'h2';
+		}
+	}
+
 	// If the page is sticky.
 	if ( $page->sticky() ) {
 		$sticky_icon = sticky_icon( 'false', 'sticky-icon-heading' ) . ' ';
@@ -276,9 +286,11 @@ function page_header() {
 		$wrapper
 	);
 	$html .= sprintf(
-		'<h1 class="page-title">%s%s</h1>',
+		'<%s class="page-title">%s%s</%s>',
+		$heading,
 		$sticky_icon,
-		$page->title()
+		$page->title(),
+		$heading
 	);
 
 	if ( ! empty( $description ) && ! ctype_space( $description ) ) {
