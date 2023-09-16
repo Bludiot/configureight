@@ -268,7 +268,7 @@ function page_header() {
 
 	// If the page is sticky.
 	if ( $page->sticky() ) {
-		$sticky_icon = sticky_icon( 'true', 'sticky-icon-heading' ) . ' ';
+		$sticky_icon = sticky_icon( 'false', 'sticky-icon-heading' ) . ' ';
 	}
 
 	$html = sprintf(
