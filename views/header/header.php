@@ -10,8 +10,13 @@
  * @since      1.0.0
  */
 
+// Import namespaced functions.
+use function BSB_Func\{
+	full_cover
+};
 use function BSB_Tags\{
-	site_logo
+	site_logo,
+	page_header
 };
 
 // Site title element.
@@ -28,8 +33,18 @@ if ( 'home' == $WHERE_AM_I ) {
 	);
 }
 
+// Background image.
+$header_image = '';
+if ( full_cover() ) {
+	$header_image = sprintf(
+		'style="background-image: url( %s )"',
+		$page->coverImage()
+	);
+}
+
 ?>
-<header id="masthead" class="site-header" role="banner" itemscope="itemscope" itemtype="https://schema.org/Organization" data-site-header>
+<header id="masthead" class="site-header" role="banner" itemscope="itemscope" itemtype="https://schema.org/Organization" data-site-header <?php echo $header_image; ?>>
+	<div class="site-header-overlay"></div>
 	<div class="wrapper-general site-header-wrap">
 		<div class="site-branding" data-site-branding>
 			<?php site_logo(); ?>
@@ -42,4 +57,7 @@ if ( 'home' == $WHERE_AM_I ) {
 		// Get the main navigation menu.
 		include( THEME_DIR . 'views/navigation/main-nav.php' ); ?>
 	</div>
+	<?php if ( full_cover() ) {
+		echo page_header();
+	} ?>
 </header>

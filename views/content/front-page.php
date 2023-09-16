@@ -8,11 +8,16 @@
  * @since      1.0.0
  */
 
+// Import namespaced functions.
+use function BSB_Func\{
+	full_cover
+};
+
 ?>
 <article class="site-article" role="article" data-site-article>
 
 	<header class="page-header" data-page-header>
-		<h1><?php echo $page->title(); ?></h1>
+		<h2><?php echo $page->title(); ?></h2>
 
 		<?php if ( $page->description() ) {
 			printf(
@@ -22,7 +27,7 @@
 		} ?>
 	</header>
 
-	<?php if ( $page->coverImage() ) : ?>
+	<?php if ( $page->coverImage() && ! full_cover() ) : ?>
 	<figure class="page-cover page-cover-single">
 		<img src="<?php echo $page->coverImage(); ?>" />
 		<figcaption class="screen-reader-text"><?php echo $page->title(); ?></figcaption>

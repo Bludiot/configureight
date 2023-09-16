@@ -9,25 +9,22 @@
  */
 
 // Import namespaced functions.
+use function BSB_Func\{
+	full_cover
+};
 use function BSB_Tags\{
+	page_header,
 	sticky_icon
-}
+};
 
 ?>
 <article class="site-article" role="article" data-site-article>
 
-	<header class="page-header" data-page-header>
-		<h1><?php sticky_icon( 'true', 'sticky-icon-heading' ); ?> <?php echo $page->title(); ?></h1>
+	<?php if ( ! full_cover() ) {
+		echo page_header();
+	} ?>
 
-		<?php if ( $page->description() ) {
-			printf(
-				'<p class="page-description page-description-single">%s</p>',
-				$page->description()
-			);
-		} ?>
-	</header>
-
-	<?php if ( $page->coverImage() ) : ?>
+	<?php if ( $page->coverImage() && ! full_cover() ) : ?>
 	<figure class="page-cover page-cover-single">
 		<img src="<?php echo $page->coverImage(); ?>" />
 		<figcaption class="screen-reader-text"><?php echo $page->title(); ?></figcaption>

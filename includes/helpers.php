@@ -225,7 +225,7 @@ function blog_data() {
 		'cover'       => false,
 	];
 
-	if ( empty( $static_field ) ) {
+	if ( empty( $static_field ) || ! $pages->exists( $static_key ) ) {
 		return $data;
 
 	} else {
@@ -250,6 +250,29 @@ function blog_data() {
 		$data['cover']       = $blog_page->coverImage();
 	}
 	return $data;
+}
+
+/**
+ * Is full cover template
+ *
+ * @since  1.0.0
+ * @global object $page Page class
+ * @return boolean Returns true if `full-cover` is found in the
+ *                 page template field and the page gas a cover
+ *                 image.
+ */
+function full_cover() {
+
+	// Access global variables.
+	global $page;
+
+	if (
+		$page->coverImage() &&
+		str_contains( $page->template(), 'full-cover' )
+	) {
+		return true;
+	}
+	return false;
 }
 
 /**

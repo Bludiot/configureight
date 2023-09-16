@@ -1,6 +1,6 @@
 <?php
 /**
- * Site index file
+ * Standard page template
  *
  * @package    BS Bludit
  * @subpackage Templates

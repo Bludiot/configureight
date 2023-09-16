@@ -8,19 +8,20 @@
  * @since      1.0.0
  */
 
+// Import namespaced functions.
+use function BSB_Func\{
+	full_cover
+};
+use function BSB_Tags\{
+	page_header
+};
+
 ?>
 <article class="site-article" role="article" data-site-article>
 
-	<header class="page-header" data-page-header>
-		<h1><?php echo $page->title(); ?></h1>
-
-		<?php if ( $page->description() ) {
-			printf(
-				'<p class="page-description page-description-single">%s</p>',
-				$page->description()
-			);
-		} ?>
-	</header>
+	<?php if ( ! full_cover() ) {
+		echo page_header();
+	} ?>
 
 	<?php if ( $page->coverImage() ) : ?>
 	<figure class="page-cover page-cover-single">

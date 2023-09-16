@@ -22,6 +22,7 @@ use function BSB_Func\{
 	text_replace,
 	favicon_exists,
 	blog_data,
+	full_cover,
 	asset_min
 };
 
@@ -152,7 +153,16 @@ function body_classes() {
 			$templates = explode( ' ', $page->template() );
 
 			foreach ( $templates as $template ) {
-				$classes[] = "template-{$template}";
+
+				// Exclude `full-cover` template if no cover image.
+				if (
+					! $page->coverImage() &&
+					str_contains( $page->template(), 'full-cover' )
+				) {
+					$classes[] = '';
+				} else {
+					$classes[] = "template-{$template}";
+				}
 			}
 		}
 	}
@@ -225,6 +235,61 @@ function site_schema() {
 		$itemtype = 'WebPage';
 	}
 	echo 'https://schema.org/' . $itemtype;
+}
+
+/**
+ * Page header
+ *
+ * Returns the page title and description
+ *
+ * @since  1.0.0
+ * @global object $page Page class
+ * @return string Returns the header markup.
+ */
+function page_header() {
+
+	// Access global variables.
+	global $page;
+
+	$wrapper     = 'header';
+	$description = $page->description();
+	$sticky_icon = '';
+
+	/**
+	 * Do not use `<header>` element for the
+	 * `full-cover` page template because
+	 * this will be used inside the site
+	 * header; a `<header>` element must not
+	 * contain another `<header>` element.
+	 */
+	if ( full_cover() ) {
+		$wrapper = 'div';
+	}
+
+	// If the page is sticky.
+	if ( $page->sticky() ) {
+		$sticky_icon = sticky_icon( 'true', 'sticky-icon-heading' ) . ' ';
+	}
+
+	$html = sprintf(
+		'<%s class="page-header" data-page-header>',
+		$wrapper
+	);
+	$html .= sprintf(
+		'<h1 class="page-title">%s%s</h1>',
+		$sticky_icon,
+		$page->title()
+	);
+
+	if ( ! empty( $description ) && ! ctype_space( $description ) ) {
+		$html .= sprintf(
+			'<p class="page-description page-description-single">%s</p>',
+			$description
+		);
+	}
+	$html .= "</{$wrapper}>";
+
+	return $html;
 }
 
 /**
@@ -366,9 +431,23 @@ function content_template() {
 		if ( $site->getField( 'homepage' ) && $page->slug() == $site->getField( 'homepage' ) ) {
 			$template = 'views/content/front-page.php';
 
-		// Page with template applied, excluding `no-sidebar` template.
+		/**
+		 * Page with template applied, excluding some templates.
+		 * Sidebar templates are excluded because sidebar location
+		 * is achieved with CSS based on body class.
+		 *
+		 * @see body_classes()
+		 *
+		 * The `full-cover` template is excluded because a different
+		 * site header is used prior to calling this function.
+		 */
 		} elseif ( $page->template() ) {
-			$template = 'views/content/' . str_replace( [ ' ', 'no-sidebar', 'sidebar-bottom' ], '', $page->template() ) . '.php';
+			$template = 'views/content/' . str_replace( [ ' ', 'full-cover', 'no-sidebar', 'sidebar-bottom' ], '', $page->template() ) . '.php';
+			if ( file_exists( THEME_DIR . $template ) ) {
+				$template = $template;
+			} else {
+				$template = 'views/content/page.php';
+			}
 
 		// Static page.
 		} elseif ( $page->isStatic() ) {

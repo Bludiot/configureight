@@ -16,7 +16,11 @@
  */
 
 // Import namespaced functions.
+use function BSB_Func\{
+	full_cover
+};
 use function BSB_Tags\{
+	page_header,
 	posts_loop_header,
 	page_description,
 	get_author
