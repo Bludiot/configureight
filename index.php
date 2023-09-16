@@ -10,7 +10,8 @@
 // Import namespaced functions.
 use function BSB_Func\{
 	is_blog_page,
-	blog_data
+	blog_data,
+	full_cover
 };
 use function BSB_Tags\{
 	body_classes,
@@ -33,16 +34,22 @@ if ( is_blog_page() ) {
 	}
 }
 
+// Get UUID
+$uuid = '';
+if ( 'page' == $url->whereAmI() ) {
+	$uuid = $page->uuid();
+}
+
 // Data attributes.
 $body_data_attr = sprintf(
-	'data-uuid="%s"',
-	$page->uuid()
+	'data-uuid="%s" data-body',
+	$uuid
 );
 $main_data_attr = 'data-page-main';
 if ( is_blog_page() ) {
 	$body_data_attr = sprintf(
 		'data-uuid="%s" data-post-count="%s"',
-		$page->uuid(),
+		$uuid,
 		$blog_data['post_count']
 	);
 	$main_data_attr = sprintf(
@@ -55,7 +62,7 @@ if ( is_blog_page() ) {
 <!DOCTYPE html>
 <html dir="auto" class="no-js" lang="<?php echo Theme :: lang() ?>" xmlns:og="http://opengraphprotocol.org/schema/" data-web-page>
 <?php include( THEME_DIR . 'views/utility/head.php' ); ?>
-<body class="<?php echo body_classes(); ?>" itemid="<?php echo $page->uuid(); ?>" data-uuid="<?php echo $page->uuid(); ?>" data-body>
+<body class="<?php echo body_classes(); ?>" itemid="<?php echo $uuid; ?>" data-uuid="<?php echo $body_data_attr; ?>">
 
 	<?php Theme :: plugins( 'siteBodyBegin' ); ?>
 
@@ -65,7 +72,15 @@ if ( is_blog_page() ) {
 
 		<?php Theme :: plugins( 'pageBegin' ); ?>
 
+		<?php if ( 'page' == $url->whereAmI() && ! full_cover() && $page->coverImage() ) : ?>
+		<figure class="page-cover page-cover-single">
+			<img src="<?php echo $page->coverImage(); ?>" />
+			<figcaption class="screen-reader-text"><?php echo $page->title(); ?></figcaption>
+		</figure>
+		<?php endif ?>
+
 		<div id="content" class="wrapper-general content-wrapper" data-content-wrapper>
+
 			<main class="page-main <?php echo $main_view; ?>" <?php echo $main_data_attr; ?> itemscope itemprop="mainContentOfPage">
 				<?php
 				if ( 'search' == $url->whereAmI() ) {

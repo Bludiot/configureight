@@ -23,13 +23,6 @@ use function BSB_Tags\{
 		echo page_header();
 	} ?>
 
-	<?php if ( $page->coverImage() ) : ?>
-	<figure class="page-cover page-cover-single">
-		<img src="<?php echo $page->coverImage(); ?>" />
-		<figcaption class="screen-reader-text"><?php echo $page->title(); ?></figcaption>
-	</figure>
-	<?php endif ?>
-
 	<div class="page-content" itemprop="articleBody" data-page-content>
 		<?php echo $page->contentBreak(); ?>
 	</div>

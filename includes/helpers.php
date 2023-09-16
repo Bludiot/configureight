@@ -264,9 +264,10 @@ function blog_data() {
 function full_cover() {
 
 	// Access global variables.
-	global $page;
+	global $page, $url;
 
 	if (
+		'page' == $url->whereAmI() &&
 		$page->coverImage() &&
 		str_contains( $page->template(), 'full-cover' )
 	) {

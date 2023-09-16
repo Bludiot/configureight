@@ -146,6 +146,7 @@ function body_classes() {
 	// Page templates.
 	if (
 		'search' != $url->whereAmI() &&
+		'page' == $url->whereAmI() &&
 		! empty( $page->template() ) &&
 		! ctype_space( $page->template() )
 	) {
