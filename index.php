@@ -55,7 +55,7 @@ if ( is_blog_page() ) {
 <!DOCTYPE html>
 <html dir="auto" class="no-js" lang="<?php echo Theme :: lang() ?>" xmlns:og="http://opengraphprotocol.org/schema/" data-web-page>
 <?php include( THEME_DIR . 'views/utility/head.php' ); ?>
-<body class="<?php echo body_classes(); ?>" itemid="<?php echo $page->uuid(); ?>" data-uuid="<?php echo $page->uuid(); ?>">
+<body class="<?php echo body_classes(); ?>" itemid="<?php echo $page->uuid(); ?>" data-uuid="<?php echo $page->uuid(); ?>" data-body>
 
 	<?php Theme :: plugins( 'siteBodyBegin' ); ?>
 
