@@ -186,7 +186,7 @@ function blog_url() {
  * @since  1.0.0
  * @global array  $content array of site content
  * @global object $L Language class
- * @global object $page Page class
+ * @global object $pages Pages class
  * @global object $site Site class
  * @global object $url Url class
  * @return array  Returns an array of blog data.
@@ -194,7 +194,7 @@ function blog_url() {
 function blog_data() {
 
 	// Access global variables.
-	global $content, $L, $page, $pages, $site, $url;
+	global $content, $L, $pages, $site, $url;
 
 	// Null if in search results (global errors).
 	if ( 'search' == $url->whereAmI() ) {
