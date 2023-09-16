@@ -31,7 +31,7 @@ if ( $post->description() ) {
 }
 
 ?>
-<article class="site-article blog-wrap" role="article">
+<article class="site-article blog-wrap" role="article" data-site-article>
 	<?php if ( $post->coverImage() ) : ?>
 	<figure class="page-cover page-cover-home">
 		<a href="<?php echo $post->permalink(); ?>">
@@ -41,9 +41,9 @@ if ( $post->description() ) {
 	</figure>
 	<?php endif ?>
 
-	<div class="page-summary">
+	<div class="page-summary" data-page-content>
 
-		<header class="page-header">
+		<header class="page-header" data-page-header>
 			<h2><a href="<?php echo $post->permalink(); ?>"><?php echo $post->title(); ?></a></h2>
 		</header>
 

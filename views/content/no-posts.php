@@ -9,7 +9,7 @@
  */
 
 ?>
-<div class="no-posts-found">
+<div class="no-posts-found" data-no-posts>
 
 	<?php
 	if ( 'search' == $WHERE_AM_I ) {

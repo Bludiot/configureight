@@ -15,7 +15,7 @@
  */
 
 ?>
-<nav id="site-navigation" class="site-navigation" role="directory" itemscope itemtype="https://schema.org/SiteNavigationElement">
+<nav id="site-navigation" class="site-navigation" role="directory" itemscope itemtype="https://schema.org/SiteNavigationElement" data-site-navigation>
 	<ul class="nav-list main-nav-list">
 		<?php foreach ( $staticContent as $nav_item ) :
 

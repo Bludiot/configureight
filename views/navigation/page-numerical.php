@@ -32,7 +32,7 @@ $last_icon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><pat
 if ( Paginator :: numberOfPages() > 1 ) :
 
 ?>
-<nav class="page-navigation">
+<nav class="page-navigation" data-page-navigation>
 	<ul class="nav-list pagination-list pagination-numerical">
 		<?php if ( $getPage != 1 ) { ?>
 		<li>

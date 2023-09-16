@@ -85,7 +85,7 @@ $tags_list = function() use ( $post ) {
 };
 
 ?>
-<article class="site-article blog-wrap" role="article">
+<article class="site-article blog-wrap" role="article" data-site-article>
 	<?php if ( ! empty( $thumb_src ) ) : ?>
 	<figure class="page-cover page-cover-home">
 		<a href="<?php echo $post->permalink(); ?>">
@@ -95,9 +95,9 @@ $tags_list = function() use ( $post ) {
 	</figure>
 	<?php endif ?>
 
-	<div class="page-summary">
+	<div class="page-summary" data-page-content>
 
-		<header class="page-header">
+		<header class="page-header" data-page-header>
 			<h2><a href="<?php echo $post->permalink(); ?>"><?php echo $sticky . $post->title(); ?></a></h2>
 		</header>
 

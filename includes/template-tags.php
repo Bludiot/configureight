@@ -282,7 +282,7 @@ function site_logo() {
 	}
 
 	?>
-	<div class="site-logo">
+	<div class="site-logo" data-site-logo>
 		<figure>
 			<a href="<?php echo $site->url(); ?>">
 				<img src="<?php echo $site->logo(); ?>" alt="<?php echo $site->title(); ?>" width="80">

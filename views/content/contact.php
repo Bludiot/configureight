@@ -9,9 +9,9 @@
  */
 
 ?>
-<article class="site-article" role="article">
+<article class="site-article" role="article" data-site-article>
 
-	<header class="page-header">
+	<header class="page-header" data-page-header>
 		<h1><?php echo $page->title(); ?></h1>
 
 		<?php if ( $page->description() ) {
@@ -22,7 +22,7 @@
 		} ?>
 	</header>
 
-	<div class="page-content" itemprop="articleBody">
+	<div class="page-content" itemprop="articleBody" data-page-content>
 		<?php echo $page->contentBreak(); ?>
 	</div>
 

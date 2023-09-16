@@ -24,7 +24,7 @@ if ( ! isset( $_GET['page'] ) ) {
 if ( Paginator :: numberOfPages() > 1 ) :
 
 ?>
-<nav class="page-navigation">
+<nav class="page-navigation" data-page-navigation>
 	<ul class="nav-list pagination-list pagination-prev-next">
 	<?php if ( Paginator :: showPrev() ) : ?>
 		<li id="prev-page">

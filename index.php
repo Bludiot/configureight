@@ -9,7 +9,8 @@
 
 // Import namespaced functions.
 use function BSB_Func\{
-	is_blog_page
+	is_blog_page,
+	blog_data
 };
 use function BSB_Tags\{
 	body_classes,
@@ -20,6 +21,9 @@ use function BSB_Tags\{
 	footer_scripts
 };
 
+// Get blog data.
+$blog_data = blog_data();
+
 // Layout class for the `<main>` element.
 $main_view = 'page-view';
 if ( is_blog_page() ) {
@@ -29,22 +33,40 @@ if ( is_blog_page() ) {
 	}
 }
 
+// Data attributes.
+$body_data_attr = sprintf(
+	'data-uuid="%s"',
+	$page->uuid()
+);
+$main_data_attr = 'data-page-main';
+if ( is_blog_page() ) {
+	$body_data_attr = sprintf(
+		'data-uuid="%s" data-post-count="%s"',
+		$page->uuid(),
+		$blog_data['post_count']
+	);
+	$main_data_attr = sprintf(
+		'data-page-main data-show-posts="%s"',
+		$blog_data['show_posts']
+	);
+}
+
 ?>
 <!DOCTYPE html>
-<html dir="auto" class="no-js" lang="<?php echo Theme :: lang() ?>" xmlns:og="http://opengraphprotocol.org/schema/">
+<html dir="auto" class="no-js" lang="<?php echo Theme :: lang() ?>" xmlns:og="http://opengraphprotocol.org/schema/" data-web-page>
 <?php include( THEME_DIR . 'views/utility/head.php' ); ?>
 <body class="<?php echo body_classes(); ?>" itemid="<?php echo $page->uuid(); ?>" data-uuid="<?php echo $page->uuid(); ?>">
 
 	<?php Theme :: plugins( 'siteBodyBegin' ); ?>
 
-	<div id="<?php echo page_id(); ?>" class="page-wrap" itemscope="itemscope" itemtype="<?php site_schema(); ?>">
+	<div id="<?php echo page_id(); ?>" class="page-wrap" data-page-wrap itemscope="itemscope" itemtype="<?php site_schema(); ?>">
 
 		<?php include( THEME_DIR . 'views/header/header.php' ); ?>
 
 		<?php Theme :: plugins( 'pageBegin' ); ?>
 
-		<div id="content" class="wrapper-general content-wrapper">
-			<main class="page-main <?php echo $main_view; ?>" itemscope itemprop="mainContentOfPage">
+		<div id="content" class="wrapper-general content-wrapper" data-content-wrapper>
+			<main class="page-main <?php echo $main_view; ?>" <?php echo $main_data_attr; ?> itemscope itemprop="mainContentOfPage">
 				<?php
 				if ( 'search' == $url->whereAmI() ) {
 					include( THEME_DIR . 'views/content/search.php' );

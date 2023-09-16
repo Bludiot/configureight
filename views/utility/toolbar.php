@@ -34,7 +34,7 @@ if ( $user->nickname() ) {
 }
 
 ?>
-<section class="user-toolbar">
+<section class="user-toolbar" data-user-toolbar>
 	<div class="user-action">
 		<a href="<?php echo DOMAIN_ADMIN;?>" target="_blank"><?php $L->p( 'dashboard-link' ); ?></a>
 		<?php echo $edit_link; ?>

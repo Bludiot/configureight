@@ -14,9 +14,9 @@ use function BSB_Tags\{
 }
 
 ?>
-<article class="site-article" role="article">
+<article class="site-article" role="article" data-site-article>
 
-	<header class="page-header">
+	<header class="page-header" data-page-header>
 		<h1><?php sticky_icon( 'true', 'sticky-icon-heading' ); ?> <?php echo $page->title(); ?></h1>
 
 		<?php if ( $page->description() ) {
@@ -34,7 +34,7 @@ use function BSB_Tags\{
 	</figure>
 	<?php endif ?>
 
-	<div class="page-content" itemprop="articleBody">
+	<div class="page-content" itemprop="articleBody" data-page-content>
 		<?php echo $page->contentBreak(); ?>
 	</div>
 

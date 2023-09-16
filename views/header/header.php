@@ -29,9 +29,9 @@ if ( 'home' == $WHERE_AM_I ) {
 }
 
 ?>
-<header id="masthead" class="site-header" role="banner" itemscope="itemscope" itemtype="https://schema.org/Organization">
+<header id="masthead" class="site-header" role="banner" itemscope="itemscope" itemtype="https://schema.org/Organization" data-site-header>
 	<div class="wrapper-general site-header-wrap">
-		<div class="site-branding">
+		<div class="site-branding" data-site-branding>
 			<?php site_logo(); ?>
 			<div class="site-title-description">
 				<?php echo $site_title; ?>

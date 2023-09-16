@@ -16,7 +16,7 @@ $copyright = sprintf(
 );
 
 ?>
-<footer class="site-footer">
+<footer class="site-footer" data-site-footer>
 	<div class="wrapper-general">
 		<div class="site-footer-text">
 			<?php echo Theme :: footer(); ?>
