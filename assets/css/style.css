@@ -979,7 +979,17 @@ body:not(.home) .blog-wrap {
 }
 
 .page-cover {
+  overflow: hidden;
   margin: var(--bsb-page-cover-single--margin, 1rem 0 0 0);
+}
+.page-cover img {
+  display: block;
+  width: 100%;
+  max-height: 320px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center center;
+     object-position: center center;
 }
 
 .no-posts-found {
