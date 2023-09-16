@@ -194,7 +194,7 @@ function blog_url() {
 function blog_data() {
 
 	// Access global variables.
-	global $content, $L, $page, $site, $url;
+	global $content, $L, $page, $pages, $site, $url;
 
 	// Null if in search results (global errors).
 	if ( 'search' == $url->whereAmI() ) {
@@ -213,7 +213,8 @@ function blog_data() {
 
 	// Default data array.
 	$data = [
-		'num_posts'   => count( $content ),
+		'post_count'  => $pages->count(),
+		'show_posts'  => $site->getField( 'itemsPerPage' ),
 		'location'    => 'home',
 		'key'         => false,
 		'url'         => blog_url(),
