@@ -297,3 +297,141 @@ function asset_min() {
 	}
 	return '.min';
 }
+
+/**
+ * Read numbers
+ *
+ * Converts an integer to its textual representation.
+ *
+ * @since  1.0.0
+ * @param  integer $number the number to convert to a textual representation
+ * @param  integer $depth the number of times this has been recursed
+ * @global object $L Language class
+ * @return string Returns a word corresponding to a numeral
+ */
+function numbers_to_text( $number, $depth = 0 ) {
+
+	// Access global variables.
+	global $L;
+
+	$number = (int)$number;
+	$text   = '';
+
+	// If it's any other negative, just flip it and call again.
+	if ( $number < 0 ) {
+		return 'negative ' + numbers_to_text( - $number, 0 );
+	}
+
+	// 100 and above.
+	if ( $number > 99 ) {
+
+		// 1000 and higher.
+		if ( $number > 999 ) {
+			$text .= numbers_to_text( $number / 1000, $depth + 3 );
+		}
+
+		// Last three digits.
+		$number %= 1000;
+
+		// As long as the first digit is not zero.
+		if ( $number > 99 ) {
+			$text .= numbers_to_text( $number / 100, 2 ) . $L->get( ' hundred' ) . "\n";
+		}
+
+		// Last two digits.
+		$text .= numbers_to_text( $number % 100, 1 );
+
+	// From 0 to 99.
+	} else {
+
+		$mod = floor( $number / 10 );
+
+		// Ones place.
+		if ( 0 == $mod ) {
+			if ( 1 == $number ) {
+				$text .= $L->get( 'one' );
+			} elseif ( 2 == $number ) {
+				$text .= $L->get( 'two' );
+			} elseif ( 3 == $number ) {
+				$text .= $L->get( 'three' );
+			} elseif ( 4 == $number ) {
+				$text .= $L->get( 'four' );
+			} elseif ( 5 == $number ) {
+				$text .= $L->get( 'five' );
+			} elseif ( 6 == $number ) {
+				$text .= $L->get( 'six' );
+			} elseif ( 7 == $number ) {
+				$text .= $L->get( 'seven' );
+			} elseif ( 8 == $number ) {
+				$text .= $L->get( 'eight' );
+			} elseif ( 9 == $number ) {
+				$text .= $L->get( 'nine' );
+			}
+
+		// if there's a one in the ten's place.
+		} elseif ( 1 == $mod ) {
+			if ( 10 == $number ) {
+				$text .= $L->get( 'ten' );
+			} elseif ( 11 == $number ) {
+				$text .= $L->get( 'eleven' );
+			} elseif ( 12 == $number ) {
+				$text .= $L->get( 'twelve' );
+			} elseif ( 13 == $number ) {
+				$text .= $L->get( 'thirteen' );
+			} elseif ( 14 == $number ) {
+				$text .= $L->get( 'fourteen' );
+			} elseif ( 15 == $number ) {
+				$text .= $L->get( 'fifteen' );
+			} elseif ( 16 == $number ) {
+				$text .= $L->get( 'sixteen' );
+			} elseif ( 17 == $number ) {
+				$text .= $L->get( 'seventeen' );
+			} elseif ( 18 == $number ) {
+				$text .= $L->get( 'eighteen' );
+			} elseif ( 19 == $number ) {
+				$text .= $L->get( 'nineteen' );
+			}
+
+		// if there's a different number in the ten's place.
+		} else {
+			if ( 2 == $mod ) {
+				$text .= $L->get( 'twenty' );
+			} elseif ( 3 == $mod ) {
+				$text .= $L->get( 'thirty' );
+			} elseif ( 4 == $mod ) {
+				$text .= $L->get( 'forty' );
+			} elseif ( 5 == $mod ) {
+				$text .= $L->get( 'fifty' );
+			} elseif ( 6 == $mod ) {
+				$text .= $L->get( 'sixty' );
+			} elseif ( 7 == $mod ) {
+				$text .= $L->get( 'seventy' );
+			} elseif ( 8 == $mod ) {
+				$text .= $L->get( 'eighty' );
+			} elseif ( 9 == $mod ) {
+				$text .= $L->get( 'ninety' );
+			}
+
+			if ( ( $number % 10 ) != 0 ) {
+
+				// Get rid of space at end.
+				$text  = rtrim( $text );
+				$text .= '-';
+			}
+			$text .= numbers_to_text( $number % 10, 0 );
+		}
+	}
+
+	if ( 0 != $number ) {
+		if ( 3 == $depth ) {
+			$text .= $L->get( ' thousand' ) . "\n";
+		} elseif ( 6 == $depth ) {
+			$text .= $L->get( ' million' ) . "\n";
+		}
+
+		if ( 9 == $depth ) {
+			$text .= $L->get( ' billion' ) . "\n";
+		}
+	}
+	return $text;
+}
