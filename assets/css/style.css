@@ -931,7 +931,7 @@ body.template-sidebar-bottom .content-wrapper {
 .blog-wrap:not(:first-of-type) {
   margin-top: 2rem;
 }
-.blog-wrap .page-cover-home {
+.blog-wrap .page-cover-blog {
   width: 180px;
   min-width: 180px;
 }
@@ -980,12 +980,12 @@ body:not(.home) .blog-wrap {
   margin: var(--bsb-page-content--img--float-right--margin, 0 0 1em 1em);
 }
 
-.page-cover {
+.page-cover:not(.page-cover-blog) {
   overflow: hidden;
   margin: var(--bsb-page-cover-single--margin, 1rem auto 0 auto);
   max-width: 2048px;
 }
-.page-cover img {
+.page-cover:not(.page-cover-blog) img {
   display: block;
   width: 100%;
   max-height: 320px;

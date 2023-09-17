@@ -43,7 +43,7 @@ body {
 		margin-top: 2rem;
 	}
 
-	.page-cover-home {
+	.page-cover-blog {
 		width: 180px;
 		min-width: 180px;
 	}
@@ -106,7 +106,7 @@ body:not( .home ) {
 	}
 }
 
-.page-cover {
+.page-cover:not( .page-cover-blog ) {
 	overflow: hidden;
 	margin: var( --bsb-page-cover-single--margin, 1rem auto 0 auto );
 	max-width: 2048px;

@@ -40,7 +40,7 @@ foreach ( $content as $post ) :
 ?>
 <article class="site-article blog-wrap" role="article" data-site-article>
 	<?php if ( $post->coverImage() ) : ?>
-	<figure class="page-cover page-cover-home">
+	<figure class="page-cover page-cover-blog">
 		<a href="<?php echo $post->permalink(); ?>">
 			<img src="<?php echo $post->coverImage(); ?>" loading="lazy" />
 		</a>
