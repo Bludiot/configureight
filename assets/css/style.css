@@ -726,11 +726,28 @@ h3 + .search-form {
   align-items: center;
   justify-content: center;
   padding: 0 2rem 0 2rem;
-  transform: translateY(-3vw);
+  transform: translateY(-2vw);
   pointer-events: none;
 }
 .template-full-cover .page-header * {
   pointer-events: initial;
+}
+.template-full-cover .page-header .button.intro-scroll {
+  background: transparent;
+  border: none;
+  color: var(--bsb-cover--title--link--text-color, #ffffff);
+  transition: transform ease-in-out 0.15s;
+  transform: translateY(0);
+}
+.template-full-cover .page-header .button.intro-scroll:hover, .template-full-cover .page-header .button.intro-scroll:focus {
+  color: var(--bsb-site-cover--title--link--action--text-color, #ffffff);
+}
+.template-full-cover .page-header .button.intro-scroll:hover {
+  transform: translateY(0.25rem);
+}
+.template-full-cover .page-header .button.intro-scroll svg {
+  width: calc(var(--bsb-button--svg-icon--width) * 2.5);
+  height: calc(var(--bsb-button--svg-icon--height) * 2.5);
 }
 .template-full-cover .site-title,
 .template-full-cover .page-title {

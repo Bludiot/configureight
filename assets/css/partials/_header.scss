@@ -97,7 +97,7 @@
 		align-items: center;
 		justify-content: center;
 		padding: 0 2rem 0 2rem;
-		transform: translateY( -3vw );
+		transform: translateY( -2vw );
 
 		// In case it overlaps somewhere.
 		pointer-events: none;
@@ -105,6 +105,30 @@
 		// Restore pointer events for children.
 		* {
 			pointer-events: initial;
+		}
+
+		.button {
+			&.intro-scroll {
+				background: transparent;
+				border: none;
+				color: var( --bsb-cover--title--link--text-color, $white );
+				transition: transform ease-in-out .15s;
+				transform: translateY( 0 );
+
+				&:hover,
+				&:focus {
+					color: var( --bsb-site-cover--title--link--action--text-color, $white );
+				}
+
+				&:hover {
+					transform: translateY( 0.25rem );
+				}
+
+				svg {
+					width: calc( var( --bsb-button--svg-icon--width ) * 2.5 );
+					height: calc( var( --bsb-button--svg-icon--height ) * 2.5 );
+				}
+			}
 		}
 	}
 
