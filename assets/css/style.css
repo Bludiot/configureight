@@ -726,6 +726,7 @@ h3 + .search-form {
   align-items: center;
   justify-content: center;
   padding: 0 2rem 0 2rem;
+  transform: translateY(-3vw);
 }
 .template-full-cover .site-title,
 .template-full-cover .page-title {
@@ -981,7 +982,8 @@ body:not(.home) .blog-wrap {
 
 .page-cover {
   overflow: hidden;
-  margin: var(--bsb-page-cover-single--margin, 1rem 0 0 0);
+  margin: var(--bsb-page-cover-single--margin, 1rem auto 0 auto);
+  max-width: 2048px;
 }
 .page-cover img {
   display: block;
