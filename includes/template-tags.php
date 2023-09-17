@@ -546,14 +546,16 @@ function posts_loop_header() {
 		);
 
 	} elseif ( 'category' == $url->whereAmI() ) {
+		$get_cat     = new \Category( $url->slug() );
 		$class       = 'category-page-description';
-		$heading     = $format_slug;
-		$description = text_replace( 'posts-loop-desc-cat', $format_slug );
+		$heading     = $get_cat->name();
+		$description = text_replace( 'posts-loop-desc-cat', $get_cat->name() );
 
 	} elseif ( 'tag' == $url->whereAmI() ) {
+		$get_tag     = new \Tag( $url->slug() );
 		$class       = 'tag-page-description';
-		$heading     = $format_slug;
-		$description = text_replace( 'posts-loop-desc-tag', $format_slug );
+		$heading     = $get_tag->name();
+		$description = text_replace( 'posts-loop-desc-tag', $get_tag->name() );
 	}
 
 	// SEt up the header markup.
