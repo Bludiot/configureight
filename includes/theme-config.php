@@ -19,12 +19,12 @@ if ( ! defined( 'BLUDIT' ) ) {
  * @since 1.0.0
  * @var   array
  */
-if ( ! defined( 'SITE_CONFIG' ) ) {
+if ( ! defined( 'THEME_CONFIG' ) ) {
 	define(
-		'SITE_CONFIG',
+		'THEME_CONFIG',
 		[
-			'debug'       => true,
-			'head'        => [
+			'debug' => true,
+			'head'  => [
 
 				/**
 				 * Favicon (bookmark icon)
@@ -70,7 +70,7 @@ if ( ! defined( 'SITE_CONFIG' ) ) {
 }
 
 // Set debug mode.
-if ( SITE_CONFIG['debug'] ) {
+if ( THEME_CONFIG['debug'] ) {
 	define( 'DEBUG_MODE', true );
 	ini_set( 'display_errors', 1 );
 }

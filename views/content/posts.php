@@ -105,13 +105,13 @@ $tags_list = function() use ( $post ) {
 
 		<footer class="page-info">
 			<p>
-				<?php if ( SITE_CONFIG['byline'] ) : ?>
+				<?php if ( THEME_CONFIG['byline'] ) : ?>
 				<span class="page-info-entry page-info-author">
 					<?php echo get_author(); ?>
 				</span>
 				<?php endif ?>
 
-				<?php if ( SITE_CONFIG['post_date'] ) : ?>
+				<?php if ( THEME_CONFIG['post_date'] ) : ?>
 				<span class="page-info-entry page-info-date">
 					<?php echo $post->date(); ?>
 				</span>
@@ -132,7 +132,7 @@ $tags_list = function() use ( $post ) {
 <?php
 
 // Get page navigation.
-if ( 'numerical' == SITE_CONFIG['pagination'] ) {
+if ( 'numerical' == THEME_CONFIG['pagination'] ) {
 	include( THEME_DIR . 'views/navigation/page-numerical.php' );
 } else {
 	include( THEME_DIR . 'views/navigation/page-prev-next.php' );

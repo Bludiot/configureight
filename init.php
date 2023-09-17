@@ -84,7 +84,24 @@ if ( ! min_php_version() ) {
 	die( text_replace( 'die-php-version', BSB_MIN_PHP_VERSION ) );
 }
 
-// Get dependencies.
-require_once( THEME_DIR . 'includes/config.php' );
+/**
+ * Get configuration file
+ *
+ * Looks first in the Bludit root directory
+ * for `theme-config.php`, then in this theme's
+ * `includes` directory for `theme-config.php`.
+ *
+ * This is a starter theme and you may create
+ * more than one theme from this boilerplate.
+ * For this reason the ability to access a common
+ * configuration file is provided to you.
+ */
+if ( file_exists( PATH_ROOT . 'theme-config.php' ) ) {
+	require_once( PATH_ROOT . 'theme-config.php' );
+} else {
+	require_once( THEME_DIR . 'includes/theme-config.php' );
+}
+
+// Get theme functions.
 require_once( THEME_DIR . 'includes/helpers.php' );
 require_once( THEME_DIR . 'includes/template-tags.php' );

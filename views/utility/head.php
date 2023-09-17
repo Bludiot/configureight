@@ -22,11 +22,11 @@ $suffix = asset_min();
 // Get keywords from config file.
 $keywords = '';
 if (
-	is_array( SITE_CONFIG['head'] ) &&
-	array_key_exists( 'keywords', SITE_CONFIG['head'] ) &&
-	is_array( SITE_CONFIG['head']['keywords'] )
+	is_array( THEME_CONFIG['head'] ) &&
+	array_key_exists( 'keywords', THEME_CONFIG['head'] ) &&
+	is_array( THEME_CONFIG['head']['keywords'] )
 ) {
-	$keywords = implode( ' ', SITE_CONFIG['head']['keywords'] );
+	$keywords = implode( ' ', THEME_CONFIG['head']['keywords'] );
 }
 
 ?>
