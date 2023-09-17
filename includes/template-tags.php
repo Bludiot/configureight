@@ -348,7 +348,7 @@ function get_toolbar() {
  * @return mixed Returns the `get_toolbar()` function or false.
  */
 function user_toolbar() {
-	if ( user_logged_in() && THEME_CONFIG['toolbar'] ) {
+	if ( user_logged_in() && THEME_CONFIG['toolbar']['display'] ) {
 		return get_toolbar();
 	}
 	return false;
@@ -442,7 +442,7 @@ function content_template() {
 
 	// Blog template when a static home page is used.
 	if ( 'page' == $url->whereAmI() && $page->slug() == str_replace( '/', '', $site->getField( 'uriBlog' ) ) ) {
-		if ( 'grid' == THEME_CONFIG['posts_loop'] ) {
+		if ( 'grid' == THEME_CONFIG['posts']['loop'] ) {
 			$template = 'views/content/posts-grid.php';
 		} else {
 			$template = 'views/content/posts.php';
@@ -488,7 +488,7 @@ function content_template() {
 
 	// Default to posts loop.
 	} else {
-		if ( 'grid' == THEME_CONFIG['posts_loop'] ) {
+		if ( 'grid' == THEME_CONFIG['posts']['loop'] ) {
 			$template = 'views/content/posts-grid.php';
 		} else {
 			$template = 'views/content/posts.php';

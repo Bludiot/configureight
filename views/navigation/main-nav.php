@@ -76,7 +76,7 @@
 		if ( ! empty( $home_uri ) && ! empty( $blog_uri ) ) {
 
 			// If true in config file.
-			if ( THEME_CONFIG['blog_in_nav'] ) {
+			if ( THEME_CONFIG['main_nav']['blog'] ) {
 				printf(
 					'<li><a href="%s">%s</a></li>',
 					$site->url() . str_replace( '/', '', $blog_uri ) . '/',
@@ -86,7 +86,7 @@
 		}
 
 		// Add a home link if true in config file.
-		if ( THEME_CONFIG['home_in_nav'] ) {
+		if ( THEME_CONFIG['main_nav']['home'] ) {
 			printf(
 				'<li><a href="%s">%s</a></li>',
 				$site->url(),

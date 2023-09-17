@@ -23,8 +23,9 @@ if ( ! defined( 'THEME_CONFIG' ) ) {
 	define(
 		'THEME_CONFIG',
 		[
-			'debug' => true,
-			'head'  => [
+			'parent' => false,
+			'debug'  => false,
+			'head'   => [
 
 				/**
 				 * Favicon (bookmark icon)
@@ -45,26 +46,38 @@ if ( ! defined( 'THEME_CONFIG' ) ) {
 				'favicon'  => 'favicon.gif',
 				'keywords' => []
 			],
-			'toolbar'     => true,
-			'blog_in_nav' => true,
-			'home_in_nav' => true,
+			'toolbar'     => [
+				'display' => true
+			],
+			'main_nav'    => [
+				'blog'   => true,
+				'home'   => true,
+				'search' => false
+			],
+			'media' => [
+				// No Bludit constants, only dir/file.
+				'cover_image' => 'assets/images/cover.jpg',
+			],
 
-			// No Bludit constants, only dir/file.
-			'cover_image' => 'assets/images/cover.jpg',
+			// Posts loops.
+			'posts' => [
+
+				// Options: `list` & `grid`.
+				'loop' => 'list',
+
+				// Options: `prev_next` & `numerical`.
+				'paged'     => 'numerical',
+				'byline'    => true,
+				'post_date' => true,
+				'read_time' => true
+			],
 			'aside'       => [
 				'no_sidebar'     => false,
 				'sidebar_bottom' => false
 			],
-
-			// Options: `list` & `grid`.
-			'posts_loop'  => 'list',
-
-			// Options: `prev_next` & `numerical`.
-			'pagination'  => 'numerical',
-			'byline'      => true,
-			'post_date'   => true,
-			'read_time'   => true,
-			'copyright'   => true
+			'footer' => [
+				'copyright' => true
+			]
 		]
 	);
 }
