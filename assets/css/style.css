@@ -748,8 +748,8 @@ h3 + .search-form {
   transform: translateY(0.25rem);
 }
 .template-full-cover .page-header .button.intro-scroll svg {
-  width: calc(var(--bsb-button--svg-icon--width) * 2.5);
-  height: calc(var(--bsb-button--svg-icon--height) * 2.5);
+  width: calc(var(--bsb-button--svg-icon--width) * 3.5);
+  height: calc(var(--bsb-button--svg-icon--height) * 3.5);
 }
 .template-full-cover .site-title,
 .template-full-cover .page-title {
