@@ -23,7 +23,8 @@ use function BSB_Func\{
 	favicon_exists,
 	blog_data,
 	full_cover,
-	asset_min
+	asset_min,
+	numbers_to_text
 };
 
 /**
@@ -514,6 +515,16 @@ function posts_loop_header() {
 	$class       = '';
 	$format_slug =  ucwords( str_replace( [ '-', '_' ], '', $url->slug() ) );
 	$blog_data   = blog_data();
+	$blog_page   = '';
+
+	// If on a blog page other than the first.
+	if ( isset( $_GET['page'] ) && $_GET['page'] > 1 ) {
+		$blog_page = sprintf(
+			' &rsaquo; %s %s',
+			$L->get( 'page' ),
+			$_GET['page']
+		);
+	}
 
 	// Conditional heading & description.
 	if (
@@ -526,7 +537,7 @@ function posts_loop_header() {
 
 	} elseif ( 'blog' == $url->whereAmI() ) {
 		$class       = 'blog-page-description';
-		$heading     = ucwords( $blog_data['slug'] );
+		$heading     = ucwords( $blog_data['slug'] . $blog_page );
 		$description = sprintf(
 			'%s %s',
 			$L->get( 'posts-loop-desc-blog' ),
