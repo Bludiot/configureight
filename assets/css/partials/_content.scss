@@ -90,6 +90,7 @@ body:not( .home ) {
 }
 
 .page-content {
+
 	img[style="float: left;"],
 	img[style="float: left"],
 	img[style="float:left;"],
@@ -161,6 +162,12 @@ body:not( .home ) {
 				color: var( --bsb-article--tags-list--action--text-color );
 			}
 		}
+	}
+}
+
+.template-full-cover  {
+	.page-content {
+		margin: 4rem 0 0 0;
 	}
 }
 

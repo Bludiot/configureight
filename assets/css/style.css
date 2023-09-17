@@ -382,7 +382,7 @@ a:visited:hover, a:visited:focus, a:active:hover, a:active:focus {
 
 h1,
 h2 {
-  font-size: var(--bsb--heading-primary--font-size);
+  font-size: var(--bsb--heading-primary--font-size, 2rem);
   font-weight: var(--bsb--heading-primary--font-weight, bold);
 }
 h1 a,
@@ -1027,6 +1027,10 @@ body:not(.home) .blog-wrap {
 .site-article .tags-list a:hover, .site-article .tags-list a:focus {
   background-color: var(--bsb-article--tags-list--action--bg-color);
   color: var(--bsb-article--tags-list--action--text-color);
+}
+
+.template-full-cover .page-content {
+  margin: 4rem 0 0 0;
 }
 
 .blog article {
