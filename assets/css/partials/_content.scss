@@ -113,9 +113,17 @@ body:not( .home ) {
 	img {
 		display: block;
 		width: 100%;
-		max-height: 320px;
+		max-height: 30vw;
 		object-fit: cover;
 		object-position: center center;
+
+		@media screen and ( min-width: 1280px ) {
+			max-height: 383px;
+		}
+
+		@media screen and ( max-width: $break_tablet ) {
+			max-height: 320px;
+		}
 	}
 }
 
