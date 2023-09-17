@@ -253,10 +253,67 @@ function blog_data() {
 }
 
 /**
+ * Has cover image
+ *
+ * @since  1.0.0
+ * @global object $page Page class
+ * @global object $url Url class
+ * @return boolean
+ */
+function has_cover() {
+
+	// Access global variables.
+	global $page, $url;
+
+	$cover   = false;
+	$default = BSB_CONFIG['cover_image'];
+
+	if ( 'page' == $url->whereAmI() ) {
+		if ( $page->coverImage() ) {
+			$cover = true;
+		} elseif ( $default && file_exists( THEME_DIR . $default ) ) {
+			$cover = true;
+		}
+	} elseif ( $default && file_exists( THEME_DIR . $default ) ) {
+		$cover = true;
+	}
+	return $cover;
+}
+
+/**
+ * Get cover image source
+ *
+ * @since  1.0.0
+ * @global object $page Page class
+ * @global object $url Url class
+ * @return void
+ */
+function get_cover_src() {
+
+	// Access global variables.
+	global $page, $url;
+
+	$src     = '';
+	$default = BSB_CONFIG['cover_image'];
+
+	if ( 'page' == $url->whereAmI() ) {
+		if ( $page->coverImage() ) {
+			$src = $page->coverImage();
+		} elseif ( $default && file_exists( THEME_DIR . $default ) ) {
+			$src = DOMAIN_THEME . $default;
+		}
+	} elseif ( $default && file_exists( THEME_DIR . $default ) ) {
+		$src = DOMAIN_THEME . $default;
+	}
+	return $src;
+}
+
+/**
  * Is full cover template
  *
  * @since  1.0.0
  * @global object $page Page class
+ * @global object $url Url class
  * @return boolean Returns true if `full-cover` is found in the
  *                 page template field and the page gas a cover
  *                 image.
@@ -268,7 +325,7 @@ function full_cover() {
 
 	if (
 		'page' == $url->whereAmI() &&
-		$page->coverImage() &&
+		has_cover() &&
 		str_contains( $page->template(), 'full-cover' )
 	) {
 		return true;

@@ -12,6 +12,7 @@
 
 // Import namespaced functions.
 use function BSB_Func\{
+	get_cover_src,
 	full_cover
 };
 use function BSB_Tags\{
@@ -38,7 +39,7 @@ $header_image = '';
 if ( full_cover() ) {
 	$header_image = sprintf(
 		'style="background-image: url( %s )"',
-		$page->coverImage()
+		get_cover_src()
 	);
 }
 

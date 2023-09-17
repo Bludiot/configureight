@@ -11,6 +11,8 @@
 use function BSB_Func\{
 	is_blog_page,
 	blog_data,
+	has_cover,
+	get_cover_src,
 	full_cover
 };
 use function BSB_Tags\{
@@ -72,9 +74,9 @@ if ( is_blog_page() ) {
 
 		<?php Theme :: plugins( 'pageBegin' ); ?>
 
-		<?php if ( 'page' == $url->whereAmI() && ! full_cover() && $page->coverImage() ) : ?>
+		<?php if ( 'search' != $url->whereAmI() && ! full_cover() && has_cover() ) : ?>
 		<figure class="page-cover page-cover-single">
-			<img src="<?php echo $page->coverImage(); ?>" />
+			<img src="<?php echo get_cover_src(); ?>" />
 			<figcaption class="screen-reader-text"><?php echo $page->title(); ?></figcaption>
 		</figure>
 		<?php endif ?>

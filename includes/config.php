@@ -17,6 +17,7 @@ if ( ! defined( 'BLUDIT' ) ) {
  * Configuration constant
  *
  * @since 1.0.0
+ * @var   array
  */
 if ( ! defined( 'BSB_CONFIG' ) ) {
 	define(
@@ -24,12 +25,32 @@ if ( ! defined( 'BSB_CONFIG' ) ) {
 		[
 			'debug'       => true,
 			'head'        => [
+
+				/**
+				 * Favicon (bookmark icon)
+				 *
+				 * No Bludit constants and no
+				 * directory, only the file name
+				 * and extension (e.g. favicon.png ).
+				 *
+				 * Place the icon in the Bludit
+				 * root directory or in this theme's
+				 * `assets/images` directory and the
+				 * theme will find it.
+				 *
+				 * The theme looks first in the root
+				 * directory so a file there will override
+				 * a file in `assets/images`.
+				 */
 				'favicon'  => 'favicon.gif',
 				'keywords' => []
 			],
 			'toolbar'     => true,
 			'blog_in_nav' => true,
 			'home_in_nav' => true,
+
+			// No Bludit constants, only dir/file.
+			'cover_image' => 'assets/images/cover.jpg',
 			'aside'       => [
 				'no_sidebar'     => false,
 				'sidebar_bottom' => false

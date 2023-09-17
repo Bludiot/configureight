@@ -22,6 +22,7 @@ use function BSB_Func\{
 	text_replace,
 	favicon_exists,
 	blog_data,
+	has_cover,
 	full_cover,
 	asset_min,
 	numbers_to_text
@@ -158,7 +159,7 @@ function body_classes() {
 
 				// Exclude `full-cover` template if no cover image.
 				if (
-					! $page->coverImage() &&
+					! has_cover() &&
 					str_contains( $page->template(), 'full-cover' )
 				) {
 					$classes[] = '';
