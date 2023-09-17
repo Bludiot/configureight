@@ -10,7 +10,7 @@ Basic starter theme for developing your own theme for Bludit CMS.
 ![CSS variables included](https://img.shields.io/badge/CSS-Variables-1769a5.svg?style=flat-square "CSS variables included")
 ![RTL language support](https://img.shields.io/badge/RTL-Ready-00aa00.svg?style=flat-square "RTL language support")
 
-![BS Bludit theme cover image](https://github.com/ControlledChaos/bs-bludit/raw/main/cover.jpg)
+![BS Bludit theme cover image](https://github.com/ControlledChaos/bs-bludit/raw/main/assets/images/cover.jpg)
 
 ## Overview
 
