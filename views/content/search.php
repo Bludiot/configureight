@@ -74,4 +74,8 @@ if ( $post->description() ) {
 <?php
 
 // Get page navigation.
-include( THEME_DIR . 'views/navigation/pagination.php' );
+if ( 'numerical' == BSB_CONFIG['pagination'] ) {
+	include( THEME_DIR . 'views/navigation/page-numerical.php' );
+} else {
+	include( THEME_DIR . 'views/navigation/page-prev-next.php' );
+}
