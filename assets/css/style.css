@@ -727,6 +727,10 @@ h3 + .search-form {
   justify-content: center;
   padding: 0 2rem 0 2rem;
   transform: translateY(-3vw);
+  pointer-events: none;
+}
+.template-full-cover .page-header * {
+  pointer-events: initial;
 }
 .template-full-cover .site-title,
 .template-full-cover .page-title {
