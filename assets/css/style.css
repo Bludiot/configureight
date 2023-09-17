@@ -733,6 +733,8 @@ h3 + .search-form {
   pointer-events: initial;
 }
 .template-full-cover .page-header .button.intro-scroll {
+  display: inline-block;
+  margin: 0 auto;
   background: transparent;
   border: none;
   color: var(--bsb-cover--title--link--text-color, #ffffff);
