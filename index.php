@@ -91,7 +91,7 @@ if ( is_blog_page() ) {
 			</main>
 
 			<?php
-			if ( 'search' == $url->whereAmI() ) {
+			if ( 'page' != $url->whereAmI() ) {
 				include( THEME_DIR . 'views/aside/aside.php' );
 			} elseif ( ! str_contains( $page->template(), 'no-sidebar' ) ) {
 				include( THEME_DIR . 'views/aside/aside.php' );
