@@ -218,7 +218,7 @@ function blog_data() {
 		'location'    => 'home',
 		'key'         => false,
 		'url'         => blog_url(),
-		'slug'        => false,
+		'slug'        => str_replace( '/', '', $site->getField( 'uriBlog' ) ),
 		'template'    => false,
 		'title'       => false,
 		'description' => $description,

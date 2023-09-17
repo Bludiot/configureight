@@ -8,6 +8,7 @@
 	"die-php-version"       : "Mindest-PHP-Version von %replace% ist nicht erfüllt.",
 	"home-link-label"       : "Heim",
 	"blog-data-description" : "Neueste beiträge von",
+	"posts-loop-desc-blog"  : "Neueste beiträge von",
 	"posts-loop-desc-cat"   : "Beiträge in der kategorie %replace%",
 	"posts-loop-desc-tag"   : "Beiträge getaggt mit %replace%",
 	"no-posts-heading"      : "Noch keine Beiträge",

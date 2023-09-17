@@ -494,13 +494,14 @@ function content_template() {
  *
  * @since  1.0.0
  * @global object $L Language class
+ * @global object $site Site class.
  * @global object $url Url class.
  * @return mixed
  */
 function posts_loop_header() {
 
 	// Access global variables.
-	global $L, $url;
+	global $L, $site, $url;
 
 	// Null if in search results (global errors).
 	if ( 'search' == $url->whereAmI() ) {
@@ -522,6 +523,15 @@ function posts_loop_header() {
 		$class       = 'blog-page-description';
 		$heading     = $blog_data['title'];
 		$description = $blog_data['description'];
+
+	} elseif ( 'blog' == $url->whereAmI() ) {
+		$class       = 'blog-page-description';
+		$heading     = ucwords( $blog_data['slug'] );
+		$description = sprintf(
+			'%s %s',
+			$L->get( 'posts-loop-desc-blog' ),
+			$site->title()
+		);
 
 	} elseif ( 'category' == $url->whereAmI() ) {
 		$class       = 'category-page-description';

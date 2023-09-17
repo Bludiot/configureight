@@ -8,6 +8,7 @@
 	"die-php-version"       : "Versión PHP mínima de %replace% no se cumple.",
 	"home-link-label"       : "Inicio",
 	"blog-data-description" : "Últimas publicaciones de",
+	"posts-loop-desc-blog"  : "Últimas publicaciones de",
 	"posts-loop-desc-cat"   : "Publicaciones en la categoría %replace%",
 	"posts-loop-desc-tag"   : "Publicaciones etiquetadas %replace%",
 	"no-posts-heading"      : "Aún No Hay Publicaciones",

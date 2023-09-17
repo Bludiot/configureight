@@ -8,6 +8,7 @@
 	"die-php-version"       : "Version PHP minimale de %replace% n’est pas respecté.",
 	"home-link-label"       : "Maison",
 	"blog-data-description" : "Derniers messages de",
+	"posts-loop-desc-blog"  : "Derniers messages de",
 	"posts-loop-desc-cat"   : "Messages dans la catégorie %replace%",
 	"posts-loop-desc-tag"   : "Articles tagués %replace%",
 	"no-posts-heading"      : "Pas Encore de Messages",
