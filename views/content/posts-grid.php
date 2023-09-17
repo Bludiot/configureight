@@ -6,7 +6,7 @@
  * home page or blog page when a static
  * home page is used.
  *
- * The BSB_CONFIG['posts_loop'] constant
+ * The SITE_CONFIG['posts_loop'] constant
  * must be set to `grid` to use this.
  *
  * @package    BS Bludit
@@ -58,7 +58,7 @@ foreach ( $content as $post ) :
 
 		<footer class="page-info">
 			<p>
-				<?php if ( BSB_CONFIG['byline'] ) : ?>
+				<?php if ( SITE_CONFIG['byline'] ) : ?>
 				<span class="page-info-entry">
 					<span class="bi bi-pencil" role="img"></span>
 					<?php echo get_author(); ?>
@@ -66,7 +66,7 @@ foreach ( $content as $post ) :
 				<br />
 				<?php endif ?>
 
-				<?php if ( BSB_CONFIG['post_date'] ) : ?>
+				<?php if ( SITE_CONFIG['post_date'] ) : ?>
 				<span class="page-info-entry">
 					<span class="bi bi-calendar" role="img"></span>
 					<?php echo $post->date(); ?>
@@ -74,7 +74,7 @@ foreach ( $content as $post ) :
 				<br />
 				<?php endif ?>
 
-				<?php if ( BSB_CONFIG['read_time'] ) : ?>
+				<?php if ( SITE_CONFIG['read_time'] ) : ?>
 				<span class="page-info-entry">
 					<span class="bi bi-clock-history" role="img"></span>
 					<?php echo $L->get( 'Reading time' ) . ': ' . $post->readingTime(); ?>

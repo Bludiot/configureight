@@ -31,7 +31,7 @@ $blog_data = blog_data();
 $main_view = 'page-view';
 if ( is_blog_page() ) {
 	$main_view = 'blog-view list-view';
-	if ( 'grid' == BSB_CONFIG['posts_loop'] ) {
+	if ( 'grid' == SITE_CONFIG['posts_loop'] ) {
 		$main_view = 'blog-view grid-view';
 	}
 }

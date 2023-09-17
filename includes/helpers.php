@@ -112,11 +112,11 @@ function favicon_exists() {
 	 * as set in the config file.
 	 */
 	if (
-		is_array( BSB_CONFIG['head'] ) &&
-		array_key_exists( 'favicon', BSB_CONFIG['head'] ) &&
-		! empty( BSB_CONFIG['head']['favicon'] )
+		is_array( SITE_CONFIG['head'] ) &&
+		array_key_exists( 'favicon', SITE_CONFIG['head'] ) &&
+		! empty( SITE_CONFIG['head']['favicon'] )
 	) {
-		$favicon = THEME_DIR . 'assets/images/' . BSB_CONFIG['head']['favicon'];
+		$favicon = THEME_DIR . 'assets/images/' . SITE_CONFIG['head']['favicon'];
 	}
 
 	// Return true if an icon in the root.
@@ -266,7 +266,7 @@ function has_cover() {
 	global $page, $url;
 
 	$cover   = false;
-	$default = BSB_CONFIG['cover_image'];
+	$default = SITE_CONFIG['cover_image'];
 
 	if ( 'page' == $url->whereAmI() ) {
 		if ( $page->coverImage() ) {
@@ -294,7 +294,7 @@ function get_cover_src() {
 	global $page, $url;
 
 	$src     = '';
-	$default = BSB_CONFIG['cover_image'];
+	$default = SITE_CONFIG['cover_image'];
 
 	if ( 'page' == $url->whereAmI() ) {
 		if ( $page->coverImage() ) {
@@ -348,7 +348,7 @@ function asset_min() {
 	// Get non-minified file if in debug mode.
 	if (
 		( defined( 'DEBUG_MODE' ) && DEBUG_MODE ) ||
-		( defined( 'BSB_CONFIG' ) && BSB_CONFIG['debug'] )
+		( defined( 'SITE_CONFIG' ) && SITE_CONFIG['debug'] )
 	) {
 		return '';
 	}

@@ -19,9 +19,9 @@ if ( ! defined( 'BLUDIT' ) ) {
  * @since 1.0.0
  * @var   array
  */
-if ( ! defined( 'BSB_CONFIG' ) ) {
+if ( ! defined( 'SITE_CONFIG' ) ) {
 	define(
-		'BSB_CONFIG',
+		'SITE_CONFIG',
 		[
 			'debug'       => true,
 			'head'        => [
@@ -70,7 +70,7 @@ if ( ! defined( 'BSB_CONFIG' ) ) {
 }
 
 // Set debug mode.
-if ( BSB_CONFIG['debug'] ) {
+if ( SITE_CONFIG['debug'] ) {
 	define( 'DEBUG_MODE', true );
 	ini_set( 'display_errors', 1 );
 }

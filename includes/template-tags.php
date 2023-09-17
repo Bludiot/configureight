@@ -51,7 +51,7 @@ function favicon_tag() {
 		} elseif ( file_exists( $favicon_ico ) ) {
 			$favicon = DOMAIN_BASE . 'favicon.ico';
 		} else {
-			$favicon = DOMAIN_THEME . 'assets/images/' . BSB_CONFIG['head']['favicon'];
+			$favicon = DOMAIN_THEME . 'assets/images/' . SITE_CONFIG['head']['favicon'];
 		}
 
 		// Get the image file extension.
@@ -348,7 +348,7 @@ function get_toolbar() {
  * @return mixed Returns the `get_toolbar()` function or false.
  */
 function user_toolbar() {
-	if ( user_logged_in() && BSB_CONFIG['toolbar'] ) {
+	if ( user_logged_in() && SITE_CONFIG['toolbar'] ) {
 		return get_toolbar();
 	}
 	return false;
@@ -442,7 +442,7 @@ function content_template() {
 
 	// Blog template when a static home page is used.
 	if ( 'page' == $url->whereAmI() && $page->slug() == str_replace( '/', '', $site->getField( 'uriBlog' ) ) ) {
-		if ( 'grid' == BSB_CONFIG['posts_loop'] ) {
+		if ( 'grid' == SITE_CONFIG['posts_loop'] ) {
 			$template = 'views/content/posts-grid.php';
 		} else {
 			$template = 'views/content/posts.php';
@@ -488,7 +488,7 @@ function content_template() {
 
 	// Default to posts loop.
 	} else {
-		if ( 'grid' == BSB_CONFIG['posts_loop'] ) {
+		if ( 'grid' == SITE_CONFIG['posts_loop'] ) {
 			$template = 'views/content/posts-grid.php';
 		} else {
 			$template = 'views/content/posts.php';
