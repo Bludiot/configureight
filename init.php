@@ -95,6 +95,12 @@ if ( ! min_php_version() ) {
  * more than one theme from this boilerplate.
  * For this reason the ability to access a common
  * configuration file is provided to you.
+ *
+ * To add the configuration file to the root,
+ * simply copy the `theme-config.php` file in
+ * the `includes` directory and paste into the
+ * root Bludit directory where you find the
+ * content, kernel, plugins, themes directories.
  */
 if ( file_exists( PATH_ROOT . 'theme-config.php' ) ) {
 	require_once( PATH_ROOT . 'theme-config.php' );
