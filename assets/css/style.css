@@ -988,21 +988,11 @@ body:not(.home) .blog-wrap {
 .page-cover img {
   display: block;
   width: 100%;
-  max-height: 30vw;
+  max-height: 320px;
   -o-object-fit: cover;
      object-fit: cover;
   -o-object-position: center center;
      object-position: center center;
-}
-@media screen and (min-width: 1280px) {
-  .page-cover img {
-    max-height: 383px;
-  }
-}
-@media screen and (max-width: 960px) {
-  .page-cover img {
-    max-height: 320px;
-  }
 }
 
 .no-posts-found {
