@@ -104,6 +104,8 @@ h1,
 h2 {
 	font-size: var( --bsb--heading-primary--font-size, 2rem );
 	font-weight: var( --bsb--heading-primary--font-weight, bold );
+	word-spacing: -0.0325em;
+	letter-spacing: -0.015em;
 
 	a {
 		text-decoration: var( --bsb-link--text-decoration, none );
