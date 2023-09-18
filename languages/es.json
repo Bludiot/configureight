@@ -60,5 +60,8 @@
 	"new-content-link"      : "Nuevo Contenido",
 	"profile-link-default"  : "Perfilar",
 
+	"search-label-text"  : "Buscar",
+	"search-button-text" : "Buscar",
+
 	"copyright-message"     : "Reservados todos los derechos"
 }

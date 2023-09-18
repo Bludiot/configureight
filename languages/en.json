@@ -24,5 +24,8 @@
 	"new-content-link"      : "New Content",
 	"profile-link-default"  : "Profile",
 
+	"search-label-text"  : "Search",
+	"search-button-text" : "Search",
+
 	"copyright-message"     : "All rights reserved"
 }

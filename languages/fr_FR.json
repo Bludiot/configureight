@@ -6,18 +6,26 @@
 	},
 	"direct-access"         : "Vous n'êtes pas autorisé à accéder à ce fichier.",
 	"die-php-version"       : "Version PHP minimale de %replace% n’est pas respecté.",
+
 	"home-link-label"       : "Maison",
+
 	"blog-data-description" : "Derniers messages de",
 	"posts-loop-desc-blog"  : "Derniers messages de",
 	"posts-loop-desc-cat"   : "Messages dans la catégorie %replace%",
 	"posts-loop-desc-tag"   : "Articles tagués %replace%",
+
 	"no-posts-heading"      : "Pas Encore de Messages",
 	"no-posts-message"      : "Désolé, nous n'avons pas commencé à publier des articles. Veuillez revenir plus tard.",
 	"no-search-heading"     : "Aucun Résultat",
 	"no-search-message"     : "Désolé, nous n'avons trouvé aucun contenu correspondant à votre requête de recherche.",
+
 	"dashboard-link"        : "Tableau de Bord",
 	"edit-link"             : "Modifier",
 	"new-content-link"      : "Nouveau Contenu",
 	"profile-link-default"  : "Profil",
+
+	"search-label-text"  : "Recherche",
+	"search-button-text" : "Recherche",
+
 	"copyright-message"     : "Tous droits réservés"
 }
