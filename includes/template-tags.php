@@ -246,6 +246,7 @@ function site_schema() {
  * Returns the page title and description
  *
  * @since  1.0.0
+ * @global object $L Language class
  * @global object $page Page class
  * @global object $site Site class
  * @global object $url Url class
