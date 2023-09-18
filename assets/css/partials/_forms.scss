@@ -172,8 +172,14 @@ option {
 	display: -ms-flexbox;
 	display: var( --bsb-searchform--wrapper--display, flex );
 	-ms-flex-wrap: nowrap;
-	flex-wrap: var( --bsb-searchform--wrapper--flex-wrap, nowrap );
+	flex-wrap: var( --bsb-searchform--wrapper--flex-wrap, wrap );
 	margin: var( --bsb-searchform--wrapper--margin, 1em 0 );
+
+	label {
+		width: var( --bsb-searchform--label--width, 100% );
+		font-size: var( --bsb-searchform--label--font-size, 1.5rem );
+		font-weight: var( --bsb-searchform--label--font-weight, 700 );
+	}
 }
 
 h2 + .search-form,
