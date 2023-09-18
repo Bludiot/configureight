@@ -85,7 +85,7 @@ class Search_Form extends \pluginSearch {
 	 * @access public
 	 * @return array
 	 */
-	public function form_options() {
+	public function options() {
 
 		$options = [
 			'label'       => $this->label,
@@ -126,12 +126,7 @@ class Search_Form extends \pluginSearch {
 	 * @return null
 	 */
 	public function siteSidebar() {
-
-		// Stop if "Search" plugin is not activated.
-		if ( ! getPlugin( 'pluginSearch' ) ) {
-			return null;
-		}
-		return $this->search_form();
+		return null;
 	}
 
 	/**
@@ -143,25 +138,19 @@ class Search_Form extends \pluginSearch {
 	 * element rather than a heading element.
 	 *
 	 * @since  1.0.0
-	 * @access protected
+	 * @access public
 	 * @return null
 	 */
-	protected function search_form() {
-
-		// Instantiate parent class.
-		$parent = new \pluginSearch;
-
-		// Get options.
-		$options = $this->form_options();
+	public function search_form( $label, $label_text, $button, $button_text ) {
 
 		$html  = '<div class="form-wrap search-form-wrap">';
 		$html .= '<form class="form search-form">';
 
-		if ( $options['label'] ) {
+		if ( $label ) {
 			$html .= sprintf(
 				'<label for="%s">%s</label>',
 				'jspluginSearchText',
-				$options['label_text']
+				$label_text
 			);
 		}
 
@@ -171,11 +160,11 @@ class Search_Form extends \pluginSearch {
 			'jspluginSearchText'
 		);
 
-		if ( $options['button'] ) {
+		if ( $button ) {
 			$html .= sprintf(
 				'<input type="button" id="%s" value="%s" onClick="%s" />',
 				'search-submit',
-				$options['button_text'],
+				$button_text,
 				'pluginSearch()'
 			);
 		}

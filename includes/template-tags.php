@@ -10,6 +10,11 @@
 
 namespace BSB_Tags;
 
+// Alias namespaces.
+use BSB\Classes\{
+	Front as Front
+};
+
 // Stop if accessed directly.
 if ( ! defined( 'BLUDIT' ) ) {
 	die( $L->get( 'direct-access' ) );
@@ -707,6 +712,57 @@ function get_author() {
 		$name = ucwords( str_replace( [ '-', '_', '.' ], ' ', $user ) );
 	}
 	return $name;
+}
+
+/**
+ * Search form
+ *
+ * @since  1.0.0
+ * @param  boolean $label
+ * @param  string $label_text
+ * @param  boolean $button
+ * @param  string $button_text
+ * @return string Returns the form markup.
+ */
+function search_form( $defaults = [ 'label' => null, 'label_text' => '', 'button' => null, 'button_text' => '' ] ) {
+
+	// Stop if "Search" plugin is not activated.
+	if ( ! getPlugin( 'pluginSearch' ) ) {
+		return null;
+	}
+
+	// Instantiate the Search_Form class.
+	$class = new Front\Search_Form();
+
+	// Get default options.
+	$options = $class->options();
+
+	$label = $options['label'];
+	if ( ! is_null( $defaults['label'] ) ) {
+		$label = $defaults['label'];
+	}
+
+	$label_text = $options['label_text'];
+	if ( ! empty( $defaults['label_text'] ) ) {
+		$label_text = $defaults['label_text'];
+	}
+
+	$button = $options['button'];
+	if ( ! is_null( $defaults['button'] ) ) {
+		$button = $defaults['button'];
+	}
+
+	$button_text = $options['button_text'];
+	if ( ! empty( $defaults['button_text'] ) ) {
+		$button_text = $defaults['button_text'];
+	}
+
+	return $class->search_form(
+		$label,
+		$label_text,
+		$button,
+		$button_text
+	);
 }
 
 /**
