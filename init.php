@@ -50,6 +50,11 @@
 
 namespace BSB_Theme;
 
+// Alias namespaces.
+use BSB\Classes\{
+	Autoload as Autoload
+};
+
 // Stop if accessed directly.
 if ( ! defined( 'BLUDIT' ) ) {
 	die( $L->get( 'direct-access' ) );
@@ -84,6 +89,10 @@ if ( ! min_php_version() ) {
 	die( text_replace( 'die-php-version', BSB_MIN_PHP_VERSION ) );
 }
 
+// Autoload classes.
+require_once( THEME_DIR . 'includes/classes/autoload.php' );
+Autoload\classes();
+
 /**
  * Get configuration file
  *
@@ -103,11 +112,11 @@ if ( ! min_php_version() ) {
  * content, kernel, plugins, themes directories.
  */
 if ( file_exists( PATH_ROOT . 'theme-config.php' ) ) {
-	require_once( PATH_ROOT . 'theme-config.php' );
+	require( PATH_ROOT . 'theme-config.php' );
 } else {
-	require_once( THEME_DIR . 'includes/theme-config.php' );
+	require( THEME_DIR . 'includes/theme-config.php' );
 }
 
 // Get theme functions.
-require_once( THEME_DIR . 'includes/helpers.php' );
-require_once( THEME_DIR . 'includes/template-tags.php' );
+require( THEME_DIR . 'includes/helpers.php' );
+require( THEME_DIR . 'includes/template-tags.php' );
