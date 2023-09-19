@@ -260,7 +260,7 @@ b, strong, optgroup {
   --bsb-legend-font-size: 1em;
   --bsb-legend-font-weight: 700;
   --bsb-form-element--padding: 0.5em 1em;
-  --bsb-form-element--border: solid 1px var(--bsb-form--border-color);
+  --bsb-form-element--border: solid 1px var( --bsb-form--border-color );
   --bsb-label-field--margin: 0;
   --bsb-form--font-weight: 400;
   --bsb-form--bg-color: var( --bsb-bg-color, inherit );
@@ -373,6 +373,9 @@ a {
           text-decoration: var(--bsb-link--text-decoration, underline);
   color: var(--bsb-link--text-color);
   transition: var(--bsb-link--transition, all 0.15s);
+}
+a:hover, a:focus {
+  color: var(--bsb-link--action--text-color);
 }
 
 h1,

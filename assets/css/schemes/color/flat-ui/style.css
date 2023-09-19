@@ -1,0 +1,12 @@
+:root {
+  --bsb-text-color: #2c3e50;
+  --bsb-link--text-color: #2980b9;
+  --bsb-link--action--text-color: #3498db;
+  --bsb-box-border-color: #7f8c8d;
+  --bsb-form--border-color: #7f8c8d;
+  --bsb-form--action-border-color: #2980b9;
+  --bsb-form--placeholder-color: #bdc3c7;
+  --bsb-button--bg-color: #27ae60;
+  --bsb-button--action-bg-color: #2ecc71;
+  --bsb-button--text-color: #ecf0f1;
+}
