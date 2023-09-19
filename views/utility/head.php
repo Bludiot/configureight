@@ -14,6 +14,7 @@ use function BSB_Func\{
 	asset_min
 };
 use function BSB_Tags\{
+	scheme_stylesheet,
 	favicon_tag
 };
 
@@ -28,6 +29,9 @@ if (
 ) {
 	$keywords = implode( ' ', THEME_CONFIG['head']['keywords'] );
 }
+
+// Get schemes from the config file.
+$schemes = THEME_CONFIG['schemes'];
 
 ?>
 <?php Theme :: plugins( 'beforeAll' ); ?>
@@ -54,6 +58,8 @@ if (
 	<?php if ( is_rtl() ) {
 		echo Theme :: css( "assets/css/style-rtl{$suffix}.css" );
 	} ?>
+	<?php echo scheme_stylesheet( 'color', $schemes['color'] ); ?>
+	<?php echo scheme_stylesheet( 'typography', $schemes['typography'] ); ?>
 
 	<?php Theme :: plugins( 'siteHead' ); ?>
 </head>

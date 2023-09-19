@@ -73,6 +73,25 @@ function favicon_tag() {
 }
 
 /**
+ * Scheme stylesheet
+ *
+ * @since  1.0.0
+ * @param  string $scheme The type of scheme.
+ * @param  string $name The name of the scheme.
+ * @return string Returns a link tag for the `<head>`.
+ */
+function scheme_stylesheet( $scheme = '', $name = '' ) {
+
+	// Get minified if not in debug mode.
+	$suffix = asset_min();
+
+	if ( empty( $scheme ) || empty( $name ) ) {
+		return null;
+	}
+	return \Theme :: css( "assets/css/schemes/{$scheme}/{$name}/style{$suffix}.css" );
+}
+
+/**
  * Body classes
  *
  * For the class attribute on the `<body>` element.

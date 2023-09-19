@@ -59,7 +59,12 @@ if ( ! defined( 'THEME_CONFIG' ) ) {
 				'search' => true
 			],
 			'media' => [
-				// No Bludit constants, only dir/file.
+				/**
+				 * No Bludit constants, only dir/file,
+				 * unless this file is placed in the
+				 * root directory, in which case the
+				 * domain constants are necessary.
+				 */
 				'cover_image' => 'assets/images/cover.jpg',
 			],
 
@@ -82,6 +87,10 @@ if ( ! defined( 'THEME_CONFIG' ) ) {
 			],
 			'footer' => [
 				'copyright' => true
+			],
+			'schemes' => [
+				'color'      => '',
+				'typography' => ''
 			]
 		]
 	);
