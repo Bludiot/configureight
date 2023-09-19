@@ -98,7 +98,10 @@ $search_icon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><p
 		}
 
 		// Add a search toggle button.
-		if ( THEME_CONFIG['main_nav']['search'] ) {
+		if (
+			THEME_CONFIG['main_nav']['search'] &&
+			getPlugin( 'pluginSearch' )
+		) {
 			printf(
 				'<li class="hide-if-no-js"><button data-search-toggle-open  aria-controls="search-bar" aria-expanded="false">%s<span class="screen-reader-text">%s</span></button></li>',
 				$search_icon,

@@ -63,7 +63,10 @@ if ( full_cover() ) {
 
 	<div class="site-header-overlay"></div>
 
-	<?php if ( THEME_CONFIG['main_nav']['search'] ) : ?>
+	<?php if (
+		THEME_CONFIG['main_nav']['search'] &&
+		getPlugin( 'pluginSearch' )
+	) : ?>
 	<div id="search-bar" class="hide-if-no-js" aria-expanded="false">
 
 		<?php echo search_form( [ 'label' => false ] ); ?>
