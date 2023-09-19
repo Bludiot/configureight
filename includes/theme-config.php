@@ -49,10 +49,14 @@ if ( ! defined( 'THEME_CONFIG' ) ) {
 			'toolbar'     => [
 				'display' => true
 			],
+			'header' => [
+				'title'       => true,
+				'description' => true
+			],
 			'main_nav'    => [
 				'blog'   => true,
 				'home'   => true,
-				'search' => false
+				'search' => true
 			],
 			'media' => [
 				// No Bludit constants, only dir/file.

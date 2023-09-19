@@ -20,15 +20,29 @@ use function BSB_Tags\{
 	page_header
 };
 
+// Site title classes.
+$site_title_class = 'site-title';
+if ( ! THEME_CONFIG['header']['title'] ) {
+	$site_title_class = 'site-title screen-reader-text';
+}
+
+// Site description classes.
+$site_desc_class = 'site-description';
+if ( ! THEME_CONFIG['header']['description'] ) {
+	$site_desc_class = 'site-description screen-reader-text';
+}
+
 // Site title element.
 if ( 'home' == $WHERE_AM_I ) {
 	$site_title = sprintf(
-		'<h1 class="site-title">%s</h1>',
+		'<h1 class="%s">%s</h1>',
+		$site_title_class,
 		$site->title()
 	);
 } else {
 	$site_title = sprintf(
-		'<p class="site-title"><a href="%s">%s</a></p>',
+		'<p class="%s"><a href="%s">%s</a></p>',
+		$site_title_class,
 		$site->url(),
 		$site->title()
 	);
@@ -51,7 +65,7 @@ if ( full_cover() ) {
 			<?php site_logo(); ?>
 			<div class="site-title-description">
 				<?php echo $site_title; ?>
-				<p class="site-description"><?php echo $site->slogan(); ?></p>
+				<p class="<?php echo $site_desc_class; ?>"><?php echo $site->slogan(); ?></p>
 			</div>
 		</div>
 		<?php
