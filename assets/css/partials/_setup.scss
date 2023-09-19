@@ -88,16 +88,6 @@ a {
 	text-decoration: var( --bsb-link--text-decoration, underline );
 	color: var( --bsb-link--text-color );
 	transition: var( --bsb-link--transition, all 0.15s );
-
-	&:visited,
-	&:active {
-		color: var( --bsb-link--text-color );
-
-		&:hover,
-		&:focus {
-			color: var( --bsb-link--action--text-color );
-		}
-	}
 }
 
 h1,

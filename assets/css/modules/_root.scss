@@ -30,7 +30,7 @@
 	--bsb-label-field--margin: 0;
 	--bsb-form--font-weight: 400;
 	--bsb-form--bg-color: var( --bsb-bg-color, inherit );
-	--bsb-form--border-color: var( --bsb-box-border-color );
+	--bsb-form--border-color: #{$light_gray};
 	--bsb-form--action-border-color: #{$blue};
 	--bsb-form--placeholder-color: #{$light_gray};
 

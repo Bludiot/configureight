@@ -264,7 +264,7 @@ b, strong, optgroup {
   --bsb-label-field--margin: 0;
   --bsb-form--font-weight: 400;
   --bsb-form--bg-color: var( --bsb-bg-color, inherit );
-  --bsb-form--border-color: var( --bsb-box-border-color );
+  --bsb-form--border-color: #888888;
   --bsb-form--action-border-color: #0044aa;
   --bsb-form--placeholder-color: #888888;
   --bsb-textarea--min-height: 200px;
@@ -372,12 +372,6 @@ a {
           text-decoration: var(--bsb-link--text-decoration, underline);
   color: var(--bsb-link--text-color);
   transition: var(--bsb-link--transition, all 0.15s);
-}
-a:visited, a:active {
-  color: var(--bsb-link--text-color);
-}
-a:visited:hover, a:visited:focus, a:active:hover, a:active:focus {
-  color: var(--bsb-link--action--text-color);
 }
 
 h1,
@@ -554,9 +548,9 @@ input[type=image]:hover,
 input[type=image].hover,
 input[type=image]:focus,
 input[type=image].focus {
-  background-color: var(--bsb-button--action-bg-color);
-  border-color: var(--bsb-button--action-border-color);
-  color: var(--bsb-button--action-text-color);
+  background-color: var(--bsb-button--action-bg-color, var(--bsb-button--bg-color));
+  border-color: var(--bsb-button--action-border-color, var(--bsb-button--border-color, ));
+  color: var(--bsb-button--action-text-color, var(--bsb-button--text-color));
 }
 
 input[type=number] {
@@ -904,27 +898,27 @@ h3 + .search-form {
 .page-navigation .pagination-list.pagination-prev-next {
   justify-content: var(--bsb-pagination-list--prev-next--justify-content, space-between);
 }
-.page-navigation .pagination-list a {
+.page-navigation .pagination-list.pagination-numeric a {
   display: inline-block;
   padding: 0 0.5em;
-  -webkit-text-decoration: var(--bsb-pagination-list--link--text-decoration, none);
-          text-decoration: var(--bsb-pagination-list--link--text-decoration, none);
-  font-weight: var(--bsb-pagination-list--link--font-weight, inherit);
-  border: var(--bsb-pagination-list--link--border, solid 1px transparent);
+  -webkit-text-decoration: var(--bsb-pagination-list--numeric--link--text-decoration, none);
+          text-decoration: var(--bsb-pagination-list--numeric--link--text-decoration, none);
+  font-weight: var(--bsb-pagination-list--numeric--link--font-weight, inherit);
+  border: var(--bsb-pagination-list--link--numeric--border, solid 1px transparent);
 }
-.page-navigation .pagination-list a:hover, .page-navigation .pagination-list a:focus {
-  border: var(--bsb-pagination-list--link--active--border, solid 1px #888888);
+.page-navigation .pagination-list.pagination-numeric a:hover, .page-navigation .pagination-list.pagination-numeric a:focus {
+  border: var(--bsb-pagination-list--numeric--link--active--border, solid 1px #888888);
 }
-.page-navigation .pagination-list a.page-active {
-  font-weight: var(--bsb-pagination-list--link--active--font-weight, 600);
-  border: var(--bsb-pagination-list--link--active--border, solid 1px #888888);
+.page-navigation .pagination-list.pagination-numeric a.page-active {
+  font-weight: var(--bsb-pagination-list--numeric--link--active--font-weight, 600);
+  border: var(--bsb-pagination-list--numeric--link--active--border, solid 1px #888888);
 }
-.page-navigation .pagination-list a .page-icon {
+.page-navigation .pagination-list.pagination-numeric a .page-icon {
   display: inline-block;
   vertical-align: middle;
   line-height: 1;
 }
-.page-navigation .pagination-list a .page-icon svg {
+.page-navigation .pagination-list.pagination-numeric a .page-icon svg {
   height: 1em;
   fill: currentColor;
 }

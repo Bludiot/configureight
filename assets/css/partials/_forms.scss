@@ -97,9 +97,9 @@ input[type="image"] {
 	&.hover,
 	&:focus,
 	&.focus {
-		background-color: var( --bsb-button--action-bg-color );
-		border-color: var( --bsb-button--action-border-color );
-		color: var( --bsb-button--action-text-color );
+		background-color: var( --bsb-button--action-bg-color, var( --bsb-button--bg-color ) );
+		border-color: var( --bsb-button--action-border-color, var( --bsb-button--border-color, ) );
+		color: var( --bsb-button--action-text-color, var( --bsb-button--text-color ) );
 	}
 }
 
