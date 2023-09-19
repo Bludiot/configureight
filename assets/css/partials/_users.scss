@@ -8,6 +8,7 @@
 	left: var( --bsb-toolbar--left, 0 );
 	width: var( --bsb-toolbar--width, 100% );
 	height: var( --bsb-toolbar--height );
+	z-index: 5999;
 	overflow: var( --bsb-toolbar--overflow, visible );
 	display: var( --bsb-toolbar--display, flex );
 	justify-content: var( --bsb-toolbar--justify-content, space-between );

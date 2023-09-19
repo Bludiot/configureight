@@ -12,14 +12,14 @@
 		left: 0;
 		width: 100%;
 		padding: 2rem;
-		z-index: 9999;
+		z-index: 5998;
 		background-color: var( --bsb-site-header--bg-color );
 		display: flex;
 		flex-wrap: nowrap;
 		gap: 0 0.25rem;
 
-		// Toggle styles.
-		transform: translateY( -100% );
+		// Clear the toolbar in transform.
+		transform: translateY( calc( -100% - 4rem ) );
 		opacity: 0;
 		transition: all .25s;
 

@@ -649,12 +649,12 @@ h3 + .search-form {
   left: 0;
   width: 100%;
   padding: 2rem;
-  z-index: 9999;
+  z-index: 5998;
   background-color: var(--bsb-site-header--bg-color);
   display: flex;
   flex-wrap: nowrap;
   gap: 0 0.25rem;
-  transform: translateY(-100%);
+  transform: translateY(calc(-100% - 4rem));
   opacity: 0;
   transition: all 0.25s;
 }
@@ -1343,6 +1343,7 @@ body.template-sidebar-bottom .page-sidebar {
   left: var(--bsb-toolbar--left, 0);
   width: var(--bsb-toolbar--width, 100%);
   height: var(--bsb-toolbar--height);
+  z-index: 5999;
   overflow: var(--bsb-toolbar--overflow, visible);
   display: var(--bsb-toolbar--display, flex);
   justify-content: var(--bsb-toolbar--justify-content, space-between);
