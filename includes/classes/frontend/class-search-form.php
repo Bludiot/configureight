@@ -13,7 +13,7 @@
  * @since      1.0.0
  */
 
- namespace BSB\Classes\Front;
+namespace BSB\Classes\Front;
 
  // Stop if accessed directly.
  if ( ! defined( 'BLUDIT' ) ) {
