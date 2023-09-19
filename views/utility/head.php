@@ -30,6 +30,7 @@ if (
 }
 
 ?>
+<?php Theme :: plugins( 'beforeAll' ); ?>
 <head data-site-head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
