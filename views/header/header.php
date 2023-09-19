@@ -16,6 +16,7 @@ use function BSB_Func\{
 	full_cover
 };
 use function BSB_Tags\{
+	search_form,
 	site_logo,
 	page_header
 };
@@ -59,8 +60,20 @@ if ( full_cover() ) {
 
 ?>
 <header id="masthead" class="site-header" role="banner" itemscope="itemscope" itemtype="https://schema.org/Organization" data-site-header <?php echo $header_image; ?>>
+
 	<div class="site-header-overlay"></div>
+
+	<?php if ( THEME_CONFIG['main_nav']['search'] ) : ?>
+	<div id="search-bar" class="hide-if-no-js" aria-expanded="false">
+
+		<?php echo search_form( [ 'label' => false ] ); ?>
+
+		<button data-search-toggle-close><span class="screen-reader-text"><?php $L->p( 'search-bar-close' ); ?></span></button>
+	</div>
+	<?php endif; ?>
+
 	<div class="wrapper-general site-header-wrap">
+
 		<div class="site-branding" data-site-branding>
 			<?php site_logo(); ?>
 			<div class="site-title-description">
@@ -68,6 +81,7 @@ if ( full_cover() ) {
 				<p class="<?php echo $site_desc_class; ?>"><?php echo $site->slogan(); ?></p>
 			</div>
 		</div>
+
 		<?php
 		// Get the main navigation menu.
 		include( THEME_DIR . 'views/navigation/main-nav.php' ); ?>

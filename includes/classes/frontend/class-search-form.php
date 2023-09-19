@@ -155,7 +155,7 @@ class Search_Form extends \pluginSearch {
 		}
 
 		$html .= sprintf(
-			'<input type="text" id="%s" name="%s" />',
+			'<input type="search" id="%s" name="%s" />',
 			'jspluginSearchText',
 			'jspluginSearchText'
 		);
