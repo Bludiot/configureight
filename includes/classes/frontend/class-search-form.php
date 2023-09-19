@@ -15,6 +15,11 @@
 
 namespace BSB\Classes\Front;
 
+// Import namespaced functions.
+use function BSB_Func\{
+	text_replace
+};
+
  // Stop if accessed directly.
  if ( ! defined( 'BLUDIT' ) ) {
 	 die( $L->get( 'direct-access' ) );
@@ -139,12 +144,18 @@ class Search_Form extends \pluginSearch {
 	 *
 	 * @since  1.0.0
 	 * @access public
+	 * @global object $L Language class
 	 * @return null
 	 */
 	public function search_form( $label, $label_text, $button, $button_text ) {
 
+		// Access global variables.
+		global $L;
+
+		$search = getPlugin( 'pluginSearch' );
+
 		$html  = '<div class="form-wrap search-form-wrap">';
-		$html .= '<form class="form search-form">';
+		$html .= '<form class="form search-form" role="search">';
 
 		if ( $label ) {
 			$html .= sprintf(
@@ -155,9 +166,10 @@ class Search_Form extends \pluginSearch {
 		}
 
 		$html .= sprintf(
-			'<input type="search" id="%s" name="%s" />',
+			'<input type="search" id="%s" name="%s" placeholder="%s" />',
 			'jspluginSearchText',
-			'jspluginSearchText'
+			'jspluginSearchText',
+			text_replace( 'search-placeholder', $search->getValue( 'minChars' ) )
 		);
 
 		if ( $button ) {

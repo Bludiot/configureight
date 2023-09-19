@@ -62,6 +62,7 @@
 
 	"search-label-text"  : "Buscar",
 	"search-button-text" : "Buscar",
+	"search-placeholder" : "Introduzca al menos %replace% caracteres&hellip;",
 
 	"copyright-message"     : "Reservados todos los derechos"
 }
