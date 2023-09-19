@@ -21,7 +21,7 @@
 		// Clear the toolbar in transform.
 		transform: translateY( calc( -100% - 4rem ) );
 		opacity: 0;
-		transition: all .25s;
+		transition: transform .25s, opacity .625s;
 
 		&.active {
 			transform: translateY( 0% );
