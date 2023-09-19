@@ -53,7 +53,7 @@ if ( Paginator :: numberOfPages() > 1 ) :
 		<?php } ?>
 		<?php if ( Paginator :: showPrev() ) { ?>
 		<li>
-			<a class="page-nav page-prev" href="<?php echo Paginator :: previousPageUrl(); ?>"><span class="page-icon"><?php echo $prev_icon; ?></span><span class="screen-reader-text"><?php $L->p( 'Previous' ); ?></span></a>
+			<a class="page-nav page-prev" href="<?php echo Paginator :: previousPageUrl(); ?>" rel="prev"><span class="page-icon"><?php echo $prev_icon; ?></span><span class="screen-reader-text"><?php $L->p( 'Previous' ); ?></span></a>
 		</li>
 		<?php } ?>
 		<?php if ( $getPage >= 3 ) { ?>
@@ -83,7 +83,7 @@ if ( Paginator :: numberOfPages() > 1 ) :
 		<?php } ?>
 		<?php if ( Paginator :: showNext() ) { ?>
 		<li>
-			<a class="page-nav page-next" href="<?php echo Paginator :: nextPageUrl(); ?>"><span class="page-icon"><?php echo $next_icon; ?></span><span class="screen-reader-text"><?php $L->p( 'Next' ); ?></span></a>
+			<a class="page-nav page-next" href="<?php echo Paginator :: nextPageUrl(); ?>" rel="next"><span class="page-icon"><?php echo $next_icon; ?></span><span class="screen-reader-text"><?php $L->p( 'Next' ); ?></span></a>
 		</li>
 		<?php } ?>
 		<?php if ( Paginator :: numberOfPages() != $getPage ) { ?>

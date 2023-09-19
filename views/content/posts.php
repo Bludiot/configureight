@@ -133,7 +133,7 @@ $tags_list = function() use ( $post ) {
 
 // Get page navigation.
 if ( 'numerical' == THEME_CONFIG['posts']['paged'] ) {
-	include( THEME_DIR . 'views/navigation/page-numerical.php' );
+	include( THEME_DIR . 'views/navigation/paged-numerical.php' );
 } else {
-	include( THEME_DIR . 'views/navigation/page-prev-next.php' );
+	include( THEME_DIR . 'views/navigation/paged-prev-next.php' );
 }

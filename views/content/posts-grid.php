@@ -89,4 +89,8 @@ foreach ( $content as $post ) :
 <?php
 
 // Get page navigation.
-include( THEME_DIR . 'views/navigation/pagination.php' );
+if ( 'numerical' == THEME_CONFIG['posts']['paged'] ) {
+	include( THEME_DIR . 'views/navigation/paged-numerical.php' );
+} else {
+	include( THEME_DIR . 'views/navigation/paged-prev-next.php' );
+}

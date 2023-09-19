@@ -766,6 +766,62 @@ function search_form( $defaults = [ 'label' => null, 'label_text' => '', 'button
 }
 
 /**
+ * Previous key
+ *
+ * @since  1.0.0
+ * @global object $page Page class
+ * @global object $pages Pages class
+ * @return mixed
+ */
+function prev_key() {
+
+	// Access global variables.
+	global $page, $pages;
+
+	// Stop if on a static page.
+	if ( $page->isStatic() ) {
+		return false;
+	}
+
+	$current  = $page->key();
+	$keys     = $pages->getPublishedDB( true );
+	$position = array_search( $current, $keys ) + 1;
+
+	if ( isset( $keys[$position] ) ) {
+		return $keys[$position];
+	}
+	return false;
+}
+
+/**
+ * Next key
+ *
+ * @since  1.0.0
+ * @global object $page Page class
+ * @global object $pages Pages class
+ * @return mixed
+ */
+function next_key() {
+
+	// Access global variables.
+	global $page, $pages;
+
+	// Stop if on a static page.
+	if ( $page->isStatic() ) {
+		return false;
+	}
+
+	$current  = $page->key();
+	$keys     = $pages->getPublishedDB( true );
+	$position = array_search( $current, $keys ) - 1;
+
+	if ( isset( $keys[$position] ) ) {
+		return $keys[$position];
+	}
+	return false;
+}
+
+/**
  * Pint footer scripts
  *
  * @since  1.0.0

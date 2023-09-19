@@ -31,3 +31,4 @@ use function BSB_Tags\{
 		<p><a class="button" href="<?php echo $page->permalink(); ?>" role="button"><?php echo $L->get( 'Read More' ); ?></a></p>
 	<?php endif; ?>
 </article>
+<?php include( THEME_DIR . 'views/navigation/posts-prev-next.php' ); ?>
