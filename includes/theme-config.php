@@ -88,6 +88,8 @@ if ( ! defined( 'THEME_CONFIG' ) ) {
 			'footer' => [
 				'copyright' => true
 			],
+
+			// Value of the scheme type is the scheme directory.
 			'schemes' => [
 				'color'      => '',
 				'typography' => ''
