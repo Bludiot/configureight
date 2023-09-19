@@ -2,14 +2,6 @@
 /// General styles
 ///
 
-// SVG icon colors.
-@function svg_icon_color() {
-	@return '%23' + str-slice( '#{$text_color}', 2, -1 );
-}
-@function svg_icon_action_color() {
-	@return '%23' + str-slice( '#{$text_color}', 2, -1 );
-}
-
 html {
 	scroll-behavior: smooth;
 	overflow-x: hidden;
