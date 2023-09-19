@@ -1333,6 +1333,10 @@ body.template-sidebar-bottom .page-sidebar {
   padding: var(--bsb-page-sidebar--ol--padding, 0 0 0 1em);
 }
 
+.sidebar-search-hidden .page-sidebar .plugin-search {
+  display: none !important;
+}
+
 .user-toolbar {
   position: var(--bsb-toolbar--position, fixed);
   top: var(--bsb-toolbar--top, 0);

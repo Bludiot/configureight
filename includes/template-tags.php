@@ -175,6 +175,12 @@ function body_classes() {
 		}
 	}
 
+	// Sidebar search hidden.
+	if ( THEME_CONFIG['aside']['hide_search'] ) {
+		$classes[] = 'sidebar-search-hidden';
+	}
+
+
 	// Return a string of space-separated classes.
 	return implode( ' ', $classes );
 }

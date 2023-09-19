@@ -132,3 +132,12 @@ body {
 		padding: var( --bsb-page-sidebar--ol--padding, 0 0 0 1em );;
 	}
 }
+
+// Search hidden.
+.sidebar-search-hidden {
+	.page-sidebar {
+		.plugin-search {
+			display: none !important;
+		}
+	}
+}

@@ -77,7 +77,8 @@ if ( ! defined( 'THEME_CONFIG' ) ) {
 			],
 			'aside'       => [
 				'no_sidebar'     => false,
-				'sidebar_bottom' => false
+				'sidebar_bottom' => false,
+				'hide_search'    => false
 			],
 			'footer' => [
 				'copyright' => true
