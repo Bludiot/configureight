@@ -54,6 +54,7 @@ $schemes = THEME_CONFIG['schemes'];
 	<?php echo Theme :: keywords( $keywords ); ?>
 
 	<?php echo Theme :: cssBootstrapIcons(); ?>
+	<?php echo Theme :: css( "assets/css/root{$suffix}.css" ); ?>
 	<?php echo Theme :: css( "assets/css/style{$suffix}.css" ); ?>
 	<?php if ( is_rtl() ) {
 		echo Theme :: css( "assets/css/style-rtl{$suffix}.css" );
