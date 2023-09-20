@@ -13,6 +13,8 @@
 	--bsb-heading--heading-primary--font-weight: 700;
 
 	// General.
+	--bsb-bg-color: #{$white};
+	--bsb-font-size: 1rem;
 	--bsb-text-color: #{$text_color};
 	--bsb-link--text-color: #{$blue};
 	--bsb-link--action--text-color: #{lighten( $blue, 12% )};
@@ -31,7 +33,6 @@
 	--bsb-form-element--border: solid 1px var( --bsb-form--border-color );
 	--bsb-label-field--margin: 0;
 	--bsb-form--font-weight: 400;
-	--bsb-form--bg-color: var( --bsb-bg-color, inherit );
 	--bsb-form--border-color: #{$light_gray};
 	--bsb-form--action-border-color: #{$blue};
 	--bsb-form--placeholder-color: #{$light_gray};
@@ -42,6 +43,7 @@
 	--bsb-select--margin: 1em 0 0;
 	--bsb-select--padding: 0.5em 1em;
 
+	--bsb-button--padding: 0.75em 1em;
 	--bsb-button--font-weight: 700;
 	--bsb-button--bg-color: var( --bsb-bg-color, inherit );
 	--bsb-button--action-bg-color: #{$pale_gray};
@@ -63,6 +65,12 @@
 
 	// Navigation.
 	--bsb-site-nav--max-width: 50vw;
+	--bsb-site-nav--item--font-size: var( --bsb-font-size );
+	--bsb-site-nav--item--font-weight: 600;
+	--bsb-site-nav--sub-list--bg-color: #{$dark_gray};
+	--bsb-site-nav--sub-list--action--bg-color: #{$medium_gray};
+	--bsb-site-nav--sub-list--text-color: #{$white};
+	--bsb-site-nav--sub-list--action--text-color: #{$white};
 
 	// Content.
 	--bsb-content-wrap--padding: 0 2rem;
@@ -72,10 +80,10 @@
 	--bsb-article--tags-list--font-size: 0.8125rem;
 	--bsb-article--tags-list--font-weight: 600;
 	--bsb-article--tags-list--bg-color: var( --bsb-link--text-color );
-	--bsb-article--tags-list--text-color: #ffffff;
+	--bsb-article--tags-list--text-color: #{$white};
 
 	--bsb-article--tags-list--action--bg-color: #{lighten( $blue, 12% )};
-	--bsb-article--tags-list--action--text-color: #ffffff;
+	--bsb-article--tags-list--action--text-color: #{$white};
 
 	// Toolbar.
 	--bsb-toolbar--height: 2rem;

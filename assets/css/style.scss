@@ -12,3 +12,7 @@
 @import 'partials/_aside';
 @import 'partials/_users';
 @import 'partials/_footer';
+
+@media ( prefers-color-scheme: dark ) {
+	@import 'schemes/color/dark/style';
+}

@@ -3,6 +3,8 @@
   --bsb-serif-stack: "Hoefler Text", "Baskerville Old Face", Garamond, Times, "Times New Roman", serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --bsb-heading--heading-primary--font-size: 1.5rem;
   --bsb-heading--heading-primary--font-weight: 700;
+  --bsb-bg-color: #ffffff;
+  --bsb-font-size: 1rem;
   --bsb-text-color: #333333;
   --bsb-link--text-color: #0044aa;
   --bsb-link--action--text-color: #005ce7;
@@ -18,7 +20,6 @@
   --bsb-form-element--border: solid 1px var( --bsb-form--border-color );
   --bsb-label-field--margin: 0;
   --bsb-form--font-weight: 400;
-  --bsb-form--bg-color: var( --bsb-bg-color, inherit );
   --bsb-form--border-color: #888888;
   --bsb-form--action-border-color: #0044aa;
   --bsb-form--placeholder-color: #888888;
@@ -27,6 +28,7 @@
   --bsb-textarea--padding: 1em;
   --bsb-select--margin: 1em 0 0;
   --bsb-select--padding: 0.5em 1em;
+  --bsb-button--padding: 0.75em 1em;
   --bsb-button--font-weight: 700;
   --bsb-button--bg-color: var( --bsb-bg-color, inherit );
   --bsb-button--action-bg-color: #cccccc;
@@ -42,6 +44,12 @@
   --bsb-site-header-wrap--padding: 1rem 2rem;
   --bsb-site-logo--min-width: 80px;
   --bsb-site-nav--max-width: 50vw;
+  --bsb-site-nav--item--font-size: var( --bsb-font-size );
+  --bsb-site-nav--item--font-weight: 600;
+  --bsb-site-nav--sub-list--bg-color: #333333;
+  --bsb-site-nav--sub-list--action--bg-color: #555555;
+  --bsb-site-nav--sub-list--text-color: #ffffff;
+  --bsb-site-nav--sub-list--action--text-color: #ffffff;
   --bsb-content-wrap--padding: 0 2rem;
   --bsb-page-main--padding: 0;
   --bsb-page-header--heading--font-size: 2rem;

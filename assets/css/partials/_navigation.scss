@@ -25,6 +25,8 @@
 		li {
 			position: relative;
 			margin: var( --bsb-site-nav--item--margin, 0 );
+			font-size: var( --bsb-site-nav--item--font-size );
+			font-weight: var( --bsb-site-nav--item--font-weight );
 			line-height: 1.2;
 			color: var( --bsb-site-nav--list--text-color, inherit );
 
@@ -66,7 +68,6 @@
 				opacity: 0;
 				transition: transform 0.25s, opacity 0.25s;
 				background-color: var( --bsb-site-nav--sub-list--bg-color, #333333 );
-				box-shadow: var( --bsb-site-nav--sub-list--box-shadow, 0px 0px 0px 2px rgba( $color: black, $alpha: 0.825 ) );
 
 				&:before {
 					content: '';
@@ -85,7 +86,7 @@
 
 					/// Top: pull up (-) height of :after and
 					/// ul > ul box shadow spread.
-					top: calc( -1rem - 2px );
+					top: -1rem;
 					right: 1rem;
 					width: 1rem;
 					height: 1rem;
@@ -107,11 +108,12 @@
 					a {
 						display: block;
 						padding: 0.5em 1em;
-						color: inherit;
+						background-color: var( --bsb-site-nav--sub-list--bg-color, inherit );
+						color: var( --bsb-site-nav--sub-list--text-color, #ffffff );
 
 						&:hover,
 						&:focus {
-							background-color: #555555;
+							background-color: var( --bsb-site-nav--sub-list--action--bg-color, #555555 );
 							color: var( --bsb-site-nav--sub-list--action--text-color, #ffffff );
 						}
 					}

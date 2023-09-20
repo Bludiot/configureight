@@ -93,9 +93,16 @@ h2 {
 	font-weight: var( --bsb--heading-primary--font-weight, bold );
 	word-spacing: -0.0325em;
 	letter-spacing: -0.015em;
+	color: var( --bsb--heading-primary--text-color, var( --bsb-text-color ) );
 
 	a {
 		text-decoration: var( --bsb-link--text-decoration, none );
+		color: var( --bsb--heading-primary--link--text-color, var( --bsb-link--text-color ) );
+
+		&:hover,
+		&:focus {
+			color: var( --bsb--heading-primary--link--action--text-color, var( --bsb-link--action--text-color ) );
+		}
 	}
 }
 
