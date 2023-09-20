@@ -3,53 +3,53 @@
 ///
 
 // General colors.
-$white: #ffffff !default;
-$off_white: #eeeeee !default;
-$black: #000000 !default;
-$near_black: #1e1e1e !default;
-$dark_gray: #333333 !default;
-$medium_gray: #555555 !default;
-$light_gray: #888888 !default;
-$pale_gray: #cccccc !default;
-$red: #dd0000 !default;
-$orange: #ee6600 !default;
-$yellow: #f8ce30 !default;
-$green: #4b9960 !default;
-$blue: #0044aa !default;
-$violet:  #551a8b !default;
-$error: $red !default;
-$notify: $orange !default;
-$warning: $yellow !default;
-$success: $green !default;
+$white       : #ffffff !default;
+$off_white   : #eeeeee !default;
+$black       : #000000 !default;
+$near_black  : #1e1e1e !default;
+$dark_gray   : #333333 !default;
+$medium_gray : #555555 !default;
+$light_gray  : #888888 !default;
+$pale_gray   : #cccccc !default;
+$red         : #dd0000 !default;
+$orange      : #ee6600 !default;
+$yellow      : #f8ce30 !default;
+$green       : #4b9960 !default;
+$blue        : #0044aa !default;
+$violet      :  #551a8b !default;
+$error       : $red !default;
+$notify      : $orange !default;
+$warning     : $yellow !default;
+$success     : $green !default;
 
 // Scheme colors.
-$alizarin     : #e74c3c;
-$amethyst     : #9b59b6;
-$asbestos     : #7f8c8d;
-$belizeHole   : #2980b9;
-$carrot       : #e67e22;
-$clouds       : #ecf0f1;
-$concrete     : #95a5a6;
-$emerald      : #2ecc71;
-$greenSea     : #16a085;
-$midnightBlue : #2c3e50;
-$nephritis    : #27ae60;
-$flat_orange  : #f39c12;
-$peterRiver   : #3498db;
-$pomegranate  : #c0392b;
-$pumpkin      : #d35400;
-$silver       : #bdc3c7;
-$sunflower    : #f1c40f;
-$turquoise    : #1abc9c;
-$wetAsphalt   : #34495e;
-$wisteria     : #8e44ad;
+$fui_alizarin      : #e74c3c;
+$fui_amethyst      : #9b59b6;
+$fui_asbestos      : #7f8c8d;
+$fui_belize_hole   : #2980b9;
+$fui_carrot        : #e67e22;
+$fui_clouds        : #ecf0f1;
+$fui_concrete      : #95a5a6;
+$fui_emerald       : #2ecc71;
+$fui_green_sea     : #16a085;
+$fui_midnight_blue : #2c3e50;
+$fui_nephritis     : #27ae60;
+$fui_orange        : #f39c12;
+$fui_peter_river   : #3498db;
+$fui_peter_river   : #c0392b;
+$fui_pumpkin       : #d35400;
+$fui_silver        : #bdc3c7;
+$fui_sunflower     : #f1c40f;
+$fui_turquoise     : #1abc9c;
+$fui_wet_asphalt   : #34495e;
+$fui_wisteria      : #8e44ad;
 
 // SVG icon colors.
 @function svg_icon_color() {
-	@return '%23' + str-slice( '#{$clouds}', 2, -1 );
+	@return '%23' + str-slice( '#{$fui_clouds}', 2, -1 );
 }
 @function svg_icon_action_color() {
-	@return '%23' + str-slice( '#{$clouds}', 2, -1 );
+	@return '%23' + str-slice( '#{$fui_clouds}', 2, -1 );
 }
 
 // Search icons.
@@ -86,48 +86,48 @@ $close_icon_action_bg: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/20
 :root {
 
 	// General.
-	--bsb-bg-color: #{$clouds};
-	--bsb-text-color: #{$midnightBlue};
-	--bsb-link--text-color: #{$belizeHole};
-	--bsb-link--action--text-color: #{$carrot};
-	--bsb--heading-primary--text-color: #{$wetAsphalt};
-	--bsb--heading-primary--link--text-color: #{$wetAsphalt};
-	--bsb--heading-primary--link--action--text-color: #{$wisteria};
-	--bsb-box-border-color: #{$asbestos};
+	--bsb-bg-color: #{$fui_clouds};
+	--bsb-text-color: #{$fui_midnight_blue};
+	--bsb-link--text-color: #{$fui_belize_hole};
+	--bsb-link--action--text-color: #{$fui_carrot};
+	--bsb--heading-primary--text-color: #{$fui_wet_asphalt};
+	--bsb--heading-primary--link--text-color: #{$fui_wet_asphalt};
+	--bsb--heading-primary--link--action--text-color: #{$fui_wisteria};
+	--bsb-box-border-color: #{$fui_asbestos};
 
 	// Forms & buttons.
-	--bsb-form--border-color: #{$asbestos};
-	--bsb-form--action-border-color: #{$belizeHole};
-	--bsb-form--placeholder-color: #{$asbestos};
-	--bsb-button--bg-color: #{$greenSea};
-	--bsb-button--action-bg-color: #{$turquoise};
-	--bsb-button--text-color: #{$clouds};
+	--bsb-form--border-color: #{$fui_asbestos};
+	--bsb-form--action-border-color: #{$fui_belize_hole};
+	--bsb-form--placeholder-color: #{$fui_asbestos};
+	--bsb-button--bg-color: #{$fui_green_sea};
+	--bsb-button--action-bg-color: #{$fui_turquoise};
+	--bsb-button--text-color: #{$fui_clouds};
 
 	// Header.
 	--bsb-site-header--bg-color: inherit;
 
 	// Navigation.
-	--bsb-site-nav--sub-list--bg-color: #{$midnightBlue};
-	--bsb-site-nav--sub-list--action--bg-color: #{$wetAsphalt};
-	--bsb-site-nav--sub-list--text-color: #{$clouds};
-	--bsb-site-nav--sub-list--action--text-color: #{$clouds};
+	--bsb-site-nav--sub-list--bg-color: #{$fui_midnight_blue};
+	--bsb-site-nav--sub-list--action--bg-color: #{$fui_wet_asphalt};
+	--bsb-site-nav--sub-list--text-color: #{$fui_clouds};
+	--bsb-site-nav--sub-list--action--text-color: #{$fui_clouds};
 
 	// Content.
-	--bsb-article--tags-list--bg-color: #{$carrot};
-	--bsb-article--tags-list--text-color: #{$clouds};
+	--bsb-article--tags-list--bg-color: #{$fui_carrot};
+	--bsb-article--tags-list--text-color: #{$fui_clouds};
 
-	--bsb-article--tags-list--action--bg-color: #{$flat_orange};
-	--bsb-article--tags-list--action--text-color: #{$clouds};
+	--bsb-article--tags-list--action--bg-color: #{$fui_orange};
+	--bsb-article--tags-list--action--text-color: #{$fui_clouds};
 }
 
 @media ( prefers-color-scheme: dark ) {
 	:root {
 		--bsb-bg-color: #{$near_black};
-		--bsb-text-color: #{$clouds};
-		--bsb-link--text-color: #{$clouds};
-		--bsb-link--action--text-color: #{$sunflower};
-		--bsb--heading-primary--text-color: #{$clouds};
-		--bsb--heading-primary--link--text-color: #{$clouds};
-		--bsb--heading-primary--link--action--text-color: #{$peterRiver};
+		--bsb-text-color: #{$fui_clouds};
+		--bsb-link--text-color: #{$fui_clouds};
+		--bsb-link--action--text-color: #{$fui_sunflower};
+		--bsb--heading-primary--text-color: #{$fui_clouds};
+		--bsb--heading-primary--link--text-color: #{$fui_clouds};
+		--bsb--heading-primary--link--action--text-color: #{$fui_peter_river};
 	}
 }

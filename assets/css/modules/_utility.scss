@@ -3,29 +3,29 @@
 ///
 
 // Media queries.
-$break_tablet: 960px !default;
-$break_phone: 640px !default;
-$break_small: 480px !default;
+$break_tablet : 960px !default;
+$break_phone  : 640px !default;
+$break_small  : 480px !default;
 
 // General colors.
-$white: #ffffff !default;
-$off_white: #eeeeee !default;
-$black: #000000 !default;
-$near_black: #1e1e1e !default;
-$dark_gray: #333333 !default;
-$medium_gray: #555555 !default;
-$light_gray: #888888 !default;
-$pale_gray: #cccccc !default;
-$red: #dd0000 !default;
-$orange: #ee6600 !default;
-$yellow: #f8ce30 !default;
-$green: #4b9960 !default;
-$blue: #0044aa !default;
-$violet:  #551a8b !default;
-$error: $red !default;
-$notify: $orange !default;
-$warning: $yellow !default;
-$success: $green !default;
+$white       : #ffffff !default;
+$off_white   : #eeeeee !default;
+$black       : #000000 !default;
+$near_black  : #1e1e1e !default;
+$dark_gray   : #333333 !default;
+$medium_gray : #555555 !default;
+$light_gray  : #888888 !default;
+$pale_gray   : #cccccc !default;
+$red         : #dd0000 !default;
+$orange      : #ee6600 !default;
+$yellow      : #f8ce30 !default;
+$green       : #4b9960 !default;
+$blue        : #0044aa !default;
+$violet      :  #551a8b !default;
+$error       : $red !default;
+$notify      : $orange !default;
+$warning     : $yellow !default;
+$success     : $green !default;
 
 // Color types.
 $text_color: $dark_gray;
