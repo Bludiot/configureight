@@ -54,9 +54,10 @@ if ( ! defined( 'THEME_CONFIG' ) ) {
 				'description' => true
 			],
 			'main_nav'    => [
-				'blog'   => true,
-				'home'   => true,
-				'search' => true
+				'max_items' => 6,
+				'blog'      => true,
+				'home'      => true,
+				'search'    => true
 			],
 			'media' => [
 				/**

@@ -20,7 +20,12 @@ $search_icon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><p
 ?>
 <nav id="site-navigation" class="site-navigation" role="directory" itemscope itemtype="https://schema.org/SiteNavigationElement" data-site-navigation>
 	<ul class="nav-list main-nav-list">
-		<?php foreach ( $staticContent as $nav_item ) :
+		<?php
+
+		$max_items = (integer)THEME_CONFIG['main_nav']['max_items'];
+		$nav_items = array_slice( $staticContent, 0, $max_items );
+
+		foreach ( $nav_items as $nav_item ) :
 
 		$nav_entry = '';
 		$home_uri  = $site->getField( 'homepage' );
