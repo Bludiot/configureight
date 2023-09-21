@@ -73,52 +73,86 @@ function favicon_tag() {
 }
 
 /**
- * Scheme stylesheet
+ * Load scheme stylesheet
+ *
+ * @since  1.0.0
+ * @return string Returns a link tag for the `<head>`.
+ */
+function scheme_stylesheet( $type = '' ) {
+
+	// Stop if no scheme type.
+	if ( empty( $type ) ) {
+		return null;
+	}
+
+	// Get options from the config file.
+	$color = THEME_CONFIG['schemes']['color'];
+	$typo  = THEME_CONFIG['schemes']['typography']['scheme'];
+
+	// Get minified if not in debug mode.
+	$suffix = asset_min();
+
+	// Color scheme stylesheet.
+	if ( 'color' === $type && $color ) {
+		$html = \Theme :: css( "assets/css/schemes/color/{$color}/style{$suffix}.css" );
+	}
+
+	// Typography scheme stylesheet.
+	if ( 'typography' == $type && $typo ) {
+		$html .= \Theme :: css( "assets/css/schemes/typography/{$typo}/style{$suffix}.css" );
+	}
+	return $html;
+}
+
+/**
+ * Font scheme stylesheet
  *
  * @since  1.0.0
  * @param  string $scheme The type of scheme.
  * @param  string $name The scheme directory.
  * @return string Returns a link tag for the `<head>`.
  */
-function scheme_stylesheet( $scheme = '', $name = '' ) {
+function font_scheme_styles() {
+
+	$scheme = THEME_CONFIG['schemes']['typography']['scheme'];
+
+	if ( ! $scheme ) {
+		return null;
+	}
 
 	// Get minified if not in debug mode.
 	$suffix = asset_min();
 
-	if ( empty( $scheme ) || empty( $name ) ) {
-		return null;
-	}
-	return \Theme :: css( "assets/css/schemes/{$scheme}/{$name}/style{$suffix}.css" );
+	return \Theme :: css( "assets/css/schemes/typography/{$scheme}/style{$suffix}.css" );
 }
 
 /**
  * Load font files
  *
- * @param  string $name The $name of the font.
- * @param  array $files The font files to load.
- * @return void
+ * @since  1.0.0
+ * @return string Returns link tags for the `<head>`.
  */
-function load_font_files( $name = '', $files = [] ) {
+function load_font_files() {
 
-	if ( empty( $name ) || ! $files ) {
-		return null;
-	}
+	$fonts = THEME_CONFIG['schemes']['typography']['fonts'];
+	$tags  = '';
 
-	$tags = '';
-	foreach ( $files as $file ) {
+	foreach ( $fonts as $font => $names ) {
+		foreach ( $names as $name => $file ) {
 
-		$href = DOMAIN_THEME . "assets/fonts/{$name}/{$file}";
-		$tab = '	';
+			$href = DOMAIN_THEME . "assets/fonts/{$font}/{$file}";
+			$tab = '	';
 
-		// Get the font file extension.
-		$info = pathinfo( $file );
-		$type = $info['extension'];
+			// Get the font file extension.
+			$info = pathinfo( $file );
+			$type = $info['extension'];
 
-		$tags .= sprintf(
-			'<link rel="preload" href="%s" as="font" type="font/%s" crossorigin="anonymous">',
-			$href,
-			$type
-		) . "\n" . $tab;
+			$tags .= sprintf(
+				'<link rel="preload" href="%s" as="font" type="font/%s" crossorigin="anonymous">',
+				$href,
+				$type
+			) . "\n" . $tab;
+		}
 	}
 	return $tags;
 }

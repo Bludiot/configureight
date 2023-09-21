@@ -14,9 +14,9 @@ use function BSB_Func\{
 	asset_min
 };
 use function BSB_Tags\{
-	scheme_stylesheet,
 	load_font_files,
-	favicon_tag
+	favicon_tag,
+	scheme_stylesheet
 };
 
 $suffix = asset_min();
@@ -31,9 +31,6 @@ if (
 	$keywords = implode( ' ', THEME_CONFIG['head']['keywords'] );
 }
 
-// Get schemes from the config file.
-$schemes = THEME_CONFIG['schemes'];
-
 ?>
 <?php Theme :: plugins( 'beforeAll' ); ?>
 <head data-site-head>
@@ -43,7 +40,7 @@ $schemes = THEME_CONFIG['schemes'];
 	<link rel="preconnect" href="//fonts.adobe.com" />
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<?php echo load_font_files( 'inter', [ 'font.woff2', 'font-italic.woff2' ] ); ?>
+	<?php echo load_font_files(); ?>
 
 	<?php
 	// Change `<html>` class to `js` if JavaScript is enabled.
@@ -61,8 +58,8 @@ $schemes = THEME_CONFIG['schemes'];
 	<?php if ( is_rtl() ) {
 		echo Theme :: css( "assets/css/style-rtl{$suffix}.css" );
 	} ?>
-	<?php echo scheme_stylesheet( 'color', $schemes['color'] ); ?>
-	<?php echo scheme_stylesheet( 'typography', $schemes['typography'] ); ?>
+	<?php echo scheme_stylesheet( 'color' ); ?>
+	<?php echo scheme_stylesheet( 'typography' ); ?>
 
 	<?php Theme :: plugins( 'siteHead' ); ?>
 </head>
