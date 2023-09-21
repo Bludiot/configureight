@@ -103,6 +103,7 @@ body {
 	}
 
 	a {
+		font-weight: var( --bsb-page-sidebar--link--font-weight );
 		color: var( --bsb-page-sidebar--link--text-color, var( --bsb-link--text-color ) );
 
 		&:hover,

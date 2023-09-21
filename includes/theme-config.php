@@ -24,7 +24,7 @@ if ( ! defined( 'THEME_CONFIG' ) ) {
 		'THEME_CONFIG',
 		[
 			'parent' => false,
-			'debug'  => false,
+			'debug'  => true,
 			'head'   => [
 
 				/**
@@ -96,8 +96,16 @@ if ( ! defined( 'THEME_CONFIG' ) ) {
 
 			// Value of the scheme type is the scheme directory.
 			'schemes' => [
-				'color'      => '',
-				'typography' => ''
+				'color'      => 'default',
+				'typography' => [
+					'scheme' => 'default',
+					'fonts'  => [
+						'inter' => [
+							'inter.woff2',
+							'inter-italic.woff2'
+						]
+					]
+				]
 			]
 		]
 	);
