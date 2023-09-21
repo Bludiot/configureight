@@ -63,15 +63,33 @@ body:not( .home ) {
 	h1,
 	h2 {
 		font-size: var( --bsb-page-header--heading--font-size );
+
+		a {
+			font-weight: var( --bsb-page-header--heading--link--font-weight, inherit );
+		}
+	}
+}
+
+.page-summary {
+	.page-header {
+		h1,
+		h2 {
+			font-size: var( --bsb-page-summary--page-header--heading--font-size );
+			font-weight: var( --bsb-page-summary--page-header--heading--font-weight );
+			line-height: var( --bsb-page-summary--page-header--heading--line-height );
+		}
 	}
 }
 
 .page-subtitle {
+	font-family: var( --bsb-page-subtitle--font-family );
 	font-size: var( --bsb-page-subtitle--font-size, 1.5em );
 }
 
 .page-info {
+	font-family: var( --bsb-page-info--font-family );
 	font-size: var( --bsb-page-info--font-size, 0.85em );
+	line-height: var( --bsb-page-info--line-height );
 
 	.page-info-entry {
 		&:not( :last-of-type ) {
@@ -144,6 +162,7 @@ body:not( .home ) {
 	}
 
 	.tags-list {
+		list-style: var( --bsb-article--tags-list--margin, none );
 		margin: var( --bsb-article--tags-list--margin, 0.75em 0 0 0 );
 		gap: var( --bsb-article--tags-list--display, 0 0.1875em );
 

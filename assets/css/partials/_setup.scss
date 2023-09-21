@@ -43,13 +43,13 @@ body {
 
 .no-js {
 	.hide-if-no-js {
-		display: none;
+		display: none !important;
 	}
 }
 
 .js {
 	.hide-if-js {
-		display: none;
+		display: none !important;
 	}
 }
 
@@ -73,10 +73,11 @@ h6,
 p,
 ul,
 ol {
-	margin-top: var( --bsb-element--margin-top, 1em );
+	margin: var( --bsb-element--margin, 1em 0 0 0 );
 }
 
 a {
+	font-weight: var( --bsb-link--font-weight, normal );
 	text-decoration: var( --bsb-link--text-decoration, underline );
 	color: var( --bsb-link--text-color );
 	transition: var( --bsb-link--transition, all 0.15s );
@@ -89,8 +90,10 @@ a {
 
 h1,
 h2 {
+	font-family: var( --bsb-heading-primary--font-family );
 	font-size: var( --bsb-heading-primary--font-size, 2rem );
 	font-weight: var( --bsb-heading-primary--font-weight, bold );
+	line-height: var( --bsb-heading-primary--line-height );
 	word-spacing: -0.0325em;
 	letter-spacing: var( --bsb-heading-primary--letter-spacing, -0.015em );
 	color: var( --bsb-heading-primary--text-color, var( --bsb-text-color ) );
@@ -106,6 +109,16 @@ h2 {
 	}
 }
 
+h3,
+h4 {
+	font-family: var( --bsb-heading-secondary--font-family );
+	font-size: var( --bsb-heading-secondary--font-size );
+	font-weight: var( --bsb-heading-secondary--font-weight, bold );
+	line-height: var( --bsb-heading-secondary--line-height );
+	word-spacing: -0.0325em;
+	letter-spacing: var( --bsb-heading-secondary--letter-spacing );
+}
+
 .inline-list {
 	display: inline-flex;
 	gap: 0 0.5em;
@@ -114,27 +127,27 @@ h2 {
 
 // Text selection.
 ::-o-selection {
-	color: #222222;
-	background: #ffdd00;
+	color: var( --bsb-selection--text-color, #222222 );
+	background: var( --bsb-selection--bg-color, #ffdd00 );
 	text-shadow: none;
 }
 ::-ms-selection {
-	color: #222222;
-	background: #ffdd00;
+	color: var( --bsb-selection--text-color, #222222 );
+	background: var( --bsb-selection--bg-color, #ffdd00 );
 	text-shadow: none;
 }
 ::-webkit-selection {
-	color: #222222;
-	background: #ffdd00;
+	color: var( --bsb-selection--text-color, #222222 );
+	background: var( --bsb-selection--bg-color, #ffdd00 );
 	text-shadow: none;
 }
 ::-moz-selection {
-	color: #222222;
-	background: #ffdd00;
+	color: var( --bsb-selection--text-color, #222222 );
+	background: var( --bsb-selection--bg-color, #ffdd00 );
 	text-shadow: none;
 }
 ::selection {
-	color: #222222;
-	background: #ffdd00;
+	color: var( --bsb-selection--text-color, #222222 );
+	background: var( --bsb-selection--bg-color, #ffdd00 );
 	text-shadow: none;
 }

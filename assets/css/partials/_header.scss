@@ -131,6 +131,7 @@
 
 .site-title {
 	margin: var( --bsb-site-title--margin, 0 );
+	font-family: var( --bsb-site-title--font-family );
 	font-size: var( --bsb-site-title--font-size, 1.625rem );
 	font-weight: var( --bsb-site-title--font-weight, bold );
 	word-spacing: var( --bsb-site-title--word-spacing, -0.0325em );
@@ -139,6 +140,7 @@
 	color: var( --bsb-site-title--text-color, inherit );
 
 	a {
+		font-weight: inherit;
 		color: var( --bsb-site-title--link--text-color, inherit );
 		text-decoration: var( --bsb-site-title--link--text-decoration, none );
 

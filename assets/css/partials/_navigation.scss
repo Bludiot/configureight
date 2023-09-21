@@ -31,6 +31,7 @@
 			color: var( --bsb-site-nav--list--text-color, inherit );
 
 			a {
+				font-weight: inherit;
 				text-decoration: var( --bsb-site-nav--item-link--text-decoration, none );
 				color: var( --bsb-site-nav--list--link--text-color, var( --bsb-link--text-color ) );
 
