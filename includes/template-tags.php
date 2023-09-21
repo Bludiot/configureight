@@ -77,7 +77,7 @@ function favicon_tag() {
  *
  * @since  1.0.0
  * @param  string $scheme The type of scheme.
- * @param  string $name The name of the scheme.
+ * @param  string $name The scheme directory.
  * @return string Returns a link tag for the `<head>`.
  */
 function scheme_stylesheet( $scheme = '', $name = '' ) {
@@ -89,6 +89,38 @@ function scheme_stylesheet( $scheme = '', $name = '' ) {
 		return null;
 	}
 	return \Theme :: css( "assets/css/schemes/{$scheme}/{$name}/style{$suffix}.css" );
+}
+
+/**
+ * Load font files
+ *
+ * @param  string $name The $name of the font.
+ * @param  array $files The font files to load.
+ * @return void
+ */
+function load_font_files( $name = '', $files = [] ) {
+
+	if ( empty( $name ) || ! $files ) {
+		return null;
+	}
+
+	$tags = '';
+	foreach ( $files as $file ) {
+
+		$href = DOMAIN_THEME . "assets/fonts/{$name}/{$file}";
+		$tab = '	';
+
+		// Get the font file extension.
+		$info = pathinfo( $file );
+		$type = $info['extension'];
+
+		$tags .= sprintf(
+			'<link rel="preload" href="%s" as="font" type="font/%s" crossorigin="anonymous">',
+			$href,
+			$type
+		) . "\n" . $tab;
+	}
+	return $tags;
 }
 
 /**
@@ -195,7 +227,10 @@ function body_classes() {
 	}
 
 	// Sidebar search hidden.
-	if ( THEME_CONFIG['aside']['hide_search'] ) {
+	if (
+		! THEME_CONFIG['aside']['search_widget'] ||
+		'footer' === THEME_CONFIG['aside']['search_widget']
+	) {
 		$classes[] = 'sidebar-search-hidden';
 	}
 

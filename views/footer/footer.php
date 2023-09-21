@@ -49,8 +49,19 @@ if ( THEME_CONFIG['footer']['copyright_line'] ) {
 ?>
 <footer class="site-footer" data-site-footer>
 	<div class="wrapper-general">
+		<?php
+		$search = getPlugin( 'pluginSearch' );
+		if ( $search && 'footer' === THEME_CONFIG['aside']['search_widget'] ) {
+			echo $search->siteSidebar();
+		} ?>
 		<div class="site-footer-text">
-			<?php echo Theme :: footer(); ?>
+			<?php
+			if ( ! empty( Theme :: footer() ) ) {
+				printf(
+					'<p>%s</p>',
+					Theme :: footer()
+				);
+			} ?>
 			<?php
 
 			// Personal/social links.

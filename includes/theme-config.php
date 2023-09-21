@@ -84,7 +84,7 @@ if ( ! defined( 'THEME_CONFIG' ) ) {
 			'aside'       => [
 				'no_sidebar'     => false,
 				'sidebar_bottom' => false,
-				'hide_search'    => false
+				'search_widget'  => true
 			],
 			'footer' => [
 				'copyright_line' => true,
