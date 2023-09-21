@@ -24,7 +24,7 @@ if ( ! defined( 'THEME_CONFIG' ) ) {
 		'THEME_CONFIG',
 		[
 			'parent' => false,
-			'debug'  => true,
+			'debug'  => false,
 			'head'   => [
 
 				/**
