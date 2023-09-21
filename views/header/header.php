@@ -49,6 +49,21 @@ if ( 'home' == $WHERE_AM_I ) {
 	);
 }
 
+$site_description = '';
+if ( ! empty( $site->slogan() ) && ! ctype_space( $site->slogan() ) ) {
+	$site_description = sprintf(
+		'<p class="%s">%s</p>',
+		$site_desc_class,
+		$site->slogan()
+	);
+} elseif ( ! empty( $site->description() ) && ! ctype_space( $site->description() ) ) {
+	$site_description = sprintf(
+		'<p class="%s">%s</p>',
+		$site_desc_class,
+		$site->description()
+	);
+}
+
 // Background image.
 $header_image = '';
 if ( full_cover() ) {
@@ -81,7 +96,7 @@ if ( full_cover() ) {
 			<?php site_logo(); ?>
 			<div class="site-title-description">
 				<?php echo $site_title; ?>
-				<p class="<?php echo $site_desc_class; ?>"><?php echo $site->slogan(); ?></p>
+				<?php echo $site_description; ?>
 			</div>
 		</div>
 
