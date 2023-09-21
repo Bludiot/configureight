@@ -8,6 +8,7 @@ Basic starter theme for developing your own theme for Bludit CMS.
 ![jQuery ready](https://img.shields.io/badge/jQuery-Ready-0769ad.svg?style=flat-square "jQuery ready to use")
 ![SCSS stylesheets ready](https://img.shields.io/badge/SCSS-Ready-bf4080.svg?style=flat-square "SCSS stylesheets ready")
 ![CSS variables included](https://img.shields.io/badge/CSS-Variables-1769a5.svg?style=flat-square "CSS variables included")
+![Variable fonts included](https://img.shields.io/badge/Fonts-Variable-ff8800.svg?style=flat-square "Variable fonts included")
 ![RTL language support](https://img.shields.io/badge/RTL-Ready-00aa00.svg?style=flat-square "RTL language support")
 
 ![BS Bludit theme cover image](https://github.com/ControlledChaos/bs-bludit/raw/main/assets/images/cover.jpg)
