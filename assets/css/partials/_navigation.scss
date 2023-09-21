@@ -221,3 +221,20 @@
 		}
 	}
 }
+
+// Personal/social navigation/
+.social-navigation {
+	margin: 1em 0 0 0;
+
+	.social-nav-list {
+		display: flex;
+		justify-content: center;
+		gap: 0 1em;
+
+		svg {
+			width: 1.25em;
+			height: 1.25em;
+			fill: currentColor;
+		}
+	}
+}
