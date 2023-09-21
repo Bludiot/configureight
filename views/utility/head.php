@@ -15,6 +15,7 @@ use function BSB_Func\{
 };
 use function BSB_Tags\{
 	scheme_stylesheet,
+	load_font_files,
 	favicon_tag
 };
 
@@ -42,6 +43,7 @@ $schemes = THEME_CONFIG['schemes'];
 	<link rel="preconnect" href="//fonts.adobe.com" />
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<?php echo load_font_files( 'inter', [ 'font.woff2', 'font-italic.woff2' ] ); ?>
 
 	<?php
 	// Change `<html>` class to `js` if JavaScript is enabled.
