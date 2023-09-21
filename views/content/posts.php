@@ -71,7 +71,7 @@ $tags_list = function() use ( $post ) {
 		foreach ( $tags as $tagKey => $tagName ) {
 
 			$links[] = sprintf(
-				'<a href="%s" class="tag-list-entry" rel="tag">%s</a>',
+				'<li><a href="%s" class="tag-list-entry" rel="tag">%s</a></li>',
 				DOMAIN_TAGS . $tagKey,
 				$tagName
 			);
