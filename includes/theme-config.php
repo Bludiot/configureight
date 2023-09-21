@@ -86,7 +86,11 @@ if ( ! defined( 'THEME_CONFIG' ) ) {
 				'hide_search'    => false
 			],
 			'footer' => [
-				'copyright' => true
+				'copyright_line' => true,
+				'copyright_date' => true,
+
+				// Use `%year%` in language files for current year.
+				'copyright_text' => ''
 			],
 
 			// Value of the scheme type is the scheme directory.
