@@ -255,7 +255,12 @@ body {
   font-style: var(--bsb-font-style, normal);
   letter-spacing: var(--bsb-letter-spacing, normal);
   line-height: var(--bsb-line-height, 1.5);
-  background: var(--bsb-bg-color);
+  background-color: var(--bsb-bg-color);
+  background-image: var(--bsb-bg-image);
+  background-repeat: var(--bsb-bg-repeat);
+  background-position: var(--bsb-bg-position);
+  background-size: var(--bsb-bg-size);
+  background-attachment: var(--bsb-bg-attachment);
   color: var(--bsb-text-color);
 }
 body.toolbar-active {
