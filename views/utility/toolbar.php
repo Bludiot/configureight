@@ -33,6 +33,13 @@ if ( $user->nickname() ) {
 	$name = $user->firstName();
 }
 
+// User avatar.
+if ( ! $user->profilePicture() ) {
+	$avatar = $user->profilePicture();
+} else {
+	$avatar = DOMAIN_THEME . 'assets/images/avatar-default.png';
+}
+
 ?>
 <section class="user-toolbar" data-user-toolbar>
 	<div class="user-action">
@@ -42,7 +49,7 @@ if ( $user->nickname() ) {
 	</div>
 	<div class="user-info">
 		<a id="profile-link" href="<?php echo DOMAIN_ADMIN;?>edit-user/<?php echo Session :: get( 'username' ); ?>">
-			<img src="<?php echo $user->profilePicture(); ?>" width="24"> <?php echo $name; ?>
+			<img src="<?php echo $avatar; ?>" width="24"> <?php echo $name; ?>
 		</a>
 	</div>
 </section>
