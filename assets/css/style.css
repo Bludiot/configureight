@@ -819,9 +819,12 @@ h3 + .search-form {
   margin: 0;
   line-height: 1.2;
   font-size: var(--bsb-cover--page-title--font-size, clamp(2.375rem, 3vw + 1rem, 5vw));
+  font-weight: var(--bsb-cover--page-title--font-weight, 700);
 }
 .template-full-cover .page-description.page-description-single {
-  margin: 1rem 0 0 0;
+  margin: var(--bsb-cover--page-description-single--margin, 1rem 0 0 0);
+  font-size: var(--bsb-cover--page-description-single--font-size);
+  font-weight: var(--bsb-cover--page-description-single--font-weight);
 }
 
 .nav-list {

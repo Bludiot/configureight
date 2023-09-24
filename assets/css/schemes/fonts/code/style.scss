@@ -24,15 +24,24 @@ $monospace_stack: 'Source Code Pro', ui-monospace, Menlo, Monaco, Consolas, 'Cas
 
 	// General.
 	--bsb-font-stack: #{$monospace_stack};
+	--bsb-heading-primary--font-size: 2.5rem;
 	--bsb-heading-primary--font-weight: 700;
-	--bsb-heading-primary--letter-spacing: normal;
+	--bsb-heading-primary--letter-spacing: -0.0325em;
 
 	// Header.
 	--bsb-site-title--font-weight: 700;
 	--bsb-site-title--letter-spacing: normal;
+	--bsb-cover--page-title--font-weight: 600;
 
 	// Navigation.
+	--bsb-site-nav--item--font-size: 1.125rem;
 	--bsb-site-nav--item--font-weight: 500;
+
+	// Content.
+	--bsb-page-summary--page-header--heading--font-size: 1.75rem;
+	--bsb-page-summary--page-header--heading--line-height: 1.1;
+	--bsb-page-header--heading--link--font-weight: 700;
+	--bsb-article--tags-list--font-weight: 500;
 
 	// Aside.
 	--bsb-page-sidebar--link--font-weight: 500;
