@@ -42,13 +42,13 @@ All font files have variable weights.
 
 ## Page templates
 
-Several page template options are built into the theme, which can be employed in the page edit screen under Options > Advanced. More than one template may be used at once, depending on the template type.
+Several page template options are built into the theme, which can be employed in the page edit screen under Options > Advanced. More than one template may be used at once, with space between each template slug, depending on the template type.
 
-Templates include…
+Templates (slugs) include…
 
-- Full screen cover image
-- No sidebar
-- Bottom sidebar
-- Static front page
-- About page
-- Contact page
+- Full screen cover image (full-cover)
+- No sidebar (no-sidebar)
+- Bottom sidebar (sidebar-bottom)
+- Static front page (used automatically)
+- About page (about)
+- Contact page (contact)
