@@ -3,14 +3,14 @@
   font-weight: 100 900;
   font-style: normal;
   font-display: swap;
-  src: url(../../../../fonts/crimson/crimson.woff2) format("woff2");
+  src: url(../../../../fonts/serif/crimson.woff2) format("woff2");
 }
 @font-face {
   font-family: "Crimson";
   font-weight: 100 900;
   font-style: italic;
   font-display: swap;
-  src: url(../../../../fonts/crimson/crimson-italic.woff2) format("woff2");
+  src: url(../../../../fonts/serif/crimson-italic.woff2) format("woff2");
 }
 :root {
   --bsb-font-stack: Georgia, Hoefler Text, Baskerville Old Face, Garamond, Times, Times New Roman, serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;

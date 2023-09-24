@@ -96,16 +96,8 @@ if ( ! defined( 'THEME_CONFIG' ) ) {
 
 			// Value of the scheme type is the scheme directory.
 			'schemes' => [
-				'color'      => 'default',
-				'typography' => [
-					'scheme' => 'default',
-					'fonts'  => [
-						'inter' => [
-							'inter.woff2',
-							'inter-italic.woff2'
-						]
-					]
-				]
+				'colors' => 'default',
+				'fonts'  => 'default'
 			]
 		]
 	);

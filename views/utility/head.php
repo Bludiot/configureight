@@ -58,8 +58,8 @@ if (
 	<?php if ( is_rtl() ) {
 		echo Theme :: css( "assets/css/style-rtl{$suffix}.css" );
 	} ?>
-	<?php echo scheme_stylesheet( 'color' ); ?>
-	<?php echo scheme_stylesheet( 'typography' ); ?>
+	<?php echo scheme_stylesheet( 'colors' ); ?>
+	<?php echo scheme_stylesheet( 'fonts' ); ?>
 
 	<?php Theme :: plugins( 'siteHead' ); ?>
 </head>

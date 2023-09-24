@@ -86,44 +86,22 @@ function scheme_stylesheet( $type = '' ) {
 	}
 
 	// Get options from the config file.
-	$color = THEME_CONFIG['schemes']['color'];
-	$typo  = THEME_CONFIG['schemes']['typography']['scheme'];
+	$colors = THEME_CONFIG['schemes']['colors'];
+	$fonts  = THEME_CONFIG['schemes']['fonts'];
 
 	// Get minified if not in debug mode.
 	$suffix = asset_min();
 
 	// Color scheme stylesheet.
-	if ( 'color' === $type && $color ) {
-		$html = \Theme :: css( "assets/css/schemes/color/{$color}/style{$suffix}.css" );
+	if ( 'colors' === $type && $colors ) {
+		$html = \Theme :: css( "assets/css/schemes/colors/{$colors}/style{$suffix}.css" );
 	}
 
 	// Typography scheme stylesheet.
-	if ( 'typography' == $type && $typo ) {
-		$html .= \Theme :: css( "assets/css/schemes/typography/{$typo}/style{$suffix}.css" );
+	if ( 'fonts' == $type && $fonts ) {
+		$html .= \Theme :: css( "assets/css/schemes/fonts/{$fonts}/style{$suffix}.css" );
 	}
 	return $html;
-}
-
-/**
- * Font scheme stylesheet
- *
- * @since  1.0.0
- * @param  string $scheme The type of scheme.
- * @param  string $name The scheme directory.
- * @return string Returns a link tag for the `<head>`.
- */
-function font_scheme_styles() {
-
-	$scheme = THEME_CONFIG['schemes']['typography']['scheme'];
-
-	if ( ! $scheme ) {
-		return null;
-	}
-
-	// Get minified if not in debug mode.
-	$suffix = asset_min();
-
-	return \Theme :: css( "assets/css/schemes/typography/{$scheme}/style{$suffix}.css" );
 }
 
 /**
@@ -134,19 +112,26 @@ function font_scheme_styles() {
  */
 function load_font_files() {
 
-	$fonts = THEME_CONFIG['schemes']['typography']['fonts'];
+	$fonts = THEME_CONFIG['schemes']['fonts'];
+	$valid = [ 'woff', 'woff2', 'otf', 'ttf' ];
+	$files = scandir( THEME_DIR . "assets/fonts/{$fonts}/" );
 	$tags  = '';
 
-	foreach ( $fonts as $font => $names ) {
-		foreach ( $names as $name => $file ) {
+	foreach ( $files as $font => $file ) {
 
-			$href = DOMAIN_THEME . "assets/fonts/{$font}/{$file}";
-			$tab = '	';
+		$href = DOMAIN_THEME . "assets/fonts/{$fonts}/{$file}";
+		$tab = '	';
 
-			// Get the font file extension.
-			$info = pathinfo( $file );
-			$type = $info['extension'];
+		// Get the font file extension.
+		$info = pathinfo( $file );
+		$type = $info['extension'];
+		if ( 'ttf' == $info ) {
+			$type = 'truetype';
+		}
 
+		if ( ! in_array( $type, $valid ) ) {
+			$tags  .= '';
+		} else {
 			$tags .= sprintf(
 				'<link rel="preload" href="%s" as="font" type="font/%s" crossorigin="anonymous">',
 				$href,
