@@ -22,9 +22,11 @@
   --bsb-site-title--font-weight: 800;
   --bsb-site-title--letter-spacing: normal;
   --bsb-cover--page-description-single--font-size: 1.325rem;
-  --bsb-site-nav--item--font-weight: 500;
+  --bsb-site-nav--item--font-weight: 550;
   --bsb-page-header--heading--font-size: 2rem;
   --bsb-page-summary--page-header--heading--font-size: 1.75rem;
   --bsb-page-header--heading--link--font-weight: 800;
-  --bsb-page-sidebar--link--font-weight: 500;
+  --bsb-pagination-list--numeric--link--font-weight: 550;
+  --bsb-pagination-list--numeric--link--active--font-weight: 750;
+  --bsb-page-sidebar--link--font-weight: 525;
 }

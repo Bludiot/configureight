@@ -24,9 +24,9 @@
   --bsb-text-color: #2c3e50;
   --bsb-link--text-color: #2980b9;
   --bsb-link--action--text-color: #e67e22;
-  --bsb--heading-primary--text-color: #34495e;
-  --bsb--heading-primary--link--text-color: #34495e;
-  --bsb--heading-primary--link--action--text-color: #8e44ad;
+  --bsb-heading-primary--text-color: #34495e;
+  --bsb-heading-primary--link--text-color: #34495e;
+  --bsb-heading-primary--link--action--text-color: #8e44ad;
   --bsb-box-border-color: #7f8c8d;
   --bsb-selection--bg-color: #e74c3c;
   --bsb-selection--text-color: #ecf0f1;
@@ -53,8 +53,8 @@
     --bsb-text-color: #ecf0f1;
     --bsb-link--text-color: #ecf0f1;
     --bsb-link--action--text-color: #f1c40f;
-    --bsb--heading-primary--text-color: #ecf0f1;
-    --bsb--heading-primary--link--text-color: #ecf0f1;
-    --bsb--heading-primary--link--action--text-color: #c0392b;
+    --bsb-heading-primary--text-color: #ecf0f1;
+    --bsb-heading-primary--link--text-color: #ecf0f1;
+    --bsb-heading-primary--link--action--text-color: #c0392b;
   }
 }
