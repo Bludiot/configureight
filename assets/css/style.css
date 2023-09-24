@@ -1060,7 +1060,7 @@ body:not(.home) .blog-wrap {
 
 .page-header h1,
 .page-header h2 {
-  font-size: var(--bsb-page-header--heading--font-size);
+  font-size: var(--bsb-page-header--heading--font-size, var(--bsb-heading-primary--font-size, 2rem));
 }
 .page-header h1 a,
 .page-header h2 a {

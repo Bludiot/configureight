@@ -1,0 +1,23 @@
+@font-face {
+  font-family: "Source Code Pro";
+  font-weight: 200 900;
+  font-style: normal;
+  font-display: swap;
+  src: url(../../../../fonts/code/source-code.ttf) format("truetype");
+}
+@font-face {
+  font-family: "Source Code Pro";
+  font-weight: 200 900;
+  font-style: italic;
+  font-display: swap;
+  src: url(../../../../fonts/code/source-code-italic.ttf) format("truetype");
+}
+:root {
+  --bsb-font-stack: Source Code Pro, ui-monospace, Menlo, Monaco, Consolas, Cascadia Mono, Segoe UI Mono, Roboto Mono, Liberation Mono, Oxygen Mono, Ubuntu Monospace, Fira Mono, Droid Sans Mono, Courier New, Courier, monospace, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  --bsb-heading-primary--font-weight: 700;
+  --bsb-heading-primary--letter-spacing: normal;
+  --bsb-site-title--font-weight: 700;
+  --bsb-site-title--letter-spacing: normal;
+  --bsb-site-nav--item--font-weight: 500;
+  --bsb-page-sidebar--link--font-weight: 500;
+}

@@ -14,10 +14,16 @@
 }
 :root {
   --bsb-font-stack: Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  --bsb-site-title--font-size: 2rem;
+  --bsb-heading-primary--font-size: 2.25rem;
   --bsb-heading-primary--font-weight: 800;
   --bsb-heading-primary--letter-spacing: -0.025em;
+  --bsb-site-title--font-size: 1.75rem;
   --bsb-site-title--font-weight: 800;
   --bsb-site-title--letter-spacing: normal;
   --bsb-site-nav--item--font-weight: 500;
+  --bsb-page-header--heading--font-size: 2.25rem;
+  --bsb-page-summary--page-header--heading--font-size: 1.75rem;
+  --bsb-page-header--heading--link--font-weight: 800;
   --bsb-page-sidebar--link--font-weight: 500;
 }

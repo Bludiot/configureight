@@ -62,7 +62,7 @@ body:not( .home ) {
 .page-header {
 	h1,
 	h2 {
-		font-size: var( --bsb-page-header--heading--font-size );
+		font-size: var( --bsb-page-header--heading--font-size, var( --bsb-heading-primary--font-size, 2rem ) );
 
 		a {
 			font-weight: var( --bsb-page-header--heading--link--font-weight, inherit );

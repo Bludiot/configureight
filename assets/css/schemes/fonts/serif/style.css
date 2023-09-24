@@ -1,13 +1,13 @@
 @font-face {
-  font-family: "Crimson";
-  font-weight: 100 900;
+  font-family: "Crimson Pro";
+  font-weight: 200 900;
   font-style: normal;
   font-display: swap;
   src: url(../../../../fonts/serif/crimson.woff2) format("woff2");
 }
 @font-face {
-  font-family: "Crimson";
-  font-weight: 100 900;
+  font-family: "Crimson Pro";
+  font-weight: 200 900;
   font-style: italic;
   font-display: swap;
   src: url(../../../../fonts/serif/crimson-italic.woff2) format("woff2");
@@ -15,15 +15,15 @@
 :root {
   --bsb-font-stack: Georgia, Hoefler Text, Baskerville Old Face, Garamond, Times, Times New Roman, serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
   --bsb-font-size: 1rem;
-  --bsb-heading-primary--font-family: Crimson, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  --bsb-heading-primary--font-family: Crimson Pro, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
   --bsb-heading-primary--font-weight: 550;
   --bsb-heading-primary--line-height: 1.1;
   --bsb-heading-primary--letter-spacing: -0.025em;
-  --bsb-heading-secondary--font-family: Crimson, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  --bsb-heading-secondary--font-family: Crimson Pro, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
   --bsb-heading-secondary--font-size: 1.625rem;
   --bsb-heading-secondary--font-weight: 500;
   --bsb-heading-secondary--line-height: 1.1;
-  --bsb-site-title--font-family: Crimson, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  --bsb-site-title--font-family: Crimson Pro, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
   --bsb-site-title--font-size: 1.875rem;
   --bsb-site-title--font-weight: 600;
   --bsb-site-nav--item--font-weight: 500;
@@ -31,7 +31,7 @@
   --bsb-page-summary--page-header--heading--font-size: 2rem;
   --bsb-page-summary--page-header--heading--font-weight: 600;
   --bsb-page-summary--page-header--heading--line-height: 1.1;
-  --bsb-page-info--font-family: Crimson, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  --bsb-page-info--font-family: Crimson Pro, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
   --bsb-page-info--font-size: 1.25em;
   --bsb-page-info--line-height: 1.1;
   --bsb-page-info-author--font-weight: 550;
