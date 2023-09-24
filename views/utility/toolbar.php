@@ -33,11 +33,21 @@ if ( $user->nickname() ) {
 	$name = $user->firstName();
 }
 
-// User avatar.
-if ( ! $user->profilePicture() ) {
-	$avatar = $user->profilePicture();
+// User avatar & profile link.
+if ( $user->profilePicture() ) {
+	$avatar  = $user->profilePicture();
+	$profile = sprintf(
+		'%sedit-user/%s',
+		DOMAIN_ADMIN,
+		Session :: get( 'username' )
+	);
 } else {
-	$avatar = DOMAIN_THEME . 'assets/images/avatar-default.png';
+	$avatar  = DOMAIN_THEME . 'assets/images/avatar-default.png';
+	$profile = sprintf(
+		'%sedit-user/%s#picture',
+		DOMAIN_ADMIN,
+		Session :: get( 'username' )
+	);
 }
 
 ?>
@@ -48,7 +58,7 @@ if ( ! $user->profilePicture() ) {
 		<a href="<?php echo DOMAIN_ADMIN . 'new-content';?>"><?php $L->p( 'new-content-link' ); ?></a>
 	</div>
 	<div class="user-info">
-		<a id="profile-link" href="<?php echo DOMAIN_ADMIN;?>edit-user/<?php echo Session :: get( 'username' ); ?>">
+		<a id="profile-link" href="<?php echo $profile; ?>">
 			<img src="<?php echo $avatar; ?>" width="24"> <?php echo $name; ?>
 		</a>
 	</div>
