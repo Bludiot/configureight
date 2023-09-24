@@ -14,7 +14,7 @@
 }
 :root {
   --bsb-font-stack: Georgia, Hoefler Text, Baskerville Old Face, Garamond, Times, Times New Roman, serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
-  --bsb-font-size: 1rem;
+  --bsb-font-size: 1.125rem;
   --bsb-heading-primary--font-family: Crimson Pro, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
   --bsb-heading-primary--font-size: 2.25rem;
   --bsb-heading-primary--font-weight: 550;
