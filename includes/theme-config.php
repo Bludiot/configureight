@@ -60,12 +60,8 @@ if ( ! defined( 'THEME_CONFIG' ) ) {
 				'search'    => true
 			],
 			'media' => [
-				/**
-				 * No Bludit constants, only dir/file,
-				 * unless this file is placed in the
-				 * root directory, in which case the
-				 * domain constants are necessary.
-				 */
+
+				// No Bludit constants, only dir/file.
 				'cover_image' => 'assets/images/cover.jpg',
 			],
 
