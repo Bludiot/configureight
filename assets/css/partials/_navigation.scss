@@ -94,7 +94,7 @@
 					border: solid 0.5rem transparent;
 
 					// Creates the triangle.
-					border-bottom-color: #333333;
+					border-bottom-color: var( --bsb-site-nav--sub-list--bg-color, #333333 );
 
 					@media screen and ( max-width: $break_tablet ) {
 						right: calc( 50% - 0.5rem );

@@ -1,5 +1,5 @@
 ///
-/// Color Scheme: Apricot
+/// Color Scheme: Antique
 ///
 
 // General colors.
@@ -23,9 +23,10 @@ $warning     : $yellow !default;
 $success     : $green !default;
 
 // Scheme colors.
-$apr_orange : #c76919;
-$apr_blush  : #e6211c;
-$apr_blue   : #122538;
+$rose_pink  : #f5487f;
+$rose_light : #f879a1;
+$rose_dark  : #c40b45;
+$rose_black : #1b0209;
 
 // SVG icon colors.
 @function svg_icon_color() {
@@ -69,53 +70,54 @@ $close_icon_action_bg: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/20
 :root {
 
 	// General.
-	--bsb-link--text-color: #{$apr_orange};
-	--bsb-link--action--text-color: #{$apr_blush};
-	--bsb-heading-primary--text-color: #{$apr_blue};
-	--bsb-heading-primary--link--text-color: #{$apr_blue};
-	--bsb-heading-primary--link--action--text-color: #{$apr_blush};
-	--bsb-box-border-color: #{$apr_orange};
-	--bsb-selection--bg-color: #{$apr_orange};
+	--bsb-text-color: #{$rose_black};
+	--bsb-link--text-color: #{$rose_pink};
+	--bsb-link--action--text-color: #{$rose_light};
+	--bsb-heading-primary--text-color: #{$rose_dark};
+	--bsb-heading-primary--link--text-color: #{$rose_dark};
+	--bsb-heading-primary--link--action--text-color: #{$rose_pink};
+	--bsb-box-border-color: #{$rose_pink};
+	--bsb-selection--bg-color: #{$rose_pink};
 	--bsb-selection--text-color: #{$white};
 
 	// Forms & buttons.
-	--bsb-form--border-color: #{$apr_orange};
-	--bsb-form--action-border-color: #{$apr_blush};
-	--bsb-button--bg-color: #{$apr_orange};
-	--bsb-button--action-bg-color: #{$apr_blue};
-	--bsb-button--action-border-color: #{$apr_blue};
+	--bsb-form--border-color: #{$rose_pink};
+	--bsb-form--action-border-color: #{$rose_light};
+	--bsb-button--bg-color: #{$rose_pink};
+	--bsb-button--action-bg-color: #{$rose_light};
+	--bsb-button--action-border-color: #{$rose_light};
 	--bsb-button--text-color: #{$white};
 
 	// Header.
 	--bsb-site-header--bg-color: inherit;
 
 	// Navigation.
-	--bsb-site-nav--list--link--action--text-color: #{$apr_blush};
-	--bsb-site-nav--sub-list--bg-color: #{$apr_blue};
-	--bsb-site-nav--sub-list--action--bg-color: #{$apr_orange};
+	--bsb-site-nav--list--link--action--text-color: #{$rose_dark};
+	--bsb-site-nav--sub-list--bg-color: #{$rose_dark};
+	--bsb-site-nav--sub-list--action--bg-color: #{$rose_pink};
 	--bsb-site-nav--sub-list--text-color: #{$white};
 	--bsb-site-nav--sub-list--action--text-color: #{$white};
 
 	// Content.
-	--bsb-article--tags-list--bg-color: #{$apr_orange};
+	--bsb-article--tags-list--bg-color: #{$rose_pink};
 	--bsb-article--tags-list--text-color: #{$white};
 
-	--bsb-article--tags-list--action--bg-color: #{$apr_blush};
+	--bsb-article--tags-list--action--bg-color: #{$rose_dark};
 	--bsb-article--tags-list--action--text-color: #{$white};
 }
 
 @media ( prefers-color-scheme: dark ) {
 	:root {
-		--bsb-bg-color: #051b21;
+		--bsb-bg-color: #{$rose_black};
 		--bsb-text-color: #{$white};
 		--bsb-link--action--text-color: #{$white};
 		--bsb-heading-primary--text-color: #{$white};
 		--bsb-heading-primary--link--text-color: #{$white};
-		--bsb-heading-primary--link--action--text-color: #{$apr_orange};
+		--bsb-heading-primary--link--action--text-color: #{$rose_pink};
 		--bsb-site-nav--list--link--action--text-color: #{$white};
-		--bsb-form--action-border-color: #{$apr_blush};
-		--bsb-button--action-bg-color: #{$apr_blush};
-		--bsb-button--action-border-color: #{$apr_blush};
-		--bsb-article--tags-list--action--bg-color: #{$apr_blush};
+		--bsb-form--action-border-color: #{$rose_light};
+		--bsb-button--action-bg-color: #{$rose_light};
+		--bsb-button--action-border-color: #{$rose_light};
+		--bsb-article--tags-list--action--bg-color: #{$rose_dark};
 	}
 }

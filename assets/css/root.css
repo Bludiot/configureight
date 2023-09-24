@@ -53,6 +53,9 @@
   --bsb-content-wrap--padding: 0 2rem;
   --bsb-page-main--padding: 0;
   --bsb-page-header--heading--font-size: 2rem;
+  --bsb-page-summary--page-header--heading--font-size: 1.75rem;
+  --bsb-page-summary--page-header--heading--font-weight: 700;
+  --bsb-page-summary--page-header--heading--line-height: 1.2;
   --bsb-article--tags-list--text-decoration: none;
   --bsb-article--tags-list--font-size: 0.8125rem;
   --bsb-article--tags-list--font-weight: 600;

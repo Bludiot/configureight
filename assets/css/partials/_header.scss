@@ -137,7 +137,7 @@
 	word-spacing: var( --bsb-site-title--word-spacing, -0.0325em );
 	letter-spacing: var( --bsb-site-title--letter-spacing, -0.015em );
 	line-height: var( --bsb-site-title--line-height, 1.2 );
-	color: var( --bsb-site-title--text-color, inherit );
+	color: var( --bsb-site-title--text-color, var( --bsb-heading-primary--text-color, var( --bsb-text-color ) ) );
 
 	a {
 		font-weight: inherit;
@@ -153,6 +153,7 @@
 
 .site-description {
 	margin: var( --bsb-site-description--margin, 0 );
+	color: var( --bsb-site-description--text-color, var( --bsb-text-color ) );
 }
 
 .template-full-cover {
