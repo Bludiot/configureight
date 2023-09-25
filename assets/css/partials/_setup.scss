@@ -134,8 +134,9 @@ h4 {
 
 #to-top {
 	opacity: 0;
+	pointer-events: none;
 	position: fixed;
-	right: -9999em;
+	right: 2rem;
 	bottom: 2rem;
 	width: 3rem;
 	height: 3rem;
@@ -151,7 +152,7 @@ h4 {
 
 	&.scrolled {
 		opacity: 1;
-		right: 2rem;
+		pointer-events: all;
 	}
 
 	&:hover {
