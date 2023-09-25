@@ -66,7 +66,7 @@ $tags_list = function() use ( $post ) {
 	$links = [];
 	$sep   = ' ';
 
-	if ( has_tags() ) {
+	if ( $post->tags( true ) ) {
 		$html = '<ul class="inline-list tags-list">';
 		foreach ( $tags as $tagKey => $tagName ) {
 
@@ -93,11 +93,11 @@ $tags_list = function() use ( $post ) {
 		</a>
 		<figcaption class="screen-reader-text"><?php echo $post->title(); ?></figcaption>
 	</figure>
-	<?php endif ?>
+	<?php endif; ?>
 
 	<div class="page-summary" data-page-content>
 
-		<header class="page-header" data-page-header>
+		<header class="page-header post-in-loop-header" data-page-header>
 			<h2><a href="<?php echo $post->permalink(); ?>"><?php echo $sticky . $post->title(); ?></a></h2>
 		</header>
 
@@ -118,7 +118,7 @@ $tags_list = function() use ( $post ) {
 				<br />
 				<?php endif ?>
 
-				<?php if ( has_tags() ) : ?>
+				<?php if ( $post->tags( true ) ) : ?>
 				<span class="page-info-entry page-info-tags">
 					<?php echo $tags_list(); ?>
 				</span>

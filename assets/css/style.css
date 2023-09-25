@@ -791,7 +791,7 @@ h3 + .search-form {
   height: 100%;
   background-color: var(--bsb-site-header-overlay--bg-color, rgba(0, 0, 0, 0.625));
 }
-.template-full-cover .page-header {
+.template-full-cover .page-header:not(.posts-loop-header):not(.post-in-loop-header) {
   position: relative;
   width: 100%;
   height: 100%;
@@ -803,10 +803,10 @@ h3 + .search-form {
   transform: translateY(-2vw);
   pointer-events: none;
 }
-.template-full-cover .page-header * {
+.template-full-cover .page-header:not(.posts-loop-header):not(.post-in-loop-header) * {
   pointer-events: initial;
 }
-.template-full-cover .page-header .button.intro-scroll {
+.template-full-cover .page-header:not(.posts-loop-header):not(.post-in-loop-header) .button.intro-scroll {
   display: inline-block;
   margin: 0 auto;
   background: transparent;
@@ -815,13 +815,13 @@ h3 + .search-form {
   transition: transform ease-in-out 0.15s;
   transform: translateY(0);
 }
-.template-full-cover .page-header .button.intro-scroll:hover, .template-full-cover .page-header .button.intro-scroll:focus {
+.template-full-cover .page-header:not(.posts-loop-header):not(.post-in-loop-header) .button.intro-scroll:hover, .template-full-cover .page-header:not(.posts-loop-header):not(.post-in-loop-header) .button.intro-scroll:focus {
   color: var(--bsb-site-cover--title--link--action--text-color, #ffffff);
 }
-.template-full-cover .page-header .button.intro-scroll:hover {
+.template-full-cover .page-header:not(.posts-loop-header):not(.post-in-loop-header) .button.intro-scroll:hover {
   transform: translateY(0.25rem);
 }
-.template-full-cover .page-header .button.intro-scroll svg {
+.template-full-cover .page-header:not(.posts-loop-header):not(.post-in-loop-header) .button.intro-scroll svg {
   width: calc(var(--bsb-button--svg-icon--width) * 3.5);
   height: calc(var(--bsb-button--svg-icon--height) * 3.5);
 }

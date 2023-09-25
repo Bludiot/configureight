@@ -17,7 +17,7 @@
 
 // Import namespaced functions.
 use function BSB_Func\{
-	full_cover
+	blog_data
 };
 use function BSB_Tags\{
 	page_header,
@@ -46,11 +46,11 @@ foreach ( $content as $post ) :
 		</a>
 		<figcaption class="screen-reader-text"><?php echo $post->title(); ?></figcaption>
 	</figure>
-	<?php endif ?>
+	<?php endif; ?>
 
 	<div class="page-summary" data-page-content>
 
-		<header class="page-header" data-page-header>
+		<header class="page-header post-in-loop-header" data-page-header>
 			<h2><a href="<?php echo $post->permalink(); ?>"><?php echo $post->title(); ?></a></h2>
 		</header>
 

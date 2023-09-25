@@ -27,6 +27,7 @@ use function BSB_Func\{
 	text_replace,
 	favicon_exists,
 	blog_data,
+	blog_is_static,
 	has_cover,
 	full_cover,
 	asset_min,
@@ -626,8 +627,12 @@ function posts_loop_header() {
 		'blog' == $url->whereAmI() &&
 		'page' == $blog_data['location']
 	) {
-		$class       = 'blog-page-description';
-		$heading     = $blog_data['title'];
+		$class = 'blog-page-description';
+		if ( full_cover() ) {
+			$heading = ucwords( $blog_data['slug'] . $blog_page );
+		} else {
+			$heading = $blog_data['title'];
+		}
 		$description = $blog_data['description'];
 
 	} elseif ( 'blog' == $url->whereAmI() ) {
@@ -653,7 +658,7 @@ function posts_loop_header() {
 	}
 
 	// SEt up the header markup.
-	$html = '<header class="page-header">';
+	$html = '<header class="page-header posts-loop-header">';
 
 	if ( ! empty( $heading ) && ! ctype_space( $heading ) ) {
 		$html .= sprintf(

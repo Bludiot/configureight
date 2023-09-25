@@ -180,7 +180,7 @@
 		background-color: var( --bsb-site-header-overlay--bg-color, rgba( $color: black, $alpha: 0.625 ) );
 	}
 
-	.page-header {
+	.page-header:not( .posts-loop-header ):not( .post-in-loop-header ) {
 		position: relative;
 		width: 100%;
 		height: 100%;

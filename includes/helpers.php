@@ -289,22 +289,60 @@ function has_cover() {
 }
 
 /**
- * Get cover image source
+ * Blog is static
  *
- * @since  1.0.0
+ * Checks if the the blog URI option
+ * is set and if a static page slug
+ * matches the URI setting.
+ *
  * @global object $page Page class
  * @global object $url Url class
- * @return void
+ * @return boolean
  */
-function get_cover_src() {
+function blog_is_static() {
 
 	// Access global variables.
 	global $page, $url;
 
+	$blog = blog_data();
+
+	if ( $blog['key'] && ! empty( $blog['key'] ) ) {
+		return true;
+	}
+	return false;
+}
+
+/**
+ * Get cover image source
+ *
+ * @since  1.0.0
+ * @global object $page Page class
+ * @global object $site Site class
+ * @global object $url Url class
+ * @return string
+ */
+function get_cover_src() {
+
+	// Access global variables.
+	global $page, $site, $url;
+
 	$src     = '';
 	$default = THEME_CONFIG['media']['cover_image'];
 
-	if ( 'page' == $url->whereAmI() ) {
+	// If in blog pages.
+	if ( 'blog' == $url->whereAmI() ) {
+		if ( blog_is_static() && $page->coverImage() ) {
+			$src = $page->coverImage();
+		} elseif ( $default ) {
+			if ( filter_var( $default, FILTER_VALIDATE_URL ) ) {
+				$src = $default;
+			} elseif ( file_exists( THEME_DIR . $default ) ) {
+				$src = DOMAIN_THEME . $default;
+			}
+		}
+
+	// If on a singular page.
+	} elseif ( 'page' == $url->whereAmI() ) {
 		if ( $page->coverImage() ) {
 			$src = $page->coverImage();
 		} elseif ( $default ) {
@@ -314,6 +352,8 @@ function get_cover_src() {
 				$src = DOMAIN_THEME . $default;
 			}
 		}
+
+	// Default.
 	} elseif ( $default ) {
 		if ( filter_var( $default, FILTER_VALIDATE_URL ) ) {
 			$src = $default;
@@ -329,6 +369,7 @@ function get_cover_src() {
  *
  * @since  1.0.0
  * @global object $page Page class
+ * @global object $site Site class
  * @global object $url Url class
  * @return boolean Returns true if `full-cover` is found in the
  *                 page template field and the page gas a cover
@@ -337,7 +378,20 @@ function get_cover_src() {
 function full_cover() {
 
 	// Access global variables.
-	global $page, $url;
+	global $page, $site, $url;
+
+	$blog = blog_data();
+
+	if ( 'blog' == $url->whereAmI() && blog_is_static() ) {
+		$page = buildPage( $blog['key'] );
+
+		if (
+			$page->isStatic() &&
+			str_contains( $page->template(), 'full-cover' )
+		) {
+			return true;
+		}
+	}
 
 	if (
 		'page' == $url->whereAmI() &&
