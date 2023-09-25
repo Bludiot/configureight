@@ -97,10 +97,12 @@ h1,
 h2 {
 	font-family: var( --bsb-heading-primary--font-family );
 	font-size: var( --bsb-heading-primary--font-size, 2rem );
-	font-weight: var( --bsb-heading-primary--font-weight, bold );
+	font-weight: var( --bsb-heading-primary--font-weight, 700 );
 	line-height: var( --bsb-heading-primary--line-height );
 	word-spacing: -0.0325em;
 	letter-spacing: var( --bsb-heading-primary--letter-spacing, -0.015em );
+	text-transform: var( --bsb-heading-primary--text-transform );
+	font-variant: var( --bsb-heading-primary--font-variant );
 	color: var( --bsb-heading-primary--text-color, var( --bsb-text-color ) );
 
 	a {

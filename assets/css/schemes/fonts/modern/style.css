@@ -1,0 +1,49 @@
+@font-face {
+  font-family: "Montserrat";
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+  src: url(../../../../fonts/modern/montserrat.woff2) format("woff2");
+}
+@font-face {
+  font-family: "Montserrat";
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+  src: url(../../../../fonts/modern/montserrat-italic.woff2) format("woff2");
+}
+@font-face {
+  font-family: "Nunito";
+  font-weight: 200 1000;
+  font-style: normal;
+  font-display: swap;
+  src: url(../../../../fonts/modern/nunito-sans.ttf) format("truetype");
+}
+@font-face {
+  font-family: "Nunito";
+  font-weight: 200 1000;
+  font-style: italic;
+  font-display: swap;
+  src: url(../../../../fonts/modern/nunito-sans-italic.ttf) format("truetype");
+}
+:root {
+  --bsb-font-stack: Nunito, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  --bsb-font-size: 1.125rem;
+  --bsb-font-weight: 465;
+  --bsb-heading-primary--font-family: Montserrat, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  --bsb-heading-primary--font-size: 2rem;
+  --bsb-heading-primary--font-weight: 600;
+  --bsb-heading-primary--letter-spacing: normal;
+  --bsb-heading-primary--font-variant: small-caps;
+  --bsb-site-title--font-size: 1.625rem;
+  --bsb-site-title--font-weight: 600;
+  --bsb-site-title--letter-spacing: normal;
+  --bsb-cover--page-description-single--font-size: 1.325rem;
+  --bsb-site-nav--item--font-weight: 550;
+  --bsb-page-header--heading--font-size: 2rem;
+  --bsb-page-summary--page-header--heading--font-size: 1.75rem;
+  --bsb-page-header--heading--link--font-weight: 600;
+  --bsb-pagination-list--numeric--link--font-weight: 500;
+  --bsb-pagination-list--numeric--link--active--font-weight: 650;
+  --bsb-page-sidebar--link--font-weight: 500;
+}

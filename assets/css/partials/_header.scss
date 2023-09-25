@@ -131,11 +131,13 @@
 
 .site-title {
 	margin: var( --bsb-site-title--margin, 0 );
-	font-family: var( --bsb-site-title--font-family );
+	font-family: var( --bsb-site-title--font-family, var( --bsb-heading-primary--font-family ) );
 	font-size: var( --bsb-site-title--font-size, 1.625rem );
 	font-weight: var( --bsb-site-title--font-weight, bold );
 	word-spacing: var( --bsb-site-title--word-spacing, -0.0325em );
 	letter-spacing: var( --bsb-site-title--letter-spacing, -0.015em );
+	text-transform: var( --bsb-site-title--text-transform );
+	font-variant: var( --bsb-site-title--font-variant, var( --bsb-heading-primary--font-variant ) );
 	line-height: var( --bsb-site-title--line-height, 1.2 );
 	color: var( --bsb-site-title--text-color, var( --bsb-heading-primary--text-color, var( --bsb-text-color ) ) );
 
@@ -247,7 +249,7 @@
 		margin: 0;
 		line-height: 1.2;
 		font-size: var( --bsb-cover--page-title--font-size, clamp( 2.375rem, 3vw + 1rem, 5vw ) );
-		font-weight: var( --bsb-cover--page-title--font-weight, 700 );
+		font-weight: var( --bsb-cover--page-title--font-weight, var( --bsb-heading-primary--font-weight, 700 ) );
 	}
 
 	.page-description {
