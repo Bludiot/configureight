@@ -148,7 +148,8 @@ h4 {
 	border-color: var( --bsb-button--border-color, var( --bsb-form--border-color ) );
 	color: var( --bsb-button--text-color, var( --bsb-text-color ) );
 	border-radius: var( --bsb-to-top--border-radius, 50% );
-	transition: opacity .5s, background-color .15s;
+	transform: translateY( 0 );
+	transition: opacity .5s, background-color .25s, transform .25s;
 
 	&.scrolled {
 		opacity: 1;
@@ -159,6 +160,7 @@ h4 {
 		background-color: var( --bsb-button--action-bg-color, var( --bsb-button--bg-color ) );
 		border-color: var( --bsb-button--action-border-color, var( --bsb-button--border-color, ) );
 		color: var( --bsb-button--action-text-color, var( --bsb-button--text-color ) );
+		transform: translateY( -0.25rem );
 	}
 
 	svg {
