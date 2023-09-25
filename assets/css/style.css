@@ -751,7 +751,7 @@ h3 + .search-form {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: calc(100vh - var(--bsb-toolbar--height));
+  height: 100vh;
   background-position: center center;
   background-repeat: no-repeat;
   background-image: none;
@@ -826,6 +826,10 @@ h3 + .search-form {
   margin: var(--bsb-cover--page-description-single--margin, 1rem 0 0 0);
   font-size: var(--bsb-cover--page-description-single--font-size);
   font-weight: var(--bsb-cover--page-description-single--font-weight);
+}
+
+.toolbar-active.template-full-cover .site-header {
+  height: calc(100vh - var(--bsb-toolbar--height));
 }
 
 .nav-list {
