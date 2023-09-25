@@ -247,7 +247,7 @@ function body_classes() {
 
 	// Sidebar search hidden.
 	if (
-		! THEME_CONFIG['aside']['search_widget'] ||
+		'false'  === THEME_CONFIG['aside']['search_widget'] ||
 		'footer' === THEME_CONFIG['aside']['search_widget']
 	) {
 		$classes[] = 'sidebar-search-hidden';
@@ -433,7 +433,7 @@ function get_toolbar() {
  * @return mixed Returns the `get_toolbar()` function or false.
  */
 function user_toolbar() {
-	if ( user_logged_in() && THEME_CONFIG['toolbar']['display'] ) {
+	if ( user_logged_in() && 'false' !== THEME_CONFIG['toolbar']['display'] ) {
 		return get_toolbar();
 	}
 	return false;

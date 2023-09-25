@@ -51,7 +51,7 @@ if ( $post->description() ) {
 
 		<footer class="page-info">
 			<p>
-				<?php if ( THEME_CONFIG['posts']['post_date'] ) : ?>
+				<?php if ( "false" !== THEME_CONFIG['posts']['post_date'] ) : ?>
 				<span class="page-info-entry">
 					<span class="bi bi-calendar" role="img"></span>
 					<?php echo $post->date(); ?>
@@ -59,7 +59,7 @@ if ( $post->description() ) {
 				<br />
 				<?php endif ?>
 
-				<?php if ( THEME_CONFIG['posts']['read_time'] ) : ?>
+				<?php if ( "false" !== THEME_CONFIG['posts']['read_time'] ) : ?>
 				<span class="page-info-entry">
 					<span class="bi bi-clock-history" role="img"></span>
 					<?php echo $L->get( 'Reading time' ) . ': ' . $post->readingTime(); ?>

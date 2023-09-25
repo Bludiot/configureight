@@ -23,6 +23,9 @@ $search_icon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><p
 		<?php
 
 		$max_items = (integer)THEME_CONFIG['main_nav']['max_items'];
+		if ( ! $max_items ) {
+			$max_items = 6;
+		}
 		$nav_items = array_slice( $staticContent, 0, $max_items );
 
 		foreach ( $nav_items as $nav_item ) :
@@ -84,7 +87,7 @@ $search_icon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><p
 		if ( ! empty( $home_uri ) && ! empty( $blog_uri ) ) {
 
 			// If true in config file.
-			if ( THEME_CONFIG['main_nav']['blog'] ) {
+			if ( 'false' !== THEME_CONFIG['main_nav']['blog'] ) {
 				printf(
 					'<li><a href="%s">%s</a></li>',
 					$site->url() . str_replace( '/', '', $blog_uri ) . '/',
@@ -94,7 +97,7 @@ $search_icon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><p
 		}
 
 		// Add a home link if true in config file.
-		if ( THEME_CONFIG['main_nav']['home'] ) {
+		if ( 'false' !== THEME_CONFIG['main_nav']['home'] ) {
 			printf(
 				'<li><a href="%s">%s</a></li>',
 				$site->url(),
@@ -104,7 +107,7 @@ $search_icon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><p
 
 		// Add a search toggle button.
 		if (
-			THEME_CONFIG['main_nav']['search'] &&
+			'false' !== THEME_CONFIG['main_nav']['search'] &&
 			getPlugin( 'pluginSearch' )
 		) {
 			printf(

@@ -14,10 +14,10 @@ use function BSB_Func\{
 };
 
 $copyright = '';
-if ( THEME_CONFIG['footer']['copyright_line'] ) {
+if ( "false" !== THEME_CONFIG['footer']['copyright_line'] ) {
 
 	$year = '';
-	if ( THEME_CONFIG['footer']['copyright_date'] ) {
+	if ( "false" !== THEME_CONFIG['footer']['copyright_date'] ) {
 		$year = sprintf(
 			' <span itemprop="copyrightYear">%s</span>',
 			date( 'Y' )

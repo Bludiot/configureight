@@ -23,13 +23,13 @@ use function BSB_Tags\{
 
 // Site title classes.
 $site_title_class = 'site-title';
-if ( ! THEME_CONFIG['header']['title'] ) {
+if ( 'false' === THEME_CONFIG['header']['title'] ) {
 	$site_title_class = 'site-title screen-reader-text';
 }
 
 // Site description classes.
 $site_desc_class = 'site-description';
-if ( ! THEME_CONFIG['header']['description'] ) {
+if ( 'false' === THEME_CONFIG['header']['description'] ) {
 	$site_desc_class = 'site-description screen-reader-text';
 }
 
@@ -79,7 +79,7 @@ if ( full_cover() ) {
 	<div class="site-header-overlay"></div>
 
 	<?php if (
-		THEME_CONFIG['main_nav']['search'] &&
+		'false' !== THEME_CONFIG['main_nav']['search'] &&
 		getPlugin( 'pluginSearch' )
 	) : ?>
 	<div id="search-bar" class="hide-if-no-js" aria-expanded="false">
