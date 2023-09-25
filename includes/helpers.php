@@ -271,11 +271,19 @@ function has_cover() {
 	if ( 'page' == $url->whereAmI() ) {
 		if ( $page->coverImage() ) {
 			$cover = true;
-		} elseif ( $default && file_exists( THEME_DIR . $default ) ) {
+		} elseif ( $default ) {
+			if ( filter_var( $default, FILTER_VALIDATE_URL ) ) {
+				$cover = true;
+			} elseif ( file_exists( THEME_DIR . $default ) ) {
+				$cover = true;
+			}
+		}
+	} elseif ( $default ) {
+		if ( filter_var( $default, FILTER_VALIDATE_URL ) ) {
+			$cover = true;
+		} elseif ( file_exists( THEME_DIR . $default ) ) {
 			$cover = true;
 		}
-	} elseif ( $default && file_exists( THEME_DIR . $default ) ) {
-		$cover = true;
 	}
 	return $cover;
 }
@@ -299,11 +307,19 @@ function get_cover_src() {
 	if ( 'page' == $url->whereAmI() ) {
 		if ( $page->coverImage() ) {
 			$src = $page->coverImage();
-		} elseif ( $default && file_exists( THEME_DIR . $default ) ) {
+		} elseif ( $default ) {
+			if ( filter_var( $default, FILTER_VALIDATE_URL ) ) {
+				$src = $default;
+			} elseif ( file_exists( THEME_DIR . $default ) ) {
+				$src = DOMAIN_THEME . $default;
+			}
+		}
+	} elseif ( $default ) {
+		if ( filter_var( $default, FILTER_VALIDATE_URL ) ) {
+			$src = $default;
+		} elseif ( file_exists( THEME_DIR . $default ) ) {
 			$src = DOMAIN_THEME . $default;
 		}
-	} elseif ( $default && file_exists( THEME_DIR . $default ) ) {
-		$src = DOMAIN_THEME . $default;
 	}
 	return $src;
 }
