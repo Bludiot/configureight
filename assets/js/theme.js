@@ -27,5 +27,21 @@
 			e.preventDefault();
 			$( 'html, body' ).animate( { scrollTop : $( '#content' ).offset().top }, 350 );
 		} );
+
+		// Scroll to top button/link.
+		$( '#to-top' ).click( function(e) {
+			e.preventDefault();
+			$( 'html, body' ).animate( { scrollTop : 0 }, 450 );
+		});
+
+		$(window).scroll( function() {
+			var scroll = $(window).scrollTop();
+
+			if ( scroll >= 450 ) {
+				$( '#to-top' ).addClass( 'scrolled' );
+			} else {
+				$( '#to-top' ).removeClass( 'scrolled' );
+			}
+		});
 	});
 })(jQuery);

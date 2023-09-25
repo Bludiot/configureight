@@ -365,6 +365,38 @@ h4 {
   margin: 0;
 }
 
+#to-top {
+  opacity: 0;
+  position: fixed;
+  right: -9999em;
+  bottom: 2rem;
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bsb-button--bg-color);
+  border: var(--bsb-form-element--border);
+  border-color: var(--bsb-button--border-color, var(--bsb-form--border-color));
+  color: var(--bsb-button--text-color, var(--bsb-text-color));
+  border-radius: var(--bsb-to-top--border-radius, 50%);
+  transition: opacity 0.5s;
+}
+#to-top.scrolled {
+  opacity: 1;
+  right: 2rem;
+}
+#to-top:hover {
+  background-color: var(--bsb-button--action-bg-color, var(--bsb-button--bg-color));
+  border-color: var(--bsb-button--action-border-color, var(--bsb-button--border-color, ));
+  color: var(--bsb-button--action-text-color, var(--bsb-button--text-color));
+}
+#to-top svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  fill: var(--bsb-to-top--svg--fill, currentColor);
+}
+
 ::-o-selection {
   color: var(--bsb-selection--text-color, #222222);
   background: var(--bsb-selection--bg-color, #ffdd00);
@@ -495,31 +527,19 @@ input[type=image] svg {
   vertical-align: baseline;
   fill: currentColor;
 }
-.site-content button:hover, .site-content button.hover, .site-content button:focus, .site-content button.focus,
+.site-content button:hover, .site-content button:focus,
 .button:hover,
-.button.hover,
 .button:focus,
-.button.focus,
 button[type=submit]:hover,
-button[type=submit].hover,
 button[type=submit]:focus,
-button[type=submit].focus,
 input[type=submit]:hover,
-input[type=submit].hover,
 input[type=submit]:focus,
-input[type=submit].focus,
 input[type=button]:hover,
-input[type=button].hover,
 input[type=button]:focus,
-input[type=button].focus,
 input[type=reset]:hover,
-input[type=reset].hover,
 input[type=reset]:focus,
-input[type=reset].focus,
 input[type=image]:hover,
-input[type=image].hover,
-input[type=image]:focus,
-input[type=image].focus {
+input[type=image]:focus {
   background-color: var(--bsb-button--action-bg-color, var(--bsb-button--bg-color));
   border-color: var(--bsb-button--action-border-color, var(--bsb-button--border-color, ));
   color: var(--bsb-button--action-text-color, var(--bsb-button--text-color));

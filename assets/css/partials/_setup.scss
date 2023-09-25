@@ -130,6 +130,41 @@ h4 {
 	margin: 0;
 }
 
+#to-top {
+	opacity: 0;
+	position: fixed;
+	right: -9999em;
+	bottom: 2rem;
+	width: 3rem;
+	height: 3rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: var( --bsb-button--bg-color );
+	border: var( --bsb-form-element--border );
+	border-color: var( --bsb-button--border-color, var( --bsb-form--border-color ) );
+	color: var( --bsb-button--text-color, var( --bsb-text-color ) );
+	border-radius: var( --bsb-to-top--border-radius, 50% );
+	transition: opacity .5s;
+
+	&.scrolled {
+		opacity: 1;
+		right: 2rem;
+	}
+
+	&:hover {
+		background-color: var( --bsb-button--action-bg-color, var( --bsb-button--bg-color ) );
+		border-color: var( --bsb-button--action-border-color, var( --bsb-button--border-color, ) );
+		color: var( --bsb-button--action-text-color, var( --bsb-button--text-color ) );
+	}
+
+	svg {
+		width: 1.5rem;
+		height: 1.5rem;
+		fill: var( --bsb-to-top--svg--fill, currentColor );
+	}
+}
+
 // Text selection.
 ::-o-selection {
 	color: var( --bsb-selection--text-color, #222222 );
