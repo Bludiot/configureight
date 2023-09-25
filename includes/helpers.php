@@ -380,7 +380,10 @@ function full_cover() {
 	// Access global variables.
 	global $page, $site, $url;
 
+	// Get blog data.
 	$blog = blog_data();
+
+	// No full cover if URL has the page parameter.
 
 	if ( 'blog' == $url->whereAmI() && blog_is_static() ) {
 		$page = buildPage( $blog['key'] );
@@ -389,6 +392,9 @@ function full_cover() {
 			$page->isStatic() &&
 			str_contains( $page->template(), 'full-cover' )
 		) {
+			if ( isset( $_GET['page'] ) ) {
+				return false;
+			}
 			return true;
 		}
 	}

@@ -203,7 +203,19 @@ function body_classes() {
 			$templates = explode( ' ', $blog_data['template'] );
 
 			foreach ( $templates as $template ) {
-				$classes[] = "template-{$template}";
+
+				// Exclude `full-cover` template if no cover image or paged.
+				if ( str_contains( $template, 'full-cover' ) ) {
+					if ( ! has_cover() ) {
+						$classes[] = '';
+					} elseif ( isset( $_GET['page'] ) ) {
+						$classes[] = '';
+					} else {
+						$classes[] = "template-{$template}";
+					}
+				} else {
+					$classes[] = "template-{$template}";
+				}
 			}
 		}
 	}
@@ -233,12 +245,15 @@ function body_classes() {
 
 			foreach ( $templates as $template ) {
 
-				// Exclude `full-cover` template if no cover image.
-				if (
-					! has_cover() &&
-					str_contains( $page->template(), 'full-cover' )
-				) {
-					$classes[] = '';
+				// Exclude `full-cover` template if no cover image or paged.
+				if ( str_contains( $page->template(), 'full-cover' ) ) {
+					if ( ! has_cover() ) {
+						$classes[] = '';
+					} elseif ( isset( $_GET['page'] ) ) {
+						$classes[] = '';
+					} else {
+						$classes[] = "template-{$template}";
+					}
 				} else {
 					$classes[] = "template-{$template}";
 				}
@@ -627,12 +642,8 @@ function posts_loop_header() {
 		'blog' == $url->whereAmI() &&
 		'page' == $blog_data['location']
 	) {
-		$class = 'blog-page-description';
-		if ( full_cover() ) {
-			$heading = ucwords( $blog_data['slug'] . $blog_page );
-		} else {
-			$heading = $blog_data['title'];
-		}
+		$class       = 'blog-page-description';
+		$heading     = $blog_data['title'];
 		$description = $blog_data['description'];
 
 	} elseif ( 'blog' == $url->whereAmI() ) {
