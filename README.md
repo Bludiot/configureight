@@ -19,7 +19,7 @@ The BS Bludit theme began as a starter theme, a boilerplate for developing theme
 
 ## Configuration
 
-This theme comes with a configuration file for various options built into the theme. This file can be copied and pasted into the Bludit root directory so that the theme can be updated without losing preferences.
+This theme comes with a JSON configuration file for various options built into the theme. This file can be copied and pasted into the Bludit root directory so that the theme can be updated without losing preferences.
 
 ### Color Schemes
 
@@ -40,7 +40,7 @@ All font files have variable weights.
 - Cosmopolitan
 - Code
 
-## Page templates
+## Page Templates
 
 Several page template options are built into the theme, which can be employed in the page edit screen under Options > Advanced. More than one template may be used at once, with space between each template slug, depending on the template type.
 
