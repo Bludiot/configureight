@@ -241,7 +241,7 @@
 	}
 
 	.site-description,
-	.page-description {
+	.page-description:not( .blog-page-description ) {
 		color: var( --bsb-cover--site-description--text-color, $white );
 	}
 
