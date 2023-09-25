@@ -93,30 +93,9 @@ if ( ! min_php_version() ) {
 require_once( THEME_DIR . 'includes/classes/autoload.php' );
 Autoload\classes();
 
-/**
- * Get configuration file
- *
- * Looks first in the Bludit root directory
- * for `theme-config.php`, then in this theme's
- * `includes` directory for `theme-config.php`.
- *
- * This is a starter theme and you may create
- * more than one theme from this boilerplate.
- * For this reason the ability to access a common
- * configuration file is provided to you.
- *
- * To add the configuration file to the root,
- * simply copy the `theme-config.php` file in
- * the `includes` directory and paste into the
- * root Bludit directory where you find the
- * content, kernel, plugins, themes directories.
- */
-if ( file_exists( PATH_ROOT . 'theme-config.php' ) ) {
-	require( PATH_ROOT . 'theme-config.php' );
-} else {
-	require( THEME_DIR . 'includes/theme-config.php' );
-}
+// Sets up theme configuration.
+require( THEME_DIR . 'includes/theme-config.php' );
 
-// Get theme functions.
+// Required theme functions.
 require( THEME_DIR . 'includes/helpers.php' );
 require( THEME_DIR . 'includes/template-tags.php' );

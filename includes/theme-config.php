@@ -8,10 +8,39 @@
  * @since      1.0.0
  */
 
+namespace BSB_Theme;
+
 // Stop if accessed directly.
 if ( ! defined( 'BLUDIT' ) ) {
 	die( $L->get( 'direct-access' ) );
 }
+
+/**
+ * Get configuration file
+ *
+ * Looks first in the Bludit root directory
+ * for `theme-config.json`, then in this theme's
+ * `includes` directory for `theme-config.json`.
+ *
+ * This is a starter theme and you may create
+ * more than one theme from this boilerplate.
+ * For this reason the ability to access a common
+ * configuration file is provided to you.
+ *
+ * To add the configuration file to the root,
+ * simply copy the `theme-config.json` file in
+ * the `includes` directory and paste into the
+ * root Bludit directory where you find the
+ * content, kernel, plugins, themes directories.
+ */
+if ( file_exists( PATH_ROOT . 'theme-config.json' ) ) {
+	$get_json = file_get_contents( PATH_ROOT . 'theme-config.json' );
+} else {
+	$get_json = file_get_contents( THEME_DIR . 'includes/theme-config.json' );
+}
+
+// Convert JSON to PHP array.
+$theme_config = json_decode( $get_json, true );
 
 /**
  * Configuration constant
@@ -20,83 +49,7 @@ if ( ! defined( 'BLUDIT' ) ) {
  * @var   array
  */
 if ( ! defined( 'THEME_CONFIG' ) ) {
-	define(
-		'THEME_CONFIG',
-		[
-			'parent' => false,
-			'debug'  => false,
-			'head'   => [
-
-				/**
-				 * Favicon (bookmark icon)
-				 *
-				 * No Bludit constants and no
-				 * directory, only the file name
-				 * and extension (e.g. favicon.png ).
-				 *
-				 * Place the icon in the Bludit
-				 * root directory or in this theme's
-				 * `assets/images` directory and the
-				 * theme will find it.
-				 *
-				 * The theme looks first in the root
-				 * directory so a file there will override
-				 * a file in `assets/images`.
-				 */
-				'favicon'  => 'favicon.gif',
-				'keywords' => []
-			],
-			'toolbar'     => [
-				'display' => true
-			],
-			'header' => [
-				'title'       => true,
-				'description' => true
-			],
-			'main_nav'    => [
-				'max_items' => 6,
-				'blog'      => true,
-				'home'      => true,
-				'search'    => true
-			],
-			'media' => [
-
-				// No Bludit constants, only dir/file.
-				'cover_image' => 'assets/images/cover.jpg',
-			],
-
-			// Posts loops.
-			'posts' => [
-
-				// Options: `list` & `grid`.
-				'loop' => 'list',
-
-				// Options: `prev_next` & `numerical`.
-				'paged'     => 'numerical',
-				'byline'    => true,
-				'post_date' => true,
-				'read_time' => true
-			],
-			'aside'       => [
-				'no_sidebar'     => false,
-				'sidebar_bottom' => false,
-				'search_widget'  => true
-			],
-			'footer' => [
-				'copyright_line' => true,
-				'copyright_date' => true,
-
-				// Use `%year%` in language files for current year.
-				'copyright_text' => ''
-			],
-
-			// Value of the scheme type is the scheme directory.
-			'schemes' => [
-				'colors' => 'default',
-				'fonts'  => 'default'
-			]
-		]
-	);
+	define( 'THEME_CONFIG', $theme_config );
 }
 
 // Set debug mode.

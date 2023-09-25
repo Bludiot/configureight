@@ -1,0 +1,45 @@
+{
+	"parent" : false,
+	"debug"  : false,
+	"head"   : {
+		"favicon"  : "favicon.gif",
+		"keywords" : {}
+	},
+	"toolbar" : {
+		"display" : true
+	},
+	"header" : {
+		"title"       : true,
+		"description" : true
+	},
+	"main_nav" : {
+		"max_items" : 6,
+		"blog"      : true,
+		"home"      : true,
+		"search"    : true
+	},
+	"media" : {
+		"cover_image" : "assets/images/cover.jpg"
+	},
+	"posts" : {
+		"loop"      : "list",
+		"paged"     : "numerical",
+		"byline"    : true,
+		"post_date" : true,
+		"read_time" : false
+	},
+	"aside" : {
+		"no_sidebar"     : false,
+		"sidebar_bottom" : false,
+		"search_widget"  : true
+	},
+	"footer" : {
+		"copyright_line" : true,
+		"copyright_date" : true,
+		"copyright_text" : ""
+	},
+	"schemes" : {
+		"colors" : "default",
+		"fonts"  : "default"
+	}
+}
