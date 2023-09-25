@@ -24,9 +24,13 @@ $search_icon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><p
 
 		$max_items = (integer)THEME_CONFIG['main_nav']['max_items'];
 		if ( ! $max_items ) {
-			$max_items = 6;
+			$max_items = 0;
 		}
-		$nav_items = array_slice( $staticContent, 0, $max_items );
+
+		$nav_items = $staticContent;
+		if ( $max_items > 0 ) {
+			$nav_items = array_slice( $staticContent, 0, $max_items );
+		}
 
 		foreach ( $nav_items as $nav_item ) :
 

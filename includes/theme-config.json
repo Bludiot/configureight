@@ -14,7 +14,7 @@
 		"description" : true
 	},
 	"main_nav" : {
-		"max_items" : 6,
+		"max_items" : 0,
 		"blog"      : true,
 		"home"      : true,
 		"search"    : true
