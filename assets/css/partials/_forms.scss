@@ -85,6 +85,7 @@ input[type="image"] {
 	border-color: var( --bsb-button--border-color, var( --bsb-form--border-color ) );
 	color: var( --bsb-button--text-color, var( --bsb-text-color ) );
 	text-decoration: none;
+	transition: var( --bsb-button--transition--property, all ) var( --bsb-button--transition--duration, .15s ) var( --bsb-button--transition--function, ease-in-out );
 
 	svg {
 		width: var( --bsb-button--svg-icon--width );

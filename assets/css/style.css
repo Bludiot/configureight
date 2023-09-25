@@ -383,7 +383,7 @@ h4 {
   border-color: var(--bsb-button--border-color, var(--bsb-form--border-color));
   color: var(--bsb-button--text-color, var(--bsb-text-color));
   border-radius: var(--bsb-to-top--border-radius, 50%);
-  transition: opacity 0.5s;
+  transition: opacity 0.5s, background-color 0.15s;
 }
 #to-top.scrolled {
   opacity: 1;
@@ -517,6 +517,7 @@ input[type=image] {
   border-color: var(--bsb-button--border-color, var(--bsb-form--border-color));
   color: var(--bsb-button--text-color, var(--bsb-text-color));
   text-decoration: none;
+  transition: var(--bsb-button--transition--property, all) var(--bsb-button--transition--duration, 0.15s) var(--bsb-button--transition--function, ease-in-out);
 }
 .site-content button svg,
 .button svg,

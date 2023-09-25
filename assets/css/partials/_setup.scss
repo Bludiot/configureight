@@ -148,7 +148,7 @@ h4 {
 	border-color: var( --bsb-button--border-color, var( --bsb-form--border-color ) );
 	color: var( --bsb-button--text-color, var( --bsb-text-color ) );
 	border-radius: var( --bsb-to-top--border-radius, 50% );
-	transition: opacity .5s;
+	transition: opacity .5s, background-color .15s;
 
 	&.scrolled {
 		opacity: 1;
