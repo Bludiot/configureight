@@ -69,6 +69,7 @@
 				opacity: 0;
 				transition: transform 0.25s, opacity 0.25s;
 				background-color: var( --bsb-site-nav--sub-list--bg-color, #333333 );
+				border: solid 2px var( --bsb-site-nav--sub-list--border-color, var( --bsb-site-nav--sub-list--bg-color, #333333 ) );
 
 				&:before {
 					content: '';
@@ -86,8 +87,8 @@
 					position: absolute;
 
 					/// Top: pull up (-) height of :after and
-					/// ul > ul box shadow spread.
-					top: -1rem;
+					/// ul > ul border width.
+					top: calc( -1rem - 2px );
 					right: 1rem;
 					width: 1rem;
 					height: 1rem;
