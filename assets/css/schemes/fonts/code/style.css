@@ -3,23 +3,25 @@
   font-weight: 200 900;
   font-style: normal;
   font-display: swap;
-  src: url(../../../../fonts/code/source-code.ttf) format("truetype");
+  src: url(../../../../fonts/code/source-code.woff2) format("woff2");
 }
 @font-face {
   font-family: "Source Code Pro";
   font-weight: 200 900;
   font-style: italic;
   font-display: swap;
-  src: url(../../../../fonts/code/source-code-italic.ttf) format("truetype");
+  src: url(../../../../fonts/code/source-code-italic.woff2) format("woff2");
 }
 :root {
   --bsb-font-stack: Source Code Pro, ui-monospace, Menlo, Monaco, Consolas, Cascadia Mono, Segoe UI Mono, Roboto Mono, Liberation Mono, Oxygen Mono, Ubuntu Monospace, Fira Mono, Droid Sans Mono, Courier New, Courier, monospace, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
-  --bsb-heading-primary--font-size: 2.5rem;
+  --bsb-heading-primary--font-size: 2rem;
   --bsb-heading-primary--font-weight: 700;
-  --bsb-heading-primary--letter-spacing: -0.0325em;
+  --bsb-heading-primary--letter-spacing: normal;
   --bsb-site-title--font-weight: 700;
   --bsb-site-title--letter-spacing: normal;
-  --bsb-cover--page-title--font-weight: 600;
+  --bsb-site-title--word-spacing: normal;
+  --bsb-site-title--letter-spacing: normal;
+  --bsb-cover--page-title--font-weight: 650;
   --bsb-site-nav--item--font-size: 1.125rem;
   --bsb-site-nav--item--font-weight: 500;
   --bsb-page-summary--page-header--heading--font-size: 1.75rem;
