@@ -341,6 +341,7 @@ h2 {
 }
 h1 a,
 h2 a {
+  font-weight: var(--bsb-heading-primary--link--font-weight, inherit);
   -webkit-text-decoration: var(--bsb-link--text-decoration, none);
           text-decoration: var(--bsb-link--text-decoration, none);
   color: var(--bsb-heading-primary--link--text-color, var(--bsb-link--text-color));
@@ -793,7 +794,7 @@ h3 + .search-form {
   height: 100%;
   background-color: var(--bsb-site-header-overlay--bg-color, rgba(0, 0, 0, 0.625));
 }
-.template-full-cover .page-header:not(.posts-loop-header):not(.post-in-loop-header) {
+.template-full-cover .cover-header {
   position: relative;
   width: 100%;
   height: 100%;
@@ -805,10 +806,10 @@ h3 + .search-form {
   transform: translateY(-2vw);
   pointer-events: none;
 }
-.template-full-cover .page-header:not(.posts-loop-header):not(.post-in-loop-header) * {
+.template-full-cover .cover-header * {
   pointer-events: initial;
 }
-.template-full-cover .page-header:not(.posts-loop-header):not(.post-in-loop-header) .button.intro-scroll {
+.template-full-cover .cover-header .button.intro-scroll {
   display: inline-block;
   margin: 0 auto;
   background: transparent;
@@ -817,40 +818,40 @@ h3 + .search-form {
   transition: transform ease-in-out 0.15s;
   transform: translateY(0);
 }
-.template-full-cover .page-header:not(.posts-loop-header):not(.post-in-loop-header) .button.intro-scroll:hover, .template-full-cover .page-header:not(.posts-loop-header):not(.post-in-loop-header) .button.intro-scroll:focus {
+.template-full-cover .cover-header .button.intro-scroll:hover, .template-full-cover .cover-header .button.intro-scroll:focus {
   color: var(--bsb-site-cover--title--link--action--text-color, #ffffff);
 }
-.template-full-cover .page-header:not(.posts-loop-header):not(.post-in-loop-header) .button.intro-scroll:hover {
+.template-full-cover .cover-header .button.intro-scroll:hover {
   transform: translateY(0.25rem);
 }
-.template-full-cover .page-header:not(.posts-loop-header):not(.post-in-loop-header) .button.intro-scroll svg {
+.template-full-cover .cover-header .button.intro-scroll svg {
   width: calc(var(--bsb-button--svg-icon--width) * 3.5);
   height: calc(var(--bsb-button--svg-icon--height) * 3.5);
 }
 .template-full-cover .site-title,
-.template-full-cover .page-title {
+.template-full-cover .cover-title {
   color: var(--bsb-cover--titles--text-color, #ffffff);
 }
 .template-full-cover .site-title a,
-.template-full-cover .page-title a {
+.template-full-cover .cover-title a {
   color: var(--bsb-cover--title--link--text-color, #ffffff);
 }
 .template-full-cover .site-title a:hover, .template-full-cover .site-title a:focus,
-.template-full-cover .page-title a:hover,
-.template-full-cover .page-title a:focus {
+.template-full-cover .cover-title a:hover,
+.template-full-cover .cover-title a:focus {
   color: var(--bsb-site-cover--title--link--action--text-color, #ffffff);
 }
 .template-full-cover .site-description,
-.template-full-cover .page-description:not(.blog-page-description) {
+.template-full-cover .cover-description:not(.blog-page-description) {
   color: var(--bsb-cover--site-description--text-color, #ffffff);
 }
-.template-full-cover .page-title {
+.template-full-cover .cover-title {
   margin: 0;
   line-height: 1.2;
   font-size: var(--bsb-cover--page-title--font-size, clamp(2.375rem, 3vw + 1rem, 5vw));
   font-weight: var(--bsb-cover--page-title--font-weight, var(--bsb-heading-primary--font-weight, 700));
 }
-.template-full-cover .page-description.page-description-single {
+.template-full-cover .cover-description.page-description-single {
   margin: var(--bsb-cover--page-description-single--margin, 1rem 0 0 0);
   font-size: var(--bsb-cover--page-description-single--font-size);
   font-weight: var(--bsb-cover--page-description-single--font-weight);

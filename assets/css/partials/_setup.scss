@@ -106,6 +106,7 @@ h2 {
 	color: var( --bsb-heading-primary--text-color, var( --bsb-text-color ) );
 
 	a {
+		font-weight: var( --bsb-heading-primary--link--font-weight, inherit );
 		text-decoration: var( --bsb-link--text-decoration, none );
 		color: var( --bsb-heading-primary--link--text-color, var( --bsb-link--text-color ) );
 
