@@ -543,8 +543,10 @@ function content_template() {
 
 	// Blog template when a static home page is used.
 	if ( 'page' == $url->whereAmI() && $page->slug() == str_replace( '/', '', $site->getField( 'uriBlog' ) ) ) {
-		if ( 'grid' == THEME_CONFIG['posts']['loop'] ) {
+		if ( 'grid' === THEME_CONFIG['posts']['loop'] ) {
 			$template = 'views/content/posts-grid.php';
+		} elseif ( 'full' === THEME_CONFIG['posts']['loop'] ) {
+			$template = 'views/content/posts-full.php';
 		} else {
 			$template = 'views/content/posts.php';
 		}
@@ -591,6 +593,8 @@ function content_template() {
 	} else {
 		if ( 'grid' == THEME_CONFIG['posts']['loop'] ) {
 			$template = 'views/content/posts-grid.php';
+		} elseif ( 'full' === THEME_CONFIG['posts']['loop'] ) {
+			$template = 'views/content/posts-full.php';
 		} else {
 			$template = 'views/content/posts.php';
 		}

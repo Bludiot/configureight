@@ -1154,6 +1154,9 @@ body:not(.home) .blog-wrap {
   margin: var(--bsb-page-cover-single--margin, 0 auto 0 auto);
   max-width: 2048px;
 }
+.page-cover:not(.page-cover-blog).posts-loop-cover {
+  margin: var(--bsb-posts-loop-cover--margin, 2rem 0 0 0);
+}
 .page-cover:not(.page-cover-blog) img {
   display: block;
   width: 100%;

@@ -6,8 +6,8 @@
  * home page or blog page when a static
  * home page is used.
  *
- * The THEME_CONFIG['posts']['loop'] constant
- * must be set to `grid` to use this.
+ * Theme config 'posts' > 'loop'
+ * must be set to 'grid' to use this.
  *
  * @package    BS Bludit
  * @subpackage Templates

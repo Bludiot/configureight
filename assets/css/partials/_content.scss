@@ -129,6 +129,10 @@ body:not( .home ) {
 	margin: var( --bsb-page-cover-single--margin, 0 auto 0 auto );
 	max-width: 2048px;
 
+	&.posts-loop-cover {
+		margin: var( --bsb-posts-loop-cover--margin, 2rem 0 0 0 );
+	}
+
 	img {
 		display: block;
 		width: 100%;
