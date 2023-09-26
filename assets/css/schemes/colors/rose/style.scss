@@ -25,7 +25,7 @@ $success     : $green !default;
 // Scheme colors.
 $rose_pink  : #f5487f;
 $rose_light : #f879a1;
-$rose_dark  : #c40b45;
+$rose_dark  : #401225;
 $rose_black : #1b0209;
 
 // SVG icon colors.
@@ -110,6 +110,7 @@ $close_icon_action_bg: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/20
 	:root {
 		--bsb-bg-color: #{$rose_black};
 		--bsb-text-color: #{$white};
+		--bsb-link--text-color: #{$rose_pink};
 		--bsb-link--action--text-color: #{$white};
 		--bsb-heading-primary--text-color: #{$white};
 		--bsb-heading-primary--link--text-color: #{$white};

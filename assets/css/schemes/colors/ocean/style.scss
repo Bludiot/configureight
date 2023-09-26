@@ -26,7 +26,7 @@ $success     : $green !default;
 $ocn_white : #f8fafd;
 $ocn_blue  : #254d88;
 $ocn_light : #467ac7;
-$ocn_dark  : #1d3c68;
+$ocn_dark  : #122544;
 $ocn_black : #08101d;
 
 // SVG icon colors.
@@ -76,7 +76,7 @@ $close_icon_action_bg: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/20
 	--bsb-link--action--text-color: #{$ocn_light};
 	--bsb-heading-primary--text-color: #{$ocn_dark};
 	--bsb-heading-primary--link--text-color: #{$ocn_dark};
-	--bsb-heading-primary--link--action--text-color: #{$ocn_light};
+	--bsb-heading-primary--link--action--text-color: #{$ocn_blue};
 	--bsb-box-border-color: #{$ocn_blue};
 	--bsb-selection--bg-color: #{$ocn_blue};
 	--bsb-selection--text-color: #{$ocn_white};

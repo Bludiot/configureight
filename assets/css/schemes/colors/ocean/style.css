@@ -23,9 +23,9 @@
   --bsb-text-color: #08101d;
   --bsb-link--text-color: #254d88;
   --bsb-link--action--text-color: #467ac7;
-  --bsb-heading-primary--text-color: #1d3c68;
-  --bsb-heading-primary--link--text-color: #1d3c68;
-  --bsb-heading-primary--link--action--text-color: #467ac7;
+  --bsb-heading-primary--text-color: #122544;
+  --bsb-heading-primary--link--text-color: #122544;
+  --bsb-heading-primary--link--action--text-color: #254d88;
   --bsb-box-border-color: #254d88;
   --bsb-selection--bg-color: #254d88;
   --bsb-selection--text-color: #f8fafd;
@@ -36,8 +36,8 @@
   --bsb-button--action-border-color: #467ac7;
   --bsb-button--text-color: #f8fafd;
   --bsb-site-header--bg-color: inherit;
-  --bsb-site-nav--list--link--action--text-color: #1d3c68;
-  --bsb-site-nav--sub-list--bg-color: #1d3c68;
+  --bsb-site-nav--list--link--action--text-color: #122544;
+  --bsb-site-nav--sub-list--bg-color: #122544;
   --bsb-site-nav--sub-list--action--bg-color: #254d88;
   --bsb-site-nav--sub-list--text-color: #f8fafd;
   --bsb-site-nav--sub-list--action--text-color: #f8fafd;
