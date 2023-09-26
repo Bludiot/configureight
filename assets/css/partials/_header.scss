@@ -180,7 +180,7 @@
 		background-color: var( --bsb-site-header-overlay--bg-color, rgba( $color: black, $alpha: 0.625 ) );
 	}
 
-	.page-header:not( .posts-loop-header ):not( .post-in-loop-header ) {
+	.cover-header {
 		position: relative;
 		width: 100%;
 		height: 100%;
@@ -227,7 +227,7 @@
 	}
 
 	.site-title,
-	.page-title {
+	.cover-title {
 		color: var( --bsb-cover--titles--text-color, $white );
 
 		a {
@@ -241,18 +241,18 @@
 	}
 
 	.site-description,
-	.page-description:not( .blog-page-description ) {
+	.cover-description:not( .blog-page-description ) {
 		color: var( --bsb-cover--site-description--text-color, $white );
 	}
 
-	.page-title {
+	.cover-title {
 		margin: 0;
 		line-height: 1.2;
 		font-size: var( --bsb-cover--page-title--font-size, clamp( 2.375rem, 3vw + 1rem, 5vw ) );
 		font-weight: var( --bsb-cover--page-title--font-weight, var( --bsb-heading-primary--font-weight, 700 ) );
 	}
 
-	.page-description {
+	.cover-description {
 		&.page-description-single {
 			margin:  var( --bsb-cover--page-description-single--margin, 1rem 0 0 0 );
 			font-size: var( --bsb-cover--page-description-single--font-size );

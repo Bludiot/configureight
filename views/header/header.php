@@ -18,7 +18,8 @@ use function BSB_Func\{
 use function BSB_Tags\{
 	search_form,
 	site_logo,
-	page_header
+	page_header,
+	cover_header
 };
 
 // Site title classes.
@@ -105,6 +106,6 @@ if ( full_cover() ) {
 		include( THEME_DIR . 'views/navigation/main-nav.php' ); ?>
 	</div>
 	<?php if ( full_cover() ) {
-		echo page_header();
+		echo cover_header();
 	} ?>
 </header>
