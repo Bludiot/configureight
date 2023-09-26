@@ -20,6 +20,7 @@ use function BSB_Tags\{
 	site_schema,
 	user_toolbar,
 	page_id,
+	cover_header,
 	content_template,
 	footer_scripts
 };
@@ -75,9 +76,12 @@ if ( is_blog_page() ) {
 		<?php Theme :: plugins( 'pageBegin' ); ?>
 
 		<?php if ( 'search' != $url->whereAmI() && ! full_cover() && has_cover() ) : ?>
-		<figure class="page-cover page-cover-single">
+		<figure class="page-cover page-cover-singular">
 			<img src="<?php echo get_cover_src(); ?>" />
-			<figcaption class="screen-reader-text"><?php echo $page->title(); ?></figcaption>
+			<figcaption>
+				<div class="cover-overlay"></div>
+				<?php echo cover_header(); ?>
+			</figcaption>
 		</figure>
 		<?php endif ?>
 

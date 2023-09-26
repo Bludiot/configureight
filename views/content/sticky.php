@@ -20,7 +20,7 @@ use function BSB_Tags\{
 ?>
 <article class="site-article" role="article" data-site-article>
 
-	<?php if ( ! full_cover() ) {
+	<?php if ( ! empty( $page->coverImage() ) ) {
 		echo page_header();
 	} ?>
 
