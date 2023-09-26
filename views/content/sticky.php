@@ -25,10 +25,6 @@ use function BSB_Tags\{
 	} ?>
 
 	<div class="page-content" itemprop="articleBody" data-page-content>
-		<?php echo $page->contentBreak(); ?>
+		<?php echo $page->content(); ?>
 	</div>
-
-	<?php if ( $page->readMore() ) : ?>
-		<p><a class="button" href="<?php echo $page->permalink(); ?>" role="button"><?php echo $L->get( 'Read More' ); ?></a></p>
-	<?php endif; ?>
 </article>
