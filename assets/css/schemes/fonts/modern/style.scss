@@ -23,7 +23,7 @@
 	font-weight: 200 1000;
 	font-style: normal;
 	font-display: swap;
-	src: url( ../../../../fonts/modern/nunito-sans.ttf ) format( 'truetype' );
+	src: url( ../../../../fonts/modern/nunito-sans.woff2 ) format( 'woff2' );
 }
 
 @font-face {
@@ -31,7 +31,7 @@
 	font-weight: 200 1000;
 	font-style: italic;
 	font-display: swap;
-	src: url( ../../../../fonts/modern/nunito-sans-italic.ttf ) format( 'truetype' );
+	src: url( ../../../../fonts/modern/nunito-sans-italic.woff2 ) format( 'woff2' );
 }
 
 $montserrat_stack: 'Montserrat', 'Helvetica Neue', Helvetica, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
