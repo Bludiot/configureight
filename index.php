@@ -68,9 +68,9 @@ if ( is_blog_page() ) {
 
 	<?php Theme :: plugins( 'siteBodyBegin' ); ?>
 
-	<div id="<?php echo page_id(); ?>" class="page-wrap" data-page-wrap itemscope="itemscope" itemtype="<?php site_schema(); ?>">
+	<?php include( THEME_DIR . 'views/header/header.php' ); ?>
 
-		<?php include( THEME_DIR . 'views/header/header.php' ); ?>
+	<div id="<?php echo page_id(); ?>" class="page-wrap" data-page-wrap itemscope="itemscope" itemtype="<?php site_schema(); ?>">
 
 		<?php Theme :: plugins( 'pageBegin' ); ?>
 

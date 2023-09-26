@@ -884,8 +884,11 @@ h3 + .search-form {
 .site-navigation ul li {
   position: relative;
   margin: var(--bsb-site-nav--item--margin, 0);
+  font-family: var(--bsb-site-nav--item--font-family);
   font-size: var(--bsb-site-nav--item--font-size);
   font-weight: var(--bsb-site-nav--item--font-weight);
+  text-transform: var(--bsb-site-nav--item--text-transform);
+  font-variant: var(--bsb-site-nav--item--font-variant);
   line-height: 1.2;
   color: var(--bsb-site-nav--list--text-color, inherit);
 }

@@ -13,7 +13,7 @@
   src: url(../../../../fonts/code/source-code-italic.woff2) format("woff2");
 }
 :root {
-  --bsb-font-stack: Source Code Pro, ui-monospace, Menlo, Monaco, Consolas, Cascadia Mono, Segoe UI Mono, Roboto Mono, Liberation Mono, Oxygen Mono, Ubuntu Monospace, Fira Mono, Droid Sans Mono, Courier New, Courier, monospace, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  --bsb-font-stack: Source Code Pro, Roboto Mono, Fira Code, Liberation Mono, Inconsolata, Menlo, Monaco, Consolas, Cascadia Mono, Segoe UI Mono, Oxygen Mono, Ubuntu Monospace, Fira Mono, Droid Sans Mono, Courier New, Courier, ui-monospace, monospace, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
   --bsb-heading-primary--font-size: 2rem;
   --bsb-heading-primary--font-weight: 700;
   --bsb-heading-primary--letter-spacing: normal;
