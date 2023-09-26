@@ -103,6 +103,29 @@ $tags_list = function() use ( $post ) {
 	</figure>
 	<?php endif; ?>
 
+	<footer class="page-info">
+		<p>
+			<?php if ( THEME_CONFIG['posts']['byline'] ) : ?>
+			<span class="page-info-entry page-info-author">
+				<?php echo get_author(); ?>
+			</span>
+			<?php endif ?>
+
+			<?php if ( THEME_CONFIG['posts']['post_date'] ) : ?>
+			<span class="page-info-entry page-info-date">
+				<?php echo $post->date(); ?>
+			</span>
+			<br />
+			<?php endif ?>
+
+			<?php if ( $post->tags( true ) ) : ?>
+			<span class="page-info-entry page-info-tags">
+				<?php echo $tags_list(); ?>
+			</span>
+			<?php endif ?>
+		</p>
+	</footer>
+
 	<div class="post-content" itemprop="articleBody" data-post-content>
 		<?php echo $post->content(); ?>
 	</div>
