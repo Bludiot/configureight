@@ -457,6 +457,31 @@ function get_config_styles() {
 }
 
 /**
+ * Word count
+ *
+ * Returns the word count of the page content,
+ * meaning content from the admin editor.
+ *
+ * @since  1.0.0
+ * @param  string Key of the page to count.
+ * @global object $page Page class
+ * @return integer
+ */
+function get_word_count( $key = '' ) {
+
+	// Access global variables.
+	global $page;
+
+	if ( empty( $key ) ) {
+		$key = $page->key();
+	}
+
+	$build = buildPage( $key );
+
+	return str_word_count( strip_tags( $build->content() ) );
+}
+
+/**
  * Convert a 3- or 6-digit hexadecimal color to an associative RGB array.
  *
  * @param string $color The color in hex format.
