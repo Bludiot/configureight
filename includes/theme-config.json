@@ -20,7 +20,9 @@
 		"search"    : true
 	},
 	"media" : {
-		"cover_image" : "assets/images/cover.jpg"
+		"cover_image"   : "assets/images/cover.jpg",
+		"cover_color"   : "#000000",
+		"cover_opacity" : "0.625"
 	},
 	"posts" : {
 		"loop"      : "list",

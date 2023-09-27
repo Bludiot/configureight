@@ -25,9 +25,11 @@ use function BSB_Func\{
 	is_rtl,
 	user_logged_in,
 	text_replace,
+	hex_to_rgb,
 	favicon_exists,
 	blog_data,
 	blog_is_static,
+	get_config_styles,
 	has_cover,
 	full_cover,
 	asset_min,
@@ -141,6 +143,31 @@ function load_font_files() {
 		}
 	}
 	return $tags;
+}
+
+/**
+ * Config styles
+ *
+ * Returns a CSS block of override styles
+ *
+ * @since  1.0.0
+ * @return string
+ */
+function config_styles() {
+
+	$get_styles = get_config_styles();
+
+	$styles = '<style>:root {';
+
+	if ( $get_styles['cover_color'] && $get_styles['cover_opacity'] ) {
+		$styles .= sprintf(
+			'--bsb-cover-overlay--bg-color: %s;',
+			hex_to_rgb( $get_styles['cover_color'], $get_styles['cover_opacity'] )
+		);
+	}
+	$styles .= '}</style>';
+
+	return $styles;
 }
 
 /**
@@ -402,14 +429,6 @@ function page_header() {
 		$html .= sprintf(
 			'<p class="page-description page-description-single">%s</p>',
 			$description
-		);
-	}
-
-	if ( full_cover() ) {
-		$html .= sprintf(
-			'<a href="#content" class="button intro-scroll hide-if-no-js"><span class="screen-reader-text">%s</span>%s</a>',
-			$L->get( 'Scroll to content' ),
-			$scroll_icon
 		);
 	}
 	$html .= "</{$wrapper}>";

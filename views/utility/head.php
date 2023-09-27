@@ -11,11 +11,14 @@
 // Import namespaced functions.
 use function BSB_Func\{
 	is_rtl,
-	asset_min
+	asset_min,
+	has_cover,
+	get_cover_src
 };
 use function BSB_Tags\{
 	load_font_files,
 	favicon_tag,
+	config_styles,
 	scheme_stylesheet
 };
 
@@ -31,6 +34,21 @@ if (
 	$keywords = implode( ' ', THEME_CONFIG['head']['keywords'] );
 }
 
+// Preload over image.
+$load_cover = '';
+if ( has_cover() ) {
+
+	// File type.
+	$type = get_headers( get_cover_src(), 1 )['Content-Type'];
+
+	// Preload tag.
+	$load_cover = sprintf(
+		'<link rel="preload" as="image" href="%s" type="%s">',
+		get_cover_src(),
+		$type
+	);
+}
+
 ?>
 <?php Theme :: plugins( 'beforeAll' ); ?>
 <head data-site-head>
@@ -41,6 +59,7 @@ if (
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<?php echo load_font_files(); ?>
+	<?php echo $load_cover; ?>
 
 	<?php
 	// Change `<html>` class to `js` if JavaScript is enabled.
@@ -60,6 +79,7 @@ if (
 	} ?>
 	<?php echo scheme_stylesheet( 'colors' ); ?>
 	<?php echo scheme_stylesheet( 'fonts' ); ?>
+	<?php echo config_styles(); ?>
 
 	<?php Theme :: plugins( 'siteHead' ); ?>
 </head>
