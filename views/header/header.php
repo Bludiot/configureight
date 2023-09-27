@@ -77,7 +77,9 @@ if ( full_cover() ) {
 ?>
 <header id="masthead" class="site-header" role="banner" itemscope="itemscope" itemtype="https://schema.org/Organization" data-site-header <?php echo $header_image; ?>>
 
-	<div class="site-header-overlay"></div>
+	<?php if ( full_cover() ) : ?>
+	<div class="cover-overlay"></div>
+	<?php endif; ?>
 
 	<?php if (
 		'false' !== THEME_CONFIG['main_nav']['search'] &&

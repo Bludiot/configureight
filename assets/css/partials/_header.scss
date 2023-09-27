@@ -161,6 +161,7 @@
 .template-full-cover {
 
 	.site-header {
+		position: relative;
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
@@ -169,15 +170,6 @@
 		background-repeat:no-repeat;
 		background-image: none;
 		background-size: cover;
-	}
-
-	.site-header-overlay {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		background-color: var( --bsb-site-header-overlay--bg-color, rgba( $color: black, $alpha: 0.625 ) );
 	}
 
 	.cover-header {

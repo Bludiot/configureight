@@ -109,6 +109,8 @@ body:not( .home ) {
 
 .page-content {
 
+	margin: var( --bsb-page-content--margin, 4rem 0 0 0 );
+
 	img[style="float: left;"],
 	img[style="float: left"],
 	img[style="float:left;"],
@@ -140,15 +142,6 @@ body:not( .home ) {
 			align-items: center;
 			justify-content: center;
 			color: var( --bsb-cover--title--link--text-color, $white );
-
-			.cover-overlay {
-				position: absolute;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 100%;
-				background-color: var( --bsb-site-header-overlay--bg-color, rgba( $color: black, $alpha: 0.625 ) );
-			}
 
 			.cover-header {
 				z-index: 100;
@@ -245,12 +238,6 @@ body:not( .home ) {
 				color: var( --bsb-article--tags-list--action--text-color );
 			}
 		}
-	}
-}
-
-.template-full-cover  {
-	.page-content {
-		margin: 4rem 0 0 0;
 	}
 }
 

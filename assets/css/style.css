@@ -249,6 +249,8 @@ html {
 }
 
 body {
+  max-width: var(--bsb-body--max-width, 2048px);
+  margin: var(--bsb-body--margin, 0 auto);
   font-family: var(--bsb-font-stack, var(--bsb-sans-stack, sans-serif));
   font-size: var(--bsb-font-size, 1rem);
   font-weight: var(--bsb-font-weight, normal);
@@ -366,6 +368,15 @@ h4 {
   display: inline-flex;
   gap: 0 0.5em;
   margin: 0;
+}
+
+.cover-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--bsb-cover-overlay--bg-color, rgba(0, 0, 0, 0.5));
 }
 
 #to-top {
@@ -777,6 +788,7 @@ h3 + .search-form {
 }
 
 .template-full-cover .site-header {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -785,14 +797,6 @@ h3 + .search-form {
   background-repeat: no-repeat;
   background-image: none;
   background-size: cover;
-}
-.template-full-cover .site-header-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: var(--bsb-site-header-overlay--bg-color, rgba(0, 0, 0, 0.625));
 }
 .template-full-cover .cover-header {
   position: relative;
@@ -1137,6 +1141,9 @@ body:not(.home) .blog-wrap {
   font-size: var(--bsb-page-description-single--font-size, 1.25rem);
 }
 
+.page-content {
+  margin: var(--bsb-page-content--margin, 4rem 0 0 0);
+}
 .page-content img[style="float: left;"],
 .page-content img[style="float: left"],
 .page-content img[style="float:left;"],
@@ -1164,14 +1171,6 @@ body:not(.home) .blog-wrap {
   align-items: center;
   justify-content: center;
   color: var(--bsb-cover--title--link--text-color, #ffffff);
-}
-.page-cover.page-cover-singular figcaption .cover-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: var(--bsb-site-header-overlay--bg-color, rgba(0, 0, 0, 0.625));
 }
 .page-cover.page-cover-singular figcaption .cover-header {
   z-index: 100;
@@ -1249,10 +1248,6 @@ body:not(.home) .blog-wrap {
 .site-article .tags-list a:hover, .site-article .tags-list a:focus {
   background-color: var(--bsb-article--tags-list--action--bg-color);
   color: var(--bsb-article--tags-list--action--text-color);
-}
-
-.template-full-cover .page-content {
-  margin: 4rem 0 0 0;
 }
 
 .blog article {

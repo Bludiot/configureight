@@ -10,7 +10,8 @@
 
 // Import namespaced functions.
 use function BSB_Func\{
-	full_cover
+	full_cover,
+	has_cover
 };
 use function BSB_Tags\{
 	page_header,
@@ -20,7 +21,7 @@ use function BSB_Tags\{
 ?>
 <article class="site-article" role="article" data-site-article>
 
-	<?php if ( ! empty( $page->coverImage() ) ) {
+	<?php if ( ! has_cover() ) {
 		echo page_header();
 	} ?>
 

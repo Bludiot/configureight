@@ -8,6 +8,8 @@ html {
 }
 
 body {
+	max-width: var( --bsb-body--max-width, 2048px );
+	margin: var( --bsb-body--margin, 0 auto );
 	font-family: var( --bsb-font-stack, var( --bsb-sans-stack, sans-serif ) );
 	font-size: var( --bsb-font-size, 1rem );
 	font-weight: var( --bsb-font-weight, normal );
@@ -131,6 +133,15 @@ h4 {
 	display: inline-flex;
 	gap: 0 0.5em;
 	margin: 0;
+}
+
+.cover-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: var( --bsb-cover-overlay--bg-color, rgba( $color: black, $alpha: 0.625 ) );
 }
 
 #to-top {

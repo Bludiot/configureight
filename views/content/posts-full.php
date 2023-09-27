@@ -82,9 +82,9 @@ $tags_list = function() use ( $post ) {
 ?>
 <article class="site-article" role="article" data-site-article>
 
-	<header class="page-header posts-loop-header" data-post-header>
+	<header class="page-header posts-loop-header" data-page-header>
 		<h2 class="page-title posts-loop-title">
-			<a href="<?php echo $post->permalink(); ?>"><?php echo $post->title(); ?></a>
+			<a href="<?php echo $post->permalink(); ?>"><?php echo $sticky . $post->title(); ?></a>
 		</h2>
 		<?php if ( $post->description() ) {
 			printf(
@@ -92,6 +92,11 @@ $tags_list = function() use ( $post ) {
 				$post->description()
 			);
 		} ?>
+		<?php if ( $post->category( true ) ) : ?>
+			<p><span class="page-info-entry page-info-category">
+				<?php echo $post->category( true ); ?>
+			</span></p>
+		<?php endif ?>
 	</header>
 
 	<?php if ( $post->coverImage() ) : ?>
