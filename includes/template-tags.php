@@ -37,6 +37,31 @@ use function BSB_Func\{
 };
 
 /**
+ * Loading screen
+ *
+ * Shows a loading screen until the document
+ * (web page) is fully loaded.
+ *
+ * @since  1.0.0
+ * @global object $L Language class
+ * @return mixed Returns the screen markup or null.
+ */
+function page_loader() {
+
+	// Access global variables.
+	global $L;
+
+	// Return null if config file is false.
+	if ( ! THEME_CONFIG['load_screen']['use_loader'] ) {
+		return null;
+	} else {
+		ob_start();
+		include( THEME_DIR . 'views/utility/loader.php' );
+		return ob_get_clean();
+	}
+}
+
+/**
  * Favicon tag
  *
  * Returns the site icon meta tag.

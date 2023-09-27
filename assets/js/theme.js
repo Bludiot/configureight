@@ -43,5 +43,8 @@
 				$( '#to-top' ).removeClass( 'scrolled' );
 			}
 		});
+
+		// Page loader.
+		$( '#page-loader' ).delay( 500 ).fadeOut( 450 );
 	});
 })(jQuery);

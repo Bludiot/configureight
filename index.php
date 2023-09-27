@@ -18,6 +18,7 @@ use function BSB_Func\{
 use function BSB_Tags\{
 	body_classes,
 	site_schema,
+	page_loader,
 	user_toolbar,
 	page_id,
 	cover_header,
@@ -66,6 +67,8 @@ if ( is_blog_page() ) {
 <html dir="auto" class="no-js" lang="<?php echo Theme :: lang() ?>" xmlns:og="http://opengraphprotocol.org/schema/" data-web-page>
 <?php include( THEME_DIR . 'views/utility/head.php' ); ?>
 <body class="<?php echo body_classes(); ?>" itemid="<?php echo $uuid; ?>" <?php echo $body_data_attr; ?>>
+
+	<?php echo page_loader(); ?>
 
 	<?php Theme :: plugins( 'siteBodyBegin' ); ?>
 

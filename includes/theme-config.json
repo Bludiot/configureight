@@ -5,6 +5,12 @@
 		"favicon"  : "favicon.gif",
 		"keywords" : {}
 	},
+	"load_screen" : {
+		"use_loader"   : false,
+		"loading_text" : "",
+		"bg_color"     : "",
+		"text_color"   : ""
+	},
 	"toolbar" : {
 		"display" : true
 	},

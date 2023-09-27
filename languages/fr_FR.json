@@ -4,10 +4,11 @@
 		"name"        : "BS Bludit",
 		"description" : "Thème de démarrage de base pour développer votre propre thème pour Bludit CMS."
 	},
-	"direct-access"         : "Vous n'êtes pas autorisé à accéder à ce fichier.",
-	"die-php-version"       : "Version PHP minimale de %replace% n’est pas respecté.",
+	"direct-access"   : "Vous n'êtes pas autorisé à accéder à ce fichier.",
+	"die-php-version" : "Version PHP minimale de %replace% n’est pas respecté.",
 
-	"home-link-label"       : "Maison",
+	"loading-text"    : "Chargement",
+	"home-link-label" : "Maison",
 
 	"blog-data-description" : "Derniers messages de",
 	"posts-loop-desc-blog"  : "Derniers messages de",

@@ -129,6 +129,44 @@ h4 {
 	letter-spacing: var( --bsb-heading-secondary--letter-spacing );
 }
 
+#page-loader {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 99999;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background-color: var( --bsb-loader--bg-color, var( --bsb-bg-color ) );
+	color: var( --bsb-loader--text-color, var( --bsb-text-color ) );
+
+	.loading-text {
+		font-size: var( --bsb-loader--text--font-size, 1.25rem );
+		line-height: var( --bsb-loader--text--line-height );
+		word-spacing: -0.0325em;
+		letter-spacing: var( --bsb-loader--text--letter-spacing, -0.015em );
+		text-transform: var( --bsb-loader--text--text-transform );
+		font-variant: var( --bsb-loader--text--font-variant );
+	}
+
+	.loading-image {
+		width: var( --bsb-loader--image--width, 1.75rem );
+		height: var( --bsb-loader--image--height, 1.75rem );
+		margin: var( --bsb-loader--image--margin, 2rem 0 0 0 );
+		-webkit-animation: spinner 1s infinite linear;
+				animation: spinner 1s infinite linear;
+
+		svg {
+			width: var( --bsb-loader--image--width, 1.75rem );
+			height: var( --bsb-loader--image--height, 1.75rem );
+			fill: currentColor;
+		}
+	}
+}
+
 .inline-list {
 	display: inline-flex;
 	gap: 0 0.5em;

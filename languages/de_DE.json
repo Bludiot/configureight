@@ -4,10 +4,11 @@
 		"name"        : "BS Bludit",
 		"description" : "Grundlegendes Starter-Theme für die Entwicklung Ihres eigenen Themes für Bludit CMS."
 	},
-	"direct-access"         : "Sie sind nicht berechtigt, auf diese Datei zuzugreifen.",
-	"die-php-version"       : "Mindest-PHP-Version von %replace% ist nicht erfüllt.",
+	"direct-access"   : "Sie sind nicht berechtigt, auf diese Datei zuzugreifen.",
+	"die-php-version" : "Mindest-PHP-Version von %replace% ist nicht erfüllt.",
 
-	"home-link-label"       : "Heim",
+	"loading-text"    : "Wird geladen",
+	"home-link-label" : "Heim",
 
 	"blog-data-description" : "Neueste beiträge von",
 	"posts-loop-desc-blog"  : "Neueste beiträge von",
