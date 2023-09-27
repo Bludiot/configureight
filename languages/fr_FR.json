@@ -13,6 +13,8 @@
 	"posts-loop-desc-blog"  : "Derniers messages de",
 	"posts-loop-desc-cat"   : "Messages dans la catégorie %replace%",
 	"posts-loop-desc-tag"   : "Articles tagués %replace%",
+	"page-read-time"        : "Temps de lecture: ",
+	"page-word-count"       : "Nombre de mots: ",
 
 	"no-posts-heading"      : "Pas Encore de Messages",
 	"no-posts-message"      : "Désolé, nous n'avons pas commencé à publier des articles. Veuillez revenir plus tard.",

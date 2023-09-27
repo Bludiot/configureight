@@ -13,6 +13,8 @@
 	"posts-loop-desc-blog"  : "Latest posts from",
 	"posts-loop-desc-cat"   : "Posts in the %replace% category",
 	"posts-loop-desc-tag"   : "Posts tagged %replace%",
+	"page-read-time"        : "Reading time: ",
+	"page-word-count"       : "Word count: ",
 
 	"no-posts-heading"      : "No Posts Yet",
 	"no-posts-message"      : "Sorry, we have not begun to publish posts. Please check back later.",
