@@ -39,6 +39,7 @@
 		"read_time" : false
 	},
 	"aside" : {
+		"sticky"         : false,
 		"no_sidebar"     : false,
 		"sidebar_bottom" : false,
 		"search_widget"  : true

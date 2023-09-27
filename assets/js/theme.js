@@ -28,6 +28,9 @@
 			$( 'html, body' ).animate( { scrollTop : $( '#content' ).offset().top }, 350 );
 		} );
 
+		// Sticky sidebar.
+		$( "#page-sidebar" ).stick_in_parent();
+
 		// Scroll to top button/link.
 		$( '#to-top' ).click( function(e) {
 			e.preventDefault();
