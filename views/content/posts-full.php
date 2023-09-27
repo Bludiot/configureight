@@ -17,7 +17,8 @@
 
 // Import namespaced functions.
 use function BSB_Func\{
-	blog_data
+	blog_data,
+	get_word_count
 };
 use function BSB_Tags\{
 	posts_loop_header,
@@ -27,13 +28,31 @@ use function BSB_Tags\{
 	get_author
 };
 
-// Get blog data.
-$blog_data = blog_data();
-
 // If no posts.
 if ( empty( $content) ) {
 	include( THEME_DIR . 'views/content/no-posts.php' );
 	return;
+}
+
+// Get blog data.
+$blog_data = blog_data();
+
+// User avatar.
+$user = new User( Session :: get( 'username' ) );
+if ( $user->profilePicture() ) {
+	$avatar  = $user->profilePicture();
+	$profile = sprintf(
+		'%sedit-user/%s',
+		DOMAIN_ADMIN,
+		Session :: get( 'username' )
+	);
+} else {
+	$avatar  = DOMAIN_THEME . 'assets/images/avatar-default.png';
+	$profile = sprintf(
+		'%sedit-user/%s#picture',
+		DOMAIN_ADMIN,
+		Session :: get( 'username' )
+	);
 }
 
 echo posts_loop_header();
@@ -86,12 +105,7 @@ $tags_list = function() use ( $post ) {
 		<h2 class="page-title posts-loop-title">
 			<a href="<?php echo $post->permalink(); ?>"><?php echo $sticky . $post->title(); ?></a>
 		</h2>
-		<?php if ( $post->description() ) {
-			printf(
-				'<p class="page-description post-loop-description">%s</p>',
-				$post->description()
-			);
-		} ?>
+		<?php echo page_description( $post->key() ); ?>
 	</header>
 
 	<div class="post-intro loop-post-intro full-loop-post-intro">
@@ -107,21 +121,35 @@ $tags_list = function() use ( $post ) {
 		<footer class="page-info">
 
 			<?php if ( $post->category() ) : ?>
-			<p><span class="page-info-entry page-info-category">
+			<h3><span class="page-info-entry page-info-category">
 				<a href="<?php echo $post->categoryPermalink(); ?>"><?php echo $post->category(); ?></a>
+			</span></h3>
+			<?php endif ?>
+
+			<?php if ( THEME_CONFIG['posts']['byline'] ) : ?>
+			<p><span class="page-info-entry page-info-author">
+				<img class="avatar" src="<?php echo $avatar; ?>" width="48"> <?php echo get_author(); ?>
 			</span></p>
 			<?php endif ?>
 
 			<p>
-				<?php if ( THEME_CONFIG['posts']['byline'] ) : ?>
-				<span class="page-info-entry page-info-author">
-					<?php echo get_author(); ?>
-				</span>
-				<?php endif ?>
-
 				<?php if ( THEME_CONFIG['posts']['post_date'] ) : ?>
 				<span class="page-info-entry page-info-date">
 					<?php echo $post->date(); ?>
+				</span>
+				<br />
+				<?php endif ?>
+
+				<?php if ( THEME_CONFIG['posts']['read_time'] ) : ?>
+				<span class="page-info-entry page-info-word-count">
+					<?php $L->p( 'page-word-count' ); echo get_word_count( $post->key() ); ?>
+				</span>
+				<br />
+				<?php endif ?>
+
+				<?php if ( THEME_CONFIG['posts']['read_time'] ) : ?>
+				<span class="page-info-entry page-info-read-time">
+					<?php $L->p( 'page-read-time' ); echo $post->readingTime(); ?>
 				</span>
 				<br />
 				<?php endif ?>
