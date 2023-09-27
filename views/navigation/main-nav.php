@@ -8,7 +8,7 @@
  * many ways. This is simply navigation
  * bones upon which to build.
  *
- * @package    BS Bludit
+ * @package    Configure 8
  * @subpackage Templates
  * @category   Navigation
  * @since      1.0.0

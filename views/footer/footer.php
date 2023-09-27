@@ -2,7 +2,7 @@
 /**
  * Page footer
  *
- * @package    BS Bludit
+ * @package    Configure 8
  * @subpackage Templates
  * @category   Partials
  * @since      1.0.0

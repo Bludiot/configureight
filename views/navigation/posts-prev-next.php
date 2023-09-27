@@ -4,7 +4,7 @@
  *
  * Allows users to navigate between singular posts.
  *
- * @package    BS Bludit
+ * @package    Configure 8
  * @subpackage Templates
  * @category   Navigation
  * @since      1.0.0

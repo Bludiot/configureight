@@ -2,7 +2,7 @@
 /**
  * Helper functions
  *
- * @package    BS Bludit
+ * @package    Configure 8
  * @subpackage Includes
  * @category   Functions
  * @since      1.0.0

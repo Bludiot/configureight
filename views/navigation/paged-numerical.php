@@ -4,7 +4,7 @@
  *
  * Allows users to navigate paginated content.
  *
- * @package    BS Bludit
+ * @package    Configure 8
  * @subpackage Templates
  * @category   Navigation
  * @since      1.0.0

@@ -7,7 +7,7 @@
  * However, the search plugin must be
  * activated for this class to operate.
  *
- * @package    BS Bludit
+ * @package    Configure 8
  * @subpackage Classes
  * @category   Front
  * @since      1.0.0

@@ -6,7 +6,7 @@
  * home page or blog page when a static
  * home page is used.
  *
- * @package    BS Bludit
+ * @package    Configure 8
  * @subpackage Templates
  * @category   Content
  * @since      1.0.0

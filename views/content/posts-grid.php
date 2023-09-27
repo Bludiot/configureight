@@ -9,7 +9,7 @@
  * Theme config 'posts' > 'loop'
  * must be set to 'grid' to use this.
  *
- * @package    BS Bludit
+ * @package    Configure 8
  * @subpackage Templates
  * @category   Content
  * @since      1.0.0

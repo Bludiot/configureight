@@ -2,7 +2,7 @@
 /**
  * Standard page template
  *
- * @package    BS Bludit
+ * @package    Configure 8
  * @subpackage Templates
  * @since      1.0.0
  */

@@ -5,7 +5,7 @@
  * Sidebar wrapping element is necessary for
  * the jQuery sticky option.
  *
- * @package    BS Bludit
+ * @package    Configure 8
  * @subpackage Templates
  * @category   Aside
  * @since      1.0.0

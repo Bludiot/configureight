@@ -2,7 +2,7 @@
 /**
  * Theme configuration
  *
- * @package    BS Bludit
+ * @package    Configure 8
  * @subpackage Templates
  * @category   Utility
  * @since      1.0.0

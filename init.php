@@ -2,7 +2,7 @@
 /**
  * Initialize theme
  *
- * @package    BS Bludit
+ * @package    Configure 8
  * @subpackage Functions
  * @since      1.0.0
  */

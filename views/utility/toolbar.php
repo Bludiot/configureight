@@ -7,7 +7,7 @@
  * links as you like, or disable the
  * user toolbar.
  *
- * @package    BS Bludit
+ * @package    Configure 8
  * @subpackage Templates
  * @category   Utility
  * @since      1.0.0

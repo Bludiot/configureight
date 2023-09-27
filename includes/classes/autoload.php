@@ -6,7 +6,7 @@
  *
  * @see Demo function at end of this file.
  *
- * @package    BS Bludit
+ * @package    Configure 8
  * @subpackage Includes
  * @category   Classes
  * @since      1.0.0

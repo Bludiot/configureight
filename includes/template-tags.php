@@ -2,7 +2,7 @@
 /**
  * Template tags
  *
- * @package    BS Bludit
+ * @package    Configure 8
  * @subpackage Includes
  * @category   Templates
  * @since      1.0.0

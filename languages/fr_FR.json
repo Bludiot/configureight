@@ -1,8 +1,8 @@
 {
 	"theme-data" :
 	{
-		"name"        : "BS Bludit",
-		"description" : "Thème de démarrage de base pour développer votre propre thème pour Bludit CMS."
+		"name"        : "Configure 8",
+		"description" : "Un thème pour Bludit CMS avec de nombreuses options configurables."
 	},
 	"direct-access"   : "Vous n'êtes pas autorisé à accéder à ce fichier.",
 	"die-php-version" : "Version PHP minimale de %replace% n’est pas respecté.",
