@@ -103,7 +103,7 @@ $tags_list = function() use ( $post ) {
 			<h2><a href="<?php echo $post->permalink(); ?>"><?php echo $sticky . $post->title(); ?></a></h2>
 		</header>
 
-		<?php echo page_description(); ?>
+		<?php echo page_description( $post->key() ); ?>
 
 		<footer class="page-info">
 			<p>

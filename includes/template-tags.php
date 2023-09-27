@@ -875,13 +875,15 @@ function sticky_icon( $echo = '', $class = '', $title = '' ) {
  * an excerpt of the content.
  *
  * @since  1.0.0
- * @global object $page Page class
  * @return string Returns the description.
  */
-function page_description() {
+function page_description( $key = '' ) {
 
-	// Access global variables.
-	global $content, $page;
+	if ( empty( $key ) ) {
+		$key = $page->key();
+	}
+
+	$page = buildPage( $key );
 
 	if ( $page->description() ) {
 		$page_desc = $page->description();
