@@ -92,44 +92,48 @@ $tags_list = function() use ( $post ) {
 				$post->description()
 			);
 		} ?>
-		<?php if ( $post->category( true ) ) : ?>
-			<p><span class="page-info-entry page-info-category">
-				<?php echo $post->category( true ); ?>
-			</span></p>
-		<?php endif ?>
 	</header>
 
-	<?php if ( $post->coverImage() ) : ?>
-	<figure class="page-cover posts-loop-cover">
-		<a href="<?php echo $post->permalink(); ?>">
-			<img src="<?php echo $post->coverImage(); ?>" loading="lazy" />
-		</a>
-		<figcaption class="screen-reader-text"><?php echo $post->title(); ?></figcaption>
-	</figure>
-	<?php endif; ?>
+	<div class="post-intro loop-post-intro full-loop-post-intro">
+		<?php if ( $post->coverImage() ) : ?>
+		<figure class="page-cover posts-loop-cover">
+			<a href="<?php echo $post->permalink(); ?>">
+				<img src="<?php echo $post->coverImage(); ?>" loading="lazy" />
+			</a>
+			<figcaption class="screen-reader-text"><?php echo $post->title(); ?></figcaption>
+		</figure>
+		<?php endif; ?>
 
-	<footer class="page-info">
-		<p>
-			<?php if ( THEME_CONFIG['posts']['byline'] ) : ?>
-			<span class="page-info-entry page-info-author">
-				<?php echo get_author(); ?>
-			</span>
+		<footer class="page-info">
+
+			<?php if ( $post->category() ) : ?>
+			<p><span class="page-info-entry page-info-category">
+				<a href="<?php echo $post->categoryPermalink(); ?>"><?php echo $post->category(); ?></a>
+			</span></p>
 			<?php endif ?>
 
-			<?php if ( THEME_CONFIG['posts']['post_date'] ) : ?>
-			<span class="page-info-entry page-info-date">
-				<?php echo $post->date(); ?>
-			</span>
-			<br />
-			<?php endif ?>
+			<p>
+				<?php if ( THEME_CONFIG['posts']['byline'] ) : ?>
+				<span class="page-info-entry page-info-author">
+					<?php echo get_author(); ?>
+				</span>
+				<?php endif ?>
 
-			<?php if ( $post->tags( true ) ) : ?>
-			<span class="page-info-entry page-info-tags">
-				<?php echo $tags_list(); ?>
-			</span>
-			<?php endif ?>
-		</p>
-	</footer>
+				<?php if ( THEME_CONFIG['posts']['post_date'] ) : ?>
+				<span class="page-info-entry page-info-date">
+					<?php echo $post->date(); ?>
+				</span>
+				<br />
+				<?php endif ?>
+
+				<?php if ( $post->tags( true ) ) : ?>
+				<span class="page-info-entry page-info-tags">
+					<?php echo $tags_list(); ?>
+				</span>
+				<?php endif ?>
+			</p>
+		</footer>
+	</div>
 
 	<div class="post-content" itemprop="articleBody" data-post-content>
 		<?php echo $post->content(); ?>
