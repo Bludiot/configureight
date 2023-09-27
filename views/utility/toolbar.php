@@ -23,7 +23,7 @@ if ( 'page' == $url->whereAmI() ) {
 	);
 }
 
- // Get a username or fa;;back.
+ // Get a username or fallback.
 $user = new User( Session :: get( 'username' ) );
 $name = $L->get( 'profile-link-default' );
 
