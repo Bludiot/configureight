@@ -15,7 +15,20 @@ Basic starter theme for developing your own theme for Bludit CMS.
 
 ## Overview
 
-The BS Bludit theme began as a starter theme, a boilerplate for developing themes for Bludit CMS, and it still is, yet it can now be used as is.
+The BS Bludit theme began as a starter theme, a boilerplate for developing themes for Bludit CMS. It still is is considered by its developer to be a starter theme however it now has many presentation options and the theme can be used for a simple yet attractive blog, or a small brochure site.
+
+## Page Templates
+
+Several page template options are built into the theme, which can be employed in the page edit screen under Options > Advanced. More than one template may be used at once, with space between each template slug, depending on the template type.
+
+Templates (slugs) include…
+
+- Full screen cover image (full-cover)
+- No sidebar (no-sidebar)
+- Bottom sidebar (sidebar-bottom)
+- Static front page (used automatically)
+- About page (about)
+- Contact page (contact)
 
 ## Configuration
 
@@ -39,16 +52,3 @@ All font files have variable weights.
 - Serif
 - Cosmopolitan
 - Code
-
-## Page Templates
-
-Several page template options are built into the theme, which can be employed in the page edit screen under Options > Advanced. More than one template may be used at once, with space between each template slug, depending on the template type.
-
-Templates (slugs) include…
-
-- Full screen cover image (full-cover)
-- No sidebar (no-sidebar)
-- Bottom sidebar (sidebar-bottom)
-- Static front page (used automatically)
-- About page (about)
-- Contact page (contact)
