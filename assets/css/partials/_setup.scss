@@ -182,6 +182,12 @@ h4 {
 	}
 }
 
+// User avatar.
+.avatar {
+	vertical-align: var( --bsb-avatar--vertical-align, middle );
+	border-radius: var( --bsb-avatar--border-radius, 50% );
+}
+
 // Text selection.
 ::-o-selection {
 	color: var( --bsb-selection--text-color, #222222 );
