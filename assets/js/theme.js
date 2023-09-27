@@ -29,7 +29,14 @@
 		} );
 
 		// Sticky sidebar.
-		$( "#page-sidebar" ).stick_in_parent();
+		if ( $.isFunction( $.fn.stick_in_parent ) ) {
+			if ( $( '[data-page-sidebar]' ).length ) {
+				$( '[data-page-sidebar]' ).stick_in_parent( {
+					offset_top      : 0,
+					inner_scrolling : false
+				} );
+			}
+		}
 
 		// Scroll to top button/link.
 		$( '#to-top' ).click( function(e) {
@@ -48,6 +55,6 @@
 		});
 
 		// Page loader.
-		$( '#page-loader' ).delay( 500 ).fadeOut( 450 );
+		$( '#page-loader' ).delay( 500 ).fadeOut( 500 );
 	});
 })(jQuery);

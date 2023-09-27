@@ -11,9 +11,14 @@
  * @since      1.0.0
  */
 
+// Sticky sidebar class.
+$sticky = '';
+if ( THEME_CONFIG['aside']['sticky'] ) {
+	$sticky = ' sidebar-is-sticky';
+}
 ?>
-<div id="page-sidebar-wrap" class="page-sidebar-wrap">
-	<aside id="page-sidebar" class="page-sidebar" data-page-sidebar>
+<div>
+	<aside id="page-sidebar" class="page-sidebar<?php echo $sticky; ?>" data-page-sidebar>
 		<?php Theme :: plugins( 'siteSidebar' ); ?>
 	</aside>
 </div>
