@@ -22,7 +22,8 @@
 	"media" : {
 		"cover_image"   : "assets/images/cover.jpg",
 		"cover_color"   : "#000000",
-		"cover_opacity" : "0.625"
+		"cover_opacity" : "0.625",
+		"loop_fallback" : "assets/images/transparent.png"
 	},
 	"posts" : {
 		"loop"      : "list",
