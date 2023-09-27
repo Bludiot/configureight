@@ -453,23 +453,56 @@ function cover_header() {
 	// Access global variables.
 	global $L, $page, $site, $url;
 
-	$heading     = 'h1';
+	$blog_data   = blog_data();
+	$heading_el  = 'h1';
+	$page_title  = $page->title();
 	$description = $page->description();
 	$scroll_icon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><path d="M119.5 326.9L3.5 209.1c-4.7-4.7-4.7-12.3 0-17l7.1-7.1c4.7-4.7 12.3-4.7 17 0L128 287.3l100.4-102.2c4.7-4.7 12.3-4.7 17 0l7.1 7.1c4.7 4.7 4.7 12.3 0 17L136.5 327c-4.7 4.6-12.3 4.6-17-.1z"/></svg>';
 
 	// Site title is `h1` on front page; only one per page.
 	if ( 'page' == $url->whereAmI() ) {
 		if ( $page->key() == $site->getField( 'homepage' ) ) {
-			$heading = 'h2';
+			$heading_el = 'h2';
 		}
+	}
+
+	// Conditional heading & description.
+	if (
+		'blog' == $url->whereAmI() &&
+		'page' == $blog_data['location']
+	) {
+		$class       = 'blog-page-description';
+		$page_title     = $blog_data['title'];
+		$description = $blog_data['description'];
+
+	} elseif ( 'blog' == $url->whereAmI() ) {
+		$class       = 'blog-page-description';
+		$page_title     = ucwords( $blog_data['slug'] . $blog_page );
+		$description = sprintf(
+			'%s %s',
+			$L->get( 'posts-loop-desc-blog' ),
+			$site->title()
+		);
+
+	} elseif ( 'category' == $url->whereAmI() ) {
+		$get_cat     = new \Category( $url->slug() );
+		$class       = 'category-page-description';
+		$page_title     = $get_cat->name();
+		$description = text_replace( 'posts-loop-desc-cat', $get_cat->name() );
+
+	} elseif ( 'tag' == $url->whereAmI() ) {
+		$get_tag     = new \Tag( $url->slug() );
+		$class       = 'tag-page-description';
+		$page_title     = $get_tag->name();
+		$description = text_replace( 'posts-loop-desc-tag', $get_tag->name() );
 	}
 
 	$html = '<div class="cover-header" data-cover-header>';
 	$html .= sprintf(
 		'<%s class="cover-title">%s</%s>',
-		$heading,
-		$page->title(),
-		$heading
+		$heading_el,
+		$page_title,
+		$heading_el
 	);
 
 	if ( ! empty( $description ) && ! ctype_space( $description ) ) {
