@@ -6,4 +6,4 @@ node_modules/
 *.sql
 *.sqlite
 .vscode
-dev-notes.txt
+.dev-notes.txt
