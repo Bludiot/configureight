@@ -198,6 +198,7 @@
 				background: transparent;
 				border: none;
 				color: var( --cfe-cover--title--link--text-color, $white );
+				text-shadow: var( --cfe-text-shadow );
 				transition: transform ease-in-out .15s;
 				transform: translateY( 0 );
 
@@ -221,6 +222,7 @@
 	.site-title,
 	.cover-title {
 		color: var( --cfe-cover--titles--text-color, $white );
+		text-shadow: var( --cfe-text-shadow );
 
 		a {
 			color: var( --cfe-cover--title--link--text-color, $white );
@@ -235,6 +237,7 @@
 	.site-description,
 	.cover-description:not( .blog-page-description ) {
 		color: var( --cfe-cover--site-description--text-color, $white );
+		text-shadow: var( --cfe-text-shadow );
 	}
 
 	.cover-title {

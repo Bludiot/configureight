@@ -24,6 +24,7 @@
   --cfe-link--action--text-color: #005ce7;
   --cfe-heading--link--text-decoration: none;
   --cfe-box-border-color: #cccccc;
+  --cfe-text-shadow: 0.075em 0.075em 0.075em rgba( 0,0,0, 0.625 );
   --cfe-fieldset--margin: 1em 0 0;
   --cfe-fieldset--padding: 1em 1.5em;
   --cfe-fieldset--border: solid 1px var( --cfe-form--border-color );
@@ -45,10 +46,10 @@
   --cfe-button--padding: 0.75em 1em;
   --cfe-button--font-weight: 700;
   --cfe-button--bg-color: var( --cfe-bg-color, inherit );
-  --cfe-button--action-bg-color: #cccccc;
+  --cfe-button--action-bg-color: #333333;
   --cfe-button--border-color: var( --cfe-form--border-color );
   --cfe-button--text-color: var( --cfe-form--text-color );
-  --cfe-button--action-text-color: var( --cfe-form--text-color );
+  --cfe-button--action-text-color: #ffffff;
   --cfe-button--svg-icon--width: 1em;
   --cfe-button--svg-icon--height: 1em;
   --cfe-wrapper--general--max-width: 1280px;

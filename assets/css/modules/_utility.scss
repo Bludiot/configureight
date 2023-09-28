@@ -35,7 +35,7 @@ $text_color: $dark_gray;
 	@return '%23' + str-slice( '#{$text_color}', 2, -1 );
 }
 @function svg_icon_action_color() {
-	@return '%23' + str-slice( '#{$text_color}', 2, -1 );
+	@return '%23' + str-slice( '#{$white}', 2, -1 );
 }
 
 // Search icons.
