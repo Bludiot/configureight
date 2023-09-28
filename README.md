@@ -38,22 +38,13 @@ This theme comes with a JSON configuration file for various options built into t
 
 ### Color Schemes
 
-Several color schemes are provided, which can be used by editing the configuration file.
-
-- Default (grayscale w/ blue)
-- Dark with white text
-- Flat UI colors
+Several color schemes are provided, including dark versions for dark user preference, which can be used by editing the configuration file.
 
 ### Typography
 
 Several font schemes are provided, which can be used by editing the configuration file.
 
 All font files have variable weights.
-
-- Default (sans)
-- Serif
-- Cosmopolitan
-- Code
 
 ## Credits
 
