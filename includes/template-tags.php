@@ -331,7 +331,7 @@ function body_classes() {
 }
 
 /**
- * Site Schema
+ * Page Schema
  *
  * Conditional Schema attributes for `<div id="page"`.
  *
@@ -341,7 +341,7 @@ function body_classes() {
  * @global object $url Url class.
  * @return string Returns the relevant itemtype.
  */
-function site_schema() {
+function page_schema() {
 
 	// Access global variables.
 	global $page, $site, $url;
@@ -388,7 +388,11 @@ function site_schema() {
 		'blog'   == $url->whereAmI() ||
 		( 'home' == $url->whereAmI() && ! $site->homepage() )
 	) {
-		$itemtype = 'Blog';
+		if ( 'news' === THEME_CONFIG['loop']['style'] ) {
+			$itemtype = 'WebPage';
+		} else {
+			$itemtype = 'Blog';
+		}
 
 	} else {
 		$itemtype = 'WebPage';
