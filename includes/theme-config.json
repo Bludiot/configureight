@@ -2,7 +2,7 @@
 	"parent" : false,
 	"debug"  : false,
 	"head"   : {
-		"favicon"  : "favicon.gif",
+		"favicon"  : "colors.webp",
 		"keywords" : {}
 	},
 	"load_screen" : {
