@@ -31,8 +31,9 @@
 		"cover_opacity" : "0.625",
 		"loop_fallback" : "assets/images/transparent.png"
 	},
-	"posts" : {
-		"loop"      : "list",
+	"loop" : {
+		"style"     : "blog",
+		"content"   : "list",
 		"paged"     : "numerical",
 		"byline"    : true,
 		"post_date" : true,

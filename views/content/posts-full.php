@@ -6,7 +6,7 @@
  * home page or blog page when a static
  * home page is used.
  *
- * Theme config 'posts' > 'loop'
+ * Theme config 'loop' > 'content'
  * must be set to 'full' to use this.
  *
  * @package    Configure 8
@@ -131,28 +131,28 @@ $tags_list = function() use ( $post ) {
 			</span></h3>
 			<?php endif ?>
 
-			<?php if ( THEME_CONFIG['posts']['byline'] ) : ?>
+			<?php if ( THEME_CONFIG['loop']['byline'] ) : ?>
 			<p><span class="page-info-entry page-info-author">
 				<img class="avatar" src="<?php echo $avatar; ?>" width="48"> <?php echo get_author(); ?>
 			</span></p>
 			<?php endif ?>
 
 			<p>
-				<?php if ( THEME_CONFIG['posts']['post_date'] ) : ?>
+				<?php if ( THEME_CONFIG['loop']['post_date'] ) : ?>
 				<span class="page-info-entry page-info-date">
 					<?php echo $post->date(); ?>
 				</span>
 				<br />
 				<?php endif ?>
 
-				<?php if ( THEME_CONFIG['posts']['read_time'] ) : ?>
+				<?php if ( THEME_CONFIG['loop']['read_time'] ) : ?>
 				<span class="page-info-entry page-info-word-count">
 					<?php $L->p( 'page-word-count' ); echo get_word_count( $post->key() ); ?>
 				</span>
 				<br />
 				<?php endif ?>
 
-				<?php if ( THEME_CONFIG['posts']['read_time'] ) : ?>
+				<?php if ( THEME_CONFIG['loop']['read_time'] ) : ?>
 				<span class="page-info-entry page-info-read-time">
 					<?php $L->p( 'page-read-time' ); echo $post->readingTime(); ?>
 				</span>
@@ -174,7 +174,7 @@ $tags_list = function() use ( $post ) {
 <?php
 
 // Get page navigation.
-if ( 'numerical' == THEME_CONFIG['posts']['paged'] ) {
+if ( 'numerical' == THEME_CONFIG['loop']['paged'] ) {
 	include( THEME_DIR . 'views/navigation/paged-numerical.php' );
 } else {
 	include( THEME_DIR . 'views/navigation/paged-prev-next.php' );

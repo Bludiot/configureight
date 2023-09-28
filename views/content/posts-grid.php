@@ -6,7 +6,7 @@
  * home page or blog page when a static
  * home page is used.
  *
- * Theme config 'posts' > 'loop'
+ * Theme config 'loop' > 'content'
  * must be set to 'grid' to use this.
  *
  * @package    Configure 8
@@ -58,7 +58,7 @@ foreach ( $content as $post ) :
 
 		<footer class="page-info">
 			<p>
-				<?php if ( "false" !== THEME_CONFIG['posts']['byline'] ) : ?>
+				<?php if ( "false" !== THEME_CONFIG['loop']['byline'] ) : ?>
 				<span class="page-info-entry">
 					<span class="bi bi-pencil" role="img"></span>
 					<?php echo get_author(); ?>
@@ -66,7 +66,7 @@ foreach ( $content as $post ) :
 				<br />
 				<?php endif ?>
 
-				<?php if ( "false" !== THEME_CONFIG['posts']['post_date'] ) : ?>
+				<?php if ( "false" !== THEME_CONFIG['loop']['post_date'] ) : ?>
 				<span class="page-info-entry">
 					<span class="bi bi-calendar" role="img"></span>
 					<?php echo $post->date(); ?>
@@ -74,7 +74,7 @@ foreach ( $content as $post ) :
 				<br />
 				<?php endif ?>
 
-				<?php if ( "false" !== THEME_CONFIG['posts']['read_time'] ) : ?>
+				<?php if ( "false" !== THEME_CONFIG['loop']['read_time'] ) : ?>
 				<span class="page-info-entry">
 					<span class="bi bi-clock-history" role="img"></span>
 					<?php echo $L->get( 'Reading time' ) . ': ' . $post->readingTime(); ?>
@@ -89,7 +89,7 @@ foreach ( $content as $post ) :
 <?php
 
 // Get page navigation.
-if ( 'numerical' == THEME_CONFIG['posts']['paged'] ) {
+if ( 'numerical' == THEME_CONFIG['loop']['paged'] ) {
 	include( THEME_DIR . 'views/navigation/paged-numerical.php' );
 } else {
 	include( THEME_DIR . 'views/navigation/paged-prev-next.php' );

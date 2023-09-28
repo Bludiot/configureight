@@ -33,7 +33,7 @@ $blog_data = blog_data();
 $main_view = 'page-view';
 if ( is_blog_page() ) {
 	$main_view = 'blog-view list-view';
-	if ( 'grid' == THEME_CONFIG['posts']['loop'] ) {
+	if ( 'grid' == THEME_CONFIG['loop']['content'] ) {
 		$main_view = 'blog-view grid-view';
 	}
 }

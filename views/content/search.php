@@ -51,7 +51,7 @@ if ( $post->description() ) {
 
 		<footer class="page-info">
 			<p>
-				<?php if ( "false" !== THEME_CONFIG['posts']['post_date'] ) : ?>
+				<?php if ( "false" !== THEME_CONFIG['loop']['post_date'] ) : ?>
 				<span class="page-info-entry">
 					<span class="bi bi-calendar" role="img"></span>
 					<?php echo $post->date(); ?>
@@ -59,7 +59,7 @@ if ( $post->description() ) {
 				<br />
 				<?php endif ?>
 
-				<?php if ( "false" !== THEME_CONFIG['posts']['read_time'] ) : ?>
+				<?php if ( "false" !== THEME_CONFIG['loop']['read_time'] ) : ?>
 				<span class="page-info-entry">
 					<span class="bi bi-clock-history" role="img"></span>
 					<?php echo $L->get( 'Reading time' ) . ': ' . $post->readingTime(); ?>
@@ -74,7 +74,7 @@ if ( $post->description() ) {
 <?php
 
 // Get page navigation.
-if ( 'numerical' == THEME_CONFIG['posts']['paged'] ) {
+if ( 'numerical' == THEME_CONFIG['loop']['paged'] ) {
 	include( THEME_DIR . 'views/navigation/paged-numerical.php' );
 } else {
 	include( THEME_DIR . 'views/navigation/paged-prev-next.php' );
