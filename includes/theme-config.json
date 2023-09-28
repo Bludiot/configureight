@@ -26,10 +26,10 @@
 		"search"    : true
 	},
 	"media" : {
-		"cover_image"   : "assets/images/cover.jpg",
+		"cover_image"   : "cover.jpg",
 		"cover_color"   : "#000000",
 		"cover_opacity" : "0.625",
-		"loop_fallback" : "assets/images/transparent.png"
+		"loop_fallback" : "transparent.png"
 	},
 	"loop" : {
 		"style"     : "blog",
