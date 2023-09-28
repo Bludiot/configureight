@@ -17,7 +17,7 @@
 
 // Import namespaced functions.
 use function BSB_Func\{
-	blog_data,
+	loop_data,
 	get_word_count
 };
 use function BSB_Tags\{
@@ -35,7 +35,7 @@ if ( empty( $content) ) {
 }
 
 // Get blog data.
-$blog_data = blog_data();
+$loop_data = loop_data();
 
 // User avatar.
 $user = new User( Session :: get( 'username' ) );

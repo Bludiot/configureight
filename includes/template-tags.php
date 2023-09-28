@@ -27,7 +27,7 @@ use function BSB_Func\{
 	text_replace,
 	hex_to_rgb,
 	favicon_exists,
-	blog_data,
+	loop_data,
 	blog_is_static,
 	get_config_styles,
 	has_cover,
@@ -248,11 +248,15 @@ function body_classes() {
 		$classes[] = 'blog blog-not-home';
 
 		// Get blog data.
-		$blog_data = blog_data();
+		$loop_data = loop_data();
+
+		// Posts loop style.
+		$loop_style = $loop_data['style'];
+		$classes[] = "loop-style-{$loop_style}";
 
 		// Templates for the static blog page.
-		if ( $blog_data['template'] ) {
-			$templates = explode( ' ', $blog_data['template'] );
+		if ( $loop_data['template'] ) {
+			$templates = explode( ' ', $loop_data['template'] );
 
 			foreach ( $templates as $template ) {
 
@@ -478,7 +482,7 @@ function cover_header() {
 	// Access global variables.
 	global $L, $page, $site, $url;
 
-	$blog_data   = blog_data();
+	$loop_data   = loop_data();
 	$heading_el  = 'h1';
 	$page_title  = $page->title();
 	$description = $page->description();
@@ -494,15 +498,15 @@ function cover_header() {
 	// Conditional heading & description.
 	if (
 		'blog' == $url->whereAmI() &&
-		'page' == $blog_data['location']
+		'page' == $loop_data['location']
 	) {
 		$class       = 'blog-page-description';
-		$page_title     = $blog_data['title'];
-		$description = $blog_data['description'];
+		$page_title     = $loop_data['title'];
+		$description = $loop_data['description'];
 
 	} elseif ( 'blog' == $url->whereAmI() ) {
 		$class       = 'blog-page-description';
-		$page_title     = ucwords( $blog_data['slug'] . $blog_page );
+		$page_title     = ucwords( $loop_data['slug'] . $blog_page );
 		$description = sprintf(
 			'%s %s',
 			$L->get( 'posts-loop-desc-blog' ),
@@ -735,6 +739,19 @@ function content_template() {
 }
 
 /**
+ * Loop style
+ *
+ * Gets loop style from the loop data.
+ *
+ * @since  1.0.0
+ * @return string Returns the loop style.
+ */
+function loop_style() {
+	$loop_data = loop_data();
+	return $loop_data['style'];
+}
+
+/**
  * Posts loop header
  *
  * prints a header section in a posts loop
@@ -761,7 +778,7 @@ function posts_loop_header() {
 	$description = '';
 	$class       = '';
 	$format_slug =  ucwords( str_replace( [ '-', '_' ], '', $url->slug() ) );
-	$blog_data   = blog_data();
+	$loop_data   = loop_data();
 	$blog_page   = '';
 
 	// If on a blog page other than the first.
@@ -776,15 +793,15 @@ function posts_loop_header() {
 	// Conditional heading & description.
 	if (
 		'blog' == $url->whereAmI() &&
-		'page' == $blog_data['location']
+		'page' == $loop_data['location']
 	) {
 		$class       = 'blog-page-description';
-		$heading     = $blog_data['title'];
-		$description = $blog_data['description'];
+		$heading     = $loop_data['title'];
+		$description = $loop_data['description'];
 
 	} elseif ( 'blog' == $url->whereAmI() ) {
 		$class       = 'blog-page-description';
-		$heading     = ucwords( $blog_data['slug'] . $blog_page );
+		$heading     = ucwords( $loop_data['slug'] . $blog_page );
 		$description = sprintf(
 			'%s %s',
 			$L->get( 'posts-loop-desc-blog' ),

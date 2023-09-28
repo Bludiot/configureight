@@ -191,7 +191,7 @@ function blog_url() {
  * @global object $url Url class
  * @return array  Returns an array of blog data.
  */
-function blog_data() {
+function loop_data() {
 
 	// Access global variables.
 	global $content, $L, $pages, $site, $url;
@@ -201,6 +201,13 @@ function blog_data() {
 		return null;
 	}
 
+	// Posts loop style.
+	$loop_style = 'blog';
+	if ( THEME_CONFIG['loop']['style'] && 'news' === THEME_CONFIG['loop']['style'] ) {
+		$loop_style = 'news';
+	}
+
+	// Blog not on front page.
 	$static_field = $site->getField( 'uriBlog' );
 	$static_key   = str_replace( '/', '', $static_field );
 
@@ -220,6 +227,7 @@ function blog_data() {
 		'url'         => blog_url(),
 		'slug'        => str_replace( '/', '', $site->getField( 'uriBlog' ) ),
 		'template'    => false,
+		'style'       => $loop_style,
 		'title'       => false,
 		'description' => $description,
 		'cover'       => false,
@@ -304,7 +312,7 @@ function blog_is_static() {
 	// Access global variables.
 	global $page, $url;
 
-	$blog = blog_data();
+	$blog = loop_data();
 
 	if ( $blog['key'] && ! empty( $blog['key'] ) ) {
 		return true;
@@ -381,7 +389,7 @@ function full_cover() {
 	global $page, $site, $url;
 
 	// Get blog data.
-	$blog = blog_data();
+	$blog = loop_data();
 
 	// No full cover if URL has the page parameter.
 

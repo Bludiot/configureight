@@ -14,7 +14,7 @@
 
 // Import namespaced functions.
 use function BSB_Func\{
-	blog_data
+	loop_data
 };
 use function BSB_Tags\{
 	posts_loop_header,
@@ -25,7 +25,7 @@ use function BSB_Tags\{
 };
 
 // Get blog data.
-$blog_data = blog_data();
+$loop_data = loop_data();
 
 // If no posts.
 if ( empty( $content) ) {

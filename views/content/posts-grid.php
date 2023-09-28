@@ -17,7 +17,7 @@
 
 // Import namespaced functions.
 use function BSB_Func\{
-	blog_data
+	loop_data
 };
 use function BSB_Tags\{
 	page_header,

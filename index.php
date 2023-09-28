@@ -10,7 +10,7 @@
 // Import namespaced functions.
 use function BSB_Func\{
 	is_blog_page,
-	blog_data,
+	loop_data,
 	has_cover,
 	get_cover_src,
 	full_cover
@@ -27,7 +27,7 @@ use function BSB_Tags\{
 };
 
 // Get blog data.
-$blog_data = blog_data();
+$loop_data = loop_data();
 
 // Layout class for the `<main>` element.
 $main_view = 'page-view';
@@ -54,11 +54,11 @@ if ( is_blog_page() ) {
 	$body_data_attr = sprintf(
 		'data-uuid="%s" data-post-count="%s"',
 		$uuid,
-		$blog_data['post_count']
+		$loop_data['post_count']
 	);
 	$main_data_attr = sprintf(
 		'data-page-main data-show-posts="%s"',
-		$blog_data['show_posts']
+		$loop_data['show_posts']
 	);
 }
 
