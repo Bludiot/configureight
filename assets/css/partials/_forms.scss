@@ -3,19 +3,19 @@
 ///
 
 form * + * {
-	margin: var( --bsb-form--adjacent--margin, 1em 0 0 );
+	margin: var( --cfe-form--adjacent--margin, 1em 0 0 );
 }
 
 fieldset {
-	margin: var( --bsb-fieldset--margin );
-	padding: var( --bsb-fieldset--padding );
-	border: var( --bsb-fieldset--border );
+	margin: var( --cfe-fieldset--margin );
+	padding: var( --cfe-fieldset--padding );
+	border: var( --cfe-fieldset--border );
 }
 
 legend {
-	padding: var( --bsb-legend--padding );
-	font-size: var( --bsb-legend-font-size );
-	font-weight: var( --bsb-legend-font-weight );
+	padding: var( --cfe-legend--padding );
+	font-size: var( --cfe-legend-font-size );
+	font-weight: var( --cfe-legend-font-weight );
 }
 
 label {}
@@ -27,16 +27,16 @@ button,
 .button {
 	width: 100%;
 	max-width: 640px;
-	padding: var( --bsb-form-element--padding );
+	padding: var( --cfe-form-element--padding );
 	font: inherit;
-	font-weight: var( --bsb-form--font-weight );
-	background-color: var( --bsb-form--bg-color );
-	border: var( --bsb-form-element--border );
-	color: var( --bsb-text-color );
+	font-weight: var( --cfe-form--font-weight );
+	background-color: var( --cfe-form--bg-color );
+	border: var( --cfe-form-element--border );
+	color: var( --cfe-text-color );
 
 	&:focus,
 	&.focus {
-		border-color: var( --bsb-form--action-border-color );
+		border-color: var( --cfe-form--action-border-color );
 	}
 }
 
@@ -48,7 +48,7 @@ label + textarea,
 label ~ textarea,
 label + select,
 label ~ select {
-	margin: var( --bsb-label-field--margin );
+	margin: var( --cfe-label-field--margin );
 	display: block;
 }
 
@@ -77,38 +77,38 @@ input[type="reset"],
 input[type="image"] {
 	display: inline-block;
 	width: auto;
-	padding: var( --bsb-button--padding, var( --bsb-form-element--padding, 1em ) );
-	line-height: var( --bsb-button--line-height, 1 );
+	padding: var( --cfe-button--padding, var( --cfe-form-element--padding, 1em ) );
+	line-height: var( --cfe-button--line-height, 1 );
 	cursor: pointer;
-	font-weight: var( --bsb-button--font-weight, bold );
-	background-color: var( --bsb-button--bg-color );
-	border-color: var( --bsb-button--border-color, var( --bsb-form--border-color ) );
-	color: var( --bsb-button--text-color, var( --bsb-text-color ) );
+	font-weight: var( --cfe-button--font-weight, bold );
+	background-color: var( --cfe-button--bg-color );
+	border-color: var( --cfe-button--border-color, var( --cfe-form--border-color ) );
+	color: var( --cfe-button--text-color, var( --cfe-text-color ) );
 	text-decoration: none;
-	transition: var( --bsb-button--transition--property, all ) var( --bsb-button--transition--duration, .15s ) var( --bsb-button--transition--function, ease-in-out );
+	transition: var( --cfe-button--transition--property, all ) var( --cfe-button--transition--duration, .15s ) var( --cfe-button--transition--function, ease-in-out );
 
 	svg {
-		width: var( --bsb-button--svg-icon--width );
-		height: var( --bsb-button--svg-icon--height );
+		width: var( --cfe-button--svg-icon--width );
+		height: var( --cfe-button--svg-icon--height );
 		vertical-align: baseline;
 		fill: currentColor;
 	}
 
 	&:hover,
 	&:focus {
-		background-color: var( --bsb-button--action-bg-color, var( --bsb-button--bg-color ) );
-		border-color: var( --bsb-button--action-border-color, var( --bsb-button--border-color, ) );
-		color: var( --bsb-button--action-text-color, var( --bsb-button--text-color ) );
+		background-color: var( --cfe-button--action-bg-color, var( --cfe-button--bg-color ) );
+		border-color: var( --cfe-button--action-border-color, var( --cfe-button--border-color, ) );
+		color: var( --cfe-button--action-text-color, var( --cfe-button--text-color ) );
 	}
 }
 
 input[type="number"] {
 	width: auto;
-	padding: var( --bsb-input--type-number--padding, 0.6em 1em );
+	padding: var( --cfe-input--type-number--padding, 0.6em 1em );
 }
 
 input[type="range"] {
-	padding: var( --bsb-input--type-range--padding, 1.3em 1em );
+	padding: var( --cfe-input--type-range--padding, 1.3em 1em );
 	cursor: pointer;
 }
 
@@ -118,21 +118,21 @@ button:disabled,
 button[disabled],
 input:disabled,
 input[disabled] {
-	opacity: var( --bsb-button--disabled--opacity, 0.5 );
+	opacity: var( --cfe-button--disabled--opacity, 0.5 );
 	cursor: not-allowed !important;
 }
 
 textarea {
-	min-height: var( --bsb-textarea--min-height );
-	margin: var( --bsb-textarea--margin );
-	padding: var( --bsb-textarea--padding );
+	min-height: var( --cfe-textarea--min-height );
+	margin: var( --cfe-textarea--margin );
+	padding: var( --cfe-textarea--padding );
 	font: inherit;
-	font-size: var( --bsb-textarea--font-size );
+	font-size: var( --cfe-textarea--font-size );
 }
 
 select {
-	margin: var( --bsb-select--margin );
-	padding: var( --bsb-select--padding );
+	margin: var( --cfe-select--margin );
+	padding: var( --cfe-select--padding );
 	font: inherit;
 }
 
@@ -141,27 +141,27 @@ option {
 }
 
 *::-webkit-input-placeholder {
-	color: var( --bsb-form--placeholder-color );
+	color: var( --cfe-form--placeholder-color );
 }
 
 *::-o-placeholder {
-	color: var( --bsb-form--placeholder-color );
+	color: var( --cfe-form--placeholder-color );
 }
 
 *:-moz-placeholder {
-	color: var( --bsb-form--placeholder-color );
+	color: var( --cfe-form--placeholder-color );
 }
 
 *::-moz-placeholder {
-	color: var( --bsb-form--placeholder-color );
+	color: var( --cfe-form--placeholder-color );
 }
 
 *:-ms-input-placeholder {
-	color: var( --bsb-form--placeholder-color );
+	color: var( --cfe-form--placeholder-color );
 }
 
 *::placeholder {
-	color: var( --bsb-form--placeholder-color );
+	color: var( --cfe-form--placeholder-color );
 }
 
 // Search form.
@@ -169,32 +169,32 @@ option {
 	display: -webkit-box;
 	display: -moz-box;
 	display: -ms-flexbox;
-	display: var( --bsb-searchform--wrapper--display, flex );
+	display: var( --cfe-searchform--wrapper--display, flex );
 	-ms-flex-wrap: nowrap;
-	flex-wrap: var( --bsb-searchform--wrapper--flex-wrap, wrap );
-	margin: var( --bsb-searchform--wrapper--margin, 1em 0 );
+	flex-wrap: var( --cfe-searchform--wrapper--flex-wrap, wrap );
+	margin: var( --cfe-searchform--wrapper--margin, 1em 0 );
 
 	label {
-		width: var( --bsb-searchform--label--width, 100% );
-		font-size: var( --bsb-searchform--label--font-size, 1.5rem );
-		font-weight: var( --bsb-searchform--label--font-weight, 700 );
+		width: var( --cfe-searchform--label--width, 100% );
+		font-size: var( --cfe-searchform--label--font-size, 1.5rem );
+		font-weight: var( --cfe-searchform--label--font-weight, 700 );
 	}
 }
 
 h2 + .search-form,
 h3 + .search-form {
-	margin: var( --bsb-heading-searchform--margin, 0.5em 0 0 );
+	margin: var( --cfe-heading-searchform--margin, 0.5em 0 0 );
 }
 
 .search-form input[type="search"],
 .search-form input[type="submit"] {
 	display: inline-block;
-	margin: var( --bsb-searchform--input--margin, 0 );
+	margin: var( --cfe-searchform--input--margin, 0 );
 }
 
 .search-label {
 	display: inline-block;
-	margin: var( --bsb-searchform--label--margin, 0 0.3em 0 0 );
+	margin: var( --cfe-searchform--label--margin, 0 0.3em 0 0 );
 }
 
 .search-submit {

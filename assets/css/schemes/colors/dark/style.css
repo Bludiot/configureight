@@ -20,27 +20,27 @@
 }
 
 :root {
-  --bsb-bg-color: #1e1e1e;
-  --bsb-text-color: #eeeeee;
-  --bsb-link--text-color: #ffffff;
-  --bsb-link--action--text-color: #eeeeee;
-  --bsb-heading-primary--text-color: #eeeeee;
-  --bsb-heading-primary--link--text-color: #eeeeee;
-  --bsb-heading-primary--link--action--text-color: #ffffff;
-  --bsb-box-border-color: #333333;
-  --bsb-form--border-color: #555555;
-  --bsb-form--action-border-color: #888888;
-  --bsb-form--placeholder-color: #888888;
-  --bsb-button--bg-color: #333333;
-  --bsb-button--action-bg-color: #555555;
-  --bsb-button--text-color: #eeeeee;
-  --bsb-site-header--bg-color: #1e1e1e;
-  --bsb-site-nav--sub-list--bg-color: #333333;
-  --bsb-site-nav--sub-list--action--bg-color: #555555;
-  --bsb-site-nav--sub-list--text-color: #ffffff;
-  --bsb-site-nav--sub-list--action--text-color: #ffffff;
-  --bsb-article--tags-list--bg-color: #555555;
-  --bsb-article--tags-list--text-color: #eeeeee;
-  --bsb-article--tags-list--action--bg-color: #555555;
-  --bsb-article--tags-list--action--text-color: #ffffff;
+  --cfe-bg-color: #1e1e1e;
+  --cfe-text-color: #eeeeee;
+  --cfe-link--text-color: #ffffff;
+  --cfe-link--action--text-color: #eeeeee;
+  --cfe-heading-primary--text-color: #eeeeee;
+  --cfe-heading-primary--link--text-color: #eeeeee;
+  --cfe-heading-primary--link--action--text-color: #ffffff;
+  --cfe-box-border-color: #333333;
+  --cfe-form--border-color: #555555;
+  --cfe-form--action-border-color: #888888;
+  --cfe-form--placeholder-color: #888888;
+  --cfe-button--bg-color: #333333;
+  --cfe-button--action-bg-color: #555555;
+  --cfe-button--text-color: #eeeeee;
+  --cfe-site-header--bg-color: #1e1e1e;
+  --cfe-site-nav--sub-list--bg-color: #333333;
+  --cfe-site-nav--sub-list--action--bg-color: #555555;
+  --cfe-site-nav--sub-list--text-color: #ffffff;
+  --cfe-site-nav--sub-list--action--text-color: #ffffff;
+  --cfe-article--tags-list--bg-color: #555555;
+  --cfe-article--tags-list--text-color: #eeeeee;
+  --cfe-article--tags-list--action--bg-color: #555555;
+  --cfe-article--tags-list--action--text-color: #ffffff;
 }

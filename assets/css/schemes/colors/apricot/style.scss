@@ -69,53 +69,53 @@ $close_icon_action_bg: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/20
 :root {
 
 	// General.
-	--bsb-link--text-color: #{$apr_orange};
-	--bsb-link--action--text-color: #{$apr_blush};
-	--bsb-heading-primary--text-color: #{$apr_blue};
-	--bsb-heading-primary--link--text-color: #{$apr_blue};
-	--bsb-heading-primary--link--action--text-color: #{$apr_orange};
-	--bsb-box-border-color: #{$apr_orange};
-	--bsb-selection--bg-color: #{$apr_orange};
-	--bsb-selection--text-color: #{$white};
+	--cfe-link--text-color: #{$apr_orange};
+	--cfe-link--action--text-color: #{$apr_blush};
+	--cfe-heading-primary--text-color: #{$apr_blue};
+	--cfe-heading-primary--link--text-color: #{$apr_blue};
+	--cfe-heading-primary--link--action--text-color: #{$apr_orange};
+	--cfe-box-border-color: #{$apr_orange};
+	--cfe-selection--bg-color: #{$apr_orange};
+	--cfe-selection--text-color: #{$white};
 
 	// Forms & buttons.
-	--bsb-form--border-color: #{$apr_orange};
-	--bsb-form--action-border-color: #{$apr_blush};
-	--bsb-button--bg-color: #{$apr_orange};
-	--bsb-button--action-bg-color: #{$apr_blue};
-	--bsb-button--action-border-color: #{$apr_blue};
-	--bsb-button--text-color: #{$white};
+	--cfe-form--border-color: #{$apr_orange};
+	--cfe-form--action-border-color: #{$apr_blush};
+	--cfe-button--bg-color: #{$apr_orange};
+	--cfe-button--action-bg-color: #{$apr_blue};
+	--cfe-button--action-border-color: #{$apr_blue};
+	--cfe-button--text-color: #{$white};
 
 	// Header.
-	--bsb-site-header--bg-color: inherit;
+	--cfe-site-header--bg-color: inherit;
 
 	// Navigation.
-	--bsb-site-nav--list--link--action--text-color: #{$apr_blush};
-	--bsb-site-nav--sub-list--bg-color: #{$apr_blue};
-	--bsb-site-nav--sub-list--action--bg-color: #{$apr_orange};
-	--bsb-site-nav--sub-list--text-color: #{$white};
-	--bsb-site-nav--sub-list--action--text-color: #{$white};
+	--cfe-site-nav--list--link--action--text-color: #{$apr_blush};
+	--cfe-site-nav--sub-list--bg-color: #{$apr_blue};
+	--cfe-site-nav--sub-list--action--bg-color: #{$apr_orange};
+	--cfe-site-nav--sub-list--text-color: #{$white};
+	--cfe-site-nav--sub-list--action--text-color: #{$white};
 
 	// Content.
-	--bsb-article--tags-list--bg-color: #{$apr_orange};
-	--bsb-article--tags-list--text-color: #{$white};
+	--cfe-article--tags-list--bg-color: #{$apr_orange};
+	--cfe-article--tags-list--text-color: #{$white};
 
-	--bsb-article--tags-list--action--bg-color: #{$apr_blush};
-	--bsb-article--tags-list--action--text-color: #{$white};
+	--cfe-article--tags-list--action--bg-color: #{$apr_blush};
+	--cfe-article--tags-list--action--text-color: #{$white};
 }
 
 @media ( prefers-color-scheme: dark ) {
 	:root {
-		--bsb-bg-color: #051b21;
-		--bsb-text-color: #{$white};
-		--bsb-link--action--text-color: #{$white};
-		--bsb-heading-primary--text-color: #{$white};
-		--bsb-heading-primary--link--text-color: #{$white};
-		--bsb-heading-primary--link--action--text-color: #{$apr_orange};
-		--bsb-site-nav--list--link--action--text-color: #{$white};
-		--bsb-form--action-border-color: #{$apr_blush};
-		--bsb-button--action-bg-color: #{$apr_blush};
-		--bsb-button--action-border-color: #{$apr_blush};
-		--bsb-article--tags-list--action--bg-color: #{$apr_blush};
+		--cfe-bg-color: #051b21;
+		--cfe-text-color: #{$white};
+		--cfe-link--action--text-color: #{$white};
+		--cfe-heading-primary--text-color: #{$white};
+		--cfe-heading-primary--link--text-color: #{$white};
+		--cfe-heading-primary--link--action--text-color: #{$apr_orange};
+		--cfe-site-nav--list--link--action--text-color: #{$white};
+		--cfe-form--action-border-color: #{$apr_blush};
+		--cfe-button--action-bg-color: #{$apr_blush};
+		--cfe-button--action-border-color: #{$apr_blush};
+		--cfe-article--tags-list--action--bg-color: #{$apr_blush};
 	}
 }

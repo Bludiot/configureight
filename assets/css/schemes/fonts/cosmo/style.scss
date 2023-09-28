@@ -41,32 +41,32 @@ $raleway_stack: 'Raleway', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto
 :root {
 
 	// General.
-	--bsb-font-stack: #{$raleway_stack};
-	--bsb-font-size: 1.0625rem;
-	--bsb-line-height: 1.6;
-	--bsb-heading-primary--font-family: #{$playfair_stack};
-	--bsb-heading-primary--font-size: 2.5rem;
-	--bsb-heading-primary--font-weight: 500;
-	--bsb-heading-primary--letter-spacing: normal;
+	--cfe-font-stack: #{$raleway_stack};
+	--cfe-font-size: 1.0625rem;
+	--cfe-line-height: 1.6;
+	--cfe-heading-primary--font-family: #{$playfair_stack};
+	--cfe-heading-primary--font-size: 2.5rem;
+	--cfe-heading-primary--font-weight: 500;
+	--cfe-heading-primary--letter-spacing: normal;
 
 	// Header.
-	--bsb-site-title--font-family: #{$playfair_stack};
-	--bsb-site-title--font-size: 2rem;
-	--bsb-site-title--font-weight: 500;
-	--bsb-site-title--letter-spacing: normal;
+	--cfe-site-title--font-family: #{$playfair_stack};
+	--cfe-site-title--font-size: 2rem;
+	--cfe-site-title--font-weight: 500;
+	--cfe-site-title--letter-spacing: normal;
 
 	// Navigation.
-	--bsb-site-nav--item--font-family: #{$playfair_stack};
-	--bsb-site-nav--item--font-size: 1.125rem;
-	--bsb-site-nav--item--font-weight: 450;
+	--cfe-site-nav--item--font-family: #{$playfair_stack};
+	--cfe-site-nav--item--font-size: 1.125rem;
+	--cfe-site-nav--item--font-weight: 450;
 
 	// Content.
-	--bsb-page-header--heading--font-size: 2.5rem;
-	--bsb-page-summary--page-header--heading--font-size: 1.75rem;
-	--bsb-page-summary--page-header--heading--line-height: 1.1;
-	--bsb-page-header--heading--link--font-weight: 500;
+	--cfe-page-header--heading--font-size: 2.5rem;
+	--cfe-page-summary--page-header--heading--font-size: 1.75rem;
+	--cfe-page-summary--page-header--heading--line-height: 1.1;
+	--cfe-page-header--heading--link--font-weight: 500;
 
 	// Aside.
-	--bsb-page-sidebar--heading--font-size: 1.625rem;
-	--bsb-page-sidebar--link--font-weight: 500;
+	--cfe-page-sidebar--heading--font-size: 1.625rem;
+	--cfe-page-sidebar--link--font-weight: 500;
 }

@@ -23,28 +23,28 @@ $inter_stack: 'Inter', 'Helvetica Neue', Helvetica, sans-serif, 'Apple Color Emo
 :root {
 
 	// General.
-	--bsb-font-stack: #{$inter_stack};
-	--bsb-site-title--font-size: 2rem;
-	--bsb-heading-primary--font-size: 2rem;
-	--bsb-heading-primary--font-weight: 800;
-	--bsb-heading-primary--letter-spacing: -0.025em;
+	--cfe-font-stack: #{$inter_stack};
+	--cfe-site-title--font-size: 2rem;
+	--cfe-heading-primary--font-size: 2rem;
+	--cfe-heading-primary--font-weight: 800;
+	--cfe-heading-primary--letter-spacing: -0.025em;
 
 	// Header.
-	--bsb-site-title--font-size: 1.75rem;
-	--bsb-site-title--font-weight: 800;
-	--bsb-site-title--letter-spacing: normal;
-	--bsb-cover--page-description-single--font-size: 1.325rem;
+	--cfe-site-title--font-size: 1.75rem;
+	--cfe-site-title--font-weight: 800;
+	--cfe-site-title--letter-spacing: normal;
+	--cfe-cover--page-description-single--font-size: 1.325rem;
 
 	// Navigation.
-	--bsb-site-nav--item--font-weight: 550;
+	--cfe-site-nav--item--font-weight: 550;
 
 	// Content.
-	--bsb-page-header--heading--font-size: 2rem;
-	--bsb-page-summary--page-header--heading--font-size: 1.75rem;
-	--bsb-page-header--heading--link--font-weight: 800;
-	--bsb-pagination-list--numeric--link--font-weight: 550;
-	--bsb-pagination-list--numeric--link--active--font-weight: 750;
+	--cfe-page-header--heading--font-size: 2rem;
+	--cfe-page-summary--page-header--heading--font-size: 1.75rem;
+	--cfe-page-header--heading--link--font-weight: 800;
+	--cfe-pagination-list--numeric--link--font-weight: 550;
+	--cfe-pagination-list--numeric--link--active--font-weight: 750;
 
 	// Aside.
-	--bsb-page-sidebar--link--font-weight: 525;
+	--cfe-page-sidebar--link--font-weight: 525;
 }

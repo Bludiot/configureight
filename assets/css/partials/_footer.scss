@@ -3,16 +3,16 @@
 ///
 
 .site-footer {
-	margin: var( --bsb-site-footer--margin, 2rem 0 0 0 );
-	padding: var( --bsb-site-footer--padding, 2rem );
-	background-color: var( --bsb-site-footer--bg-color, inherit );
+	margin: var( --cfe-site-footer--margin, 2rem 0 0 0 );
+	padding: var( --cfe-site-footer--padding, 2rem );
+	background-color: var( --cfe-site-footer--bg-color, inherit );
 
 	.site-footer-text {
-		text-align: var( --bsb-site-footer-text--text-align, center );
+		text-align: var( --cfe-site-footer-text--text-align, center );
 	}
 
 	.copyright {
-		text-align: var( --bsb-copyright--text-align, center );
-		font-size: var( --bsb-copyright--font-size, 0.8125rem );
+		text-align: var( --cfe-copyright--text-align, center );
+		font-size: var( --cfe-copyright--font-size, 0.8125rem );
 	}
 }

@@ -25,11 +25,11 @@ if (
 	$style = '<style>:root{';
 
 	if ( THEME_CONFIG['load_screen']['bg_color'] ) {
-		$style .= '--bsb-loader--bg-color:' . THEME_CONFIG['load_screen']['bg_color'] . ';';
+		$style .= '--cfe-loader--bg-color:' . THEME_CONFIG['load_screen']['bg_color'] . ';';
 	}
 
 	if ( THEME_CONFIG['load_screen']['text_color'] ) {
-		$style .= '--bsb-loader--text-color:' . THEME_CONFIG['load_screen']['text_color'] . ';';
+		$style .= '--cfe-loader--text-color:' . THEME_CONFIG['load_screen']['text_color'] . ';';
 	}
 	$style .= '}</style>';
 }

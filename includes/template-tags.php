@@ -186,7 +186,7 @@ function config_styles() {
 
 	if ( $get_styles['cover_color'] && $get_styles['cover_opacity'] ) {
 		$styles .= sprintf(
-			'--bsb-cover-overlay--bg-color: %s;',
+			'--cfe-cover-overlay--bg-color: %s;',
 			hex_to_rgb( $get_styles['cover_color'], $get_styles['cover_opacity'] )
 		);
 	}

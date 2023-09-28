@@ -23,12 +23,12 @@ body {
 
 .content-wrapper {
 	width: 100%;
-	padding: var( --bsb-content-wrap--padding );
+	padding: var( --cfe-content-wrap--padding );
 }
 
 .page-main {
 	width: 100%;
-	padding: var( --bsb-page-main--padding );
+	padding: var( --cfe-page-main--padding );
 }
 
 .home .blog-view {
@@ -62,10 +62,10 @@ body:not( .home ) {
 .page-header {
 	h1,
 	h2 {
-		font-size: var( --bsb-page-header--heading--font-size, var( --bsb-heading-primary--font-size, 2rem ) );
+		font-size: var( --cfe-page-header--heading--font-size, var( --cfe-heading-primary--font-size, 2rem ) );
 
 		a {
-			font-weight: var( --bsb-page-header--heading--link--font-weight, inherit );
+			font-weight: var( --cfe-page-header--heading--link--font-weight, inherit );
 		}
 	}
 }
@@ -74,55 +74,55 @@ body:not( .home ) {
 	.page-header {
 		h1,
 		h2 {
-			font-size: var( --bsb-page-summary--page-header--heading--font-size );
-			font-weight: var( --bsb-page-summary--page-header--heading--font-weight );
-			line-height: var( --bsb-page-summary--page-header--heading--line-height );
+			font-size: var( --cfe-page-summary--page-header--heading--font-size );
+			font-weight: var( --cfe-page-summary--page-header--heading--font-weight );
+			line-height: var( --cfe-page-summary--page-header--heading--line-height );
 		}
 	}
 }
 
 .page-subtitle {
-	font-family: var( --bsb-page-subtitle--font-family );
-	font-size: var( --bsb-page-subtitle--font-size, 1.5em );
+	font-family: var( --cfe-page-subtitle--font-family );
+	font-size: var( --cfe-page-subtitle--font-size, 1.5em );
 }
 
 .page-info {
-	font-family: var( --bsb-page-info--font-family );
-	font-size: var( --bsb-page-info--font-size, 0.85em );
-	line-height: var( --bsb-page-info--line-height );
+	font-family: var( --cfe-page-info--font-family );
+	font-size: var( --cfe-page-info--font-size, 0.85em );
+	line-height: var( --cfe-page-info--line-height );
 
 	.page-info-entry {
 		&:not( :last-of-type ) {
-			margin: var( --bsb-page-info-entry--margin, 0 0.5em 0 0 );
+			margin: var( --cfe-page-info-entry--margin, 0 0.5em 0 0 );
 		}
 	}
 }
 
 .page-description {
-	margin: var( --bsb-page-description--margin, 0 );
+	margin: var( --cfe-page-description--margin, 0 );
 
 	&.page-description-single {
-		margin: var( --bsb-page-description-single--margin, 0 );
-		font-size: var( --bsb-page-description-single--font-size, 1.25rem );
+		margin: var( --cfe-page-description-single--margin, 0 );
+		font-size: var( --cfe-page-description-single--font-size, 1.25rem );
 	}
 }
 
 .page-content {
 
-	margin: var( --bsb-page-content--margin, 4rem 0 0 0 );
+	margin: var( --cfe-page-content--margin, 4rem 0 0 0 );
 
 	img[style="float: left;"],
 	img[style="float: left"],
 	img[style="float:left;"],
 	img[style="float:left"] {
-		margin: var( --bsb-page-content--img--float-left--margin, 0 1em 1em 0 );
+		margin: var( --cfe-page-content--img--float-left--margin, 0 1em 1em 0 );
 	}
 
 	img[style="float: right;"],
 	img[style="float: right"],
 	img[style="float:right;"],
 	img[style="float:right"] {
-		margin: var( --bsb-page-content--img--float-right--margin, 0 0 1em 1em );
+		margin: var( --cfe-page-content--img--float-right--margin, 0 0 1em 1em );
 	}
 }
 
@@ -141,7 +141,7 @@ body:not( .home ) {
 			flex-direction: column;
 			align-items: center;
 			justify-content: center;
-			color: var( --bsb-cover--title--link--text-color, $white );
+			color: var( --cfe-cover--title--link--text-color, $white );
 
 			.cover-header {
 				z-index: 100;
@@ -151,25 +151,25 @@ body:not( .home ) {
 			.cover-title {
 				margin: 0;
 				line-height: 1.2;
-				font-size: var( --bsb-cover--page-title--font-size, clamp( 2.375rem, 3vw + 1rem, 5vw ) );
-				font-weight: var( --bsb-cover--page-title--font-weight, var( --bsb-heading-primary--font-weight, 700 ) );
-				color: var( --bsb-cover--titles--text-color, $white );
+				font-size: var( --cfe-cover--page-title--font-size, clamp( 2.375rem, 3vw + 1rem, 5vw ) );
+				font-weight: var( --cfe-cover--page-title--font-weight, var( --cfe-heading-primary--font-weight, 700 ) );
+				color: var( --cfe-cover--titles--text-color, $white );
 
 				a {
-					color: var( --bsb-cover--title--link--text-color, $white );
+					color: var( --cfe-cover--title--link--text-color, $white );
 
 					&:hover,
 					&:focus {
-						color: var( --bsb-site-cover--title--link--action--text-color, $white );
+						color: var( --cfe-site-cover--title--link--action--text-color, $white );
 					}
 				}
 			}
 
 			.cover-description {
 				&.page-description-single {
-					margin:  var( --bsb-cover--page-description-single--margin, 1rem 0 0 0 );
-					font-size: var( --bsb-cover--page-description-single--font-size );
-					font-weight: var( --bsb-cover--page-description-single--font-weight );
+					margin:  var( --cfe-cover--page-description-single--margin, 1rem 0 0 0 );
+					font-size: var( --cfe-cover--page-description-single--font-size );
+					font-weight: var( --cfe-cover--page-description-single--font-weight );
 				}
 			}
 		}
@@ -177,11 +177,11 @@ body:not( .home ) {
 
 	&:not( .page-cover-blog ) {
 		overflow: hidden;
-		margin: var( --bsb-page-cover-single--margin, 0 auto 0 auto );
+		margin: var( --cfe-page-cover-single--margin, 0 auto 0 auto );
 		max-width: 2048px;
 
 		&.posts-loop-cover {
-			margin: var( --bsb-posts-loop-cover--margin, 2rem 0 0 0 );
+			margin: var( --cfe-posts-loop-cover--margin, 2rem 0 0 0 );
 		}
 
 		img {
@@ -196,46 +196,46 @@ body:not( .home ) {
 
 // No posts template.
 .no-posts-found {
-	display: var( --bsb-no-posts--display, flex );
-	flex-direction: var( --bsb-no-posts--flex-direction, column );
-	align-items: var( --bsb-no-posts--align-items, center );
-	justify-content: var( --bsb-no-posts--justify-content, center );
-	min-height: var( --bsb-no-posts--min-height, 50vh );
+	display: var( --cfe-no-posts--display, flex );
+	flex-direction: var( --cfe-no-posts--flex-direction, column );
+	align-items: var( --cfe-no-posts--align-items, center );
+	justify-content: var( --cfe-no-posts--justify-content, center );
+	min-height: var( --cfe-no-posts--min-height, 50vh );
 
 	h1 {
-		font-size: var( --bsb-no-posts--heading--font-size, 2.5em );
+		font-size: var( --cfe-no-posts--heading--font-size, 2.5em );
 	}
 }
 
 .site-article {
 
 	.page-info-author {
-		font-weight: var( --bsb-page-info-author--font-weight, 600 );
+		font-weight: var( --cfe-page-info-author--font-weight, 600 );
 	}
 
 	.page-info-date {
-		font-weight: var( --bsb-page-info-date--font-weight, 600 );
+		font-weight: var( --cfe-page-info-date--font-weight, 600 );
 	}
 
 	.tags-list {
-		list-style: var( --bsb-article--tags-list--margin, none );
-		margin: var( --bsb-article--tags-list--margin, 0.75em 0 0 0 );
-		gap: var( --bsb-article--tags-list--display, 0 0.1875em );
+		list-style: var( --cfe-article--tags-list--margin, none );
+		margin: var( --cfe-article--tags-list--margin, 0.75em 0 0 0 );
+		gap: var( --cfe-article--tags-list--display, 0 0.1875em );
 
 		a {
-			display: var( --bsb-article--tags-list--display, inline-block );
-			padding: var( --bsb-article--tags-list--padding, 0.175em 0.325em 0.325em 0.325em );
-			line-height: var( --bsb-article--tags-list--line-height, 1 );
-			font-size: var( --bsb-article--tags-list--font-size );
-			font-weight: var( --bsb-article--tags-list--font-weight );
-			text-decoration: var( --bsb-article--tags-list--text-decoration );
-			background-color: var( --bsb-article--tags-list--bg-color );
-			color: var( --bsb-article--tags-list--text-color );
+			display: var( --cfe-article--tags-list--display, inline-block );
+			padding: var( --cfe-article--tags-list--padding, 0.175em 0.325em 0.325em 0.325em );
+			line-height: var( --cfe-article--tags-list--line-height, 1 );
+			font-size: var( --cfe-article--tags-list--font-size );
+			font-weight: var( --cfe-article--tags-list--font-weight );
+			text-decoration: var( --cfe-article--tags-list--text-decoration );
+			background-color: var( --cfe-article--tags-list--bg-color );
+			color: var( --cfe-article--tags-list--text-color );
 
 			&:hover,
 			&:focus {
-				background-color: var( --bsb-article--tags-list--action--bg-color );
-				color: var( --bsb-article--tags-list--action--text-color );
+				background-color: var( --cfe-article--tags-list--action--bg-color );
+				color: var( --cfe-article--tags-list--action--text-color );
 			}
 		}
 	}

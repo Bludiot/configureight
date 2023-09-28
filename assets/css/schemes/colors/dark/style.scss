@@ -66,36 +66,36 @@ $close_icon_action_bg: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/20
 :root {
 
 	// General.
-	--bsb-bg-color: #{$near_black};
-	--bsb-text-color: #{$off_white};
-	--bsb-link--text-color: #{$white};
-	--bsb-link--action--text-color: #{$off_white};
-	--bsb-heading-primary--text-color: #{$off_white};
-	--bsb-heading-primary--link--text-color: #{$off_white};
-	--bsb-heading-primary--link--action--text-color: #{$white};
-	--bsb-box-border-color: #{$dark_gray};
+	--cfe-bg-color: #{$near_black};
+	--cfe-text-color: #{$off_white};
+	--cfe-link--text-color: #{$white};
+	--cfe-link--action--text-color: #{$off_white};
+	--cfe-heading-primary--text-color: #{$off_white};
+	--cfe-heading-primary--link--text-color: #{$off_white};
+	--cfe-heading-primary--link--action--text-color: #{$white};
+	--cfe-box-border-color: #{$dark_gray};
 
 	// Forms & buttons.
-	--bsb-form--border-color: #{$medium_gray};
-	--bsb-form--action-border-color: #{$light_gray};
-	--bsb-form--placeholder-color: #{$light_gray};
-	--bsb-button--bg-color: #{$dark_gray};
-	--bsb-button--action-bg-color: #{$medium_gray};
-	--bsb-button--text-color: #{$off_white};
+	--cfe-form--border-color: #{$medium_gray};
+	--cfe-form--action-border-color: #{$light_gray};
+	--cfe-form--placeholder-color: #{$light_gray};
+	--cfe-button--bg-color: #{$dark_gray};
+	--cfe-button--action-bg-color: #{$medium_gray};
+	--cfe-button--text-color: #{$off_white};
 
 	// Header.
-	--bsb-site-header--bg-color: #{$near_black};
+	--cfe-site-header--bg-color: #{$near_black};
 
 	// Navigation.
-	--bsb-site-nav--sub-list--bg-color: #{$dark_gray};
-	--bsb-site-nav--sub-list--action--bg-color: #{$medium_gray};
-	--bsb-site-nav--sub-list--text-color: #{$white};
-	--bsb-site-nav--sub-list--action--text-color: #{$white};
+	--cfe-site-nav--sub-list--bg-color: #{$dark_gray};
+	--cfe-site-nav--sub-list--action--bg-color: #{$medium_gray};
+	--cfe-site-nav--sub-list--text-color: #{$white};
+	--cfe-site-nav--sub-list--action--text-color: #{$white};
 
 	// Content.
-	--bsb-article--tags-list--bg-color: #{$medium_gray};
-	--bsb-article--tags-list--text-color: #{$off_white};
+	--cfe-article--tags-list--bg-color: #{$medium_gray};
+	--cfe-article--tags-list--text-color: #{$off_white};
 
-	--bsb-article--tags-list--action--bg-color: #{$medium_gray};
-	--bsb-article--tags-list--action--text-color: #{$white};
+	--cfe-article--tags-list--action--bg-color: #{$medium_gray};
+	--cfe-article--tags-list--action--text-color: #{$white};
 }

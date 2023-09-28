@@ -8,29 +8,29 @@ html {
 }
 
 body {
-	max-width: var( --bsb-body--max-width, 2048px );
-	margin: var( --bsb-body--margin, 0 auto );
-	font-family: var( --bsb-font-stack, var( --bsb-sans-stack, sans-serif ) );
-	font-size: var( --bsb-font-size, 1rem );
-	font-weight: var( --bsb-font-weight, normal );
-	font-style: var( --bsb-font-style, normal );
-	letter-spacing: var( --bsb-letter-spacing, normal );
-	line-height: var( --bsb-line-height, 1.5 );
-	background-color: var( --bsb-bg-color );
-	background-image: var( --bsb-bg-image );
-	background-repeat: var( --bsb-bg-repeat );
-	background-position: var( --bsb-bg-position );
-	background-size: var( --bsb-bg-size );
-	background-attachment: var( --bsb-bg-attachment );
-	color: var( --bsb-text-color );
+	max-width: var( --cfe-body--max-width, 2048px );
+	margin: var( --cfe-body--margin, 0 auto );
+	font-family: var( --cfe-font-stack, var( --cfe-sans-stack, sans-serif ) );
+	font-size: var( --cfe-font-size, 1rem );
+	font-weight: var( --cfe-font-weight, normal );
+	font-style: var( --cfe-font-style, normal );
+	letter-spacing: var( --cfe-letter-spacing, normal );
+	line-height: var( --cfe-line-height, 1.5 );
+	background-color: var( --cfe-bg-color );
+	background-image: var( --cfe-bg-image );
+	background-repeat: var( --cfe-bg-repeat );
+	background-position: var( --cfe-bg-position );
+	background-size: var( --cfe-bg-size );
+	background-attachment: var( --cfe-bg-attachment );
+	color: var( --cfe-text-color );
 
 	&.toolbar-active {
-		margin-top: var( --bsb-toolbar--height );
+		margin-top: var( --cfe-toolbar--height );
 	}
 }
 
 .serif {
-	font-family: var( --bsb-serif-stack, serif );
+	font-family: var( --cfe-serif-stack, serif );
 }
 
 // Text meant only for screen readers.
@@ -61,10 +61,10 @@ body {
 }
 
 .wrapper-general {
-	width: var( --bsb-wrapper--general--width, 100% );
-	max-width: var( --bsb-wrapper--general--max-width, 100% );
-	margin: var( --bsb-wrapper--general--margin, 0 );
-	padding: var( --bsb-wrapper--general--padding, 0 );
+	width: var( --cfe-wrapper--general--width, 100% );
+	max-width: var( --cfe-wrapper--general--max-width, 100% );
+	margin: var( --cfe-wrapper--general--margin, 0 );
+	padding: var( --cfe-wrapper--general--padding, 0 );
 }
 
 .page-wrap {
@@ -80,53 +80,53 @@ h6,
 p,
 ul,
 ol {
-	margin: var( --bsb-element--margin, 1em 0 0 0 );
+	margin: var( --cfe-element--margin, 1em 0 0 0 );
 }
 
 a {
-	font-weight: var( --bsb-link--font-weight, normal );
-	text-decoration: var( --bsb-link--text-decoration, underline );
-	color: var( --bsb-link--text-color );
-	transition: var( --bsb-link--transition, all 0.15s );
+	font-weight: var( --cfe-link--font-weight, normal );
+	text-decoration: var( --cfe-link--text-decoration, underline );
+	color: var( --cfe-link--text-color );
+	transition: var( --cfe-link--transition, all 0.15s );
 
 	&:hover,
 	&:focus {
-		color: var( --bsb-link--action--text-color );
+		color: var( --cfe-link--action--text-color );
 	}
 }
 
 h1,
 h2 {
-	font-family: var( --bsb-heading-primary--font-family );
-	font-size: var( --bsb-heading-primary--font-size, 2rem );
-	font-weight: var( --bsb-heading-primary--font-weight, 700 );
-	line-height: var( --bsb-heading-primary--line-height );
+	font-family: var( --cfe-heading-primary--font-family );
+	font-size: var( --cfe-heading-primary--font-size, 2rem );
+	font-weight: var( --cfe-heading-primary--font-weight, 700 );
+	line-height: var( --cfe-heading-primary--line-height );
 	word-spacing: -0.0325em;
-	letter-spacing: var( --bsb-heading-primary--letter-spacing, -0.015em );
-	text-transform: var( --bsb-heading-primary--text-transform );
-	font-variant: var( --bsb-heading-primary--font-variant );
-	color: var( --bsb-heading-primary--text-color, var( --bsb-text-color ) );
+	letter-spacing: var( --cfe-heading-primary--letter-spacing, -0.015em );
+	text-transform: var( --cfe-heading-primary--text-transform );
+	font-variant: var( --cfe-heading-primary--font-variant );
+	color: var( --cfe-heading-primary--text-color, var( --cfe-text-color ) );
 
 	a {
-		font-weight: var( --bsb-heading-primary--link--font-weight, inherit );
-		text-decoration: var( --bsb-link--text-decoration, none );
-		color: var( --bsb-heading-primary--link--text-color, var( --bsb-link--text-color ) );
+		font-weight: var( --cfe-heading-primary--link--font-weight, inherit );
+		text-decoration: var( --cfe-link--text-decoration, none );
+		color: var( --cfe-heading-primary--link--text-color, var( --cfe-link--text-color ) );
 
 		&:hover,
 		&:focus {
-			color: var( --bsb-heading-primary--link--action--text-color, var( --bsb-link--action--text-color ) );
+			color: var( --cfe-heading-primary--link--action--text-color, var( --cfe-link--action--text-color ) );
 		}
 	}
 }
 
 h3,
 h4 {
-	font-family: var( --bsb-heading-secondary--font-family );
-	font-size: var( --bsb-heading-secondary--font-size );
-	font-weight: var( --bsb-heading-secondary--font-weight, bold );
-	line-height: var( --bsb-heading-secondary--line-height );
+	font-family: var( --cfe-heading-secondary--font-family );
+	font-size: var( --cfe-heading-secondary--font-size );
+	font-weight: var( --cfe-heading-secondary--font-weight, bold );
+	line-height: var( --cfe-heading-secondary--line-height );
 	word-spacing: -0.0325em;
-	letter-spacing: var( --bsb-heading-secondary--letter-spacing );
+	letter-spacing: var( --cfe-heading-secondary--letter-spacing );
 }
 
 #page-loader {
@@ -140,28 +140,28 @@ h4 {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	background-color: var( --bsb-loader--bg-color, var( --bsb-bg-color ) );
-	color: var( --bsb-loader--text-color, var( --bsb-text-color ) );
+	background-color: var( --cfe-loader--bg-color, var( --cfe-bg-color ) );
+	color: var( --cfe-loader--text-color, var( --cfe-text-color ) );
 
 	.loading-text {
-		font-size: var( --bsb-loader--text--font-size, 1.25rem );
-		line-height: var( --bsb-loader--text--line-height );
+		font-size: var( --cfe-loader--text--font-size, 1.25rem );
+		line-height: var( --cfe-loader--text--line-height );
 		word-spacing: -0.0325em;
-		letter-spacing: var( --bsb-loader--text--letter-spacing, -0.015em );
-		text-transform: var( --bsb-loader--text--text-transform );
-		font-variant: var( --bsb-loader--text--font-variant );
+		letter-spacing: var( --cfe-loader--text--letter-spacing, -0.015em );
+		text-transform: var( --cfe-loader--text--text-transform );
+		font-variant: var( --cfe-loader--text--font-variant );
 	}
 
 	.loading-image {
-		width: var( --bsb-loader--image--width, 1.75rem );
-		height: var( --bsb-loader--image--height, 1.75rem );
-		margin: var( --bsb-loader--image--margin, 2rem 0 0 0 );
+		width: var( --cfe-loader--image--width, 1.75rem );
+		height: var( --cfe-loader--image--height, 1.75rem );
+		margin: var( --cfe-loader--image--margin, 2rem 0 0 0 );
 		-webkit-animation: spinner 1s infinite linear;
 				animation: spinner 1s infinite linear;
 
 		svg {
-			width: var( --bsb-loader--image--width, 1.75rem );
-			height: var( --bsb-loader--image--height, 1.75rem );
+			width: var( --cfe-loader--image--width, 1.75rem );
+			height: var( --cfe-loader--image--height, 1.75rem );
 			fill: currentColor;
 		}
 	}
@@ -179,7 +179,7 @@ h4 {
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background-color: var( --bsb-cover-overlay--bg-color, rgba( $color: black, $alpha: 0.625 ) );
+	background-color: var( --cfe-cover-overlay--bg-color, rgba( $color: black, $alpha: 0.625 ) );
 }
 
 #to-top {
@@ -193,11 +193,11 @@ h4 {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	background-color: var( --bsb-button--bg-color );
-	border: var( --bsb-form-element--border );
-	border-color: var( --bsb-button--border-color, var( --bsb-form--border-color ) );
-	color: var( --bsb-button--text-color, var( --bsb-text-color ) );
-	border-radius: var( --bsb-to-top--border-radius, 50% );
+	background-color: var( --cfe-button--bg-color );
+	border: var( --cfe-form-element--border );
+	border-color: var( --cfe-button--border-color, var( --cfe-form--border-color ) );
+	color: var( --cfe-button--text-color, var( --cfe-text-color ) );
+	border-radius: var( --cfe-to-top--border-radius, 50% );
 	transform: translateY( 0 );
 	transition: opacity .5s, background-color .25s, transform .25s;
 
@@ -207,48 +207,48 @@ h4 {
 	}
 
 	&:hover {
-		background-color: var( --bsb-button--action-bg-color, var( --bsb-button--bg-color ) );
-		border-color: var( --bsb-button--action-border-color, var( --bsb-button--border-color, ) );
-		color: var( --bsb-button--action-text-color, var( --bsb-button--text-color ) );
+		background-color: var( --cfe-button--action-bg-color, var( --cfe-button--bg-color ) );
+		border-color: var( --cfe-button--action-border-color, var( --cfe-button--border-color, ) );
+		color: var( --cfe-button--action-text-color, var( --cfe-button--text-color ) );
 		transform: translateY( -0.25rem );
 	}
 
 	svg {
 		width: 1.5rem;
 		height: 1.5rem;
-		fill: var( --bsb-to-top--svg--fill, currentColor );
+		fill: var( --cfe-to-top--svg--fill, currentColor );
 	}
 }
 
 // User avatar.
 .avatar {
-	vertical-align: var( --bsb-avatar--vertical-align, middle );
-	border-radius: var( --bsb-avatar--border-radius, 50% );
+	vertical-align: var( --cfe-avatar--vertical-align, middle );
+	border-radius: var( --cfe-avatar--border-radius, 50% );
 }
 
 // Text selection.
 ::-o-selection {
-	color: var( --bsb-selection--text-color, #222222 );
-	background: var( --bsb-selection--bg-color, #ffdd00 );
+	color: var( --cfe-selection--text-color, #222222 );
+	background: var( --cfe-selection--bg-color, #ffdd00 );
 	text-shadow: none;
 }
 ::-ms-selection {
-	color: var( --bsb-selection--text-color, #222222 );
-	background: var( --bsb-selection--bg-color, #ffdd00 );
+	color: var( --cfe-selection--text-color, #222222 );
+	background: var( --cfe-selection--bg-color, #ffdd00 );
 	text-shadow: none;
 }
 ::-webkit-selection {
-	color: var( --bsb-selection--text-color, #222222 );
-	background: var( --bsb-selection--bg-color, #ffdd00 );
+	color: var( --cfe-selection--text-color, #222222 );
+	background: var( --cfe-selection--bg-color, #ffdd00 );
 	text-shadow: none;
 }
 ::-moz-selection {
-	color: var( --bsb-selection--text-color, #222222 );
-	background: var( --bsb-selection--bg-color, #ffdd00 );
+	color: var( --cfe-selection--text-color, #222222 );
+	background: var( --cfe-selection--bg-color, #ffdd00 );
 	text-shadow: none;
 }
 ::selection {
-	color: var( --bsb-selection--text-color, #222222 );
-	background: var( --bsb-selection--bg-color, #ffdd00 );
+	color: var( --cfe-selection--text-color, #222222 );
+	background: var( --cfe-selection--bg-color, #ffdd00 );
 	text-shadow: none;
 }

@@ -23,28 +23,28 @@ $monospace_stack: 'Source Code Pro', 'Roboto Mono', 'Fira Code', 'Liberation Mon
 :root {
 
 	// General.
-	--bsb-font-stack: #{$monospace_stack};
-	--bsb-heading-primary--font-size: 2rem;
-	--bsb-heading-primary--font-weight: 700;
-	--bsb-heading-primary--letter-spacing: normal;
+	--cfe-font-stack: #{$monospace_stack};
+	--cfe-heading-primary--font-size: 2rem;
+	--cfe-heading-primary--font-weight: 700;
+	--cfe-heading-primary--letter-spacing: normal;
 
 	// Header.
-	--bsb-site-title--font-weight: 700;
-	--bsb-site-title--letter-spacing: normal;
-	--bsb-site-title--word-spacing: normal;
-	--bsb-site-title--letter-spacing: normal;
-	--bsb-cover--page-title--font-weight: 650;
+	--cfe-site-title--font-weight: 700;
+	--cfe-site-title--letter-spacing: normal;
+	--cfe-site-title--word-spacing: normal;
+	--cfe-site-title--letter-spacing: normal;
+	--cfe-cover--page-title--font-weight: 650;
 
 	// Navigation.
-	--bsb-site-nav--item--font-size: 1.125rem;
-	--bsb-site-nav--item--font-weight: 500;
+	--cfe-site-nav--item--font-size: 1.125rem;
+	--cfe-site-nav--item--font-weight: 500;
 
 	// Content.
-	--bsb-page-summary--page-header--heading--font-size: 1.75rem;
-	--bsb-page-summary--page-header--heading--line-height: 1.1;
-	--bsb-page-header--heading--link--font-weight: 700;
-	--bsb-article--tags-list--font-weight: 500;
+	--cfe-page-summary--page-header--heading--font-size: 1.75rem;
+	--cfe-page-summary--page-header--heading--line-height: 1.1;
+	--cfe-page-header--heading--link--font-weight: 700;
+	--cfe-article--tags-list--font-weight: 500;
 
 	// Aside.
-	--bsb-page-sidebar--link--font-weight: 500;
+	--cfe-page-sidebar--link--font-weight: 500;
 }

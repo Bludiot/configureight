@@ -17,12 +17,12 @@
 .user-toolbar {
 	a {
 		&:not( :last-of-type ) {
-			margin: var( --bsb-toolbar--link--margin--rtl, 0 0 0 1rem );
+			margin: var( --cfe-toolbar--link--margin--rtl, 0 0 0 1rem );
 		}
 
 		&#profile-link {
 			img {
-				margin: var( --bsb-toolbar--profile-pic--margin--rtl, 0 0 0 0.5em );
+				margin: var( --cfe-toolbar--profile-pic--margin--rtl, 0 0 0 0.5em );
 			}
 		}
 	}
@@ -59,7 +59,7 @@
 	img[style="float:left;"],
 	img[style="float:left"] {
 		float: right !important;
-		margin: var( --bsb-page-content--img--float-left--margin--rtl, 0 0 1em 1em );
+		margin: var( --cfe-page-content--img--float-left--margin--rtl, 0 0 1em 1em );
 	}
 
 	img[style="float: right;"],
@@ -67,14 +67,14 @@
 	img[style="float:right;"],
 	img[style="float:right"] {
 		float: left !important;
-		margin: var( --bsb-page-content--img--float-right--margin--rtl, 0 1em 1em 0 );
+		margin: var( --cfe-page-content--img--float-right--margin--rtl, 0 1em 1em 0 );
 	}
 }
 
 .page-info {
 	.page-info-entry {
 		&:not( :last-of-type ) {
-			margin: var( --bsb-page-info-entry--margin--rtl, 0 0 0 0.5em );
+			margin: var( --cfe-page-info-entry--margin--rtl, 0 0 0 0.5em );
 		}
 	}
 }
@@ -82,6 +82,6 @@
 // Aside/sidebar content.
 .page-sidebar {
 	ol {
-		padding: var( --bsb-page-sidebar--ol--padding--rtl, 0 1em 0 0 );;
+		padding: var( --cfe-page-sidebar--ol--padding--rtl, 0 1em 0 0 );;
 	}
 }

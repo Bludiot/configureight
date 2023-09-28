@@ -86,50 +86,50 @@ $close_icon_action_bg: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/20
 :root {
 
 	// General.
-	--bsb-bg-color: #{$fui_clouds};
-	--bsb-text-color: #{$fui_midnight_blue};
-	--bsb-link--text-color: #{$fui_belize_hole};
-	--bsb-link--action--text-color: #{$fui_carrot};
-	--bsb-heading-primary--text-color: #{$fui_wet_asphalt};
-	--bsb-heading-primary--link--text-color: #{$fui_wet_asphalt};
-	--bsb-heading-primary--link--action--text-color: #{$fui_wisteria};
-	--bsb-box-border-color: #{$fui_asbestos};
-	--bsb-selection--bg-color: #{$fui_alizarin };
-	--bsb-selection--text-color: #{$fui_clouds};
+	--cfe-bg-color: #{$fui_clouds};
+	--cfe-text-color: #{$fui_midnight_blue};
+	--cfe-link--text-color: #{$fui_belize_hole};
+	--cfe-link--action--text-color: #{$fui_carrot};
+	--cfe-heading-primary--text-color: #{$fui_wet_asphalt};
+	--cfe-heading-primary--link--text-color: #{$fui_wet_asphalt};
+	--cfe-heading-primary--link--action--text-color: #{$fui_wisteria};
+	--cfe-box-border-color: #{$fui_asbestos};
+	--cfe-selection--bg-color: #{$fui_alizarin };
+	--cfe-selection--text-color: #{$fui_clouds};
 
 	// Forms & buttons.
-	--bsb-form--border-color: #{$fui_asbestos};
-	--bsb-form--action-border-color: #{$fui_belize_hole};
-	--bsb-form--placeholder-color: #{$fui_asbestos};
-	--bsb-button--bg-color: #{$fui_green_sea};
-	--bsb-button--action-bg-color: #{$fui_turquoise};
-	--bsb-button--text-color: #{$fui_clouds};
+	--cfe-form--border-color: #{$fui_asbestos};
+	--cfe-form--action-border-color: #{$fui_belize_hole};
+	--cfe-form--placeholder-color: #{$fui_asbestos};
+	--cfe-button--bg-color: #{$fui_green_sea};
+	--cfe-button--action-bg-color: #{$fui_turquoise};
+	--cfe-button--text-color: #{$fui_clouds};
 
 	// Header.
-	--bsb-site-header--bg-color: inherit;
+	--cfe-site-header--bg-color: inherit;
 
 	// Navigation.
-	--bsb-site-nav--sub-list--bg-color: #{$fui_midnight_blue};
-	--bsb-site-nav--sub-list--action--bg-color: #{$fui_wet_asphalt};
-	--bsb-site-nav--sub-list--text-color: #{$fui_clouds};
-	--bsb-site-nav--sub-list--action--text-color: #{$fui_clouds};
+	--cfe-site-nav--sub-list--bg-color: #{$fui_midnight_blue};
+	--cfe-site-nav--sub-list--action--bg-color: #{$fui_wet_asphalt};
+	--cfe-site-nav--sub-list--text-color: #{$fui_clouds};
+	--cfe-site-nav--sub-list--action--text-color: #{$fui_clouds};
 
 	// Content.
-	--bsb-article--tags-list--bg-color: #{$fui_carrot};
-	--bsb-article--tags-list--text-color: #{$fui_clouds};
+	--cfe-article--tags-list--bg-color: #{$fui_carrot};
+	--cfe-article--tags-list--text-color: #{$fui_clouds};
 
-	--bsb-article--tags-list--action--bg-color: #{$fui_orange};
-	--bsb-article--tags-list--action--text-color: #{$fui_clouds};
+	--cfe-article--tags-list--action--bg-color: #{$fui_orange};
+	--cfe-article--tags-list--action--text-color: #{$fui_clouds};
 }
 
 @media ( prefers-color-scheme: dark ) {
 	:root {
-		--bsb-bg-color: #{$near_black};
-		--bsb-text-color: #{$fui_clouds};
-		--bsb-link--text-color: #{$fui_clouds};
-		--bsb-link--action--text-color: #{$fui_sunflower};
-		--bsb-heading-primary--text-color: #{$fui_clouds};
-		--bsb-heading-primary--link--text-color: #{$fui_clouds};
-		--bsb-heading-primary--link--action--text-color: #{$fui_peter_river};
+		--cfe-bg-color: #{$near_black};
+		--cfe-text-color: #{$fui_clouds};
+		--cfe-link--text-color: #{$fui_clouds};
+		--cfe-link--action--text-color: #{$fui_sunflower};
+		--cfe-heading-primary--text-color: #{$fui_clouds};
+		--cfe-heading-primary--link--text-color: #{$fui_clouds};
+		--cfe-heading-primary--link--action--text-color: #{$fui_peter_river};
 	}
 }

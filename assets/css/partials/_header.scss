@@ -4,7 +4,7 @@
 
 .site-header {
 	position: relative;
-	background-color: var( --bsb-site-header--bg-color, var( --bsb-bg-color ) );
+	background-color: var( --cfe-site-header--bg-color, var( --cfe-bg-color ) );
 
 	#search-bar {
 		position: absolute;
@@ -13,7 +13,7 @@
 		width: 100%;
 		padding: 2rem;
 		z-index: 5998;
-		background-color: var( --bsb-site-header--bg-color, var( --bsb-bg-color ) );
+		background-color: var( --cfe-site-header--bg-color, var( --cfe-bg-color ) );
 		display: flex;
 		flex-wrap: nowrap;
 		gap: 0 0.25rem;
@@ -31,7 +31,7 @@
 		button[ data-search-toggle-close ] {
 			text-indent: -999em;
 			display: inline-block;
-			background-color: var( --bsb-button--bg-color );
+			background-color: var( --cfe-button--bg-color );
 			background-repeat: no-repeat;
 			background-size: 1.5em;
 			background-position: 1em center;
@@ -43,9 +43,9 @@
 			&:hover,
 			&:focus {
 				background-image: url( '#{$close_icon_action_bg}' );
-				background-color: var( --bsb-button--action-bg-color, var( --bsb-button--bg-color ) );
-				border-color: var( --bsb-button--action-border-color, var( --bsb-button--border-color ) );
-				color: var( --bsb-button--action-text-color, var(--bsb-button--text-color ) );
+				background-color: var( --cfe-button--action-bg-color, var( --cfe-button--bg-color ) );
+				border-color: var( --cfe-button--action-border-color, var( --cfe-button--border-color ) );
+				color: var( --cfe-button--action-text-color, var(--cfe-button--text-color ) );
 			}
 
 			svg {
@@ -92,70 +92,70 @@
 
 	.site-header-wrap {
 		position: relative;
-		display: var( --bsb-site-header-wrap--display, flex );
-		flex-direction: var( --bsb-site-header-wrap--flex-direction, row );
-		align-items: var( --bsb-site-header-wrap--align-items, center );
-		justify-content: var( --bsb-site-header-wrap--justify-content, space-between );
-		gap: var( --bsb-site-header-wrap--gap, 1rem );
-		padding: var( --bsb-site-header-wrap--padding );
+		display: var( --cfe-site-header-wrap--display, flex );
+		flex-direction: var( --cfe-site-header-wrap--flex-direction, row );
+		align-items: var( --cfe-site-header-wrap--align-items, center );
+		justify-content: var( --cfe-site-header-wrap--justify-content, space-between );
+		gap: var( --cfe-site-header-wrap--gap, 1rem );
+		padding: var( --cfe-site-header-wrap--padding );
 
 		@media screen and ( max-width: $break_tablet ) {
-			flex-direction: var( --bsb-site-header-wrap--flex-direction-tablet, column );
-			justify-content: var( --bsb-site-header-wrap--justify-content--tablet, center );
+			flex-direction: var( --cfe-site-header-wrap--flex-direction-tablet, column );
+			justify-content: var( --cfe-site-header-wrap--justify-content--tablet, center );
 		}
 	}
 }
 
 .site-branding {
 	position: relative;
-	display: var( --bsb-site-branding--display, flex );
-	flex-direction: var( --bsb-site-branding--flex-direction, row );
-	align-items: var( --bsb-site-branding--align-items, center );
-	justify-content: var( --bsb-site-branding--justify-content, flex-start );
-	gap: var( --bsb-site-branding--gap, 1rem );
+	display: var( --cfe-site-branding--display, flex );
+	flex-direction: var( --cfe-site-branding--flex-direction, row );
+	align-items: var( --cfe-site-branding--align-items, center );
+	justify-content: var( --cfe-site-branding--justify-content, flex-start );
+	gap: var( --cfe-site-branding--gap, 1rem );
 
 	@media screen and ( max-width: $break_tablet ) {
-		flex-direction: var( --bsb-site-branding--flex-direction--tablet, column );
-		justify-content: var( --bsb-site-branding--justify-content--tablet, center );
-		text-align: var( --bsb-site-branding--text-align--tablet, center );
+		flex-direction: var( --cfe-site-branding--flex-direction--tablet, column );
+		justify-content: var( --cfe-site-branding--justify-content--tablet, center );
+		text-align: var( --cfe-site-branding--text-align--tablet, center );
 	}
 }
 
 .site-logo {
-	min-width: var( --bsb-site-logo--min-width, 80px );
+	min-width: var( --cfe-site-logo--min-width, 80px );
 
 	img {
-		display: var( --bsb-site-logo--display, block );
+		display: var( --cfe-site-logo--display, block );
 	}
 }
 
 .site-title {
-	margin: var( --bsb-site-title--margin, 0 );
-	font-family: var( --bsb-site-title--font-family, var( --bsb-heading-primary--font-family ) );
-	font-size: var( --bsb-site-title--font-size, 1.625rem );
-	font-weight: var( --bsb-site-title--font-weight, bold );
-	word-spacing: var( --bsb-site-title--word-spacing, -0.0325em );
-	letter-spacing: var( --bsb-site-title--letter-spacing, -0.015em );
-	text-transform: var( --bsb-site-title--text-transform );
-	font-variant: var( --bsb-site-title--font-variant, var( --bsb-heading-primary--font-variant ) );
-	line-height: var( --bsb-site-title--line-height, 1.2 );
-	color: var( --bsb-site-title--text-color, var( --bsb-heading-primary--text-color, var( --bsb-text-color ) ) );
+	margin: var( --cfe-site-title--margin, 0 );
+	font-family: var( --cfe-site-title--font-family, var( --cfe-heading-primary--font-family ) );
+	font-size: var( --cfe-site-title--font-size, 1.625rem );
+	font-weight: var( --cfe-site-title--font-weight, bold );
+	word-spacing: var( --cfe-site-title--word-spacing, -0.0325em );
+	letter-spacing: var( --cfe-site-title--letter-spacing, -0.015em );
+	text-transform: var( --cfe-site-title--text-transform );
+	font-variant: var( --cfe-site-title--font-variant, var( --cfe-heading-primary--font-variant ) );
+	line-height: var( --cfe-site-title--line-height, 1.2 );
+	color: var( --cfe-site-title--text-color, var( --cfe-heading-primary--text-color, var( --cfe-text-color ) ) );
 
 	a {
 		font-weight: inherit;
-		color: var( --bsb-site-title--link--text-color, inherit );
-		text-decoration: var( --bsb-site-title--link--text-decoration, none );
+		color: var( --cfe-site-title--link--text-color, inherit );
+		text-decoration: var( --cfe-site-title--link--text-decoration, none );
 
 		&:hover,
 		&:focus {
-			color: var( --bsb-site-title--link--action--text-color, inherit );
+			color: var( --cfe-site-title--link--action--text-color, inherit );
 		}
 	}
 }
 
 .site-description {
-	margin: var( --bsb-site-description--margin, 0 );
-	color: var( --bsb-site-description--text-color, var( --bsb-text-color ) );
+	margin: var( --cfe-site-description--margin, 0 );
+	color: var( --cfe-site-description--text-color, var( --cfe-text-color ) );
 }
 
 .template-full-cover {
@@ -197,13 +197,13 @@
 				margin: 0 auto;
 				background: transparent;
 				border: none;
-				color: var( --bsb-cover--title--link--text-color, $white );
+				color: var( --cfe-cover--title--link--text-color, $white );
 				transition: transform ease-in-out .15s;
 				transform: translateY( 0 );
 
 				&:hover,
 				&:focus {
-					color: var( --bsb-site-cover--title--link--action--text-color, $white );
+					color: var( --cfe-site-cover--title--link--action--text-color, $white );
 				}
 
 				&:hover {
@@ -211,8 +211,8 @@
 				}
 
 				svg {
-					width: calc( var( --bsb-button--svg-icon--width ) * 3.5 );
-					height: calc( var( --bsb-button--svg-icon--height ) * 3.5 );
+					width: calc( var( --cfe-button--svg-icon--width ) * 3.5 );
+					height: calc( var( --cfe-button--svg-icon--height ) * 3.5 );
 				}
 			}
 		}
@@ -220,35 +220,35 @@
 
 	.site-title,
 	.cover-title {
-		color: var( --bsb-cover--titles--text-color, $white );
+		color: var( --cfe-cover--titles--text-color, $white );
 
 		a {
-			color: var( --bsb-cover--title--link--text-color, $white );
+			color: var( --cfe-cover--title--link--text-color, $white );
 
 			&:hover,
 			&:focus {
-				color: var( --bsb-site-cover--title--link--action--text-color, $white );
+				color: var( --cfe-site-cover--title--link--action--text-color, $white );
 			}
 		}
 	}
 
 	.site-description,
 	.cover-description:not( .blog-page-description ) {
-		color: var( --bsb-cover--site-description--text-color, $white );
+		color: var( --cfe-cover--site-description--text-color, $white );
 	}
 
 	.cover-title {
 		margin: 0;
 		line-height: 1.2;
-		font-size: var( --bsb-cover--page-title--font-size, clamp( 2.375rem, 3vw + 1rem, 5vw ) );
-		font-weight: var( --bsb-cover--page-title--font-weight, var( --bsb-heading-primary--font-weight, 700 ) );
+		font-size: var( --cfe-cover--page-title--font-size, clamp( 2.375rem, 3vw + 1rem, 5vw ) );
+		font-weight: var( --cfe-cover--page-title--font-weight, var( --cfe-heading-primary--font-weight, 700 ) );
 	}
 
 	.cover-description {
 		&.page-description-single {
-			margin:  var( --bsb-cover--page-description-single--margin, 1rem 0 0 0 );
-			font-size: var( --bsb-cover--page-description-single--font-size );
-			font-weight: var( --bsb-cover--page-description-single--font-weight );
+			margin:  var( --cfe-cover--page-description-single--margin, 1rem 0 0 0 );
+			font-size: var( --cfe-cover--page-description-single--font-size );
+			font-weight: var( --cfe-cover--page-description-single--font-weight );
 		}
 	}
 }
@@ -256,7 +256,7 @@
 .toolbar-active {
 	&.template-full-cover {
 		.site-header {
-			height: calc( 100vh - var( --bsb-toolbar--height ) );
+			height: calc( 100vh - var( --cfe-toolbar--height ) );
 		}
 	}
 }

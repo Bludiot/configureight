@@ -3,44 +3,44 @@
 ///
 
 .nav-list {
-	list-style: var( --bsb-nav-list--style, none );
-	margin: var( --bsb-nav-list--margin, 0 );
-	padding: var( --bsb-nav-list--padding, 0 );
+	list-style: var( --cfe-nav-list--style, none );
+	margin: var( --cfe-nav-list--margin, 0 );
+	padding: var( --cfe-nav-list--padding, 0 );
 }
 
 .site-navigation {
-	max-width: var( --bsb-site-nav--max-width );
+	max-width: var( --cfe-site-nav--max-width );
 
 	ul {
-		margin: var( --bsb-site-nav--list--margin, 0 );
-		display: var( --bsb-site-nav--list--display, flex );
-		gap: var( --bsb-site-nav--list--gap, 0.25em 1em );
-		justify-content: var( --bsb-site-nav--list--justify-content, flex-end );
-		flex-wrap: var( --bsb-site-nav--list--flex-wrap, wrap );
+		margin: var( --cfe-site-nav--list--margin, 0 );
+		display: var( --cfe-site-nav--list--display, flex );
+		gap: var( --cfe-site-nav--list--gap, 0.25em 1em );
+		justify-content: var( --cfe-site-nav--list--justify-content, flex-end );
+		flex-wrap: var( --cfe-site-nav--list--flex-wrap, wrap );
 
 		@media screen and ( max-width: $break_tablet ) {
-			justify-content: var( --bsb-site-nav--list--justify-content--tablet, center );
+			justify-content: var( --cfe-site-nav--list--justify-content--tablet, center );
 		}
 
 		li {
 			position: relative;
-			margin: var( --bsb-site-nav--item--margin, 0 );
-			font-family: var( --bsb-site-nav--item--font-family );
-			font-size: var( --bsb-site-nav--item--font-size );
-			font-weight: var( --bsb-site-nav--item--font-weight );
-			text-transform: var( --bsb-site-nav--item--text-transform );
-			font-variant: var( --bsb-site-nav--item--font-variant );
+			margin: var( --cfe-site-nav--item--margin, 0 );
+			font-family: var( --cfe-site-nav--item--font-family );
+			font-size: var( --cfe-site-nav--item--font-size );
+			font-weight: var( --cfe-site-nav--item--font-weight );
+			text-transform: var( --cfe-site-nav--item--text-transform );
+			font-variant: var( --cfe-site-nav--item--font-variant );
 			line-height: 1.2;
-			color: var( --bsb-site-nav--list--text-color, inherit );
+			color: var( --cfe-site-nav--list--text-color, inherit );
 
 			a {
 				font-weight: inherit;
-				text-decoration: var( --bsb-site-nav--item-link--text-decoration, none );
-				color: var( --bsb-site-nav--list--link--text-color, var( --bsb-link--text-color ) );
+				text-decoration: var( --cfe-site-nav--item-link--text-decoration, none );
+				color: var( --cfe-site-nav--list--link--text-color, var( --cfe-link--text-color ) );
 
 				&:hover,
 				&:focus {
-					color: var( --bsb-site-nav--list--link--action--text-color, var( --bsb-site-nav--list--link--text-color, var( --bsb-link--text-color ) ) );
+					color: var( --cfe-site-nav--list--link--action--text-color, var( --cfe-site-nav--list--link--text-color, var( --cfe-link--text-color ) ) );
 				}
 			}
 
@@ -56,7 +56,7 @@
 
 				&:hover {
 					svg {
-						fill: var( --bsb-link--text-color );
+						fill: var( --cfe-link--text-color );
 					}
 				}
 			}
@@ -71,8 +71,8 @@
 				transform: translateY( 0 );
 				opacity: 0;
 				transition: transform 0.25s, opacity 0.25s;
-				background-color: var( --bsb-site-nav--sub-list--bg-color, #333333 );
-				border: solid 2px var( --bsb-site-nav--sub-list--border-color, var( --bsb-site-nav--sub-list--bg-color, #333333 ) );
+				background-color: var( --cfe-site-nav--sub-list--bg-color, #333333 );
+				border: solid 2px var( --cfe-site-nav--sub-list--border-color, var( --cfe-site-nav--sub-list--bg-color, #333333 ) );
 
 				&:before {
 					content: '';
@@ -98,7 +98,7 @@
 					border: solid 0.5rem transparent;
 
 					// Creates the triangle.
-					border-bottom-color: var( --bsb-site-nav--sub-list--bg-color, #333333 );
+					border-bottom-color: var( --cfe-site-nav--sub-list--bg-color, #333333 );
 
 					@media screen and ( max-width: $break_tablet ) {
 						right: calc( 50% - 0.5rem );
@@ -106,20 +106,20 @@
 				}
 
 				li {
-					margin: var( --bsb-site-nav--sub-item--margin, 0 );
+					margin: var( --cfe-site-nav--sub-item--margin, 0 );
 					text-align: center;
-					color: var( --bsb-site-nav--sub-list--text-color, #ffffff );
+					color: var( --cfe-site-nav--sub-list--text-color, #ffffff );
 
 					a {
 						display: block;
 						padding: 0.5em 1em;
-						background-color: var( --bsb-site-nav--sub-list--bg-color, inherit );
-						color: var( --bsb-site-nav--sub-list--text-color, #ffffff );
+						background-color: var( --cfe-site-nav--sub-list--bg-color, inherit );
+						color: var( --cfe-site-nav--sub-list--text-color, #ffffff );
 
 						&:hover,
 						&:focus {
-							background-color: var( --bsb-site-nav--sub-list--action--bg-color, #555555 );
-							color: var( --bsb-site-nav--sub-list--action--text-color, #ffffff );
+							background-color: var( --cfe-site-nav--sub-list--action--bg-color, #555555 );
+							color: var( --cfe-site-nav--sub-list--action--text-color, #ffffff );
 						}
 					}
 				}
@@ -147,14 +147,14 @@
 	.site-navigation {
 		ul {
 			li {
-				color: var( --bsb-site-nav--list--text-color, $white );
+				color: var( --cfe-site-nav--list--text-color, $white );
 
 				a {
-					color: var( --bsb-site-nav--list--text-color, $white );
+					color: var( --cfe-site-nav--list--text-color, $white );
 
 					&:hover,
 					&:focus {
-						color: var( --bsb-site-title--cover--link--action--text-color, $white );
+						color: var( --cfe-site-title--cover--link--action--text-color, $white );
 					}
 				}
 
@@ -165,12 +165,12 @@
 					svg {
 						height: 1em;
 						vertical-align: middle;
-						fill: var( --bsb-site-nav--list--text-color, $white );
+						fill: var( --cfe-site-nav--list--text-color, $white );
 					}
 
 					&:hover {
 						svg {
-							fill: var( --bsb-site-title--cover--link--action--text-color, $white );
+							fill: var( --cfe-site-title--cover--link--action--text-color, $white );
 						}
 					}
 				}
@@ -180,17 +180,17 @@
 }
 
 .page-navigation {
-	width: var( --bsb-page-nav--width, 100% );
-	margin: var( --bsb-page-nav--margin, 2rem 0 0 0 );
+	width: var( --cfe-page-nav--width, 100% );
+	margin: var( --cfe-page-nav--margin, 2rem 0 0 0 );
 
 	.pagination-list {
-		width: var( --bsb-pagination-list--width, 100% );
-		display: var( --bsb-pagination-list--display, flex );
-		gap: var( --bsb-pagination-list--gap, 0 0.5em );
+		width: var( --cfe-pagination-list--width, 100% );
+		display: var( --cfe-pagination-list--display, flex );
+		gap: var( --cfe-pagination-list--gap, 0 0.5em );
 		justify-content: center;
 
 		&.pagination-prev-next {
-			justify-content: var( --bsb-pagination-list--prev-next--justify-content, space-between );
+			justify-content: var( --cfe-pagination-list--prev-next--justify-content, space-between );
 		}
 
 		&.pagination-numerical {
@@ -198,18 +198,18 @@
 			a {
 				display: inline-block;
 				padding: 0 0.5em;
-				text-decoration: var( --bsb-pagination-list--numeric--link--text-decoration, none );
-				font-weight: var( --bsb-pagination-list--numeric--link--font-weight, inherit );
-				border: var( --bsb-pagination-list--link--numeric--border, solid 1px transparent );
+				text-decoration: var( --cfe-pagination-list--numeric--link--text-decoration, none );
+				font-weight: var( --cfe-pagination-list--numeric--link--font-weight, inherit );
+				border: var( --cfe-pagination-list--link--numeric--border, solid 1px transparent );
 
 				&:hover,
 				&:focus {
-					border: var( --bsb-pagination-list--numeric--link--active--border, solid 1px $light_gray );
+					border: var( --cfe-pagination-list--numeric--link--active--border, solid 1px $light_gray );
 				}
 
 				&.page-active {
-					font-weight: var( --bsb-pagination-list--numeric--link--active--font-weight, 600 );
-					border: var( --bsb-pagination-list--numeric--link--active--border, solid 1px $light_gray );
+					font-weight: var( --cfe-pagination-list--numeric--link--active--font-weight, 600 );
+					border: var( --cfe-pagination-list--numeric--link--active--border, solid 1px $light_gray );
 				}
 
 				.page-icon {
