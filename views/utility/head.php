@@ -55,6 +55,7 @@ if ( has_cover() ) {
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
+	<?php // Preconnect and preload files. ?>
 	<link rel="preconnect" href="//fonts.adobe.com" />
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -62,24 +63,42 @@ if ( has_cover() ) {
 	<?php echo $load_cover; ?>
 
 	<?php
-	// Change `<html>` class to `js` if JavaScript is enabled.
-	echo "<script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>\n"; ?>
-	<?php echo Theme :: jquery(); ?>
+
+	// Change `<html>` 'no-js' class to 'js' if JavaScript is enabled.
+	echo "<script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>\n";
+	echo Theme :: jquery();
+	?>
 
 	<?php echo favicon_tag(); ?>
-	<?php echo Theme :: metaTagTitle(); ?>
-	<?php echo Theme :: metaTagDescription(); ?>
-	<?php echo Theme :: keywords( $keywords ); ?>
 
-	<?php echo Theme :: cssBootstrapIcons(); ?>
-	<?php echo Theme :: css( "assets/css/root{$suffix}.css" ); ?>
-	<?php echo Theme :: css( "assets/css/style{$suffix}.css" ); ?>
-	<?php if ( is_rtl() ) {
+	<?php
+
+	// Meta tags.
+	echo Theme :: metaTagTitle();
+	echo Theme :: metaTagDescription();
+	echo Theme :: keywords( $keywords );
+	?>
+
+	<?php
+
+	// Core frontend stylesheets.
+	echo Theme :: css(
+		[
+			"assets/css/root{$suffix}.css",
+			"assets/css/style{$suffix}.css"
+		],
+		DOMAIN_THEME
+	);
+
+	if ( is_rtl() ) {
 		echo Theme :: css( "assets/css/style-rtl{$suffix}.css" );
-	} ?>
-	<?php echo scheme_stylesheet( 'colors' ); ?>
-	<?php echo scheme_stylesheet( 'fonts' ); ?>
-	<?php echo config_styles(); ?>
+	}
+
+	// Configuration stylesheets.
+	echo scheme_stylesheet( 'colors' );
+	echo scheme_stylesheet( 'fonts' );
+	echo config_styles();
+	?>
 
 	<?php Theme :: plugins( 'siteHead' ); ?>
 </head>
