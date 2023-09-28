@@ -109,6 +109,7 @@ $tags_list = function() use ( $post ) {
 	</header>
 
 	<div class="post-intro loop-post-intro full-loop-post-intro">
+
 		<?php if ( $post->coverImage() ) : ?>
 		<figure class="page-cover posts-loop-cover">
 			<a href="<?php echo $post->permalink(); ?>">
@@ -117,6 +118,10 @@ $tags_list = function() use ( $post ) {
 			<figcaption class="screen-reader-text"><?php echo $post->title(); ?></figcaption>
 		</figure>
 		<?php endif; ?>
+
+		<div class="post-content" itemprop="articleBody" data-post-content>
+			<?php echo $post->content(); ?>
+		</div>
 
 		<footer class="page-info">
 
@@ -163,9 +168,6 @@ $tags_list = function() use ( $post ) {
 		</footer>
 	</div>
 
-	<div class="post-content" itemprop="articleBody" data-post-content>
-		<?php echo $post->content(); ?>
-	</div>
 </article>
 <?php endforeach; ?>
 
