@@ -65,7 +65,10 @@
 				z-index: 1000;
 				display: block;
 				position: absolute;
-				top: calc( 100% );
+
+				/// Top: pull up (-) height of :after and
+				/// ul > ul border width.
+				top: calc( 100% - 2px );
 				right: -9999em;
 				width: 160px;
 				transform: translateY( 0 );

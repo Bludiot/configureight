@@ -976,7 +976,7 @@ h3 + .search-form {
   z-index: 1000;
   display: block;
   position: absolute;
-  top: 100%;
+  top: calc(100% - 2px);
   right: -9999em;
   width: 160px;
   transform: translateY(0);
