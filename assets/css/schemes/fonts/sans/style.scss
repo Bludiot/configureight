@@ -28,6 +28,9 @@ $inter_stack: 'Inter', 'Helvetica Neue', Helvetica, sans-serif, 'Apple Color Emo
 	--cfe-heading-primary--font-size: 2rem;
 	--cfe-heading-primary--font-weight: 800;
 	--cfe-heading-primary--letter-spacing: -0.025em;
+	--cfe-loader--text--font-family: #{$inter_stack};
+	--cfe-loader--text--font-size: 1.5rem;
+	--cfe-loader--text--font-weight: 600;
 
 	// Header.
 	--cfe-site-title--font-size: 1.75rem;

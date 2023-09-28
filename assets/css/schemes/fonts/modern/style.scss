@@ -49,6 +49,10 @@ $nunito_stack: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 
 	--cfe-heading-primary--font-weight: 600;
 	--cfe-heading-primary--letter-spacing: normal;
 	--cfe-heading-primary--font-variant: small-caps;
+	--cfe-loader--text--font-family: #{$montserrat_stack};
+	--cfe-loader--text--font-size: 1.375rem;
+	--cfe-loader--text--font-weight: 600;
+	--cfe-loader--text--font-variant: small-caps;
 
 	// Header.
 	--cfe-site-title--font-size: 1.625rem;

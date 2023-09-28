@@ -144,7 +144,9 @@ h4 {
 	color: var( --cfe-loader--text-color, var( --cfe-text-color ) );
 
 	.loading-text {
-		font-size: var( --cfe-loader--text--font-size, 1.25rem );
+		font-family: var( --cfe-loader--text--font-family );
+		font-size: var( --cfe-loader--text--font-size );
+		font-weight: var( --cfe-loader--text--font-weight );
 		line-height: var( --cfe-loader--text--line-height );
 		word-spacing: -0.0325em;
 		letter-spacing: var( --cfe-loader--text--letter-spacing, -0.015em );

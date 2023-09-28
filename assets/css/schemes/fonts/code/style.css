@@ -17,6 +17,9 @@
   --cfe-heading-primary--font-size: 2rem;
   --cfe-heading-primary--font-weight: 700;
   --cfe-heading-primary--letter-spacing: normal;
+  --cfe-loader--text--font-family: Source Code Pro, Roboto Mono, Fira Code, Liberation Mono, Inconsolata, Menlo, Monaco, Consolas, Cascadia Mono, Segoe UI Mono, Oxygen Mono, Ubuntu Monospace, Fira Mono, Droid Sans Mono, Courier New, Courier, ui-monospace, monospace, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  --cfe-loader--text--font-size: 1.5625rem;
+  --cfe-loader--text--font-weight: 600;
   --cfe-site-title--font-weight: 700;
   --cfe-site-title--letter-spacing: normal;
   --cfe-site-title--word-spacing: normal;

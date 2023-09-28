@@ -24,6 +24,9 @@
   --cfe-heading-secondary--font-size: 1.625rem;
   --cfe-heading-secondary--font-weight: 500;
   --cfe-heading-secondary--line-height: 1.1;
+  --cfe-loader--text--font-family: Crimson Pro, Georgia, Hoefler Text, Baskerville Old Face, Garamond, Times, Times New Roman, serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  --cfe-loader--text--font-size: 1.75rem;
+  --cfe-loader--text--font-weight: 600;
   --cfe-site-title--font-family: Crimson Pro, Georgia, Hoefler Text, Baskerville Old Face, Garamond, Times, Times New Roman, serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
   --cfe-site-title--font-size: 1.875rem;
   --cfe-site-title--font-weight: 600;

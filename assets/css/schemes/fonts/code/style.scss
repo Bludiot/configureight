@@ -27,6 +27,9 @@ $monospace_stack: 'Source Code Pro', 'Roboto Mono', 'Fira Code', 'Liberation Mon
 	--cfe-heading-primary--font-size: 2rem;
 	--cfe-heading-primary--font-weight: 700;
 	--cfe-heading-primary--letter-spacing: normal;
+	--cfe-loader--text--font-family: #{$monospace_stack};
+	--cfe-loader--text--font-size: 1.5625rem;
+	--cfe-loader--text--font-weight: 600;
 
 	// Header.
 	--cfe-site-title--font-weight: 700;

@@ -35,6 +35,10 @@
   --cfe-heading-primary--font-weight: 600;
   --cfe-heading-primary--letter-spacing: normal;
   --cfe-heading-primary--font-variant: small-caps;
+  --cfe-loader--text--font-family: Montserrat, Helvetica Neue, Helvetica, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  --cfe-loader--text--font-size: 1.375rem;
+  --cfe-loader--text--font-weight: 600;
+  --cfe-loader--text--font-variant: small-caps;
   --cfe-site-title--font-size: 1.625rem;
   --cfe-site-title--font-weight: 600;
   --cfe-site-title--letter-spacing: normal;
