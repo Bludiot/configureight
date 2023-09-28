@@ -58,7 +58,7 @@ if ( $post->thumbCoverImage() ) {
 } elseif ( $post->coverImage() ) {
 	$thumb_src = $post->coverImage();
 } elseif ( THEME_CONFIG['media']['loop_fallback'] ) {
-	$thumb_src = DOMAIN_THEME . THEME_CONFIG['media']['loop_fallback'];
+	$thumb_src = DOMAIN_THEME . 'assets/images/' . THEME_CONFIG['media']['loop_fallback'];
 }
 
 // Tags list.

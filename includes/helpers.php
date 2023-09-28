@@ -266,7 +266,7 @@ function has_cover() {
 	global $page, $url;
 
 	$cover   = false;
-	$default = THEME_CONFIG['media']['cover_image'];
+	$default = 'assets/images/' . THEME_CONFIG['media']['cover_image'];
 
 	if ( 'page' == $url->whereAmI() ) {
 		if ( $page->coverImage() ) {
@@ -327,7 +327,7 @@ function get_cover_src() {
 	global $page, $site, $url;
 
 	$src     = '';
-	$default = THEME_CONFIG['media']['cover_image'];
+	$default = 'assets/images/' . THEME_CONFIG['media']['cover_image'];
 
 	// If in blog pages.
 	if ( 'blog' == $url->whereAmI() ) {
