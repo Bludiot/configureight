@@ -21,6 +21,7 @@ use function BSB_Func\{
 };
 use function BSB_Tags\{
 	page_header,
+	loop_style,
 	posts_loop_header,
 	page_description,
 	get_author
@@ -64,7 +65,7 @@ foreach ( $content as $post ) :
 					<?php echo get_author(); ?>
 				</span>
 				<br />
-				<?php endif ?>
+				<?php endif; ?>
 
 				<?php if ( "false" !== THEME_CONFIG['loop']['post_date'] ) : ?>
 				<span class="page-info-entry">
@@ -72,14 +73,14 @@ foreach ( $content as $post ) :
 					<?php echo $post->date(); ?>
 				</span>
 				<br />
-				<?php endif ?>
+				<?php endif; ?>
 
 				<?php if ( "false" !== THEME_CONFIG['loop']['read_time'] ) : ?>
 				<span class="page-info-entry">
 					<span class="bi bi-clock-history" role="img"></span>
 					<?php echo $L->get( 'Reading time' ) . ': ' . $post->readingTime(); ?>
 				</span>
-				<?php endif ?>
+				<?php endif; ?>
 			</p>
 		</footer>
 	</div>

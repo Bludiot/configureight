@@ -18,6 +18,7 @@ use function BSB_Func\{
 };
 use function BSB_Tags\{
 	posts_loop_header,
+	loop_style,
 	sticky_icon,
 	page_description,
 	has_tags,
@@ -111,20 +112,20 @@ $tags_list = function() use ( $post ) {
 				<span class="page-info-entry page-info-author">
 					<?php echo get_author(); ?>
 				</span>
-				<?php endif ?>
+				<?php endif; ?>
 
 				<?php if ( THEME_CONFIG['loop']['post_date'] ) : ?>
 				<span class="page-info-entry page-info-date">
 					<?php echo $post->date(); ?>
 				</span>
 				<br />
-				<?php endif ?>
+				<?php endif; ?>
 
 				<?php if ( $post->tags( true ) ) : ?>
 				<span class="page-info-entry page-info-tags">
 					<?php echo $tags_list(); ?>
 				</span>
-				<?php endif ?>
+				<?php endif; ?>
 			</p>
 		</footer>
 	</div>

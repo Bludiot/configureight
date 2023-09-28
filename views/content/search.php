@@ -39,7 +39,7 @@ if ( $post->description() ) {
 		</a>
 		<figcaption class="screen-reader-text"><?php echo $post->title(); ?></figcaption>
 	</figure>
-	<?php endif ?>
+	<?php endif; ?>
 
 	<div class="page-summary" data-page-content>
 
@@ -57,14 +57,14 @@ if ( $post->description() ) {
 					<?php echo $post->date(); ?>
 				</span>
 				<br />
-				<?php endif ?>
+				<?php endif; ?>
 
 				<?php if ( "false" !== THEME_CONFIG['loop']['read_time'] ) : ?>
 				<span class="page-info-entry">
 					<span class="bi bi-clock-history" role="img"></span>
 					<?php echo $L->get( 'Reading time' ) . ': ' . $post->readingTime(); ?>
 				</span>
-				<?php endif ?>
+				<?php endif; ?>
 			</p>
 		</footer>
 	</div>
