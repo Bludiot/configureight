@@ -13,10 +13,10 @@
  * @since      1.0.0
  */
 
-namespace BSB\Classes\Front;
+namespace CFE\Classes\Front;
 
 // Import namespaced functions.
-use function BSB_Func\{
+use function CFE_Func\{
 	text_replace
 };
 

@@ -8,7 +8,7 @@
  * @since      1.0.0
  */
 
-namespace BSB_Func;
+namespace CFE_Func;
 
 /**
  * User logged in

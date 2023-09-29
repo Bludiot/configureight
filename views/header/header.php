@@ -11,11 +11,11 @@
  */
 
 // Import namespaced functions.
-use function BSB_Func\{
+use function CFE_Func\{
 	get_cover_src,
 	full_cover
 };
-use function BSB_Tags\{
+use function CFE_Tags\{
 	search_form,
 	site_logo,
 	page_header,

@@ -9,7 +9,7 @@
  */
 
 // Import namespaced functions.
-use function BSB_Func\{
+use function CFE_Func\{
 	text_replace
 };
 

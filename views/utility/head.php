@@ -9,13 +9,13 @@
  */
 
 // Import namespaced functions.
-use function BSB_Func\{
+use function CFE_Func\{
 	is_rtl,
 	asset_min,
 	has_cover,
 	get_cover_src
 };
-use function BSB_Tags\{
+use function CFE_Tags\{
 	load_font_files,
 	favicon_tag,
 	config_styles,

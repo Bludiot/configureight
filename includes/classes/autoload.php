@@ -12,7 +12,7 @@
  * @since      1.0.0
  */
 
-namespace BSB\Classes\Autoload;
+namespace CFE\Classes\Autoload;
 
 // Restrict direct access.
 if ( ! defined( 'BLUDIT' ) ) {
@@ -40,16 +40,16 @@ function classes() {
  *
  * Class namespaces must contain `Classes` and a
  * category following the theme namespace.
- * Example: `BSB\Classes\Category\My_Class`
+ * Example: `CFE\Classes\Category\My_Class`
  *
  * @since  1.0.0
  * @param  string $cat
  * @param  string $class
  * @return string Returns the namespace with category and class name.
- *                Example: BSB\Classes\Admin\My_Class.
+ *                Example: CFE\Classes\Admin\My_Class.
  */
 function ns( $cat, $class ) {
-	return 'BSB\Classes\\' . $cat . '\\' . $class;
+	return 'CFE\Classes\\' . $cat . '\\' . $class;
 };
 
 /**
@@ -186,13 +186,13 @@ function demo() {
 		ns( 'Demo', 'Demo_One' ) => f( 'demo', 'demo-one.php' ),
 
 		// Full namespace & class name, path function.
-		'BSB\Classes\Demo\Demo_Two' => f( 'demo', 'demo-two.php' ),
+		'CFE\Classes\Demo\Demo_Two' => f( 'demo', 'demo-two.php' ),
 
 		// Namespace function, full path.
 		ns( 'Demo', 'Demo_Three' ) => THEME_DIR . 'includes/classes/demo/class-demo-three.php',
 
 		// Fully custom.
-		'BSB\Custom\Namespace\Demo_Four' => THEME_DIR . 'includes/custom/directory/class-demo-four.php'
+		'CFE\Custom\Namespace\Demo_Four' => THEME_DIR . 'includes/custom/directory/class-demo-four.php'
 	];
 
 	// Autoload when in use.

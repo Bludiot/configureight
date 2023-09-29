@@ -16,10 +16,10 @@
  */
 
 // Import namespaced functions.
-use function BSB_Func\{
+use function CFE_Func\{
 	loop_data
 };
-use function BSB_Tags\{
+use function CFE_Tags\{
 	page_header,
 	loop_style,
 	posts_loop_header,

@@ -11,7 +11,7 @@
  */
 
 // Import namespaced functions.
-use function BSB_Tags\{
+use function CFE_Tags\{
 	prev_key,
 	next_key
 };

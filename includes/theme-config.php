@@ -8,7 +8,7 @@
  * @since      1.0.0
  */
 
-namespace BSB_Theme;
+namespace CFE_Theme;
 
 // Stop if accessed directly.
 if ( ! defined( 'BLUDIT' ) ) {

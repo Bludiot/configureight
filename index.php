@@ -8,14 +8,14 @@
  */
 
 // Import namespaced functions.
-use function BSB_Func\{
+use function CFE_Func\{
 	is_blog_page,
 	loop_data,
 	has_cover,
 	get_cover_src,
 	full_cover
 };
-use function BSB_Tags\{
+use function CFE_Tags\{
 	body_classes,
 	page_schema,
 	page_loader,

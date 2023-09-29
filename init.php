@@ -48,10 +48,10 @@
  * reading code comments.
  */
 
-namespace BSB_Theme;
+namespace CFE_Theme;
 
 // Alias namespaces.
-use BSB\Classes\{
+use CFE\Classes\{
 	Autoload as Autoload
 };
 
@@ -65,7 +65,7 @@ if ( ! defined( 'BLUDIT' ) ) {
  *
  * @since 1.0.0
  */
-define( 'BSB_MIN_PHP_VERSION', '7.4' );
+define( 'CFE_MIN_PHP_VERSION', '7.4' );
 
 /**
  * Minimum PHP version
@@ -78,7 +78,7 @@ define( 'BSB_MIN_PHP_VERSION', '7.4' );
  */
 function min_php_version() {
 
-	if ( version_compare( phpversion(), BSB_MIN_PHP_VERSION, '<' ) ) {
+	if ( version_compare( phpversion(), CFE_MIN_PHP_VERSION, '<' ) ) {
 		return false;
 	}
 	return true;
@@ -86,7 +86,7 @@ function min_php_version() {
 
 // Die if PHP minimum is not met.
 if ( ! min_php_version() ) {
-	die( text_replace( 'die-php-version', BSB_MIN_PHP_VERSION ) );
+	die( text_replace( 'die-php-version', CFE_MIN_PHP_VERSION ) );
 }
 
 // Autoload classes.

@@ -8,10 +8,10 @@
  * @since      1.0.0
  */
 
-namespace BSB_Tags;
+namespace CFE_Tags;
 
 // Alias namespaces.
-use BSB\Classes\{
+use CFE\Classes\{
 	Front as Front
 };
 
@@ -21,7 +21,7 @@ if ( ! defined( 'BLUDIT' ) ) {
 }
 
 // Import namespaced functions.
-use function BSB_Func\{
+use function CFE_Func\{
 	is_rtl,
 	user_logged_in,
 	text_replace,
