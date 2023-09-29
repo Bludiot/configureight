@@ -32,12 +32,13 @@
 		"loop_fallback" : "transparent.png"
 	},
 	"loop" : {
-		"style"     : "blog",
-		"content"   : "list",
-		"paged"     : "numerical",
-		"byline"    : true,
-		"post_date" : true,
-		"read_time" : false
+		"style"      : "blog",
+		"content"    : "list",
+		"paged"      : "numerical",
+		"byline"     : true,
+		"post_date"  : true,
+		"word_count" : true,
+		"read_time"  : true
 	},
 	"aside" : {
 		"sticky"         : false,

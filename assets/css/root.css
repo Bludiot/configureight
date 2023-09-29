@@ -17,6 +17,7 @@
   --cfe-serif-stack: "Hoefler Text", "Baskerville Old Face", Garamond, Times, "Times New Roman", serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --cfe-heading-primary--font-size: 2rem;
   --cfe-heading-primary--font-weight: 700;
+  --cfe-element--margin: 1em 0 0 0;
   --cfe-bg-color: #ffffff;
   --cfe-font-size: 1rem;
   --cfe-text-color: #333333;

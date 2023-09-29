@@ -22,6 +22,7 @@ use function BSB_Func\{
 };
 use function BSB_Tags\{
 	posts_loop_header,
+	loop_style,
 	sticky_icon,
 	page_description,
 	has_tags,
@@ -36,6 +37,12 @@ if ( empty( $content) ) {
 
 // Get blog data.
 $loop_data = loop_data();
+
+// Schema article itemtype.
+$article_type = 'BlogPosting';
+if ( 'news' === THEME_CONFIG['loop']['style'] ) {
+	$article_type = 'NewsArticle';
+}
 
 // User avatar.
 $user = new User( Session :: get( 'username' ) );
@@ -81,7 +88,7 @@ $tags_list = function() use ( $post ) {
 	$sep   = ' ';
 
 	if ( $post->tags( true ) ) {
-		$html = '<ul class="inline-list tags-list">';
+		$html = '<ul class="post-info-tags inline-list tags-list">';
 		foreach ( $tags as $tagKey => $tagName ) {
 
 			$links[] = sprintf(
@@ -99,19 +106,19 @@ $tags_list = function() use ( $post ) {
 };
 
 ?>
-<article class="site-article" role="article" data-site-article>
+<article id="<?php echo $post->uuid(); ?>" class="site-article" role="article" itemscope="itemscope" itemtype="<?php echo 'https://schema.org/' . $article_type; ?>" data-site-article>
 
-	<header class="page-header posts-loop-header" data-page-header>
-		<h2 class="page-title posts-loop-title">
-			<a href="<?php echo $post->permalink(); ?>"><?php echo $sticky . $post->title(); ?></a>
-		</h2>
-		<?php echo page_description( $post->key() ); ?>
-	</header>
+	<div class="post-<?php echo THEME_CONFIG['loop']['content']; ?>-content post-<?php echo loop_style(); ?>-content">
 
-	<div class="post-intro loop-post-intro full-loop-post-intro">
+		<header class="page-header post-header" data-page-header>
+			<h2 class="page-title posts-loop-title">
+				<a href="<?php echo $post->permalink(); ?>"><?php echo $sticky . $post->title(); ?></a>
+			</h2>
+			<?php echo page_description( $post->key() ); ?>
+		</header>
 
 		<?php if ( $post->coverImage() ) : ?>
-		<figure class="page-cover posts-loop-cover">
+		<figure class="post-cover">
 			<a href="<?php echo $post->permalink(); ?>">
 				<img src="<?php echo $post->coverImage(); ?>" loading="lazy" />
 			</a>
@@ -119,53 +126,56 @@ $tags_list = function() use ( $post ) {
 		</figure>
 		<?php endif; ?>
 
-		<div class="post-content" itemprop="articleBody" data-post-content>
+		<div class="post-content post-content" itemprop="articleBody" data-post-content>
 			<?php echo $post->content(); ?>
 		</div>
 
-		<footer class="page-info">
+		<div>
+		<footer class="post-info post-<?php echo loop_style(); ?>-info">
 
 			<?php if ( $post->category() ) : ?>
-			<h3><span class="page-info-entry page-info-category">
+			<h3 class="post-info-category">
 				<a href="<?php echo $post->categoryPermalink(); ?>"><?php echo $post->category(); ?></a>
-			</span></h3>
-			<?php endif ?>
+			</h3>
+			<?php endif; ?>
 
 			<?php if ( THEME_CONFIG['loop']['byline'] ) : ?>
-			<p><span class="page-info-entry page-info-author">
-				<img class="avatar" src="<?php echo $avatar; ?>" width="48"> <?php echo get_author(); ?>
+			<p><span class="post-info-author">
+				<?php echo get_author(); ?>
 			</span></p>
-			<?php endif ?>
+			<?php endif; ?>
 
-			<p>
-				<?php if ( THEME_CONFIG['loop']['post_date'] ) : ?>
-				<span class="page-info-entry page-info-date">
-					<?php echo $post->date(); ?>
-				</span>
-				<br />
-				<?php endif ?>
+			<?php if ( THEME_CONFIG['loop']['post_date'] ) : ?>
+			<p class="post-info-date">
+				<?php echo $post->date(); ?>
+			</p>
+			<?php endif; ?>
 
-				<?php if ( THEME_CONFIG['loop']['read_time'] ) : ?>
-				<span class="page-info-entry page-info-word-count">
+			<?php
+			if (
+				THEME_CONFIG['loop']['word_count'] ||
+				THEME_CONFIG['loop']['read_time']
+			) : ?>
+			<p class="post-info-details">
+
+				<?php if ( THEME_CONFIG['loop']['word_count'] ) : ?>
+				<span class="post-info-word-count">
 					<?php $L->p( 'page-word-count' ); echo get_word_count( $post->key() ); ?>
 				</span>
-				<br />
-				<?php endif ?>
+				<?php endif; ?>
 
 				<?php if ( THEME_CONFIG['loop']['read_time'] ) : ?>
-				<span class="page-info-entry page-info-read-time">
+				<span class="post-info-read-time">
 					<?php $L->p( 'page-read-time' ); echo $post->readingTime(); ?>
 				</span>
-				<br />
-				<?php endif ?>
-
-				<?php if ( $post->tags( true ) ) : ?>
-				<span class="page-info-entry page-info-tags">
-					<?php echo $tags_list(); ?>
-				</span>
-				<?php endif ?>
+				<?php endif; ?>
 			</p>
-		</footer>
+			<?php endif; ?>
+
+			<?php if ( $post->tags( true ) ) {
+				echo $tags_list();
+			} ?>
+		</footer></div>
 	</div>
 
 </article>
