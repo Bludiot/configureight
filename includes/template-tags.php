@@ -239,22 +239,22 @@ function body_classes() {
 
 		// If home is not static.
 		if ( ! $site->homepage() ) {
-			$classes[] = 'blog';
+			$classes[] = 'loop';
 		}
 	}
 
-	// If blog, not home.
+	// If loop, not home.
 	if ( 'blog' == $url->whereAmI() ) {
-		$classes[] = 'blog blog-not-home';
+		$classes[] = 'loop loop-not-home';
 
-		// Get blog data.
+		// Get loop data.
 		$loop_data = loop_data();
 
 		// Posts loop style.
 		$loop_style = $loop_data['style'];
 		$classes[] = "loop-style-{$loop_style}";
 
-		// Templates for the static blog page.
+		// Templates for the static loop page.
 		if ( $loop_data['template'] ) {
 			$templates = explode( ' ', $loop_data['template'] );
 
