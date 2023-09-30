@@ -35,24 +35,6 @@ body {
 	padding: 2rem 2rem 0 2rem;
 }
 
-.loop-wrap {
-	display: flex;
-	gap: 2rem;
-
-	&:not( :first-of-type ) {
-		margin-top: 2rem;
-	}
-
-	.post-cover {
-		width: 180px;
-		min-width: 180px;
-	}
-
-	h2 {
-		margin: 0;
-	}
-}
-
 .page-header {
 	h1,
 	h2 {
@@ -66,17 +48,6 @@ body {
 	&.post-header {
 		h2 {
 			margin: 0;
-		}
-	}
-}
-
-.page-summary {
-	.page-header {
-		h1,
-		h2 {
-			font-size: var( --cfe-page-summary--page-header--heading--font-size );
-			font-weight: var( --cfe-page-summary--page-header--heading--font-weight );
-			line-height: var( --cfe-page-summary--page-header--heading--line-height );
 		}
 	}
 }
@@ -144,7 +115,20 @@ body {
 	}
 }
 
+// Includes list, full, and grid templates.
 .post-loop-content {
+
+	.post-cover {
+		overflow: hidden;
+
+		img {
+			display: block;
+			width: 100%;
+			height: 100%;
+			max-height: 320px;
+			object-fit: cover;
+		}
+	}
 
 	.post-info-category {
 		margin: var( --cfe-post-info-category--margin, 0 );
@@ -152,6 +136,10 @@ body {
 		font-weight: var( --cfe-post-info-category--font-weight, 700 );
 		font-style: var( --cfe-post-info-category--font-style, normal );
 		line-height: var( --cfe-post-info-category--line-height, 1 );
+
+		@media screen and ( max-width: $break_phone ) {
+			margin: var( --cfe-post-info-category--phone--margin, 1rem 0 0 0 );
+		}
 
 		a {
 			text-decoration: var( --cfe-post-info-category--link--text-decoration, none );
@@ -174,29 +162,66 @@ body {
 			margin: var( --cfe-post-info-details--margin );
 		}
 	}
+}
 
-	&.post-list-content {
-		.post-info-category {
-			margin: var( --cfe-post-info-category--margin, 0.5em 0 0 0 );
-			font-size: var( --cfe-post-info-category--list--font-size, 1.125rem );
+.post-list-content {
+
+	max-width: 100%;
+	display: grid;
+	gap: 1rem 1.5rem;
+	grid-template-columns: 180px calc( 100% - 180px - 3rem );
+	grid-template-areas:
+	"cover header header"
+	"cover info info";
+
+	@media screen and ( max-width: $break_phone ) {
+		display: block;
+	}
+
+	.post-header {
+		grid-area: header;
+
+		h1,
+		h2 {
+			font-size: var( --cfe-post-header--list--heading--font-size );
+			font-weight: var( --cfe-post-header--list--heading--font-weight );
+			line-height: var( --cfe-post-header--list--heading--line-height );
+		}
+	}
+
+	.post-cover {
+		grid-area: cover;
+
+		@media screen and ( max-width: $break_phone ) {
+			margin: var( --cfe-post-cover--list--phone--margin, 1.5rem 0 0 0 );
+		}
+
+		img {
+			max-width: 180px;
+			max-height: 180px;
+
+			@media screen and ( max-width: $break_phone ) {
+				max-width: unset;
+				max-height: 480px;
+			}
+		}
+	}
+
+	.post-info {
+		grid-area: info;
+	}
+
+	.post-info-category {
+		font-size: var( --cfe-post-info-category--list--font-size, 1.125rem );
+
+		@media screen and ( max-width: $break_phone ) {
+			font-size: var( --cfe-post-info-category--font-size, 1.5rem );
 		}
 	}
 }
 
 // Full loop content in the config file.
 .post-full-content {
-
-	.post-cover {
-		overflow: hidden;
-
-		img {
-			display: block;
-			width: 100%;
-			height: 100%;
-			max-height: 320px;
-			object-fit: cover;
-		}
-	}
 
 	// News style loop in the config file.
 	&.post-news-content {

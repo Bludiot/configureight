@@ -21,6 +21,7 @@ use function CFE_Func\{
 };
 use function CFE_Tags\{
 	page_header,
+	loop_template,
 	loop_style,
 	posts_loop_header,
 	page_description,

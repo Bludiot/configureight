@@ -743,6 +743,29 @@ function content_template() {
 }
 
 /**
+ * Loop template
+ *
+ * Gets loop content template from the loop data.
+ *
+ * @since  1.0.0
+ * @return string Returns the loop content template.
+ */
+function loop_template() {
+
+	// Get the template from the config file.
+	$config = THEME_CONFIG['loop']['content'];
+
+	// Conditional template.
+	$template = 'list';
+	if ( 'grid' === $config ) {
+		$template = 'grid';
+	} elseif ( 'full' === $config ) {
+		$template = 'full';
+	}
+	return $template;
+}
+
+/**
  * Loop style
  *
  * Gets loop style from the loop data.
