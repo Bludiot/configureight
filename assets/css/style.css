@@ -1148,16 +1148,12 @@ body.template-sidebar-bottom .content-wrapper {
 .blog-wrap:not(:first-of-type) {
   margin-top: 2rem;
 }
-.blog-wrap .page-cover-blog {
+.blog-wrap .post-cover {
   width: 180px;
   min-width: 180px;
 }
 .blog-wrap h2 {
   margin: 0;
-}
-
-body:not(.home) .blog-wrap {
-  margin-top: 1rem;
 }
 
 .page-header h1,
@@ -1201,8 +1197,10 @@ body:not(.home) .blog-wrap {
   font-size: var(--cfe-page-description-single--font-size, 1.25rem);
 }
 
-.loop main article:not(:first-of-type) {
+.loop main article {
   margin: var(--cfe-news-article--full--margin, 2rem 0 0 0);
+}
+.loop main article:not(:first-of-type) {
   padding: var(--cfe-news-article--full--padding, 2rem 0 0 0);
   border-top: var(--cfe-news-article--full--border-top, solid 1px var(--cfe-box-border-color));
 }
@@ -1364,6 +1362,21 @@ body:not(.home) .blog-wrap {
 
 .page-cover {
   position: relative;
+  overflow: hidden;
+  margin: var(--cfe-page-cover-single--margin, 0 auto 0 auto);
+  max-width: 2048px;
+}
+.page-cover.post-cover {
+  margin: var(--cfe-post-cover--margin, 2rem 0 0 0);
+}
+.page-cover img {
+  display: block;
+  width: 100%;
+  max-height: 320px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center center;
+     object-position: center center;
 }
 .page-cover.page-cover-singular figcaption {
   position: absolute;
@@ -1398,23 +1411,6 @@ body:not(.home) .blog-wrap {
   margin: var(--cfe-cover--page-description-single--margin, 1rem 0 0 0);
   font-size: var(--cfe-cover--page-description-single--font-size);
   font-weight: var(--cfe-cover--page-description-single--font-weight);
-}
-.page-cover:not(.page-cover-blog) {
-  overflow: hidden;
-  margin: var(--cfe-page-cover-single--margin, 0 auto 0 auto);
-  max-width: 2048px;
-}
-.page-cover:not(.page-cover-blog).post-cover {
-  margin: var(--cfe-post-cover--margin, 2rem 0 0 0);
-}
-.page-cover:not(.page-cover-blog) img {
-  display: block;
-  width: 100%;
-  max-height: 320px;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: center center;
-     object-position: center center;
 }
 
 .no-posts-found {

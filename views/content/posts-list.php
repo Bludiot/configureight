@@ -14,7 +14,8 @@
 
 // Import namespaced functions.
 use function CFE_Func\{
-	loop_data
+	loop_data,
+	get_word_count
 };
 use function CFE_Tags\{
 	posts_loop_header,
@@ -38,6 +39,12 @@ echo posts_loop_header();
 
 // If posts, print for each.
 foreach ( $content as $post ) :
+
+// Schema article itemtype.
+$article_type = 'BlogPosting';
+if ( 'news' === THEME_CONFIG['loop']['style'] ) {
+	$article_type = 'NewsArticle';
+}
 
 // Maybe a sticky icon.
 $sticky = '';
@@ -88,9 +95,9 @@ $tags_list = function() use ( $post ) {
 };
 
 ?>
-<article class="site-article blog-wrap" role="article" data-site-article>
+<article id="<?php echo $post->uuid(); ?>" class="site-article blog-wrap" role="article" itemscope="itemscope" itemtype="<?php echo 'https://schema.org/' . $article_type; ?>" data-site-article>
 	<?php if ( ! empty( $thumb_src ) ) : ?>
-	<figure class="page-cover page-cover-blog">
+	<figure class="post-cover">
 		<a href="<?php echo $post->permalink(); ?>">
 			<img src="<?php echo $thumb_src; ?>" loading="lazy" />
 		</a>
@@ -98,35 +105,56 @@ $tags_list = function() use ( $post ) {
 	</figure>
 	<?php endif; ?>
 
-	<div class="page-summary" data-page-content>
+	<div class="page-summary post-<?php echo THEME_CONFIG['loop']['content']; ?>-content post-<?php echo loop_style(); ?>-content" data-page-content>
 
 		<header class="page-header post-header post-in-loop-header" data-page-header>
-			<h2><a href="<?php echo $post->permalink(); ?>"><?php echo $sticky . $post->title(); ?></a></h2>
+			<h2>
+				<a href="<?php echo $post->permalink(); ?>"><?php echo $sticky . $post->title(); ?></a>
+			</h2>
+			<?php echo page_description( $post->key() ); ?>
 		</header>
 
-		<?php echo page_description( $post->key() ); ?>
-
 		<footer class="page-info">
-			<p>
-				<?php if ( THEME_CONFIG['loop']['byline'] ) : ?>
-				<span class="page-info-entry page-info-author">
-					<?php echo get_author(); ?>
+
+			<?php if ( $post->category() ) : ?>
+			<h3 class="post-info-category">
+				<?php echo $cat_icon; ?><a href="<?php echo $post->categoryPermalink(); ?>"><?php echo $post->category(); ?></a>
+			</h3>
+			<?php endif; ?>
+
+			<?php if ( THEME_CONFIG['loop']['post_date'] ) : ?>
+			<p class="post-info-date">
+				<?php echo $post->date(); ?>
+			</p>
+			<?php endif; ?>
+
+			<?php
+			if (
+				THEME_CONFIG['loop']['word_count'] ||
+				THEME_CONFIG['loop']['read_time']
+			) : ?>
+			<p class="post-info-details">
+
+				<?php if ( THEME_CONFIG['loop']['word_count'] ) : ?>
+				<span class="post-info-word-count">
+					<?php $L->p( 'post-word-count' ); echo get_word_count( $post->key() ); ?>
 				</span>
 				<?php endif; ?>
 
-				<?php if ( THEME_CONFIG['loop']['post_date'] ) : ?>
-				<span class="page-info-entry page-info-date">
-					<?php echo $post->date(); ?>
-				</span>
-				<br />
-				<?php endif; ?>
-
-				<?php if ( $post->tags( true ) ) : ?>
-				<span class="page-info-entry page-info-tags">
-					<?php echo $tags_list(); ?>
+				<?php if ( THEME_CONFIG['loop']['read_time'] ) : ?>
+				<span class="post-info-separator"></span>
+				<span class="post-info-read-time">
+					<?php $L->p( 'post-read-time' ); echo $post->readingTime(); ?>
 				</span>
 				<?php endif; ?>
 			</p>
+			<?php endif; ?>
+
+			<?php if ( $post->tags( true ) ) : ?>
+			<span class="page-info-entry page-info-tags">
+				<?php echo $tags_list(); ?>
+			</span>
+			<?php endif; ?>
 		</footer>
 	</div>
 </article>
