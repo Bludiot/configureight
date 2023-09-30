@@ -130,7 +130,7 @@ $tags_list = function() use ( $post, $tags_icon ) {
 ?>
 <article id="<?php echo $post->uuid(); ?>" class="site-article" role="article" itemscope="itemscope" itemtype="<?php echo 'https://schema.org/' . $article_type; ?>" data-site-article>
 
-	<div class="post-<?php echo THEME_CONFIG['loop']['content']; ?>-content post-<?php echo loop_style(); ?>-content">
+	<div class="post-loop-content post-<?php echo THEME_CONFIG['loop']['content']; ?>-content post-<?php echo loop_style(); ?>-content">
 
 		<header class="page-header post-header post-in-loop-header" data-page-header>
 			<h2 class="page-title posts-loop-title">
@@ -148,7 +148,7 @@ $tags_list = function() use ( $post, $tags_icon ) {
 		</figure>
 		<?php endif; ?>
 
-		<div class="post-content" itemprop="articleBody" data-post-content>
+		<div class="post-in-loop-content" itemprop="articleBody" data-post-content>
 			<?php echo $post->content(); ?>
 		</div>
 

@@ -35,7 +35,7 @@ body {
 	padding: 2rem 2rem 0 2rem;
 }
 
-.blog-wrap {
+.loop-wrap {
 	display: flex;
 	gap: 2rem;
 
@@ -144,6 +144,45 @@ body {
 	}
 }
 
+.post-loop-content {
+
+	.post-info-category {
+		margin: var( --cfe-post-info-category--margin, 0 );
+		font-size: var( --cfe-post-info-category--font-size, 1.5rem );
+		font-weight: var( --cfe-post-info-category--font-weight, 700 );
+		font-style: var( --cfe-post-info-category--font-style, normal );
+		line-height: var( --cfe-post-info-category--line-height, 1 );
+
+		a {
+			text-decoration: var( --cfe-post-info-category--link--text-decoration, none );
+			font-size: inherit;
+			font-weight: inherit;
+			line-height: inherit;
+		}
+	}
+
+	.post-info {
+		p {
+			margin: var( --cfe-post-info--p--margin, 0.5em 0 0 0 );
+
+			& + p {
+				margin: var( --cfe-post-info--p-p--margin, 0 );
+			}
+		}
+
+		.post-info-author {
+			margin: var( --cfe-post-info-details--margin );
+		}
+	}
+
+	&.post-list-content {
+		.post-info-category {
+			margin: var( --cfe-post-info-category--margin, 0.5em 0 0 0 );
+			font-size: var( --cfe-post-info-category--list--font-size, 1.125rem );
+		}
+	}
+}
+
 // Full loop content in the config file.
 .post-full-content {
 
@@ -189,7 +228,7 @@ body {
 			}
 		}
 
-		.post-content {
+		.post-in-loop-content {
 			grid-area: content;
 			margin: var( --cfe-post-cover--news--full--margin, 0 );
 		}
@@ -198,33 +237,6 @@ body {
 			grid-area: info;
 			width: var( --cfe-post-info--news--full--width, 20% );
 			min-width: var( --cfe-post-info--news--full--min-width, 180px );
-
-			p {
-				margin: var( --cfe-post-info--news--full--p--margin, var( --cfe-element--margin ) );
-
-				& + p {
-					margin: var( --cfe-post-info--news--full--p-p--margin, 0 );
-				}
-			}
-
-			.post-info-author {
-				margin: var( --cfe-post-info-details--news--full--margin );
-			}
-
-			.post-info-category {
-				margin: var( --cfe-post-info-category--news--full--margin, 0 );
-				font-size: var( --cfe-post-info-category--news--full--font-size, 1.5rem );
-				font-weight: var( --cfe-post-info-category--news--full--font-weight, 700 );
-				font-style: var( --cfe-post-info-category--news--full--font-style, normal );
-				line-height: var( --cfe-post-info-category--news--full--line-height, 1 );
-
-				a {
-					text-decoration: var( --cfe-post-info-category--news--full--link--text-decoration, none );
-					font-size: inherit;
-					font-weight: inherit;
-					line-height: inherit;
-				}
-			}
 
 			.post-info-date {
 				margin: var( --cfe-post-info-date--news--full--margin, 0 );
@@ -265,21 +277,6 @@ body {
 
 			.post-info-author {
 				margin: var( --cfe-post-info-details--news--full--margin );
-			}
-
-			.post-info-category {
-				margin: var( --cfe-post-info-category--news--full--margin, 0 );
-				font-size: var( --cfe-post-info-category--news--full--font-size, 1.5rem );
-				font-weight: var( --cfe-post-info-category--news--full--font-weight, 700 );
-				font-style: var( --cfe-post-info-category--news--full--font-style, normal );
-				line-height: var( --cfe-post-info-category--news--full--line-height, 1 );
-
-				a {
-					text-decoration: var( --cfe-post-info-category--news--full--link--text-decoration, none );
-					font-size: inherit;
-					font-weight: inherit;
-					line-height: inherit;
-				}
 			}
 
 			.post-info-date {
