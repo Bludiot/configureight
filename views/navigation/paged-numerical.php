@@ -73,12 +73,12 @@ if ( Paginator :: numberOfPages() > 1 ) :
 		<?php } ?>
 		<?php if ( Paginator :: numberOfPages() - 1 >= $getPage ) { ?>
 		<li>
-			<a href="<?php echo $slug.'?page='.$getPage + 1; ?>"><?php echo $getPage + 1; ?></a>
+			<a href="<?php echo $slug . '?page=' . $getPage + 1; ?>"><?php echo $getPage + 1; ?></a>
 		</li>
 		<?php } ?>
 		<?php if ( Paginator :: numberOfPages() - 2 >= $getPage ) { ?>
 		<li>
-			<a href="<?php echo $slug.'?page='.$getPage + 2; ?>"><?php echo $getPage + 2; ?></a>
+			<a href="<?php echo $slug.'?page=' . $getPage + 2; ?>"><?php echo $getPage + 2; ?></a>
 		</li>
 		<?php } ?>
 		<?php if ( Paginator :: showNext() ) { ?>

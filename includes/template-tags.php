@@ -1020,6 +1020,30 @@ function search_form( $defaults = [ 'label' => null, 'label_text' => '', 'button
 }
 
 /**
+ * Loop pagination
+ *
+ * @since  1.0.0
+ * @global object $L Language class
+ * @global object $url Url class.
+ * @return mixed Returns the navigation markup or false.
+ */
+function get_loop_pagination() {
+
+	// Access global variables.
+	global $L, $url;
+
+	if ( 'numerical' == THEME_CONFIG['loop']['paged'] ) {
+		ob_start();
+		include( THEME_DIR . 'views/navigation/paged-numerical.php' );
+		return ob_get_clean();
+	} else {
+		ob_start();
+		include( THEME_DIR . 'views/navigation/paged-prev-next.php' );
+		return ob_get_clean();
+	}
+}
+
+/**
  * Previous key
  *
  * @since  1.0.0

@@ -24,7 +24,8 @@ use function CFE_Tags\{
 	loop_style,
 	posts_loop_header,
 	page_description,
-	get_author
+	get_author,
+	get_loop_pagination
 };
 
 // If no posts.
@@ -88,10 +89,4 @@ foreach ( $content as $post ) :
 <?php endforeach; ?>
 
 <?php
-
-// Get page navigation.
-if ( 'numerical' == THEME_CONFIG['loop']['paged'] ) {
-	include( THEME_DIR . 'views/navigation/paged-numerical.php' );
-} else {
-	include( THEME_DIR . 'views/navigation/paged-prev-next.php' );
-}
+echo get_loop_pagination();
