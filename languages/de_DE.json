@@ -14,8 +14,8 @@
 	"posts-loop-desc-blog"  : "Neueste beiträge von",
 	"posts-loop-desc-cat"   : "Beiträge in der kategorie %replace%",
 	"posts-loop-desc-tag"   : "Beiträge getaggt mit %replace%",
-	"page-read-time"        : "Lesezeit: ",
-	"page-word-count"       : "Wortzahl: ",
+	"post-read-time"        : "Lesezeit: ",
+	"post-word-count"       : "Wortzahl: ",
 
 	"no-posts-heading"      : "Noch keine Beiträge",
 	"no-posts-message"      : "Leider haben wir noch nicht mit der Veröffentlichung von Beiträgen begonnen. Bitte schauen Sie später noch einmal vorbei.",

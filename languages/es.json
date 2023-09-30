@@ -50,8 +50,8 @@
 	"posts-loop-desc-blog"  : "Últimas publicaciones de",
 	"posts-loop-desc-cat"   : "Publicaciones en la categoría %replace%",
 	"posts-loop-desc-tag"   : "Publicaciones etiquetadas %replace%",
-	"page-read-time"        : "Tiempo de leer: ",
-	"page-word-count"       : "Recuento de palabras: ",
+	"post-read-time"        : "Tiempo de leer: ",
+	"post-word-count"       : "Recuento de palabras: ",
 
 	"no-posts-heading"      : "Aún No Hay Publicaciones",
 	"no-posts-message"      : "Lo sentimos, no hemos comenzado a publicar publicaciones. Por favor, vuelva más tarde.",
