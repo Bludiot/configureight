@@ -317,6 +317,11 @@ function body_classes() {
 		}
 	}
 
+	// Sticky sidebar.
+	if ( true === THEME_CONFIG['aside']['sticky'] ) {
+		$classes[] = 'has-sticky-sidebar';
+	}
+
 	// Sidebar search hidden.
 	if (
 		'false'  === THEME_CONFIG['aside']['search_widget'] ||

@@ -30,8 +30,8 @@
 
 		// Sticky sidebar.
 		if ( $.isFunction( $.fn.stick_in_parent ) ) {
-			if ( $( '[data-page-sidebar]' ).length ) {
-				$( '[data-page-sidebar]' ).stick_in_parent( {
+			if ( $( '.has-sticky-sidebar [data-page-sidebar]' ).length ) {
+				$( '.has-sticky-sidebar [data-page-sidebar]' ).stick_in_parent( {
 					offset_top      : 0,
 					inner_scrolling : false
 				} );
