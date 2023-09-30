@@ -688,7 +688,7 @@ function content_template() {
 		} elseif ( 'full' === THEME_CONFIG['loop']['content'] ) {
 			$template = 'views/content/posts-full.php';
 		} else {
-			$template = 'views/content/posts.php';
+			$template = 'views/content/posts-list.php';
 		}
 
 	// Page templates.
@@ -736,7 +736,7 @@ function content_template() {
 		} elseif ( 'full' === THEME_CONFIG['loop']['content'] ) {
 			$template = 'views/content/posts-full.php';
 		} else {
-			$template = 'views/content/posts.php';
+			$template = 'views/content/posts-list.php';
 		}
 	}
 	return $template;
