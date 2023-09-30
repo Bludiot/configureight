@@ -147,7 +147,7 @@ $tags_list = function() use ( $post, $tags_icon ) {
 		</figure>
 		<?php endif; ?>
 
-		<div class="post-content post-content" itemprop="articleBody" data-post-content>
+		<div class="post-content" itemprop="articleBody" data-post-content>
 			<?php echo $post->content(); ?>
 		</div>
 
@@ -185,7 +185,7 @@ $tags_list = function() use ( $post, $tags_icon ) {
 				<?php endif; ?>
 
 				<?php if ( THEME_CONFIG['loop']['read_time'] ) : ?>
-					<span class="post-info-separator"></span>
+				<span class="post-info-separator"></span>
 				<span class="post-info-read-time">
 					<?php $L->p( 'post-read-time' ); echo $post->readingTime(); ?>
 				</span>
