@@ -1208,6 +1208,7 @@ body:not(.home) .blog-wrap {
 .post-full-content .post-cover img {
   display: block;
   width: 100%;
+  height: 66.6666666667%;
   max-height: 320px;
   -o-object-fit: cover;
      object-fit: cover;
@@ -1309,6 +1310,11 @@ body:not(.home) .blog-wrap {
   font-size: var(--cfe-post-info-date--news--full--font-size);
   font-weight: var(--cfe-post-info-date--news--full--font-weight);
   line-height: var(--cfe-post-info-date--news--full--line-height);
+}
+.post-full-content.post-blog-content .post-info .post-info-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
 }
 
 .page-content {

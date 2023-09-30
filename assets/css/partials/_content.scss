@@ -127,6 +127,7 @@ body:not( .home ) {
 		img {
 			display: block;
 			width: 100%;
+			height: calc( 100% / 3 * 2 );
 			max-height: 320px;
 			object-fit: cover;
 		}
@@ -252,6 +253,12 @@ body:not( .home ) {
 				font-size: var( --cfe-post-info-date--news--full--font-size );
 				font-weight: var( --cfe-post-info-date--news--full--font-weight );
 				line-height: var( --cfe-post-info-date--news--full--line-height );
+			}
+
+			.post-info-details {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 1em;
 			}
 		}
 	}
