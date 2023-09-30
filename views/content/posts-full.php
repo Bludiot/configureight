@@ -131,7 +131,7 @@ $tags_list = function() use ( $post, $tags_icon ) {
 
 	<div class="post-<?php echo THEME_CONFIG['loop']['content']; ?>-content post-<?php echo loop_style(); ?>-content">
 
-		<header class="page-header post-header" data-page-header>
+		<header class="page-header post-header post-in-loop-header" data-page-header>
 			<h2 class="page-title posts-loop-title">
 				<a href="<?php echo $post->permalink(); ?>"><?php echo $sticky . $post->title(); ?></a>
 			</h2>
@@ -151,7 +151,6 @@ $tags_list = function() use ( $post, $tags_icon ) {
 			<?php echo $post->content(); ?>
 		</div>
 
-		<div>
 		<footer class="post-info post-<?php echo loop_style(); ?>-info">
 
 			<?php if ( $post->category() ) : ?>
@@ -197,7 +196,7 @@ $tags_list = function() use ( $post, $tags_icon ) {
 			<?php if ( $post->tags( true ) ) {
 				echo $tags_list();
 			} ?>
-		</footer></div>
+		</footer>
 	</div>
 
 </article>

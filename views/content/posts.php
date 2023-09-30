@@ -100,7 +100,7 @@ $tags_list = function() use ( $post ) {
 
 	<div class="page-summary" data-page-content>
 
-		<header class="page-header post-in-loop-header" data-page-header>
+		<header class="page-header post-header post-in-loop-header" data-page-header>
 			<h2><a href="<?php echo $post->permalink(); ?>"><?php echo $sticky . $post->title(); ?></a></h2>
 		</header>
 
