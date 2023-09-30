@@ -38,7 +38,8 @@
 		"byline"     : true,
 		"post_date"  : true,
 		"word_count" : true,
-		"read_time"  : true
+		"read_time"  : true,
+		"show_icons" : false
 	},
 	"aside" : {
 		"sticky"         : false,
