@@ -264,16 +264,6 @@ function body_classes() {
 			$classes[] = 'loop-template-list';
 		}
 
-		// Posts loop template.
-		$loop_content = THEME_CONFIG['loop']['content'];
-		if ( 'grid' === $loop_content ) {
-			$classes[] = 'loop-template-grid';
-		} elseif ( 'full' === $loop_content ) {
-			$classes[] = 'loop-template-full';
-		} else {
-			$classes[] = 'loop-template-list';
-		}
-
 		// Templates for the static loop page.
 		if ( $loop_data['template'] ) {
 			$templates = explode( ' ', $loop_data['template'] );
