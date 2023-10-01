@@ -264,6 +264,16 @@ function body_classes() {
 			$classes[] = 'loop-template-list';
 		}
 
+		// Loop sidebar.
+		$loop_sidebar = THEME_CONFIG['loop']['sidebar'];
+		if ( 'bottom' === $loop_sidebar ) {
+			$classes[] = 'template-sidebar-bottom';
+		} elseif ( false === $loop_sidebar ) {
+			$classes[] = 'template-no-sidebar';
+		} else {
+			$classes[] = 'template-sidebar';
+		}
+
 		// Templates for the static loop page.
 		if ( $loop_data['template'] ) {
 			$templates = explode( ' ', $loop_data['template'] );
