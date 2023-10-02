@@ -797,40 +797,7 @@ h3 + .search-form {
   .site-header-wrap {
     flex-direction: var(--cfe-site-header-wrap--flex-direction-tablet, column);
     justify-content: var(--cfe-site-header-wrap--justify-content--tablet, center);
-  }
-}
-
-.main-nav-before .site-header-wrap {
-  flex-direction: row-reverse;
-}
-@media screen and (max-width: 960px) {
-  .main-nav-before .site-header-wrap {
-    flex-direction: var(--cfe-site-header-wrap--flex-direction-tablet, column);
-    justify-content: var(--cfe-site-header-wrap--justify-content--tablet, center);
-  }
-}
-
-.main-nav-above .site-header-wrap {
-  flex-direction: column-reverse;
-  align-items: flex-start;
-}
-@media screen and (max-width: 960px) {
-  .main-nav-above .site-header-wrap {
-    flex-direction: var(--cfe-site-header-wrap--flex-direction-tablet, column-reverse);
-    justify-content: var(--cfe-site-header-wrap--justify-content--tablet, center);
-    align-items: center;
-  }
-}
-
-.main-nav-below .site-header-wrap {
-  flex-direction: column;
-  align-items: flex-start;
-}
-@media screen and (max-width: 960px) {
-  .main-nav-below .site-header-wrap {
-    flex-direction: var(--cfe-site-header-wrap--flex-direction-tablet, column);
-    justify-content: var(--cfe-site-header-wrap--justify-content--tablet, center);
-    align-items: center;
+    align-items: var(--cfe-site-header-wrap--align-items--tablet, center);
   }
 }
 
@@ -1086,6 +1053,32 @@ h3 + .search-form {
   .site-navigation ul li:hover ul {
     right: auto;
     left: calc(-80px + 50%);
+  }
+}
+
+.main-nav-before .site-navigation ul li ul {
+  right: unset;
+  left: -9999em;
+}
+.main-nav-before .site-navigation ul li ul:after {
+  right: auto;
+  left: 1rem;
+}
+@media screen and (max-width: 960px) {
+  .main-nav-before .site-navigation ul li ul:after {
+    right: unset;
+    left: calc(50% - 0.5rem);
+  }
+}
+
+.main-nav-before .site-navigation ul li:hover ul {
+  right: auto;
+  left: 0;
+}
+@media screen and (max-width: 960px) {
+  .main-nav-before .site-navigation ul li:hover ul {
+    left: auto;
+    right: calc(-80px + 50%);
   }
 }
 

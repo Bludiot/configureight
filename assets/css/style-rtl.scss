@@ -44,8 +44,33 @@
 }
 
 .site-navigation ul li:hover ul {
-	right: auto;
-	left: 0;
+	left: auto;
+	right: 0;
+
+	@media screen and ( max-width: $break_tablet ) {
+		right: auto;
+		left: calc( -80px + 50% );
+	}
+}
+
+.main-nav-before .site-navigation ul li ul {
+	left: auto;
+	right: -9999em;
+
+	&:after {
+		left: auto;
+		right: 1rem;
+
+		@media screen and ( max-width: $break_tablet ) {
+			left: unset;
+			right: calc( 50% - 0.5rem );
+		}
+	}
+}
+
+.main-nav-before .site-navigation ul li:hover ul {
+	right: 0;
+	left: auto;
 
 	@media screen and ( max-width: $break_tablet ) {
 		left: auto;

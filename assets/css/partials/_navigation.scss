@@ -153,6 +153,31 @@
 	}
 }
 
+.main-nav-before .site-navigation ul li ul {
+	right: unset;
+	left: -9999em;
+
+	&:after {
+		right: auto;
+		left: 1rem;
+
+		@media screen and ( max-width: $break_tablet ) {
+			right: unset;
+			left: calc( 50% - 0.5rem );
+		}
+	}
+}
+
+.main-nav-before .site-navigation ul li:hover ul {
+	right: auto;
+	left: 0;
+
+	@media screen and ( max-width: $break_tablet ) {
+		left: auto;
+		right: calc( -80px + 50% );
+	}
+}
+
 .main-nav-hidden {
 	.site-navigation {
 		display: none;
