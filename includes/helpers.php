@@ -418,6 +418,36 @@ function full_cover() {
 }
 
 /**
+ * Include sidebar
+ *
+ * When to include the aside template.
+ *
+ * @since  1.0.0
+ * @global object $page Page class
+ * @global object $url Url class
+ * @return boolean
+ */
+function include_sidebar() {
+
+	// Access global variables.
+	global $page, $url;
+
+	$include = false;
+	if ( 'search' == $url->whereAmI() ) {
+		$include = true;
+	} elseif ( 'blog' == $url->whereAmI() ) {
+		if ( false !== THEME_CONFIG['loop']['sidebar'] ) {
+			$include = true;
+		}
+	} elseif ( 'page' == $url->whereAmI() ) {
+		if ( ! str_contains( $page->template(), 'no-sidebar' ) ) {
+			$include = true;
+		}
+	}
+	return $include;
+}
+
+/**
  * Asset file suffix
  *
  * Gets minified file if not in debug mode.

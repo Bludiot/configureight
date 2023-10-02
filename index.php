@@ -13,7 +13,8 @@ use function CFE_Func\{
 	loop_data,
 	has_cover,
 	get_cover_src,
-	full_cover
+	full_cover,
+	include_sidebar
 };
 use function CFE_Tags\{
 	body_classes,
@@ -100,9 +101,7 @@ if ( is_blog_page() ) {
 			</main>
 
 			<?php
-			if ( 'page' != $url->whereAmI() ) {
-				include( THEME_DIR . 'views/aside/aside.php' );
-			} elseif ( ! str_contains( $page->template(), 'no-sidebar' ) ) {
+			if ( include_sidebar() ) {
 				include( THEME_DIR . 'views/aside/aside.php' );
 			}
 			?>

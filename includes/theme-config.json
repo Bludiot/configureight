@@ -34,7 +34,7 @@
 	"loop" : {
 		"style"      : "blog",
 		"content"    : "list",
-		"sidebar"    : "",
+		"sidebar"    : true,
 		"paged"      : "numerical",
 		"byline"     : true,
 		"post_date"  : true,
