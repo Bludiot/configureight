@@ -446,7 +446,6 @@ function page_header() {
 	$heading     = 'h1';
 	$description = $page->description();
 	$sticky_icon = '';
-	$scroll_icon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><path d="M119.5 326.9L3.5 209.1c-4.7-4.7-4.7-12.3 0-17l7.1-7.1c4.7-4.7 12.3-4.7 17 0L128 287.3l100.4-102.2c4.7-4.7 12.3-4.7 17 0l7.1 7.1c4.7 4.7 4.7 12.3 0 17L136.5 327c-4.7 4.6-12.3 4.6-17-.1z"/></svg>';
 
 	/**
 	 * Do not use `<header>` element for the
@@ -515,7 +514,6 @@ function cover_header() {
 	$heading_el  = 'h1';
 	$page_title  = $page->title();
 	$description = $page->description();
-	$scroll_icon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><path d="M119.5 326.9L3.5 209.1c-4.7-4.7-4.7-12.3 0-17l7.1-7.1c4.7-4.7 12.3-4.7 17 0L128 287.3l100.4-102.2c4.7-4.7 12.3-4.7 17 0l7.1 7.1c4.7 4.7 4.7 12.3 0 17L136.5 327c-4.7 4.6-12.3 4.6-17-.1z"/></svg>';
 
 	// Site title is `h1` on front page; only one per page.
 	if ( 'page' == $url->whereAmI() ) {
@@ -574,7 +572,7 @@ function cover_header() {
 		$html .= sprintf(
 			'<a href="#content" class="button intro-scroll hide-if-no-js"><span class="screen-reader-text">%s</span>%s</a>',
 			$L->get( 'Scroll to content' ),
-			$scroll_icon
+			icon( 'angle-down-light' )
 		);
 	}
 	$html .= '</div>';
@@ -903,6 +901,34 @@ function posts_loop_header() {
 }
 
 /**
+ * Get SVG icon
+ *
+ * @since  1.0.0
+ * @param  string $$file Name of the SVG file.
+ * @return array
+ */
+function icon( $filename = '', $wrap = false, $class = '' ) {
+
+	$exists = file_exists( sprintf(
+		THEME_DIR . 'assets/images/svg-icons/%s.svg',
+		$filename
+	) );
+	if ( ! empty( $filename ) && $exists ) {
+
+		if ( true == $wrap ) {
+			return sprintf(
+				'<span class="theme-icon %s">%s</span>',
+				$class,
+				file_get_contents( THEME_DIR . "assets/images/svg-icons/{$filename}.svg" )
+			);
+		} else {
+			return file_get_contents( THEME_DIR . "assets/images/svg-icons/{$filename}.svg" );
+		}
+	}
+	return '';
+}
+
+/**
  * Sticky icon
  *
  * @since  1.0.0
@@ -924,7 +950,7 @@ function sticky_icon( $echo = '', $class = '', $title = '' ) {
 			'<span class="theme-icon sticky-icon %s" title="%s" role="img">%s</span><span class="screen-reader-text">%s </span>',
 			$class,
 			$title,
-			'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M160 456c0 1.25 .2813 2.467 .8438 3.576l24 47.1c2.938 5.891 11.38 5.906 14.31 0l24-47.1C223.6 458.7 224 457 224 456V383.1H160V456zM298 214.3l-12.25-118.3H328c13.25 0 24-10.75 24-23.1V23.1C352 10.75 341.3 0 328 0h-272C42.75 0 32 10.75 32 23.1v47.1C32 85.25 42.75 95.1 56 95.1h42.22L85.97 214.3C37.47 236.8 0 277.3 0 327.1c0 13.25 10.75 23.1 24 23.1h336c13.25 0 24-10.75 24-23.1C384 276.8 346 236.6 298 214.3z"/></svg>',
+			icon( 'sticky' ),
 			$L->get( 'Sticky Post:' )
 		);
 	}

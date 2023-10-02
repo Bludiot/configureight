@@ -129,6 +129,18 @@ h4 {
 	letter-spacing: var( --cfe-heading-secondary--letter-spacing );
 }
 
+// Theme icons.
+.theme-icon {
+	display: inline-block;
+	vertical-align: baseline;
+	line-height: 1;
+
+	svg {
+		fill: currentColor;
+		height: 1em;
+	}
+}
+
 #page-loader {
 	position: fixed;
 	top: 0;

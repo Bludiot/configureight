@@ -375,6 +375,16 @@ h4 {
   letter-spacing: var(--cfe-heading-secondary--letter-spacing);
 }
 
+.theme-icon {
+  display: inline-block;
+  vertical-align: baseline;
+  line-height: 1;
+}
+.theme-icon svg {
+  fill: currentColor;
+  height: 1em;
+}
+
 #page-loader {
   position: fixed;
   top: 0;
@@ -1571,16 +1581,6 @@ body.template-sidebar-bottom .content-wrapper {
 
 .blog.page-loaded article:nth-of-type(12) {
   transition-delay: 1.8s;
-}
-
-.theme-icon {
-  display: inline-block;
-  vertical-align: baseline;
-  line-height: 1;
-}
-.theme-icon svg {
-  fill: currentColor;
-  height: 1em;
 }
 
 .sticky-icon.sticky-icon-heading svg {
