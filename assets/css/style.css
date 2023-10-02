@@ -961,6 +961,12 @@ h3 + .search-form {
 .site-navigation ul li a:hover, .site-navigation ul li a:focus {
   color: var(--cfe-site-nav--list--link--action--text-color, var(--cfe-site-nav--list--link--text-color, var(--cfe-link--text-color)));
 }
+.site-navigation ul li a svg {
+  display: inline-block;
+  height: 1.125em;
+  vertical-align: middle;
+  fill: currentColor;
+}
 .site-navigation ul li button {
   padding: unset;
   border: none;
