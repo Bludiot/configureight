@@ -181,15 +181,33 @@ function load_font_files() {
  */
 function config_styles() {
 
-	$get_styles = get_config_styles();
+	$get_styles  = get_config_styles();
+	$get_nav_pos = get_nav_position();
 
 	$styles = '<style>:root {';
 
+		// Cover image overlay.
 	if ( $get_styles['cover_color'] && $get_styles['cover_opacity'] ) {
 		$styles .= sprintf(
 			'--cfe-cover-overlay--bg-color: %s;',
 			hex_to_rgb( $get_styles['cover_color'], $get_styles['cover_opacity'] )
 		);
+	}
+
+	// Main navigation position.
+	if ( 'before' === $get_nav_pos ) {
+		$styles .= '--cfe-site-header-wrap--flex-direction: row-reverse;';
+		$styles .= '--cfe-site-header-wrap--flex-direction-tablet: column;';
+	} elseif ( 'above' === $get_nav_pos ) {
+		$styles .= '--cfe-site-header-wrap--flex-direction: column-reverse;';
+		$styles .= '--cfe-site-header-wrap--align-items: flex-start;';
+		$styles .= '--cfe-site-header-wrap--flex-direction-tablet: column-reverse;';
+		$styles .= '--cfe-site-header-wrap--justify-content--tablet: center;';
+	} elseif ( 'below' === $get_nav_pos ) {
+		$styles .= '--cfe-site-header-wrap--flex-direction: column;';
+		$styles .= '--cfe-site-header-wrap--align-items: flex-start;';
+		$styles .= '--cfe-site-header-wrap--flex-direction-tablet: column;';
+		$styles .= '--cfe-site-header-wrap--justify-content--tablet: center;';
 	}
 	$styles .= '}</style>';
 
