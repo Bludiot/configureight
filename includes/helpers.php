@@ -261,6 +261,46 @@ function loop_data() {
 }
 
 /**
+ * Get navigation position
+ *
+ * Returns the position of the main
+ * navigation menu.
+ *
+ * @since  1.0.0
+ * @return string
+ */
+function get_nav_position() {
+
+	$position = 'after';
+	if (
+		'hide'   === THEME_CONFIG['main_nav']['position'] ||
+		'hidden' === THEME_CONFIG['main_nav']['position']
+	) {
+		$position = 'hidden';
+
+	// Main navigation above site branding.
+	} elseif ( 'above' === THEME_CONFIG['main_nav']['position']	) {
+		$position = 'above';
+
+	// Main navigation below site branding.
+	} elseif ( 'below' === THEME_CONFIG['main_nav']['position']	) {
+		$position = 'below';
+
+	// Main navigation before site branding.
+	} elseif (
+		'left'   === THEME_CONFIG['main_nav']['position'] ||
+		'before' === THEME_CONFIG['main_nav']['position']
+	) {
+		$position = 'before';
+
+	// Main navigation after site branding (default).
+	} else {
+		$position = 'after';
+	}
+	return $position;
+}
+
+/**
  * Has cover image
  *
  * @since  1.0.0

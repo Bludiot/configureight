@@ -29,6 +29,7 @@ use function CFE_Func\{
 	favicon_exists,
 	loop_data,
 	blog_is_static,
+	get_nav_position,
 	get_config_styles,
 	has_cover,
 	full_cover,
@@ -233,32 +234,9 @@ function body_classes() {
 		$classes[] = 'toolbar-active';
 	}
 
-	// Main navigation hidden.
-	if (
-		'hide'   === THEME_CONFIG['main_nav']['position'] ||
-		'hidden' === THEME_CONFIG['main_nav']['position']
-	) {
-		$classes[] = 'main-nav-hidden';
-
-	// Main navigation above site branding.
-	} elseif ( 'above' === THEME_CONFIG['main_nav']['position']	) {
-		$classes[] = 'main-nav-above';
-
-	// Main navigation below site branding.
-	} elseif ( 'below' === THEME_CONFIG['main_nav']['position']	) {
-		$classes[] = 'main-nav-below';
-
-	// Main navigation before site branding.
-	} elseif (
-		'left'   === THEME_CONFIG['main_nav']['position'] ||
-		'before' === THEME_CONFIG['main_nav']['position']
-	) {
-		$classes[] = 'main-nav-before';
-
-	// Main navigation after site branding (default).
-	} else {
-		$classes[] = 'main-nav-after';
-	}
+	// Main navigation position.
+	$nav_position = get_nav_position();
+	$classes[]    = "main-nav-{$nav_position}";
 
 	// Home page.
 	if ( 'home' == $url->whereAmI() ) {
