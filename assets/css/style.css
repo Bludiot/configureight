@@ -1089,6 +1089,10 @@ h3 + .search-form {
   }
 }
 
+.main-nav-hidden .site-navigation {
+  display: none;
+}
+
 .template-full-cover .site-navigation ul li {
   color: var(--cfe-site-nav--list--text-color, #ffffff);
   text-shadow: var(--cfe-text-shadow);
