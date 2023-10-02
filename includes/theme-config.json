@@ -20,6 +20,7 @@
 		"description" : true
 	},
 	"main_nav" : {
+		"position"  : "",
 		"max_items" : 0,
 		"blog"      : true,
 		"home"      : true,
