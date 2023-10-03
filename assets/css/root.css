@@ -25,7 +25,7 @@
   --cfe-link--action--text-color: #005ce7;
   --cfe-heading--link--text-decoration: none;
   --cfe-box-border-color: #cccccc;
-  --cfe-text-shadow: 0.075em 0.075em 0.075em rgba( 0,0,0, 0.625 );
+  --cfe-text-shadow: 0.05em 0.05em 0.05em rgba( 0,0,0, 0.625 );
   --cfe-loader--text--font-size: 1.5rem;
   --cfe-loader--text--font-weight: 600;
   --cfe-fieldset--margin: 1em 0 0;
