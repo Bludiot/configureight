@@ -233,6 +233,9 @@ function body_classes() {
 	// Set up classes.
 	$classes = [];
 
+	// Get loop data.
+	$loop_data = loop_data();
+
 	// Language direction.
 	if ( is_rtl() ) {
 		$classes[] = 'rtl';
@@ -266,12 +269,10 @@ function body_classes() {
 		}
 	}
 
-	// If loop, not home.
-	if ( 'blog' == $url->whereAmI() ) {
-		$classes[] = 'loop loop-not-home';
+	// If loop, not page.
+	if ( 'page' != $url->whereAmI() ) {
 
-		// Get loop data.
-		$loop_data = loop_data();
+		$classes[] = 'loop';
 
 		// Posts loop style.
 		$loop_style = $loop_data['style'];
@@ -296,6 +297,12 @@ function body_classes() {
 		} else {
 			$classes[] = 'template-sidebar';
 		}
+	}
+
+	// If loop, not home.
+	if ( 'blog' == $url->whereAmI() ) {
+
+		$classes[] = 'loop-not-home';
 
 		// Templates for the static loop page.
 		if ( $loop_data['template'] ) {
