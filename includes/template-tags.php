@@ -550,12 +550,12 @@ function cover_header() {
 		'blog' == $url->whereAmI() &&
 		'page' == $loop_data['location']
 	) {
-		$class       = 'blog-page-description';
+		$class       = 'loop-page-description';
 		$page_title     = $loop_data['title'];
 		$description = $loop_data['description'];
 
 	} elseif ( 'blog' == $url->whereAmI() ) {
-		$class       = 'blog-page-description';
+		$class       = 'loop-page-description';
 		$page_title     = ucwords( $loop_data['slug'] . $blog_page );
 		$description = sprintf(
 			'%s %s',
@@ -864,22 +864,9 @@ function posts_loop_header() {
 	}
 
 	// Conditional heading & description.
-	if (
-		'blog' == $url->whereAmI() &&
-		'page' == $loop_data['location']
-	) {
-		$class       = 'blog-page-description';
-		$heading     = $loop_data['title'];
-		$description = $loop_data['description'];
-
-	} elseif ( 'blog' == $url->whereAmI() ) {
-		$class       = 'blog-page-description';
-		$heading     = ucwords( $loop_data['slug'] . $blog_page );
-		$description = sprintf(
-			'%s %s',
-			$L->get( 'posts-loop-desc-blog' ),
-			$site->title()
-		);
+	if ( 'blog' == $url->whereAmI() ) {
+		$class   = 'loop-page-description';
+		$heading = ucwords( $loop_data['slug'] . $blog_page );
 
 	} elseif ( 'category' == $url->whereAmI() ) {
 		$get_cat     = new \Category( $url->slug() );

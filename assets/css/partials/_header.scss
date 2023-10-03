@@ -236,7 +236,7 @@
 	}
 
 	.site-description,
-	.cover-description:not( .blog-page-description ) {
+	.cover-description:not( .loop-page-description ) {
 		color: var( --cfe-cover--site-description--text-color, $white );
 		text-shadow: var( --cfe-text-shadow );
 	}

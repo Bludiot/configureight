@@ -912,7 +912,7 @@ h3 + .search-form {
   color: var(--cfe-site-cover--title--link--action--text-color, #ffffff);
 }
 .template-full-cover .site-description,
-.template-full-cover .cover-description:not(.blog-page-description) {
+.template-full-cover .cover-description:not(.loop-page-description) {
   color: var(--cfe-cover--site-description--text-color, #ffffff);
   text-shadow: var(--cfe-text-shadow);
 }
