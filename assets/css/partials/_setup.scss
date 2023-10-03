@@ -136,8 +136,11 @@ h4 {
 	line-height: 1;
 
 	svg {
+		display: inline-block;
 		fill: currentColor;
-		height: 1em;
+		width: var( --cfe-theme-icon--width, var( --cfe-theme-icon--size, 1em ) );
+		height: var( --cfe-theme-icon--height, var( --cfe-theme-icon--size, 1em ) );
+		vertical-align: middle;
 	}
 }
 

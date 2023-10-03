@@ -98,6 +98,7 @@ body {
 	h3 {
 		margin: var( --cfe-page-sidebar--heading--margin, 0 );
 		font-size: var( --cfe-page-sidebar--heading--font-size, 1.375rem );
+		font-weight: var( --cfe-page-sidebar--heading--font-weight, 700 );
 		word-spacing: -0.0325em;
 		letter-spacing: -0.015em;
 	}

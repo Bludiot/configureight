@@ -234,6 +234,7 @@ body {
 
 	.post-info-category {
 		font-size: var( --cfe-post-info-category--list--font-size, 1.125rem );
+		font-weight: var( --cfe-post-info-category--list--font-weight );
 
 		@media screen and ( max-width: $break_phone ) {
 			font-size: var( --cfe-post-info-category--font-size, 1.5rem );
@@ -491,6 +492,7 @@ body {
 			display: var( --cfe-article--tags-list--display, inline-block );
 			padding: var( --cfe-article--tags-list--padding, 0.175em 0.325em 0.325em 0.325em );
 			line-height: var( --cfe-article--tags-list--line-height, 1 );
+			font-family: var( --cfe-article--tags-list--font-family );
 			font-size: var( --cfe-article--tags-list--font-size );
 			font-weight: var( --cfe-article--tags-list--font-weight );
 			text-decoration: var( --cfe-article--tags-list--text-decoration );

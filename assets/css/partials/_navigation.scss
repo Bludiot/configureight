@@ -42,13 +42,6 @@
 				&:focus {
 					color: var( --cfe-site-nav--list--link--action--text-color, var( --cfe-site-nav--list--link--text-color, var( --cfe-link--text-color ) ) );
 				}
-
-				svg {
-					display: inline-block;
-					height: 1.125em;
-					vertical-align: middle;
-					fill: currentColor;
-				}
 			}
 
 			button {
