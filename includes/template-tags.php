@@ -598,11 +598,17 @@ function cover_header() {
 		);
 	}
 
+	// Full cover down icon.
+	$icon = 'angle-down-light';
+	if ( THEME_CONFIG['media']['cover_icon'] ) {
+		$icon = THEME_CONFIG['media']['cover_icon'];
+	}
+
 	if ( full_cover() ) {
 		$html .= sprintf(
 			'<a href="#content" class="button intro-scroll hide-if-no-js"><span class="screen-reader-text">%s</span>%s</a>',
 			$L->get( 'Scroll to content' ),
-			icon( 'angle-down-light' )
+			icon( $icon )
 		);
 	}
 	$html .= '</div>';
