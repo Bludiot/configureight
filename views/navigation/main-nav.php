@@ -66,7 +66,7 @@ use function CFE_Tags\{
 				$sub_menu .= sprintf(
 					'<li><a href="%s">%s</a></li>',
 					$child->permalink(),
-					$child->title()
+					ucwords( str_replace( [ '-', '_' ], ' ', $child->slug() ) )
 				);
 			}
 			$sub_menu .= '</ul>';
@@ -74,7 +74,7 @@ use function CFE_Tags\{
 			$nav_entry = sprintf(
 				'<li class="has-children"><a href="%s">%s %s</a>%s</li>',
 				$nav_item->permalink(),
-				$nav_item->title(),
+				ucwords( str_replace( [ '-', '_' ], ' ', $nav_item->slug() ) ),
 				icon( 'angle-down', true ),
 				$sub_menu
 			);
@@ -84,7 +84,7 @@ use function CFE_Tags\{
 			$nav_entry = sprintf(
 				'<li class="no-children"><a href="%s">%s</a></li>',
 				$nav_item->permalink(),
-				$nav_item->title()
+				ucwords( str_replace( [ '-', '_' ], ' ', $nav_item->slug() ) )
 			);
 		}
 		echo $nav_entry;
