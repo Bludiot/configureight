@@ -30,9 +30,9 @@
   --cfe-site-title--font-family: Rokkitt, Hoefler Text, Garamond, serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
   --cfe-site-title--font-size: 1.875rem;
   --cfe-site-title--font-weight: 750;
-  --cfe-cover--page-title--font-size: clamp( 3rem, 4vw + 1rem, 5.5vw );
-  --cfe-cover--page-title--font-weight: 800;
-  --cfe-cover--page-description-single--font-size: 1.5rem;
+  --cfe-cover--title--font-size: clamp( 3rem, 4vw + 1rem, 5.5vw );
+  --cfe-cover--title--font-weight: 800;
+  --cfe-cover--description--font-size: 1.5rem;
   --cfe-site-nav--item--font-family: Rokkitt, Hoefler Text, Garamond, serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
   --cfe-site-nav--item--font-size: 1.25rem;
   --cfe-site-nav--item--font-weight: 535;

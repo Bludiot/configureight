@@ -44,9 +44,9 @@ $serif_stack: Georgia, 'Hoefler Text', 'Baskerville Old Face', Garamond, Times, 
 	--cfe-site-title--font-family: #{$crimson_stack};
 	--cfe-site-title--font-size: 1.875rem;
 	--cfe-site-title--font-weight: 600;
-	--cfe-cover--page-title--font-size: clamp( 3rem, 4vw + 1rem, 5.5vw );
-	--cfe-cover--page-title--font-weight: 500;
-	--cfe-cover--page-description-single--font-size: 1.5rem;
+	--cfe-cover--title--font-size: clamp( 3rem, 4vw + 1rem, 5.5vw );
+	--cfe-cover--title--font-weight: 500;
+	--cfe-cover--description--font-size: 1.5rem;
 
 	// Navigation.
 	--cfe-site-nav--item--font-size: 1.125rem;

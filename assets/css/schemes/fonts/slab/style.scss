@@ -44,9 +44,9 @@ $sans_stack: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans,
 	--cfe-site-title--font-family: #{$rokkitt_stack};
 	--cfe-site-title--font-size: 1.875rem;
 	--cfe-site-title--font-weight: 750;
-	--cfe-cover--page-title--font-size: clamp( 3rem, 4vw + 1rem, 5.5vw );
-	--cfe-cover--page-title--font-weight: 800;
-	--cfe-cover--page-description-single--font-size: 1.5rem;
+	--cfe-cover--title--font-size: clamp( 3rem, 4vw + 1rem, 5.5vw );
+	--cfe-cover--title--font-weight: 800;
+	--cfe-cover--description--font-size: 1.5rem;
 
 	// Navigation.
 	--cfe-site-nav--item--font-family: #{$rokkitt_stack};

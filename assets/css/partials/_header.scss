@@ -159,6 +159,119 @@
 	color: var( --cfe-site-description--text-color, var( --cfe-text-color ) );
 }
 
+.page-cover {
+	position: relative;
+	overflow: hidden;
+		margin: var( --cfe-page-cover-single--margin, 0 auto 0 auto );
+		max-width: 2048px;
+
+		&.post-cover {
+			margin: var( --cfe-post-cover--margin, 2rem 0 0 0 );
+		}
+
+		img {
+			display: block;
+			width: 100%;
+			max-height: 320px;
+			object-fit: cover;
+			object-position: center center;
+		}
+
+	&.page-cover-singular {
+
+		figcaption {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			color: var( --cfe-cover--title--text-color, $white );
+
+			.cover-header {
+				z-index: 100;
+				text-align: center;
+			}
+		}
+	}
+}
+
+.cover-header {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 0 2rem 0 2rem;
+
+	// In case it overlaps somewhere.
+	pointer-events: none;
+
+	* {
+		max-width: 640px;
+
+		// Restore pointer events for children.
+		pointer-events: initial;
+	}
+
+	.button {
+		&.intro-scroll {
+			display: inline-block;
+			margin: 0 auto;
+			background: transparent;
+			border: none;
+			color: var( --cfe-cover--title--text-color, $white );
+			text-shadow: var( --cfe-text-shadow );
+			transition: transform ease-in-out .15s;
+			transform: translateY( 0 );
+
+			&:hover,
+			&:focus {
+				color: var( --cfe-site-cover--title--link--action--text-color, $white );
+			}
+
+			&:hover {
+				transform: translateY( 0.25rem );
+			}
+
+			svg {
+				width: calc( var( --cfe-button--svg-icon--width ) * 3.5 );
+				height: calc( var( --cfe-button--svg-icon--height ) * 3.5 );
+			}
+		}
+	}
+}
+
+.cover-title {
+	margin: 0;
+	line-height: 1.2;
+	font-size: var( --cfe-cover--title--font-size, clamp( 2.25rem, 2.5vw + 1rem, 3.25vw ) );
+	font-weight: var( --cfe-cover--title--font-weight, var( --cfe-heading-primary--font-weight, 700 ) );
+	color: var( --cfe-cover--title--text-color, $white );
+	text-shadow: var( --cfe-text-shadow );
+
+	a {
+		color: var( --cfe-cover--title--text-color, $white );
+
+		&:hover,
+		&:focus {
+			color: var( --cfe-site-cover--title--link--action--text-color, $white );
+		}
+	}
+}
+
+.cover-description {
+	margin:  var( --cfe-cover--description-single--margin, 1rem 0 0 0 );
+	font-size: var( --cfe-cover--description--font-size );
+	font-weight: var( --cfe-cover--description-single--font-weight );
+	color: var( --cfe-cover--description--text-color, var( --cfe-cover--text-color, $white ) );
+}
+
 .template-full-cover {
 
 	.site-header {
@@ -173,60 +286,12 @@
 		background-size: cover;
 	}
 
-	.cover-header {
-		position: relative;
-		width: 100%;
-		height: 100%;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		padding: 0 2rem 0 2rem;
-		transform: translateY( -2vw );
-
-		// In case it overlaps somewhere.
-		pointer-events: none;
-
-		// Restore pointer events for children.
-		* {
-			pointer-events: initial;
-		}
-
-		.button {
-			&.intro-scroll {
-				display: inline-block;
-				margin: 0 auto;
-				background: transparent;
-				border: none;
-				color: var( --cfe-cover--title--link--text-color, $white );
-				text-shadow: var( --cfe-text-shadow );
-				transition: transform ease-in-out .15s;
-				transform: translateY( 0 );
-
-				&:hover,
-				&:focus {
-					color: var( --cfe-site-cover--title--link--action--text-color, $white );
-				}
-
-				&:hover {
-					transform: translateY( 0.25rem );
-				}
-
-				svg {
-					width: calc( var( --cfe-button--svg-icon--width ) * 3.5 );
-					height: calc( var( --cfe-button--svg-icon--height ) * 3.5 );
-				}
-			}
-		}
-	}
-
-	.site-title,
-	.cover-title {
-		color: var( --cfe-cover--titles--text-color, $white );
+	.site-title {
+		color: var( --cfe-cover--title--text-color, $white );
 		text-shadow: var( --cfe-text-shadow );
 
 		a {
-			color: var( --cfe-cover--title--link--text-color, $white );
+			color: var( --cfe-cover--title--text-color, $white );
 
 			&:hover,
 			&:focus {
@@ -235,24 +300,24 @@
 		}
 	}
 
-	.site-description,
-	.cover-description:not( .loop-page-description ) {
+	.site-description {
 		color: var( --cfe-cover--site-description--text-color, $white );
 		text-shadow: var( --cfe-text-shadow );
 	}
 
+	.cover-header {
+		transform: translateY( -2vw );
+	}
+
 	.cover-title {
-		margin: 0;
-		line-height: 1.2;
-		font-size: var( --cfe-cover--page-title--font-size, clamp( 2.375rem, 3vw + 1rem, 5vw ) );
-		font-weight: var( --cfe-cover--page-title--font-weight, var( --cfe-heading-primary--font-weight, 700 ) );
+		font-size: var( --cfe-cover--full--title--font-size, clamp( 2.375rem, 3vw + 1rem, 5vw ) );
 	}
 
 	.cover-description {
 		&.page-description-single {
-			margin:  var( --cfe-cover--page-description-single--margin, 1rem 0 0 0 );
-			font-size: var( --cfe-cover--page-description-single--font-size );
-			font-weight: var( --cfe-cover--page-description-single--font-weight );
+			margin:  var( --cfe-cover--description-single--margin, 1rem 0 0 0 );
+			font-size: var( --cfe-cover--description--font-size );
+			font-weight: var( --cfe-cover--description-single--font-weight );
 		}
 	}
 }

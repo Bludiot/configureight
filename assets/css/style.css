@@ -854,6 +854,99 @@ h3 + .search-form {
   color: var(--cfe-site-description--text-color, var(--cfe-text-color));
 }
 
+.page-cover {
+  position: relative;
+  overflow: hidden;
+  margin: var(--cfe-page-cover-single--margin, 0 auto 0 auto);
+  max-width: 2048px;
+}
+.page-cover.post-cover {
+  margin: var(--cfe-post-cover--margin, 2rem 0 0 0);
+}
+.page-cover img {
+  display: block;
+  width: 100%;
+  max-height: 320px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center center;
+     object-position: center center;
+}
+.page-cover.page-cover-singular figcaption {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--cfe-cover--title--text-color, #ffffff);
+}
+.page-cover.page-cover-singular figcaption .cover-header {
+  z-index: 100;
+  text-align: center;
+}
+
+.cover-header {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 2rem 0 2rem;
+  pointer-events: none;
+}
+.cover-header * {
+  max-width: 640px;
+  pointer-events: initial;
+}
+.cover-header .button.intro-scroll {
+  display: inline-block;
+  margin: 0 auto;
+  background: transparent;
+  border: none;
+  color: var(--cfe-cover--title--text-color, #ffffff);
+  text-shadow: var(--cfe-text-shadow);
+  transition: transform ease-in-out 0.15s;
+  transform: translateY(0);
+}
+.cover-header .button.intro-scroll:hover, .cover-header .button.intro-scroll:focus {
+  color: var(--cfe-site-cover--title--link--action--text-color, #ffffff);
+}
+.cover-header .button.intro-scroll:hover {
+  transform: translateY(0.25rem);
+}
+.cover-header .button.intro-scroll svg {
+  width: calc(var(--cfe-button--svg-icon--width) * 3.5);
+  height: calc(var(--cfe-button--svg-icon--height) * 3.5);
+}
+
+.cover-title {
+  margin: 0;
+  line-height: 1.2;
+  font-size: var(--cfe-cover--title--font-size, clamp(2.25rem, 2.5vw + 1rem, 3.25vw));
+  font-weight: var(--cfe-cover--title--font-weight, var(--cfe-heading-primary--font-weight, 700));
+  color: var(--cfe-cover--title--text-color, #ffffff);
+  text-shadow: var(--cfe-text-shadow);
+}
+.cover-title a {
+  color: var(--cfe-cover--title--text-color, #ffffff);
+}
+.cover-title a:hover, .cover-title a:focus {
+  color: var(--cfe-site-cover--title--link--action--text-color, #ffffff);
+}
+
+.cover-description {
+  margin: var(--cfe-cover--description-single--margin, 1rem 0 0 0);
+  font-size: var(--cfe-cover--description--font-size);
+  font-weight: var(--cfe-cover--description-single--font-weight);
+  color: var(--cfe-cover--description--text-color, var(--cfe-cover--text-color, #ffffff));
+}
+
 .template-full-cover .site-header {
   position: relative;
   display: flex;
@@ -865,70 +958,30 @@ h3 + .search-form {
   background-image: none;
   background-size: cover;
 }
-.template-full-cover .cover-header {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 0 2rem 0 2rem;
-  transform: translateY(-2vw);
-  pointer-events: none;
-}
-.template-full-cover .cover-header * {
-  pointer-events: initial;
-}
-.template-full-cover .cover-header .button.intro-scroll {
-  display: inline-block;
-  margin: 0 auto;
-  background: transparent;
-  border: none;
-  color: var(--cfe-cover--title--link--text-color, #ffffff);
-  text-shadow: var(--cfe-text-shadow);
-  transition: transform ease-in-out 0.15s;
-  transform: translateY(0);
-}
-.template-full-cover .cover-header .button.intro-scroll:hover, .template-full-cover .cover-header .button.intro-scroll:focus {
-  color: var(--cfe-site-cover--title--link--action--text-color, #ffffff);
-}
-.template-full-cover .cover-header .button.intro-scroll:hover {
-  transform: translateY(0.25rem);
-}
-.template-full-cover .cover-header .button.intro-scroll svg {
-  width: calc(var(--cfe-button--svg-icon--width) * 3.5);
-  height: calc(var(--cfe-button--svg-icon--height) * 3.5);
-}
-.template-full-cover .site-title,
-.template-full-cover .cover-title {
-  color: var(--cfe-cover--titles--text-color, #ffffff);
+.template-full-cover .site-title {
+  color: var(--cfe-cover--title--text-color, #ffffff);
   text-shadow: var(--cfe-text-shadow);
 }
-.template-full-cover .site-title a,
-.template-full-cover .cover-title a {
-  color: var(--cfe-cover--title--link--text-color, #ffffff);
+.template-full-cover .site-title a {
+  color: var(--cfe-cover--title--text-color, #ffffff);
 }
-.template-full-cover .site-title a:hover, .template-full-cover .site-title a:focus,
-.template-full-cover .cover-title a:hover,
-.template-full-cover .cover-title a:focus {
+.template-full-cover .site-title a:hover, .template-full-cover .site-title a:focus {
   color: var(--cfe-site-cover--title--link--action--text-color, #ffffff);
 }
-.template-full-cover .site-description,
-.template-full-cover .cover-description:not(.loop-page-description) {
+.template-full-cover .site-description {
   color: var(--cfe-cover--site-description--text-color, #ffffff);
   text-shadow: var(--cfe-text-shadow);
 }
+.template-full-cover .cover-header {
+  transform: translateY(-2vw);
+}
 .template-full-cover .cover-title {
-  margin: 0;
-  line-height: 1.2;
-  font-size: var(--cfe-cover--page-title--font-size, clamp(2.375rem, 3vw + 1rem, 5vw));
-  font-weight: var(--cfe-cover--page-title--font-weight, var(--cfe-heading-primary--font-weight, 700));
+  font-size: var(--cfe-cover--full--title--font-size, clamp(2.375rem, 3vw + 1rem, 5vw));
 }
 .template-full-cover .cover-description.page-description-single {
-  margin: var(--cfe-cover--page-description-single--margin, 1rem 0 0 0);
-  font-size: var(--cfe-cover--page-description-single--font-size);
-  font-weight: var(--cfe-cover--page-description-single--font-weight);
+  margin: var(--cfe-cover--description-single--margin, 1rem 0 0 0);
+  font-size: var(--cfe-cover--description--font-size);
+  font-weight: var(--cfe-cover--description-single--font-weight);
 }
 
 .toolbar-active.template-full-cover .site-header {
@@ -1463,59 +1516,6 @@ body.template-sidebar-bottom .content-wrapper {
 .page-content img[style="float:right;"],
 .page-content img[style="float:right"] {
   margin: var(--cfe-page-content--img--float-right--margin, 0 0 1em 1em);
-}
-
-.page-cover {
-  position: relative;
-  overflow: hidden;
-  margin: var(--cfe-page-cover-single--margin, 0 auto 0 auto);
-  max-width: 2048px;
-}
-.page-cover.post-cover {
-  margin: var(--cfe-post-cover--margin, 2rem 0 0 0);
-}
-.page-cover img {
-  display: block;
-  width: 100%;
-  max-height: 320px;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: center center;
-     object-position: center center;
-}
-.page-cover.page-cover-singular figcaption {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: var(--cfe-cover--title--link--text-color, #ffffff);
-}
-.page-cover.page-cover-singular figcaption .cover-header {
-  z-index: 100;
-  text-align: center;
-}
-.page-cover.page-cover-singular figcaption .cover-title {
-  margin: 0;
-  line-height: 1.2;
-  font-size: var(--cfe-cover--page-title--font-size, clamp(2.375rem, 3vw + 1rem, 5vw));
-  font-weight: var(--cfe-cover--page-title--font-weight, var(--cfe-heading-primary--font-weight, 700));
-  color: var(--cfe-cover--titles--text-color, #ffffff);
-}
-.page-cover.page-cover-singular figcaption .cover-title a {
-  color: var(--cfe-cover--title--link--text-color, #ffffff);
-}
-.page-cover.page-cover-singular figcaption .cover-title a:hover, .page-cover.page-cover-singular figcaption .cover-title a:focus {
-  color: var(--cfe-site-cover--title--link--action--text-color, #ffffff);
-}
-.page-cover.page-cover-singular figcaption .cover-description.page-description-single {
-  margin: var(--cfe-cover--page-description-single--margin, 1rem 0 0 0);
-  font-size: var(--cfe-cover--page-description-single--font-size);
-  font-weight: var(--cfe-cover--page-description-single--font-weight);
 }
 
 .no-posts-found {
