@@ -105,7 +105,7 @@ $tags_list = function() use ( $post ) {
 			<h2 class="page-title posts-loop-title">
 				<a href="<?php echo $post->permalink(); ?>"><?php echo $sticky . $post->title(); ?></a>
 			</h2>
-			<p><?php echo page_description( $post->key() ); ?></p>
+			<p class="page-description posts-loop-description"><?php echo page_description( $post->key() ); ?></p>
 		</header>
 
 		<?php if ( $post->coverImage() ) : ?>
