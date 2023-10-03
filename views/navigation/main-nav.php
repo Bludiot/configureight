@@ -75,7 +75,7 @@ use function CFE_Tags\{
 				'<li class="has-children"><a href="%s">%s %s</a>%s</li>',
 				$nav_item->permalink(),
 				$nav_item->title(),
-				icon( 'angle-down' ),
+				icon( 'angle-down', true ),
 				$sub_menu
 			);
 
