@@ -17,7 +17,7 @@
 .user-toolbar {
 	a {
 		&:not( :last-of-type ) {
-			margin: var( --cfe-toolbar--link--margin--rtl, 0 0 0 1rem );
+			margin: var( --cfe-toolbar--link--not-last--margin--rtl, 0 );
 		}
 
 		&#profile-link {

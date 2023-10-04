@@ -6,31 +6,49 @@
 	position: var( --cfe-toolbar--position, fixed );
 	top: var( --cfe-toolbar--top, 0 );
 	left: var( --cfe-toolbar--left, 0 );
+	right: var( --cfe-toolbar--right );
+	bottom: var( --cfe-toolbar--bottom );
 	width: var( --cfe-toolbar--width, 100% );
 	height: var( --cfe-toolbar--height );
-	z-index: 5999;
+	z-index: var( --cfe-toolbar--z-index, 5999 );
 	overflow: var( --cfe-toolbar--overflow, visible );
 	display: var( --cfe-toolbar--display, flex );
+	gap: var( --cfe-toolbar--gap, 0 2rem );
 	justify-content: var( --cfe-toolbar--justify-content, space-between );
 	align-items: var( --cfe-toolbar--align-items, center );
-	padding: var( --cfe-toolbar--padding, 0 1rem );
+	padding: var( --cfe-toolbar--padding );
 	line-height: var( --cfe-toolbar--line-height, var( --cfe-toolbar--height ) );
-	font-size: var( --cfe-toolbar--font-size, 0.875rem );
-	background-color: var( --cfe-toolbar--background-color, #333333 );
-	color: var( --cfe-toolbar--text-color, #ffffff );
+	font-family: var( --cfe-toolbar--font-family, inherit );
+	font-size: var( --cfe-toolbar--font-size, var( --cfe-font-size, inherit ) );
+	font-weight: var( --cfe-toolbar--font-weight, inherit );
+	font-style: var( --cfe-toolbar--font-style, inherit );
+	font-variant: var( --cfe-toolbar--font-variant, inherit );
+	text-decoration: var( --cfe-toolbar--text-decoration );
+	text-shadow: var( --cfe-toolbar--text-shadow );
+	letter-spacing: var( --cfe-toolbar--letter-spacing );
+	word-spacing: var( --cfe-toolbar--word-spacing );
+	background-color: var( --cfe-toolbar--bg-color );
+	border: var( --cfe-toolbar--border );
+	box-shadow: var( --cfe-toolbar--box-shadow );
+	color: var( --cfe-toolbar--text-color );
 
 	a {
-		display: inline-block;
-		color: var( --cfe-toolbar--link--text-color, #ffffff );
-		text-decoration: var( --cfe-toolnar--link--text-decoration, none );
+		display: var( --cfe-toolbar--link--display, inline-block );
+		margin: var( --cfe-toolbar--link--margin );
+		padding: var( --cfe-toolbar--link--padding );
+		background-color: var( --cfe-toolbar--link--bg-color );
+		color: var( --cfe-toolbar--link--text-color );
+		text-decoration: var( --cfe-toolbar--link--text-decoration, none );
+		transition: var( --cfe-toolbar--link--transition, var( --cfe-link--transition ) );
 
 		&:hover,
 		&focus {
-			color: var( --cfe-toolbar--link-action--text-color, #ffffff );
+			background-color: var( --cfe-toolbar--link--action--bg-color );
+			color: var( --cfe-toolbar--link--action--text-color );
 		}
 
 		&:not( :last-of-type ) {
-			margin: var( --cfe-toolbar--link--margin, 0 1rem 0 0 );
+			margin: var( --cfe-toolbar--link--not-last--margin, 0 );
 		}
 
 		&#profile-link {
@@ -41,7 +59,13 @@
 			img {
 				display: var( --cfe-toolbar--profile-pic--display, block );
 				margin: var( --cfe-toolbar--profile-pic--margin, 0 0.5em 0 0 );
-				border-radius: var( --cfe-toolbar--profile-pic--border-radius, 50% );
+				padding: var( --cfe-toolbar--profile-pic--padding );
+				width: var( --cfe-toolbar--profile-pic--width, 1.5rem );
+				height: var( --cfe-toolbar--profile-pic--height, 1.5rem );
+				max-width: var( --cfe-toolbar--profile-pic--max-width, 1.5rem );
+				box-shadow: var( --cfe-toolbar--profile-pic--box-shadow );
+				border: var( --cfe-toolbar--profile-pic--border );
+				border-radius: var( --cfe-toolbar--profile-pic--border-radius, var( --cfe-avatar--border-radius, 50% ) );
 			}
 		}
 	}

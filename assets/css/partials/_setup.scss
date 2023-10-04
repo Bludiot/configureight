@@ -8,13 +8,20 @@ html {
 }
 
 body {
+	display: var( --cfe-body--display, block );
+	position: var( --cfe-body--position, relative );
+	width: var( --cfe-body--width );
+	height: var( --cfe-body--height, 100% );
 	max-width: var( --cfe-body--max-width, 2048px );
 	margin: var( --cfe-body--margin, 0 auto );
+	padding: var( --cfe-body--padding, 0 );
 	font-family: var( --cfe-font-stack, var( --cfe-sans-stack, sans-serif ) );
 	font-size: var( --cfe-font-size, 1rem );
 	font-weight: var( --cfe-font-weight, normal );
 	font-style: var( --cfe-font-style, normal );
+	font-variant: var( --cfe-font-variant, normal );
 	letter-spacing: var( --cfe-letter-spacing, normal );
+	word-spacing: var( --cfe-word-spacing, normal );
 	line-height: var( --cfe-line-height, 1.5 );
 	background-color: var( --cfe-bg-color );
 	background-image: var( --cfe-bg-image );
@@ -33,7 +40,16 @@ body {
 	font-family: var( --cfe-serif-stack, serif );
 }
 
-// Text meant only for screen readers.
+///
+/// Screen reader text
+///
+/// Use when text needs to be hidden for
+/// display purposes but needs to be in
+/// the DOM for visually impaired/blind
+/// people and for search engines.
+///
+/// No variables because this class does
+/// not need to/ought not change.
 .screen-reader-text {
 	border: 0;
 	clip: rect( 1px, 1px, 1px, 1px );
@@ -48,6 +64,7 @@ body {
 	word-wrap: normal !important;
 }
 
+// JavaScript helper classes.
 .no-js {
 	.hide-if-no-js {
 		display: none !important;
@@ -60,9 +77,15 @@ body {
 	}
 }
 
+// General layout styles
 .wrapper-general {
+	display: var( --cfe-wrapper--general--display, block );
+	position: var( --cfe-wrapper--general--position, static );
 	width: var( --cfe-wrapper--general--width, 100% );
 	max-width: var( --cfe-wrapper--general--max-width, 100% );
+	min-width: var( --cfe-wrapper--general--min-width );
+	height: var( --cfe-wrapper--general--height );
+	min-height: var( --cfe-wrapper--general--min-height );
 	margin: var( --cfe-wrapper--general--margin, 0 );
 	padding: var( --cfe-wrapper--general--padding, 0 );
 }
@@ -71,6 +94,7 @@ body {
 	width: 100%;
 }
 
+// General element styles.
 h1,
 h2,
 h3,
@@ -81,30 +105,54 @@ p,
 ul,
 ol {
 	margin: var( --cfe-element--margin, 1em 0 0 0 );
+	padding: var( --cfe-element--padding );
 }
 
 a {
-	font-weight: var( --cfe-link--font-weight, normal );
+	display: var( --cfe-link--display );
+	position: var( --cfe-link--position );
+	font-size: var( --cfe-link--font-size, inherit );
+	font-weight: var( --cfe-link--font-weight, inherit );
+	font-style: var( --cfe-link--font-style, normal );
+	font-variant: var( --cfe-link--font-variant, normal );
 	text-decoration: var( --cfe-link--text-decoration, underline );
+	text-transform: var( --cfe-link--text-transform, inherit );
 	color: var( --cfe-link--text-color );
-	transition: var( --cfe-link--transition, all 0.15s );
+	transition: var( --cfe-link--transition );
 
 	&:hover,
 	&:focus {
 		color: var( --cfe-link--action--text-color );
+	}
+
+	// Pseudo elements for custom hover effects.
+	&:before {
+		content: var( --cfe-link--before--content );
+		display: var( --cfe-link--before--display );
+		position: var( --cfe-link--before--position );
+		background-color: var( --cfe-link--before--bg-color );
+	}
+
+	&:after {
+		content: var( --cfe-link--after--content );
+		display: var( --cfe-link--after--display );
+		position: var( --cfe-link--after--position );
+		background-color: var( --cfe-link--after--bg-color );
 	}
 }
 
 h1,
 h2 {
 	font-family: var( --cfe-heading-primary--font-family );
-	font-size: var( --cfe-heading-primary--font-size, 2rem );
+	font-size: var( --cfe-heading-primary--font-size );
 	font-weight: var( --cfe-heading-primary--font-weight, 700 );
-	line-height: var( --cfe-heading-primary--line-height );
-	word-spacing: -0.0325em;
-	letter-spacing: var( --cfe-heading-primary--letter-spacing, -0.015em );
-	text-transform: var( --cfe-heading-primary--text-transform );
+	font-style: var( --cfe-heading-primary--font-style );
 	font-variant: var( --cfe-heading-primary--font-variant );
+	line-height: var( --cfe-heading-primary--line-height );
+	letter-spacing: var( --cfe-heading-primary--letter-spacing );
+	word-spacing: var( --cfe-heading-primary--word-spacing );
+	text-decoration: var( --cfe-heading-primary--text-decoration );
+	text-transform: var( --cfe-heading-primary--text-transform );
 	color: var( --cfe-heading-primary--text-color, var( --cfe-text-color ) );
 
 	a {
@@ -123,38 +171,50 @@ h3,
 h4 {
 	font-family: var( --cfe-heading-secondary--font-family );
 	font-size: var( --cfe-heading-secondary--font-size );
-	font-weight: var( --cfe-heading-secondary--font-weight, bold );
+	font-weight: var( --cfe-heading-secondary--font-weight, 700 );
+	font-style: var( --cfe-heading-secondary--font-style );
+	font-variant: var( --cfe-heading-secondary--font-variant );
 	line-height: var( --cfe-heading-secondary--line-height );
-	word-spacing: -0.0325em;
 	letter-spacing: var( --cfe-heading-secondary--letter-spacing );
+	word-spacing: var( --cfe-heading-secondary--word-spacing );
+	text-decoration: var( --cfe-heading-secondary--text-decoration );
+	text-transform: var( --cfe-heading-secondary--text-transform );
+	color: var( --cfe-heading-secondary--text-color, var( --cfe-text-color ) );
 }
 
 // Theme icons.
 .theme-icon {
-	display: inline-block;
-	vertical-align: baseline;
-	line-height: 1;
+	position: var( --cfe-icon--position );
+	display: var( --cfe-icon--display, inline-block );
+	width: var( --cfe-icon--width, var( --cfe-icon--size, 1em ) );
+	height: var( --cfe-icon--height, var( --cfe-icon--size, 1em ) );
+	vertical-align: var( --cfe-icon--vertical-align, baseline );
+	line-height: var( --cfe-icon--line-height, 1 );
+	background-color: var( --cfe-icon--bg-color );
+	color: var( --cfe-icon--text-color, inherit );
 
 	svg {
-		display: inline-block;
-		fill: currentColor;
-		width: var( --cfe-theme-icon--width, var( --cfe-theme-icon--size, 1em ) );
-		height: var( --cfe-theme-icon--height, var( --cfe-theme-icon--size, 1em ) );
-		vertical-align: middle;
+		position: var( --cfe-icon--svg--position );
+		display: var( --cfe-icon--svg--display, inline-block );
+		fill: var( --cfe-icon--svg--fill, currentColor );
+		width: var( --cfe-icon--svg--width, var( --cfe-icon--size, 1em ) );
+		height: var( --cfe-icon--svg--height, var( --cfe-icon--size, 1em ) );
+		vertical-align: var( --cfe-icon--svg--vertical-align, middle );
 	}
 }
 
+// Optional page loading screen.
 #page-loader {
 	position: fixed;
 	top: 0;
 	left: 0;
 	width: 100%;
 	height: 100%;
-	z-index: 99999;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
+	z-index: var( --cfe-loader--z-index, 99999 );
+	display: var( --cfe-loader--display, flex );
+	flex-direction: var( --cfe-loader--flex-direction, column );
+	align-items: var( --cfe-loader--align-items, center );
+	justify-content: var( --cfe-loader--justify-content, center );
 	background-color: var( --cfe-loader--bg-color, var( --cfe-bg-color ) );
 	color: var( --cfe-loader--text-color, var( --cfe-text-color ) );
 
@@ -173,21 +233,23 @@ h4 {
 		width: var( --cfe-loader--image--width, 1.75rem );
 		height: var( --cfe-loader--image--height, 1.75rem );
 		margin: var( --cfe-loader--image--margin, 2rem 0 0 0 );
-		-webkit-animation: spinner 1s infinite linear;
-				animation: spinner 1s infinite linear;
+		-webkit-animation: var( --cfe-loader--image--animation, spinner 1s infinite linear );
+		animation: var( --cfe-loader--image--animation, spinner 1s infinite linear );
 
 		svg {
 			width: var( --cfe-loader--image--width, 1.75rem );
 			height: var( --cfe-loader--image--height, 1.75rem );
-			fill: currentColor;
+			fill: var( --cfe-loader--image--fill, currentColor );
 		}
 	}
 }
 
 .inline-list {
-	display: inline-flex;
-	gap: 0 0.5em;
-	margin: 0;
+	display: var( --cfe-inline-list--display, inline-flex );
+	flex-direction: var( --cfe-inline-list--flex-direction, row );
+	gap: var( --cfe-inline-list--gap, 0 0.5em );
+	margin: var( --cfe-inline-list--margin, 0 );
+	padding: var( --cfe-inline-list--padding, 0 );
 }
 
 .cover-overlay {
@@ -200,39 +262,41 @@ h4 {
 }
 
 #to-top {
-	opacity: 0;
-	pointer-events: none;
-	position: fixed;
-	right: 2rem;
-	bottom: 2rem;
-	width: 3rem;
-	height: 3rem;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+	opacity: var( --cfe-to-top--opacity, 0 );
+	pointer-events: var( --cfe-to-top--pointer-events, none );
+	position: var( --cfe-to-top--position, fixed );
+	top: var( --cfe-to-top--top );
+	left: var( --cfe-to-top--left );
+	right: var( --cfe-to-top--right, 2rem );
+	bottom: var( --cfe-to-top--bottom, 2rem );
+	width: var( --cfe-to-top--width, 3rem );
+	height: var( --cfe-to-top--height, 3rem );
+	display: var( --cfe-to-top--display, flex );
+	align-items: var( --cfe-to-top--align-items, center );
+	justify-content: var( --cfe-to-top--justify-content, center );
 	background-color: var( --cfe-button--bg-color );
 	border: var( --cfe-form-element--border );
 	border-color: var( --cfe-button--border-color, var( --cfe-form--border-color ) );
 	color: var( --cfe-button--text-color, var( --cfe-text-color ) );
 	border-radius: var( --cfe-to-top--border-radius, 50% );
-	transform: translateY( 0 );
-	transition: opacity .5s, background-color .25s, transform .25s;
+	transform: var( --cfe-to-top--transform, translateY(0) );
+	transition: var( --cfe-to-top--transition, opacity .5s, background-color .25s, transform .25s );
 
 	&.scrolled {
-		opacity: 1;
-		pointer-events: all;
+		opacity: var( --cfe-to-top--scrolled--opacity, 1 );
+		pointer-events: var( --cfe-to-top--scrolled--pointer-events, all );
 	}
 
 	&:hover {
-		background-color: var( --cfe-button--action-bg-color, var( --cfe-button--bg-color ) );
-		border-color: var( --cfe-button--action-border-color, var( --cfe-button--border-color, ) );
-		color: var( --cfe-button--action-text-color, var( --cfe-button--text-color ) );
-		transform: translateY( -0.25rem );
+		background-color: var( --cfe-to-top--action--bg-color, var( --cfe-button--action--bg-color, var( --cfe-button--bg-color ) ) );
+		border-color: var( --cfe-to-top--action--border-color, var( --cfe-button--action--border-color, var( --cfe-button--border-color, ) ) );
+		color: var( --cfe-to-top--action--text-color, var( --cfe-button--action--text-color, var( --cfe-button--text-color ) ) );
+		transform: var( --cfe-to-top--action--transform, translateY( -0.25rem ) );
 	}
 
 	svg {
-		width: 1.5rem;
-		height: 1.5rem;
+		width: var( --cfe-to-top--svg--width, 1.5rem );
+		height: var( --cfe-to-top--svg--height, 1.5rem );
 		fill: var( --cfe-to-top--svg--fill, currentColor );
 	}
 }

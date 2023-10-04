@@ -3,22 +3,18 @@
 ///
 
 body {
-	&:not( .template-sidebar-bottom ) {
-		.page-sidebar {
-			display: flex;
-			flex-direction: column;
-			width: 320px;
-			padding: var( --cfe-page-sidebar--padding, 2rem 0 0 0 );
-		}
-	}
 
 	&.template-sidebar-bottom {
 		.page-sidebar {
 			width: 100%;
 			display: grid;
-			grid-template-columns: repeat( 2, 1fr );
-			gap: 1.5rem;
-			padding: var( --cfe-page-sidebar-bottom--padding, 2rem 0 0 0 );
+			grid-template-columns: repeat( 3, 1fr );
+			gap:  var( --cfe-spacing--vert, 2rem ) var( --cfe-spacing--horz, 2rem );
+			padding: var( --cfe-page-sidebar-bottom--padding, var( --cfe-spacing--vert, 2rem ) 0 0 0 );
+
+			@media screen and ( max-width: $break_phone ) {
+				grid-template-columns: repeat( 2, 1fr );
+			}
 
 			@media screen and ( max-width: $break_phone ) {
 				display: block;
@@ -44,6 +40,12 @@ body {
 }
 
 .page-sidebar {
+	position: var( --cfe-sidebar--default--position );
+	display: var( --cfe-sidebar--default--display, flex );
+	flex-direction: var( --cfe-sidebar--default--flex-direction, column );
+	width: var( --cfe-sidebar--default--width, 320px );
+	max-width: var( --cfe-sidebar--default--max-width );
+	padding: var( --cfe-page-sidebar--default--padding, var( --cfe-spacing--vert, 2rem ) 0 0 0 );
 	background-color: var( --cfe-page-sidebar--bg-color, inherit );
 	color: var( --cfe-page-sidebar--text-color, inherit );
 

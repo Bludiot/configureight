@@ -6,7 +6,7 @@ body {
 	&:not( .template-no-sidebar ) {
 		.content-wrapper {
 			display: flex;
-			gap: 2rem;
+			gap: var( --cfe-spacing--vert, 2rem ) var( --cfe-spacing--horz, 2rem );
 
 			@media screen and ( max-width: $break_tablet ) {
 				flex-direction: column;
@@ -32,7 +32,7 @@ body {
 }
 
 .home .blog-view {
-	padding: 2rem 2rem 0 2rem;
+	padding: var( --cfe-spacing--vert, 2rem ) var( --cfe-spacing--horz, 2rem ) 0 var( --cfe-spacing--horz, 2rem );
 }
 
 .page-header {
@@ -81,11 +81,11 @@ body {
 .loop {
 	main {
 		article {
-			margin: var( --cfe-news-article--full--margin, 2rem 0 0 0 );
+			margin: var( --cfe-news-article--full--margin, var( --cfe-spacing--vert, 2rem ) 0 0 0 );
 
 			&:not( :first-of-type ) {
-				padding: var( --cfe-news-article--full--padding, 2rem 0 0 0 );
-				border-top: var( --cfe-news-article--full--border-top, solid 1px var( --cfe-box-border-color ) );
+				padding: var( --cfe-news-article--full--padding, var( --cfe-spacing--vert, 2rem ) 0 0 0 );
+				border-top: var( --cfe-news-article--full--border-top, var( --cfe-box-border ) );
 			}
 		}
 	}
@@ -377,8 +377,33 @@ body {
 }
 
 .page-content {
+	margin: var( --cfe-page-content--margin, calc( var( --cfe-spacing--vert ) * 2 ) 0 0 0 );
 
-	margin: var( --cfe-page-content--margin, 4rem 0 0 0 );
+	ul {
+		list-style: var( --cfe-ul--list-style, none );
+
+		li {
+			&:before {
+				display: inline-block;
+				content: '\2022\00a0';
+				transform: scale( 150% ) translateY( -2.5% );
+			}
+		}
+	}
+
+	ol {
+		list-style: var( --cfe-ol--list-style, none );
+		counter-reset: ol_item;
+
+		li {
+			&:before {
+				display: inline-block;
+				counter-increment: ol_item;
+				content: counter( ol_item ) '.\00a0';
+				font-weight: 600;
+			}
+		}
+	}
 
 	img[style="float: left;"],
 	img[style="float: left"],

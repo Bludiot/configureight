@@ -31,7 +31,7 @@
   --cfe-form--border-color: #c76919;
   --cfe-form--action-border-color: #e6211c;
   --cfe-button--bg-color: #c76919;
-  --cfe-button--action-bg-color: #122538;
+  --cfe-button--action--bg-color: #122538;
   --cfe-button--action-border-color: #122538;
   --cfe-button--text-color: #ffffff;
   --cfe-site-header--bg-color: inherit;
@@ -56,7 +56,7 @@
     --cfe-heading-primary--link--action--text-color: #c76919;
     --cfe-site-nav--list--link--action--text-color: #ffffff;
     --cfe-form--action-border-color: #e6211c;
-    --cfe-button--action-bg-color: #e6211c;
+    --cfe-button--action--bg-color: #e6211c;
     --cfe-button--action-border-color: #e6211c;
     --cfe-article--tags-list--action--bg-color: #e6211c;
   }

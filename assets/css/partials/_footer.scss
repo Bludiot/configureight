@@ -3,16 +3,53 @@
 ///
 
 .site-footer {
-	margin: var( --cfe-site-footer--margin, 2rem 0 0 0 );
-	padding: var( --cfe-site-footer--padding, 2rem );
+	width: var( --cfe-site-footer-text--width, 100% );
+	max-width: var( --cfe-site-footer-text--max-width, 100% );
+	min-width: var( --cfe-site-footer-text--min-width );
+	height: var( --cfe-site-footer-text--height, 100% );
+	max-height: var( --cfe-site-footer-text--max-height );
+	min-height: var( --cfe-site-footer-text--min-height );
+	margin: var( --cfe-site-footer--margin, 0 );
+	padding: var( --cfe-site-footer--padding, var( --cfe-spacing--vert, 2rem ) var( --cfe-spacing--horz, 2rem ) );
+	font-family: var( --cfe-site-footer--font-family, inherit );
+	font-size: var( --cfe-site-footer--font-size, inherit );
+	font-weight: var( --cfe-site-footer--font-weight, inherit );
+	font-style: var( --cfe-site-footer--font-style, inherit );
+	font-variant: var( --cfe-site-footer--font-variant, inherit );
+	letter-spacing: var( --cfe-site-footer--letter-spacing, var( --cfe-letter-spacing, normal ) );
+	word-spacing: var( --cfe-site-footer--word-spacing, var( --cfe-word-spacing, normal ) );
+	line-height: var( --cfe-site-footer--line-height, var( --cfe-line-height ) );
 	background-color: var( --cfe-site-footer--bg-color, inherit );
+	color: var( --cfe-site-footer--text-color, inherit );
 
 	.site-footer-text {
+		width: var( --cfe-site-footer-text--width, 100% );
+		max-width: var( --cfe-site-footer-text--max-width, 100% );
+		margin: var( --cfe-site-footer-text--margin, 0 );
+		padding: var( --cfe-site-footer-text--padding, 0 );
 		text-align: var( --cfe-site-footer-text--text-align, center );
+		font-family: var( --cfe-site-footer-text--font-family, inherit );
+		font-size: var( --cfe-site-footer-text--font-size, inherit );
+		font-weight: var( --cfe-site-footer-text--font-weight, inherit );
+		font-style: var( --cfe-site-footer-text--font-style, inherit );
+		font-variant: var( --cfe-site-footer-text--font-variant, inherit );
+		letter-spacing: var( --cfe-site-footer-text--letter-spacing, var( --cfe-letter-spacing, normal ) );
+		word-spacing: var( --cfe-site-footer-text--word-spacing, var( --cfe-word-spacing, normal ) );
+		line-height: var( --cfe-site-footer-text--line-height, var( --cfe-line-height ) );
+		background-color: var( --cfe-site-footer-text--bg-color, inherit );
+		color: var( --cfe-site-footer-text--text-color, inherit );
 	}
 
 	.copyright {
 		text-align: var( --cfe-copyright--text-align, center );
+		font-family: var( --cfe-copyright--font-family, inherit );
 		font-size: var( --cfe-copyright--font-size, 0.8125rem );
+		font-weight: var( --cfe-copyright--font-weight, inherit );
+		font-style: var( --cfe-copyright--font-style, inherit );
+		font-variant: var( --cfe-copyright--font-variant, inherit );
+		letter-spacing: var( --cfe-copyright--letter-spacing, var( --cfe-letter-spacing, normal ) );
+		word-spacing: var( --cfe-copyright--word-spacing, var( --cfe-word-spacing, normal ) );
+		line-height: var( --cfe-copyright--line-height, var( --cfe-line-height ) );
+		color: var( --cfe-copyright--text-color, var( --cfe-text-color ) );
 	}
 }

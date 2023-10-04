@@ -82,7 +82,7 @@ $close_icon_action_bg: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/20
 	--cfe-form--border-color: #{$apr_orange};
 	--cfe-form--action-border-color: #{$apr_blush};
 	--cfe-button--bg-color: #{$apr_orange};
-	--cfe-button--action-bg-color: #{$apr_blue};
+	--cfe-button--action--bg-color: #{$apr_blue};
 	--cfe-button--action-border-color: #{$apr_blue};
 	--cfe-button--text-color: #{$white};
 
@@ -114,7 +114,7 @@ $close_icon_action_bg: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/20
 		--cfe-heading-primary--link--action--text-color: #{$apr_orange};
 		--cfe-site-nav--list--link--action--text-color: #{$white};
 		--cfe-form--action-border-color: #{$apr_blush};
-		--cfe-button--action-bg-color: #{$apr_blush};
+		--cfe-button--action--bg-color: #{$apr_blush};
 		--cfe-button--action-border-color: #{$apr_blush};
 		--cfe-article--tags-list--action--bg-color: #{$apr_blush};
 	}

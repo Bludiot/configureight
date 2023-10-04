@@ -96,9 +96,9 @@ input[type="image"] {
 
 	&:hover,
 	&:focus {
-		background-color: var( --cfe-button--action-bg-color, var( --cfe-button--bg-color ) );
+		background-color: var( --cfe-button--action--bg-color, var( --cfe-button--bg-color ) );
 		border-color: var( --cfe-button--action-border-color, var( --cfe-button--border-color, ) );
-		color: var( --cfe-button--action-text-color, var( --cfe-button--text-color ) );
+		color: var( --cfe-button--action--text-color, var( --cfe-button--text-color ) );
 	}
 }
 
