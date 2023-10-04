@@ -54,6 +54,7 @@ if ( ! defined( 'THEME_CONFIG' ) ) {
 
 // Set debug mode.
 if ( THEME_CONFIG['debug'] ) {
-	define( 'DEBUG_MODE', true );
+	ini_set( 'html_errors', 1 );
 	ini_set( 'display_errors', 1 );
+	error_reporting( E_ERROR | E_WARNING | E_PARSE | E_NOTICE );
 }
