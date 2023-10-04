@@ -29,13 +29,15 @@
   --cfe-heading-primary--font-size: 2rem;
   --cfe-heading-primary--letter-spacing: -0.015em;
   --cfe-heading-primary--word-spacing: -0.0325em;
+  --cfe-heading-secondary--font-size: 1.375rem;
+  --cfe-heading-secondary--font-weight: 700;
   --cfe-heading-secondary--word-spacing: -0.0325em;
   --cfe-heading--link--text-decoration: none;
   --cfe-box-border-style: solid;
   --cfe-box-border-width: 1px;
   --cfe-box-border-color: #cccccc;
   --cfe-box-border: var( --cfe-box-border-style ) var( --cfe-box-border-width ) var( --cfe-box-border-color );
-  --cfe-text-shadow: 0.05em 0.05em 0.05em rgba( 0,0,0, 0.625 );
+  --cfe-text-shadow: 0.05em 0.05em 0.05em rgba(0, 0, 0, 0.625);
   --cfe-loader--text--font-size: 1.5rem;
   --cfe-loader--text--font-weight: 600;
   --cfe-fieldset--margin: 1em 0 0;

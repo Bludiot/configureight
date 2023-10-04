@@ -233,11 +233,11 @@ body {
 	}
 
 	.post-info-category {
-		font-size: var( --cfe-post-info-category--list--font-size, 1.125rem );
-		font-weight: var( --cfe-post-info-category--list--font-weight );
+		font-size: var( --cfe-post-info-category--list--font-size, var( --cfe-heading-secondary--font-size ) );
+		font-weight: var( --cfe-post-info-category--list--font-weight, var( --cfe-heading-secondary--font-weight ) );
 
 		@media screen and ( max-width: $break_phone ) {
-			font-size: var( --cfe-post-info-category--font-size, 1.5rem );
+			font-size: var( --cfe-post-info-category--phone--font-size, var( --cfe-post-info-category--list--font-size, var( --cfe-heading-secondary--font-size ) ) );
 		}
 	}
 }

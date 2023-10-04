@@ -92,5 +92,5 @@
 }
 
 .page-sidebar ol {
-  padding: var(--cfe-page-sidebar--ol--padding--rtl, 0 1em 0 0);
+  padding: var(--cfe-sidebar--ol--padding--rtl, 0 1em 0 0);
 }

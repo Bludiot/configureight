@@ -2,136 +2,156 @@
 /// Aside/sidebar content
 ///
 
-body {
-
-	&.template-sidebar-bottom {
-		.page-sidebar {
-			width: 100%;
-			display: grid;
-			grid-template-columns: repeat( 3, 1fr );
-			gap:  var( --cfe-spacing--vert, 2rem ) var( --cfe-spacing--horz, 2rem );
-			padding: var( --cfe-page-sidebar-bottom--padding, var( --cfe-spacing--vert, 2rem ) 0 0 0 );
-
-			@media screen and ( max-width: $break_phone ) {
-				grid-template-columns: repeat( 2, 1fr );
-			}
-
-			@media screen and ( max-width: $break_phone ) {
-				display: block;
-			}
-		}
-	}
-
-	&:not( .template-sidebar-bottom ),
-	&.template-sidebar-bottom {
-		.page-sidebar {
-			@media screen and ( max-width: $break_tablet ) {
-				width: 100%;
-				display: grid;
-				grid-template-columns: repeat( 2, 1fr );
-				gap: 1.5rem;
-			}
-
-			@media screen and ( max-width: $break_phone ) {
-				display: block;
-			}
-		}
-	}
-}
-
 .page-sidebar {
-	position: var( --cfe-sidebar--default--position );
-	display: var( --cfe-sidebar--default--display, flex );
-	flex-direction: var( --cfe-sidebar--default--flex-direction, column );
-	width: var( --cfe-sidebar--default--width, 320px );
-	max-width: var( --cfe-sidebar--default--max-width );
-	padding: var( --cfe-page-sidebar--default--padding, var( --cfe-spacing--vert, 2rem ) 0 0 0 );
-	background-color: var( --cfe-page-sidebar--bg-color, inherit );
-	color: var( --cfe-page-sidebar--text-color, inherit );
+	position: var( --cfe-sidebar--default--position, var( --cfe-sidebar--position ) );
+	display: var( --cfe-sidebar--default--display, var( --cfe-sidebar--display, flex ) );
+	flex-direction: var( --cfe-sidebar--default--flex-direction, var( --cfe-sidebar--flex-direction, column ) );
+	flex-wrap: var( --cfe-sidebar--default--flex-wrap, var( --cfe-sidebar--flex-wrap ) );
+	align-items: var( --cfe-sidebar--default--align-items, var( --cfe-sidebar--align-items ) );
+	justify-content: var( --cfe-sidebar--default--justify-content, var( --cfe-sidebar--justify-content ) );
+	width: var( --cfe-sidebar--default--width, var( --cfe-sidebar--width, 320px ) );
+	max-width: var( --cfe-sidebar--default--max-width, var( --cfe-sidebar--max-width ) );
+	margin: var( --cfe-sidebar--default--margin, var( --cfe-sidebar--margin ) );
+	padding: var( --cfe-sidebar--default--padding, var( --cfe-sidebar--padding, var( --cfe-spacing--vert, 2rem ) 0 0 0 ) );
+	font-family: var( --cfe-sidebar--font-family, inherit );
+	font-size: var( --cfe-sidebar--font-size, inherit );
+	font-weight: var( --cfe-sidebar--font-weight, inherit );
+	font-style: var( --cfe-sidebar--font-style, inherit );
+	font-variant: var( --cfe-sidebar--font-variant, inherit );
+	line-height: var( --cfe-sidebar--line-height, inherit );
+	letter-spacing: var( --cfe-sidebar--letter-spacing, inherit );
+	word-spacing: var( --cfe-sidebar--word-spacing, inherit );
+	text-decoration: var( --cfe-sidebar--text-decoration, inherit );
+	text-transform: var( --cfe-sidebar--text-transform, inherit );
+	background-color: var( --cfe-sidebar--default--bg-color, var( --cfe-sidebar--bg-color, inherit ) );
+	color: var( --cfe-sidebar--default--text-color, var( --cfe-sidebar--text-color, inherit ) );
+
+	@media screen and ( max-width: $break_tablet ) {
+		display: var( --cfe-sidebar--bottom--display, var( --cfe-sidebar--display, grid ) );
+		grid-template-columns: var( --cfe-sidebar--bottom--grid-template-columns, var( --cfe-sidebar--grid-template-columns, repeat( 2, 1fr ) ) );
+		gap:  var( --cfe-sidebar--bottom--gap, var( --cfe-spacing--vert, 2rem ) var( --cfe-spacing--horz, 2rem ) );
+		width: var( --cfe-sidebar--bottom--width, var( --cfe-sidebar--width, 100% ) );
+		max-width: var( --cfe-sidebar--bottom--max-width, var( --cfe-sidebar--max-width ) );
+		padding: var( --cfe-sidebar--bottom--padding, var( --cfe-sidebar--padding, var( --cfe-spacing--vert, 2rem ) 0 0 0 ) );
+		background-color: var( --cfe-sidebar--bottom--bg-color, var( --cfe-sidebar--bg-color, inherit ) );
+		color: var( --cfe-sidebar--bottom--text-color, var( --cfe-sidebar--text-color, inherit ) );
+	}
+
+	@media screen and ( max-width: $break_phone ) {
+		display: var( --cfe-sidebar--bottom--tablet--display, var( --cfe-sidebar--bottom--display, var( --cfe-sidebar--display, block ) ) );
+	}
 
 	.plugin {
-		width: 100%;
-		margin: var( --cfe-page-sidebar--plugin--margin, 1.5rem 0 0 0 );
-		order: 100;
+		width: var( --cfe-sidebar--plugin--width, 100% );
+		margin: var( --cfe-sidebar--plugin--margin, var( --cfe-spacing--vert, 2rem ) 0 0 0 );
+		order: var( --cfe-sidebar--plugin--order, 100 );
 
 		&.plugin-search {
-			order: 0;
+			order: var( --cfe-sidebar--plugin--search--order, 0 );
 
 			.plugin-content {
-				display: flex;
-				flex-wrap: nowrap;
-				gap: 0 0.25rem;
+				display: var( --cfe-sidebar--plugin--search--display, flex );
+				flex-wrap: var( --cfe-sidebar--plugin--search--flex-wrap, nowrap );
+				gap: var( --cfe-sidebar--plugin--search--gap, 0 0.25rem );
 			}
 
 			input[type="button"] {
 				text-indent: -999em;
-				display: inline-block;
-				background-repeat: no-repeat;
-				background-size: 1.25em;
-				background-position: center center;
-				width: 1.5em;
-				height: 1.5em;
-				padding: 1.5em;
-				background-image: url( '#{$search_icon_bg}' );
+				position: var( --cfe-search--button--position );
+				display: var( --cfe-search--button--display, inline-block );
+				width: var( --cfe-search--button--width, 1.5em );
+				height: var( --cfe-search--button--height, 1.5em );
+				padding: var( --cfe-search--button--padding, 1.5em );
+				background-repeat: var( --cfe-search--button--background-repeat, no-repeat );
+				background-size: var( --cfe-search--button--background-size, 1.25em );
+				background-position: var( --cfe-search--button--background-position, center center );
+				background-image: var( --cfe-search--button--background-image, url( '#{$search_icon_bg}' ) );
 
 				&:hover,
 				&:focus {
-					background-image: url( '#{$search_icon_action_bg}' );
+					background-image: var( --cfe-search--button--action--background-image, url( '#{$search_icon_action_bg}' ) );
 				}
 			}
 		}
 
 		&.plugin-categories {
-			order: 1;
+			order: var( --cfe-sidebar--plugin--categories--order, 1 );
 		}
 
 		&.plugin-tags {
-			order: 2;
+			order: var( --cfe-sidebar--plugin--tags--order, 2 );
 
 			ul {
-				display: flex;
-				flex-wrap: wrap;
-				gap: 0 0.75em;
+				display: var( --cfe-sidebar--plugin--tags--list--display, flex );
+				flex-direction: var( --cfe-sidebar--plugin--tags--list--flex-direction );
+				align-items: var( --cfe-sidebar--plugin--tags--list--align-items );
+				justify-content: var( --cfe-sidebar--plugin--tags--list--justify-content );
+				flex-wrap: var( --cfe-sidebar--plugin--tags--list--flex-wrap, wrap );
+				gap: var( --cfe-sidebar--plugin--tags--list--gap, 0 0.75em );
 			}
 		}
 	}
 
 	h2,
 	h3 {
-		margin: var( --cfe-page-sidebar--heading--margin, 0 );
-		font-size: var( --cfe-page-sidebar--heading--font-size, 1.375rem );
-		font-weight: var( --cfe-page-sidebar--heading--font-weight, 700 );
-		word-spacing: -0.0325em;
-		letter-spacing: -0.015em;
+		margin: var( --cfe-sidebar--heading--margin, 0 );
+		font-family: var( --cfe-sidebar--heading--font-family, var( --cfe-heading-secondary--font-family ) );
+		font-size: var( --cfe-sidebar--heading--font-size, var( --cfe-heading-secondary--font-size ) );
+		font-weight: var( --cfe-sidebar--heading--font-weight, var( --cfe-heading-secondary--font-weight ) );
+		font-style: var( --cfe-sidebar--heading--font-style, var( --cfe-heading-secondary--font-style ) );
+		font-variant: var( --cfe-sidebar--heading--font-variant, var( --cfe-heading-secondary--font-variant ) );
+		line-height: var( --cfe-sidebar--heading--line-height, var( --cfe-heading-secondary--line-height ) );
+		letter-spacing: var( --cfe-sidebar--heading--letter-spacing, var( --cfe-heading-secondary--letter-spacing, -0.015em ) );
+		word-spacing: var( --cfe-sidebar--heading--word-spacing, var( --cfe-heading-secondary--word-spacing, -0.0325em ) );
+		text-decoration: var( --cfe-sidebar--heading--text-decoration, var( --cfe-heading-secondary--text-decoration ) );
+		text-transform: var( --cfe-sidebar--heading--text-transform, var( --cfe-heading-secondary--text-transform ) );
 	}
 
 	a {
-		font-weight: var( --cfe-page-sidebar--link--font-weight );
-		color: var( --cfe-page-sidebar--link--text-color, var( --cfe-link--text-color ) );
+		font-size: var( --cfe-sidebar--link--font-size, var( --cfe-link--font-size, inherit ) );
+		font-weight: var( --cfe-sidebar--link--font-weight, var( --cfe-link--font-weight, inherit ) );
+		font-style: var( --cfe-sidebar--link--font-style, var( --cfe-link--font-style, normal ) );
+		font-variant: var( --cfe-sidebar--link--font-variant, var( --cfe-link--font-variant, normal ) );
+		text-decoration: var( --cfe-sidebar--link--text-decoration, var( --cfe-link--text-decoration, underline ) );
+		text-transform: var( --cfe-sidebar--link--text-transform, var( --cfe-link--text-transform, inherit ) );
+		color: var( --cfe-sidebar--link--text-color, var( --cfe-link--text-color ) );
 
 		&:hover,
 		&:focus {
-			color: var( --cfe-page-sidebar--link--action--text-color, var( --cfe-link--action--text-color ) );
-		}
-
-		&:visited,
-		&:active {
-			color: var( --cfe-page-sidebar--link--text-color, var( --cfe-link--text-color ) );
-
-			&:hover,
-			&:focus {
-				color: var( --cfe-page-sidebar--link--action--text-color, var( --cfe-link--action--text-color ) );
-			}
+			color: var( --cfe-sidebar--link--action--text-color, var( --cfe-link--action--text-color ) );
 		}
 	}
 
 	ul {
-		padding: var( --cfe-page-sidebar--ul--padding );
-		list-style: var( --cfe-page-sidebar--ul--list-style, none );
+		margin: var( --cfe-sidebar--ul--margin, var( --cfe-sidebar--list--margin ) );
+		padding: var( --cfe-sidebar--ul--padding, var( --cfe-sidebar--list--padding ) );
+		list-style: var( --cfe-sidebar--ul--list-style, var( --cfe-sidebar--list--list-style, none ) );
 	}
 
 	ol {
-		padding: var( --cfe-page-sidebar--ol--padding, 0 0 0 1em );;
+		margin: var( --cfe-sidebar--ol--margin, var( --cfe-sidebar--list--margin ) );
+		padding: var( --cfe-sidebar--ol--padding, var( --cfe-sidebar--list--padding, 0 0 0 1em ) );
+	}
+}
+
+.template-sidebar-bottom {
+	.page-sidebar {
+		display: var( --cfe-sidebar--bottom--display, var( --cfe-sidebar--display, grid ) );
+		grid-template-columns: var( --cfe-sidebar--bottom--grid-template-columns, var( --cfe-sidebar--grid-template-columns, repeat( 3, 1fr ) ) );
+		gap:  var( --cfe-sidebar--bottom--gap, var( --cfe-spacing--vert, 2rem ) var( --cfe-spacing--horz, 2rem ) );
+		width: var( --cfe-sidebar--bottom--width, var( --cfe-sidebar--width, 100% ) );
+		max-width: var( --cfe-sidebar--bottom--max-width, var( --cfe-sidebar--max-width ) );
+		padding: var( --cfe-sidebar--bottom--padding, var( --cfe-sidebar--padding, var( --cfe-spacing--vert, 2rem ) 0 0 0 ) );
+		background-color: var( --cfe-sidebar--bottom--bg-color, var( --cfe-sidebar--bg-color, inherit ) );
+		color: var( --cfe-sidebar--bottom--text-color, var( --cfe-sidebar--text-color, inherit ) );
+
+		@media screen and ( max-width: $break_tablet ) {
+			grid-template-columns: var( --cfe-sidebar--bottom--tablet--grid-template-columns, var( --cfe-sidebar--bottom--grid-template-columns, var( --cfe-sidebar--grid-template-columns, repeat( 2, 1fr ) ) ) );
+		}
+
+		@media screen and ( max-width: $break_phone ) {
+			display: var( --cfe-sidebar--bottom--tablet--display, var( --cfe-sidebar--bottom--display, var( --cfe-sidebar--display, block ) ) );
+		}
 	}
 }
 

@@ -53,7 +53,7 @@
   --cfe-article--tags-list--font-family: Rokkitt, Hoefler Text, Garamond, serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
   --cfe-article--tags-list--font-size: 1rem;
   --cfe-article--tags-list--font-weight: 500;
-  --cfe-page-sidebar--heading--font-size: 1.625rem;
-  --cfe-page-sidebar--heading--font-weight: 750;
-  --cfe-page-sidebar--link--font-weight: 500;
+  --cfe-sidebar--heading--font-size: 1.625rem;
+  --cfe-sidebar--heading--font-weight: 750;
+  --cfe-sidebar--link--font-weight: 500;
 }
