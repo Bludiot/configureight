@@ -994,10 +994,6 @@ h3 + .search-form {
   justify-content: center;
   color: var(--cfe-cover--title--text-color, #ffffff);
 }
-.page-cover.page-cover-singular figcaption .cover-header {
-  z-index: 100;
-  text-align: center;
-}
 
 .cover-header {
   position: relative;
@@ -1008,6 +1004,8 @@ h3 + .search-form {
   align-items: center;
   justify-content: center;
   padding: 0 2rem 0 2rem;
+  z-index: 100;
+  text-align: center;
   pointer-events: none;
 }
 .cover-header * {
