@@ -52,6 +52,11 @@ function page_loader() {
 	// Access global variables.
 	global $L;
 
+	// Return null if in debug mode.
+	if ( THEME_CONFIG['debug'] ) {
+		return null;
+	}
+
 	// Return null if config file is false.
 	if ( ! THEME_CONFIG['load_screen']['use_loader'] ) {
 		return null;
