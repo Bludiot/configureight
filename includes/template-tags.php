@@ -122,6 +122,7 @@ function scheme_stylesheet( $type = '' ) {
 	// Get options from the config file.
 	$colors = THEME_CONFIG['schemes']['colors'];
 	$fonts  = THEME_CONFIG['schemes']['fonts'];
+	$html   = '';
 
 	// Get minified if not in debug mode.
 	$suffix = asset_min();
@@ -150,6 +151,10 @@ function load_font_files() {
 	$valid = [ 'woff', 'woff2', 'otf', 'ttf' ];
 	$files = scandir( THEME_DIR . "assets/fonts/{$fonts}/" );
 	$tags  = '';
+
+	if ( ! $fonts ) {
+		return null;
+	}
 
 	foreach ( $files as $font => $file ) {
 
@@ -1104,7 +1109,7 @@ function search_form( $defaults = [ 'label' => null, 'label_text' => '', 'button
 	}
 
 	$button = $options['button'];
-	if ( ! is_null( $defaults['button'] ) ) {
+	if ( array_key_exists( 'button', $defaults ) && ! is_null( $defaults['button'] ) ) {
 		$button = $defaults['button'];
 	}
 

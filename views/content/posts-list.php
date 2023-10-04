@@ -37,6 +37,24 @@ if ( empty( $content) ) {
 	return;
 }
 
+// Category icon.
+$cat_icon = '';
+if ( THEME_CONFIG['loop']['show_icons'] ) {
+	$cat_icon = sprintf(
+		'<span class="theme-icon category-icon loop-category-icon loop-full-category-icon" role="icon">%s</span>',
+		icon( 'folder' )
+	);
+}
+
+// Tags icon.
+$tags_icon = '';
+if ( THEME_CONFIG['loop']['show_icons'] ) {
+	$tags_icon = sprintf(
+		'<span class="theme-icon tags-icon loop-tags-icon loop-full-tags-icon" role="icon">%s</span>',
+		icon( 'tag' )
+	);
+}
+
 echo posts_loop_header();
 
 // If posts, print for each.
@@ -72,14 +90,17 @@ if ( $post->thumbCoverImage() ) {
 }
 
 // Tags list.
-$tags_list = function() use ( $post ) {
+$tags_list = function() use ( $post, $tags_icon ) {
 
 	$tags  = $post->tags( true );
 	$links = [];
 	$sep   = ' ';
 
 	if ( $post->tags( true ) ) {
-		$html = '<ul class="inline-list tags-list">';
+		$html = sprintf(
+			'%s<ul class="post-info-tags inline-list tags-list">',
+			$tags_icon
+		);
 		foreach ( $tags as $tagKey => $tagName ) {
 
 			$links[] = sprintf(
