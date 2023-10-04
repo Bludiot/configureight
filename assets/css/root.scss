@@ -65,9 +65,9 @@
 	--cfe-form-element--padding: 0.5em 1em;
 	--cfe-form-element--border: solid 1px var( --cfe-form--border-color );
 	--cfe-label-field--margin: 0;
-	--cfe-form--font-weight: 400;
+	--cfe-form-element--font-weight: 400;
 	--cfe-form--border-color: #{$light_gray};
-	--cfe-form--action-border-color: #{$blue};
+	--cfe-form--action--border-color: #{$blue};
 	--cfe-form--placeholder-color: #{$light_gray};
 
 	--cfe-textarea--min-height: 200px;

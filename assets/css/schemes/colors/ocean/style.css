@@ -30,7 +30,7 @@
   --cfe-selection--bg-color: #254d88;
   --cfe-selection--text-color: #f8fafd;
   --cfe-form--border-color: #254d88;
-  --cfe-form--action-border-color: #467ac7;
+  --cfe-form--action--border-color: #467ac7;
   --cfe-button--bg-color: #254d88;
   --cfe-button--action--bg-color: #467ac7;
   --cfe-button--action-border-color: #467ac7;
@@ -57,7 +57,7 @@
     --cfe-heading-primary--link--text-color: #f8fafd;
     --cfe-heading-primary--link--action--text-color: #467ac7;
     --cfe-site-nav--list--link--action--text-color: #f8fafd;
-    --cfe-form--action-border-color: #467ac7;
+    --cfe-form--action--border-color: #467ac7;
     --cfe-button--action--bg-color: #467ac7;
     --cfe-button--action-border-color: #467ac7;
     --cfe-article--tags-list--action--bg-color: #467ac7;
