@@ -110,9 +110,10 @@ if ( is_blog_page() ) {
 
 		<?php Theme :: plugins( 'pageEnd' ); ?>
 
-		<?php include( THEME_DIR . 'views/footer/footer.php' ); ?>
-
 	</div>
+
+	<?php include( THEME_DIR . 'views/footer/footer.php' ); ?>
+
 	<?php if ( THEME_CONFIG['to_top'] ) : ?>
 	<a href="#" id="to-top" class="hide-if-no-js">
 		<?php echo icon( 'angle-up' ); ?>
