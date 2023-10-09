@@ -1130,7 +1130,7 @@ function search_form( $defaults = [ 'label' => null, 'label_text' => '', 'button
  * Loop pagination
  *
  * @since  1.0.0
- * @global object $L Language class
+ * @global object $L Language class.
  * @global object $url Url class.
  * @return mixed Returns the navigation markup or false.
  */
@@ -1217,6 +1217,7 @@ function footer_scripts() {
 	$suffix = asset_min();
 
 	echo \Theme :: js( "assets/js/fitvids{$suffix}.js" );
+	echo \Theme :: js( "assets/js/lightbox{$suffix}.js" );
 	echo \Theme :: js( "assets/js/sticky{$suffix}.js" );
 	echo \Theme :: js( "assets/js/theme{$suffix}.js" );
 }

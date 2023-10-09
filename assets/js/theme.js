@@ -38,6 +38,13 @@
 			}
 		}
 
+		// Lightbox.
+		if ( $.isFunction( $.fn.fancybox ) ) {
+			$( 'img' ).wrap( function() {
+				return '<a href=' + this.src + ' data-fancybox></a>';
+			} );
+		}
+
 		// Scroll to top button/link.
 		$( '#to-top' ).click( function(e) {
 			e.preventDefault();

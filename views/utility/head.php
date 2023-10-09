@@ -84,6 +84,7 @@ if ( has_cover() ) {
 	// Core frontend stylesheets.
 	echo Theme :: css(
 		[
+			"assets/css/vendor/lightbox{$suffix}.css",
 			"assets/css/root{$suffix}.css",
 			"assets/css/style{$suffix}.css"
 		],
