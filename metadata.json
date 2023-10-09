@@ -1,10 +1,11 @@
 {
 	"author"      : "Controlled Chaos",
 	"email"       : "santa@north.pole",
-	"website"     : "https://github.com/ControlledChaos/bs-bludit",
+	"website"     : "https://github.com/ControlledChaos/configureight",
 	"version"     : "1.0.0",
-	"releaseDate" : "2018-09-23",
+	"releaseDate" : "",
 	"license"     : "Nope",
-	"compatible"  : "3.0",
-	"notes"       : "A theme for Bludit CMS with many configurable options."
+	"compatible"  : "3.15.0",
+	"notes"       : "A theme for Bludit CMS with many configurable options.",
+	"plugin"      : "configureight"
 }
