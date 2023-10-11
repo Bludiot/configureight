@@ -12,7 +12,7 @@ namespace CFE_Theme;
 
 // Stop if accessed directly.
 if ( ! defined( 'BLUDIT' ) ) {
-	die( $L->get( 'direct-access' ) );
+	die( 'You are not allowed direct access to this file.' );
 }
 
 /**
