@@ -12,6 +12,8 @@
 
 // Import namespaced functions.
 use function CFE_Func\{
+	url,
+	lang,
 	blog_url
 };
 use function CFE_Tags\{
@@ -26,14 +28,14 @@ if ( ! isset( $_GET['page'] ) ) {
 }
 
 // Get slug for URLs.
-if ( 'blog' == $url->whereAmI() ) {
+if ( 'blog' == url()->whereAmI() ) {
 	$slug = blog_url();
-} elseif ( 'category' == $url->whereAmI() ) {
-	$slug = DOMAIN_CATEGORIES . $url->slug();
-} elseif ( 'tag' == $url->whereAmI() ) {
-	$slug = DOMAIN_TAGS . $url->slug();
+} elseif ( 'category' == url()->whereAmI() ) {
+	$slug = DOMAIN_CATEGORIES . url()->slug();
+} elseif ( 'tag' == url()->whereAmI() ) {
+	$slug = DOMAIN_TAGS . url()->slug();
 } else {
-	$slug = DOMAIN_BASE . $url->slug();
+	$slug = DOMAIN_BASE . url()->slug();
 }
 
 if ( Paginator :: numberOfPages() > 1 ) :
@@ -43,12 +45,12 @@ if ( Paginator :: numberOfPages() > 1 ) :
 	<ul class="nav-list pagination-list pagination-numerical">
 		<?php if ( $getPage != 1 ) { ?>
 		<li>
-			<a class="page-end page-first" href="<?php echo $slug; ?>?page=1"><span class="page-icon"><?php echo icon( 'angles-left' ); ?></span> <?php $L->p( 'First' ); ?></a>
+			<a class="page-end page-first" href="<?php echo $slug; ?>?page=1"><span class="page-icon"><?php echo icon( 'angles-left' ); ?></span> <?php lang()->p( 'First' ); ?></a>
 		</li>
 		<?php } ?>
 		<?php if ( Paginator :: showPrev() ) { ?>
 		<li>
-			<a class="page-nav page-prev" href="<?php echo Paginator :: previousPageUrl(); ?>" rel="prev"><span class="page-icon"><?php echo icon( 'angle-left' ); ?></span><span class="screen-reader-text"><?php $L->p( 'Previous' ); ?></span></a>
+			<a class="page-nav page-prev" href="<?php echo Paginator :: previousPageUrl(); ?>" rel="prev"><span class="page-icon"><?php echo icon( 'angle-left' ); ?></span><span class="screen-reader-text"><?php lang()->p( 'Previous' ); ?></span></a>
 		</li>
 		<?php } ?>
 		<?php if ( $getPage >= 3 ) { ?>
@@ -78,12 +80,12 @@ if ( Paginator :: numberOfPages() > 1 ) :
 		<?php } ?>
 		<?php if ( Paginator :: showNext() ) { ?>
 		<li>
-			<a class="page-nav page-next" href="<?php echo Paginator :: nextPageUrl(); ?>" rel="next"><span class="page-icon"><?php echo icon( 'angle-right' ); ?></span><span class="screen-reader-text"><?php $L->p( 'Next' ); ?></span></a>
+			<a class="page-nav page-next" href="<?php echo Paginator :: nextPageUrl(); ?>" rel="next"><span class="page-icon"><?php echo icon( 'angle-right' ); ?></span><span class="screen-reader-text"><?php lang()->p( 'Next' ); ?></span></a>
 		</li>
 		<?php } ?>
 		<?php if ( Paginator :: numberOfPages() != $getPage ) { ?>
 		<li>
-			<a class="page-end page-last" href="<?php echo $slug . '?page=' . Paginator :: numberOfPages(); ?>"><?php $L->p( 'Last' ); ?> <span class="page-icon"><?php echo icon( 'angles-right' ); ?></span></a>
+			<a class="page-end page-last" href="<?php echo $slug . '?page=' . Paginator :: numberOfPages(); ?>"><?php lang()->p( 'Last' ); ?> <span class="page-icon"><?php echo icon( 'angles-right' ); ?></span></a>
 		</li>
 		<?php } ?>
 

@@ -11,6 +11,10 @@
  */
 
 // Import namespaced functions.
+use function CFE_Func\{
+	lang,
+	blog_url
+};
 use function CFE_Tags\{
 	prev_key,
 	next_key
@@ -26,7 +30,7 @@ if ( prev_key() || next_key() ) :
 		$prev_page = new \Page( prev_key() );
 	?>
 		<li id="prev-post">
-			<a class="button" href="<?php echo $prev_page->permalink(); ?>" title="<?php echo $prev_page->title(); ?>" rel="prev"><?php echo $L->get( 'Previous' ); ?></a>
+			<a class="button" href="<?php echo $prev_page->permalink(); ?>" title="<?php echo $prev_page->title(); ?>" rel="prev"><?php echo lang()->get( 'Previous' ); ?></a>
 		</li>
 	<?php
 	endif;
@@ -35,7 +39,7 @@ if ( prev_key() || next_key() ) :
 		$next_page = new \Page( next_key() );
 	?>
 		<li id="next-post">
-			<a class="button" href="<?php echo $next_page->permalink(); ?>" title="<?php echo $next_page->title(); ?>" rel="next"><?php echo $L->get( 'Next' ); ?></a>
+			<a class="button" href="<?php echo $next_page->permalink(); ?>" title="<?php echo $next_page->title(); ?>" rel="next"><?php echo lang()->get( 'Next' ); ?></a>
 		</li>
 	<?php endif; ?>
 	</ul>

@@ -13,19 +13,26 @@
  * @since      1.0.0
  */
 
+// Import namespaced functions.
+use function CFE_Func\{
+	url,
+	lang,
+	page
+};
+
 // Edit link.
 $edit_link = '';
-if ( 'page' == $url->whereAmI() ) {
+if ( 'page' == url()->whereAmI() ) {
 	$edit_link = sprintf(
 		'<a href="%s">%s</a>',
-		DOMAIN_ADMIN . 'edit-content/' . $page->slug(),
-		$L->get( 'edit-link' )
+		DOMAIN_ADMIN . 'edit-content/' . page()->slug(),
+		lang()->get( 'edit-link' )
 	);
 }
 
  // Get a username or fallback.
 $user = new User( Session :: get( 'username' ) );
-$name = $L->get( 'profile-link-default' );
+$name = lang()->get( 'profile-link-default' );
 
 if ( $user->nickname() ) {
 	$name = $user->nickname();
@@ -53,9 +60,9 @@ if ( $user->profilePicture() ) {
 ?>
 <section class="user-toolbar" data-user-toolbar>
 	<div class="user-action">
-		<a href="<?php echo DOMAIN_ADMIN;?>" target="_blank"><?php $L->p( 'dashboard-link' ); ?></a>
+		<a href="<?php echo DOMAIN_ADMIN;?>" target="_blank"><?php lang()->p( 'dashboard-link' ); ?></a>
 		<?php echo $edit_link; ?>
-		<a href="<?php echo DOMAIN_ADMIN . 'new-content';?>"><?php $L->p( 'new-content-link' ); ?></a>
+		<a href="<?php echo DOMAIN_ADMIN . 'new-content';?>"><?php lang()->p( 'new-content-link' ); ?></a>
 	</div>
 	<div class="user-info">
 		<a id="profile-link" href="<?php echo $profile; ?>">

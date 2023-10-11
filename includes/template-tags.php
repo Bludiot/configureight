@@ -10,22 +10,27 @@
 
 namespace CFE_Tags;
 
+// Stop if accessed directly.
+if ( ! defined( 'BLUDIT' ) ) {
+	die( 'You are not allowed direct access to this file.' );
+}
+
 // Alias namespaces.
 use CFE\Classes\{
 	Front as Front
 };
 
-// Stop if accessed directly.
-if ( ! defined( 'BLUDIT' ) ) {
-	die( $L->get( 'direct-access' ) );
-}
-
 // Import namespaced functions.
 use function CFE_Func\{
+	site,
+	url,
+	lang,
+	page,
 	is_rtl,
 	user_logged_in,
 	text_replace,
 	hex_to_rgb,
+	theme,
 	favicon_exists,
 	loop_data,
 	blog_is_static,
@@ -44,13 +49,9 @@ use function CFE_Func\{
  * (web page) is fully loaded.
  *
  * @since  1.0.0
- * @global object $L Language class
  * @return mixed Returns the screen markup or null.
  */
 function page_loader() {
-
-	// Access global variables.
-	global $L;
 
 	// Return null if in debug mode.
 	if ( THEME_CONFIG['debug'] ) {
@@ -230,15 +231,9 @@ function config_styles() {
  * For the class attribute on the `<body>` element.
  *
  * @since  1.0.0
- * @global object $page Page class.
- * @global object $site Site class.
- * @global object $url Url class.
  * @return string Returns a string of classes.
  */
 function body_classes() {
-
-	// Access global variables.
-	global $page, $site, $url;
 
 	// Set up classes.
 	$classes = [];
@@ -261,7 +256,7 @@ function body_classes() {
 	}
 
 	// User toolbar.
-	if ( user_toolbar() ) {
+	if ( theme()->show_user_toolbar() ) {
 		$classes[] = 'toolbar-active';
 	}
 
@@ -270,17 +265,17 @@ function body_classes() {
 	$classes[]    = "main-nav-{$nav_position}";
 
 	// Home page.
-	if ( 'home' == $url->whereAmI() ) {
+	if ( 'home' == url()->whereAmI() ) {
 		$classes[] = 'home';
 
 		// If home is not static.
-		if ( ! $site->homepage() ) {
+		if ( ! site()->homepage() ) {
 			$classes[] = 'loop';
 		}
 	}
 
 	// If loop, not page.
-	if ( 'page' != $url->whereAmI() ) {
+	if ( 'page' != url()->whereAmI() ) {
 
 		$classes[] = 'loop';
 
@@ -310,7 +305,7 @@ function body_classes() {
 	}
 
 	// If loop, not home.
-	if ( 'blog' == $url->whereAmI() ) {
+	if ( 'blog' == url()->whereAmI() ) {
 
 		$classes[] = 'loop-not-home';
 
@@ -337,10 +332,10 @@ function body_classes() {
 	}
 
 	// If singular content.
-	if ( 'page' == $url->whereAmI() ) {
+	if ( 'page' == url()->whereAmI() ) {
 
 		// If static content.
-		if ( $page->isStatic() ) {
+		if ( page()->isStatic() ) {
 			$classes[] = 'page';
 
 		// If not static content.
@@ -351,18 +346,18 @@ function body_classes() {
 
 	// Page templates.
 	if (
-		'search' != $url->whereAmI() &&
-		'page' == $url->whereAmI() &&
-		! empty( $page->template() ) &&
-		! ctype_space( $page->template() )
+		'search' != url()->whereAmI() &&
+		'page' == url()->whereAmI() &&
+		! empty( page()->template() ) &&
+		! ctype_space( page()->template() )
 	) {
-		if ( $page->template() ) {
-			$templates = explode( ' ', $page->template() );
+		if ( page()->template() ) {
+			$templates = explode( ' ', page()->template() );
 
 			foreach ( $templates as $template ) {
 
 				// Exclude `full-cover` template if no cover image or paged.
-				if ( str_contains( $page->template(), 'full-cover' ) ) {
+				if ( str_contains( page()->template(), 'full-cover' ) ) {
 					if ( ! has_cover() ) {
 						$classes[] = '';
 					} elseif ( isset( $_GET['page'] ) ) {
@@ -401,57 +396,51 @@ function body_classes() {
  * Conditional Schema attributes for `<div id="page"`.
  *
  * @since  1.0.0
- * @global object $page Page class.
- * @global object $site Site class.
- * @global object $url Url class.
  * @return string Returns the relevant itemtype.
  */
 function page_schema() {
 
-	// Access global variables.
-	global $page, $site, $url;
-
-	if ( 'search' == $url->whereAmI() ) {
+	if ( 'search' == url()->whereAmI() ) {
 			echo 'SearchResultsPage';
 			return;
 	}
 
 	// Change page slugs and template names as needed.
-	if ( str_contains( $page->template(), 'profile' ) ) {
+	if ( str_contains( page()->template(), 'profile' ) ) {
 		$itemtype = 'ProfilePage';
 
 	} elseif (
-		'about'    == $page->slug() ||
-		'about-us' == $page->slug() ||
-		str_contains( $page->template(), 'about' )
+		'about'    == page()->slug() ||
+		'about-us' == page()->slug() ||
+		str_contains( page()->template(), 'about' )
 	) {
 		$itemtype = 'AboutPage';
 
 	} elseif (
-		'contact'    == $page->slug() ||
-		'contact-us' == $page->slug() ||
-		str_contains( $page->template(), 'contact' )
+		'contact'    == page()->slug() ||
+		'contact-us' == page()->slug() ||
+		str_contains( page()->template(), 'contact' )
 	) {
 		$itemtype = 'ContactPage';
 
 	} elseif (
-		'faq'  == $page->slug() ||
-		'faqs' == $page->slug() ||
-		str_contains( $page->template(), 'faq' )
+		'faq'  == page()->slug() ||
+		'faqs' == page()->slug() ||
+		str_contains( page()->template(), 'faq' )
 	) {
 		$itemtype = 'QAPage';
 
 	} elseif (
-		'cart'          == $page->slug() ||
-		'shopping-cart' == $page->slug() ||
-		str_contains( $page->template(), 'cart' ) ||
-		str_contains( $page->template(), 'checkout' )
+		'cart'          == page()->slug() ||
+		'shopping-cart' == page()->slug() ||
+		str_contains( page()->template(), 'cart' ) ||
+		str_contains( page()->template(), 'checkout' )
 	) {
 		$itemtype = 'CheckoutPage';
 
 	} elseif (
-		'blog'   == $url->whereAmI() ||
-		( 'home' == $url->whereAmI() && ! $site->homepage() )
+		'blog'   == url()->whereAmI() ||
+		( 'home' == url()->whereAmI() && ! site()->homepage() )
 	) {
 		if ( 'news' === THEME_CONFIG['loop']['style'] ) {
 			$itemtype = 'WebPage';
@@ -471,20 +460,13 @@ function page_schema() {
  * Returns the page title and description
  *
  * @since  1.0.0
- * @global object $L Language class
- * @global object $page Page class
- * @global object $site Site class
- * @global object $url Url class
  * @return string Returns the header markup.
  */
 function page_header() {
 
-	// Access global variables.
-	global $L, $page, $site, $url;
-
 	$wrapper     = 'header';
 	$heading     = 'h1';
-	$description = $page->description();
+	$description = page()->description();
 	$sticky_icon = '';
 
 	/**
@@ -499,14 +481,14 @@ function page_header() {
 	}
 
 	// Site title is `h1` on front page; only one per page.
-	if ( 'page' == $url->whereAmI() ) {
-		if ( $page->key() == $site->getField( 'homepage' ) ) {
+	if ( 'page' == url()->whereAmI() ) {
+		if ( page()->key() == site()->getField( 'homepage' ) ) {
 			$heading = 'h2';
 		}
 	}
 
 	// If the page is sticky.
-	if ( $page->sticky() ) {
+	if ( page()->sticky() ) {
 		$sticky_icon = sticky_icon( 'false', 'sticky-icon-heading' ) . ' ';
 	}
 
@@ -518,7 +500,7 @@ function page_header() {
 		'<%s class="page-title">%s%s</%s>',
 		$heading,
 		$sticky_icon,
-		$page->title(),
+		page()->title(),
 		$heading
 	);
 
@@ -539,55 +521,48 @@ function page_header() {
  * Returns the page title and description
  *
  * @since  1.0.0
- * @global object $L Language class
- * @global object $page Page class
- * @global object $site Site class
- * @global object $url Url class
  * @return string Returns the header markup.
  */
 function cover_header() {
 
-	// Access global variables.
-	global $L, $page, $site, $url;
-
 	$loop_data   = loop_data();
 	$heading_el  = 'h1';
-	$page_title  = $page->title();
-	$description = $page->description();
+	$page_title  = page()->title();
+	$description = page()->description();
 
 	// Site title is `h1` on front page; only one per page.
-	if ( 'page' == $url->whereAmI() ) {
-		if ( $page->key() == $site->getField( 'homepage' ) ) {
+	if ( 'page' == url()->whereAmI() ) {
+		if ( page()->key() == site()->getField( 'homepage' ) ) {
 			$heading_el = 'h2';
 		}
 	}
 
 	// Conditional heading & description.
 	if (
-		'blog' == $url->whereAmI() &&
+		'blog' == url()->whereAmI() &&
 		'page' == $loop_data['location']
 	) {
 		$class       = 'loop-page-description';
 		$page_title     = $loop_data['title'];
 		$description = $loop_data['description'];
 
-	} elseif ( 'blog' == $url->whereAmI() ) {
+	} elseif ( 'blog' == url()->whereAmI() ) {
 		$class       = 'loop-page-description';
 		$page_title     = ucwords( $loop_data['slug'] . $blog_page );
 		$description = sprintf(
 			'%s %s',
-			$L->get( 'posts-loop-desc-blog' ),
-			$site->title()
+			lang()->get( 'posts-loop-desc-blog' ),
+			site()->title()
 		);
 
-	} elseif ( 'category' == $url->whereAmI() ) {
-		$get_cat     = new \Category( $url->slug() );
+	} elseif ( 'category' == url()->whereAmI() ) {
+		$get_cat     = new \Category( url()->slug() );
 		$class       = 'category-page-description';
 		$page_title     = $get_cat->name();
 		$description = text_replace( 'posts-loop-desc-cat', $get_cat->name() );
 
-	} elseif ( 'tag' == $url->whereAmI() ) {
-		$get_tag     = new \Tag( $url->slug() );
+	} elseif ( 'tag' == url()->whereAmI() ) {
+		$get_tag     = new \Tag( url()->slug() );
 		$class       = 'tag-page-description';
 		$page_title     = $get_tag->name();
 		$description = text_replace( 'posts-loop-desc-tag', $get_tag->name() );
@@ -617,7 +592,7 @@ function cover_header() {
 	if ( full_cover() ) {
 		$html .= sprintf(
 			'<a href="#content" class="button intro-scroll hide-if-no-js"><span class="screen-reader-text">%s</span>%s</a>',
-			$L->get( 'Scroll to content' ),
+			lang()->get( 'Scroll to content' ),
 			icon( $icon )
 		);
 	}
@@ -633,22 +608,13 @@ function cover_header() {
  * logged in and config value is true.
  *
  * @since  1.0.0
- * @global object $L Language class
- * @global object $page Page class
- * @global object $url Url class
  * @return mixed Returns the toolbar markup or null.
  */
 function get_toolbar() {
 
-	// Access global variables.
-	global $L, $page, $url;
-
-	if ( user_logged_in() ) {
-		ob_start();
-		include( THEME_DIR . 'views/utility/toolbar.php' );
-		return ob_get_clean();
-	}
-	return null;
+	ob_start();
+	include( THEME_DIR . 'views/utility/toolbar.php' );
+	return ob_get_clean();
 }
 
 /**
@@ -658,7 +624,8 @@ function get_toolbar() {
  * @return mixed Returns the `get_toolbar()` function or false.
  */
 function user_toolbar() {
-	if ( user_logged_in() && 'false' !== THEME_CONFIG['toolbar']['display'] ) {
+
+	if ( user_logged_in() && theme()->show_user_toolbar() ) {
 		return get_toolbar();
 	}
 	return false;
@@ -668,25 +635,21 @@ function user_toolbar() {
  * Print site logo
  *
  * @since  1.0.0
- * @global object $site Site class
  * @return mixed Returns null if no logo set.
  */
 function site_logo() {
 
-	// Access global variables.
-	global $site;
-
-	if ( empty( $site->logo() ) ) {
+	if ( empty( site()->logo() ) ) {
 		return null;
 	}
 
 	?>
 	<div class="site-logo" data-site-logo>
 		<figure>
-			<a href="<?php echo $site->url(); ?>">
-				<img src="<?php echo $site->logo(); ?>" alt="<?php echo $site->title(); ?>" width="80">
+			<a href="<?php echo site()->url(); ?>">
+				<img src="<?php echo site()->logo(); ?>" alt="<?php echo site()->title(); ?>" width="80">
 			</a>
-			<figcaption class="screen-reader-text"><?php echo $site->title(); ?></figcaption>
+			<figcaption class="screen-reader-text"><?php echo site()->title(); ?></figcaption>
 		</figure>
 	</div>
 	<?php
@@ -699,25 +662,20 @@ function site_logo() {
  * and the page key.
  *
  * @since  1.0.0
- * @global object $page Page class
- * @global object $url Url class
  * @return mixed Returns the page ID or null.
  */
 function page_id() {
 
-	// Access global variables.
-	global $page, $url;
-
 	// Null if in search results (global errors).
-	if ( 'search' == $url->whereAmI() ) {
+	if ( 'search' == url()->whereAmI() ) {
 		return null;
 	}
 
 	// Conditional page ID, static or not.
 	$id = '';
 	if (
-		( 'blog' == $url->whereAmI() && 'home' != $url->whereAmI() ) ||
-		( 'home' == $url->whereAmI() && 'page' != $url->whereAmI() )
+		( 'blog' == url()->whereAmI() && 'home' != url()->whereAmI() ) ||
+		( 'home' == url()->whereAmI() && 'page' != url()->whereAmI() )
 	) {
 		$id = 'blog-page';
 		if ( ! isset( $_GET['page'] ) ) {
@@ -726,10 +684,10 @@ function page_id() {
 			$id .= '-' . $_GET['page'];
 		}
 
-	} elseif ( $page->isStatic() && 'blog' != $url->whereAmI() ) {
-		$id = 'page-' . $page->key();
+	} elseif ( page()->isStatic() && 'blog' != url()->whereAmI() ) {
+		$id = 'page-' . page()->key();
 	} else {
-		$id = 'post-' . $page->key();
+		$id = 'post-' . page()->key();
 	}
 
 	// String replace not necessary but just in case...
@@ -740,18 +698,12 @@ function page_id() {
  * Content template
  *
  * @since  1.0.0
- * @global object $page Page class
- * @global object $site Site class
- * @global object $url Url class
  * @return string Returns the relevant template.
  */
 function content_template() {
 
-	// Access global variables.
-	global $page, $site, $url;
-
 	// Blog template when a static home page is used.
-	if ( 'page' == $url->whereAmI() && $page->slug() == str_replace( '/', '', $site->getField( 'uriBlog' ) ) ) {
+	if ( 'page' == url()->whereAmI() && page()->slug() == str_replace( '/', '', site()->getField( 'uriBlog' ) ) ) {
 		if ( 'grid' === THEME_CONFIG['loop']['content'] ) {
 			$template = 'views/content/posts-grid.php';
 		} elseif ( 'full' === THEME_CONFIG['loop']['content'] ) {
@@ -761,10 +713,10 @@ function content_template() {
 		}
 
 	// Page templates.
-	} elseif ( 'page' == $url->whereAmI() ) {
+	} elseif ( 'page' == url()->whereAmI() ) {
 
 		// Static home page.
-		if ( $site->getField( 'homepage' ) && $page->slug() == $site->getField( 'homepage' ) ) {
+		if ( site()->getField( 'homepage' ) && page()->slug() == site()->getField( 'homepage' ) ) {
 			$template = 'views/content/front-page.php';
 
 		/**
@@ -777,8 +729,8 @@ function content_template() {
 		 * The `full-cover` template is excluded because a different
 		 * site header is used prior to calling this function.
 		 */
-		} elseif ( $page->template() ) {
-			$template = 'views/content/' . str_replace( [ ' ', 'full-cover', 'no-sidebar', 'sidebar-bottom' ], '', $page->template() ) . '.php';
+		} elseif ( page()->template() ) {
+			$template = 'views/content/' . str_replace( [ ' ', 'full-cover', 'no-sidebar', 'sidebar-bottom' ], '', page()->template() ) . '.php';
 			if ( file_exists( THEME_DIR . $template ) ) {
 				$template = $template;
 			} else {
@@ -786,11 +738,11 @@ function content_template() {
 			}
 
 		// Static page.
-		} elseif ( $page->isStatic() ) {
+		} elseif ( page()->isStatic() ) {
 			$template = 'views/content/page.php';
 
 		// Sticky page (post).
-		} elseif ( $page->sticky() ) {
+		} elseif ( page()->sticky() ) {
 			$template = 'views/content/sticky.php';
 
 		// Default (post) page.
@@ -854,18 +806,12 @@ function loop_style() {
  * page: posts, category, tag.
  *
  * @since  1.0.0
- * @global object $L Language class
- * @global object $site Site class.
- * @global object $url Url class.
  * @return mixed
  */
 function posts_loop_header() {
 
-	// Access global variables.
-	global $L, $site, $url;
-
 	// Null if in search results (global errors).
-	if ( 'search' == $url->whereAmI() ) {
+	if ( 'search' == url()->whereAmI() ) {
 		return null;
 	}
 
@@ -873,7 +819,7 @@ function posts_loop_header() {
 	$heading     = '';
 	$description = '';
 	$class       = '';
-	$format_slug =  ucwords( str_replace( [ '-', '_' ], '', $url->slug() ) );
+	$format_slug =  ucwords( str_replace( [ '-', '_' ], '', url()->slug() ) );
 	$loop_data   = loop_data();
 	$blog_page   = '';
 
@@ -881,24 +827,24 @@ function posts_loop_header() {
 	if ( isset( $_GET['page'] ) && $_GET['page'] > 1 ) {
 		$blog_page = sprintf(
 			' &rsaquo; %s %s',
-			$L->get( 'page' ),
+			lang()->get( 'page' ),
 			$_GET['page']
 		);
 	}
 
 	// Conditional heading & description.
-	if ( 'blog' == $url->whereAmI() ) {
+	if ( 'blog' == url()->whereAmI() ) {
 		$class   = 'loop-page-description';
 		$heading = ucwords( $loop_data['slug'] . $blog_page );
 
-	} elseif ( 'category' == $url->whereAmI() ) {
-		$get_cat     = new \Category( $url->slug() );
+	} elseif ( 'category' == url()->whereAmI() ) {
+		$get_cat     = new \Category( url()->slug() );
 		$class       = 'category-page-description';
 		$heading     = $get_cat->name();
 		$description = text_replace( 'posts-loop-desc-cat', $get_cat->name() );
 
-	} elseif ( 'tag' == $url->whereAmI() ) {
-		$get_tag     = new \Tag( $url->slug() );
+	} elseif ( 'tag' == url()->whereAmI() ) {
+		$get_tag     = new \Tag( url()->slug() );
 		$class       = 'tag-page-description';
 		$heading     = $get_tag->name();
 		$description = text_replace( 'posts-loop-desc-tag', $get_tag->name() );
@@ -925,8 +871,8 @@ function posts_loop_header() {
 
 	// Print nothing if site home or singular page.
 	if (
-		'home' == $url->whereAmI() ||
-		'page' == $url->whereAmI()
+		'home' == url()->whereAmI() ||
+		'page' == url()->whereAmI()
 	) {
 		return '';
 	}
@@ -968,23 +914,18 @@ function icon( $filename = '', $wrap = false, $class = '' ) {
  * @param  boolean $echo Whether to echo or return the icon.
  * @param  string $class Add classes to the icon markup.
  * @param  string $title Text for the title attribute.
- * @global object $L Language class
- * @global object $page Page class
  * @return mixed Echoes the icon, or returns the icon or empty.
  */
 function sticky_icon( $echo = '', $class = '', $title = '' ) {
 
-	// Access global variables.
-	global $L, $page;
-
 	$icon = '';
-	if ( $page->sticky() ) {
+	if ( page()->sticky() ) {
 		$icon = sprintf(
 			'<span class="theme-icon sticky-icon %s" title="%s" role="img">%s</span><span class="screen-reader-text">%s </span>',
 			$class,
 			$title,
 			icon( 'sticky' ),
-			$L->get( 'Sticky Post:' )
+			lang()->get( 'Sticky Post:' )
 		);
 	}
 
@@ -1030,15 +971,11 @@ function page_description( $key = '' ) {
  * Whether a page has tags attached.
  *
  * @since  1.0.0
- * @global object $page Page class
  * @return boolean Returns true if tags are attached.
  */
 function has_tags() {
 
-	// Access global variables.
-	global $page;
-
-	if ( $page->tags( true ) ) {
+	if ( page()->tags( true ) ) {
 		return true;
 	}
 	return false;
@@ -1048,15 +985,11 @@ function has_tags() {
  * Get page author
  *
  * @since  1.0.0
- * @global object $page Page class
  * @return string
  */
 function get_author() {
 
-	// Access global variables.
-	global $page;
-
-	$user   = $page->username();
+	$user   = page()->username();
 	$author = new \User( $user );
 
 	if ( $author->nickname() ) {
@@ -1130,14 +1063,9 @@ function search_form( $defaults = [ 'label' => null, 'label_text' => '', 'button
  * Loop pagination
  *
  * @since  1.0.0
- * @global object $L Language class.
- * @global object $url Url class.
  * @return mixed Returns the navigation markup or false.
  */
 function get_loop_pagination() {
-
-	// Access global variables.
-	global $L, $url;
 
 	if ( 'numerical' == THEME_CONFIG['loop']['paged'] ) {
 		ob_start();
@@ -1154,21 +1082,20 @@ function get_loop_pagination() {
  * Previous key
  *
  * @since  1.0.0
- * @global object $page Page class
  * @global object $pages Pages class
  * @return mixed
  */
 function prev_key() {
 
 	// Access global variables.
-	global $page, $pages;
+	global $pages;
 
 	// Stop if on a static page.
-	if ( $page->isStatic() ) {
+	if ( page()->isStatic() ) {
 		return false;
 	}
 
-	$current  = $page->key();
+	$current  = page()->key();
 	$keys     = $pages->getPublishedDB( true );
 	$position = array_search( $current, $keys ) + 1;
 
@@ -1182,21 +1109,20 @@ function prev_key() {
  * Next key
  *
  * @since  1.0.0
- * @global object $page Page class
  * @global object $pages Pages class
  * @return mixed
  */
 function next_key() {
 
 	// Access global variables.
-	global $page, $pages;
+	global $pages;
 
 	// Stop if on a static page.
-	if ( $page->isStatic() ) {
+	if ( page()->isStatic() ) {
 		return false;
 	}
 
-	$current  = $page->key();
+	$current  = page()->key();
 	$keys     = $pages->getPublishedDB( true );
 	$position = array_search( $current, $keys ) - 1;
 

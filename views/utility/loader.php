@@ -9,6 +9,9 @@
  */
 
 // Import namespaced functions.
+use function CFE_Func\{
+	lang
+};
 use function CFE_Tags\{
 	icon
 };
@@ -17,8 +20,8 @@ use function CFE_Tags\{
 $text = '';
 if ( THEME_CONFIG['load_screen']['loading_text'] ) {
 	$text = THEME_CONFIG['load_screen']['loading_text'];
-} elseif( $L->get( 'loading-text' ) ) {
-	$text = $L->get( 'loading-text' );
+} elseif( lang()->get( 'loading-text' ) ) {
+	$text = lang()->get( 'loading-text' );
 }
 
 // Loader styles.

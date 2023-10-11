@@ -12,6 +12,8 @@
 
 // Import namespaced functions.
 use function CFE_Func\{
+	site,
+	lang,
 	get_cover_src,
 	full_cover
 };
@@ -39,29 +41,29 @@ if ( 'home' == $WHERE_AM_I ) {
 	$site_title = sprintf(
 		'<h1 class="%s">%s</h1>',
 		$site_title_class,
-		$site->title()
+		site()->title()
 	);
 } else {
 	$site_title = sprintf(
 		'<p class="%s"><a href="%s">%s</a></p>',
 		$site_title_class,
-		$site->url(),
-		$site->title()
+		site()->url(),
+		site()->title()
 	);
 }
 
 $site_description = '';
-if ( ! empty( $site->slogan() ) && ! ctype_space( $site->slogan() ) ) {
+if ( ! empty( site()->slogan() ) && ! ctype_space( site()->slogan() ) ) {
 	$site_description = sprintf(
 		'<p class="%s">%s</p>',
 		$site_desc_class,
-		$site->slogan()
+		site()->slogan()
 	);
-} elseif ( ! empty( $site->description() ) && ! ctype_space( $site->description() ) ) {
+} elseif ( ! empty( site()->description() ) && ! ctype_space( site()->description() ) ) {
 	$site_description = sprintf(
 		'<p class="%s">%s</p>',
 		$site_desc_class,
-		$site->description()
+		site()->description()
 	);
 }
 
@@ -89,7 +91,7 @@ if ( full_cover() ) {
 
 		<?php echo search_form( [ 'label' => false ] ); ?>
 
-		<button data-search-toggle-close><span class="screen-reader-text"><?php $L->p( 'search-bar-close' ); ?></span></button>
+		<button data-search-toggle-close><span class="screen-reader-text"><?php lang()->p( 'search-bar-close' ); ?></span></button>
 	</div>
 	<?php endif; ?>
 

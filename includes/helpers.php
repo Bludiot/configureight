@@ -10,6 +10,94 @@
 
 namespace CFE_Func;
 
+// Stop if accessed directly.
+if ( ! defined( 'BLUDIT' ) ) {
+	die( 'You are not allowed direct access to this file.' );
+}
+
+/**
+ * Site class object
+ *
+ * Function to use inside other functions and
+ * methods rather than calling the global.
+ *
+ * @since  1.0.0
+ * @global object $site Site class
+ * @return object
+ */
+function site() {
+	global $site;
+	return $site;
+}
+
+/**
+ * Url class object
+ *
+ * Function to use inside other functions and
+ * methods rather than calling the global.
+ *
+ * @since  1.0.0
+ * @global object $url Url class
+ * @return object
+ */
+function url() {
+	global $url;
+	return $url;
+}
+
+/**
+ * Language class object
+ *
+ * Function to use inside other functions and
+ * methods rather than calling the global.
+ *
+ * @since  1.0.0
+ * @global object $L Language class
+ * @return object
+ */
+function lang() {
+	global $L;
+	return $L;
+}
+
+/**
+ * Page class object
+ *
+ * Function to use inside other functions and
+ * methods rather than calling the global.
+ *
+ * @since  1.0.0
+ * @global object $page Page class
+ * @return object
+ */
+function page() {
+	global $page;
+	return $page;
+}
+
+/**
+ * Theme plugin
+ *
+ * This function is used to get settings from the
+ * theme plugin instead of the provided global
+ * variable. The variable changes in Bludit 4.0.
+ *
+ * @since  1.0.0
+ * @return object
+ */
+function theme() {
+
+	$theme = null;
+	if ( getPlugin( site()->theme() ) ) {
+		$theme = getPlugin( site()->theme() );
+	}
+	return $theme;
+}
+
+if ( ! isset( $themePlugin ) ) {
+	$themePlugin = theme();
+}
+
 /**
  * User logged in
  *
@@ -62,19 +150,15 @@ function is_rtl() {
  *
  * @param  string $get The language string to get.
  * @param  string $string The string to replace the variable.
- * @global object $L Language class
  * @return string Returns the modified string or the string
  *                as is if the variable is not found.
  */
 function text_replace( $get = '', $string = '' ) {
 
-	// Access global variables.
-	global $L;
-
-	if ( strstr( $L->get( $get ), '%replace%' ) ) {
-		return str_replace( '%replace%', $string, $L->get( $get ) );
+	if ( strstr( lang()->get( $get ), '%replace%' ) ) {
+		return str_replace( '%replace%', $string, lang()->get( $get ) );
 	}
-	return $L->get( $get );
+	return lang()->get( $get );
 }
 
 /**
@@ -133,19 +217,13 @@ function favicon_exists() {
  * a blog posts loop.
  *
  * @since  1.0.0
- * @global object $page Page class
- * @global object $site Site class
- * @global object $url Url class
  * @return boolean Returns true if in a blog loop.
  */
 function is_blog_page() {
 
-	// Access global variables.
-	global $page, $site, $url;
-
 	$blog_page = false;
 
-	if ( 'blog' == $url->whereAmI() ) {
+	if ( 'blog' == url()->whereAmI() ) {
 		$blog_page = true;
 	}
 	return $blog_page;
@@ -155,16 +233,12 @@ function is_blog_page() {
  * Blog URL
  *
  * @since  1.0.0
- * @global object $site SIte class
  * @return string Returns the URL of the blog page(s).
  */
 function blog_url() {
 
-	// Access global variables.
-	global $site;
-
-	$site_url = $site->getField( 'url' );
-	$blog_uri = $site->getField( 'uriBlog' );
+	$site_url = site()->getField( 'url' );
+	$blog_uri = site()->getField( 'uriBlog' );
 	$blog_url = $site_url;
 
 	if ( ! empty( $blog_uri ) ) {
@@ -185,19 +259,16 @@ function blog_url() {
  *
  * @since  1.0.0
  * @global array  $content array of site content
- * @global object $L Language class
  * @global object $pages Pages class
- * @global object $site Site class
- * @global object $url Url class
  * @return array  Returns an array of blog data.
  */
 function loop_data() {
 
 	// Access global variables.
-	global $content, $L, $pages, $site, $url;
+	global $content, $pages;
 
 	// Null if in search results (global errors).
-	if ( 'search' == $url->whereAmI() ) {
+	if ( 'search' == url()->whereAmI() ) {
 		return null;
 	}
 
@@ -208,24 +279,24 @@ function loop_data() {
 	}
 
 	// Blog not on front page.
-	$static_field = $site->getField( 'uriBlog' );
+	$static_field = site()->getField( 'uriBlog' );
 	$static_key   = str_replace( '/', '', $static_field );
 
 	// Default blog description.
 	$description = sprintf(
 		'%s %s',
-		$L->get( 'blog-data-description' ),
-		$site->title()
+		lang()->get( 'blog-data-description' ),
+		site()->title()
 	);
 
 	// Default data array.
 	$data = [
 		'post_count'  => $pages->count(),
-		'show_posts'  => $site->getField( 'itemsPerPage' ),
+		'show_posts'  => site()->getField( 'itemsPerPage' ),
 		'location'    => 'home',
 		'key'         => false,
 		'url'         => blog_url(),
-		'slug'        => str_replace( '/', '', $site->getField( 'uriBlog' ) ),
+		'slug'        => str_replace( '/', '', site()->getField( 'uriBlog' ) ),
 		'template'    => false,
 		'style'       => $loop_style,
 		'title'       => false,
@@ -304,20 +375,15 @@ function get_nav_position() {
  * Has cover image
  *
  * @since  1.0.0
- * @global object $page Page class
- * @global object $url Url class
  * @return boolean
  */
 function has_cover() {
 
-	// Access global variables.
-	global $page, $url;
-
 	$cover   = false;
 	$default = 'assets/images/' . THEME_CONFIG['media']['cover_image'];
 
-	if ( 'page' == $url->whereAmI() ) {
-		if ( $page->coverImage() ) {
+	if ( 'page' == url()->whereAmI() ) {
+		if ( page()->coverImage() ) {
 			$cover = true;
 		} elseif ( $default ) {
 			if ( filter_var( $default, FILTER_VALIDATE_URL ) ) {
@@ -343,14 +409,10 @@ function has_cover() {
  * is set and if a static page slug
  * matches the URI setting.
  *
- * @global object $page Page class
- * @global object $url Url class
+ * @since  1.0.0
  * @return boolean
  */
 function blog_is_static() {
-
-	// Access global variables.
-	global $page, $url;
 
 	$blog = loop_data();
 
@@ -364,23 +426,17 @@ function blog_is_static() {
  * Get cover image source
  *
  * @since  1.0.0
- * @global object $page Page class
- * @global object $site Site class
- * @global object $url Url class
  * @return string
  */
 function get_cover_src() {
-
-	// Access global variables.
-	global $page, $site, $url;
 
 	$src     = '';
 	$default = 'assets/images/' . THEME_CONFIG['media']['cover_image'];
 
 	// If in blog pages.
-	if ( 'blog' == $url->whereAmI() ) {
-		if ( blog_is_static() && $page->coverImage() ) {
-			$src = $page->coverImage();
+	if ( 'blog' == url()->whereAmI() ) {
+		if ( blog_is_static() && page()->coverImage() ) {
+			$src = page()->coverImage();
 		} elseif ( $default ) {
 			if ( filter_var( $default, FILTER_VALIDATE_URL ) ) {
 				$src = $default;
@@ -390,9 +446,9 @@ function get_cover_src() {
 		}
 
 	// If on a singular page.
-	} elseif ( 'page' == $url->whereAmI() ) {
-		if ( $page->coverImage() ) {
-			$src = $page->coverImage();
+	} elseif ( 'page' == url()->whereAmI() ) {
+		if ( page()->coverImage() ) {
+			$src = page()->coverImage();
 		} elseif ( $default ) {
 			if ( filter_var( $default, FILTER_VALIDATE_URL ) ) {
 				$src = $default;
@@ -416,29 +472,23 @@ function get_cover_src() {
  * Is full cover template
  *
  * @since  1.0.0
- * @global object $page Page class
- * @global object $site Site class
- * @global object $url Url class
  * @return boolean Returns true if `full-cover` is found in the
  *                 page template field and the page gas a cover
  *                 image.
  */
 function full_cover() {
 
-	// Access global variables.
-	global $page, $site, $url;
-
 	// Get blog data.
 	$blog = loop_data();
 
 	// No full cover if URL has the page parameter.
 
-	if ( 'blog' == $url->whereAmI() && blog_is_static() ) {
-		$page = buildPage( $blog['key'] );
+	if ( 'blog' == url()->whereAmI() && blog_is_static() ) {
+		$build = buildPage( $blog['key'] );
 
 		if (
-			$page->isStatic() &&
-			str_contains( $page->template(), 'full-cover' )
+			$build->isStatic() &&
+			str_contains( $build->template(), 'full-cover' )
 		) {
 			if ( isset( $_GET['page'] ) ) {
 				return false;
@@ -448,9 +498,9 @@ function full_cover() {
 	}
 
 	if (
-		'page' == $url->whereAmI() &&
+		'page' == url()->whereAmI() &&
 		has_cover() &&
-		str_contains( $page->template(), 'full-cover' )
+		str_contains( page()->template(), 'full-cover' )
 	) {
 		return true;
 	}
@@ -463,24 +513,19 @@ function full_cover() {
  * When to include the aside template.
  *
  * @since  1.0.0
- * @global object $page Page class
- * @global object $url Url class
  * @return boolean
  */
 function include_sidebar() {
 
-	// Access global variables.
-	global $page, $url;
-
 	$include = false;
-	if ( 'search' == $url->whereAmI() ) {
+	if ( 'search' == url()->whereAmI() ) {
 		$include = true;
-	} elseif ( 'blog' == $url->whereAmI() ) {
+	} elseif ( 'blog' == url()->whereAmI() ) {
 		if ( false !== THEME_CONFIG['loop']['sidebar'] ) {
 			$include = true;
 		}
-	} elseif ( 'page' == $url->whereAmI() ) {
-		if ( ! str_contains( $page->template(), 'no-sidebar' ) ) {
+	} elseif ( 'page' == url()->whereAmI() ) {
+		if ( ! str_contains( page()->template(), 'no-sidebar' ) ) {
 			$include = true;
 		}
 	}
@@ -542,13 +587,9 @@ function get_config_styles() {
  *
  * @since  1.0.0
  * @param  string Key of the page to count.
- * @global object $page Page class
  * @return integer
  */
 function get_word_count( $key = '' ) {
-
-	// Access global variables.
-	global $page;
 
 	if ( empty( $key ) ) {
 		$key = $page->key();
@@ -607,13 +648,9 @@ function hex_to_rgb( $color, $opacity = false ) {
  * @since  1.0.0
  * @param  integer $number the number to convert to a textual representation
  * @param  integer $depth the number of times this has been recursed
- * @global object $L Language class
  * @return string Returns a word corresponding to a numeral
  */
 function numbers_to_text( $number, $depth = 0 ) {
-
-	// Access global variables.
-	global $L;
 
 	$number = (int)$number;
 	$text   = '';
@@ -636,7 +673,7 @@ function numbers_to_text( $number, $depth = 0 ) {
 
 		// As long as the first digit is not zero.
 		if ( $number > 99 ) {
-			$text .= numbers_to_text( $number / 100, 2 ) . $L->get( ' hundred' ) . "\n";
+			$text .= numbers_to_text( $number / 100, 2 ) . lang()->get( ' hundred' ) . "\n";
 		}
 
 		// Last two digits.
@@ -650,67 +687,67 @@ function numbers_to_text( $number, $depth = 0 ) {
 		// Ones place.
 		if ( 0 == $mod ) {
 			if ( 1 == $number ) {
-				$text .= $L->get( 'one' );
+				$text .= lang()->get( 'one' );
 			} elseif ( 2 == $number ) {
-				$text .= $L->get( 'two' );
+				$text .= lang()->get( 'two' );
 			} elseif ( 3 == $number ) {
-				$text .= $L->get( 'three' );
+				$text .= lang()->get( 'three' );
 			} elseif ( 4 == $number ) {
-				$text .= $L->get( 'four' );
+				$text .= lang()->get( 'four' );
 			} elseif ( 5 == $number ) {
-				$text .= $L->get( 'five' );
+				$text .= lang()->get( 'five' );
 			} elseif ( 6 == $number ) {
-				$text .= $L->get( 'six' );
+				$text .= lang()->get( 'six' );
 			} elseif ( 7 == $number ) {
-				$text .= $L->get( 'seven' );
+				$text .= lang()->get( 'seven' );
 			} elseif ( 8 == $number ) {
-				$text .= $L->get( 'eight' );
+				$text .= lang()->get( 'eight' );
 			} elseif ( 9 == $number ) {
-				$text .= $L->get( 'nine' );
+				$text .= lang()->get( 'nine' );
 			}
 
 		// if there's a one in the ten's place.
 		} elseif ( 1 == $mod ) {
 			if ( 10 == $number ) {
-				$text .= $L->get( 'ten' );
+				$text .= lang()->get( 'ten' );
 			} elseif ( 11 == $number ) {
-				$text .= $L->get( 'eleven' );
+				$text .= lang()->get( 'eleven' );
 			} elseif ( 12 == $number ) {
-				$text .= $L->get( 'twelve' );
+				$text .= lang()->get( 'twelve' );
 			} elseif ( 13 == $number ) {
-				$text .= $L->get( 'thirteen' );
+				$text .= lang()->get( 'thirteen' );
 			} elseif ( 14 == $number ) {
-				$text .= $L->get( 'fourteen' );
+				$text .= lang()->get( 'fourteen' );
 			} elseif ( 15 == $number ) {
-				$text .= $L->get( 'fifteen' );
+				$text .= lang()->get( 'fifteen' );
 			} elseif ( 16 == $number ) {
-				$text .= $L->get( 'sixteen' );
+				$text .= lang()->get( 'sixteen' );
 			} elseif ( 17 == $number ) {
-				$text .= $L->get( 'seventeen' );
+				$text .= lang()->get( 'seventeen' );
 			} elseif ( 18 == $number ) {
-				$text .= $L->get( 'eighteen' );
+				$text .= lang()->get( 'eighteen' );
 			} elseif ( 19 == $number ) {
-				$text .= $L->get( 'nineteen' );
+				$text .= lang()->get( 'nineteen' );
 			}
 
 		// if there's a different number in the ten's place.
 		} else {
 			if ( 2 == $mod ) {
-				$text .= $L->get( 'twenty' );
+				$text .= lang()->get( 'twenty' );
 			} elseif ( 3 == $mod ) {
-				$text .= $L->get( 'thirty' );
+				$text .= lang()->get( 'thirty' );
 			} elseif ( 4 == $mod ) {
-				$text .= $L->get( 'forty' );
+				$text .= lang()->get( 'forty' );
 			} elseif ( 5 == $mod ) {
-				$text .= $L->get( 'fifty' );
+				$text .= lang()->get( 'fifty' );
 			} elseif ( 6 == $mod ) {
-				$text .= $L->get( 'sixty' );
+				$text .= lang()->get( 'sixty' );
 			} elseif ( 7 == $mod ) {
-				$text .= $L->get( 'seventy' );
+				$text .= lang()->get( 'seventy' );
 			} elseif ( 8 == $mod ) {
-				$text .= $L->get( 'eighty' );
+				$text .= lang()->get( 'eighty' );
 			} elseif ( 9 == $mod ) {
-				$text .= $L->get( 'ninety' );
+				$text .= lang()->get( 'ninety' );
 			}
 
 			if ( ( $number % 10 ) != 0 ) {
@@ -725,13 +762,13 @@ function numbers_to_text( $number, $depth = 0 ) {
 
 	if ( 0 != $number ) {
 		if ( 3 == $depth ) {
-			$text .= $L->get( ' thousand' ) . "\n";
+			$text .= lang()->get( ' thousand' ) . "\n";
 		} elseif ( 6 == $depth ) {
-			$text .= $L->get( ' million' ) . "\n";
+			$text .= lang()->get( ' million' ) . "\n";
 		}
 
 		if ( 9 == $depth ) {
-			$text .= $L->get( ' billion' ) . "\n";
+			$text .= lang()->get( ' billion' ) . "\n";
 		}
 	}
 	return $text;

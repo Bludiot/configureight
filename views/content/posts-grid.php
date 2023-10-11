@@ -17,6 +17,7 @@
 
 // Import namespaced functions.
 use function CFE_Func\{
+	lang,
 	loop_data,
 	get_word_count
 };
@@ -181,14 +182,14 @@ $tags_list = function() use ( $post, $tags_icon ) {
 
 				<?php if ( THEME_CONFIG['loop']['word_count'] ) : ?>
 				<span class="post-info-word-count">
-					<?php $L->p( 'post-word-count' ); echo get_word_count( $post->key() ); ?>
+					<?php lang()->p( 'post-word-count' ); echo get_word_count( $post->key() ); ?>
 				</span>
 				<?php endif; ?>
 
 				<?php if ( THEME_CONFIG['loop']['read_time'] ) : ?>
 				<span class="post-info-separator"></span>
 				<span class="post-info-read-time">
-					<?php $L->p( 'post-read-time' ); echo $post->readingTime(); ?>
+					<?php lang()->p( 'post-read-time' ); echo $post->readingTime(); ?>
 				</span>
 				<?php endif; ?>
 			</p>

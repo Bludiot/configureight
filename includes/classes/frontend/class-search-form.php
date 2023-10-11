@@ -15,15 +15,16 @@
 
 namespace CFE\Classes\Front;
 
+// Stop if accessed directly.
+if ( ! defined( 'BLUDIT' ) ) {
+	die( 'You are not allowed direct access to this file.' );
+}
+
 // Import namespaced functions.
 use function CFE_Func\{
+	lang,
 	text_replace
 };
-
- // Stop if accessed directly.
- if ( ! defined( 'BLUDIT' ) ) {
-	 die( $L->get( 'direct-access' ) );
- }
 
 class Search_Form extends \pluginSearch {
 
@@ -68,16 +69,12 @@ class Search_Form extends \pluginSearch {
 	 *
 	 * @since  1.0.0
 	 * @access public
-	 * @global object $L Language class
 	 * @return self
 	 */
 	public function __construct() {
 
-		// Access global variables.
-		global $L;
-
-		$label_text  = $L->get( $this->label_text );
-		$button_text = $L->get( $this->button_text );
+		$label_text  = lang()->get( $this->label_text );
+		$button_text = lang()->get( $this->button_text );
 
 		$this->label_text  = (string) $label_text;
 		$this->button_text = (string) $button_text;
@@ -144,13 +141,9 @@ class Search_Form extends \pluginSearch {
 	 *
 	 * @since  1.0.0
 	 * @access public
-	 * @global object $L Language class
 	 * @return null
 	 */
 	public function search_form( $label, $label_text, $button, $button_text ) {
-
-		// Access global variables.
-		global $L;
 
 		$search = getPlugin( 'pluginSearch' );
 
