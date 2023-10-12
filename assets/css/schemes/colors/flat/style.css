@@ -20,7 +20,7 @@
 }
 
 :root {
-  --cfe-bg-color: #ecf0f1;
+  --cfe-bg-color: #f2f5f5;
   --cfe-text-color: #2c3e50;
   --cfe-link--text-color: #2980b9;
   --cfe-link--action--text-color: #e67e22;
@@ -55,6 +55,6 @@
     --cfe-link--action--text-color: #f1c40f;
     --cfe-heading-primary--text-color: #ecf0f1;
     --cfe-heading-primary--link--text-color: #ecf0f1;
-    --cfe-heading-primary--link--action--text-color: #c0392b;
+    --cfe-heading-primary--link--action--text-color: #3498db;
   }
 }

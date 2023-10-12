@@ -36,7 +36,6 @@ $fui_midnight_blue : #2c3e50;
 $fui_nephritis     : #27ae60;
 $fui_orange        : #f39c12;
 $fui_peter_river   : #3498db;
-$fui_peter_river   : #c0392b;
 $fui_pumpkin       : #d35400;
 $fui_silver        : #bdc3c7;
 $fui_sunflower     : #f1c40f;
@@ -86,7 +85,7 @@ $close_icon_action_bg: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/20
 :root {
 
 	// General.
-	--cfe-bg-color: #{$fui_clouds};
+	--cfe-bg-color: #{lighten( $fui_clouds, 2,5% )};
 	--cfe-text-color: #{$fui_midnight_blue};
 	--cfe-link--text-color: #{$fui_belize_hole};
 	--cfe-link--action--text-color: #{$fui_carrot};
