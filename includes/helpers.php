@@ -16,6 +16,23 @@ if ( ! defined( 'BLUDIT' ) ) {
 }
 
 /**
+ * Minimum Bludit version
+ *
+ * @example Use `if ( bludit_min( 4 ) ) { … }`
+ * 			to check for Bludit 4.0+.
+ *
+ * @since  1.0.0
+ * @return boolean
+ */
+function bludit_min( $ver = 3 ) {
+
+	if ( defined( BLUDIT_VERSION ) && BLUDIT_VERSION >= $ver ) {
+		return true;
+	}
+	return false;
+}
+
+/**
  * Site class object
  *
  * Function to use inside other functions and
