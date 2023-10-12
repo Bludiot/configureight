@@ -100,8 +100,10 @@
   --cfe-article--tags-list--text-decoration: none;
   --cfe-article--tags-list--font-size: 0.8125rem;
   --cfe-article--tags-list--font-weight: 600;
-  --cfe-article--tags-list--bg-color: var( --cfe-link--text-color );
-  --cfe-article--tags-list--text-color: #ffffff;
-  --cfe-article--tags-list--action--bg-color: #005ce7;
-  --cfe-article--tags-list--action--text-color: #ffffff;
+  --cfe-article--tags-list--bg-color: var( --cfe-button--bg-color );
+  --cfe-article--tags-list--border-color: var( --cfe-button--border-color );
+  --cfe-article--tags-list--text-color: var( --cfe-button--text-color );
+  --cfe-article--tags-list--action--bg-color: var( --cfe-button--action--bg-color );
+  --cfe-article--tags-list--action--border-color: var( --cfe-button--border-color );
+  --cfe-article--tags-list--action--text-color: var( --cfe-button--action--text-color );
 }

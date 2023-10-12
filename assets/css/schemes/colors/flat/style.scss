@@ -85,7 +85,7 @@ $close_icon_action_bg: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/20
 :root {
 
 	// General.
-	--cfe-bg-color: #{lighten( $fui_clouds, 2,5% )};
+	--cfe-bg-color: #{lighten( $fui_clouds, 2.5% )};
 	--cfe-text-color: #{$fui_midnight_blue};
 	--cfe-link--text-color: #{$fui_belize_hole};
 	--cfe-link--action--text-color: #{$fui_carrot};

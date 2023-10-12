@@ -1676,10 +1676,12 @@ body.template-sidebar-bottom .content-wrapper {
   -webkit-text-decoration: var(--cfe-article--tags-list--text-decoration);
           text-decoration: var(--cfe-article--tags-list--text-decoration);
   background-color: var(--cfe-article--tags-list--bg-color);
+  border: var(--cfe-article--tags-list--border, solid 1px var(--cfe-article--tags-list--border-color));
   color: var(--cfe-article--tags-list--text-color);
 }
 .site-article .tags-list a:hover, .site-article .tags-list a:focus {
   background-color: var(--cfe-article--tags-list--action--bg-color);
+  border: var(--cfe-article--tags-lis--action--border, solid 1px var(--cfe-article--tags-list--action--border-color));
   color: var(--cfe-article--tags-list--action--text-color);
 }
 

@@ -457,11 +457,13 @@ body {
 			font-weight: var( --cfe-article--tags-list--font-weight );
 			text-decoration: var( --cfe-article--tags-list--text-decoration );
 			background-color: var( --cfe-article--tags-list--bg-color );
+			border: var( --cfe-article--tags-list--border, solid 1px var( --cfe-article--tags-list--border-color ) );
 			color: var( --cfe-article--tags-list--text-color );
 
 			&:hover,
 			&:focus {
 				background-color: var( --cfe-article--tags-list--action--bg-color );
+				border: var( --cfe-article--tags-lis--action--border, solid 1px var( --cfe-article--tags-list--action--border-color ) );
 				color: var( --cfe-article--tags-list--action--text-color );
 			}
 		}
