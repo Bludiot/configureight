@@ -16,22 +16,6 @@ if ( ! defined( 'BLUDIT' ) ) {
 }
 
 /**
- * Require theme plugin
- *
- * @todo Link to website or direct to plugin README.
- *
- * @since  1.0.0
- */
-$plugin_notice  = '<!DOCTYPE html><html><body>';
-$plugin_notice .= '<h1>Plugin Required</h1>';
-$plugin_notice .= '<p>The Configure 8 theme requires the Configure 8 plugin to be active. If it is not installed, please read the instructions at <a href="https://github.com/ControlledChaos/configureight-plugin" target="_blank" rel="noopener noreferrer">https://github.com/ControlledChaos/configureight-plugin</a>.</p>';
-$plugin_notice .= '</body></html>';
-
-if ( ! getPlugin( $site->theme() ) ) {
-	exit( $plugin_notice );
-}
-
-/**
  * Get configuration file
  *
  * Looks first in the Bludit root directory
@@ -66,11 +50,4 @@ $theme_config = json_decode( $get_json, true );
  */
 if ( ! defined( 'THEME_CONFIG' ) ) {
 	define( 'THEME_CONFIG', $theme_config );
-}
-
-// Set debug mode.
-if ( THEME_CONFIG['debug'] ) {
-	ini_set( 'html_errors', 1 );
-	ini_set( 'display_errors', 1 );
-	error_reporting( E_ERROR | E_WARNING | E_PARSE | E_NOTICE );
 }
