@@ -87,7 +87,7 @@ function page() {
  */
 function theme() {
 
-	$theme = null;
+	$theme = false;
 	if ( getPlugin( site()->theme() ) ) {
 		$theme = getPlugin( site()->theme() );
 	}
