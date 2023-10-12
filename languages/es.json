@@ -43,7 +43,7 @@
 	"direct-access"   : "No tiene permiso para acceder a este archivo.",
 	"die-php-version" : "Versión PHP mínima de %replace% no se cumple.",
 
-	"loading-text"    : "Cargando",
+	"loader-text"    : "Cargando",
 	"home-link-label" : "Inicio",
 
 	"blog-data-description" : "Últimas publicaciones de",

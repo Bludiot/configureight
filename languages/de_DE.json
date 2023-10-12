@@ -7,7 +7,7 @@
 	"direct-access"   : "Sie sind nicht berechtigt, auf diese Datei zuzugreifen.",
 	"die-php-version" : "Mindest-PHP-Version von %replace% ist nicht erfüllt.",
 
-	"loading-text"    : "Wird geladen",
+	"loader-text"    : "Wird geladen",
 	"home-link-label" : "Heim",
 
 	"blog-data-description" : "Neueste beiträge von",

@@ -7,7 +7,7 @@
 	"direct-access"   : "You are not allowed to access this file.",
 	"die-php-version" : "Minimum PHP version of %replace% is not met.",
 
-	"loading-text"    : "Loading",
+	"loader-text"    : "Loading",
 	"home-link-label" : "Home",
 
 	"blog-data-description" : "Latest posts from",

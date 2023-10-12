@@ -7,7 +7,7 @@
 	"direct-access"   : "Vous n'êtes pas autorisé à accéder à ce fichier.",
 	"die-php-version" : "Version PHP minimale de %replace% n’est pas respecté.",
 
-	"loading-text"    : "Chargement",
+	"loader-text"    : "Chargement",
 	"home-link-label" : "Maison",
 
 	"blog-data-description" : "Derniers messages de",
