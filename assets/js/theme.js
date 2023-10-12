@@ -40,7 +40,7 @@
 
 		// Lightbox.
 		if ( $.isFunction( $.fn.fancybox ) ) {
-			$( 'img' ).wrap( function() {
+			$( '.page-content img' ).wrap( function() {
 				return '<a href=' + this.src + ' data-fancybox></a>';
 			} );
 		}
