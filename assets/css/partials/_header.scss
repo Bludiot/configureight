@@ -239,6 +239,7 @@
 			svg {
 				width: calc( var( --cfe-button--svg-icon--width ) * 3.5 );
 				height: calc( var( --cfe-button--svg-icon--height ) * 3.5 );
+				max-width: var( --cfe-site-cover--icon--max-width, 2.5rem );
 			}
 		}
 	}
