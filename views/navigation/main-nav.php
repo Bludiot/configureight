@@ -15,6 +15,9 @@
  */
 
 // Import namespaced functions.
+use function CFE_Func\{
+	theme
+};
 use function CFE_Tags\{
 	icon
 };
@@ -24,14 +27,14 @@ use function CFE_Tags\{
 	<ul class="nav-list main-nav-list">
 		<?php
 
-		$max_items = (integer)THEME_CONFIG['main_nav']['max_items'];
-		if ( ! $max_items ) {
-			$max_items = 0;
+		$max_items = 0;
+		if ( theme() && theme()->max_nav_items() ) {
+			$max_items = theme()->max_nav_items();
 		}
 
 		$nav_items = $staticContent;
 		if ( $max_items > 0 ) {
-			$nav_items = array_slice( $staticContent, 0, $max_items );
+			$nav_items = array_slice( $staticContent, 1, $max_items );
 		}
 
 		foreach ( $nav_items as $nav_item ) :
@@ -94,7 +97,15 @@ use function CFE_Tags\{
 		if ( ! empty( $home_uri ) && ! empty( $blog_uri ) ) {
 
 			// If true in config file.
-			if ( 'false' !== THEME_CONFIG['main_nav']['blog'] ) {
+			if ( theme() ) {
+				if ( theme()->main_nav_loop() ) {
+					printf(
+						'<li class="no-children"><a href="%s">%s</a></li>',
+						$site->url() . str_replace( '/', '', $blog_uri ) . '/',
+						ucwords( str_replace( [ '/', '-', '_' ], ' ', $blog_uri ) )
+					);
+				}
+			} else {
 				printf(
 					'<li class="no-children"><a href="%s">%s</a></li>',
 					$site->url() . str_replace( '/', '', $blog_uri ) . '/',
@@ -104,7 +115,15 @@ use function CFE_Tags\{
 		}
 
 		// Add a home link if true in config file.
-		if ( 'false' !== THEME_CONFIG['main_nav']['home'] ) {
+		if ( theme() ) {
+			if ( theme()->main_nav_home() ) {
+				printf(
+					'<li class="no-children"><a href="%s">%s</a></li>',
+					$site->url(),
+					$L->get( 'home-link-label' )
+				);
+			}
+		} else {
 			printf(
 				'<li class="no-children"><a href="%s">%s</a></li>',
 				$site->url(),
@@ -114,7 +133,8 @@ use function CFE_Tags\{
 
 		// Add a search toggle button.
 		if (
-			'false' !== THEME_CONFIG['main_nav']['search'] &&
+			theme() &&
+			theme()->header_search() &&
 			getPlugin( 'pluginSearch' )
 		) {
 			printf(

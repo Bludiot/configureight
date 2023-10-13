@@ -54,12 +54,12 @@ use function CFE_Func\{
 function page_loader() {
 
 	// Return null if in debug mode.
-	if ( THEME_CONFIG['debug'] ) {
+	if ( defined( 'DEBUG_MODE' ) && DEBUG_MODE ) {
 		return null;
 	}
 
 	// Return null if config file is false.
-	if ( ! THEME_CONFIG['load_screen']['use_loader'] ) {
+	if ( theme() && ! theme()->page_loader() ) {
 		return null;
 	} else {
 		ob_start();
@@ -116,25 +116,25 @@ function favicon_tag() {
 function scheme_stylesheet( $type = '' ) {
 
 	// Stop if no scheme type.
-	if ( empty( $type ) ) {
+	if ( empty( $type ) || ! theme() ) {
 		return null;
 	}
 
 	// Get options from the config file.
-	$colors = THEME_CONFIG['schemes']['colors'];
-	$fonts  = THEME_CONFIG['schemes']['fonts'];
+	$colors = theme()->color_scheme();
+	$fonts  = theme()->font_scheme();
 	$html   = '';
 
 	// Get minified if not in debug mode.
 	$suffix = asset_min();
 
 	// Color scheme stylesheet.
-	if ( 'colors' === $type && $colors ) {
+	if ( 'colors' === $type && 'default' != $colors ) {
 		$html = \Theme :: css( "assets/css/schemes/colors/{$colors}/style{$suffix}.css" );
 	}
 
 	// Typography scheme stylesheet.
-	if ( 'fonts' == $type && $fonts ) {
+	if ( 'fonts' == $type && 'default' != $fonts ) {
 		$html .= \Theme :: css( "assets/css/schemes/fonts/{$fonts}/style{$suffix}.css" );
 	}
 	return $html;
@@ -148,14 +148,14 @@ function scheme_stylesheet( $type = '' ) {
  */
 function load_font_files() {
 
-	$fonts = THEME_CONFIG['schemes']['fonts'];
+	if ( ! theme() ) {
+		return null;
+	}
+
+	$fonts = theme()->font_scheme();
 	$valid = [ 'woff', 'woff2', 'otf', 'ttf' ];
 	$files = scandir( THEME_DIR . "assets/fonts/{$fonts}/" );
 	$tags  = '';
-
-	if ( ! $fonts ) {
-		return null;
-	}
 
 	foreach ( $files as $font => $file ) {
 
@@ -192,21 +192,35 @@ function load_font_files() {
  */
 function config_styles() {
 
-	$get_styles  = get_config_styles();
 	$get_nav_pos = get_nav_position();
 
 	$styles = '<style>:root {';
 
 		// Cover image overlay.
-	if ( $get_styles['cover_color'] && $get_styles['cover_opacity'] ) {
-		$styles .= sprintf(
-			'--cfe-cover-overlay--bg-color: %s;',
-			hex_to_rgb( $get_styles['cover_color'], $get_styles['cover_opacity'] )
-		);
+	if ( theme() ) {
+
+		$cover_bg_color = theme()->cover_bg_color();
+
+		/**
+		 * Make sure the color is a hex value.
+		 *
+		 * @example `#2ecc71` or `#f00`.
+		 */
+		if (
+			( $cover_bg_color && '#' === $cover_bg_color[0] &&
+				( 7 === strlen( $cover_bg_color ) || 4 === strlen( $cover_bg_color ) )
+			) &&
+			theme()->cover_bg_opacity()
+		) {
+			$styles .= sprintf(
+				'--cfe-cover-overlay--bg-color: %s;',
+				hex_to_rgb( theme()->cover_bg_color(), theme()->cover_bg_opacity() )
+			);
+		}
 	}
 
 	// Main navigation position.
-	if ( 'before' === $get_nav_pos ) {
+	if ( 'left' === $get_nav_pos ) {
 		$styles .= '--cfe-site-header-wrap--flex-direction: row-reverse;';
 		$styles .= '--cfe-site-header-wrap--flex-direction-tablet: column;';
 	} elseif ( 'above' === $get_nav_pos ) {
@@ -256,7 +270,7 @@ function body_classes() {
 	}
 
 	// User toolbar.
-	if ( theme()->show_user_toolbar() ) {
+	if ( theme() && theme()->show_user_toolbar() ) {
 		$classes[] = 'toolbar-active';
 	}
 
@@ -284,20 +298,22 @@ function body_classes() {
 		$classes[] = "loop-style-{$loop_style}";
 
 		// Posts loop template.
-		$loop_content = THEME_CONFIG['loop']['content'];
-		if ( 'grid' === $loop_content ) {
-			$classes[] = 'loop-template-grid';
-		} elseif ( 'full' === $loop_content ) {
-			$classes[] = 'loop-template-full';
+		if ( theme() ) {
+			if ( 'grid' == theme()->content_style() ) {
+				$classes[] = 'loop-template-grid';
+			} elseif ( 'full' == theme()->content_style() ) {
+				$classes[] = 'loop-template-full';
+			} else {
+				$classes[] = 'loop-template-list';
+			}
 		} else {
 			$classes[] = 'loop-template-list';
 		}
 
 		// Loop sidebar.
-		$loop_sidebar = THEME_CONFIG['loop']['sidebar'];
-		if ( 'bottom' === $loop_sidebar ) {
+		if ( theme() && 'bottom' == theme()->sidebar_in_loop() ) {
 			$classes[] = 'template-sidebar-bottom';
-		} elseif ( false === $loop_sidebar ) {
+		} elseif ( theme() && 'none' === theme()->sidebar_in_loop() ) {
 			$classes[] = 'template-no-sidebar';
 		} else {
 			$classes[] = 'template-sidebar';
@@ -373,15 +389,12 @@ function body_classes() {
 	}
 
 	// Sticky sidebar.
-	if ( true === THEME_CONFIG['aside']['sticky'] ) {
+	if ( theme() && theme()->sidebar_sticky() ) {
 		$classes[] = 'has-sticky-sidebar';
 	}
 
 	// Sidebar search hidden.
-	if (
-		'false'  === THEME_CONFIG['aside']['search_widget'] ||
-		'footer' === THEME_CONFIG['aside']['search_widget']
-	) {
+	if ( theme() && 'show' != theme()->sidebar_search() ) {
 		$classes[] = 'sidebar-search-hidden';
 	}
 
@@ -442,7 +455,7 @@ function page_schema() {
 		'blog'   == url()->whereAmI() ||
 		( 'home' == url()->whereAmI() && ! site()->homepage() )
 	) {
-		if ( 'news' === THEME_CONFIG['loop']['style'] ) {
+		if ( theme() && 'news' == theme()->loop_style() ) {
 			$itemtype = 'WebPage';
 		} else {
 			$itemtype = 'Blog';
@@ -585,8 +598,8 @@ function cover_header() {
 
 	// Full cover down icon.
 	$icon = 'angle-down-light';
-	if ( THEME_CONFIG['media']['cover_icon'] ) {
-		$icon = THEME_CONFIG['media']['cover_icon'];
+	if ( theme() && theme()->cover_icon() ) {
+		$icon = theme()->cover_icon();
 	}
 
 	if ( full_cover() ) {
@@ -614,6 +627,7 @@ function get_toolbar() {
 
 	ob_start();
 	include( THEME_DIR . 'views/utility/toolbar.php' );
+
 	return ob_get_clean();
 }
 
@@ -625,7 +639,7 @@ function get_toolbar() {
  */
 function user_toolbar() {
 
-	if ( user_logged_in() && theme()->show_user_toolbar() ) {
+	if ( user_logged_in() && theme() && theme()->show_user_toolbar() ) {
 		return get_toolbar();
 	}
 	return false;
@@ -704,10 +718,15 @@ function content_template() {
 
 	// Blog template when a static home page is used.
 	if ( 'page' == url()->whereAmI() && page()->slug() == str_replace( '/', '', site()->getField( 'uriBlog' ) ) ) {
-		if ( 'grid' === THEME_CONFIG['loop']['content'] ) {
-			$template = 'views/content/posts-grid.php';
-		} elseif ( 'full' === THEME_CONFIG['loop']['content'] ) {
-			$template = 'views/content/posts-full.php';
+
+		if ( theme() ) {
+			if ( 'grid' == theme()->content_style() ) {
+				$template = 'views/content/posts-grid.php';
+			} elseif ( 'full' == theme()->content_style() ) {
+				$template = 'views/content/posts-full.php';
+			} else {
+				$template = 'views/content/posts-list.php';
+			}
 		} else {
 			$template = 'views/content/posts-list.php';
 		}
@@ -752,10 +771,14 @@ function content_template() {
 
 	// Default to posts loop.
 	} else {
-		if ( 'grid' == THEME_CONFIG['loop']['content'] ) {
-			$template = 'views/content/posts-grid.php';
-		} elseif ( 'full' === THEME_CONFIG['loop']['content'] ) {
-			$template = 'views/content/posts-full.php';
+		if ( theme() ) {
+			if ( 'grid' == theme()->content_style() ) {
+				$template = 'views/content/posts-grid.php';
+			} elseif ( 'full' == theme()->content_style() ) {
+				$template = 'views/content/posts-full.php';
+			} else {
+				$template = 'views/content/posts-list.php';
+			}
 		} else {
 			$template = 'views/content/posts-list.php';
 		}
@@ -773,15 +796,14 @@ function content_template() {
  */
 function loop_template() {
 
-	// Get the template from the config file.
-	$config = THEME_CONFIG['loop']['content'];
-
 	// Conditional template.
 	$template = 'list';
-	if ( 'grid' === $config ) {
-		$template = 'grid';
-	} elseif ( 'full' === $config ) {
-		$template = 'full';
+	if ( theme() ) {
+		if ( 'grid' === theme()->content_style() ) {
+			$template = 'grid';
+		} elseif ( 'full' === theme()->content_style() ) {
+			$template = 'full';
+		}
 	}
 	return $template;
 }
@@ -1067,7 +1089,7 @@ function search_form( $defaults = [ 'label' => null, 'label_text' => '', 'button
  */
 function get_loop_pagination() {
 
-	if ( 'numerical' == THEME_CONFIG['loop']['paged'] ) {
+	if ( theme() && 'numerical' == theme()->loop_paged() ) {
 		ob_start();
 		include( THEME_DIR . 'views/navigation/paged-numerical.php' );
 		return ob_get_clean();

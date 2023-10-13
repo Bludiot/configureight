@@ -11,9 +11,14 @@
  * @since      1.0.0
  */
 
+// Import namespaced functions.
+use function CFE_Func\{
+	theme
+};
+
 // Sticky sidebar class.
 $sticky = '';
-if ( THEME_CONFIG['aside']['sticky'] ) {
+if ( theme() && theme()->sidebar_sticky() ) {
 	$sticky = ' sidebar-is-sticky';
 }
 ?>

@@ -10,34 +10,34 @@
 
 // Import namespaced functions.
 use function CFE_Func\{
+	theme,
 	lang
 };
 use function CFE_Tags\{
 	icon
 };
 
-// Loading text.
+// loader text.
 $text = '';
-if ( THEME_CONFIG['load_screen']['loading_text'] ) {
-	$text = THEME_CONFIG['load_screen']['loading_text'];
-} elseif( lang()->get( 'loading-text' ) ) {
-	$text = lang()->get( 'loading-text' );
+if ( theme() && ! empty( theme()->loader_text() ) ) {
+	$text = theme()->loader_text();
+} elseif( lang()->get( 'loader-text' ) ) {
+	$text = lang()->get( 'loader-text' );
 }
 
 // Loader styles.
 $style = '';
-if (
-	THEME_CONFIG['load_screen']['bg_color'] ||
-	THEME_CONFIG['load_screen']['text_color']
-) {
+if ( theme() &&
+	( ! empty( theme()->loader_bg_color() ) || ! empty( theme()->loader_text_color() ) )
+ ) {
 	$style = '<style>:root{';
 
-	if ( THEME_CONFIG['load_screen']['bg_color'] ) {
-		$style .= '--cfe-loader--bg-color:' . THEME_CONFIG['load_screen']['bg_color'] . ';';
+	if ( ! empty( theme()->loader_bg_color() ) ) {
+		$style .= '--cfe-loader--bg-color:' . theme()->loader_bg_color() . ';';
 	}
 
-	if ( THEME_CONFIG['load_screen']['text_color'] ) {
-		$style .= '--cfe-loader--text-color:' . THEME_CONFIG['load_screen']['text_color'] . ';';
+	if ( ! empty( theme()->loader_text_color() ) ) {
+		$style .= '--cfe-loader--text-color:' . theme()->loader_text_color() . ';';
 	}
 	$style .= '}</style>';
 }

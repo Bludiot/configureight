@@ -13,6 +13,7 @@
 // Import namespaced functions.
 use function CFE_Func\{
 	site,
+	theme,
 	lang,
 	get_cover_src,
 	full_cover
@@ -26,13 +27,13 @@ use function CFE_Tags\{
 
 // Site title classes.
 $site_title_class = 'site-title';
-if ( 'false' === THEME_CONFIG['header']['title'] ) {
+if ( theme() && ! theme()->site_title() ) {
 	$site_title_class = 'site-title screen-reader-text';
 }
 
 // Site description classes.
 $site_desc_class = 'site-description';
-if ( 'false' === THEME_CONFIG['header']['description'] ) {
+if ( theme() && ! theme()->site_slogan() ) {
 	$site_desc_class = 'site-description screen-reader-text';
 }
 
@@ -84,7 +85,8 @@ if ( full_cover() ) {
 	<?php endif; ?>
 
 	<?php if (
-		'false' !== THEME_CONFIG['main_nav']['search'] &&
+		theme() &&
+		theme()->header_search() &&
 		getPlugin( 'pluginSearch' )
 	) : ?>
 	<div id="search-bar" class="hide-if-no-js" aria-expanded="false">

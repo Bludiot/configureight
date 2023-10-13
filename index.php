@@ -9,6 +9,7 @@
 
 // Import namespaced functions.
 use function CFE_Func\{
+	theme,
 	is_blog_page,
 	loop_data,
 	has_cover,
@@ -34,9 +35,9 @@ $loop_data = loop_data();
 // Layout class for the `<main>` element.
 $main_view = 'page-view';
 if ( is_blog_page() ) {
-	$main_view = 'blog-view list-view';
-	if ( 'grid' == THEME_CONFIG['loop']['content'] ) {
-		$main_view = 'blog-view grid-view';
+	$main_view = 'loop-view list-view';
+	if ( theme() && 'grid' == theme()->content_style() ) {
+		$main_view = 'loop-view grid-view';
 	}
 }
 
@@ -114,7 +115,7 @@ if ( is_blog_page() ) {
 
 	<?php include( THEME_DIR . 'views/footer/footer.php' ); ?>
 
-	<?php if ( THEME_CONFIG['to_top'] ) : ?>
+	<?php if ( theme() && theme()->to_top_button() ) : ?>
 	<a href="#" id="to-top" class="hide-if-no-js">
 		<?php echo icon( 'angle-up' ); ?>
 	</a>

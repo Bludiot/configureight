@@ -15,6 +15,7 @@
 // Import namespaced functions.
 use function CFE_Func\{
 	lang,
+	theme,
 	loop_data,
 	get_word_count
 };
@@ -22,6 +23,7 @@ use function CFE_Tags\{
 	posts_loop_header,
 	loop_template,
 	loop_style,
+	icon,
 	sticky_icon,
 	page_description,
 	has_tags,
@@ -40,7 +42,7 @@ if ( empty( $content) ) {
 
 // Category icon.
 $cat_icon = '';
-if ( THEME_CONFIG['loop']['show_icons'] ) {
+if ( theme() && theme()->loop_icons() ) {
 	$cat_icon = sprintf(
 		'<span class="theme-icon category-icon loop-category-icon loop-full-category-icon" role="icon">%s</span>',
 		icon( 'folder' )
@@ -49,23 +51,23 @@ if ( THEME_CONFIG['loop']['show_icons'] ) {
 
 // Tags icon.
 $tags_icon = '';
-if ( THEME_CONFIG['loop']['show_icons'] ) {
+if ( theme() && theme()->loop_icons() ) {
 	$tags_icon = sprintf(
 		'<span class="theme-icon tags-icon loop-tags-icon loop-full-tags-icon" role="icon">%s</span>',
 		icon( 'tag' )
 	);
 }
 
+// Schema article itemtype.
+$article_type = 'BlogPosting';
+if ( theme() && 'news' == theme()->loop_style() ) {
+	$article_type = 'NewsArticle';
+}
+
 echo posts_loop_header();
 
 // If posts, print for each.
 foreach ( $content as $post ) :
-
-// Schema article itemtype.
-$article_type = 'BlogPosting';
-if ( 'news' === THEME_CONFIG['loop']['style'] ) {
-	$article_type = 'NewsArticle';
-}
 
 // Maybe a sticky icon.
 $sticky = '';
@@ -86,8 +88,8 @@ if ( $post->thumbCoverImage() ) {
 	$thumb_src = $post->thumbCoverImage();
 } elseif ( $post->coverImage() ) {
 	$thumb_src = $post->coverImage();
-} elseif ( THEME_CONFIG['media']['loop_fallback'] ) {
-	$thumb_src = DOMAIN_THEME . 'assets/images/' . THEME_CONFIG['media']['loop_fallback'];
+} else {
+	$thumb_src = DOMAIN_THEME . 'assets/images/transparent.png';
 }
 
 // Tags list.
@@ -147,37 +149,42 @@ $tags_list = function() use ( $post, $tags_icon ) {
 			</h3>
 			<?php endif; ?>
 
-			<?php if ( THEME_CONFIG['loop']['byline'] ) : ?>
+			<?php if ( theme() && theme()->loop_byline() ) : ?>
 			<p><span class="post-info-author">
 				<?php echo get_author(); ?>
 			</span></p>
 			<?php endif; ?>
 
-			<?php if ( THEME_CONFIG['loop']['post_date'] ) : ?>
+			<?php if ( theme() && theme()->loop_date() ) : ?>
 			<p class="post-info-date">
 				<?php echo $post->date(); ?>
 			</p>
 			<?php endif; ?>
 
 			<?php
+			if ( theme() ) :
 			if (
-				THEME_CONFIG['loop']['word_count'] ||
-				THEME_CONFIG['loop']['read_time']
-			) : ?>
+				theme()->loop_word_count() ||
+				theme()->loop_read_time()
+			) :
+			?>
 			<p class="post-info-details">
 
-				<?php if ( THEME_CONFIG['loop']['word_count'] ) : ?>
+				<?php if ( theme()->loop_word_count() ) : ?>
 				<span class="post-info-word-count">
 					<?php lang()->p( 'post-word-count' ); echo get_word_count( $post->key() ); ?>
 				</span>
 				<?php endif; ?>
 
-				<?php if ( THEME_CONFIG['loop']['read_time'] ) : ?>
+				<?php if ( theme()->loop_word_count() && theme()->loop_read_time() ) : ?>
 				<span class="post-info-separator"></span>
+				<?php endif; ?>
+
+				<?php if ( theme()->loop_read_time() ) : ?>
 				<span class="post-info-read-time">
 					<?php lang()->p( 'post-read-time' ); echo $post->readingTime(); ?>
 				</span>
-				<?php endif; ?>
+				<?php endif; endif; ?>
 			</p>
 			<?php endif; ?>
 

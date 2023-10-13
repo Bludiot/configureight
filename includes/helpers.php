@@ -212,11 +212,7 @@ function favicon_exists() {
 	 * Look for icon the the theme's image directory
 	 * as set in the config file.
 	 */
-	if (
-		is_array( THEME_CONFIG['head'] ) &&
-		array_key_exists( 'favicon', THEME_CONFIG['head'] ) &&
-		! empty( THEME_CONFIG['head']['favicon'] )
-	) {
+	if ( ! empty( THEME_CONFIG['head']['favicon'] ) ) {
 		$favicon = THEME_DIR . 'assets/images/' . THEME_CONFIG['head']['favicon'];
 	}
 
@@ -291,7 +287,7 @@ function loop_data() {
 
 	// Posts loop style.
 	$loop_style = 'blog';
-	if ( THEME_CONFIG['loop']['style'] && 'news' === THEME_CONFIG['loop']['style'] ) {
+	if ( theme() && 'news' == theme()->loop_style() ) {
 		$loop_style = 'news';
 	}
 
@@ -359,31 +355,24 @@ function loop_data() {
  */
 function get_nav_position() {
 
-	$position = 'after';
-	if (
-		'hide'   === THEME_CONFIG['main_nav']['position'] ||
-		'hidden' === THEME_CONFIG['main_nav']['position']
-	) {
+	// Main navigation to right of site branding (default).
+	$position = 'right';
+
+	// Do not use main navigation.
+	if ( theme() && 'hide' == theme()->main_nav_pos() ) {
 		$position = 'hidden';
 
 	// Main navigation above site branding.
-	} elseif ( 'above' === THEME_CONFIG['main_nav']['position']	) {
+	} elseif ( theme() && 'above' == theme()->main_nav_pos()	) {
 		$position = 'above';
 
 	// Main navigation below site branding.
-	} elseif ( 'below' === THEME_CONFIG['main_nav']['position']	) {
+	} elseif ( theme() && 'below' == theme()->main_nav_pos()	) {
 		$position = 'below';
 
-	// Main navigation before site branding.
-	} elseif (
-		'left'   === THEME_CONFIG['main_nav']['position'] ||
-		'before' === THEME_CONFIG['main_nav']['position']
-	) {
-		$position = 'before';
-
-	// Main navigation after site branding (default).
-	} else {
-		$position = 'after';
+	// Main navigation to left of site branding.
+	} elseif ( theme() && 'left' == theme()->main_nav_pos() ) {
+		$position = 'left';
 	}
 	return $position;
 }
@@ -534,16 +523,14 @@ function full_cover() {
  */
 function include_sidebar() {
 
-	$include = false;
-	if ( 'search' == url()->whereAmI() ) {
-		$include = true;
-	} elseif ( 'blog' == url()->whereAmI() ) {
-		if ( false !== THEME_CONFIG['loop']['sidebar'] ) {
-			$include = true;
+	$include = true;
+	if ( 'blog' == url()->whereAmI() ) {
+		if ( theme() && 'none' == theme()->sidebar_in_loop() ) {
+			$include = false;
 		}
 	} elseif ( 'page' == url()->whereAmI() ) {
-		if ( ! str_contains( page()->template(), 'no-sidebar' ) ) {
-			$include = true;
+		if ( str_contains( page()->template(), 'no-sidebar' ) ) {
+			$include = false;
 		}
 	}
 	return $include;
@@ -562,38 +549,10 @@ function include_sidebar() {
 function asset_min() {
 
 	// Get non-minified file if in debug mode.
-	if (
-		( defined( 'DEBUG_MODE' ) && DEBUG_MODE ) ||
-		( defined( 'THEME_CONFIG' ) && THEME_CONFIG['debug'] )
-	) {
+	if ( defined( 'DEBUG_MODE' ) && DEBUG_MODE ) {
 		return '';
 	}
 	return '.min';
-}
-
-/**
- * Get config styles
- *
- * Gets override styles from the theme config file.
- *
- * @since  1.0.0
- * @return array Returns an array of CSS properties & values.
- */
-function get_config_styles() {
-
-	$styles = [];
-
-	if ( THEME_CONFIG['media']['cover_color'] ) {
-		$merge  = [ 'cover_color' => THEME_CONFIG['media']['cover_color'] ];
-		$styles = array_merge( $styles, $merge );
-	}
-
-	if ( THEME_CONFIG['media']['cover_opacity'] ) {
-		$merge  = [ 'cover_opacity' => THEME_CONFIG['media']['cover_opacity'] ];
-		$styles = array_merge( $styles, $merge );
-	}
-
-	return $styles;
 }
 
 /**

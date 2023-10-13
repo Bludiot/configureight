@@ -12,6 +12,11 @@
  * @since      1.0.0
  */
 
+// Import namespaced functions.
+use function CFE_Func\{
+	theme
+};
+
 // If no posts.
 if ( empty( $content) ) {
 	include( THEME_DIR . 'views/content/no-posts.php' );
@@ -51,19 +56,12 @@ if ( $post->description() ) {
 
 		<footer class="page-info">
 			<p>
-				<?php if ( "false" !== THEME_CONFIG['loop']['post_date'] ) : ?>
+				<?php if ( theme() && theme()->loop_date() ) : ?>
 				<span class="page-info-entry">
 					<span class="bi bi-calendar" role="img"></span>
 					<?php echo $post->date(); ?>
 				</span>
 				<br />
-				<?php endif; ?>
-
-				<?php if ( "false" !== THEME_CONFIG['loop']['read_time'] ) : ?>
-				<span class="page-info-entry">
-					<span class="bi bi-clock-history" role="img"></span>
-					<?php echo $L->get( 'Reading time' ) . ': ' . $post->readingTime(); ?>
-				</span>
 				<?php endif; ?>
 			</p>
 		</footer>
@@ -72,10 +70,4 @@ if ( $post->description() ) {
 <?php endforeach; ?>
 
 <?php
-
-// Get page navigation.
-if ( 'numerical' == THEME_CONFIG['loop']['paged'] ) {
-	include( THEME_DIR . 'views/navigation/paged-numerical.php' );
-} else {
-	include( THEME_DIR . 'views/navigation/paged-prev-next.php' );
-}
+echo get_loop_pagination();
