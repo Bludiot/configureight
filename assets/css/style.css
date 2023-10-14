@@ -1307,10 +1307,6 @@ h3 + .search-form {
   fill: currentColor;
 }
 
-.social-navigation {
-  margin: 1em 0 0 0;
-}
-
 .social-nav-list {
   display: flex;
   gap: 0 1em;
@@ -1321,6 +1317,13 @@ h3 + .search-form {
   fill: currentColor;
 }
 
+.page-sidebar .social-navigation {
+  margin: 0;
+}
+
+.site-footer .social-navigation {
+  margin: 1em 0 0 0;
+}
 .site-footer .social-navigation .social-nav-list {
   justify-content: center;
 }

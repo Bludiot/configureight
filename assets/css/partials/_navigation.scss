@@ -264,10 +264,6 @@
 }
 
 // Personal/social navigation/
-.social-navigation {
-	margin: 1em 0 0 0;
-}
-
 .social-nav-list {
 	display: flex;
 	gap: 0 1em;
@@ -279,8 +275,16 @@
 	}
 }
 
+.page-sidebar {
+	.social-navigation {
+		margin: 0;
+	}
+}
+
 .site-footer {
 	.social-navigation {
+		margin: 1em 0 0 0;
+
 		.social-nav-list {
 			justify-content: center;
 		}
