@@ -12,6 +12,9 @@
 use function CFE_Func\{
 	theme
 };
+use function CFE_Tags\{
+	social_nav
+};
 
 $copyright = '';
 if ( theme() && theme()->copyright() ) {
@@ -66,30 +69,9 @@ if ( theme() && theme()->copyright() ) {
 				);
 			} ?>
 			<?php
-
-			// Personal/social links.
-			$links = Theme :: socialNetworks();
-			if ( $links ) : ?>
-			<nav class="social-navigation" data-page-navigation>
-				<ul class="nav-list social-nav-list">
-					<?php foreach ( $links as $link => $label ) :
-
-					// Get icon SVG file.
-					$icon = '';
-					$file = THEME_DIR . 'assets/images/svg-icons/' . $link . '.svg';
-					if ( file_exists( $file ) ) {
-						$icon = file_get_contents( $file );
-					} ?>
-					<li>
-						<a href="<?php echo $site->{$link}(); ?>" target="_blank" rel="noreferrer noopener" title="<?php echo $label; ?>">
-							<span class="social-icon"><?php echo $icon; ?></span>
-							<span class="screen-reader-text social-label"><?php echo $label; ?></span>
-						</a>
-					</li>
-					<?php endforeach; ?>
-				</ul>
-			</nav>
-			<?php endif; ?>
+			if ( ! theme() || ( theme() && theme()->footer_social() ) ) {
+				echo social_nav();
+			} ?>
 		</div>
 		<?php echo $copyright; ?>
 	</div>

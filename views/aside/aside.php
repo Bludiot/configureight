@@ -15,15 +15,36 @@
 use function CFE_Func\{
 	theme
 };
+use function CFE_Tags\{
+	social_nav
+};
 
 // Sticky sidebar class.
 $sticky = '';
 if ( theme() && theme()->sidebar_sticky() ) {
-	$sticky = ' sidebar-is-sticky';
+	$sticky = 'sidebar-is-sticky';
+}
+
+// Social nave heading.
+$social_heading = sprintf(
+	'<h2>%s</h2>',
+	$L->get( 'Social Links' )
+);
+if ( theme() && ! empty( theme()->sb_social_heading() ) ) {
+	$social_heading = sprintf(
+		'<h2>%s</h2>',
+		theme()->sb_social_heading()
+	);
 }
 ?>
 <div>
-	<aside id="page-sidebar" class="page-sidebar<?php echo $sticky; ?>" data-page-sidebar>
+	<aside id="page-sidebar" class="page-sidebar <?php echo $sticky; ?>" data-page-sidebar>
 		<?php Theme :: plugins( 'siteSidebar' ); ?>
+
+		<?php
+		if ( theme() && theme()->sidebar_social() ) {
+			echo $social_heading;
+			echo social_nav();
+		} ?>
 	</aside>
 </div>
