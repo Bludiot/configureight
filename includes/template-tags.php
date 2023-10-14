@@ -1157,14 +1157,21 @@ function next_key() {
 /**
  * Social navigation
  *
+ * Displays a list of links to social sites.
+ *
  * @since  1.0.0
+ * @param  boolean $wrap Whether to wrap the list in a `<nav>` element.
  * @return string
  */
-function social_nav() {
+function social_nav( $wrap = true ) {
 
 	$links = \Theme :: socialNetworks();
-	if ( $links ) : ?>
-	<nav class="social-navigation" data-page-navigation>
+	if ( $links ) :
+
+	if ( $wrap ) {
+		echo '<nav class="social-navigation" data-page-navigation>';
+	}
+	?>
 		<ul class="nav-list social-nav-list">
 			<?php foreach ( $links as $link => $label ) :
 
@@ -1176,14 +1183,17 @@ function social_nav() {
 			} ?>
 			<li>
 				<a href="<?php echo site()->{$link}(); ?>" target="_blank" rel="noreferrer noopener" title="<?php echo $label; ?>">
-					<span class="social-icon"><?php echo $icon; ?></span>
+					<span class="theme-icon social-icon"><?php echo $icon; ?></span>
 					<span class="screen-reader-text social-label"><?php echo $label; ?></span>
 				</a>
 			</li>
 			<?php endforeach; ?>
 		</ul>
-	</nav>
-	<?php endif;
+	<?php
+	if ( $wrap ) {
+		echo '</nav>';
+	}
+	endif;
 }
 
 /**

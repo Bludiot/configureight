@@ -16,10 +16,12 @@
 
 // Import namespaced functions.
 use function CFE_Func\{
+	site,
 	theme
 };
 use function CFE_Tags\{
-	icon
+	icon,
+	social_nav
 };
 
 ?>
@@ -143,6 +145,28 @@ use function CFE_Tags\{
 				$L->get( 'search-link-label' )
 			);
 		}
+
+		// Add social links.
+		if ( theme() && theme()->header_social() ) :
+
+		$links = Theme :: socialNetworks();
+		if ( $links ) :
+		foreach ( $links as $link => $label ) :
+
+			// Get icon SVG file.
+			$icon = '';
+			$file = THEME_DIR . 'assets/images/svg-icons/' . $link . '.svg';
+			if ( file_exists( $file ) ) {
+				$icon = file_get_contents( $file );
+			} ?>
+			<li>
+				<a href="<?php echo site()->{$link}(); ?>" target="_blank" rel="noreferrer noopener" title="<?php echo $label; ?>">
+					<span class="theme-icon social-icon"><?php echo $icon; ?></span>
+					<span class="screen-reader-text social-label"><?php echo $label; ?></span>
+				</a>
+			</li>
+			<?php endforeach;
+		endif; endif;
 
 		?>
 	</ul>

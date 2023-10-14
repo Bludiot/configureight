@@ -13,7 +13,7 @@
 
 	ul {
 		margin: var( --cfe-site-nav--list--margin, 0 );
-		display: var( --cfe-site-nav--list--display, flex );
+		display: var( --cfe-site-nav--list--display, inline-flex );
 		gap: var( --cfe-site-nav--list--gap, 0.25em 1em );
 		justify-content: var( --cfe-site-nav--list--justify-content, flex-end );
 		flex-wrap: var( --cfe-site-nav--list--flex-wrap, wrap );
@@ -266,16 +266,16 @@
 // Personal/social navigation/
 .social-navigation {
 	margin: 1em 0 0 0;
+}
 
-	.social-nav-list {
-		display: flex;
-		gap: 0 1em;
+.social-nav-list {
+	display: flex;
+	gap: 0 1em;
 
-		svg {
-			width: 1.25em;
-			height: 1.25em;
-			fill: currentColor;
-		}
+	svg {
+		width: 1.25em;
+		height: 1.25em;
+		fill: currentColor;
 	}
 }
 
