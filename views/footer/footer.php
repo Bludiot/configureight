@@ -68,11 +68,11 @@ if ( theme() && theme()->copyright() ) {
 					Theme :: footer()
 				);
 			} ?>
-			<?php
-			if ( ! theme() || ( theme() && theme()->footer_social() ) ) {
-				echo social_nav();
-			} ?>
 		</div>
+		<?php
+		if ( ! theme() || ( theme() && theme()->footer_social() ) ) {
+			echo social_nav();
+		} ?>
 		<?php echo $copyright; ?>
 	</div>
 </footer>

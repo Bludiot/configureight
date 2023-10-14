@@ -41,10 +41,13 @@ if ( theme() && ! empty( theme()->sb_social_heading() ) ) {
 	<aside id="page-sidebar" class="page-sidebar <?php echo $sticky; ?>" data-page-sidebar>
 		<?php Theme :: plugins( 'siteSidebar' ); ?>
 
-		<?php
-		if ( theme() && theme()->sidebar_social() ) {
+		<?php if ( theme() && theme()->sidebar_social() ) : ?>
+		<div class="plugin plugin-social-nav">
+			<?php
 			echo $social_heading;
 			echo social_nav();
-		} ?>
+			?>
+		</div>
+		<?php endif; ?>
 	</aside>
 </div>
