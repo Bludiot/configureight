@@ -46,6 +46,10 @@
 		margin: var( --cfe-sidebar--plugin--margin, var( --cfe-spacing--vert, 2rem ) 0 0 0 );
 		order: var( --cfe-sidebar--plugin--order, 100 );
 
+		.plugin-content {
+			margin: var( --cfe-plugin-content--margin, 0.5em 0 0 0 );
+		}
+
 		&.plugin-search {
 			order: var( --cfe-sidebar--plugin--search--order, 0 );
 

@@ -43,10 +43,10 @@ if ( theme() && ! empty( theme()->sb_social_heading() ) ) {
 
 		<?php if ( theme() && theme()->sidebar_social() ) : ?>
 		<div class="plugin plugin-social-nav">
-			<?php
-			echo $social_heading;
-			echo social_nav();
-			?>
+			<?php echo $social_heading; ?>
+			<div class="plugin-content">
+				<?php echo social_nav(); ?>
+			</div>
 		</div>
 		<?php endif; ?>
 	</aside>
