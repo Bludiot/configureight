@@ -144,15 +144,22 @@ function scheme_stylesheet( $type = '' ) {
  * Load font files
  *
  * @since  1.0.0
- * @return string Returns link tags for the `<head>`.
+ * @return mixed Returns link tags for the `<head>` or null.
  */
 function load_font_files() {
 
+	// Stop if the theme plugin is not installed.
 	if ( ! theme() ) {
 		return null;
 	}
 
+	// Get the font scheme setting.
 	$fonts = theme()->font_scheme();
+
+	// Stop if default font, no directory exists.
+	if ( 'default' == $fonts || empty( theme()->font_scheme() ) ) {
+		return null;
+	}
 	$valid = [ 'woff', 'woff2', 'otf', 'ttf' ];
 	$files = scandir( THEME_DIR . "assets/fonts/{$fonts}/" );
 	$tags  = '';
