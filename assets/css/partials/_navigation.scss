@@ -182,11 +182,11 @@
 		ul {
 			li {
 				color: var( --cfe-site-nav--list--text-color, var( --cfe-cover--text-color, $white ) );
-				text-shadow: var( --cfe-text-shadow );
+				text-shadow: var( --cfe-cover--text-shadow, var( --cfe-text-shadow ) );
 
 				a {
 					color: var( --cfe-site-nav--list--text-color, var( --cfe-cover--text-color, $white ) );
-					text-shadow: var( --cfe-text-shadow );
+					text-shadow: var( --cfe-cover--text-shadow, var( --cfe-text-shadow ) );
 
 					&:hover,
 					&:focus {

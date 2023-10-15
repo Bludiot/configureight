@@ -223,7 +223,7 @@
 			background: transparent;
 			border: none;
 			color: var( --cfe-cover--title--text-color, var( --cfe-cover--text-color, $white ) );
-			text-shadow: var( --cfe-text-shadow );
+			text-shadow: var( --cfe-cover--text-shadow, var( --cfe-text-shadow ) );
 			transition: transform ease-in-out .15s;
 			transform: translateY( 0 );
 
@@ -252,7 +252,7 @@
 	font-size: var( --cfe-cover--title--font-size, clamp( 2.25rem, 2.5vw + 1rem, 3.25vw ) );
 	font-weight: var( --cfe-cover--title--font-weight, var( --cfe-heading-primary--font-weight, 700 ) );
 	color: var( --cfe-cover--title--text-color, var( --cfe-cover--text-color, $white ) );
-	text-shadow: var( --cfe-text-shadow );
+	text-shadow: var( --cfe-cover--text-shadow, var( --cfe-text-shadow ) );
 
 	a {
 		color: var( --cfe-cover--title--text-color, var( --cfe-cover--text-color, $white ) );
@@ -287,7 +287,7 @@
 
 	.site-title {
 		color: var( --cfe-cover--title--text-color, var( --cfe-cover--text-color, $white ) );
-		text-shadow: var( --cfe-text-shadow );
+		text-shadow: var( --cfe-cover--text-shadow, var( --cfe-text-shadow ) );
 
 		a {
 			color: var( --cfe-cover--title--text-color, var( --cfe-cover--text-color, $white ) );
@@ -301,7 +301,7 @@
 
 	.site-description {
 		color: var( --cfe-cover--site-description--text-color, var( --cfe-cover--text-color, $white ) );
-		text-shadow: var( --cfe-text-shadow );
+		text-shadow: var( --cfe-cover--text-shadow, var( --cfe-text-shadow ) );
 	}
 
 	.cover-header {

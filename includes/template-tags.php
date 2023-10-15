@@ -212,6 +212,11 @@ function config_styles() {
 		);
 	}
 
+	// Cover image text shadow.
+	if ( theme() && ! theme()->cover_text_shadow() ) {
+		$styles .= '--cfe-cover--text-shadow: none;';
+	}
+
 	// Main navigation position.
 	if ( 'left' === $get_nav_pos ) {
 		$styles .= '--cfe-site-header-wrap--flex-direction: row-reverse;';
