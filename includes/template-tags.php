@@ -197,26 +197,11 @@ function config_styles() {
 	$styles = '<style>:root {';
 
 		// Cover image overlay.
-	if ( theme() ) {
-
-		$cover_bg_color = theme()->cover_bg_color();
-
-		/**
-		 * Make sure the color is a hex value.
-		 *
-		 * @example `#2ecc71` or `#f00`.
-		 */
-		if (
-			( $cover_bg_color && '#' === $cover_bg_color[0] &&
-				( 7 === strlen( $cover_bg_color ) || 4 === strlen( $cover_bg_color ) )
-			) &&
-			theme()->cover_bg_opacity()
-		) {
-			$styles .= sprintf(
-				'--cfe-cover-overlay--bg-color: %s;',
-				hex_to_rgb( theme()->cover_bg_color(), theme()->cover_bg_opacity() )
-			);
-		}
+	if ( theme() && ! empty( theme()->cover_bg_color() ) ) {
+		$styles .= sprintf(
+			'--cfe-cover-overlay--bg-color: %s;',
+			theme()->cover_bg_color()
+		);
 	}
 
 	// Main navigation position.
