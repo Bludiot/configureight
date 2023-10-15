@@ -196,6 +196,22 @@ function config_styles() {
 
 	$styles = '<style>:root {';
 
+	// Loader image overlay.
+	if ( theme() && ! empty( theme()->loader_bg_color() ) ) {
+		$styles .= sprintf(
+			'--cfe-loader-overlay--bg-color: %s;',
+			theme()->loader_bg_color()
+		);
+	}
+
+	// Loader image text.
+	if ( theme() && ! empty( theme()->loader_text_color() ) ) {
+		$styles .= sprintf(
+			'--cfe-loader--text-color: %s;',
+			theme()->loader_text_color()
+		);
+	}
+
 	// Cover image overlay.
 	if ( theme() && ! empty( theme()->cover_bg_color() ) ) {
 		$styles .= sprintf(
