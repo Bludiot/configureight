@@ -44,7 +44,7 @@ if ( empty( $content) ) {
 $cat_icon = '';
 if ( theme() && theme()->loop_icons() ) {
 	$cat_icon = sprintf(
-		'<span class="theme-icon category-icon loop-category-icon loop-full-category-icon" role="icon">%s</span>',
+		'<span class="theme-icon loop-icon category-icon loop-category-icon loop-full-category-icon" role="icon">%s</span>',
 		icon( 'folder' )
 	);
 }
@@ -53,7 +53,7 @@ if ( theme() && theme()->loop_icons() ) {
 $tags_icon = '';
 if ( theme() && theme()->loop_icons() ) {
 	$tags_icon = sprintf(
-		'<span class="theme-icon tags-icon loop-tags-icon loop-full-tags-icon" role="icon">%s</span>',
+		'<span class="theme-icon loop-icon tags-icon loop-tags-icon loop-full-tags-icon" role="icon">%s</span>',
 		icon( 'tag' )
 	);
 }
