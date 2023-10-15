@@ -222,14 +222,14 @@
 			margin: 0 auto;
 			background: transparent;
 			border: none;
-			color: var( --cfe-cover--title--text-color, $white );
+			color: var( --cfe-cover--title--text-color, var( --cfe-cover--text-color, $white ) );
 			text-shadow: var( --cfe-text-shadow );
 			transition: transform ease-in-out .15s;
 			transform: translateY( 0 );
 
 			&:hover,
 			&:focus {
-				color: var( --cfe-site-cover--title--link--action--text-color, $white );
+				color: var( --cfe-site-cover--title--link--action--text-color, var( --cfe-cover--text-color, $white ) );
 			}
 
 			&:hover {
@@ -237,6 +237,7 @@
 			}
 
 			svg {
+				fill: currentColor;
 				width: calc( var( --cfe-button--svg-icon--width ) * 3.5 );
 				height: calc( var( --cfe-button--svg-icon--height ) * 3.5 );
 				max-width: var( --cfe-site-cover--icon--max-width, 2.5rem );
@@ -250,15 +251,15 @@
 	line-height: 1.2;
 	font-size: var( --cfe-cover--title--font-size, clamp( 2.25rem, 2.5vw + 1rem, 3.25vw ) );
 	font-weight: var( --cfe-cover--title--font-weight, var( --cfe-heading-primary--font-weight, 700 ) );
-	color: var( --cfe-cover--title--text-color, $white );
+	color: var( --cfe-cover--title--text-color, var( --cfe-cover--text-color, $white ) );
 	text-shadow: var( --cfe-text-shadow );
 
 	a {
-		color: var( --cfe-cover--title--text-color, $white );
+		color: var( --cfe-cover--title--text-color, var( --cfe-cover--text-color, $white ) );
 
 		&:hover,
 		&:focus {
-			color: var( --cfe-site-cover--title--link--action--text-color, $white );
+			color: var( --cfe-site-cover--title--link--action--text-color, var( --cfe-cover--text-color, $white ) );
 		}
 	}
 }
@@ -285,21 +286,21 @@
 	}
 
 	.site-title {
-		color: var( --cfe-cover--title--text-color, $white );
+		color: var( --cfe-cover--title--text-color, var( --cfe-cover--text-color, $white ) );
 		text-shadow: var( --cfe-text-shadow );
 
 		a {
-			color: var( --cfe-cover--title--text-color, $white );
+			color: var( --cfe-cover--title--text-color, var( --cfe-cover--text-color, $white ) );
 
 			&:hover,
 			&:focus {
-				color: var( --cfe-site-cover--title--link--action--text-color, $white );
+				color: var( --cfe-site-cover--title--link--action--text-color, var( --cfe-cover--text-color, $white ) );
 			}
 		}
 	}
 
 	.site-description {
-		color: var( --cfe-cover--site-description--text-color, $white );
+		color: var( --cfe-cover--site-description--text-color, var( --cfe-cover--text-color, $white ) );
 		text-shadow: var( --cfe-text-shadow );
 	}
 

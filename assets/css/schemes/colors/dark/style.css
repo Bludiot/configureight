@@ -43,4 +43,10 @@
   --cfe-article--tags-list--text-color: #eeeeee;
   --cfe-article--tags-list--action--bg-color: #555555;
   --cfe-article--tags-list--action--text-color: #ffffff;
+  --cfe-article--tags-list--bg-color: var( --cfe-button--bg-color );
+  --cfe-article--tags-list--border-color: var( --cfe-button--border-color );
+  --cfe-article--tags-list--text-color: var( --cfe-button--text-color );
+  --cfe-article--tags-list--action--bg-color: var( --cfe-button--action--bg-color );
+  --cfe-article--tags-list--action--border-color: var( --cfe-button--border-color );
+  --cfe-article--tags-list--action--text-color: var( --cfe-button--action--text-color );
 }
