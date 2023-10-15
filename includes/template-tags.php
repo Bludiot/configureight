@@ -196,11 +196,19 @@ function config_styles() {
 
 	$styles = '<style>:root {';
 
-		// Cover image overlay.
+	// Cover image overlay.
 	if ( theme() && ! empty( theme()->cover_bg_color() ) ) {
 		$styles .= sprintf(
 			'--cfe-cover-overlay--bg-color: %s;',
 			theme()->cover_bg_color()
+		);
+	}
+
+	// Cover image text.
+	if ( theme() && ! empty( theme()->cover_text_color() ) ) {
+		$styles .= sprintf(
+			'--cfe-cover--text-color: %s;',
+			theme()->cover_text_color()
 		);
 	}
 
