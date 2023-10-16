@@ -578,12 +578,28 @@ function cover_header() {
 		'page' == $loop_data['location']
 	) {
 		$class       = 'loop-page-description';
-		$page_title     = $loop_data['title'];
+		$page_title  = $loop_data['title'];
 		$description = $loop_data['description'];
+
+	} elseif ( 'home' == url()->whereAmI() ) {
+		$class       = 'loop-page-description';
+		$page_title  = lang()->get( 'Blog' );
+		if ( theme() ) {
+			if ( ! empty( theme()->loop_title() ) ) {
+				$page_title = theme()->loop_title();
+			} elseif ( theme()->loop_style() ) {
+				$page_title = ucwords( theme()->loop_style() );
+			}
+		}
+		$description = sprintf(
+			'%s %s',
+			lang()->get( 'posts-loop-desc-blog' ),
+			site()->title()
+		);
 
 	} elseif ( 'blog' == url()->whereAmI() ) {
 		$class       = 'loop-page-description';
-		$page_title     = ucwords( $loop_data['slug'] . $blog_page );
+		$page_title  = ucwords( $loop_data['slug'] . $blog_page );
 		$description = sprintf(
 			'%s %s',
 			lang()->get( 'posts-loop-desc-blog' ),
@@ -593,13 +609,13 @@ function cover_header() {
 	} elseif ( 'category' == url()->whereAmI() ) {
 		$get_cat     = new \Category( url()->slug() );
 		$class       = 'category-page-description';
-		$page_title     = $get_cat->name();
+		$page_title  = $get_cat->name();
 		$description = text_replace( 'posts-loop-desc-cat', $get_cat->name() );
 
 	} elseif ( 'tag' == url()->whereAmI() ) {
 		$get_tag     = new \Tag( url()->slug() );
 		$class       = 'tag-page-description';
-		$page_title     = $get_tag->name();
+		$page_title  = $get_tag->name();
 		$description = text_replace( 'posts-loop-desc-tag', $get_tag->name() );
 	}
 
