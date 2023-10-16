@@ -599,7 +599,7 @@ function cover_header() {
 
 	} elseif ( 'blog' == url()->whereAmI() ) {
 		$class       = 'loop-page-description';
-		$page_title  = ucwords( $loop_data['slug'] . $blog_page );
+		$page_title  = ucwords( $loop_data['slug'] );
 		$description = sprintf(
 			'%s %s',
 			lang()->get( 'posts-loop-desc-blog' ),
@@ -881,11 +881,11 @@ function posts_loop_header() {
 	$class       = '';
 	$format_slug =  ucwords( str_replace( [ '-', '_' ], '', url()->slug() ) );
 	$loop_data   = loop_data();
-	$blog_page   = '';
+	$loop_page   = '';
 
 	// If on a blog page other than the first.
 	if ( isset( $_GET['page'] ) && $_GET['page'] > 1 ) {
-		$blog_page = sprintf(
+		$loop_page = sprintf(
 			' &rsaquo; %s %s',
 			lang()->get( 'page' ),
 			$_GET['page']
@@ -893,9 +893,15 @@ function posts_loop_header() {
 	}
 
 	// Conditional heading & description.
-	if ( 'blog' == url()->whereAmI() ) {
+	if ( 'home' == url()->whereAmI() ) {
+		$heading  = lang()->get( 'Blog' ) . $loop_page;
+		if ( theme() && theme()->loop_style() ) {
+			$heading = ucwords( theme()->loop_style() . $loop_page );
+		}
+
+	} elseif ( 'blog' == url()->whereAmI() ) {
 		$class   = 'loop-page-description';
-		$heading = ucwords( $loop_data['slug'] . $blog_page );
+		$heading = ucwords( $loop_data['slug'] . $loop_page );
 
 	} elseif ( 'category' == url()->whereAmI() ) {
 		$get_cat     = new \Category( url()->slug() );
@@ -930,10 +936,7 @@ function posts_loop_header() {
 	$html .= '</header>';
 
 	// Print nothing if site home or singular page.
-	if (
-		'home' == url()->whereAmI() ||
-		'page' == url()->whereAmI()
-	) {
+	if ( 'page' == url()->whereAmI() ) {
 		return '';
 	}
 	return $html;
