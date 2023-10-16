@@ -11,13 +11,15 @@ A theme for Bludit CMS with many configurable options. CURRENTLY UNDER CONSTRUCT
 ![Variable fonts included](https://img.shields.io/badge/Fonts-Variable-ff8800.svg?style=flat-square "Variable fonts included")
 ![RTL language support](https://img.shields.io/badge/RTL-Ready-00aa00.svg?style=flat-square "RTL language support")
 
-![Configure 8 theme cover image](https://github.com/ControlledChaos/bs-bludit/raw/main/assets/images/cover.jpg)
+![Configure 8 theme cover image](https://github.com/Bludiot/configureight/raw/main/assets/images/cover.jpg)
 
 ## Overview
 
 The Configure 8 theme began under a different name as a starter theme, a boilerplate for developing themes for Bludit CMS. It still is is considered by its developer to be a starter theme however it now has many presentation options and the theme can be used for a simple yet attractive blog, or a small brochure site.
 
-The code is hosted on GitHub as a public template so one can use it to begin building their own themes upon the Configure 8 base.
+## Configuration
+
+This theme requires its companion plugin to be installed. Find this at [https://github.com/Bludiot/configureight-plugin](https://github.com/Bludiot/configureight-plugin).
 
 ## Page Templates
 
@@ -31,10 +33,6 @@ Templates (slugs) include…
 - Static front page (used automatically)
 - About page (about)
 - Contact page (contact)
-
-## Configuration
-
-This theme comes with a JSON configuration file for various options built into the theme. This file can be copied and pasted into the Bludit root directory so that the theme can be updated without losing preferences.
 
 ### Color Schemes
 
