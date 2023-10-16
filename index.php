@@ -10,12 +10,13 @@
 // Import namespaced functions.
 use function CFE_Func\{
 	theme,
+	current_lang,
 	is_blog_page,
 	loop_data,
 	has_cover,
 	get_cover_src,
 	full_cover,
-	include_sidebar
+	include_sidebar,
 };
 use function CFE_Tags\{
 	body_classes,
@@ -67,19 +68,19 @@ if ( is_blog_page() ) {
 
 ?>
 <!DOCTYPE html>
-<html dir="auto" class="no-js" lang="<?php echo Theme :: lang() ?>" xmlns:og="http://opengraphprotocol.org/schema/" data-web-page>
+<html dir="auto" class="no-js" lang="<?php echo current_lang(); ?>" xmlns:og="http://opengraphprotocol.org/schema/" data-web-page>
 <?php include( THEME_DIR . 'views/utility/head.php' ); ?>
 <body class="<?php echo body_classes(); ?>" itemid="<?php echo $uuid; ?>" <?php echo $body_data_attr; ?>>
 
 	<?php echo page_loader(); ?>
 
-	<?php Theme :: plugins( 'siteBodyBegin' ); ?>
+	<?php $helper :: plugins( 'siteBodyBegin' ); ?>
 
 	<?php include( THEME_DIR . 'views/header/header.php' ); ?>
 
 	<div id="<?php echo page_id(); ?>" class="page-wrap" data-page-wrap itemscope="itemscope" itemtype="<?php page_schema(); ?>">
 
-		<?php Theme :: plugins( 'pageBegin' ); ?>
+		<?php $helper :: plugins( 'pageBegin' ); ?>
 
 		<?php if ( 'search' != $url->whereAmI() && ! full_cover() && has_cover() ) : ?>
 		<figure class="page-cover page-cover-singular">
@@ -109,7 +110,7 @@ if ( is_blog_page() ) {
 			?>
 		</div>
 
-		<?php Theme :: plugins( 'pageEnd' ); ?>
+		<?php $helper :: plugins( 'pageEnd' ); ?>
 
 	</div>
 
@@ -123,7 +124,7 @@ if ( is_blog_page() ) {
 	<?php
 	echo user_toolbar();
 
-	Theme :: plugins( 'siteBodyEnd' );
+	$helper :: plugins( 'siteBodyEnd' );
 
 	footer_scripts();
 	?>

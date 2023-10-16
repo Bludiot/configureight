@@ -22,6 +22,7 @@ use CFE\Classes\{
 
 // Import namespaced functions.
 use function CFE_Func\{
+	helper,
 	site,
 	url,
 	lang,
@@ -130,12 +131,12 @@ function scheme_stylesheet( $type = '' ) {
 
 	// Color scheme stylesheet.
 	if ( 'colors' === $type && 'default' != $colors ) {
-		$html = \Theme :: css( "assets/css/schemes/colors/{$colors}/style{$suffix}.css" );
+		$html = helper() :: css( "assets/css/schemes/colors/{$colors}/style{$suffix}.css" );
 	}
 
 	// Typography scheme stylesheet.
 	if ( 'fonts' == $type && 'default' != $fonts ) {
-		$html .= \Theme :: css( "assets/css/schemes/fonts/{$fonts}/style{$suffix}.css" );
+		$html .= helper() :: css( "assets/css/schemes/fonts/{$fonts}/style{$suffix}.css" );
 	}
 	return $html;
 }
@@ -1186,7 +1187,7 @@ function next_key() {
  */
 function social_nav( $wrap = true ) {
 
-	$links = \Theme :: socialNetworks();
+	$links = helper() :: socialNetworks();
 	if ( $links ) :
 
 	if ( $wrap ) {
@@ -1227,8 +1228,8 @@ function footer_scripts() {
 
 	$suffix = asset_min();
 
-	echo \Theme :: js( "assets/js/fitvids{$suffix}.js" );
-	echo \Theme :: js( "assets/js/lightbox{$suffix}.js" );
-	echo \Theme :: js( "assets/js/sticky{$suffix}.js" );
-	echo \Theme :: js( "assets/js/theme{$suffix}.js" );
+	echo helper() :: js( "assets/js/fitvids{$suffix}.js" );
+	echo helper() :: js( "assets/js/lightbox{$suffix}.js" );
+	echo helper() :: js( "assets/js/sticky{$suffix}.js" );
+	echo helper() :: js( "assets/js/theme{$suffix}.js" );
 }

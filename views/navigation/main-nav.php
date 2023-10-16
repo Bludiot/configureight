@@ -149,7 +149,7 @@ use function CFE_Tags\{
 		// Add social links.
 		if ( theme() && theme()->header_social() ) :
 
-		$links = Theme :: socialNetworks();
+		$links = $helper :: socialNetworks();
 		if ( $links ) :
 		foreach ( $links as $link => $label ) :
 

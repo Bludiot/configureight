@@ -10,7 +10,8 @@
 
 // Import namespaced functions.
 use function CFE_Func\{
-	theme
+	theme,
+	site
 };
 use function CFE_Tags\{
 	social_nav
@@ -62,10 +63,10 @@ if ( theme() && theme()->copyright() ) {
 		} ?>
 		<div class="site-footer-text">
 			<?php
-			if ( ! empty( Theme :: footer() ) ) {
+			if ( ! empty( site()->footer() ) ) {
 				printf(
 					'<p>%s</p>',
-					Theme :: footer()
+					site()->footer()
 				);
 			} ?>
 		</div>

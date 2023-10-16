@@ -26,10 +26,26 @@ if ( ! defined( 'BLUDIT' ) ) {
  */
 function bludit_min( $ver = 3 ) {
 
-	if ( defined( BLUDIT_VERSION ) && BLUDIT_VERSION >= $ver ) {
+	if ( defined( 'BLUDIT_VERSION' ) && BLUDIT_VERSION >= $ver ) {
 		return true;
 	}
 	return false;
+}
+
+/**
+ * Helper class instance
+ *
+ * Theme helper class is changed tp
+ * HTML in Bludit version 4.0.
+ */
+function helper() {
+
+	if ( bludit_min( 4 ) ) {
+		$helper_class = new \HTML;
+	} else {
+		$helper_class = new \Theme;
+	}
+	return $helper_class;
 }
 
 /**
@@ -132,6 +148,18 @@ function user_logged_in() {
 }
 
 /**
+ * Current language
+ *
+ * The language from site settings.
+ *
+ * @since  1.0.0
+ * @return string
+ */
+function current_lang() {
+	return lang()->currentLanguageShortVersion();
+}
+
+/**
  * Is RTL language
  *
  * @since  1.0.0
@@ -151,7 +179,7 @@ function is_rtl() {
 		'ug',
 		'ur'
 	];
-	$lang = \Theme :: lang();
+	$lang = current_lang();
 
 	if ( in_array( $lang, $rtl ) ) {
 		return true;
@@ -749,3 +777,6 @@ function numbers_to_text( $number, $depth = 0 ) {
 	}
 	return $text;
 }
+
+// Helper class instance.
+$helper = helper();

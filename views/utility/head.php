@@ -50,7 +50,7 @@ if ( has_cover() ) {
 }
 
 ?>
-<?php Theme :: plugins( 'beforeAll' ); ?>
+<?php $helper :: plugins( 'beforeAll' ); ?>
 <head data-site-head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -66,7 +66,7 @@ if ( has_cover() ) {
 
 	// Change `<html>` 'no-js' class to 'js' if JavaScript is enabled.
 	echo "<script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>\n";
-	echo Theme :: jquery();
+	echo $helper :: jquery();
 	?>
 
 	<?php echo favicon_tag(); ?>
@@ -74,15 +74,15 @@ if ( has_cover() ) {
 	<?php
 
 	// Meta tags.
-	echo Theme :: metaTagTitle();
-	echo Theme :: metaTagDescription();
-	echo Theme :: keywords( $keywords );
+	echo $helper :: metaTagTitle();
+	echo $helper :: metaTagDescription();
+	echo $helper :: keywords( $keywords );
 	?>
 
 	<?php
 
 	// Core frontend stylesheets.
-	echo Theme :: css(
+	echo $helper :: css(
 		[
 			"assets/css/vendor/lightbox{$suffix}.css",
 			"assets/css/root{$suffix}.css",
@@ -92,7 +92,7 @@ if ( has_cover() ) {
 	);
 
 	if ( is_rtl() ) {
-		echo Theme :: css( "assets/css/style-rtl{$suffix}.css" );
+		echo $helper :: css( "assets/css/style-rtl{$suffix}.css" );
 	}
 
 	// Configuration stylesheets.
@@ -101,5 +101,5 @@ if ( has_cover() ) {
 	echo config_styles();
 	?>
 
-	<?php Theme :: plugins( 'siteHead' ); ?>
+	<?php $helper :: plugins( 'siteHead' ); ?>
 </head>
