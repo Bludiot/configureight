@@ -21,6 +21,18 @@ The Configure 8 theme began under a different name as a starter theme, a boilerp
 
 This theme requires its companion plugin to be installed. Find this at [https://github.com/Bludiot/configureight-plugin](https://github.com/Bludiot/configureight-plugin).
 
+## Compatibility
+
+Configure 8 has been tested on Bludit version 3.15.0, running PHP 8.2.4. The minimum PHP version required is PHP 7.4. The standard plugin hooks are provided.
+
+### Bludit Version 4
+
+Some version-compare steps have been taken to make this theme compatible with Bludit 4.0 but it is not ready. And from the looks of the activity on the development repository, v4 is a long way off.
+
+### RTL Languages
+
+Direction and layout styles for right-to-left languages are implemented automatically when an RTL language is set in the site settings.
+
 ## Page Templates
 
 Several page template options are built into the theme, which can be employed in the page edit screen under Options > Advanced. More than one template may be used at once, with space between each template slug, depending on the template type.
