@@ -10,6 +10,7 @@
 // Import namespaced functions.
 use function CFE_Func\{
 	theme,
+	plugins_hook,
 	current_lang,
 	is_blog_page,
 	loop_data,
@@ -74,13 +75,13 @@ if ( is_blog_page() ) {
 
 	<?php echo page_loader(); ?>
 
-	<?php $helper :: plugins( 'siteBodyBegin' ); ?>
+	<?php plugins_hook( 'siteBodyBegin' ); ?>
 
 	<?php include( THEME_DIR . 'views/header/header.php' ); ?>
 
 	<div id="<?php echo page_id(); ?>" class="page-wrap" data-page-wrap itemscope="itemscope" itemtype="<?php page_schema(); ?>">
 
-		<?php $helper :: plugins( 'pageBegin' ); ?>
+		<?php plugins_hook( 'pageBegin' ); ?>
 
 		<?php if ( 'search' != $url->whereAmI() && ! full_cover() && has_cover() ) : ?>
 		<figure class="page-cover page-cover-singular">
@@ -110,7 +111,7 @@ if ( is_blog_page() ) {
 			?>
 		</div>
 
-		<?php $helper :: plugins( 'pageEnd' ); ?>
+		<?php plugins_hook( 'pageEnd' ); ?>
 
 	</div>
 
@@ -124,7 +125,7 @@ if ( is_blog_page() ) {
 	<?php
 	echo user_toolbar();
 
-	$helper :: plugins( 'siteBodyEnd' );
+	plugins_hook( 'siteBodyEnd' );
 
 	footer_scripts();
 	?>

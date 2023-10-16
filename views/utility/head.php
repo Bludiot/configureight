@@ -10,6 +10,7 @@
 
 // Import namespaced functions.
 use function CFE_Func\{
+	plugins_hook,
 	is_rtl,
 	asset_min,
 	has_cover,
@@ -50,7 +51,7 @@ if ( has_cover() ) {
 }
 
 ?>
-<?php $helper :: plugins( 'beforeAll' ); ?>
+<?php plugins_hook( 'beforeAll' ); ?>
 <head data-site-head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -101,5 +102,5 @@ if ( has_cover() ) {
 	echo config_styles();
 	?>
 
-	<?php $helper :: plugins( 'siteHead' ); ?>
+	<?php plugins_hook( 'siteHead' ); ?>
 </head>

@@ -22,6 +22,7 @@ if ( ! defined( 'BLUDIT' ) ) {
  * 			to check for Bludit 4.0+.
  *
  * @since  1.0.0
+ * @param  integer $ver The minimum version for which to check.
  * @return boolean
  */
 function bludit_min( $ver = 3 ) {
@@ -37,6 +38,9 @@ function bludit_min( $ver = 3 ) {
  *
  * Theme helper class is changed tp
  * HTML in Bludit version 4.0.
+ *
+ * @since  1.0.0
+ * @return object
  */
 function helper() {
 
@@ -46,6 +50,23 @@ function helper() {
 		$helper_class = new \Theme;
 	}
 	return $helper_class;
+}
+
+/**
+ * Plugins hook
+ *
+ * @since  1.0.0
+ * @param  string $name The hook name.
+ * @return mixed
+ */
+function plugins_hook( $name = '' ) {
+
+	if ( bludit_min( 4 ) ) {
+		$hook = execPluginsByHook( $name );
+	} else {
+		$hook = helper()->plugins( $name );
+	}
+	return $hook;
 }
 
 /**

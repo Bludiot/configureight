@@ -13,7 +13,8 @@
 
 // Import namespaced functions.
 use function CFE_Func\{
-	theme
+	theme,
+	plugins_hook
 };
 use function CFE_Tags\{
 	social_nav
@@ -39,7 +40,7 @@ if ( theme() && ! empty( theme()->sb_social_heading() ) ) {
 ?>
 <div>
 	<aside id="page-sidebar" class="page-sidebar <?php echo $sticky; ?>" data-page-sidebar>
-		<?php $helper :: plugins( 'siteSidebar' ); ?>
+		<?php plugins_hook( 'siteSidebar' ); ?>
 
 		<?php if ( theme() && theme()->sidebar_social() ) : ?>
 		<div class="plugin plugin-social-nav">
