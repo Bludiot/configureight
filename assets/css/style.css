@@ -931,9 +931,16 @@ h3 + .search-form {
 }
 
 .site-logo {
-  min-width: var(--cfe-site-logo--min-width, 80px);
+  width: 100%;
+  max-width: var(--cfe-site-logo--max-width, 60px);
+}
+@media screen and (max-width: 960px) {
+  .site-logo {
+    max-width: var(--cfe-site-logo--max-width--mobile, 80px);
+  }
 }
 .site-logo img {
+  width: 100%;
   display: var(--cfe-site-logo--display, block);
 }
 
