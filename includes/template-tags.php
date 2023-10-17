@@ -220,6 +220,20 @@ function config_styles() {
 		);
 	}
 
+	// General spacing.
+	if ( theme() && ! empty( theme()->horz_spacing() ) ) {
+		$styles .= sprintf(
+			'--cfe-spacing--horz: %srem;',
+			theme()->horz_spacing()
+		);
+	}
+	if ( theme() && ! empty( theme()->vert_spacing() ) ) {
+		$styles .= sprintf(
+			'--cfe-spacing--vert: %srem;',
+			theme()->vert_spacing()
+		);
+	}
+
 	// Header logo width.
 	if ( theme() && theme()->logo_width_std() ) {
 		$styles .= sprintf(

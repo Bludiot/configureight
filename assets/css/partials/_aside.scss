@@ -11,8 +11,8 @@
 	justify-content: var( --cfe-sidebar--default--justify-content, var( --cfe-sidebar--justify-content ) );
 	width: var( --cfe-sidebar--default--width, var( --cfe-sidebar--width, 320px ) );
 	max-width: var( --cfe-sidebar--default--max-width, var( --cfe-sidebar--max-width ) );
-	margin: var( --cfe-sidebar--default--margin, var( --cfe-sidebar--margin ) );
-	padding: var( --cfe-sidebar--default--padding, var( --cfe-sidebar--padding, var( --cfe-spacing--vert, 2rem ) 0 0 0 ) );
+	margin: var( --cfe-sidebar--default--margin, var( --cfe-sidebar--margin, var( --cfe-spacing--vert, 2rem ) 0 0 0 ) );
+	padding: var( --cfe-sidebar--default--padding, var( --cfe-sidebar--padding ) );
 	font-family: var( --cfe-sidebar--font-family, inherit );
 	font-size: var( --cfe-sidebar--font-size, inherit );
 	font-weight: var( --cfe-sidebar--font-weight, inherit );
@@ -43,11 +43,16 @@
 
 	.plugin {
 		width: var( --cfe-sidebar--plugin--width, 100% );
-		margin: var( --cfe-sidebar--plugin--margin, var( --cfe-spacing--vert, 2rem ) 0 0 0 );
+		margin: var( --cfe-sidebar--plugin--margin, 0 );
 		order: var( --cfe-sidebar--plugin--order, 100 );
 
+		&:not( :first-of-type ) {
+			margin-top: var( --cfe-sidebar--plugin--margin-top, calc( var( --cfe-spacing--vert ) * .75 ) );
+		}
+
 		.plugin-content {
-			margin: var( --cfe-plugin-content--margin, 0.5em 0 0 0 );
+			margin: var( --cfe-plugin-content--margin0 );
+			margin-top: var( --cfe-sidebar--plugin--margin-top, calc( var( --cfe-spacing--vert ) * .5 ) );
 		}
 
 		&.plugin-search {

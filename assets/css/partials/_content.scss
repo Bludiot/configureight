@@ -23,7 +23,8 @@ body {
 
 .content-wrapper {
 	width: 100%;
-	padding: var( --cfe-content-wrap--padding );
+	margin: var( --cfe-spacing--vert, 2rem ) 0;
+	padding: 0 var( --cfe-spacing--horz, 2rem );
 }
 
 .page-main {
@@ -379,7 +380,7 @@ body {
 }
 
 .page-content {
-	margin: var( --cfe-page-content--margin, calc( var( --cfe-spacing--vert ) * 2 ) 0 0 0 );
+	margin: var( --cfe-page-content--margin, var( --cfe-spacing--vert ) 0 0 0 );
 
 	ul {
 		list-style: var( --cfe-ul--list-style, none );
