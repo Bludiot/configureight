@@ -269,20 +269,36 @@ function config_styles() {
 		$styles .= '--cfe-cover--text-shadow: none;';
 	}
 
-	// Main navigation position.
+	/**
+	 * Main navigation position
+	 *
+	 * CSS Flexbox reverses in RTL languages. The nav position
+	 * settings use left and right options so in RTL the flex
+	 * direction needs to adjust accordingly.
+	 */
 	if ( 'left' === $get_nav_pos ) {
-		$styles .= '--cfe-site-header-wrap--flex-direction: row-reverse;';
+		if ( ! is_rtl() ) {
+			$styles .= '--cfe-site-header-wrap--flex-direction: row-reverse;';
+		}
 		$styles .= '--cfe-site-header-wrap--flex-direction-tablet: column;';
+
 	} elseif ( 'above' === $get_nav_pos ) {
 		$styles .= '--cfe-site-header-wrap--flex-direction: column-reverse;';
 		$styles .= '--cfe-site-header-wrap--align-items: flex-start;';
 		$styles .= '--cfe-site-header-wrap--flex-direction-tablet: column-reverse;';
 		$styles .= '--cfe-site-header-wrap--justify-content--tablet: center;';
+
 	} elseif ( 'below' === $get_nav_pos ) {
 		$styles .= '--cfe-site-header-wrap--flex-direction: column;';
 		$styles .= '--cfe-site-header-wrap--align-items: flex-start;';
 		$styles .= '--cfe-site-header-wrap--flex-direction-tablet: column;';
 		$styles .= '--cfe-site-header-wrap--justify-content--tablet: center;';
+
+	// Default is right.
+	} else {
+		if ( is_rtl() ) {
+			$styles .= '--cfe-site-header-wrap--flex-direction: row-reverse;';
+		}
 	}
 	$styles .= '}</style>';
 

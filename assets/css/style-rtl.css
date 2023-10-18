@@ -21,54 +21,53 @@
 }
 
 .site-navigation ul li ul {
-  right: unset;
-  left: -9999em;
-}
-.site-navigation ul li ul:after {
-  right: auto;
-  left: 1rem;
-}
-@media screen and (max-width: 960px) {
-  .site-navigation ul li ul:after {
-    right: unset;
-    left: calc(50% - 0.5rem);
-  }
-}
-
-.site-navigation ul li:hover ul {
-  left: auto;
-  right: 0;
-}
-@media screen and (max-width: 960px) {
-  .site-navigation ul li:hover ul {
-    right: auto;
-    left: calc(-80px + 50%);
-  }
-}
-
-.main-nav-before .site-navigation ul li ul {
-  left: auto;
+  left: unset;
   right: -9999em;
 }
-.main-nav-before .site-navigation ul li ul:after {
+.site-navigation ul li ul:after {
   left: auto;
   right: 1rem;
 }
 @media screen and (max-width: 960px) {
-  .main-nav-before .site-navigation ul li ul:after {
+  .site-navigation ul li ul:after {
     left: unset;
     right: calc(50% - 0.5rem);
   }
 }
 
-.main-nav-before .site-navigation ul li:hover ul {
+.site-navigation ul li:hover ul {
   right: 0;
   left: auto;
 }
 @media screen and (max-width: 960px) {
-  .main-nav-before .site-navigation ul li:hover ul {
-    left: auto;
+  .site-navigation ul li:hover ul {
     right: calc(-80px + 50%);
+  }
+}
+
+.main-nav-left .site-navigation ul li ul {
+  right: auto;
+  left: -9999em;
+}
+.main-nav-left .site-navigation ul li ul:after {
+  right: auto;
+  left: 1rem;
+}
+@media screen and (max-width: 960px) {
+  .main-nav-left .site-navigation ul li ul:after {
+    right: unset;
+    left: calc(50% - 0.5rem);
+  }
+}
+
+.main-nav-left .site-navigation ul li:hover ul {
+  left: 0;
+  right: auto;
+}
+@media screen and (max-width: 960px) {
+  .main-nav-left .site-navigation ul li:hover ul {
+    right: auto;
+    left: calc(-80px + 50%);
   }
 }
 
