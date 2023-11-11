@@ -228,51 +228,6 @@ function text_replace( $get = '', $string = '' ) {
 }
 
 /**
- * Favicon exists
- *
- * Checks the theme config file to
- * find the icon file.
- *
- * @since  1.0.0
- * @return boolean Returns true if the icon file is found.
- */
-function favicon_exists() {
-
-	// Look for icons in the CMS root directory.
-	$favicon_png = PATH_ROOT . 'favicon.png';
-	$favicon_gif = PATH_ROOT . 'favicon.gif';
-	$favicon_ico = PATH_ROOT . 'favicon.ico';
-
-	$root_favicon = false;
-	if ( file_exists( $favicon_png ) ) {
-		$root_favicon = true;
-	} elseif ( file_exists( $favicon_gif ) ) {
-		$root_favicon = true;
-	} elseif ( file_exists( $favicon_ico ) ) {
-		$root_favicon = true;
-	}
-
-	// Return true if an icon in the root.
-	if ( $root_favicon ) {
-		return true;
-	}
-
-	/**
-	 * Look for icon the the theme's image directory
-	 * as set in the config file.
-	 */
-	if ( ! empty( THEME_CONFIG['head']['favicon'] ) ) {
-		$favicon = THEME_DIR . 'assets/images/' . THEME_CONFIG['head']['favicon'];
-	}
-
-	// Return true if an icon in the root.
-	if ( file_exists( $favicon ) ) {
-		return true;
-	}
-	return false;
-}
-
-/**
  * Is blog page
  *
  * Whether the current page is displaying
@@ -486,18 +441,17 @@ function blog_is_static() {
 function get_cover_src() {
 
 	$src     = '';
-	$default = 'assets/images/' . THEME_CONFIG['media']['cover_image'];
+	$default = '';
+	if ( theme() && theme()->cover_src() ) {
+		$default = theme()->cover_src();
+	}
 
 	// If in blog pages.
 	if ( 'blog' == url()->whereAmI() ) {
 		if ( blog_is_static() && page()->coverImage() ) {
 			$src = page()->coverImage();
 		} elseif ( $default ) {
-			if ( filter_var( $default, FILTER_VALIDATE_URL ) ) {
-				$src = $default;
-			} elseif ( file_exists( THEME_DIR . $default ) ) {
-				$src = DOMAIN_THEME . $default;
-			}
+			$src = $default;
 		}
 
 	// If on a singular page.
@@ -505,20 +459,12 @@ function get_cover_src() {
 		if ( page()->coverImage() ) {
 			$src = page()->coverImage();
 		} elseif ( $default ) {
-			if ( filter_var( $default, FILTER_VALIDATE_URL ) ) {
-				$src = $default;
-			} elseif ( file_exists( THEME_DIR . $default ) ) {
-				$src = DOMAIN_THEME . $default;
-			}
+			$src = $default;
 		}
 
 	// Default.
 	} elseif ( $default ) {
-		if ( filter_var( $default, FILTER_VALIDATE_URL ) ) {
-			$src = $default;
-		} elseif ( file_exists( THEME_DIR . $default ) ) {
-			$src = DOMAIN_THEME . $default;
-		}
+		$src = $default;
 	}
 	return $src;
 }

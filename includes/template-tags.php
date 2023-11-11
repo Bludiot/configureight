@@ -79,21 +79,11 @@ function page_loader() {
  */
 function favicon_tag() {
 
-	if ( favicon_exists() ) {
+	// If plugin has icon URL.
+	if ( theme() && theme()->favicon_src() ) {
 
-		$favicon_png = PATH_ROOT . 'favicon.png';
-		$favicon_gif = PATH_ROOT . 'favicon.gif';
-		$favicon_ico = PATH_ROOT . 'favicon.ico';
-
-		if ( file_exists( $favicon_png ) ) {
-			$favicon = DOMAIN_BASE . 'favicon.png';
-		} elseif ( file_exists( $favicon_gif ) ) {
-			$favicon = DOMAIN_BASE . 'favicon.gif';
-		} elseif ( file_exists( $favicon_ico ) ) {
-			$favicon = DOMAIN_BASE . 'favicon.ico';
-		} else {
-			$favicon = DOMAIN_THEME . 'assets/images/' . THEME_CONFIG['head']['favicon'];
-		}
+		// Get icon src.
+		$favicon = theme()->favicon_src();
 
 		// Get the image file extension.
 		$info = pathinfo( $favicon );
@@ -306,6 +296,27 @@ function config_styles() {
 }
 
 /**
+ * Custom CSS
+ *
+ * CSS from the plugin appearance options.
+ *
+ * @since  1.0.0
+ * @return mixed Returns a CSS style block or null.
+ */
+function custom_css() {
+
+	if ( theme() && empty( theme()->custom_css() ) ) {
+		return null;
+	}
+
+	$style  = '<style>';
+	$style .= theme()->custom_css();
+	$style .= '</style>';
+
+	return $style;
+}
+
+/**
  * Body classes
  *
  * For the class attribute on the `<body>` element.
@@ -336,7 +347,7 @@ function body_classes() {
 	}
 
 	// User toolbar.
-	if ( theme() && theme()->show_user_toolbar() ) {
+	if ( user_logged_in() && theme() && false != user_toolbar() ) {
 		$classes[] = 'toolbar-active';
 	}
 
@@ -721,7 +732,11 @@ function get_toolbar() {
  */
 function user_toolbar() {
 
-	if ( user_logged_in() && theme() && theme()->show_user_toolbar() ) {
+	if (
+		user_logged_in() && theme() &&
+		( 'enabled' == theme()->show_user_toolbar() ||
+		'frontend' == theme()->show_user_toolbar() )
+	) {
 		return get_toolbar();
 	}
 	return false;
