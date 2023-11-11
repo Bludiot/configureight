@@ -7,5 +7,6 @@
 	"license"     : "Nope",
 	"compatible"  : "3.15.0",
 	"notes"       : "A theme for Bludit CMS with many configurable options.",
-	"plugin"      : "configureight"
+	"plugin"      : "configureight",
+	"admin_theme" : "configureight"
 }
