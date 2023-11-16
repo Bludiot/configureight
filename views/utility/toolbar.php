@@ -30,7 +30,7 @@ if ( 'page' == url()->whereAmI() ) {
 	);
 }
 
- // Get a username or fallback.
+// Get a username or fallback.
 $user = new User( Session :: get( 'username' ) );
 $name = lang()->get( 'profile-link-default' );
 
