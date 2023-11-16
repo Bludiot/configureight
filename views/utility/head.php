@@ -20,7 +20,8 @@ use function CFE_Tags\{
 	load_font_files,
 	favicon_tag,
 	config_styles,
-	scheme_stylesheet
+	scheme_stylesheet,
+	custom_css
 };
 
 $suffix = asset_min();
@@ -53,7 +54,7 @@ if ( has_cover() ) {
 ?>
 <?php plugins_hook( 'beforeAll' ); ?>
 <head data-site-head>
-	<meta charset="UTF-8">
+	<meta charset="<?php echo CHARSET; ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
 	<?php // Preconnect and preload files. ?>
@@ -100,6 +101,7 @@ if ( has_cover() ) {
 	echo scheme_stylesheet( 'colors' );
 	echo scheme_stylesheet( 'fonts' );
 	echo config_styles();
+	echo custom_css();
 	?>
 
 	<?php plugins_hook( 'siteHead' ); ?>
