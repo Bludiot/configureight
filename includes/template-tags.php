@@ -767,6 +767,39 @@ function site_logo() {
 }
 
 /**
+ * Menu toggle
+ *
+ * Returns the mobile menu icon or text.
+ *
+ * @since  1.0.0
+ * @return string
+ */
+function menu_toggle( $toggle = '' ) {
+
+	// If an icon option is set (plugin default is bars).
+	if ( theme() && 'none' != theme()->main_nav_icon() ) {
+
+		// Bars icon.
+		$icon  = 'bars';
+		$class = 'nav-icon-bars';
+
+		// Dots icon.
+		if ( 'dots' == theme()->main_nav_icon() ) {
+			$icon  = 'dots-h';
+			$class = 'nav-icon-dots';
+		}
+		return icon( $icon, true, $class );
+
+	// If no icon option and custom text in the tag..
+	} elseif ( 'none' == theme()->main_nav_icon() && ! empty( $toggle ) ) {
+		return $toggle;
+	}
+
+	// Default, text.
+	return lang()->get( 'Menu' );
+}
+
+/**
  * Page ID
  *
  * Returns an ID based on the page type

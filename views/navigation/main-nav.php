@@ -21,6 +21,7 @@ use function CFE_Func\{
 };
 use function CFE_Tags\{
 	icon,
+	menu_toggle,
 	social_nav
 };
 
