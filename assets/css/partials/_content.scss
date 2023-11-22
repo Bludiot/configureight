@@ -23,7 +23,7 @@ body {
 
 .content-wrapper {
 	width: 100%;
-	margin: var( --cfe-spacing--vert, 2rem ) 0;
+	margin: var( --cfe-spacing--vert, 2rem ) auto;
 	padding: 0 var( --cfe-spacing--horz, 2rem );
 }
 
@@ -98,6 +98,7 @@ body {
 				margin: 0;
 				padding: 0;
 				border: none;
+				aspect-ratio: 3/2;
 			}
 		}
 	}
@@ -355,6 +356,7 @@ body {
 .post-grid-content {
 	position: relative;
 	margin: 0;
+	overflow: hidden;
 
 	.post-header {
 		position: absolute;
@@ -364,6 +366,17 @@ body {
 		height: auto;
 		z-index: 10;
 		padding: 1rem;
+	}
+
+	.post-info {
+		position: absolute;
+		top: auto;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: auto;
+		z-index: 10;
+		padding: 0.5rem;
 	}
 
 	.post-cover {

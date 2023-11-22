@@ -152,6 +152,7 @@
 		font-weight: inherit;
 		color: var( --cfe-site-title--link--text-color, inherit );
 		text-decoration: var( --cfe-site-title--link--text-decoration, none );
+		font-variant: var( --cfe-site-title--font-variant, var( --cfe-heading-primary--font-variant ) );
 
 		&:hover,
 		&:focus {

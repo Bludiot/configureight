@@ -34,6 +34,8 @@
   --cfe-heading-primary--font-size: 2.5rem;
   --cfe-heading-primary--font-weight: 500;
   --cfe-heading-primary--letter-spacing: normal;
+  --cfe-heading-secondary--font-family: Playfair, Hoefler Text, Baskerville Old Face, Garamond, serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  --cfe-heading-secondary--font-weight: 550;
   --cfe-loader--text--font-family: Playfair, Hoefler Text, Baskerville Old Face, Garamond, serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
   --cfe-loader--text--font-size: 1.75rem;
   --cfe-loader--text--font-weight: 600;

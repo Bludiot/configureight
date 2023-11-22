@@ -961,6 +961,7 @@ h3 + .search-form {
   color: var(--cfe-site-title--link--text-color, inherit);
   -webkit-text-decoration: var(--cfe-site-title--link--text-decoration, none);
           text-decoration: var(--cfe-site-title--link--text-decoration, none);
+  font-variant: var(--cfe-site-title--font-variant, var(--cfe-heading-primary--font-variant));
 }
 .site-title a:hover, .site-title a:focus {
   color: var(--cfe-site-title--link--action--text-color, inherit);
@@ -1356,7 +1357,7 @@ body.template-sidebar-bottom .content-wrapper {
 
 .content-wrapper {
   width: 100%;
-  margin: var(--cfe-spacing--vert, 2rem) 0;
+  margin: var(--cfe-spacing--vert, 2rem) auto;
   padding: 0 var(--cfe-spacing--horz, 2rem);
 }
 
@@ -1414,6 +1415,7 @@ body.template-sidebar-bottom .content-wrapper {
   margin: 0;
   padding: 0;
   border: none;
+  aspect-ratio: 3/2;
 }
 .loop .post-info .theme-icon {
   display: inline-block;
@@ -1615,6 +1617,7 @@ body.template-sidebar-bottom .content-wrapper {
 .post-grid-content {
   position: relative;
   margin: 0;
+  overflow: hidden;
 }
 .post-grid-content .post-header {
   position: absolute;
@@ -1624,6 +1627,16 @@ body.template-sidebar-bottom .content-wrapper {
   height: auto;
   z-index: 10;
   padding: 1rem;
+}
+.post-grid-content .post-info {
+  position: absolute;
+  top: auto;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  z-index: 10;
+  padding: 0.5rem;
 }
 .post-grid-content .post-cover {
   position: absolute;
