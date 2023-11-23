@@ -225,13 +225,11 @@ function config_styles() {
 	}
 
 	// Header logo width.
-	if ( theme() && theme()->logo_width_std() ) {
+	if ( theme() ) {
 		$styles .= sprintf(
 			'--cfe-site-logo--max-width: %s;',
 			theme()->logo_width_std() . 'px'
 		);
-	}
-	if ( theme() && theme()->logo_width_mob() ) {
 		$styles .= sprintf(
 			'--cfe-site-logo--max-width--mobile: %s;',
 			theme()->logo_width_mob() . 'px'
