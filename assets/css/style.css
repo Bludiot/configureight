@@ -1342,16 +1342,16 @@ h3 + .search-form {
   justify-content: center;
 }
 
-body:not(.template-no-sidebar) .content-wrapper {
+body:not(.template-no-posts-loop) .content-wrapper {
   display: flex;
   gap: var(--cfe-spacing--vert, 2rem) var(--cfe-spacing--horz, 2rem);
 }
 @media screen and (max-width: 960px) {
-  body:not(.template-no-sidebar) .content-wrapper {
+  body:not(.template-no-posts-loop) .content-wrapper {
     flex-direction: column;
   }
 }
-body.template-sidebar-bottom .content-wrapper {
+body.template-posts-loop-bottom .content-wrapper {
   flex-direction: column;
 }
 
@@ -1435,6 +1435,21 @@ body.template-sidebar-bottom .content-wrapper {
   width: 1.25em;
   height: 1.25em;
   vertical-align: middle;
+}
+
+.posts-loop-heading {
+  margin: var(--cfe-posts-loop--heading--margin, 0);
+  font-family: var(--cfe-posts-loop--heading--font-family, var(--cfe-heading-primary--font-family));
+  font-size: var(--cfe-posts-loop--heading--font-size, var(--cfe-heading-primary--font-size));
+  font-weight: var(--cfe-posts-loop--heading--font-weight, var(--cfe-heading-primary--font-weight));
+  font-style: var(--cfe-posts-loop--heading--font-style, var(--cfe-heading-primary--font-style));
+  font-variant: var(--cfe-posts-loop--heading--font-variant, var(--cfe-heading-primary--font-variant));
+  line-height: var(--cfe-posts-loop--heading--line-height, var(--cfe-heading-primary--line-height));
+  letter-spacing: var(--cfe-posts-loop--heading--letter-spacing, var(--cfe-heading-primary--letter-spacing, -0.015em));
+  word-spacing: var(--cfe-posts-loop--heading--word-spacing, var(--cfe-heading-primary--word-spacing, -0.0325em));
+  -webkit-text-decoration: var(--cfe-posts-loop--heading--text-decoration, var(--cfe-heading-primary--text-decoration));
+          text-decoration: var(--cfe-posts-loop--heading--text-decoration, var(--cfe-heading-primary--text-decoration));
+  text-transform: var(--cfe-posts-loop--heading--text-transform, var(--cfe-heading-primary--text-transform));
 }
 
 .loop-wrap.loop-wrap-grid {
@@ -1784,6 +1799,10 @@ body.template-sidebar-bottom .content-wrapper {
 .sticky-icon.sticky-icon-heading svg {
   height: 0.725em;
   transform: translateY(0.05em);
+}
+
+.theme-icon.tags-icon svg {
+  fill: var(--cfe-article--tags-list--border-color);
 }
 
 .page-sidebar {
