@@ -26,18 +26,9 @@ use function CFE_Tags\{
 
 $suffix = asset_min();
 
-// Get keywords from config file.
-$keywords = '';
-if (
-	is_array( THEME_CONFIG['head'] ) &&
-	array_key_exists( 'keywords', THEME_CONFIG['head'] ) &&
-	is_array( THEME_CONFIG['head']['keywords'] )
-) {
-	$keywords = implode( ' ', THEME_CONFIG['head']['keywords'] );
-}
-
 // Preload over image.
 $load_cover = '';
+$type       = '';
 if ( has_cover() ) {
 
 	// File type.
@@ -78,7 +69,6 @@ if ( has_cover() ) {
 	// Meta tags.
 	echo $helper :: metaTagTitle();
 	echo $helper :: metaTagDescription();
-	echo $helper :: keywords( $keywords );
 	?>
 
 	<?php

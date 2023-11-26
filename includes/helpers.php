@@ -390,7 +390,12 @@ function get_nav_position() {
 function has_cover() {
 
 	$cover   = false;
-	$default = 'assets/images/' . THEME_CONFIG['media']['cover_image'];
+	$default = '';
+
+	// Default cover from theme plugin.
+	if ( theme() && theme()->cover_src() ) {
+		$default = theme()->cover_src();
+	}
 
 	if ( 'page' == url()->whereAmI() ) {
 		if ( page()->coverImage() ) {

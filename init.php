@@ -93,9 +93,6 @@ if ( ! min_php_version() ) {
 require_once( THEME_DIR . 'includes/classes/autoload.php' );
 Autoload\classes();
 
-// Sets up theme configuration.
-require( THEME_DIR . 'includes/theme-config.php' );
-
 // Required theme functions.
 require( THEME_DIR . 'includes/helpers.php' );
 require( THEME_DIR . 'includes/template-tags.php' );
