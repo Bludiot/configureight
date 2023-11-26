@@ -12,7 +12,7 @@ use function CFE_Func\{
 	theme,
 	plugins_hook,
 	current_lang,
-	is_blog_page,
+	is_loop_page,
 	loop_data,
 	has_cover,
 	get_cover_src,
@@ -31,12 +31,12 @@ use function CFE_Tags\{
 	footer_scripts
 };
 
-// Get blog data.
+// Get loop data.
 $loop_data = loop_data();
 
 // Layout class for the `<main>` element.
 $main_view = 'page-view';
-if ( is_blog_page() ) {
+if ( is_loop_page() ) {
 	$main_view = 'loop-view list-view';
 	if ( theme() && 'grid' == theme()->content_style() ) {
 		$main_view = 'loop-view grid-view';
@@ -55,7 +55,7 @@ $body_data_attr = sprintf(
 	$uuid
 );
 $main_data_attr = 'data-page-main';
-if ( is_blog_page() ) {
+if ( is_loop_page() ) {
 	$body_data_attr = sprintf(
 		'data-uuid="%s" data-post-count="%s"',
 		$uuid,

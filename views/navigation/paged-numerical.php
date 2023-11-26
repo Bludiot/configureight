@@ -14,7 +14,7 @@
 use function CFE_Func\{
 	url,
 	lang,
-	blog_url
+	loop_url
 };
 use function CFE_Tags\{
 	icon
@@ -29,7 +29,7 @@ if ( ! isset( $_GET['page'] ) ) {
 
 // Get slug for URLs.
 if ( 'blog' == url()->whereAmI() ) {
-	$slug = blog_url();
+	$slug = loop_url();
 } elseif ( 'category' == url()->whereAmI() ) {
 	$slug = DOMAIN_CATEGORIES . url()->slug();
 } elseif ( 'tag' == url()->whereAmI() ) {

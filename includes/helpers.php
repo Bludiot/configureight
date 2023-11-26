@@ -228,56 +228,56 @@ function text_replace( $get = '', $string = '' ) {
 }
 
 /**
- * Is blog page
+ * Is loop page
  *
  * Whether the current page is displaying
- * a blog posts loop.
+ * a posts loop.
  *
  * @since  1.0.0
- * @return boolean Returns true if in a blog loop.
+ * @return boolean Returns true if in a loop.
  */
-function is_blog_page() {
+function is_loop_page() {
 
-	$blog_page = false;
+	$loop_page = false;
 
 	if ( 'blog' == url()->whereAmI() ) {
-		$blog_page = true;
+		$loop_page = true;
 	}
-	return $blog_page;
+	return $loop_page;
 }
 
 /**
  * Blog URL
  *
  * @since  1.0.0
- * @return string Returns the URL of the blog page(s).
+ * @return string Returns the URL of the loop page(s).
  */
-function blog_url() {
+function loop_url() {
 
 	$site_url = site()->getField( 'url' );
-	$blog_uri = site()->getField( 'uriBlog' );
-	$blog_url = $site_url;
+	$loop_uri = site()->getField( 'uriBlog' );
+	$loop_url = $site_url;
 
-	if ( ! empty( $blog_uri ) ) {
-		$blog_url = sprintf(
+	if ( ! empty( $loop_uri ) ) {
+		$loop_url = sprintf(
 			'%s%s/',
 			$site_url,
-			str_replace( '/', '', $blog_uri )
+			str_replace( '/', '', $loop_uri )
 		);
 	}
-	return $blog_url;
+	return $loop_url;
 }
 
 /**
- * Blog data
+ * Loop data
  *
- * Gets data for the blog, especially when
+ * Gets data for the loop, especially when
  * using a static front page.
  *
  * @since  1.0.0
  * @global array  $content array of site content
  * @global object $pages Pages class
- * @return array  Returns an array of blog data.
+ * @return array  Returns an array of loop data.
  */
 function loop_data() {
 
@@ -299,10 +299,10 @@ function loop_data() {
 	$static_field = site()->getField( 'uriBlog' );
 	$static_key   = str_replace( '/', '', $static_field );
 
-	// Default blog description.
+	// Default loop description.
 	$description = sprintf(
 		'%s %s',
-		lang()->get( 'blog-data-description' ),
+		lang()->get( 'loop-data-description' ),
 		site()->title()
 	);
 
@@ -312,7 +312,7 @@ function loop_data() {
 		'show_posts'  => site()->getField( 'itemsPerPage' ),
 		'location'    => 'home',
 		'key'         => false,
-		'url'         => blog_url(),
+		'url'         => loop_url(),
 		'slug'        => str_replace( '/', '', site()->getField( 'uriBlog' ) ),
 		'template'    => false,
 		'style'       => $loop_style,
@@ -326,24 +326,24 @@ function loop_data() {
 
 	} else {
 
-		// Get data from the static blog page.
-		$blog_page = buildPage( $static_key );
+		// Get data from the static loop page.
+		$loop_page = buildPage( $static_key );
 
-		// Description from the static blog page.
+		// Description from the static loop page.
 		if (
-			! empty( $blog_page->description() ) ||
-			! ctype_space( $blog_page->description() )
+			! empty( $loop_page->description() ) ||
+			! ctype_space( $loop_page->description() )
 		) {
-			$description = $blog_page->description();
+			$description = $loop_page->description();
 		}
 
 		$data['location']    = 'page';
-		$data['key']         = $blog_page->key();
-		$data['slug']        = $blog_page->slug();
-		$data['template']    = $blog_page->template();
-		$data['title']       = $blog_page->title();
+		$data['key']         = $loop_page->key();
+		$data['slug']        = $loop_page->slug();
+		$data['template']    = $loop_page->template();
+		$data['title']       = $loop_page->title();
 		$data['description'] = $description;
-		$data['cover']       = $blog_page->coverImage();
+		$data['cover']       = $loop_page->coverImage();
 	}
 	return $data;
 }
@@ -418,7 +418,7 @@ function has_cover() {
 }
 
 /**
- * Blog is static
+ * Loop is static
  *
  * Checks if the the blog URI option
  * is set and if a static page slug
@@ -427,11 +427,11 @@ function has_cover() {
  * @since  1.0.0
  * @return boolean
  */
-function blog_is_static() {
+function loop_is_static() {
 
-	$blog = loop_data();
+	$loop = loop_data();
 
-	if ( $blog['key'] && ! empty( $blog['key'] ) ) {
+	if ( $loop['key'] && ! empty( $loop['key'] ) ) {
 		return true;
 	}
 	return false;
@@ -451,9 +451,9 @@ function get_cover_src() {
 		$default = theme()->cover_src();
 	}
 
-	// If in blog pages.
+	// If in loop pages.
 	if ( 'blog' == url()->whereAmI() ) {
-		if ( blog_is_static() ) {
+		if ( loop_is_static() ) {
 			$loop = loop_data();
 
 			if ( ! empty( $loop['cover'] ) ) {
@@ -492,13 +492,13 @@ function get_cover_src() {
  */
 function full_cover() {
 
-	// Get blog data.
-	$blog = loop_data();
+	// Get loop data.
+	$loop = loop_data();
 
 	// No full cover if URL has the page parameter.
 
-	if ( 'blog' == url()->whereAmI() && blog_is_static() ) {
-		$build = buildPage( $blog['key'] );
+	if ( 'blog' == url()->whereAmI() && loop_is_static() ) {
+		$build = buildPage( $loop['key'] );
 
 		if (
 			$build->isStatic() &&

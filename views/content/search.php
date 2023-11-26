@@ -3,7 +3,7 @@
  * Posts page template
  *
  * Used for posts loop, whether on the
- * home page or blog page when a static
+ * home page or loop page when a static
  * home page is used.
  *
  * @package    Configure 8
@@ -15,6 +15,9 @@
 // Import namespaced functions.
 use function CFE_Func\{
 	theme
+};
+use function CFE_Tags\{
+	get_loop_pagination
 };
 
 // If no posts.
@@ -36,9 +39,9 @@ if ( $post->description() ) {
 }
 
 ?>
-<article class="site-article blog-wrap" role="article" data-site-article>
+<article class="site-article loop-wrap" role="article" data-site-article>
 	<?php if ( $post->coverImage() ) : ?>
-	<figure class="page-cover page-cover-blog">
+	<figure class="page-cover page-cover-loop">
 		<a href="<?php echo $post->permalink(); ?>">
 			<img src="<?php echo $post->coverImage(); ?>" loading="lazy" />
 		</a>

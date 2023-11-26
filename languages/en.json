@@ -10,7 +10,7 @@
 	"loader-text"    : "Loading",
 	"home-link-label" : "Home",
 
-	"blog-data-description" : "Latest posts from",
+	"loop-data-description" : "Latest posts from",
 	"posts-loop-desc-blog"  : "Latest posts from",
 	"posts-loop-desc-cat"   : "Posts in the %replace% category",
 	"posts-loop-desc-tag"   : "Posts tagged %replace%",

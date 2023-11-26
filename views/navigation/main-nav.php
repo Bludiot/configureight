@@ -44,11 +44,11 @@ use function CFE_Tags\{
 
 		$nav_entry = '';
 		$home_uri  = $site->getField( 'homepage' );
-		$blog_uri  = $site->getField( 'uriBlog' );
+		$loop_uri  = $site->getField( 'uriBlog' );
 
 		/**
 		 * Do not list static front page or
-		 * blog not on the home page because
+		 * loop not on the home page because
 		 * they are added at the end of the
 		 * top-level entries.
 		 */
@@ -96,28 +96,28 @@ use function CFE_Tags\{
 		echo $nav_entry;
 		endforeach;
 
-		// Add blog link if home is static content.
-		if ( ! empty( $home_uri ) && ! empty( $blog_uri ) ) {
+		// Add loop link if home is static content.
+		if ( ! empty( $home_uri ) && ! empty( $loop_uri ) ) {
 
-			// If true in config file.
+			// If true in theme plugin.
 			if ( theme() ) {
 				if ( theme()->main_nav_loop() ) {
 					printf(
 						'<li class="no-children"><a href="%s">%s</a></li>',
-						$site->url() . str_replace( '/', '', $blog_uri ) . '/',
-						ucwords( str_replace( [ '/', '-', '_' ], ' ', $blog_uri ) )
+						$site->url() . str_replace( '/', '', $loop_uri ) . '/',
+						ucwords( str_replace( [ '/', '-', '_' ], ' ', $loop_uri ) )
 					);
 				}
 			} else {
 				printf(
 					'<li class="no-children"><a href="%s">%s</a></li>',
-					$site->url() . str_replace( '/', '', $blog_uri ) . '/',
-					ucwords( str_replace( [ '/', '-', '_' ], ' ', $blog_uri ) )
+					$site->url() . str_replace( '/', '', $loop_uri ) . '/',
+					ucwords( str_replace( [ '/', '-', '_' ], ' ', $loop_uri ) )
 				);
 			}
 		}
 
-		// Add a home link if true in config file.
+		// Add a home link if true in theme plugin.
 		if ( theme() ) {
 			if ( theme()->main_nav_home() ) {
 				printf(

@@ -3,10 +3,10 @@
  * Posts page full content template
  *
  * Used for posts loop, whether on the
- * home page or blog page when a static
+ * home page or loop page when a static
  * home page is used.
  *
- * Theme config 'loop' > 'content'
+ * Theme plugin Loop > Content Style
  * must be set to 'full' to use this.
  *
  * @package    Configure 8
@@ -40,7 +40,7 @@ if ( empty( $content) ) {
 	return;
 }
 
-// Get blog data.
+// Get loop data.
 $loop_data = loop_data();
 
 // Category icon.

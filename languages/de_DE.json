@@ -10,7 +10,7 @@
 	"loader-text"    : "Wird geladen",
 	"home-link-label" : "Heim",
 
-	"blog-data-description" : "Neueste beiträge von",
+	"loop-data-description" : "Neueste beiträge von",
 	"posts-loop-desc-blog"  : "Neueste beiträge von",
 	"posts-loop-desc-cat"   : "Beiträge in der kategorie %replace%",
 	"posts-loop-desc-tag"   : "Beiträge getaggt mit %replace%",

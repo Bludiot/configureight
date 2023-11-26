@@ -46,7 +46,7 @@
 	"loader-text"    : "Cargando",
 	"home-link-label" : "Inicio",
 
-	"blog-data-description" : "Últimas publicaciones de",
+	"loop-data-description" : "Últimas publicaciones de",
 	"posts-loop-desc-blog"  : "Últimas publicaciones de",
 	"posts-loop-desc-cat"   : "Publicaciones en la categoría %replace%",
 	"posts-loop-desc-tag"   : "Publicaciones etiquetadas %replace%",

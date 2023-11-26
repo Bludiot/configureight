@@ -13,7 +13,7 @@
 // Import namespaced functions.
 use function CFE_Func\{
 	lang,
-	blog_url
+	loop_url
 };
 use function CFE_Tags\{
 	prev_key,

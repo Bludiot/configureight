@@ -121,7 +121,8 @@ $tags_list = function() use ( $post, $tags_icon ) {
 		foreach ( $tags as $tagKey => $tagName ) {
 
 			$links[] = sprintf(
-				'<li>%s</li>',
+				'<li><a href="%s" class="tag-list-entry" rel="tag">%s</a></li>',
+				DOMAIN_TAGS . $tagKey,
 				$tagName
 			);
 		}
@@ -138,70 +139,72 @@ $tags_list = function() use ( $post, $tags_icon ) {
 
 	<div class="post-loop-content post-<?php echo loop_template(); ?>-content post-<?php echo loop_style(); ?>-content">
 
-		<a href="<?php echo $post->permalink(); ?>">
-			<header class="page-header post-header post-in-loop-header" data-page-header>
-				<h2 class="page-title posts-loop-title"><?php echo $sticky . $post->title(); ?></h2>
-			</header>
+		<header class="page-header post-header post-in-loop-header" data-page-header>
+			<h2 class="page-title posts-loop-title">
+				<a href="<?php echo $post->permalink(); ?>"><?php echo $sticky . $post->title(); ?></a>
+			</h2>
+		</header>
 
-			<?php if ( $post->coverImage() ) : ?>
-			<figure class="post-cover">
+		<?php if ( $post->coverImage() ) : ?>
+		<figure class="post-cover">
+			<a href="<?php echo $post->permalink(); ?>">
 				<img src="<?php echo $post->coverImage(); ?>" loading="lazy" />
-				<figcaption class="screen-reader-text"><?php echo $post->title(); ?></figcaption>
-			</figure>
+			</a>
+			<figcaption class="screen-reader-text"><?php echo $post->title(); ?></figcaption>
+		</figure>
+		<?php endif; ?>
+
+		<footer class="post-info post-<?php echo loop_style(); ?>-info">
+
+			<?php if ( $post->category() ) : ?>
+			<h3 class="post-info-category">
+				<a href="<?php echo $post->categoryPermalink(); ?>"><?php echo $post->category(); ?></a>
+			</h3>
 			<?php endif; ?>
 
-			<footer class="post-info post-<?php echo loop_style(); ?>-info">
+			<?php if ( theme() && theme()->loop_byline() ) : ?>
+			<p><span class="post-info-author">
+				<?php echo get_author(); ?>
+			</span></p>
+			<?php endif; ?>
 
-				<?php if ( $post->category() ) : ?>
-				<h3 class="post-info-category">
-					<?php echo $post->category(); ?>
-				</h3>
+			<?php if ( theme() && theme()->loop_date() ) : ?>
+			<p class="post-info-date">
+				<?php echo $post->date(); ?>
+			</p>
+			<?php endif; ?>
+
+			<?php
+			if ( theme() ) :
+			if (
+				theme()->loop_word_count() ||
+				theme()->loop_read_time()
+			) :
+			?>
+			<p class="post-info-details">
+
+				<?php if ( theme()->loop_word_count() ) : ?>
+				<span class="post-info-word-count">
+					<?php lang()->p( 'post-word-count' ); echo get_word_count( $post->key() ); ?>
+				</span>
 				<?php endif; ?>
 
-				<?php if ( theme() && theme()->loop_byline() ) : ?>
-				<p><span class="post-info-author">
-					<?php echo get_author(); ?>
-				</span></p>
+				<?php if ( theme()->loop_word_count() && theme()->loop_read_time() ) : ?>
+				<span class="post-info-separator"></span>
 				<?php endif; ?>
 
-				<?php if ( theme() && theme()->loop_date() ) : ?>
-				<p class="post-info-date">
-					<?php echo $post->date(); ?>
-				</p>
+				<?php if ( theme()->loop_read_time() ) : ?>
+				<span class="post-info-read-time">
+					<?php lang()->p( 'post-read-time' ); echo $post->readingTime(); ?>
+				</span>
 				<?php endif; ?>
+			</p>
+			<?php endif; endif; ?>
 
-				<?php
-				if ( theme() ) :
-				if (
-					theme()->loop_word_count() ||
-					theme()->loop_read_time()
-				) :
-				?>
-				<p class="post-info-details">
-
-					<?php if ( theme()->loop_word_count() ) : ?>
-					<span class="post-info-word-count">
-						<?php lang()->p( 'post-word-count' ); echo get_word_count( $post->key() ); ?>
-					</span>
-					<?php endif; ?>
-
-					<?php if ( theme()->loop_word_count() && theme()->loop_read_time() ) : ?>
-					<span class="post-info-separator"></span>
-					<?php endif; ?>
-
-					<?php if ( theme()->loop_read_time() ) : ?>
-					<span class="post-info-read-time">
-						<?php lang()->p( 'post-read-time' ); echo $post->readingTime(); ?>
-					</span>
-					<?php endif; ?>
-				</p>
-				<?php endif; endif; ?>
-
-				<?php if ( $post->tags( true ) ) {
-					echo $tags_list();
-				} ?>
-			</footer>
-		</a>
+			<?php if ( $post->tags( true ) ) {
+				echo $tags_list();
+			} ?>
+		</footer>
 	</div>
 </article>
 <?php endforeach; ?>

@@ -3,7 +3,7 @@
  * Posts page template
  *
  * Used for posts loop, whether on the
- * home page or blog page when a static
+ * home page or loop page when a static
  * home page is used.
  *
  * @package    Configure 8
@@ -31,7 +31,7 @@ use function CFE_Tags\{
 	get_loop_pagination
 };
 
-// Get blog data.
+// Get loop data.
 $loop_data = loop_data();
 
 // If no posts.

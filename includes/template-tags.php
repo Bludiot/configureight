@@ -34,7 +34,7 @@ use function CFE_Func\{
 	theme,
 	favicon_exists,
 	loop_data,
-	blog_is_static,
+	loop_is_static,
 	get_nav_position,
 	get_config_styles,
 	has_cover,
@@ -59,7 +59,6 @@ function page_loader() {
 		return null;
 	}
 
-	// Return null if config file is false.
 	if ( theme() && ! theme()->page_loader() ) {
 		return null;
 	} else {
@@ -111,7 +110,7 @@ function scheme_stylesheet( $type = '' ) {
 		return null;
 	}
 
-	// Get options from the config file.
+	// Get options from the theme plugin.
 	$colors = theme()->color_scheme();
 	$fonts  = theme()->font_scheme();
 	$html   = '';
@@ -709,7 +708,7 @@ function cover_header() {
  * Get user toolbar
  *
  * Includes the toolbar file if user is
- * logged in and config value is true.
+ * logged in and theme plugin value is true.
  *
  * @since  1.0.0
  * @return mixed Returns the toolbar markup or null.
@@ -819,7 +818,7 @@ function page_id() {
 		( 'blog' == url()->whereAmI() && 'home' != url()->whereAmI() ) ||
 		( 'home' == url()->whereAmI() && 'page' != url()->whereAmI() )
 	) {
-		$id = 'blog-page';
+		$id = 'loop-page';
 		if ( ! isset( $_GET['page'] ) ) {
 			$id .= '-' . 1;
 		} else {
@@ -973,7 +972,7 @@ function posts_loop_header() {
 	$loop_data   = loop_data();
 	$loop_page   = '';
 
-	// If on a blog page other than the first.
+	// If on a loop page other than the first.
 	if ( isset( $_GET['page'] ) && $_GET['page'] > 1 ) {
 		$loop_page = sprintf(
 			' &rsaquo; %s %s',

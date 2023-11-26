@@ -260,10 +260,10 @@ body {
 	}
 }
 
-// Full loop content in the config file.
+// Full loop content.
 .post-full-content {
 
-	// News style loop in the config file.
+	// News style loop.
 	&.post-news-content {
 		display: grid;
 		gap: 1rem 1.5rem;
@@ -366,7 +366,7 @@ body {
 	}
 }
 
-// Grid loop content in the config file.
+// Grid loop content.
 .post-grid-content {
 	position: relative;
 	margin: 0;
@@ -501,7 +501,7 @@ body {
 }
 
 // Blog transition demo.
-.blog {
+.loop {
 	article {
 		opacity: 0;
 		transition: opacity .25s;
@@ -514,12 +514,12 @@ body {
 		}
 	}
 }
-@for $blog_article from 1 through 12 {
-	.blog {
+@for $loop_article from 1 through 12 {
+	.loop {
 		&.page-loaded {
 			article {
-				&:nth-of-type( #{$blog_article} ) {
-					transition-delay: ( $blog_article + 0 ) * .15s;
+				&:nth-of-type( #{$loop_article} ) {
+					transition-delay: ( $loop_article + 0 ) * .15s;
 				}
 			}
 		}
