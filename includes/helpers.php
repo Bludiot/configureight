@@ -453,10 +453,18 @@ function get_cover_src() {
 
 	// If in blog pages.
 	if ( 'blog' == url()->whereAmI() ) {
-		if ( blog_is_static() && page()->coverImage() ) {
-			$src = page()->coverImage();
+		if ( blog_is_static() ) {
+			$loop = loop_data();
+
+			if ( ! empty( $loop['cover'] ) ) {
+				$src  = $loop['cover'];
+			} else {
+				$src = $default;
+			}
 		} elseif ( $default ) {
 			$src = $default;
+		} elseif ( page()->coverImage() ) {
+			$src = page()->coverImage();
 		}
 
 	// If on a singular page.

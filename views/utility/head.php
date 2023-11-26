@@ -26,10 +26,10 @@ use function CFE_Tags\{
 
 $suffix = asset_min();
 
-// Preload over image.
+// Preload cover image.
 $load_cover = '';
 $type       = '';
-if ( has_cover() ) {
+if ( has_cover() && ! empty( get_cover_src() ) ) {
 
 	// File type.
 	$type = get_headers( get_cover_src(), 1 )['Content-Type'];
