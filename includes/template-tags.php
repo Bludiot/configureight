@@ -1011,7 +1011,7 @@ function posts_loop_header() {
 
 	if ( ! empty( $heading ) && ! ctype_space( $heading ) ) {
 		$html .= sprintf(
-			'<h1>%s</h1>',
+			'<h3 class="posts-loop-heading">%s</h3>',
 			$heading
 		);
 	}
