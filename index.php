@@ -10,6 +10,7 @@
 // Import namespaced functions.
 use function CFE_Func\{
 	theme,
+	is_rtl,
 	plugins_hook,
 	current_lang,
 	is_loop_page,
@@ -30,6 +31,12 @@ use function CFE_Tags\{
 	icon,
 	footer_scripts
 };
+
+// Site direction.
+$dir = 'ltr';
+if ( is_rtl() ) {
+	$dir = 'rtl';
+}
 
 // Get loop data.
 $loop_data = loop_data();
@@ -69,7 +76,7 @@ if ( is_loop_page() ) {
 
 ?>
 <!DOCTYPE html>
-<html dir="auto" class="no-js" lang="<?php echo current_lang(); ?>" xmlns:og="http://opengraphprotocol.org/schema/" data-web-page>
+<html dir="<?php echo $dir; ?>" class="no-js" lang="<?php echo current_lang(); ?>" xmlns:og="http://opengraphprotocol.org/schema/" data-web-page>
 <?php include( THEME_DIR . 'views/utility/head.php' ); ?>
 <body class="<?php echo body_classes(); ?>" itemid="<?php echo $uuid; ?>" <?php echo $body_data_attr; ?>>
 
