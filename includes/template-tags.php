@@ -25,6 +25,7 @@ use function CFE_Func\{
 	helper,
 	site,
 	url,
+	site_domain,
 	lang,
 	page,
 	is_rtl,
@@ -754,7 +755,7 @@ function site_logo() {
 	?>
 	<div class="site-logo" data-site-logo>
 		<figure>
-			<a href="<?php echo site()->url(); ?>">
+			<a href="<?php echo site_domain(); ?>">
 				<img src="<?php echo site()->logo(); ?>" alt="<?php echo site()->title(); ?>" width="80">
 			</a>
 			<figcaption class="screen-reader-text"><?php echo site()->title(); ?></figcaption>

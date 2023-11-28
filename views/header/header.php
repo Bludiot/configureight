@@ -13,6 +13,7 @@
 // Import namespaced functions.
 use function CFE_Func\{
 	site,
+	site_domain,
 	theme,
 	lang,
 	get_cover_src,
@@ -48,7 +49,7 @@ if ( 'home' == $WHERE_AM_I ) {
 	$site_title = sprintf(
 		'<p class="%s"><a href="%s">%s</a></p>',
 		$site_title_class,
-		site()->url(),
+		site_domain(),
 		site()->title()
 	);
 }

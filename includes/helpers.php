@@ -130,6 +130,23 @@ function page() {
 }
 
 /**
+ * Website domain
+ *
+ * Returns the site URL setting or
+ * the DOMAIN_BASE constant.
+ *
+ * @since  1.0.0
+ * @return string
+ */
+function site_domain() {
+
+	if ( site()->url() ) {
+		return site()->url();
+	}
+	return DOMAIN_BASE;
+}
+
+/**
  * Theme plugin
  *
  * This function is used to get settings from the
