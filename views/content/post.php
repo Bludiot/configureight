@@ -10,8 +10,10 @@
 
 // Import namespaced functions.
 use function CFE_Func\{
+	theme,
 	full_cover,
-	has_cover
+	has_cover,
+	get_related
 };
 use function CFE_Tags\{
 	page_header
@@ -28,4 +30,15 @@ use function CFE_Tags\{
 		<?php echo $page->content(); ?>
 	</div>
 </article>
+
+<?php
+// Related posts.
+if ( theme() && theme()->related_posts() && get_related() ) {
+	if ( 'grid' == theme()->related_style() ) {
+		include( THEME_DIR . 'views/content/partials/related-posts-grid.php' );
+	} else {
+		include( THEME_DIR . 'views/content/partials/related-posts-list.php' );
+	}
+} ?>
+
 <?php include( THEME_DIR . 'views/navigation/posts-prev-next.php' ); ?>

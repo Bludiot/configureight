@@ -1805,6 +1805,68 @@ body.template-posts-loop-bottom .content-wrapper {
   fill: var(--cfe-article--tags-list--border-color);
 }
 
+.related-posts {
+  clear: both;
+  margin: 2rem 0 0 0;
+  padding: 2rem 0 0 0;
+  border-top: var(--cfe-box-border);
+}
+
+.related-posts-heading {
+  margin: 0;
+  font-family: var(--cfe-heading-secondary--font-family);
+  font-size: var(--cfe-heading-secondary--font-size);
+  font-weight: var(--cfe-heading-secondary--font-weight);
+  font-style: var(--cfe-heading-secondary--font-style);
+  font-variant: var(--cfe-heading-secondary--font-variant);
+  line-height: var(--cfe-heading-secondary--line-height);
+  letter-spacing: var(--cfe-heading-secondary--letter-spacing);
+  word-spacing: var(--cfe-heading-secondary--word-spacing);
+  -webkit-text-decoration: var(--cfe-heading-secondary--text-decoration);
+          text-decoration: var(--cfe-heading-secondary--text-decoration);
+  text-transform: var(--cfe-heading-secondary--text-transform);
+  color: var(--cfe-heading-secondary--text-color, var(--cfe-text-color));
+}
+
+.related-style-list .related-post {
+  display: flex;
+  gap: 1rem;
+  margin: 1rem 0 0 0;
+}
+.related-style-list .related-post:first-of-type {
+  margin: 2rem 0 0 0;
+}
+.related-style-list .related-cover {
+  position: relative;
+}
+.related-style-list .related-cover img {
+  display: block;
+  width: 80px;
+  height: 80px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.related-style-list .related-title {
+  margin: 0;
+  font-family: var(--cfe-heading-secondary--font-family);
+  font-size: var(--cfe-heading-secondary--font-size);
+  font-weight: var(--cfe-heading-secondary--font-weight);
+  font-style: var(--cfe-heading-secondary--font-style);
+  font-variant: var(--cfe-heading-secondary--font-variant);
+  line-height: var(--cfe-heading-secondary--line-height);
+  letter-spacing: var(--cfe-heading-secondary--letter-spacing);
+  word-spacing: var(--cfe-heading-secondary--word-spacing);
+  -webkit-text-decoration: var(--cfe-heading-secondary--text-decoration);
+          text-decoration: var(--cfe-heading-secondary--text-decoration);
+  text-transform: var(--cfe-heading-secondary--text-transform);
+}
+.related-style-list .related-title a {
+  text-decoration: none;
+}
+.related-style-list .related-description {
+  margin: 0;
+}
+
 .page-sidebar {
   position: var(--cfe-sidebar--default--position, var(--cfe-sidebar--position));
   display: var(--cfe-sidebar--default--display, var(--cfe-sidebar--display, flex));

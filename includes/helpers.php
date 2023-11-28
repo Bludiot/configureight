@@ -585,11 +585,70 @@ function get_word_count( $key = '' ) {
 }
 
 /**
+ * Get related posts
+ *
+ * @since  1.0.0
+ * @param  mixed $max
+ * @param  mixed $similar
+ * @global object $page The Page class.
+ * @global object $url The Url class.
+ * @return mixed Returns an array of related posts or false.
+ */
+function get_related( $max = 3, $similar = true ) {
+
+	global $page, $url;
+
+	if ( 'page' == $url->whereAmI() ) {
+
+		if ( $page->isStatic() || ! $page->category() ) {
+			return false;
+		}
+
+		if ( theme() && theme()->max_related() ) {
+			$max = theme()->max_related();
+		}
+		$currentCategory = getCategory( $page->categoryKey() );
+		$allCatPages     = $currentCategory->pages();
+		$currentKey      = $page->key();
+
+		// Remove current page.
+		$allCatPages = array_diff( $allCatPages, [ $currentKey ] );
+
+		// Sort rest pages by similarity O(N** max).
+		if ( $similar ) {
+			usort( $allCatPages, function ( $a, $b ) use ( $currentKey ) {
+				similar_text( $currentKey, $a, $percentA );
+				similar_text( $currentKey, $b, $percentB );
+				return $percentA === $percentB ? 0 : ( $percentA > $percentB ? -1 : 1 );
+			} );
+		}
+		// Or randomize.
+		else {
+			shuffle( $allCatPages );
+		}
+
+		$related = [];
+		try {
+			for ( $i = 0; $i < $max; $i++ ) {
+				$item = new \Page( $allCatPages[$i] );
+				if ( $item->published() ) {
+					$related[] = $item;
+				}
+			}
+		}
+		catch( \Exception $e ) {
+			// Do exception?
+		}
+		return $related;
+	}
+	return false;
+}
+
+/**
  * Convert a 3- or 6-digit hexadecimal color to an associative RGB array.
  *
- * @param string $color The color in hex format.
- * @param bool   $opacity Whether to return the RGB color is opaque.
- *
+ * @param  string $color The color in hex format.
+ * @param  bool   $opacity Whether to return the RGB color is opaque.
  * @return string
  */
 function hex_to_rgb( $color, $opacity = false ) {
