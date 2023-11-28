@@ -93,8 +93,8 @@ if ( is_loop_page() ) {
 		<?php if ( 'search' != $url->whereAmI() && ! full_cover() && has_cover() ) : ?>
 		<figure class="page-cover page-cover-singular">
 			<img src="<?php echo get_cover_src(); ?>" />
+			<div class="cover-overlay"></div>
 			<figcaption>
-				<div class="cover-overlay"></div>
 				<?php echo cover_header(); ?>
 			</figcaption>
 		</figure>
