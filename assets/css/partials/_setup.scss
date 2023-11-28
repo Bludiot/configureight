@@ -282,6 +282,10 @@ h4 {
 	transform: var( --cfe-to-top--transform, translateY(0) );
 	transition: var( --cfe-to-top--transition, opacity .5s, background-color .25s, transform .25s );
 
+	@media screen and ( max-width: $break_phone ) {
+		display: none;
+	}
+
 	&.scrolled {
 		opacity: var( --cfe-to-top--scrolled--opacity, 1 );
 		pointer-events: var( --cfe-to-top--scrolled--pointer-events, all );

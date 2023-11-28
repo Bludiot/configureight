@@ -553,6 +553,11 @@ body {
 	border-top: var( --cfe-box-border );
 }
 
+.related-loop {
+	position: relative;
+	width: 100%;
+}
+
 .related-posts-heading {
 	margin: 0;
 	font-family: var( --cfe-heading-secondary--font-family );
@@ -611,5 +616,133 @@ body {
 
 	.related-description {
 		margin: 0;
+	}
+}
+
+.related-style-grid {
+	display: grid;
+	grid-template-columns: repeat( 3, 1fr );
+	gap: 0.25rem;
+	margin: 1rem 0 0 0;
+
+	@media screen and ( max-width: $break_phone ) {
+		grid-template-columns: unset;
+		gap: 1rem;
+	}
+
+	.related-post {
+		position: relative;
+		overflow: hidden;
+		max-height: 200px;
+	}
+
+	.related-cover {
+		height: 100%;
+
+		img {
+			display: block;
+			width: 100%;
+
+			// Same as .related-post > max-height.
+			height: 200px;
+			object-fit: cover;
+		}
+	}
+
+	.related-content {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		padding: 1.5rem;
+		background-color: var( --cfe-cover-overlay--bg-color, rgba( $color: black, $alpha: 0.625 ) );
+		color: var( --cfe-cover--title--text-color, var( --cfe-cover--text-color, #ffffff ) );
+	}
+
+	.related-title {
+		margin: 0;
+		font-family: var( --cfe-heading-secondary--font-family );
+		font-size: clamp( 1.375rem, 1.75vw, 2vw );
+		font-weight: var( --cfe-heading-secondary--font-weight );
+		font-style: var( --cfe-heading-secondary--font-style );
+		font-variant: var( --cfe-heading-secondary--font-variant );
+		line-height: 1.2;
+		letter-spacing: var( --cfe-heading-secondary--letter-spacing );
+		word-spacing: var( --cfe-heading-secondary--word-spacing );
+		text-decoration: var( --cfe-heading-secondary--text-decoration );
+		text-transform: var( --cfe-heading-secondary--text-transform );
+		text-align: center;
+		opacity: 1;
+
+		@media screen and ( max-width: $break_phone ) {
+			font-size: calc( var( --cfe-heading-secondary--font-size ) * 1.25 );
+		}
+
+		a {
+			text-decoration: none;
+			color: var( --cfe-cover--title--text-color, var( --cfe-cover--text-color, #ffffff ) );
+		}
+	}
+
+	.related-icon-read {
+		width: 1rem;
+		opacity: 1;
+
+		@media screen and ( max-width: $break_phone ) {
+			display: none;
+		}
+
+		svg {
+			width: 1rem;
+		}
+	}
+
+	.related-description {
+		margin: 0;
+		line-height: 1.2;
+		text-align: center;
+		opacity: 0;
+		transform: scale( 0% );
+		font-size: 0%;
+
+		@media screen and ( max-width: $break_phone ) {
+			opacity: 1;
+			transform: scale( 100% );
+			font-size: var( --cfe-font-size, 1rem );
+		}
+	}
+
+	.related-post:hover {
+
+		.related-title {
+			opacity: 0;
+			font-size: 0%;
+
+			@media screen and ( max-width: $break_phone ) {
+				opacity: 1;
+				font-size: calc( var( --cfe-heading-secondary--font-size ) * 1.25 );
+			}
+		}
+
+		.related-icon-read {
+			width: 0px;
+			opacity: 0;
+
+			svg {
+				width: 0px;
+			}
+		}
+
+		.related-description {
+			transition: opacity .325s ease-in-out, transform .325s ease-in-out;
+			opacity: 1;
+			transform: scale( 100% );
+			font-size: var( --cfe-font-size, 1rem );
+		}
 	}
 }
