@@ -879,8 +879,10 @@ function content_template() {
 			$template = 'views/content/' . str_replace( [ ' ', 'full-cover', 'no-sidebar', 'sidebar-bottom' ], '', page()->template() ) . '.php';
 			if ( file_exists( THEME_DIR . $template ) ) {
 				$template = $template;
-			} else {
+			} elseif ( page()->isStatic() ) {
 				$template = 'views/content/page.php';
+			} else {
+				$template = 'views/content/post.php';
 			}
 
 		// Static page.
