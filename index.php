@@ -18,7 +18,7 @@ use function CFE_Func\{
 	has_cover,
 	get_cover_src,
 	full_cover,
-	include_sidebar,
+	include_sidebar
 };
 use function CFE_Tags\{
 	body_classes,
