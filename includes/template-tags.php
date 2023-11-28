@@ -236,10 +236,10 @@ function config_styles() {
 	}
 
 	// Cover image overlay.
-	if ( theme() && ! empty( theme()->cover_bg_color() ) ) {
+	if ( theme() && ! empty( theme()->cover_overlay() ) ) {
 		$styles .= sprintf(
 			'--cfe-cover-overlay--bg-color: %s;',
-			theme()->cover_bg_color()
+			theme()->cover_overlay()
 		);
 	}
 
