@@ -224,6 +224,17 @@ function config_styles() {
 		);
 	}
 
+	// Body color.
+	if ( theme() &&
+		! empty( theme()->body_bg_color() ) &&
+		'#ffffff' != theme()->body_bg_color()
+	) {
+		$styles .= sprintf(
+			'--cfe-bg-color: %s;',
+			theme()->body_bg_color()
+		);
+	}
+
 	// Header logo width.
 	if ( theme() ) {
 		$styles .= sprintf(
