@@ -29,8 +29,6 @@ use function CFE_Tags\{
 	cover_header,
 	content_template,
 	icon,
-	loop_post_count,
-	loop_show_posts,
 	footer_scripts
 };
 
@@ -68,11 +66,11 @@ if ( is_loop_page() ) {
 	$body_data_attr = sprintf(
 		'data-uuid="%s" data-post-count="%s"',
 		$uuid,
-		loop_post_count()
+		$loop_data['post_count']
 	);
 	$main_data_attr = sprintf(
 		'data-page-main data-show-posts="%s"',
-		loop_show_posts()
+		$loop_data['show_posts']
 	);
 }
 

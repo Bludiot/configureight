@@ -380,8 +380,8 @@ function body_classes() {
 		$classes[] = 'loop';
 
 		// Posts loop style.
-		$loop_style = loop_style();
-		$classes[] = "loop-style-{$loop_style}";
+		$loop_style = $loop_data['style'];
+		$classes[]  = "loop-style-{$loop_style}";
 
 		// Posts loop template.
 		if ( theme() ) {
@@ -412,8 +412,8 @@ function body_classes() {
 		$classes[] = 'loop-not-home';
 
 		// Templates for the static loop page.
-		if ( loop_template() ) {
-			$templates = explode( ' ', loop_template() );
+		if ( $loop_data['template'] ) {
+			$templates = explode( ' ', $loop_data['template'] );
 
 			foreach ( $templates as $template ) {
 
@@ -639,7 +639,7 @@ function cover_header() {
 	// Conditional heading & description.
 	if (
 		'blog' == url()->whereAmI() &&
-		'page' == loop_location()
+		'page' == $loop_data['location']
 	) {
 		$class       = 'loop-page-description';
 		$page_title  = loop_title();
@@ -918,14 +918,14 @@ function content_template() {
 }
 
 /**
- * Loop template
+ * Loop content style
  *
- * Gets loop content template from the loop data.
+ * Gets loop content style from the theme plugin.
  *
  * @since  1.0.0
- * @return string Returns the loop content template.
+ * @return string Returns the loop content style.
  */
-function loop_template() {
+function loop_content_style() {
 
 	// Conditional template.
 	$template = 'list';
@@ -1124,7 +1124,7 @@ function posts_loop_header() {
 
 	} elseif ( 'blog' == url()->whereAmI() ) {
 		$class   = 'loop-page-description';
-		$heading = ucwords( loop_slug() . $loop_page );
+		$heading = ucwords( $loop_data['slug'] . $loop_page );
 
 	} elseif ( 'category' == url()->whereAmI() ) {
 		$get_cat     = new \Category( url()->slug() );

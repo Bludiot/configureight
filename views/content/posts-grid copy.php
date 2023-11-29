@@ -24,7 +24,7 @@ use function CFE_Func\{
 };
 use function CFE_Tags\{
 	posts_loop_header,
-	loop_template,
+	loop_content_style,
 	loop_style,
 	icon,
 	sticky_icon,
@@ -88,7 +88,7 @@ if ( $user->profilePicture() ) {
 echo posts_loop_header();
 
 ?>
-<div class="loop-wrap loop-wrap-<?php echo loop_template(); ?>">
+<div class="loop-wrap loop-wrap-<?php echo loop_content_style(); ?>">
 <?php
 // If posts, print for each.
 foreach ( $content as $post ) :
@@ -137,7 +137,7 @@ $tags_list = function() use ( $post, $tags_icon ) {
 ?>
 <article class="site-article" role="article" itemscope="itemscope" itemtype="<?php echo 'https://schema.org/' . $article_type; ?>" data-site-article>
 
-	<div class="post-loop-content post-<?php echo loop_template(); ?>-content post-<?php echo loop_style(); ?>-content">
+	<div class="post-loop-content post-<?php echo loop_content_style(); ?>-content post-<?php echo loop_style(); ?>-content">
 
 		<header class="page-header post-header post-in-loop-header" data-page-header>
 			<h2 class="page-title posts-loop-title">
