@@ -645,30 +645,20 @@ function cover_header() {
 		$page_title  = $loop_data['title'];
 		$description = $loop_data['description'];
 
-	} elseif ( 'home' == url()->whereAmI() ) {
+	} elseif (
+		'home' == url()->whereAmI() ||
+		'blog' == url()->whereAmI()
+	) {
 		$class       = 'loop-page-description';
 		$page_title  = lang()->get( 'Blog' );
 		if ( theme() ) {
 			if ( ! empty( theme()->loop_title() ) ) {
-				$page_title = theme()->loop_title();
+				$page_title = ucwords( theme()->loop_title() );
 			} elseif ( theme()->loop_style() ) {
 				$page_title = ucwords( theme()->loop_style() );
 			}
 		}
-		$description = sprintf(
-			'%s %s',
-			lang()->get( 'posts-loop-desc-blog' ),
-			site()->title()
-		);
-
-	} elseif ( 'blog' == url()->whereAmI() ) {
-		$class       = 'loop-page-description';
-		$page_title  = ucwords( $loop_data['slug'] );
-		$description = sprintf(
-			'%s %s',
-			lang()->get( 'posts-loop-desc-blog' ),
-			site()->title()
-		);
+		$description = $loop_data['description'];
 
 	} elseif ( 'category' == url()->whereAmI() ) {
 		$get_cat     = new \Category( url()->slug() );

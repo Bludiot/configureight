@@ -322,6 +322,9 @@ function loop_data() {
 		lang()->get( 'loop-data-description' ),
 		site()->title()
 	);
+	if ( theme() && ! empty( theme()->loop_description() ) ) {
+		$description = theme()->loop_description();
+	}
 
 	// Default data array.
 	$data = [
