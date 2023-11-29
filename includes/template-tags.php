@@ -380,7 +380,7 @@ function body_classes() {
 		$classes[] = 'loop';
 
 		// Posts loop style.
-		$loop_style = $loop_data['style'];
+		$loop_style = loop_style();
 		$classes[] = "loop-style-{$loop_style}";
 
 		// Posts loop template.
@@ -412,8 +412,8 @@ function body_classes() {
 		$classes[] = 'loop-not-home';
 
 		// Templates for the static loop page.
-		if ( $loop_data['template'] ) {
-			$templates = explode( ' ', $loop_data['template'] );
+		if ( loop_template() ) {
+			$templates = explode( ' ', loop_template() );
 
 			foreach ( $templates as $template ) {
 
@@ -639,11 +639,11 @@ function cover_header() {
 	// Conditional heading & description.
 	if (
 		'blog' == url()->whereAmI() &&
-		'page' == $loop_data['location']
+		'page' == loop_location()
 	) {
 		$class       = 'loop-page-description';
-		$page_title  = $loop_data['title'];
-		$description = $loop_data['description'];
+		$page_title  = loop_title();
+		$description = loop_description();
 
 	} elseif (
 		'home' == url()->whereAmI() ||
@@ -658,7 +658,7 @@ function cover_header() {
 				$page_title = ucwords( theme()->loop_style() );
 			}
 		}
-		$description = $loop_data['description'];
+		$description = loop_description();
 
 	} elseif ( 'category' == url()->whereAmI() ) {
 		$get_cat     = new \Category( url()->slug() );
@@ -940,6 +940,97 @@ function loop_template() {
 }
 
 /**
+ * Loop post count
+ *
+ * Gets loop post count from the loop data.
+ *
+ * @since  1.0.0
+ * @return integer Returns the loop post count.
+ */
+function loop_post_count() {
+	$loop_data = loop_data();
+	return $loop_data['post_count'];
+}
+
+/**
+ * Loop show posts
+ *
+ * Gets loop posts per page from the loop data.
+ *
+ * @since  1.0.0
+ * @return integer Returns the loop posts per page.
+ */
+function loop_show_posts() {
+	$loop_data = loop_data();
+	return $loop_data['show_posts'];
+}
+
+/**
+ * Loop location
+ *
+ * Gets loop location from the loop data.
+ *
+ * @since  1.0.0
+ * @return string Returns the loop location.
+ */
+function loop_location() {
+	$loop_data = loop_data();
+	return $loop_data['location'];
+}
+
+/**
+ * Loop key
+ *
+ * Gets loop key from the loop data.
+ *
+ * @since  1.0.0
+ * @return mixed Returns the loop key or false.
+ */
+function loop_key() {
+	$loop_data = loop_data();
+	return $loop_data['key'];
+}
+
+/**
+ * Loop URL
+ *
+ * Gets loop URL from the loop data.
+ *
+ * @since  1.0.0
+ * @return string Returns the loop URL.
+ */
+function loop_url() {
+	$loop_data = loop_data();
+	return $loop_data['url'];
+}
+
+/**
+ * Loop slug
+ *
+ * Gets loop slug from the loop data.
+ *
+ * @since  1.0.0
+ * @return string Returns the loop slug.
+ */
+function loop_slug() {
+	$loop_data = loop_data();
+	return $loop_data['slug'];
+}
+
+/**
+ * Loop template
+ *
+ * Gets loop template from the loop data.
+ *
+ * @since  1.0.0
+ * @return mixed Returns the loop template or false.
+ */
+function loop_template() {
+	$loop_data = loop_data();
+	return $loop_data['template'];
+}
+
+/**
  * Loop style
  *
  * Gets loop style from the loop data.
@@ -950,6 +1041,45 @@ function loop_template() {
 function loop_style() {
 	$loop_data = loop_data();
 	return $loop_data['style'];
+}
+
+/**
+ * Loop title
+ *
+ * Gets loop title from the loop data.
+ *
+ * @since  1.0.0
+ * @return string Returns the loop title.
+ */
+function loop_title() {
+	$loop_data = loop_data();
+	return $loop_data['title'];
+}
+
+/**
+ * Loop description
+ *
+ * Gets loop description from the loop data.
+ *
+ * @since  1.0.0
+ * @return string Returns the loop description.
+ */
+function loop_description() {
+	$loop_data = loop_data();
+	return $loop_data['description'];
+}
+
+/**
+ * Loop cover image
+ *
+ * Gets loop cover image from the loop data.
+ *
+ * @since  1.0.0
+ * @return mixed Returns the loop cover image or false.
+ */
+function loop_cover() {
+	$loop_data = loop_data();
+	return $loop_data['cover'];
 }
 
 /**
@@ -994,7 +1124,7 @@ function posts_loop_header() {
 
 	} elseif ( 'blog' == url()->whereAmI() ) {
 		$class   = 'loop-page-description';
-		$heading = ucwords( $loop_data['slug'] . $loop_page );
+		$heading = ucwords( loop_slug() . $loop_page );
 
 	} elseif ( 'category' == url()->whereAmI() ) {
 		$get_cat     = new \Category( url()->slug() );
