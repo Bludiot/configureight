@@ -868,7 +868,7 @@ function content_template() {
 			$template = 'views/content/front-page.php';
 
 		/**
-		 * Page with template applied, excluding some templates.
+		 * Static page with template applied, excluding some templates.
 		 * Sidebar templates are excluded because sidebar location
 		 * is achieved with CSS based on body class.
 		 *
@@ -877,14 +877,12 @@ function content_template() {
 		 * The `full-cover` template is excluded because a different
 		 * site header is used prior to calling this function.
 		 */
-		} elseif ( page()->template() ) {
+		} elseif ( page()->template() && page()->isStatic() ) {
 			$template = 'views/content/' . str_replace( [ ' ', 'full-cover', 'no-sidebar', 'sidebar-bottom' ], '', page()->template() ) . '.php';
 			if ( file_exists( THEME_DIR . $template ) ) {
 				$template = $template;
-			} elseif ( page()->isStatic() ) {
-				$template = 'views/content/page.php';
 			} else {
-				$template = 'views/content/post.php';
+				$template = 'views/content/page.php';
 			}
 
 		// Static page.
