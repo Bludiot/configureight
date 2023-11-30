@@ -2,7 +2,7 @@
 	"theme-data" :
 	{
 		"name"        : "Configure 8",
-		"description" : "This theme is part of the Configure 8 suite and is best used with the <a href='https://github.com/ControlledChaos/configureight-plugin'>Configure 8 plugin</a> for many theme options. Also try the companion <a href='https://github.com/ControlledChaos/configureight-admin'>Configure 8 admin theme</a> for the full experience."
+		"description" : "This theme is part of the Configure 8 suite and is best used with the <a href='https://github.com/Bludiot/configureight-plugin'>Configure 8 plugin</a> for many theme options. Also try the companion <a href='https://github.com/Bludiot/configureight-admin'>Configure 8 admin theme</a> for the full experience."
 	},
 	"direct-access"   : "You are not allowed to access this file.",
 	"die-php-version" : "Minimum PHP version of %replace% is not met.",
