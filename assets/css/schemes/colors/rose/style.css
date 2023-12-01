@@ -41,10 +41,10 @@
   --cfe-site-nav--sub-list--action--bg-color: #f5487f;
   --cfe-site-nav--sub-list--text-color: #ffffff;
   --cfe-site-nav--sub-list--action--text-color: #ffffff;
-  --cfe-article--tags-list--bg-color: #f5487f;
-  --cfe-article--tags-list--text-color: #ffffff;
-  --cfe-article--tags-list--action--bg-color: #f879a1;
-  --cfe-article--tags-list--action--text-color: #ffffff;
+  --cfe-tags-list--buttons--link--bg-color: #f5487f;
+  --cfe-tags-list--buttons--link--text-color: #ffffff;
+  --cfe-tags-list--buttons--link--action--bg-color: #f879a1;
+  --cfe-tags-list--buttons--link--action--text-color: #ffffff;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -60,6 +60,6 @@
     --cfe-form--action--border-color: #f879a1;
     --cfe-button--action--bg-color: #f879a1;
     --cfe-button--action-border-color: #f879a1;
-    --cfe-article--tags-list--action--bg-color: #401225;
+    --cfe-tags-list--buttons--link--action--bg-color: #401225;
   }
 }

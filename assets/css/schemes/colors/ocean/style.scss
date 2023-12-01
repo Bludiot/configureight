@@ -100,11 +100,11 @@ $close_icon_action_bg: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/20
 	--cfe-site-nav--sub-list--action--text-color: #{$ocn_white};
 
 	// Content.
-	--cfe-article--tags-list--bg-color: #{$ocn_blue};
-	--cfe-article--tags-list--text-color: #{$ocn_white};
+	--cfe-tags-list--buttons--link--bg-color: #{$ocn_blue};
+	--cfe-tags-list--buttons--link--text-color: #{$ocn_white};
 
-	--cfe-article--tags-list--action--bg-color: #{$ocn_light};
-	--cfe-article--tags-list--action--text-color: #{$ocn_white};
+	--cfe-tags-list--buttons--link--action--bg-color: #{$ocn_light};
+	--cfe-tags-list--buttons--link--action--text-color: #{$ocn_white};
 }
 
 @media ( prefers-color-scheme: dark ) {
@@ -120,6 +120,6 @@ $close_icon_action_bg: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/20
 		--cfe-form--action--border-color: #{$ocn_light};
 		--cfe-button--action--bg-color: #{$ocn_light};
 		--cfe-button--action-border-color: #{$ocn_light};
-		--cfe-article--tags-list--action--bg-color: #{$ocn_light};
+		--cfe-tags-list--buttons--link--action--bg-color: #{$ocn_light};
 	}
 }

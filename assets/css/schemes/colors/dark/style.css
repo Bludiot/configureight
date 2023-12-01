@@ -39,14 +39,14 @@
   --cfe-site-nav--sub-list--action--bg-color: #555555;
   --cfe-site-nav--sub-list--text-color: #ffffff;
   --cfe-site-nav--sub-list--action--text-color: #ffffff;
-  --cfe-article--tags-list--bg-color: #555555;
-  --cfe-article--tags-list--text-color: #eeeeee;
-  --cfe-article--tags-list--action--bg-color: #555555;
-  --cfe-article--tags-list--action--text-color: #ffffff;
-  --cfe-article--tags-list--bg-color: var( --cfe-button--bg-color );
-  --cfe-article--tags-list--border-color: var( --cfe-button--border-color );
-  --cfe-article--tags-list--text-color: var( --cfe-button--text-color );
-  --cfe-article--tags-list--action--bg-color: var( --cfe-button--action--bg-color );
-  --cfe-article--tags-list--action--border-color: var( --cfe-button--border-color );
-  --cfe-article--tags-list--action--text-color: var( --cfe-button--action--text-color );
+  --cfe-tags-list--buttons--link--bg-color: #555555;
+  --cfe-tags-list--buttons--link--text-color: #eeeeee;
+  --cfe-tags-list--buttons--link--action--bg-color: #555555;
+  --cfe-tags-list--buttons--link--action--text-color: #ffffff;
+  --cfe-tags-list--buttons--link--bg-color: var( --cfe-button--bg-color );
+  --cfe-tags-list--buttons--link--border-color: var( --cfe-button--border-color );
+  --cfe-tags-list--buttons--link--text-color: var( --cfe-button--text-color );
+  --cfe-tags-list--buttons--link--action--bg-color: var( --cfe-button--action--bg-color );
+  --cfe-tags-list--buttons--link--action--border-color: var( --cfe-button--border-color );
+  --cfe-tags-list--buttons--link--action--text-color: var( --cfe-button--action--text-color );
 }

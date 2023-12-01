@@ -411,14 +411,6 @@ body {
 
 	ul {
 		list-style: var( --cfe-ul--list-style, none );
-
-		li {
-			&:before {
-				display: inline-block;
-				content: '\2022\00a0';
-				transform: scale( 150% ) translateY( -2.5% );
-			}
-		}
 	}
 
 	ol {
@@ -472,29 +464,44 @@ body {
 	.page-info-date {
 		font-weight: var( --cfe-page-info-date--font-weight, 600 );
 	}
+}
 
-	.tags-list {
-		list-style: var( --cfe-article--tags-list--margin, none );
-		margin: var( --cfe-article--tags-list--margin, 0.75em 0 0 0 );
-		gap: var( --cfe-article--tags-list--display, 0 0.1875em );
+.tags-list {
+	list-style: var( --cfe-tags-list--list-style, none );
+	margin: var( --cfe-tags-list--margin, 0.75em 0 0 0 );
+
+	&.tags-list-horizontal {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1em;
+
+		&.tags-list-buttons {
+			gap: var( --cfe-tags-list--buttons--gap, 0 0.1875em );
+		}
+
+		&.inline-list {
+			display: inline-flex;
+		}
+	}
+
+	&.tags-list-buttons {
 
 		a {
-			display: var( --cfe-article--tags-list--display, inline-block );
-			padding: var( --cfe-article--tags-list--padding, 0.175em 0.325em 0.325em 0.325em );
-			line-height: var( --cfe-article--tags-list--line-height, 1 );
-			font-family: var( --cfe-article--tags-list--font-family );
-			font-size: var( --cfe-article--tags-list--font-size );
-			font-weight: var( --cfe-article--tags-list--font-weight );
-			text-decoration: var( --cfe-article--tags-list--text-decoration );
-			background-color: var( --cfe-article--tags-list--bg-color );
-			border: var( --cfe-article--tags-list--border, solid 1px var( --cfe-article--tags-list--border-color ) );
-			color: var( --cfe-article--tags-list--text-color );
+			padding: var( --cfe-tags-list--buttons--link--padding, 0.175em 0.325em 0.325em 0.325em );
+			line-height: var( --cfe-tags-list--buttons--link--line-height, 1 );
+			font-family: var( --cfe-tags-list--buttons--link--font-family );
+			font-size: var( --cfe-tags-list--buttons--link--font-size );
+			font-weight: var( --cfe-tags-list--buttons--link--font-weight );
+			text-decoration: var( --cfe-tags-list--buttons--link--text-decoration );
+			background-color: var( --cfe-tags-list--buttons--link--bg-color );
+			border: var( --cfe-tags-list--buttons--link--border, solid 1px var( --cfe-tags-list--buttons--link--border-color ) );
+			color: var( --cfe-tags-list--buttons--link--text-color );
 
 			&:hover,
 			&:focus {
-				background-color: var( --cfe-article--tags-list--action--bg-color );
-				border: var( --cfe-article--tags-lis--action--border, solid 1px var( --cfe-article--tags-list--action--border-color ) );
-				color: var( --cfe-article--tags-list--action--text-color );
+				background-color: var( --cfe-tags-list--buttons--link--action--bg-color );
+				border: var( --cfe-article--tags-lis--action--border, solid 1px var( --cfe-tags-list--buttons--link--action--border-color ) );
+				color: var( --cfe-tags-list--buttons--link--action--text-color );
 			}
 		}
 	}
@@ -540,7 +547,7 @@ body {
 .theme-icon {
 	&.tags-icon {
 		svg {
-			fill: var( --cfe-article--tags-list--border-color );
+			fill: var( --cfe-tags-list--buttons--link--border-color );
 		}
 	}
 }

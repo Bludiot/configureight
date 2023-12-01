@@ -93,16 +93,16 @@ $close_icon_action_bg: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/20
 	--cfe-site-nav--sub-list--action--text-color: #{$white};
 
 	// Content.
-	--cfe-article--tags-list--bg-color: #{$medium_gray};
-	--cfe-article--tags-list--text-color: #{$off_white};
+	--cfe-tags-list--buttons--link--bg-color: #{$medium_gray};
+	--cfe-tags-list--buttons--link--text-color: #{$off_white};
 
-	--cfe-article--tags-list--action--bg-color: #{$medium_gray};
-	--cfe-article--tags-list--action--text-color: #{$white};
-	--cfe-article--tags-list--bg-color: var( --cfe-button--bg-color );
-	--cfe-article--tags-list--border-color: var( --cfe-button--border-color );
-	--cfe-article--tags-list--text-color: var( --cfe-button--text-color );
+	--cfe-tags-list--buttons--link--action--bg-color: #{$medium_gray};
+	--cfe-tags-list--buttons--link--action--text-color: #{$white};
+	--cfe-tags-list--buttons--link--bg-color: var( --cfe-button--bg-color );
+	--cfe-tags-list--buttons--link--border-color: var( --cfe-button--border-color );
+	--cfe-tags-list--buttons--link--text-color: var( --cfe-button--text-color );
 
-	--cfe-article--tags-list--action--bg-color: var( --cfe-button--action--bg-color );
-	--cfe-article--tags-list--action--border-color: var( --cfe-button--border-color );
-	--cfe-article--tags-list--action--text-color: var( --cfe-button--action--text-color );
+	--cfe-tags-list--buttons--link--action--bg-color: var( --cfe-button--action--bg-color );
+	--cfe-tags-list--buttons--link--action--border-color: var( --cfe-button--border-color );
+	--cfe-tags-list--buttons--link--action--text-color: var( --cfe-button--action--text-color );
 }

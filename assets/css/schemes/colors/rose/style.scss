@@ -99,11 +99,11 @@ $close_icon_action_bg: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/20
 	--cfe-site-nav--sub-list--action--text-color: #{$white};
 
 	// Content.
-	--cfe-article--tags-list--bg-color: #{$rose_pink};
-	--cfe-article--tags-list--text-color: #{$white};
+	--cfe-tags-list--buttons--link--bg-color: #{$rose_pink};
+	--cfe-tags-list--buttons--link--text-color: #{$white};
 
-	--cfe-article--tags-list--action--bg-color: #{$rose_light};
-	--cfe-article--tags-list--action--text-color: #{$white};
+	--cfe-tags-list--buttons--link--action--bg-color: #{$rose_light};
+	--cfe-tags-list--buttons--link--action--text-color: #{$white};
 }
 
 @media ( prefers-color-scheme: dark ) {
@@ -119,6 +119,6 @@ $close_icon_action_bg: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/20
 		--cfe-form--action--border-color: #{$rose_light};
 		--cfe-button--action--bg-color: #{$rose_light};
 		--cfe-button--action-border-color: #{$rose_light};
-		--cfe-article--tags-list--action--bg-color: #{$rose_dark};
+		--cfe-tags-list--buttons--link--action--bg-color: #{$rose_dark};
 	}
 }

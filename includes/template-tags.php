@@ -1266,6 +1266,101 @@ function has_tags() {
 }
 
 /**
+ * Tags list
+ *
+ * @since  1.0.0
+ * @param  array $args Arguments to be passed.
+ * @param  array $defaults Default arguments.
+ * @global object $tags The Tags class.
+ * @return string
+ */
+function tags_list( $args = null, $defaults = [] ) {
+
+	global $tags;
+
+	// Default arguments.
+	$defaults = [
+		'wrap'      => false,
+		'direction' => 'horz',
+		'buttons'   => false,
+		'title'     => false,
+		'heading'   => 'h3',
+		'links'     => true,
+		'count'     => false
+	];
+
+	// Maybe override defaults.
+	if ( is_array( $args ) && $args ) {
+		$args = array_merge( $defaults, $args );
+	} else {
+		$args = $defaults;
+	}
+
+	// List classes.
+	$classes   = [];
+	$classes[] = 'tags-list';
+	if ( 'vert' == $args['direction'] ) {
+		$classes[] = 'tags-list-vertical';
+	} else {
+		$classes[] = 'tags-list-horizontal';
+	}
+	if ( $args['buttons'] ) {
+		$classes[] = 'tags-list-buttons';
+	}
+	$classes = implode( ' ', $classes );
+
+	// List markup.
+	$html = '';
+	if ( $args['wrap'] ) {
+		$html = '<div class="tags-list-wrap">';
+	}
+
+	if ( $args['title'] ) {
+		$html .= sprintf(
+			'<%s>%s</%s>',
+			$args['heading'],
+			$args['title'],
+			$args['heading']
+		);
+	}
+	$html .= sprintf(
+		'<ul class="%s">',
+		$classes
+	);
+
+	// By default the database of tags are alphanumeric sorted.
+	foreach ( $tags->db as $key=>$fields ) {
+
+		$get_count = $tags->numberOfPages( $key );
+		$get_name  = $fields['name'];
+
+		$name = $get_name;
+		if ( $args['count'] ) {
+			$name = sprintf(
+				'%s (%s)',
+				$get_name,
+				$get_count
+			);
+		}
+		$html .= '<li>';
+		if ( $args['links'] ) {
+			$html .= '<a href="' . DOMAIN_TAGS . $key . '">';
+		}
+		$html .= $name;
+		if ( $args['links'] ) {
+			$html .= '</a>';
+		}
+		$html .= '</li>';
+	}
+	$html .= '</ul>';
+
+	if ( $args['wrap'] ) {
+		$html  .= '</div>';
+	}
+	return $html;
+}
+
+/**
  * Get page author
  *
  * @since  1.0.0

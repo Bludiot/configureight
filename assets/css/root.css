@@ -95,13 +95,13 @@
   --cfe-post-header--list--heading--font-size: 1.75rem;
   --cfe-post-header--list--heading--font-weight: 700;
   --cfe-post-header--list--heading--line-height: 1.2;
-  --cfe-article--tags-list--text-decoration: none;
-  --cfe-article--tags-list--font-size: 0.8125rem;
-  --cfe-article--tags-list--font-weight: 600;
-  --cfe-article--tags-list--bg-color: var( --cfe-button--bg-color );
-  --cfe-article--tags-list--border-color: var( --cfe-button--border-color );
-  --cfe-article--tags-list--text-color: var( --cfe-button--text-color );
-  --cfe-article--tags-list--action--bg-color: var( --cfe-button--action--bg-color );
-  --cfe-article--tags-list--action--border-color: var( --cfe-button--border-color );
-  --cfe-article--tags-list--action--text-color: var( --cfe-button--action--text-color );
+  --cfe-tags-list--buttons--link--text-decoration: none;
+  --cfe-tags-list--buttons--link--font-size: 0.8125rem;
+  --cfe-tags-list--buttons--link--font-weight: 600;
+  --cfe-tags-list--buttons--link--bg-color: var( --cfe-button--bg-color );
+  --cfe-tags-list--buttons--link--border-color: var( --cfe-button--border-color );
+  --cfe-tags-list--buttons--link--text-color: var( --cfe-button--text-color );
+  --cfe-tags-list--buttons--link--action--bg-color: var( --cfe-button--action--bg-color );
+  --cfe-tags-list--buttons--link--action--border-color: var( --cfe-button--border-color );
+  --cfe-tags-list--buttons--link--action--text-color: var( --cfe-button--action--text-color );
 }
