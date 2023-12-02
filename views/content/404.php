@@ -17,6 +17,7 @@ use function CFE_Tags\{
 	page_header,
 	search_form,
 	static_list,
+	categories_list,
 	tags_list
 };
 
@@ -26,6 +27,14 @@ $static_args = [
 	'direction' => 'horz',
 	'title'     => ucwords( $L->get( 'Pages' ) ),
 	'heading'   => 'h2'
+];
+
+// Override categories list defaults.
+$cats_args = [
+	'wrap'    => true,
+	'title'   => ucwords( $L->get( 'Categories' ) ),
+	'heading' => 'h2',
+	'count'   => true
 ];
 
 // Override tags list defaults.
@@ -47,6 +56,7 @@ $tags_args = [
 		<?php echo $page->content(); ?>
 		<?php echo search_form( [ 'label' => false ] ); ?>
 		<?php echo static_list( $static_args ); ?>
+		<?php echo categories_list( $cats_args ); ?>
 		<?php echo tags_list( $tags_args ); ?>
 	</div>
 </article>

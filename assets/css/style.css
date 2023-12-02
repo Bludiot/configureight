@@ -1722,6 +1722,39 @@ body.template-posts-loop-bottom .content-wrapper {
   gap: 0 0.75em;
 }
 
+.categories-list {
+  list-style: var(--cfe-categories-list--list-style, none);
+  margin: var(--cfe-categories-list--margin, 0.75em 0 0 0);
+}
+.categories-list.categories-list-horizontal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 0.75em;
+}
+.categories-list.categories-list-horizontal.categories-list-buttons {
+  gap: var(--cfe-categories-list--buttons--gap, 0 0.1875em);
+}
+.categories-list.categories-list-horizontal.inline-list {
+  display: inline-flex;
+}
+.categories-list.categories-list-buttons a {
+  padding: var(--cfe-categories-list--buttons--link--padding, 0.175em 0.325em 0.325em 0.325em);
+  line-height: var(--cfe-categories-list--buttons--link--line-height, 1);
+  font-family: var(--cfe-categories-list--buttons--link--font-family);
+  font-size: var(--cfe-categories-list--buttons--link--font-size);
+  font-weight: var(--cfe-categories-list--buttons--link--font-weight);
+  -webkit-text-decoration: var(--cfe-categories-list--buttons--link--text-decoration);
+          text-decoration: var(--cfe-categories-list--buttons--link--text-decoration);
+  background-color: var(--cfe-categories-list--buttons--link--bg-color);
+  border: var(--cfe-categories-list--buttons--link--border, solid 1px var(--cfe-categories-list--buttons--link--border-color));
+  color: var(--cfe-categories-list--buttons--link--text-color);
+}
+.categories-list.categories-list-buttons a:hover, .categories-list.categories-list-buttons a:focus {
+  background-color: var(--cfe-categories-list--buttons--link--action--bg-color);
+  border: var(--cfe-article--categories-lis--action--border, solid 1px var(--cfe-categories-list--buttons--link--action--border-color));
+  color: var(--cfe-categories-list--buttons--link--action--text-color);
+}
+
 .tags-list {
   list-style: var(--cfe-tags-list--list-style, none);
   margin: var(--cfe-tags-list--margin, 0.75em 0 0 0);

@@ -95,6 +95,15 @@
   --cfe-post-header--list--heading--font-size: 1.75rem;
   --cfe-post-header--list--heading--font-weight: 700;
   --cfe-post-header--list--heading--line-height: 1.2;
+  --cfe-categories-list--buttons--link--text-decoration: none;
+  --cfe-categories-list--buttons--link--font-size: 0.8125rem;
+  --cfe-categories-list--buttons--link--font-weight: 600;
+  --cfe-categories-list--buttons--link--bg-color: var( --cfe-button--bg-color );
+  --cfe-categories-list--buttons--link--border-color: var( --cfe-button--border-color );
+  --cfe-categories-list--buttons--link--text-color: var( --cfe-button--text-color );
+  --cfe-categories-list--buttons--link--action--bg-color: var( --cfe-button--action--bg-color );
+  --cfe-categories-list--buttons--link--action--border-color: var( --cfe-button--border-color );
+  --cfe-categories-list--buttons--link--action--text-color: var( --cfe-button--action--text-color );
   --cfe-tags-list--buttons--link--text-decoration: none;
   --cfe-tags-list--buttons--link--font-size: 0.8125rem;
   --cfe-tags-list--buttons--link--font-weight: 600;
