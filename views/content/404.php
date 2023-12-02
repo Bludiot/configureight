@@ -10,6 +10,7 @@
 
 // Import namespaced functions.
 use function CFE_Func\{
+	plugins_hook,
 	full_cover,
 	has_cover
 };
@@ -54,6 +55,7 @@ $tags_args = [
 
 	<div class="page-content" itemprop="articleBody" data-page-content>
 		<?php echo $page->content(); ?>
+		<?php echo plugins_hook( 'url_not_found' ); ?>
 		<?php echo search_form( [ 'label' => false ] ); ?>
 		<?php echo static_list( $static_args ); ?>
 		<?php echo categories_list( $cats_args ); ?>
