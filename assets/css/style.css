@@ -1716,6 +1716,12 @@ body.template-posts-loop-bottom .content-wrapper {
   font-weight: var(--cfe-page-info-date--font-weight, 600);
 }
 
+.static-list.static-list-horizontal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 0.75em;
+}
+
 .tags-list {
   list-style: var(--cfe-tags-list--list-style, none);
   margin: var(--cfe-tags-list--margin, 0.75em 0 0 0);
@@ -1723,7 +1729,7 @@ body.template-posts-loop-bottom .content-wrapper {
 .tags-list.tags-list-horizontal {
   display: flex;
   flex-wrap: wrap;
-  gap: 1em;
+  gap: 0 0.75em;
 }
 .tags-list.tags-list-horizontal.tags-list-buttons {
   gap: var(--cfe-tags-list--buttons--gap, 0 0.1875em);

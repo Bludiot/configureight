@@ -466,6 +466,17 @@ body {
 	}
 }
 
+// Static pages list.
+.static-list {
+	&.static-list-horizontal {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0 0.75em;
+	}
+}
+
+
+// Tags list.
 .tags-list {
 	list-style: var( --cfe-tags-list--list-style, none );
 	margin: var( --cfe-tags-list--margin, 0.75em 0 0 0 );
@@ -473,7 +484,7 @@ body {
 	&.tags-list-horizontal {
 		display: flex;
 		flex-wrap: wrap;
-		gap: 1em;
+		gap: 0 0.75em;
 
 		&.tags-list-buttons {
 			gap: var( --cfe-tags-list--buttons--gap, 0 0.1875em );

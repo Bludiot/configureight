@@ -16,12 +16,22 @@ use function CFE_Func\{
 use function CFE_Tags\{
 	page_header,
 	search_form,
+	static_list,
 	tags_list
 };
 
+// Override static pages list.
+$static_args = [
+	'wrap'      => true,
+	'direction' => 'horz',
+	'title'     => ucwords( $L->get( 'Pages' ) ),
+	'heading'   => 'h2'
+];
+
+// Override tags list defaults.
 $tags_args = [
 	'wrap'    => true,
-	'title'   => $L->get( 'Post Tags' ),
+	'title'   => ucwords( $L->get( 'Post Tags' ) ),
 	'heading' => 'h2',
 	'count'   => true
 ];
@@ -36,6 +46,7 @@ $tags_args = [
 	<div class="page-content" itemprop="articleBody" data-page-content>
 		<?php echo $page->content(); ?>
 		<?php echo search_form( [ 'label' => false ] ); ?>
+		<?php echo static_list( $static_args ); ?>
 		<?php echo tags_list( $tags_args ); ?>
 	</div>
 </article>

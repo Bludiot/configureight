@@ -1266,6 +1266,98 @@ function has_tags() {
 }
 
 /**
+ * Static pages list
+ *
+ * @since  1.0.0
+ * @param  array $args Arguments to be passed.
+ * @param  array $defaults Default arguments.
+ * @return string
+ */
+function static_list( $args = null, $defaults = [] ) {
+
+	// Default arguments.
+	$defaults = [
+		'wrap'      => false,
+		'direction' => 'vert',
+		'title'     => false,
+		'heading'   => 'h3',
+		'links'     => true
+	];
+
+	// Maybe override defaults.
+	if ( is_array( $args ) && $args ) {
+		$args = array_merge( $defaults, $args );
+	} else {
+		$args = $defaults;
+	}
+
+	// List classes.
+	$classes   = [];
+	$classes[] = 'static-list';
+	if ( 'vert' == $args['direction'] ) {
+		$classes[] = 'static-list-vertical';
+	} else {
+		$classes[] = 'static-list-horizontal';
+	}
+	$classes = implode( ' ', $classes );
+
+	// List markup.
+	$html = '';
+	if ( $args['wrap'] ) {
+		$html = '<div class="static-list-wrap">';
+	}
+
+	if ( $args['title'] ) {
+		$html .= sprintf(
+			'<%s>%s</%s>',
+			$args['heading'],
+			$args['title'],
+			$args['heading']
+		);
+	}
+
+	$html .= sprintf(
+		'<ul class="%s">',
+		$classes
+	);
+
+	$static = buildStaticPages();
+	foreach ( $static as $page ) {
+
+		// Item class.
+		$classes = [ 'static-page' ];
+		if ( $page->hasChildren() ) {
+			$classes[] = 'parent-page';
+		} elseif ( $page->isChild() ) {
+			$classes[] = 'child-page';
+		}
+		$classes = implode( ' ', $classes );
+
+		if (
+			$page->key() != site()->homepage() &&
+			$page->key() != site()->pageNotFound()
+		) {
+			$html .= "<li class='{$classes}'>";
+
+			if ( $args['links'] ) {
+				$html .= '<a href="' . $page->permalink() . '">';
+			}
+			$html .= $page->title();
+			if ( $args['links'] ) {
+				$html .= '</a>';
+			}
+			$html .= '</li>';
+		}
+	}
+	$html .= '</ul>';
+
+	if ( $args['wrap'] ) {
+		$html  .= '</div>';
+	}
+	return $html;
+}
+
+/**
  * Tags list
  *
  * @since  1.0.0
@@ -1276,6 +1368,7 @@ function has_tags() {
  */
 function tags_list( $args = null, $defaults = [] ) {
 
+	// Access global variables.
 	global $tags;
 
 	// Default arguments.
@@ -1329,7 +1422,7 @@ function tags_list( $args = null, $defaults = [] ) {
 	);
 
 	// By default the database of tags are alphanumeric sorted.
-	foreach ( $tags->db as $key=>$fields ) {
+	foreach ( $tags->db as $key => $fields ) {
 
 		$get_count = $tags->numberOfPages( $key );
 		$get_name  = $fields['name'];
