@@ -15,6 +15,7 @@
 
 // Import namespaced functions.
 use function CFE_Func\{
+	site,
 	url,
 	lang,
 	page
@@ -23,9 +24,21 @@ use function CFE_Func\{
 // Edit link.
 $edit_link = '';
 if ( 'page' == url()->whereAmI() ) {
+
+	// Page slug.
+	$slug = url()->slug();
+	if ( site()->pageNotFound() ) {
+		$site_not_found = site()->pageNotFound();
+
+		// Error page if current URL is 404.
+		if ( url()->notFound() ) {
+			$error = buildPage( $site_not_found );
+			$slug  = $error->slug();
+		}
+	}
 	$edit_link = sprintf(
 		'<a href="%s">%s</a>',
-		DOMAIN_ADMIN . 'edit-content/' . url()->slug(),
+		DOMAIN_ADMIN . 'edit-content/' . $slug ,
 		lang()->get( 'edit-link' )
 	);
 }
