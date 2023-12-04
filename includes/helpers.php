@@ -556,6 +556,10 @@ function include_sidebar() {
 		if ( theme() && 'none' == theme()->sidebar_in_loop() ) {
 			$include = false;
 		}
+	} elseif ( site()->pageNotFound() && url()->notFound() ) {
+		if ( theme() && 'content' != theme()->error_widgets() ) {
+			$include = false;
+		}
 	} elseif ( 'page' == url()->whereAmI() ) {
 		if ( str_contains( page()->template(), 'no-sidebar' ) ) {
 			$include = false;

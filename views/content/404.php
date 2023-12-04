@@ -10,6 +10,7 @@
 
 // Import namespaced functions.
 use function CFE_Func\{
+	theme,
 	plugins_hook,
 	full_cover,
 	has_cover
@@ -54,11 +55,24 @@ $tags_args = [
 	} ?>
 
 	<div class="page-content" itemprop="articleBody" data-page-content>
-		<?php echo $page->content(); ?>
-		<?php echo plugins_hook( 'url_not_found' ); ?>
-		<?php echo search_form( [ 'label' => false ] ); ?>
-		<?php echo static_list( $static_args ); ?>
-		<?php echo categories_list( $cats_args ); ?>
-		<?php echo tags_list( $tags_args ); ?>
+		<?php
+
+		// Maybe get widgets.
+		if ( theme() ) {
+			if (
+				'above' == theme()->error_widgets() ||
+				'no_content' == theme()->error_widgets()
+			) {
+				echo plugins_hook( 'url_not_found' );
+			}
+			if ( 'no_content' != theme()->error_widgets() ) {
+				echo $page->content();
+			}
+			if ( 'below' == theme()->error_widgets() ) {
+				echo plugins_hook( 'url_not_found' );
+			}
+		} else {
+			echo $page->content();
+		} ?>
 	</div>
 </article>
