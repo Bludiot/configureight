@@ -1358,7 +1358,7 @@ function static_list( $args = null, $defaults = [] ) {
 }
 
 /**
- * Tags list
+ * Categories list
  *
  * @since  1.0.0
  * @param  array $args Arguments to be passed.
