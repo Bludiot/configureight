@@ -31,7 +31,7 @@ $social_heading = sprintf(
 	'<h2>%s</h2>',
 	$L->get( 'Social Links' )
 );
-if ( theme() && ! empty( theme()->sb_social_heading() ) ) {
+if ( theme() ) {
 	$social_heading = sprintf(
 		'<h2>%s</h2>',
 		theme()->sb_social_heading()
