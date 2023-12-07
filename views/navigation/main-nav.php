@@ -138,7 +138,7 @@ use function CFE_Tags\{
 		if (
 			theme() &&
 			theme()->header_search() &&
-			getPlugin( 'pluginSearch' )
+			getPlugin( 'Search_Forms' )
 		) {
 			printf(
 				'<li class="no-children hide-if-no-js"><button data-search-toggle-open  aria-controls="search-bar" aria-expanded="false">%s<span class="screen-reader-text">%s</span></button></li>',

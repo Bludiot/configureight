@@ -129,9 +129,7 @@ function media() {
  */
 function front() {
 
-	$classes = [
-		ns( 'Front', 'Search_Form' )   => f( 'frontend', 'search-form.php' )
-	];
+	$classes = [];
 	spl_autoload_register(
 		function ( string $class ) use ( $classes ) {
 			if ( isset( $classes[ $class ] ) ) {

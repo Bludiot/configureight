@@ -88,11 +88,16 @@ if ( full_cover() ) {
 	<?php if (
 		theme() &&
 		theme()->header_search() &&
-		getPlugin( 'pluginSearch' )
-	) : ?>
+		getPlugin( 'Search_Forms' )
+	) :
+
+	$form_args = [
+		'label'       => false
+	];
+	?>
 	<div id="search-bar" class="hide-if-no-js" aria-expanded="false">
 
-		<?php echo search_form( [ 'label' => false ] ); ?>
+		<?php echo SearchForms\form( $form_args ); ?>
 
 		<button data-search-toggle-close><span class="screen-reader-text"><?php lang()->p( 'search-bar-close' ); ?></span></button>
 	</div>
