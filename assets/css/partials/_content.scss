@@ -14,7 +14,7 @@ body {
 		}
 	}
 
-	&.template-posts-loop-bottom {
+	&.template-sidebar-bottom {
 		.content-wrapper {
 			flex-direction: column;
 		}
@@ -371,26 +371,75 @@ body {
 	position: relative;
 	margin: 0;
 	overflow: hidden;
+	color: $white;
+
+	h2, h3, h4, a {
+		color: $white;
+	}
 
 	.post-header {
 		position: absolute;
 		top: 0;
 		left: 0;
 		width: 100%;
-		height: auto;
+		height: 100%;
 		z-index: 10;
 		padding: 1rem;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		transform: scale( 100% );
+		opacity: 1;
+		transition: all .25s ease-in-out;
+
+		.page-title {
+			font-size: 1.25rem;
+			font-size: clamp( 1.25rem, 2vw, 2rem );
+			line-height: 1.2;
+			line-height: clamp( 1.2em, 1.5vw, 1.4em );
+			text-align: center;
+			color: $white;
+		}
 	}
 
 	.post-info {
 		position: absolute;
-		top: auto;
-		bottom: 0;
+		top: 0;
 		left: 0;
 		width: 100%;
-		height: auto;
+		height: 100%;
 		z-index: 10;
-		padding: 0.5rem;
+		padding: 1rem;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		transform: scale( 10% );
+		opacity: 0;
+		transition: all .25s ease-in-out;
+
+		.theme-icon.tags-icon {
+			width: 0.75em;
+			margin: 0;
+
+			svg {
+				width: 1em;
+				height: 1em;
+				fill: currentColor;
+			}
+		}
+	}
+
+	.post-info-category {
+		font-size: 1.25rem;
+		font-size: clamp( 1.25rem, 2vw, 2rem );
+		line-height: 1.2;
+		line-height: clamp( 1.2em, 1.5vw, 1.4em );
+	}
+
+	.tags-list {
+		margin: 0;
 	}
 
 	.post-cover {
@@ -399,9 +448,41 @@ body {
 		left: 0;
 		width: 100%;
 		height: 100%;
+		filter: grayscale( 30% );
 
 		img {
-			max-height: 480px;
+			display: block;
+			object-fit: fill;
+			transform: scale( 100% );
+			transition: transform .25s ease-in-out;
+		}
+
+		&:before {
+			content: '';
+			z-index: 10;
+			display: block;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: var( --cfe-cover-overlay--bg-color, rgba( $color: black, $alpha: 0.625 ) );
+		}
+	}
+
+	&:hover {
+		.post-header {
+			transform: scale( 10% );
+			opacity: 0;
+		}
+
+		.post-info {
+			transform: scale( 100% );
+			opacity: 1;
+		}
+
+		.post-cover img {
+			transform: scale( 110% );
 		}
 	}
 }

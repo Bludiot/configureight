@@ -114,8 +114,9 @@ $tags_list = function() use ( $post, $tags_icon ) {
 	$sep   = ' ';
 
 	if ( $post->tags( true ) ) {
-		$html = sprintf(
-			'%s<ul class="post-info-tags inline-list tags-list">',
+		$html  = '<ul class="post-info-tags inline-list tags-list">';
+		$html .= sprintf(
+			'<li>%s</li>',
 			$tags_icon
 		);
 		foreach ( $tags as $tagKey => $tagName ) {
@@ -158,44 +159,11 @@ $tags_list = function() use ( $post, $tags_icon ) {
 				</h3>
 				<?php endif; ?>
 
-				<?php if ( theme() && theme()->loop_byline() ) : ?>
-				<p><span class="post-info-author">
-					<?php echo get_author(); ?>
-				</span></p>
-				<?php endif; ?>
-
 				<?php if ( theme() && theme()->loop_date() ) : ?>
 				<p class="post-info-date">
 					<?php echo $post->date(); ?>
 				</p>
 				<?php endif; ?>
-
-				<?php
-				if ( theme() ) :
-				if (
-					theme()->loop_word_count() ||
-					theme()->loop_read_time()
-				) :
-				?>
-				<p class="post-info-details">
-
-					<?php if ( theme()->loop_word_count() ) : ?>
-					<span class="post-info-word-count">
-						<?php lang()->p( 'post-word-count' ); echo get_word_count( $post->key() ); ?>
-					</span>
-					<?php endif; ?>
-
-					<?php if ( theme()->loop_word_count() && theme()->loop_read_time() ) : ?>
-					<span class="post-info-separator"></span>
-					<?php endif; ?>
-
-					<?php if ( theme()->loop_read_time() ) : ?>
-					<span class="post-info-read-time">
-						<?php lang()->p( 'post-read-time' ); echo $post->readingTime(); ?>
-					</span>
-					<?php endif; ?>
-				</p>
-				<?php endif; endif; ?>
 
 				<?php if ( $post->tags( true ) ) {
 					echo $tags_list();
