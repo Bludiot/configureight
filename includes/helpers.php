@@ -201,9 +201,11 @@ function current_lang() {
  * Is RTL language
  *
  * @since  1.0.0
+ * @param  mixed $langs Arguments to be passed.
+ * @param  array $rtl Default arguments.
  * @return boolean Returns true if site is in RTL language.
  */
-function is_rtl() {
+function is_rtl( $langs = null, $rtl = [] ) {
 
 	$rtl = [
 		'ar',
@@ -217,9 +219,15 @@ function is_rtl() {
 		'ug',
 		'ur'
 	];
-	$lang = current_lang();
 
-	if ( in_array( $lang, $rtl ) ) {
+	// Maybe override defaults.
+	if ( is_array( $langs ) && $langs ) {
+		$langs = array_merge( $rtl, $langs );
+	} else {
+		$langs = $rtl;
+	}
+
+	if ( in_array( current_lang(), $rtl ) ) {
 		return true;
 	}
 	return false;
