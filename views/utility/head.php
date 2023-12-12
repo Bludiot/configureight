@@ -10,6 +10,7 @@
 
 // Import namespaced functions.
 use function CFE_Func\{
+	theme,
 	plugins_hook,
 	is_rtl,
 	asset_min,
@@ -67,9 +68,12 @@ if ( has_cover() && ! empty( get_cover_src() ) ) {
 	<?php
 
 	// Meta tags.
-	echo $helper :: metaTagTitle();
-	echo $helper :: metaTagDescription();
-	?>
+	if ( theme() ) {
+		echo plugins_hook( 'meta_tags' );
+	} else {
+		echo $helper :: metaTagTitle();
+		echo $helper :: metaTagDescription();
+	} ?>
 
 	<?php
 
