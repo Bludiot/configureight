@@ -52,4 +52,10 @@
 		line-height: var( --cfe-copyright--line-height, var( --cfe-line-height ) );
 		color: var( --cfe-copyright--text-color, var( --cfe-text-color ) );
 	}
+
+	.search-form-wrap {
+		width: 100%;
+		max-width: var( --cfe-form-element--max-width, 640px );
+		margin: 0 auto;
+	}
 }
