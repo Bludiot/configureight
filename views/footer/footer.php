@@ -54,13 +54,8 @@ if ( theme() && theme()->copyright() ) {
 }
 
 ?>
-<footer class="site-footer" data-site-footer>
-	<div class="wrapper-general">
-		<?php
-		$search = getPlugin( 'pluginSearch' );
-		if ( $search && theme() && 'footer' == theme()->sidebar_search() ) {
-			echo $search->siteSidebar();
-		} ?>
+<footer id="site-footer" class="site-footer" data-site-footer>
+	<div class="wrapper-general site-footer-wrap">
 		<div class="site-footer-text">
 			<?php
 			if ( ! empty( site()->footer() ) ) {
@@ -70,6 +65,17 @@ if ( theme() && theme()->copyright() ) {
 				);
 			} ?>
 		</div>
+
+		<?php
+		if ( theme() ) {
+			if ( theme()->footer_search() && getPlugin( 'Search_Forms' ) ) {
+				echo SearchForms\form( [
+					'label'       => false,
+					'placeholder' => $L->get( 'Search' )
+				] );
+			}
+		} ?>
+
 		<?php
 		if ( ! theme() || ( theme() && theme()->footer_social() ) ) {
 			echo social_nav();
