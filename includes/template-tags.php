@@ -226,12 +226,12 @@ function config_styles() {
 
 	// Body color.
 	if ( theme() &&
-		! empty( theme()->body_bg_color() ) &&
-		'#ffffff' != theme()->body_bg_color()
+		! empty( theme()->color_body() ) &&
+		'#ffffff' != theme()->color_body()
 	) {
 		$styles .= sprintf(
 			'--cfe-bg-color: %s;',
-			theme()->body_bg_color()
+			theme()->color_body()
 		);
 	}
 
@@ -478,12 +478,6 @@ function body_classes() {
 	if ( theme() && theme()->sidebar_sticky() ) {
 		$classes[] = 'has-sticky-sidebar';
 	}
-
-	// Sidebar search hidden.
-	if ( theme() && 'show' != theme()->sidebar_search() ) {
-		$classes[] = 'sidebar-search-hidden';
-	}
-
 
 	// Return a string of space-separated classes.
 	return implode( ' ', $classes );
