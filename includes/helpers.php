@@ -560,7 +560,7 @@ function full_cover() {
 function include_sidebar() {
 
 	$include = true;
-	if ( 'blog' == url()->whereAmI() ) {
+	if ( 'home' == url()->whereAmI() || 'blog' == url()->whereAmI() ) {
 		if ( theme() && 'none' == theme()->sidebar_in_loop() ) {
 			$include = false;
 		}

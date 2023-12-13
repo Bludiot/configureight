@@ -642,7 +642,8 @@ body {
 }
 
 // Blog transition demo.
-.loop {
+.loop,
+.search {
 	article {
 		opacity: 0;
 		transition: opacity .25s;
@@ -656,7 +657,8 @@ body {
 	}
 }
 @for $loop_article from 1 through 12 {
-	.loop {
+	.loop,
+	.search {
 		&.page-loaded {
 			article {
 				&:nth-of-type( #{$loop_article} ) {

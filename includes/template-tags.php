@@ -360,24 +360,33 @@ function body_classes() {
 		$classes[] = 'toolbar-active';
 	}
 
-	// Main navigation position.
-	$nav_position = get_nav_position();
-	$classes[]    = "main-nav-{$nav_position}";
-
 	// Home page.
 	if ( 'home' == url()->whereAmI() ) {
 		$classes[] = 'home';
+	}
 
-		// If home is not static.
-		if ( ! site()->homepage() ) {
-			$classes[] = 'loop';
+	// Static front page.
+	if ( site()->homepage() && 'page' == url()->whereAmI() ) {
+		if ( page()->key() === site()->homepage() ) {
+			$classes[] = 'front-page';
 		}
 	}
 
-	// If loop, not page.
-	if ( 'page' != url()->whereAmI() ) {
-
+	if ( 'home' == url()->whereAmI() || 'blog' == url()->whereAmI() ) {
 		$classes[] = 'loop';
+	}
+
+	if ( 'blog' == url()->whereAmI() ) {
+		$classes[] = 'loop-not-home';
+	}
+
+	// Search pages.
+	if ( 'search' == url()->whereAmI() ) {
+		$classes[] = 'search loop loop-style-blog loop-template-list';
+	}
+
+	// If loop, not page or search.
+	if ( 'page' != url()->whereAmI() && 'search' != url()->whereAmI() ) {
 
 		// Posts loop style.
 		$loop_style = $loop_data['style'];
@@ -408,8 +417,6 @@ function body_classes() {
 
 	// If loop, not home.
 	if ( 'blog' == url()->whereAmI() ) {
-
-		$classes[] = 'loop-not-home';
 
 		// Templates for the static loop page.
 		if ( $loop_data['template'] ) {
@@ -473,6 +480,10 @@ function body_classes() {
 			}
 		}
 	}
+
+	// Main navigation position.
+	$nav_position = get_nav_position();
+	$classes[]    = "main-nav-{$nav_position}";
 
 	// Sticky sidebar.
 	if ( theme() && theme()->sidebar_sticky() ) {
