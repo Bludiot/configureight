@@ -69,11 +69,12 @@ if ( has_cover() && ! empty( get_cover_src() ) ) {
 
 	// Meta tags.
 	if ( theme() ) {
-		echo plugins_hook( 'meta_tags' );
+		plugins_hook( 'meta_tags' );
 	} else {
 		echo $helper :: metaTagTitle();
-		echo $helper :: metaTagDescription();
-	} ?>
+	}
+	echo $helper :: metaTagDescription();
+	?>
 
 	<?php
 
