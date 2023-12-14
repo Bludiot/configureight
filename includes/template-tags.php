@@ -679,10 +679,8 @@ function cover_header() {
 	$description = page()->description();
 
 	// Site title is `h1` on front page; only one per page.
-	if ( 'page' == url()->whereAmI() ) {
-		if ( page()->key() == site()->getField( 'homepage' ) ) {
-			$heading_el = 'h2';
-		}
+	if ( 'home' == url()->whereAmI() || is_front_page() ) {
+		$heading_el = 'h2';
 	}
 
 	// Conditional heading & description.
