@@ -234,11 +234,52 @@ function is_rtl( $langs = null, $rtl = [] ) {
 }
 
 /**
+ * Page type
+ *
+ * Whether the page object is static or not.
+ *
+ * @since  1.0.0
+ * @return mixed Returns the page type or null.
+ */
+function page_type() {
+
+	if ( 'page' != url()->whereAmI() ) {
+		return null;
+	}
+
+	if ( page()->isStatic() ) {
+		return 'page';
+	}
+	return 'post';
+}
+
+/**
+ * Is front page
+ *
+ * If on the static front page.
+ *
+ * @since  1.0.0
+ * @return boolean
+ */
+function is_front_page() {
+
+	if ( 'page' != url()->whereAmI() ) {
+		return false;
+	}
+
+	if ( site()->homepage() && page()->key() == site()->homepage() ) {
+		return true;
+	}
+	return false;
+}
+
+/**
  * Text replace
  *
  * Replaces the `%replace%` variable in
  * a language file string.
  *
+ * @since  1.0.0
  * @param  string $get The language string to get.
  * @param  string $string The string to replace the variable.
  * @return string Returns the modified string or the string
@@ -561,16 +602,39 @@ function include_sidebar() {
 
 	$include = true;
 	if ( 'home' == url()->whereAmI() || 'blog' == url()->whereAmI() ) {
+
 		if ( theme() && 'none' == theme()->sidebar_in_loop() ) {
 			$include = false;
+		}
+
+		if ( theme() && (
+			'side_no_first'   == theme()->sidebar_in_loop() ||
+			'bottom_no_first' == theme()->sidebar_in_loop()
+		) ) {
+			if ( ! isset( $_GET['page'] ) ) {
+				$include = false;
+			}
 		}
 	} elseif ( site()->pageNotFound() && url()->notFound() ) {
 		if ( theme() && 'content' != theme()->error_widgets() ) {
 			$include = false;
 		}
 	} elseif ( 'page' == url()->whereAmI() ) {
+
 		if ( str_contains( page()->template(), 'no-sidebar' ) ) {
 			$include = false;
+		} elseif (
+			theme() && 'none' == theme()->sidebar_in_page() &&
+			! str_contains( page()->template(), 'sidebar-side' ) &&
+			! str_contains( page()->template(), 'sidebar-bottom' )
+		) {
+			$include = false;
+		}
+
+		if ( theme() && site()->homepage() && page()->key() == site()->homepage() ) {
+			if ( 'side_no_front' == theme()->sidebar_in_page() || 'bottom_no_front' == theme()->sidebar_in_page() ) {
+				$include = false;
+			}
 		}
 	}
 	return $include;
