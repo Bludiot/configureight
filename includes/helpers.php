@@ -249,6 +249,59 @@ function is_home() {
 }
 
 /**
+ * Is main loop
+ *
+ * Whether the current page is displaying
+ * the main posts loop.
+ *
+ * Excludes category and tag loops.
+ *
+ * @since  1.0.0
+ * @return boolean Returns true if in the main loop.
+ */
+function is_main_loop() {
+
+	if ( 'blog' == url()->whereAmI() ) {
+		return true;
+	}
+	return false;
+}
+
+/**
+ * Is category
+ *
+ * Whether the current page is displaying
+ * the category loop.
+ *
+ * @since  1.0.0
+ * @return boolean Returns true if in the main loop.
+ */
+function is_cat() {
+
+	if ( 'category' == url()->whereAmI() ) {
+		return true;
+	}
+	return false;
+}
+
+/**
+ * Is tag
+ *
+ * Whether the current page is displaying
+ * the tag loop.
+ *
+ * @since  1.0.0
+ * @return boolean Returns true if in the main loop.
+ */
+function is_tag() {
+
+	if ( 'tag' == url()->whereAmI() ) {
+		return true;
+	}
+	return false;
+}
+
+/**
  * Is loop page
  *
  * Whether the current page is displaying
@@ -262,36 +315,16 @@ function is_home() {
 function is_loop_page() {
 
 	$loop_page = false;
-	if ( 'blog' == url()->whereAmI() ) {
+	if ( is_main_loop() ) {
 		$loop_page = true;
 	}
-	if ( 'category' == url()->whereAmI() ) {
+	if ( is_cat() ) {
 		$loop_page = true;
 	}
-	if ( 'tag' == url()->whereAmI() ) {
+	if ( is_tag() ) {
 		$loop_page = true;
 	}
 	return $loop_page;
-}
-
-/**
- * Is main loop
- *
- * Whether the current page is displaying
- * the main posts loop.
- *
- * Excludes category and tag loops.
- *
- * @since  1.0.0
- * @return boolean Returns true if in the main loop.
- */
-function is_main_loop() {
-
-	$main_loop = false;
-	if ( 'blog' == url()->whereAmI() ) {
-		$main_loop = true;
-	}
-	return $main_loop;
 }
 
 /**
@@ -305,6 +338,26 @@ function is_main_loop() {
 function is_page() {
 
 	if ( 'page' == url()->whereAmI() ) {
+		return true;
+	}
+	return false;
+}
+
+/**
+ * Is search
+ *
+ * If on a search page.
+ *
+ * No need to check for a search plugin because
+ * it is the plugin that defines the location,
+ * so the `whereAmI()` function will return false.
+ *
+ * @since  1.0.0
+ * @return boolean
+ */
+function is_search() {
+
+	if ( 'search' == url()->whereAmI() ) {
 		return true;
 	}
 	return false;
@@ -409,7 +462,7 @@ function loop_data() {
 	global $content, $pages;
 
 	// Null if in search results (global errors).
-	if ( 'search' == url()->whereAmI() ) {
+	if ( is_search() ) {
 		return null;
 	}
 

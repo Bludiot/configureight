@@ -19,12 +19,13 @@ use function CFE_Func\{
 	url,
 	lang,
 	page,
+	is_page,
 	page_type
 };
 
 // Edit link.
 $edit_link = '';
-if ( 'page' == url()->whereAmI() ) {
+if ( is_page() ) {
 
 	// Page slug.
 	$slug = url()->slug();

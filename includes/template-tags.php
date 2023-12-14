@@ -34,6 +34,9 @@ use function CFE_Func\{
 	is_home,
 	is_loop_page,
 	is_main_loop,
+	is_cat,
+	is_tag,
+	is_search,
 	is_page,
 	is_front_page,
 	page_type,
@@ -584,7 +587,7 @@ function body_classes() {
 	}
 
 	// Search pages.
-	if ( 'search' == url()->whereAmI() ) {
+	if ( is_search() ) {
 		$classes[] = 'search loop loop-style-blog loop-template-list';
 
 		// Sidebar position.
@@ -611,7 +614,7 @@ function body_classes() {
  */
 function page_schema() {
 
-	if ( 'search' == url()->whereAmI() ) {
+	if ( is_search() ) {
 			echo 'SearchResultsPage';
 			return;
 	}
@@ -642,7 +645,7 @@ function page_schema() {
 		$itemtype = 'QAPage';
 
 	} elseif (
-		'cart'          == page()->slug() ||
+		'cart' == page()->slug() ||
 		'shopping-cart' == page()->slug() ||
 		str_contains( page()->template(), 'cart' ) ||
 		str_contains( page()->template(), 'checkout' )
@@ -650,7 +653,7 @@ function page_schema() {
 		$itemtype = 'CheckoutPage';
 
 	} elseif (
-		'blog'   == url()->whereAmI() ||
+		is_main_loop() ||
 		( is_home() && ! site()->homepage() )
 	) {
 		if ( theme() && 'news' == theme()->loop_style() ) {
@@ -768,13 +771,13 @@ function cover_header() {
 		}
 		$description = loop_description();
 
-	} elseif ( 'category' == url()->whereAmI() ) {
+	} elseif ( is_cat() ) {
 		$get_cat     = new \Category( url()->slug() );
 		$class       = 'category-page-description';
 		$page_title  = $get_cat->name();
 		$description = text_replace( 'posts-loop-desc-cat', $get_cat->name() );
 
-	} elseif ( 'tag' == url()->whereAmI() ) {
+	} elseif ( is_tag() ) {
 		$get_tag     = new \Tag( url()->slug() );
 		$class       = 'tag-page-description';
 		$page_title  = $get_tag->name();
@@ -918,7 +921,7 @@ function menu_toggle( $toggle = '' ) {
 function page_id() {
 
 	// Null if in search results (global errors).
-	if ( 'search' == url()->whereAmI() ) {
+	if ( is_search() ) {
 		return null;
 	}
 
@@ -926,7 +929,7 @@ function page_id() {
 	$id = '';
 	if (
 		( is_loop_page() && ! is_home() ) ||
-		( is_home() && 'page' != url()->whereAmI() )
+		( is_home() && ! is_page() )
 	) {
 		$id = 'loop-page';
 		if ( ! isset( $_GET['page'] ) ) {
@@ -1200,7 +1203,7 @@ function loop_cover() {
 function posts_loop_header() {
 
 	// Null if in search results (global errors).
-	if ( 'search' == url()->whereAmI() ) {
+	if ( is_search() ) {
 		return null;
 	}
 
@@ -1232,13 +1235,13 @@ function posts_loop_header() {
 		$class   = 'loop-page-description';
 		$heading = ucwords( $loop_data['slug'] . $loop_page );
 
-	} elseif ( 'category' == url()->whereAmI() ) {
+	} elseif ( is_cat() ) {
 		$get_cat     = new \Category( url()->slug() );
 		$class       = 'category-page-description';
 		$heading     = $get_cat->name();
 		$description = text_replace( 'posts-loop-desc-cat', $get_cat->name() );
 
-	} elseif ( 'tag' == url()->whereAmI() ) {
+	} elseif ( is_tag() ) {
 		$get_tag     = new \Tag( url()->slug() );
 		$class       = 'tag-page-description';
 		$heading     = $get_tag->name();
