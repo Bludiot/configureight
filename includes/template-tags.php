@@ -23,6 +23,7 @@ use CFE\Classes\{
 // Import namespaced functions.
 use function CFE_Func\{
 	helper,
+	theme,
 	site,
 	url,
 	site_domain,
@@ -30,9 +31,8 @@ use function CFE_Func\{
 	page,
 	is_rtl,
 	user_logged_in,
-	text_replace,
-	hex_to_rgb,
-	theme,
+	page_type,
+	is_front_page,
 	favicon_exists,
 	loop_data,
 	loop_is_static,
@@ -41,6 +41,8 @@ use function CFE_Func\{
 	has_cover,
 	full_cover,
 	asset_min,
+	text_replace,
+	hex_to_rgb,
 	numbers_to_text
 };
 
@@ -363,22 +365,11 @@ function body_classes() {
 	// Home page.
 	if ( 'home' == url()->whereAmI() ) {
 		$classes[] = 'home';
-
-		// Sidebar position.
-		if ( theme() ) {
-			if ( 'left' == theme()->sidebar_position() ) {
-				$classes[] = 'sidebar-left';
-			} else {
-				$classes[] = 'sidebar-right';
-			}
-		}
 	}
 
 	// Static front page.
-	if ( site()->homepage() && 'page' == url()->whereAmI() ) {
-		if ( page()->key() === site()->homepage() ) {
-			$classes[] = 'front-page';
-		}
+	if ( is_front_page() ) {
+		$classes[] = 'home front-page';
 	}
 
 	if ( 'home' == url()->whereAmI() || 'blog' == url()->whereAmI() ) {
@@ -389,22 +380,8 @@ function body_classes() {
 		$classes[] = 'loop-not-home';
 	}
 
-	// Search pages.
-	if ( 'search' == url()->whereAmI() ) {
-		$classes[] = 'search loop loop-style-blog loop-template-list';
-
-		// Sidebar position.
-		if ( theme() ) {
-			if ( 'left' == theme()->sidebar_position() ) {
-				$classes[] = 'sidebar-left';
-			} else {
-				$classes[] = 'sidebar-right';
-			}
-		}
-	}
-
-	// If loop, not page or search.
-	if ( 'page' != url()->whereAmI() && 'search' != url()->whereAmI() ) {
+	// If loop.
+	if ( 'home' == url()->whereAmI() || 'blog' == url()->whereAmI() ) {
 
 		// Posts loop style.
 		$loop_style = $loop_data['style'];
@@ -424,17 +401,25 @@ function body_classes() {
 		}
 
 		// Loop sidebar.
-		if ( theme() && 'bottom' == theme()->sidebar_in_loop() ) {
-			$classes[] = 'template-sidebar-bottom';
-		} elseif ( theme() && 'none' === theme()->sidebar_in_loop() ) {
-			$classes[] = 'template-no-sidebar';
+		if ( theme() ) {
+			if ( 'bottom' == theme()->sidebar_in_loop() ) {
+				$classes[] = 'template-sidebar-bottom';
+			} elseif ( 'bottom_no_first' == theme()->sidebar_in_loop() ) {
+				if ( isset( $_GET['page'] ) ) {
+					$classes[] = 'template-sidebar-bottom';
+				}
+			} elseif ( 'side_no_first' == theme()->sidebar_in_loop() ) {
+				if ( isset( $_GET['page'] ) ) {
+					$classes[] = 'template-sidebar';
+				}
+			} elseif ( theme() && 'none' === theme()->sidebar_in_loop() ) {
+				$classes[] = 'template-no-sidebar';
+			} else {
+				$classes[] = 'template-sidebar';
+			}
 		} else {
 			$classes[] = 'template-sidebar';
 		}
-	}
-
-	// If loop, not home.
-	if ( 'blog' == url()->whereAmI() ) {
 
 		// Templates for the static loop page.
 		if ( $loop_data['template'] ) {
@@ -460,37 +445,33 @@ function body_classes() {
 		// Sidebar position.
 		if ( theme() ) {
 			if ( 'left' == theme()->sidebar_position() ) {
-				$classes[] = 'sidebar-left';
+				if ( 'side' == theme()->sidebar_in_loop() ) {
+					$classes[] = 'sidebar-left';
+				} elseif ( 'side_no_first' == theme()->sidebar_in_loop() ) {
+					if ( isset( $_GET['page'] ) ) {
+						$classes[] = 'sidebar-left';
+					}
+				}
 			} else {
-				$classes[] = 'sidebar-right';
+				if ( 'side' == theme()->sidebar_in_loop() ) {
+					$classes[] = 'sidebar-right';
+				} elseif ( 'side_no_first' == theme()->sidebar_in_loop() ) {
+					if ( isset( $_GET['page'] ) ) {
+						$classes[] = 'sidebar-right';
+					}
+				}
 			}
+		} else {
+			$classes[] = 'sidebar-right';
 		}
 	}
 
 	// If singular content.
 	if ( 'page' == url()->whereAmI() ) {
 
-		// If static content.
-		if ( page()->isStatic() ) {
-			$classes[] = 'page';
+		$classes[] = page_type();
 
-		// If not static content.
-		} else {
-			$classes[] = 'post';
-		}
-
-		// Sidebar position.
-		if ( theme() && ! str_contains( page()->template(), 'no-sidebar' ) ) {
-			if ( 'left' == theme()->sidebar_position() ) {
-				$classes[] = 'sidebar-left';
-			} else {
-				$classes[] = 'sidebar-right';
-			}
-		}
-	}
-
-	// Page templates.
-	if ( 'search' != url()->whereAmI() && 'page' == url()->whereAmI() ) {
+		// Page templates.
 		if ( page()->template() ) {
 			$templates = explode( ' ', page()->template() );
 
@@ -510,6 +491,24 @@ function body_classes() {
 				}
 			}
 		}
+
+		// Page sidebar.
+		if ( theme() && ( 'bottom' == theme()->sidebar_in_page() || 'bottom_no_front' == theme()->sidebar_in_page() ) ) {
+			$classes[] = 'template-sidebar-bottom';
+		} elseif ( theme() && 'none' === theme()->sidebar_in_page() ) {
+			$classes[] = 'template-no-sidebar';
+		} else {
+			$classes[] = 'template-sidebar';
+		}
+
+		// Sidebar position.
+		if ( theme() && ! str_contains( page()->template(), 'sidebar-bottom' ) && ! str_contains( page()->template(), 'no-sidebar' ) ) {
+			if ( 'side' == theme()->sidebar_in_page() && 'left' == theme()->sidebar_position() ) {
+				$classes[] = 'sidebar-left';
+			} elseif ( 'side' == theme()->sidebar_in_page() ) {
+				$classes[] = 'sidebar-right';
+			}
+		}
 	}
 
 	// Main navigation position.
@@ -519,6 +518,20 @@ function body_classes() {
 	// Sticky sidebar.
 	if ( theme() && theme()->sidebar_sticky() ) {
 		$classes[] = 'has-sticky-sidebar';
+	}
+
+	// Search pages.
+	if ( 'search' == url()->whereAmI() ) {
+		$classes[] = 'search loop loop-style-blog loop-template-list';
+
+		// Sidebar position.
+		if ( theme() ) {
+			if ( 'left' == theme()->sidebar_position() ) {
+				$classes[] = 'sidebar-left';
+			} else {
+				$classes[] = 'sidebar-right';
+			}
+		}
 	}
 
 	// Return a string of space-separated classes.
