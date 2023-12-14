@@ -363,6 +363,15 @@ function body_classes() {
 	// Home page.
 	if ( 'home' == url()->whereAmI() ) {
 		$classes[] = 'home';
+
+		// Sidebar position.
+		if ( theme() ) {
+			if ( 'left' == theme()->sidebar_position() ) {
+				$classes[] = 'sidebar-left';
+			} else {
+				$classes[] = 'sidebar-right';
+			}
+		}
 	}
 
 	// Static front page.
@@ -383,6 +392,15 @@ function body_classes() {
 	// Search pages.
 	if ( 'search' == url()->whereAmI() ) {
 		$classes[] = 'search loop loop-style-blog loop-template-list';
+
+		// Sidebar position.
+		if ( theme() ) {
+			if ( 'left' == theme()->sidebar_position() ) {
+				$classes[] = 'sidebar-left';
+			} else {
+				$classes[] = 'sidebar-right';
+			}
+		}
 	}
 
 	// If loop, not page or search.
@@ -438,6 +456,15 @@ function body_classes() {
 				}
 			}
 		}
+
+		// Sidebar position.
+		if ( theme() ) {
+			if ( 'left' == theme()->sidebar_position() ) {
+				$classes[] = 'sidebar-left';
+			} else {
+				$classes[] = 'sidebar-right';
+			}
+		}
 	}
 
 	// If singular content.
@@ -451,15 +478,19 @@ function body_classes() {
 		} else {
 			$classes[] = 'post';
 		}
+
+		// Sidebar position.
+		if ( theme() && ! str_contains( page()->template(), 'no-sidebar' ) ) {
+			if ( 'left' == theme()->sidebar_position() ) {
+				$classes[] = 'sidebar-left';
+			} else {
+				$classes[] = 'sidebar-right';
+			}
+		}
 	}
 
 	// Page templates.
-	if (
-		'search' != url()->whereAmI() &&
-		'page' == url()->whereAmI() &&
-		! empty( page()->template() ) &&
-		! ctype_space( page()->template() )
-	) {
+	if ( 'search' != url()->whereAmI() && 'page' == url()->whereAmI() ) {
 		if ( page()->template() ) {
 			$templates = explode( ' ', page()->template() );
 

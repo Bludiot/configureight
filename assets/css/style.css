@@ -1382,6 +1382,9 @@ body:not(.template-no-posts-loop) .content-wrapper {
     flex-direction: column;
   }
 }
+body.sidebar-left .content-wrapper {
+  flex-direction: row-reverse;
+}
 body.template-sidebar-bottom .content-wrapper {
   flex-direction: column;
 }
