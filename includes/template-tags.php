@@ -33,6 +33,7 @@ use function CFE_Func\{
 	user_logged_in,
 	is_home,
 	is_loop_page,
+	is_main_loop,
 	is_page,
 	is_front_page,
 	page_type,
@@ -429,7 +430,7 @@ function body_classes() {
 		}
 
 		// Templates for the static loop page.
-		if ( $loop_data['template'] ) {
+		if ( is_main_loop() && $loop_data['template'] ) {
 			$templates = explode( ' ', $loop_data['template'] );
 
 			foreach ( $templates as $template ) {
@@ -691,10 +692,8 @@ function page_header() {
 	}
 
 	// Site title is `h1` on front page; only one per page.
-	if ( is_page() ) {
-		if ( page()->key() == site()->getField( 'homepage' ) ) {
-			$heading = 'h2';
-		}
+	if ( is_front_page() ) {
+		$heading = 'h2';
 	}
 
 	// If the page is sticky.
@@ -747,7 +746,7 @@ function cover_header() {
 
 	// Conditional heading & description.
 	if (
-		is_loop_page() &&
+		is_main_loop() &&
 		'page' == $loop_data['location']
 	) {
 		$class       = 'loop-page-description';
@@ -756,7 +755,7 @@ function cover_header() {
 
 	} elseif (
 		is_home() ||
-		is_loop_page()
+		is_main_loop()
 	) {
 		$class       = 'loop-page-description';
 		$page_title  = lang()->get( 'Blog' );
@@ -1229,7 +1228,7 @@ function posts_loop_header() {
 			$heading = ucwords( theme()->loop_style() . $loop_page );
 		}
 
-	} elseif ( is_loop_page() ) {
+	} elseif ( is_main_loop() ) {
 		$class   = 'loop-page-description';
 		$heading = ucwords( $loop_data['slug'] . $loop_page );
 

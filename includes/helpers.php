@@ -579,7 +579,7 @@ function get_cover_src() {
 	}
 
 	// If in loop pages.
-	if ( is_loop_page() ) {
+	if ( is_main_loop() ) {
 		if ( loop_is_static() ) {
 			$loop = loop_data();
 
@@ -624,7 +624,7 @@ function full_cover() {
 
 	// No full cover if URL has the page parameter.
 
-	if ( is_loop_page() && loop_is_static() ) {
+	if ( is_main_loop() && loop_is_static() ) {
 		$build = buildPage( $loop['key'] );
 
 		if (
