@@ -498,17 +498,42 @@ function body_classes() {
 		// Page sidebar.
 		if ( theme() ) {
 			if ( 'bottom' == theme()->sidebar_in_page() ) {
-				$classes[] = 'template-sidebar-bottom';
-			} elseif ( 'bottom_no_front' == theme()->sidebar_in_page() ) {
-				if ( isset( $_GET['page'] ) ) {
+				if (
+					! str_contains( page()->template(), 'sidebar-side' ) &&
+					! str_contains( page()->template(), 'sidebar-bottom' ) &&
+					! str_contains( page()->template(), 'no-sidebar' )
+				) {
 					$classes[] = 'template-sidebar-bottom';
 				}
+
+			} elseif ( 'bottom_no_front' == theme()->sidebar_in_page() ) {
+				if ( ! is_front_page() ) {
+					if (
+						! str_contains( page()->template(), 'sidebar-side' ) &&
+						! str_contains( page()->template(), 'sidebar-bottom' ) &&
+						! str_contains( page()->template(), 'no-sidebar' )
+					) {
+						$classes[] = 'template-sidebar-bottom';
+					}
+				}
 			} elseif ( 'side_no_front' == theme()->sidebar_in_page() ) {
-				if ( isset( $_GET['page'] ) ) {
-					$classes[] = 'template-sidebar';
+				if ( ! is_front_page() ) {
+					if (
+						! str_contains( page()->template(), 'sidebar-side' ) &&
+						! str_contains( page()->template(), 'sidebar-bottom' ) &&
+						! str_contains( page()->template(), 'no-sidebar' )
+					) {
+						$classes[] = 'template-sidebar';
+					}
 				}
 			} elseif ( theme() && 'none' === theme()->sidebar_in_page() ) {
-				$classes[] = 'template-no-sidebar';
+				if (
+					! str_contains( page()->template(), 'sidebar-side' ) &&
+					! str_contains( page()->template(), 'sidebar-bottom' ) &&
+					! str_contains( page()->template(), 'no-sidebar' )
+				) {
+					$classes[] = 'template-no-sidebar';
+				}
 			} else {
 				$classes[] = 'template-sidebar';
 			}
