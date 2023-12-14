@@ -88,6 +88,10 @@ if ( $post->thumbCoverImage() ) {
 	$thumb_src = $post->thumbCoverImage();
 } elseif ( $post->coverImage() ) {
 	$thumb_src = $post->coverImage();
+} elseif ( theme() ) {
+	if ( theme()->cover_src() ) {
+		$thumb_src = theme()->cover_src();
+	}
 } else {
 	$thumb_src = DOMAIN_THEME . 'assets/images/transparent.png';
 }
@@ -132,10 +136,10 @@ $tags_list = function() use ( $post, $tags_icon ) {
 			<p class="page-description posts-loop-description"><?php echo page_description( $post->key() ); ?></p>
 		</header>
 
-		<?php if ( $post->coverImage() ) : ?>
+		<?php if ( $thumb_src ) : ?>
 		<figure class="post-cover">
 			<a href="<?php echo $post->permalink(); ?>">
-				<img src="<?php echo $post->coverImage(); ?>" loading="lazy" />
+				<img src="<?php echo $thumb_src; ?>" loading="lazy" />
 			</a>
 			<figcaption class="screen-reader-text"><?php echo $post->title(); ?></figcaption>
 		</figure>

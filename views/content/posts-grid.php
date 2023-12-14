@@ -106,6 +106,18 @@ if ( $post->sticky() ) {
 	);
 }
 
+// Thumbnail image.
+$thumb_src = '';
+if ( $post->coverImage() ) {
+	$thumb_src = $post->coverImage();
+} elseif ( theme() ) {
+	if ( theme()->cover_src() ) {
+		$thumb_src = theme()->cover_src();
+	}
+} else {
+	$thumb_src = DOMAIN_THEME . 'assets/images/transparent.png';
+}
+
 // Tags list.
 $tags_list = function() use ( $post, $tags_icon ) {
 
@@ -144,9 +156,9 @@ $tags_list = function() use ( $post, $tags_icon ) {
 				<h2 class="page-title posts-loop-title"><?php echo $sticky . $post->title(); ?></h2>
 			</header>
 
-			<?php if ( $post->coverImage() ) : ?>
+			<?php if ( $thumb_src ) : ?>
 			<figure class="post-cover">
-				<img src="<?php echo $post->coverImage(); ?>" loading="lazy" />
+				<img src="<?php echo $thumb_src; ?>" loading="lazy" />
 				<figcaption class="screen-reader-text"><?php echo $post->title(); ?></figcaption>
 			</figure>
 			<?php endif; ?>
