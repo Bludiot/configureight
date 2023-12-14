@@ -390,9 +390,9 @@ function body_classes() {
 	// If loop.
 	if ( is_home() || is_loop_page() ) {
 
-		// Posts loop style.
-		$loop_style = $loop_data['style'];
-		$classes[]  = "loop-style-{$loop_style}";
+		// Posts loop type.
+		$loop_type = $loop_data['style'];
+		$classes[]  = "loop-style-{$loop_type}";
 
 		// Posts loop template.
 		if ( theme() ) {
@@ -656,7 +656,7 @@ function page_schema() {
 		is_main_loop() ||
 		( is_home() && ! site()->homepage() )
 	) {
-		if ( theme() && 'news' == theme()->loop_style() ) {
+		if ( theme() && 'news' == theme()->loop_type() ) {
 			$itemtype = 'WebPage';
 		} else {
 			$itemtype = 'Blog';
@@ -765,8 +765,8 @@ function cover_header() {
 		if ( theme() ) {
 			if ( ! empty( theme()->loop_title() ) ) {
 				$page_title = ucwords( theme()->loop_title() );
-			} elseif ( theme()->loop_style() ) {
-				$page_title = ucwords( theme()->loop_style() );
+			} elseif ( theme()->loop_type() ) {
+				$page_title = ucwords( theme()->loop_type() );
 			}
 		}
 		$description = loop_description();
@@ -1140,14 +1140,14 @@ function loop_template() {
 }
 
 /**
- * Loop style
+ * Loop type
  *
- * Gets loop style from the loop data.
+ * Gets loop type from the loop data.
  *
  * @since  1.0.0
- * @return string Returns the loop style.
+ * @return string Returns the loop type.
  */
-function loop_style() {
+function loop_type() {
 	$loop_data = loop_data();
 	return $loop_data['style'];
 }
@@ -1227,8 +1227,8 @@ function posts_loop_header() {
 	// Conditional heading & description.
 	if ( is_home() ) {
 		$heading  = lang()->get( 'Blog' ) . $loop_page;
-		if ( theme() && theme()->loop_style() ) {
-			$heading = ucwords( theme()->loop_style() . $loop_page );
+		if ( theme() && theme()->loop_type() ) {
+			$heading = ucwords( theme()->loop_type() . $loop_page );
 		}
 
 	} elseif ( is_main_loop() ) {

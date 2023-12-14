@@ -466,10 +466,10 @@ function loop_data() {
 		return null;
 	}
 
-	// Posts loop style.
-	$loop_style = 'blog';
-	if ( theme() && 'news' == theme()->loop_style() ) {
-		$loop_style = 'news';
+	// Posts loop type.
+	$loop_type = 'blog';
+	if ( theme() && 'news' == theme()->loop_type() ) {
+		$loop_type = 'news';
 	}
 
 	// Blog not on front page.
@@ -495,7 +495,7 @@ function loop_data() {
 		'url'         => loop_url(),
 		'slug'        => str_replace( '/', '', site()->getField( 'uriBlog' ) ),
 		'template'    => false,
-		'style'       => $loop_style,
+		'style'       => $loop_type,
 		'title'       => false,
 		'description' => $description,
 		'cover'       => false,

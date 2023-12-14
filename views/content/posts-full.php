@@ -25,7 +25,7 @@ use function CFE_Func\{
 use function CFE_Tags\{
 	posts_loop_header,
 	loop_content_style,
-	loop_style,
+	loop_type,
 	icon,
 	sticky_icon,
 	page_description,
@@ -63,7 +63,7 @@ if ( theme() && theme()->loop_icons() ) {
 
 // Schema article itemtype.
 $article_type = 'BlogPosting';
-if ( theme() && 'news' == theme()->loop_style() ) {
+if ( theme() && 'news' == theme()->loop_type() ) {
 	$article_type = 'NewsArticle';
 }
 
@@ -147,14 +147,14 @@ $tags_list = function() use ( $post, $tags_icon ) {
 $footer = [
 	loop_content_style() . '-view-post-footer',
 	'post-info',
-	'post-' . loop_style() . '-info'
+	'post-' . loop_type() . '-info'
 ];
 $footer = implode( ' ', $footer );
 
 ?>
 <article id="<?php echo $post->uuid(); ?>" class="site-article" role="article" itemscope="itemscope" itemtype="<?php echo 'https://schema.org/' . $article_type; ?>" data-site-article>
 
-	<div class="post-loop-content post-<?php echo loop_content_style(); ?>-content post-<?php echo loop_style(); ?>-content">
+	<div class="post-loop-content post-<?php echo loop_content_style(); ?>-content post-<?php echo loop_type(); ?>-content">
 
 		<header class="page-header post-header post-in-loop-header" data-page-header>
 			<h2 class="page-title posts-loop-title">
