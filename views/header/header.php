@@ -16,6 +16,7 @@ use function CFE_Func\{
 	site_domain,
 	theme,
 	lang,
+	is_front_page,
 	get_cover_src,
 	full_cover
 };
@@ -39,10 +40,11 @@ if ( theme() && ! theme()->site_slogan() ) {
 }
 
 // Site title element.
-if ( 'home' == $WHERE_AM_I ) {
+if ( 'home' == $WHERE_AM_I || is_front_page() ) {
 	$site_title = sprintf(
-		'<h1 class="%s">%s</h1>',
+		'<h1 class="%s"><a href="%s">%s</a></h1>',
 		$site_title_class,
+		site_domain(),
 		site()->title()
 	);
 } else {
