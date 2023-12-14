@@ -31,8 +31,11 @@ use function CFE_Func\{
 	page,
 	is_rtl,
 	user_logged_in,
-	page_type,
+	is_home,
+	is_loop_page,
+	is_page,
 	is_front_page,
+	page_type,
 	favicon_exists,
 	loop_data,
 	loop_is_static,
@@ -363,7 +366,7 @@ function body_classes() {
 	}
 
 	// Home page.
-	if ( 'home' == url()->whereAmI() ) {
+	if ( is_home() ) {
 		$classes[] = 'home';
 	}
 
@@ -372,16 +375,16 @@ function body_classes() {
 		$classes[] = 'home front-page';
 	}
 
-	if ( 'home' == url()->whereAmI() || 'blog' == url()->whereAmI() ) {
+	if ( is_home() || is_loop_page() ) {
 		$classes[] = 'loop';
 	}
 
-	if ( 'blog' == url()->whereAmI() ) {
+	if ( is_loop_page() ) {
 		$classes[] = 'loop-not-home';
 	}
 
 	// If loop.
-	if ( 'home' == url()->whereAmI() || 'blog' == url()->whereAmI() ) {
+	if ( is_home() || is_loop_page() ) {
 
 		// Posts loop style.
 		$loop_style = $loop_data['style'];
@@ -467,7 +470,7 @@ function body_classes() {
 	}
 
 	// If singular content.
-	if ( 'page' == url()->whereAmI() ) {
+	if ( is_page() ) {
 
 		$classes[] = page_type();
 
@@ -493,21 +496,47 @@ function body_classes() {
 		}
 
 		// Page sidebar.
-		if ( theme() && ( 'bottom' == theme()->sidebar_in_page() || 'bottom_no_front' == theme()->sidebar_in_page() ) ) {
-			$classes[] = 'template-sidebar-bottom';
-		} elseif ( theme() && 'none' === theme()->sidebar_in_page() ) {
-			$classes[] = 'template-no-sidebar';
+		if ( theme() ) {
+			if ( 'bottom' == theme()->sidebar_in_page() ) {
+				$classes[] = 'template-sidebar-bottom';
+			} elseif ( 'bottom_no_front' == theme()->sidebar_in_page() ) {
+				if ( isset( $_GET['page'] ) ) {
+					$classes[] = 'template-sidebar-bottom';
+				}
+			} elseif ( 'side_no_front' == theme()->sidebar_in_page() ) {
+				if ( isset( $_GET['page'] ) ) {
+					$classes[] = 'template-sidebar';
+				}
+			} elseif ( theme() && 'none' === theme()->sidebar_in_page() ) {
+				$classes[] = 'template-no-sidebar';
+			} else {
+				$classes[] = 'template-sidebar';
+			}
 		} else {
 			$classes[] = 'template-sidebar';
 		}
 
 		// Sidebar position.
-		if ( theme() && ! str_contains( page()->template(), 'sidebar-bottom' ) && ! str_contains( page()->template(), 'no-sidebar' ) ) {
-			if ( 'side' == theme()->sidebar_in_page() && 'left' == theme()->sidebar_position() ) {
-				$classes[] = 'sidebar-left';
-			} elseif ( 'side' == theme()->sidebar_in_page() ) {
-				$classes[] = 'sidebar-right';
+		if ( theme() ) {
+			if ( 'left' == theme()->sidebar_position() ) {
+				if ( 'side' == theme()->sidebar_in_page() ) {
+					$classes[] = 'sidebar-left';
+				} elseif ( 'side_no_front' == theme()->sidebar_in_page() ) {
+					if ( ! is_front_page() ) {
+						$classes[] = 'sidebar-left';
+					}
+				}
+			} else {
+				if ( 'side' == theme()->sidebar_in_page() ) {
+					$classes[] = 'sidebar-right';
+				} elseif ( 'side_no_front' == theme()->sidebar_in_page() ) {
+					if ( ! is_front_page() ) {
+						$classes[] = 'sidebar-right';
+					}
+				}
 			}
+		} else {
+			$classes[] = 'sidebar-right';
 		}
 	}
 
@@ -588,7 +617,7 @@ function page_schema() {
 
 	} elseif (
 		'blog'   == url()->whereAmI() ||
-		( 'home' == url()->whereAmI() && ! site()->homepage() )
+		( is_home() && ! site()->homepage() )
 	) {
 		if ( theme() && 'news' == theme()->loop_style() ) {
 			$itemtype = 'WebPage';
@@ -629,7 +658,7 @@ function page_header() {
 	}
 
 	// Site title is `h1` on front page; only one per page.
-	if ( 'page' == url()->whereAmI() ) {
+	if ( is_page() ) {
 		if ( page()->key() == site()->getField( 'homepage' ) ) {
 			$heading = 'h2';
 		}
@@ -679,13 +708,13 @@ function cover_header() {
 	$description = page()->description();
 
 	// Site title is `h1` on front page; only one per page.
-	if ( 'home' == url()->whereAmI() || is_front_page() ) {
+	if ( is_home() || is_front_page() ) {
 		$heading_el = 'h2';
 	}
 
 	// Conditional heading & description.
 	if (
-		'blog' == url()->whereAmI() &&
+		is_loop_page() &&
 		'page' == $loop_data['location']
 	) {
 		$class       = 'loop-page-description';
@@ -693,8 +722,8 @@ function cover_header() {
 		$description = loop_description();
 
 	} elseif (
-		'home' == url()->whereAmI() ||
-		'blog' == url()->whereAmI()
+		is_home() ||
+		is_loop_page()
 	) {
 		$class       = 'loop-page-description';
 		$page_title  = lang()->get( 'Blog' );
@@ -864,8 +893,8 @@ function page_id() {
 	// Conditional page ID, static or not.
 	$id = '';
 	if (
-		( 'blog' == url()->whereAmI() && 'home' != url()->whereAmI() ) ||
-		( 'home' == url()->whereAmI() && 'page' != url()->whereAmI() )
+		( is_loop_page() && ! is_home() ) ||
+		( is_home() && 'page' != url()->whereAmI() )
 	) {
 		$id = 'loop-page';
 		if ( ! isset( $_GET['page'] ) ) {
@@ -874,7 +903,7 @@ function page_id() {
 			$id .= '-' . $_GET['page'];
 		}
 
-	} elseif ( page()->isStatic() && 'blog' != url()->whereAmI() ) {
+	} elseif ( page()->isStatic() && ! is_loop_page() ) {
 		$id = 'page-' . page()->key();
 	} else {
 		$id = 'post-' . page()->key();
@@ -893,7 +922,7 @@ function page_id() {
 function content_template() {
 
 	// Blog template when a static home page is used.
-	if ( 'page' == url()->whereAmI() && page()->slug() == str_replace( '/', '', site()->getField( 'uriBlog' ) ) ) {
+	if ( is_page() && page()->slug() == str_replace( '/', '', site()->getField( 'uriBlog' ) ) ) {
 
 		if ( theme() ) {
 			if ( 'grid' == theme()->content_style() ) {
@@ -908,7 +937,7 @@ function content_template() {
 		}
 
 	// Page templates.
-	} elseif ( 'page' == url()->whereAmI() ) {
+	} elseif ( is_page() ) {
 
 		// Static home page.
 		if ( site()->getField( 'homepage' ) && page()->slug() == site()->getField( 'homepage' ) ) {
@@ -1161,13 +1190,13 @@ function posts_loop_header() {
 	}
 
 	// Conditional heading & description.
-	if ( 'home' == url()->whereAmI() ) {
+	if ( is_home() ) {
 		$heading  = lang()->get( 'Blog' ) . $loop_page;
 		if ( theme() && theme()->loop_style() ) {
 			$heading = ucwords( theme()->loop_style() . $loop_page );
 		}
 
-	} elseif ( 'blog' == url()->whereAmI() ) {
+	} elseif ( is_loop_page() ) {
 		$class   = 'loop-page-description';
 		$heading = ucwords( $loop_data['slug'] . $loop_page );
 
@@ -1204,7 +1233,7 @@ function posts_loop_header() {
 	$html .= '</header>';
 
 	// Print nothing if site home or singular page.
-	if ( 'page' == url()->whereAmI() ) {
+	if ( is_page() ) {
 		return '';
 	}
 	return $html;

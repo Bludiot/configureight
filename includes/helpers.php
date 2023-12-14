@@ -234,6 +234,83 @@ function is_rtl( $langs = null, $rtl = [] ) {
 }
 
 /**
+ * Is home
+ *
+ * If the main loop is on the front page.
+ *
+ * @since  1.0.0
+ * @return boolean
+ */
+function is_home() {
+	if ( 'home' == url()->whereAmI() ) {
+		return true;
+	}
+	return false;
+}
+
+/**
+ * Is loop page
+ *
+ * Whether the current page is displaying
+ * a posts loop.
+ *
+ * Excludes search pages.
+ *
+ * @since  1.0.0
+ * @return boolean Returns true if in a loop.
+ */
+function is_loop_page() {
+
+	$loop_page = false;
+	if ( 'blog' == url()->whereAmI() ) {
+		$loop_page = true;
+	}
+	if ( 'category' == url()->whereAmI() ) {
+		$loop_page = true;
+	}
+	if ( 'tag' == url()->whereAmI() ) {
+		$loop_page = true;
+	}
+	return $loop_page;
+}
+
+/**
+ * Is main loop
+ *
+ * Whether the current page is displaying
+ * the main posts loop.
+ *
+ * Excludes category and tag loops.
+ *
+ * @since  1.0.0
+ * @return boolean Returns true if in the main loop.
+ */
+function is_main_loop() {
+
+	$main_loop = false;
+	if ( 'blog' == url()->whereAmI() ) {
+		$main_loop = true;
+	}
+	return $main_loop;
+}
+
+/**
+ * Is page
+ *
+ * If on a page, static or not.
+ *
+ * @since  1.0.0
+ * @return boolean
+ */
+function is_page() {
+
+	if ( 'page' == url()->whereAmI() ) {
+		return true;
+	}
+	return false;
+}
+
+/**
  * Page type
  *
  * Whether the page object is static or not.
@@ -243,7 +320,7 @@ function is_rtl( $langs = null, $rtl = [] ) {
  */
 function page_type() {
 
-	if ( 'page' != url()->whereAmI() ) {
+	if ( ! is_page() ) {
 		return null;
 	}
 
@@ -256,14 +333,14 @@ function page_type() {
 /**
  * Is front page
  *
- * If on the static front page.
+ * If the front page is not the loop.
  *
  * @since  1.0.0
  * @return boolean
  */
 function is_front_page() {
 
-	if ( 'page' != url()->whereAmI() ) {
+	if ( ! is_page() ) {
 		return false;
 	}
 
@@ -291,25 +368,6 @@ function text_replace( $get = '', $string = '' ) {
 		return str_replace( '%replace%', $string, lang()->get( $get ) );
 	}
 	return lang()->get( $get );
-}
-
-/**
- * Is loop page
- *
- * Whether the current page is displaying
- * a posts loop.
- *
- * @since  1.0.0
- * @return boolean Returns true if in a loop.
- */
-function is_loop_page() {
-
-	$loop_page = false;
-
-	if ( 'blog' == url()->whereAmI() ) {
-		$loop_page = true;
-	}
-	return $loop_page;
 }
 
 /**
@@ -466,7 +524,7 @@ function has_cover() {
 		$default = theme()->cover_src();
 	}
 
-	if ( 'page' == url()->whereAmI() ) {
+	if ( is_page() ) {
 		if ( page()->coverImage() ) {
 			$cover = true;
 		} elseif ( $default ) {
@@ -521,7 +579,7 @@ function get_cover_src() {
 	}
 
 	// If in loop pages.
-	if ( 'blog' == url()->whereAmI() ) {
+	if ( is_loop_page() ) {
 		if ( loop_is_static() ) {
 			$loop = loop_data();
 
@@ -537,7 +595,7 @@ function get_cover_src() {
 		}
 
 	// If on a singular page.
-	} elseif ( 'page' == url()->whereAmI() ) {
+	} elseif ( is_page() ) {
 		if ( page()->coverImage() ) {
 			$src = page()->coverImage();
 		} elseif ( $default ) {
@@ -566,7 +624,7 @@ function full_cover() {
 
 	// No full cover if URL has the page parameter.
 
-	if ( 'blog' == url()->whereAmI() && loop_is_static() ) {
+	if ( is_loop_page() && loop_is_static() ) {
 		$build = buildPage( $loop['key'] );
 
 		if (
@@ -581,7 +639,7 @@ function full_cover() {
 	}
 
 	if (
-		'page' == url()->whereAmI() &&
+		is_page() &&
 		has_cover() &&
 		str_contains( page()->template(), 'full-cover' )
 	) {
@@ -601,7 +659,7 @@ function full_cover() {
 function include_sidebar() {
 
 	$include = true;
-	if ( 'home' == url()->whereAmI() || 'blog' == url()->whereAmI() ) {
+	if ( is_home() || is_loop_page() ) {
 
 		if ( theme() && 'none' == theme()->sidebar_in_loop() ) {
 			$include = false;
@@ -619,7 +677,7 @@ function include_sidebar() {
 		if ( theme() && 'content' != theme()->error_widgets() ) {
 			$include = false;
 		}
-	} elseif ( 'page' == url()->whereAmI() ) {
+	} elseif ( is_page() ) {
 
 		if ( str_contains( page()->template(), 'no-sidebar' ) ) {
 			$include = false;
