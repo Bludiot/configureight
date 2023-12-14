@@ -689,9 +689,17 @@ function include_sidebar() {
 			$include = false;
 		}
 
-		if ( theme() && site()->homepage() && page()->key() == site()->homepage() ) {
-			if ( 'side_no_front' == theme()->sidebar_in_page() || 'bottom_no_front' == theme()->sidebar_in_page() ) {
-				$include = false;
+		if ( theme() && is_front_page() ) {
+			if (
+				'side_no_front'   == theme()->sidebar_in_page() ||
+				'bottom_no_front' == theme()->sidebar_in_page()
+			) {
+				if (
+					! str_contains( page()->template(), 'sidebar-side' ) &&
+					! str_contains( page()->template(), 'sidebar-bottom' )
+				) {
+					$include = false;
+				}
 			}
 		}
 	}
