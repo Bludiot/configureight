@@ -18,7 +18,8 @@ use function CFE_Func\{
 	site,
 	url,
 	lang,
-	page
+	page,
+	page_type
 };
 
 // Edit link.
@@ -39,7 +40,7 @@ if ( 'page' == url()->whereAmI() ) {
 	$edit_link = sprintf(
 		'<a href="%s">%s</a>',
 		DOMAIN_ADMIN . 'edit-content/' . $slug ,
-		lang()->get( 'edit-link' )
+		'page' == page_type() ? lang()->get( 'Edit Page' ) : lang()->get( 'Edit Post' )
 	);
 }
 
