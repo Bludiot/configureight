@@ -3,14 +3,12 @@
 ///
 
 body {
-	&:not( .template-no-posts-loop ) {
-		.content-wrapper {
-			display: flex;
-			gap: var( --cfe-spacing--vert, 2rem ) var( --cfe-spacing--horz, 2rem );
+	.content-wrapper {
+		display: flex;
+		gap: var( --cfe-spacing--vert, 2rem ) var( --cfe-spacing--horz, 2rem );
 
-			@media screen and ( max-width: $break_tablet ) {
-				flex-direction: column;
-			}
+		@media screen and ( max-width: $break_tablet ) {
+			flex-direction: column;
 		}
 	}
 
@@ -23,6 +21,20 @@ body {
 	&.template-sidebar-bottom {
 		.content-wrapper {
 			flex-direction: column;
+		}
+	}
+
+	/// Because of left-right sidebar option in the theme plugin,
+	/// reverse flexbox flipping in RTL languages.
+	&.rtl {
+		.content-wrapper {
+			flex-direction: row-reverse;
+		}
+
+		&.sidebar-left {
+			.content-wrapper {
+				flex-direction: row;
+			}
 		}
 	}
 }

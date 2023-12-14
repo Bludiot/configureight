@@ -1373,12 +1373,12 @@ h3 + .search-form {
   justify-content: center;
 }
 
-body:not(.template-no-posts-loop) .content-wrapper {
+body .content-wrapper {
   display: flex;
   gap: var(--cfe-spacing--vert, 2rem) var(--cfe-spacing--horz, 2rem);
 }
 @media screen and (max-width: 960px) {
-  body:not(.template-no-posts-loop) .content-wrapper {
+  body .content-wrapper {
     flex-direction: column;
   }
 }
@@ -1387,6 +1387,12 @@ body.sidebar-left .content-wrapper {
 }
 body.template-sidebar-bottom .content-wrapper {
   flex-direction: column;
+}
+body.rtl .content-wrapper {
+  flex-direction: row-reverse;
+}
+body.rtl.sidebar-left .content-wrapper {
+  flex-direction: row;
 }
 
 .content-wrapper {
