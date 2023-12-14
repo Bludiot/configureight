@@ -410,10 +410,14 @@ function body_classes() {
 			} elseif ( 'bottom_no_first' == theme()->sidebar_in_loop() ) {
 				if ( isset( $_GET['page'] ) ) {
 					$classes[] = 'template-sidebar-bottom';
+				} else {
+					$classes[] = 'template-no-sidebar';
 				}
 			} elseif ( 'side_no_first' == theme()->sidebar_in_loop() ) {
 				if ( isset( $_GET['page'] ) ) {
 					$classes[] = 'template-sidebar';
+				} else {
+					$classes[] = 'template-no-sidebar';
 				}
 			} elseif ( theme() && 'none' === theme()->sidebar_in_loop() ) {
 				$classes[] = 'template-no-sidebar';
@@ -507,7 +511,9 @@ function body_classes() {
 				}
 
 			} elseif ( 'bottom_no_front' == theme()->sidebar_in_page() ) {
-				if ( ! is_front_page() ) {
+				if ( is_front_page() ) {
+					$classes[] = 'template-no-sidebar';
+				} else {
 					if (
 						! str_contains( page()->template(), 'sidebar-side' ) &&
 						! str_contains( page()->template(), 'sidebar-bottom' ) &&
@@ -517,7 +523,9 @@ function body_classes() {
 					}
 				}
 			} elseif ( 'side_no_front' == theme()->sidebar_in_page() ) {
-				if ( ! is_front_page() ) {
+				if ( is_front_page() ) {
+					$classes[] = 'template-no-sidebar';
+				} else {
 					if (
 						! str_contains( page()->template(), 'sidebar-side' ) &&
 						! str_contains( page()->template(), 'sidebar-bottom' ) &&
