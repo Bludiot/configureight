@@ -45,7 +45,7 @@ $loop_data = loop_data();
 $main_view = 'page-view';
 if ( is_loop_page() ) {
 	$main_view = 'loop-view list-view';
-	if ( theme() && 'grid' == theme()->content_style() ) {
+	if ( theme() && 'grid' == theme()->loop_style() ) {
 		$main_view = 'loop-view grid-view';
 	}
 }

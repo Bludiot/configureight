@@ -396,9 +396,9 @@ function body_classes() {
 
 		// Posts loop template.
 		if ( theme() ) {
-			if ( 'grid' == theme()->content_style() ) {
+			if ( 'grid' == theme()->loop_style() ) {
 				$classes[] = 'loop-template-grid';
-			} elseif ( 'full' == theme()->content_style() ) {
+			} elseif ( 'full' == theme()->loop_style() ) {
 				$classes[] = 'loop-template-full';
 			} else {
 				$classes[] = 'loop-template-list';
@@ -960,9 +960,9 @@ function content_template() {
 	if ( is_page() && page()->slug() == str_replace( '/', '', site()->getField( 'uriBlog' ) ) ) {
 
 		if ( theme() ) {
-			if ( 'grid' == theme()->content_style() ) {
+			if ( 'grid' == theme()->loop_style() ) {
 				$template = 'views/content/posts-grid.php';
-			} elseif ( 'full' == theme()->content_style() ) {
+			} elseif ( 'full' == theme()->loop_style() ) {
 				$template = 'views/content/posts-full.php';
 			} else {
 				$template = 'views/content/posts-list.php';
@@ -1012,9 +1012,9 @@ function content_template() {
 	// Default to posts loop.
 	} else {
 		if ( theme() ) {
-			if ( 'grid' == theme()->content_style() ) {
+			if ( 'grid' == theme()->loop_style() ) {
 				$template = 'views/content/posts-grid.php';
-			} elseif ( 'full' == theme()->content_style() ) {
+			} elseif ( 'full' == theme()->loop_style() ) {
 				$template = 'views/content/posts-full.php';
 			} else {
 				$template = 'views/content/posts-list.php';
@@ -1027,21 +1027,21 @@ function content_template() {
 }
 
 /**
- * Loop content style
+ * Loop loop style
  *
- * Gets loop content style from the theme plugin.
+ * Gets loop loop style from the theme plugin.
  *
  * @since  1.0.0
- * @return string Returns the loop content style.
+ * @return string Returns the loop loop style.
  */
-function loop_content_style() {
+function loop_loop_style() {
 
 	// Conditional template.
 	$template = 'list';
 	if ( theme() ) {
-		if ( 'grid' === theme()->content_style() ) {
+		if ( 'grid' === theme()->loop_style() ) {
 			$template = 'grid';
-		} elseif ( 'full' === theme()->content_style() ) {
+		} elseif ( 'full' === theme()->loop_style() ) {
 			$template = 'full';
 		}
 	}

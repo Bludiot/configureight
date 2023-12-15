@@ -6,7 +6,7 @@
  * home page or loop page when a static
  * home page is used.
  *
- * Theme plugin Loop > Content Style
+ * Theme plugin Loop > Loop Style
  * must be set to 'full' to use this.
  *
  * @package    Configure 8
@@ -24,7 +24,7 @@ use function CFE_Func\{
 };
 use function CFE_Tags\{
 	posts_loop_header,
-	loop_content_style,
+	loop_loop_style,
 	loop_type,
 	icon,
 	sticky_icon,
@@ -145,7 +145,7 @@ $tags_list = function() use ( $post, $tags_icon ) {
 
 // Post footer classes.
 $footer = [
-	loop_content_style() . '-view-post-footer',
+	loop_loop_style() . '-view-post-footer',
 	'post-info',
 	'post-' . loop_type() . '-info'
 ];
@@ -154,7 +154,7 @@ $footer = implode( ' ', $footer );
 ?>
 <article id="<?php echo $post->uuid(); ?>" class="site-article" role="article" itemscope="itemscope" itemtype="<?php echo 'https://schema.org/' . $article_type; ?>" data-site-article>
 
-	<div class="post-loop-content post-<?php echo loop_content_style(); ?>-content post-<?php echo loop_type(); ?>-content">
+	<div class="post-loop-content post-<?php echo loop_loop_style(); ?>-content post-<?php echo loop_type(); ?>-content">
 
 		<header class="page-header post-header post-in-loop-header" data-page-header>
 			<h2 class="page-title posts-loop-title">

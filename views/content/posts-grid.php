@@ -6,7 +6,7 @@
  * home page or loop page when a static
  * home page is used.
  *
- * Theme plugin Loop > Content Style
+ * Theme plugin Loop > Loop Style
  * must be set to 'grid' to use this.
  *
  * @package    Configure 8
@@ -24,7 +24,7 @@ use function CFE_Func\{
 };
 use function CFE_Tags\{
 	posts_loop_header,
-	loop_content_style,
+	loop_loop_style,
 	loop_type,
 	icon,
 	sticky_icon,
@@ -88,7 +88,7 @@ if ( $user->profilePicture() ) {
 echo posts_loop_header();
 
 ?>
-<div class="loop-wrap loop-wrap-<?php echo loop_content_style(); ?>">
+<div class="loop-wrap loop-wrap-<?php echo loop_loop_style(); ?>">
 <?php
 // If posts, print for each.
 foreach ( $content as $post ) :
@@ -149,7 +149,7 @@ $tags_list = function() use ( $post, $tags_icon ) {
 ?>
 <article class="site-article" role="article" itemscope="itemscope" itemtype="<?php echo 'https://schema.org/' . $article_type; ?>" data-site-article>
 
-	<div class="post-loop-content post-<?php echo loop_content_style(); ?>-content post-<?php echo loop_type(); ?>-content">
+	<div class="post-loop-content post-<?php echo loop_loop_style(); ?>-content post-<?php echo loop_type(); ?>-content">
 
 		<a href="<?php echo $post->permalink(); ?>">
 			<header class="page-header post-header post-in-loop-header" data-page-header>
