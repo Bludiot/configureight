@@ -17,7 +17,7 @@ use function CFE_Func\{
 };
 use function CFE_Tags\{
 	posts_loop_header,
-	loop_loop_style,
+	loop_style,
 	loop_type,
 	icon,
 	sticky_icon,

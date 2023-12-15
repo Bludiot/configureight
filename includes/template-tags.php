@@ -1027,14 +1027,14 @@ function content_template() {
 }
 
 /**
- * Loop loop style
+ * Loop style
  *
- * Gets loop loop style from the theme plugin.
+ * Gets loop style from the theme plugin.
  *
  * @since  1.0.0
- * @return string Returns the loop loop style.
+ * @return string Returns the loop style.
  */
-function loop_loop_style() {
+function loop_style() {
 
 	// Conditional template.
 	$template = 'list';
