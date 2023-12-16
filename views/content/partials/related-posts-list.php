@@ -10,7 +10,7 @@
 
 // Import namespaced functions.
 use function CFE_Func\{
-	theme,
+	plugin,
 	get_related
 };
 use function CFE_Tags\{
@@ -22,8 +22,8 @@ $get_related = get_related();
 
 // Heading text.
 $heading = $L->get( 'Related Posts' );
-if ( ! empty( theme()->related_heading() ) ) {
-	$heading = theme()->related_heading();
+if ( ! empty( plugin()->related_heading() ) ) {
+	$heading = plugin()->related_heading();
 }
 
 ?>
@@ -31,12 +31,12 @@ if ( ! empty( theme()->related_heading() ) ) {
 
 	<?php printf(
 		'<%s class="related-posts-heading">%s</%s>',
-		theme()->related_heading_el(),
+		plugin()->related_heading_el(),
 		ucwords( $heading ),
-		theme()->related_heading_el()
+		plugin()->related_heading_el()
 	); ?>
 
-	<div class="related-loop related-style-<?php echo theme()->related_style(); ?>">
+	<div class="related-loop related-style-<?php echo plugin()->related_style(); ?>">
 		<?php foreach ( $get_related as $related ) : ?>
 		<article class="related-post">
 			<?php if ( $related->coverImage() ) : ?>
@@ -52,7 +52,7 @@ if ( ! empty( theme()->related_heading() ) ) {
 				</a></p>
 				<p class="related-description"><?php echo page_description( $related->key() ); ?></p>
 				<div class="related-meta">
-					<?php if ( theme() && theme()->loop_date() ) : ?>
+					<?php if ( plugin() && plugin()->loop_date() ) : ?>
 					<time datetime="<?php echo $related->dateRaw( 'c' ); ?>">
 						<?php echo $related->date(); ?>
 					</time>

@@ -13,7 +13,7 @@
 
 // Import namespaced functions.
 use function CFE_Func\{
-	theme,
+	plugin,
 	plugins_hook
 };
 use function CFE_Tags\{
@@ -22,7 +22,7 @@ use function CFE_Tags\{
 
 // Sticky sidebar class.
 $sticky = '';
-if ( theme() && theme()->sidebar_sticky() ) {
+if ( plugin() && plugin()->sidebar_sticky() ) {
 	$sticky = 'sidebar-is-sticky';
 }
 
@@ -31,10 +31,10 @@ $social_heading = sprintf(
 	'<h2>%s</h2>',
 	$L->get( 'Social Links' )
 );
-if ( theme() ) {
+if ( plugin() ) {
 	$social_heading = sprintf(
 		'<h2>%s</h2>',
-		theme()->sb_social_heading()
+		plugin()->sb_social_heading()
 	);
 }
 ?>
@@ -42,7 +42,7 @@ if ( theme() ) {
 	<aside id="page-sidebar" class="page-sidebar <?php echo $sticky; ?>" data-page-sidebar>
 		<?php plugins_hook( 'siteSidebar' ); ?>
 
-		<?php if ( theme() && theme()->sidebar_social() ) : ?>
+		<?php if ( plugin() && plugin()->sidebar_social() ) : ?>
 		<div class="plugin plugin-social-nav">
 			<?php echo $social_heading; ?>
 			<div class="plugin-content">

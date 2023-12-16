@@ -2,7 +2,7 @@
 /**
  * Main navigation template
  *
- * This is a starter theme, a boilerplate,
+ * This is a starter plugin, a boilerplate,
  * so no mobile menu toggle is provided as
  * these can be styled and structured in
  * many ways. This is simply navigation
@@ -17,7 +17,7 @@
 // Import namespaced functions.
 use function CFE_Func\{
 	site,
-	theme
+	plugin
 };
 use function CFE_Tags\{
 	icon,
@@ -31,8 +31,8 @@ use function CFE_Tags\{
 		<?php
 
 		$max_items = 0;
-		if ( theme() && theme()->max_nav_items() ) {
-			$max_items = theme()->max_nav_items();
+		if ( plugin() && plugin()->max_nav_items() ) {
+			$max_items = plugin()->max_nav_items();
 		}
 
 		$nav_items = $staticContent;
@@ -100,8 +100,8 @@ use function CFE_Tags\{
 		if ( ! empty( $home_uri ) && ! empty( $loop_uri ) ) {
 
 			// If true in theme plugin.
-			if ( theme() ) {
-				if ( theme()->main_nav_loop() ) {
+			if ( plugin() ) {
+				if ( plugin()->main_nav_loop() ) {
 					printf(
 						'<li class="no-children"><a href="%s">%s</a></li>',
 						$site->url() . str_replace( '/', '', $loop_uri ) . '/',
@@ -118,8 +118,8 @@ use function CFE_Tags\{
 		}
 
 		// Add a home link if true in theme plugin.
-		if ( theme() ) {
-			if ( theme()->main_nav_home() ) {
+		if ( plugin() ) {
+			if ( plugin()->main_nav_home() ) {
 				printf(
 					'<li class="no-children"><a href="%s">%s</a></li>',
 					$site->url(),
@@ -136,8 +136,8 @@ use function CFE_Tags\{
 
 		// Add a search toggle button.
 		if (
-			theme() &&
-			theme()->header_search() &&
+			plugin() &&
+			plugin()->header_search() &&
 			getPlugin( 'Search_Forms' )
 		) {
 			printf(
@@ -148,7 +148,7 @@ use function CFE_Tags\{
 		}
 
 		// Add social links.
-		if ( theme() && theme()->header_social() ) :
+		if ( plugin() && plugin()->header_social() ) :
 
 		$links = $helper :: socialNetworks();
 		if ( $links ) :

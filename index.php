@@ -9,7 +9,7 @@
 
 // Import namespaced functions.
 use function CFE_Func\{
-	theme,
+	plugin,
 	is_rtl,
 	plugins_hook,
 	current_lang,
@@ -45,7 +45,7 @@ $loop_data = loop_data();
 $main_view = 'page-view';
 if ( is_loop_page() ) {
 	$main_view = 'loop-view list-view';
-	if ( theme() && 'grid' == theme()->loop_style() ) {
+	if ( plugin() && 'grid' == plugin()->loop_style() ) {
 		$main_view = 'loop-view grid-view';
 	}
 }
@@ -124,7 +124,7 @@ if ( is_loop_page() ) {
 
 	<?php include( THEME_DIR . 'views/footer/footer.php' ); ?>
 
-	<?php if ( theme() && theme()->to_top_button() ) : ?>
+	<?php if ( plugin() && plugin()->to_top_button() ) : ?>
 	<a href="#" id="to-top" class="hide-if-no-js">
 		<?php echo icon( 'angle-up' ); ?>
 	</a>

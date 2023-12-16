@@ -23,7 +23,7 @@ use CFE\Classes\{
 // Import namespaced functions.
 use function CFE_Func\{
 	helper,
-	theme,
+	plugin,
 	site,
 	url,
 	site_domain,
@@ -69,7 +69,7 @@ function page_loader() {
 		return null;
 	}
 
-	if ( theme() && ! theme()->page_loader() ) {
+	if ( plugin() && ! plugin()->page_loader() ) {
 		return null;
 	} else {
 		ob_start();
@@ -89,10 +89,10 @@ function page_loader() {
 function favicon_tag() {
 
 	// If plugin has icon URL.
-	if ( theme() && theme()->favicon_src() ) {
+	if ( plugin() && plugin()->favicon_src() ) {
 
 		// Get icon src.
-		$favicon = theme()->favicon_src();
+		$favicon = plugin()->favicon_src();
 
 		// Get the image file extension.
 		$info = pathinfo( $favicon );
@@ -116,13 +116,13 @@ function favicon_tag() {
 function scheme_stylesheet( $type = '' ) {
 
 	// Stop if no scheme type.
-	if ( empty( $type ) || ! theme() ) {
+	if ( empty( $type ) || ! plugin() ) {
 		return null;
 	}
 
 	// Get options from the theme plugin.
-	$colors = theme()->color_scheme();
-	$fonts  = theme()->font_scheme();
+	$colors = plugin()->color_scheme();
+	$fonts  = plugin()->font_scheme();
 	$html   = '';
 
 	// Get minified if not in debug mode.
@@ -149,15 +149,15 @@ function scheme_stylesheet( $type = '' ) {
 function load_font_files() {
 
 	// Stop if the theme plugin is not installed.
-	if ( ! theme() ) {
+	if ( ! plugin() ) {
 		return null;
 	}
 
 	// Get the font scheme setting.
-	$fonts = theme()->font_scheme();
+	$fonts = plugin()->font_scheme();
 
 	// Stop if default font, no directory exists.
-	if ( 'default' == $fonts || empty( theme()->font_scheme() ) ) {
+	if ( 'default' == $fonts || empty( plugin()->font_scheme() ) ) {
 		return null;
 	}
 	$valid = [ 'woff', 'woff2', 'otf', 'ttf' ];
@@ -204,76 +204,76 @@ function config_styles() {
 	$styles = '<style>:root {';
 
 	// Loader image overlay.
-	if ( theme() && ! empty( theme()->loader_bg_color() ) ) {
+	if ( plugin() && ! empty( plugin()->loader_bg_color() ) ) {
 		$styles .= sprintf(
 			'--cfe-loader-overlay--bg-color: %s;',
-			theme()->loader_bg_color()
+			plugin()->loader_bg_color()
 		);
 	}
 
 	// Loader image text.
-	if ( theme() && ! empty( theme()->loader_text_color() ) ) {
+	if ( plugin() && ! empty( plugin()->loader_text_color() ) ) {
 		$styles .= sprintf(
 			'--cfe-loader--text-color: %s;',
-			theme()->loader_text_color()
+			plugin()->loader_text_color()
 		);
 	}
 
 	// General spacing.
-	if ( theme() && ! empty( theme()->horz_spacing() ) ) {
+	if ( plugin() && ! empty( plugin()->horz_spacing() ) ) {
 		$styles .= sprintf(
 			'--cfe-spacing--horz: %srem;',
-			theme()->horz_spacing()
+			plugin()->horz_spacing()
 		);
 	}
-	if ( theme() && ! empty( theme()->vert_spacing() ) ) {
+	if ( plugin() && ! empty( plugin()->vert_spacing() ) ) {
 		$styles .= sprintf(
 			'--cfe-spacing--vert: %srem;',
-			theme()->vert_spacing()
+			plugin()->vert_spacing()
 		);
 	}
 
 	// Body color.
-	if ( theme() &&
-		! empty( theme()->color_body() ) &&
-		'#ffffff' != theme()->color_body()
+	if ( plugin() &&
+		! empty( plugin()->color_body() ) &&
+		'#ffffff' != plugin()->color_body()
 	) {
 		$styles .= sprintf(
 			'--cfe-bg-color: %s;',
-			theme()->color_body()
+			plugin()->color_body()
 		);
 	}
 
 	// Header logo width.
-	if ( theme() ) {
+	if ( plugin() ) {
 		$styles .= sprintf(
 			'--cfe-site-logo--max-width: %s;',
-			theme()->logo_width_std() . 'px'
+			plugin()->logo_width_std() . 'px'
 		);
 		$styles .= sprintf(
 			'--cfe-site-logo--max-width--mobile: %s;',
-			theme()->logo_width_mob() . 'px'
+			plugin()->logo_width_mob() . 'px'
 		);
 	}
 
 	// Cover image overlay.
-	if ( theme() && ! empty( theme()->cover_overlay() ) ) {
+	if ( plugin() && ! empty( plugin()->cover_overlay() ) ) {
 		$styles .= sprintf(
 			'--cfe-cover-overlay--bg-color: %s;',
-			theme()->cover_overlay()
+			plugin()->cover_overlay()
 		);
 	}
 
 	// Cover image text.
-	if ( theme() && ! empty( theme()->cover_text_color() ) ) {
+	if ( plugin() && ! empty( plugin()->cover_text_color() ) ) {
 		$styles .= sprintf(
 			'--cfe-cover--text-color: %s;',
-			theme()->cover_text_color()
+			plugin()->cover_text_color()
 		);
 	}
 
 	// Cover image text shadow.
-	if ( theme() && ! theme()->cover_text_shadow() ) {
+	if ( plugin() && ! plugin()->cover_text_shadow() ) {
 		$styles .= '--cfe-cover--text-shadow: none;';
 	}
 
@@ -323,12 +323,12 @@ function config_styles() {
  */
 function custom_css() {
 
-	if ( theme() && empty( theme()->custom_css() ) ) {
+	if ( plugin() && empty( plugin()->custom_css() ) ) {
 		return null;
 	}
 
 	$style  = '<style>';
-	$style .= theme()->custom_css();
+	$style .= plugin()->custom_css();
 	$style .= '</style>';
 
 	return $style;
@@ -365,7 +365,7 @@ function body_classes() {
 	}
 
 	// User toolbar.
-	if ( user_logged_in() && theme() && false != user_toolbar() ) {
+	if ( user_logged_in() && plugin() && false != user_toolbar() ) {
 		$classes[] = 'toolbar-active';
 	}
 
@@ -391,14 +391,16 @@ function body_classes() {
 	if ( is_home() || is_loop_page() ) {
 
 		// Posts loop type.
-		$loop_type = $loop_data['style'];
-		$classes[]  = "loop-style-{$loop_type}";
+		if ( is_main_loop() ) {
+			$loop_type = $loop_data['style'];
+			$classes[] = "loop-style-{$loop_type}";
+		}
 
 		// Posts loop template.
-		if ( theme() ) {
-			if ( 'grid' == theme()->loop_style() ) {
+		if ( plugin() && is_main_loop() ) {
+			if ( 'grid' == plugin()->loop_style() ) {
 				$classes[] = 'loop-template-grid';
-			} elseif ( 'full' == theme()->loop_style() ) {
+			} elseif ( 'full' == plugin()->loop_style() ) {
 				$classes[] = 'loop-template-full';
 			} else {
 				$classes[] = 'loop-template-list';
@@ -408,22 +410,22 @@ function body_classes() {
 		}
 
 		// Loop sidebar.
-		if ( theme() ) {
-			if ( 'bottom' == theme()->sidebar_in_loop() ) {
+		if ( plugin() ) {
+			if ( 'bottom' == plugin()->sidebar_in_loop() ) {
 				$classes[] = 'template-sidebar-bottom';
-			} elseif ( 'bottom_no_first' == theme()->sidebar_in_loop() ) {
+			} elseif ( 'bottom_no_first' == plugin()->sidebar_in_loop() ) {
 				if ( isset( $_GET['page'] ) ) {
 					$classes[] = 'template-sidebar-bottom';
 				} else {
 					$classes[] = 'template-no-sidebar';
 				}
-			} elseif ( 'side_no_first' == theme()->sidebar_in_loop() ) {
+			} elseif ( 'side_no_first' == plugin()->sidebar_in_loop() ) {
 				if ( isset( $_GET['page'] ) ) {
 					$classes[] = 'template-sidebar';
 				} else {
 					$classes[] = 'template-no-sidebar';
 				}
-			} elseif ( theme() && 'none' === theme()->sidebar_in_loop() ) {
+			} elseif ( plugin() && 'none' === plugin()->sidebar_in_loop() ) {
 				$classes[] = 'template-no-sidebar';
 			} else {
 				$classes[] = 'template-sidebar';
@@ -454,19 +456,19 @@ function body_classes() {
 		}
 
 		// Sidebar position.
-		if ( theme() ) {
-			if ( 'left' == theme()->sidebar_position() ) {
-				if ( 'side' == theme()->sidebar_in_loop() ) {
+		if ( plugin() ) {
+			if ( 'left' == plugin()->sidebar_position() ) {
+				if ( 'side' == plugin()->sidebar_in_loop() ) {
 					$classes[] = 'sidebar-left';
-				} elseif ( 'side_no_first' == theme()->sidebar_in_loop() ) {
+				} elseif ( 'side_no_first' == plugin()->sidebar_in_loop() ) {
 					if ( isset( $_GET['page'] ) ) {
 						$classes[] = 'sidebar-left';
 					}
 				}
 			} else {
-				if ( 'side' == theme()->sidebar_in_loop() ) {
+				if ( 'side' == plugin()->sidebar_in_loop() ) {
 					$classes[] = 'sidebar-right';
-				} elseif ( 'side_no_first' == theme()->sidebar_in_loop() ) {
+				} elseif ( 'side_no_first' == plugin()->sidebar_in_loop() ) {
 					if ( isset( $_GET['page'] ) ) {
 						$classes[] = 'sidebar-right';
 					}
@@ -504,8 +506,8 @@ function body_classes() {
 		}
 
 		// Page sidebar.
-		if ( theme() ) {
-			if ( 'bottom' == theme()->sidebar_in_page() ) {
+		if ( plugin() ) {
+			if ( 'bottom' == plugin()->sidebar_in_page() ) {
 				if (
 					! str_contains( page()->template(), 'sidebar-side' ) &&
 					! str_contains( page()->template(), 'sidebar-bottom' ) &&
@@ -514,7 +516,7 @@ function body_classes() {
 					$classes[] = 'template-sidebar-bottom';
 				}
 
-			} elseif ( 'bottom_no_front' == theme()->sidebar_in_page() ) {
+			} elseif ( 'bottom_no_front' == plugin()->sidebar_in_page() ) {
 				if ( is_front_page() ) {
 					$classes[] = 'template-no-sidebar';
 				} else {
@@ -526,7 +528,7 @@ function body_classes() {
 						$classes[] = 'template-sidebar-bottom';
 					}
 				}
-			} elseif ( 'side_no_front' == theme()->sidebar_in_page() ) {
+			} elseif ( 'side_no_front' == plugin()->sidebar_in_page() ) {
 				if ( is_front_page() ) {
 					$classes[] = 'template-no-sidebar';
 				} else {
@@ -538,7 +540,7 @@ function body_classes() {
 						$classes[] = 'template-sidebar';
 					}
 				}
-			} elseif ( theme() && 'none' === theme()->sidebar_in_page() ) {
+			} elseif ( plugin() && 'none' === plugin()->sidebar_in_page() ) {
 				if (
 					! str_contains( page()->template(), 'sidebar-side' ) &&
 					! str_contains( page()->template(), 'sidebar-bottom' ) &&
@@ -554,19 +556,19 @@ function body_classes() {
 		}
 
 		// Sidebar position.
-		if ( theme() ) {
-			if ( 'left' == theme()->sidebar_position() ) {
-				if ( 'side' == theme()->sidebar_in_page() ) {
+		if ( plugin() ) {
+			if ( 'left' == plugin()->sidebar_position() ) {
+				if ( 'side' == plugin()->sidebar_in_page() ) {
 					$classes[] = 'sidebar-left';
-				} elseif ( 'side_no_front' == theme()->sidebar_in_page() ) {
+				} elseif ( 'side_no_front' == plugin()->sidebar_in_page() ) {
 					if ( ! is_front_page() ) {
 						$classes[] = 'sidebar-left';
 					}
 				}
 			} else {
-				if ( 'side' == theme()->sidebar_in_page() ) {
+				if ( 'side' == plugin()->sidebar_in_page() ) {
 					$classes[] = 'sidebar-right';
-				} elseif ( 'side_no_front' == theme()->sidebar_in_page() ) {
+				} elseif ( 'side_no_front' == plugin()->sidebar_in_page() ) {
 					if ( ! is_front_page() ) {
 						$classes[] = 'sidebar-right';
 					}
@@ -582,7 +584,7 @@ function body_classes() {
 	$classes[]    = "main-nav-{$nav_position}";
 
 	// Sticky sidebar.
-	if ( theme() && theme()->sidebar_sticky() ) {
+	if ( plugin() && plugin()->sidebar_sticky() ) {
 		$classes[] = 'has-sticky-sidebar';
 	}
 
@@ -591,8 +593,8 @@ function body_classes() {
 		$classes[] = 'search loop loop-style-blog loop-template-list';
 
 		// Sidebar position.
-		if ( theme() ) {
-			if ( 'left' == theme()->sidebar_position() ) {
+		if ( plugin() ) {
+			if ( 'left' == plugin()->sidebar_position() ) {
 				$classes[] = 'sidebar-left';
 			} else {
 				$classes[] = 'sidebar-right';
@@ -656,7 +658,7 @@ function page_schema() {
 		is_main_loop() ||
 		( is_home() && ! site()->homepage() )
 	) {
-		if ( theme() && 'news' == theme()->loop_type() ) {
+		if ( plugin() && 'news' == plugin()->loop_type() ) {
 			$itemtype = 'WebPage';
 		} else {
 			$itemtype = 'Blog';
@@ -762,11 +764,11 @@ function cover_header() {
 	) {
 		$class       = 'loop-page-description';
 		$page_title  = lang()->get( 'Blog' );
-		if ( theme() ) {
-			if ( ! empty( theme()->loop_title() ) ) {
-				$page_title = ucwords( theme()->loop_title() );
-			} elseif ( theme()->loop_type() ) {
-				$page_title = ucwords( theme()->loop_type() );
+		if ( plugin() ) {
+			if ( ! empty( plugin()->loop_title() ) ) {
+				$page_title = ucwords( plugin()->loop_title() );
+			} elseif ( plugin()->loop_type() ) {
+				$page_title = ucwords( plugin()->loop_type() );
 			}
 		}
 		$description = loop_description();
@@ -801,8 +803,8 @@ function cover_header() {
 
 	// Full cover down icon.
 	$icon = 'angle-down-light';
-	if ( theme() && theme()->cover_icon() ) {
-		$icon = theme()->cover_icon();
+	if ( plugin() && plugin()->cover_icon() ) {
+		$icon = plugin()->cover_icon();
 	}
 
 	if ( full_cover() ) {
@@ -843,9 +845,9 @@ function get_toolbar() {
 function user_toolbar() {
 
 	if (
-		user_logged_in() && theme() &&
-		( 'enabled' == theme()->show_user_toolbar() ||
-		'frontend' == theme()->show_user_toolbar() )
+		user_logged_in() && plugin() &&
+		( 'enabled' == plugin()->show_user_toolbar() ||
+		'frontend' == plugin()->show_user_toolbar() )
 	) {
 		return get_toolbar();
 	}
@@ -887,21 +889,21 @@ function site_logo() {
 function menu_toggle( $toggle = '' ) {
 
 	// If an icon option is set (plugin default is bars).
-	if ( theme() && 'none' != theme()->main_nav_icon() ) {
+	if ( plugin() && 'none' != plugin()->main_nav_icon() ) {
 
 		// Bars icon.
 		$icon  = 'bars';
 		$class = 'nav-icon-bars';
 
 		// Dots icon.
-		if ( 'dots' == theme()->main_nav_icon() ) {
+		if ( 'dots' == plugin()->main_nav_icon() ) {
 			$icon  = 'dots-h';
 			$class = 'nav-icon-dots';
 		}
 		return icon( $icon, true, $class );
 
 	// If no icon option and custom text in the tag..
-	} elseif ( 'none' == theme()->main_nav_icon() && ! empty( $toggle ) ) {
+	} elseif ( 'none' == plugin()->main_nav_icon() && ! empty( $toggle ) ) {
 		return $toggle;
 	}
 
@@ -959,10 +961,10 @@ function content_template() {
 	// Blog template when a static home page is used.
 	if ( is_page() && page()->slug() == str_replace( '/', '', site()->getField( 'uriBlog' ) ) ) {
 
-		if ( theme() ) {
-			if ( 'grid' == theme()->loop_style() ) {
+		if ( is_main_loop() && plugin() ) {
+			if ( 'grid' == loop_style() ) {
 				$template = 'views/content/posts-grid.php';
-			} elseif ( 'full' == theme()->loop_style() ) {
+			} elseif ( 'full' == loop_style() ) {
 				$template = 'views/content/posts-full.php';
 			} else {
 				$template = 'views/content/posts-list.php';
@@ -1011,10 +1013,10 @@ function content_template() {
 
 	// Default to posts loop.
 	} else {
-		if ( theme() ) {
-			if ( 'grid' == theme()->loop_style() ) {
+		if ( is_main_loop() && plugin() ) {
+			if ( 'grid' == loop_style() ) {
 				$template = 'views/content/posts-grid.php';
-			} elseif ( 'full' == theme()->loop_style() ) {
+			} elseif ( 'full' == loop_style() ) {
 				$template = 'views/content/posts-full.php';
 			} else {
 				$template = 'views/content/posts-list.php';
@@ -1038,14 +1040,47 @@ function loop_style() {
 
 	// Conditional template.
 	$template = 'list';
-	if ( theme() ) {
-		if ( 'grid' === theme()->loop_style() ) {
+	if ( plugin() ) {
+		if ( 'grid' === plugin()->loop_style() ) {
 			$template = 'grid';
-		} elseif ( 'full' === theme()->loop_style() ) {
+		} elseif ( 'full' === plugin()->loop_style() ) {
 			$template = 'full';
 		}
 	}
 	return $template;
+}
+
+/**
+ * Loop style class
+ *
+ * For use in loop wrappers.
+ *
+ * @since  1.0.0
+ * @return string Returns the loop style class.
+ */
+function loop_style_class() {
+
+	$class = 'post-list-content';
+	if ( plugin() ) {
+		if ( is_main_loop() ) {
+			if ( 'grid' == loop_style() ) {
+				$class = 'post-grid-content';
+			} elseif ( 'full' == loop_style() ) {
+				$class = 'post-full-content';
+			}
+		} elseif ( is_cat() ) {
+			$class = sprintf(
+				'post-%s-content',
+				plugin()->cat_style()
+			);
+		} elseif ( is_tag() ) {
+			$class = sprintf(
+				'post-%s-content',
+				plugin()->tag_style()
+			);
+		}
+	}
+	return $class;
 }
 
 /**
@@ -1227,8 +1262,8 @@ function posts_loop_header() {
 	// Conditional heading & description.
 	if ( is_home() ) {
 		$heading  = lang()->get( 'Blog' ) . $loop_page;
-		if ( theme() && theme()->loop_type() ) {
-			$heading = ucwords( theme()->loop_type() . $loop_page );
+		if ( plugin() && plugin()->loop_type() ) {
+			$heading = ucwords( plugin()->loop_type() . $loop_page );
 		}
 
 	} elseif ( is_main_loop() ) {
@@ -1699,7 +1734,7 @@ function get_author() {
  */
 function get_loop_pagination() {
 
-	if ( theme() && 'numerical' == theme()->loop_paged() ) {
+	if ( plugin() && 'numerical' == plugin()->loop_paged() ) {
 		ob_start();
 		include( THEME_DIR . 'views/navigation/paged-numerical.php' );
 		return ob_get_clean();

@@ -10,7 +10,7 @@
 
 // Import namespaced functions.
 use function CFE_Func\{
-	theme,
+	plugin,
 	full_cover,
 	has_cover,
 	get_related
@@ -34,8 +34,8 @@ use function CFE_Tags\{
 
 <?php
 // Related posts.
-if ( theme() && theme()->related_posts() && get_related() ) {
-	if ( 'grid' == theme()->related_style() ) {
+if ( plugin() && plugin()->related_posts() && get_related() ) {
+	if ( 'grid' == plugin()->related_style() ) {
 		include( THEME_DIR . 'views/content/partials/related-posts-grid.php' );
 	} else {
 		include( THEME_DIR . 'views/content/partials/related-posts-list.php' );

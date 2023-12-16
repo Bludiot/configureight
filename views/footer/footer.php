@@ -10,7 +10,7 @@
 
 // Import namespaced functions.
 use function CFE_Func\{
-	theme,
+	plugin,
 	site
 };
 use function CFE_Tags\{
@@ -18,17 +18,17 @@ use function CFE_Tags\{
 };
 
 $copyright = '';
-if ( theme() && theme()->copyright() ) {
+if ( plugin() && plugin()->copyright() ) {
 
 	$year = '';
-	if ( theme()->copy_date() ) {
+	if ( plugin()->copy_date() ) {
 		$year = sprintf(
 			' <span itemprop="copyrightYear">%s</span>',
 			date( 'Y' )
 		);
 	}
 
-	$get_text = theme()->copy_text();
+	$get_text = plugin()->copy_text();
 	if ( ! empty( $get_text ) ) {
 
 		$text = $get_text;
@@ -67,8 +67,8 @@ if ( theme() && theme()->copyright() ) {
 		</div>
 
 		<?php
-		if ( theme() ) {
-			if ( theme()->footer_search() && getPlugin( 'Search_Forms' ) ) {
+		if ( plugin() ) {
+			if ( plugin()->footer_search() && getPlugin( 'Search_Forms' ) ) {
 				echo SearchForms\form( [
 					'label'       => false,
 					'placeholder' => $L->get( 'Search' )
@@ -77,7 +77,7 @@ if ( theme() && theme()->copyright() ) {
 		} ?>
 
 		<?php
-		if ( ! theme() || ( theme() && theme()->footer_social() ) ) {
+		if ( ! plugin() || ( plugin() && plugin()->footer_social() ) ) {
 			echo social_nav();
 		} ?>
 		<?php echo $copyright; ?>

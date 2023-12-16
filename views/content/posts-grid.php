@@ -18,7 +18,7 @@
 // Import namespaced functions.
 use function CFE_Func\{
 	lang,
-	theme,
+	plugin,
 	loop_data,
 	get_word_count
 };
@@ -45,7 +45,7 @@ $loop_data = loop_data();
 
 // Category icon.
 $cat_icon = '';
-if ( theme() && theme()->loop_icons() ) {
+if ( plugin() && plugin()->loop_icons() ) {
 	$cat_icon = sprintf(
 		'<span class="theme-icon category-icon loop-category-icon loop-full-category-icon" role="icon">%s</span>',
 		icon( 'folder' )
@@ -54,7 +54,7 @@ if ( theme() && theme()->loop_icons() ) {
 
 // Tags icon.
 $tags_icon = '';
-if ( theme() && theme()->loop_icons() ) {
+if ( plugin() && plugin()->loop_icons() ) {
 	$tags_icon = sprintf(
 		'<span class="theme-icon tags-icon loop-tags-icon loop-full-tags-icon" role="icon">%s</span>',
 		icon( 'tag' )
@@ -63,7 +63,7 @@ if ( theme() && theme()->loop_icons() ) {
 
 // Schema article itemtype.
 $article_type = 'BlogPosting';
-if ( theme() && 'news' == theme()->loop_type() ) {
+if ( plugin() && 'news' == plugin()->loop_type() ) {
 	$article_type = 'NewsArticle';
 }
 
@@ -110,9 +110,9 @@ if ( $post->sticky() ) {
 $thumb_src = '';
 if ( $post->coverImage() ) {
 	$thumb_src = $post->coverImage();
-} elseif ( theme() ) {
-	if ( theme()->cover_src() ) {
-		$thumb_src = theme()->cover_src();
+} elseif ( plugin() ) {
+	if ( plugin()->cover_src() ) {
+		$thumb_src = plugin()->cover_src();
 	}
 } else {
 	$thumb_src = DOMAIN_THEME . 'assets/images/transparent.png';
@@ -171,7 +171,7 @@ $tags_list = function() use ( $post, $tags_icon ) {
 				</h3>
 				<?php endif; ?>
 
-				<?php if ( theme() && theme()->loop_date() ) : ?>
+				<?php if ( plugin() && plugin()->loop_date() ) : ?>
 				<p class="post-info-date">
 					<?php echo $post->date(); ?>
 				</p>

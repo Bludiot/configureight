@@ -10,7 +10,7 @@
 
 // Import namespaced functions.
 use function CFE_Func\{
-	theme,
+	plugin,
 	get_related
 };
 use function CFE_Tags\{
@@ -22,16 +22,16 @@ $get_related = get_related();
 
 // Heading text.
 $heading = $L->get( 'Related Posts' );
-if ( ! empty( theme()->related_heading() ) ) {
-	$heading = theme()->related_heading();
+if ( ! empty( plugin()->related_heading() ) ) {
+	$heading = plugin()->related_heading();
 }
 
 // Maximum posts class.
 $max = 'max-related-3';
-if ( 3 != theme()->max_related() ) {
+if ( 3 != plugin()->max_related() ) {
 	$max = sprintf(
 		'max-related-%s',
-		theme()->max_related()
+		plugin()->max_related()
 	);
 }
 
@@ -40,12 +40,12 @@ if ( 3 != theme()->max_related() ) {
 
 	<?php printf(
 		'<%s>%s</%s>',
-		theme()->related_heading_el(),
+		plugin()->related_heading_el(),
 		ucwords( $heading ),
-		theme()->related_heading_el()
+		plugin()->related_heading_el()
 	); ?>
 
-	<div class="related-loop related-style-<?php echo theme()->related_style(); ?> <?php echo $max; ?>">
+	<div class="related-loop related-style-<?php echo plugin()->related_style(); ?> <?php echo $max; ?>">
 		<?php foreach ( $get_related as $related ) : ?>
 		<article class="related-post">
 			<a href="<?php echo $related->permalink(); ?>">

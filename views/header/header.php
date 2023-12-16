@@ -14,7 +14,7 @@
 use function CFE_Func\{
 	site,
 	site_domain,
-	theme,
+	plugin,
 	lang,
 	is_front_page,
 	get_cover_src,
@@ -29,13 +29,13 @@ use function CFE_Tags\{
 
 // Site title classes.
 $site_title_class = 'site-title';
-if ( theme() && ! theme()->site_title() ) {
+if ( plugin() && ! plugin()->site_title() ) {
 	$site_title_class = 'site-title screen-reader-text';
 }
 
 // Site description classes.
 $site_desc_class = 'site-description';
-if ( theme() && ! theme()->site_slogan() ) {
+if ( plugin() && ! plugin()->site_slogan() ) {
 	$site_desc_class = 'site-description screen-reader-text';
 }
 
@@ -88,8 +88,8 @@ if ( full_cover() ) {
 	<?php endif; ?>
 
 	<?php if (
-		theme() &&
-		theme()->header_search() &&
+		plugin() &&
+		plugin()->header_search() &&
 		getPlugin( 'Search_Forms' )
 	) :
 
