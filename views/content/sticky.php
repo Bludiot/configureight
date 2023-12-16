@@ -33,11 +33,16 @@ use function CFE_Tags\{
 </article>
 
 <?php
+
 // Related posts.
-if ( plugin() && plugin()->related_posts() && get_related() ) {
-	if ( 'grid' == plugin()->related_style() ) {
-		include( THEME_DIR . 'views/content/partials/related-posts-grid.php' );
-	} else {
-		include( THEME_DIR . 'views/content/partials/related-posts-list.php' );
+if ( plugin() ) {
+	if ( plugin()->related_posts() && get_related() ) {
+		if ( 'grid' == plugin()->related_style() ) {
+			include( THEME_DIR . 'views/content/partials/related-posts-grid.php' );
+		} else {
+			include( THEME_DIR . 'views/content/partials/related-posts-list.php' );
+		}
 	}
+} else {
+	include( THEME_DIR . 'views/content/partials/related-posts-list.php' );
 } ?>

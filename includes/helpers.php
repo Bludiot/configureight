@@ -468,8 +468,10 @@ function loop_data() {
 
 	// Posts loop type.
 	$loop_type = 'blog';
-	if ( plugin() && 'news' == plugin()->loop_type() ) {
-		$loop_type = 'news';
+	if ( plugin() ) {
+		if ( 'news' == plugin()->loop_type() ) {
+			$loop_type = 'news';
+		}
 	}
 
 	// Blog not on front page.
@@ -482,8 +484,10 @@ function loop_data() {
 		lang()->get( 'loop-data-description' ),
 		site()->title()
 	);
-	if ( plugin() && ! empty( plugin()->loop_description() ) ) {
-		$description = plugin()->loop_description();
+	if ( plugin() ) {
+		if ( ! empty( plugin()->loop_description() ) ) {
+			$description = plugin()->loop_description();
+		}
 	}
 
 	// Default data array.
@@ -543,20 +547,22 @@ function get_nav_position() {
 	$position = 'right';
 
 	// Do not use main navigation.
-	if ( plugin() && 'hide' == plugin()->main_nav_pos() ) {
-		$position = 'hidden';
+	if ( plugin() ) {
+		if ( 'hide' == plugin()->main_nav_pos() ) {
+			$position = 'hidden';
 
-	// Main navigation above site branding.
-	} elseif ( plugin() && 'above' == plugin()->main_nav_pos()	) {
-		$position = 'above';
+		// Main navigation above site branding.
+		} elseif ( 'above' == plugin()->main_nav_pos()	) {
+			$position = 'above';
 
-	// Main navigation below site branding.
-	} elseif ( plugin() && 'below' == plugin()->main_nav_pos()	) {
-		$position = 'below';
+		// Main navigation below site branding.
+		} elseif ( 'below' == plugin()->main_nav_pos()	) {
+			$position = 'below';
 
-	// Main navigation to left of site branding.
-	} elseif ( plugin() && 'left' == plugin()->main_nav_pos() ) {
-		$position = 'left';
+		// Main navigation to left of site branding.
+		} elseif ( 'left' == plugin()->main_nav_pos() ) {
+			$position = 'left';
+		}
 	}
 	return $position;
 }
@@ -573,8 +579,10 @@ function has_cover() {
 	$default = '';
 
 	// Default cover from theme plugin.
-	if ( plugin() && plugin()->cover_src() ) {
-		$default = plugin()->cover_src();
+	if ( plugin() ) {
+		if ( plugin()->cover_src() ) {
+			$default = plugin()->cover_src();
+		}
 	}
 
 	if ( is_page() ) {
@@ -627,8 +635,10 @@ function get_cover_src() {
 
 	$src     = '';
 	$default = '';
-	if ( plugin() && plugin()->cover_src() ) {
-		$default = plugin()->cover_src();
+	if ( plugin() ) {
+		if ( plugin()->cover_src() ) {
+			$default = plugin()->cover_src();
+		}
 	}
 
 	// If in loop pages.
@@ -714,32 +724,40 @@ function include_sidebar() {
 	$include = true;
 	if ( is_home() || is_loop_page() ) {
 
-		if ( plugin() && 'none' == plugin()->sidebar_in_loop() ) {
-			$include = false;
-		}
-
-		if ( plugin() && (
-			'side_no_first'   == plugin()->sidebar_in_loop() ||
-			'bottom_no_first' == plugin()->sidebar_in_loop()
-		) ) {
-			if ( ! isset( $_GET['page'] ) ) {
+		if ( plugin() ) {
+			if ( 'none' == plugin()->sidebar_in_loop() ) {
 				$include = false;
 			}
 		}
+
+		if ( plugin() ) {
+			if (
+				'side_no_first'   == plugin()->sidebar_in_loop() ||
+				'bottom_no_first' == plugin()->sidebar_in_loop()
+			) {
+				if ( ! isset( $_GET['page'] ) ) {
+					$include = false;
+				}
+			}
+		}
 	} elseif ( site()->pageNotFound() && url()->notFound() ) {
-		if ( plugin() && 'content' != plugin()->error_widgets() ) {
-			$include = false;
+		if ( plugin() ) {
+			if ( 'content' != plugin()->error_widgets() ) {
+				$include = false;
+			}
 		}
 	} elseif ( is_page() ) {
 
 		if ( str_contains( page()->template(), 'no-sidebar' ) ) {
 			$include = false;
-		} elseif (
-			plugin() && 'none' == plugin()->sidebar_in_page() &&
-			! str_contains( page()->template(), 'sidebar-side' ) &&
-			! str_contains( page()->template(), 'sidebar-bottom' )
-		) {
-			$include = false;
+		} elseif ( plugin() ) {
+			if (
+				'none' == plugin()->sidebar_in_page() &&
+				! str_contains( page()->template(), 'sidebar-side' ) &&
+				! str_contains( page()->template(), 'sidebar-bottom' )
+			) {
+				$include = false;
+			}
 		}
 
 		if ( plugin() && is_front_page() ) {
@@ -819,8 +837,10 @@ function get_related( $max = 3, $similar = true ) {
 			return false;
 		}
 
-		if ( plugin() && plugin()->max_related() ) {
-			$max = plugin()->max_related();
+		if ( plugin() ) {
+			if ( plugin()->max_related() ) {
+				$max = plugin()->max_related();
+			}
 		}
 		$currentCategory = getCategory( $page->categoryKey() );
 		$allCatPages     = $currentCategory->pages();

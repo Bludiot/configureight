@@ -19,27 +19,32 @@ use function CFE_Tags\{
 
 // loader text.
 $text = '';
-if ( plugin() && ! empty( plugin()->loader_text() ) ) {
-	$text = plugin()->loader_text();
+if ( plugin() ) {
+	if ( ! empty( plugin()->loader_text() ) ) {
+		$text = plugin()->loader_text();
+	}
 } elseif( lang()->get( 'loader-text' ) ) {
 	$text = lang()->get( 'loader-text' );
 }
 
 // Loader styles.
 $style = '';
-if ( plugin() &&
-	( ! empty( plugin()->loader_bg_color() ) || ! empty( plugin()->loader_text_color() ) )
- ) {
-	$style = '<style>:root{';
+if ( plugin() ) {
+	if (
+		! empty( plugin()->loader_bg_color() ) ||
+		! empty( plugin()->loader_text_color() )
+	) {
+		$style = '<style>:root{';
 
-	if ( ! empty( plugin()->loader_bg_color() ) ) {
-		$style .= '--cfe-loader--bg-color:' . plugin()->loader_bg_color() . ';';
-	}
+		if ( ! empty( plugin()->loader_bg_color() ) ) {
+			$style .= '--cfe-loader--bg-color:' . plugin()->loader_bg_color() . ';';
+		}
 
-	if ( ! empty( plugin()->loader_text_color() ) ) {
-		$style .= '--cfe-loader--text-color:' . plugin()->loader_text_color() . ';';
+		if ( ! empty( plugin()->loader_text_color() ) ) {
+			$style .= '--cfe-loader--text-color:' . plugin()->loader_text_color() . ';';
+		}
+		$style .= '}</style>';
 	}
-	$style .= '}</style>';
 }
 echo $style;
 

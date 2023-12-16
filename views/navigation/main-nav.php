@@ -31,8 +31,10 @@ use function CFE_Tags\{
 		<?php
 
 		$max_items = 0;
-		if ( plugin() && plugin()->max_nav_items() ) {
-			$max_items = plugin()->max_nav_items();
+		if ( plugin() ) {
+			if ( plugin()->max_nav_items() ) {
+				$max_items = plugin()->max_nav_items();
+			}
 		}
 
 		$nav_items = $staticContent;
@@ -135,39 +137,37 @@ use function CFE_Tags\{
 		}
 
 		// Add a search toggle button.
-		if (
-			plugin() &&
-			plugin()->header_search() &&
-			getPlugin( 'Search_Forms' )
-		) {
-			printf(
-				'<li class="no-children hide-if-no-js"><button data-search-toggle-open  aria-controls="search-bar" aria-expanded="false">%s<span class="screen-reader-text">%s</span></button></li>',
-				icon( 'search' ),
-				$L->get( 'search-link-label' )
-			);
+		if ( plugin() ) {
+			if ( plugin()->header_search() && getPlugin( 'Search_Forms' ) ) {
+				printf(
+					'<li class="no-children hide-if-no-js"><button data-search-toggle-open  aria-controls="search-bar" aria-expanded="false">%s<span class="screen-reader-text">%s</span></button></li>',
+					icon( 'search' ),
+					$L->get( 'search-link-label' )
+				);
+			}
 		}
 
 		// Add social links.
-		if ( plugin() && plugin()->header_social() ) :
+		if ( plugin() ) : if ( plugin()->header_social() ) :
 
-		$links = $helper :: socialNetworks();
-		if ( $links ) :
-		foreach ( $links as $link => $label ) :
+			$links = $helper :: socialNetworks();
+			if ( $links ) :
+			foreach ( $links as $link => $label ) :
 
-			// Get icon SVG file.
-			$icon = '';
-			$file = THEME_DIR . 'assets/images/svg-icons/' . $link . '.svg';
-			if ( file_exists( $file ) ) {
-				$icon = file_get_contents( $file );
-			} ?>
-			<li>
-				<a href="<?php echo site()->{$link}(); ?>" target="_blank" rel="noreferrer noopener" title="<?php echo $label; ?>">
-					<span class="theme-icon social-icon"><?php echo $icon; ?></span>
-					<span class="screen-reader-text social-label"><?php echo $label; ?></span>
-				</a>
-			</li>
-			<?php endforeach;
-		endif; endif;
+				// Get icon SVG file.
+				$icon = '';
+				$file = THEME_DIR . 'assets/images/svg-icons/' . $link . '.svg';
+				if ( file_exists( $file ) ) {
+					$icon = file_get_contents( $file );
+				} ?>
+				<li>
+					<a href="<?php echo site()->{$link}(); ?>" target="_blank" rel="noreferrer noopener" title="<?php echo $label; ?>">
+						<span class="theme-icon social-icon"><?php echo $icon; ?></span>
+						<span class="screen-reader-text social-label"><?php echo $label; ?></span>
+					</a>
+				</li>
+				<?php endforeach;
+		endif; endif; endif;
 
 		?>
 	</ul>

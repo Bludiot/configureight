@@ -29,14 +29,18 @@ use function CFE_Tags\{
 
 // Site title classes.
 $site_title_class = 'site-title';
-if ( plugin() && ! plugin()->site_title() ) {
-	$site_title_class = 'site-title screen-reader-text';
+if ( plugin() ) {
+	if ( ! plugin()->site_title() ) {
+		$site_title_class = 'site-title screen-reader-text';
+	}
 }
 
 // Site description classes.
 $site_desc_class = 'site-description';
-if ( plugin() && ! plugin()->site_slogan() ) {
-	$site_desc_class = 'site-description screen-reader-text';
+if ( plugin() ) {
+	if ( ! plugin()->site_slogan() ) {
+		$site_desc_class = 'site-description screen-reader-text';
+	}
 }
 
 // Site title element.
@@ -87,11 +91,9 @@ if ( full_cover() ) {
 	<div class="cover-overlay"></div>
 	<?php endif; ?>
 
-	<?php if (
-		plugin() &&
-		plugin()->header_search() &&
-		getPlugin( 'Search_Forms' )
-	) :
+	<?php
+	if ( plugin() ) :
+	if ( plugin()->header_search() && getPlugin( 'Search_Forms' ) ) :
 
 	$form_args = [
 		'label'       => false
@@ -103,7 +105,7 @@ if ( full_cover() ) {
 
 		<button data-search-toggle-close><span class="screen-reader-text"><?php lang()->p( 'search-bar-close' ); ?></span></button>
 	</div>
-	<?php endif; ?>
+	<?php endif; endif; ?>
 
 	<div class="wrapper-general site-header-wrap">
 

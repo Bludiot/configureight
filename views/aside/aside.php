@@ -22,8 +22,10 @@ use function CFE_Tags\{
 
 // Sticky sidebar class.
 $sticky = '';
-if ( plugin() && plugin()->sidebar_sticky() ) {
-	$sticky = 'sidebar-is-sticky';
+if ( plugin() ) {
+	if ( plugin()->sidebar_sticky() ) {
+		$sticky = 'sidebar-is-sticky';
+	}
 }
 
 // Social nave heading.
@@ -42,13 +44,13 @@ if ( plugin() ) {
 	<aside id="page-sidebar" class="page-sidebar <?php echo $sticky; ?>" data-page-sidebar>
 		<?php plugins_hook( 'siteSidebar' ); ?>
 
-		<?php if ( plugin() && plugin()->sidebar_social() ) : ?>
+		<?php if ( plugin() ) : if ( plugin()->sidebar_social() ) : ?>
 		<div class="plugin plugin-social-nav">
 			<?php echo $social_heading; ?>
 			<div class="plugin-content">
 				<?php echo social_nav(); ?>
 			</div>
 		</div>
-		<?php endif; ?>
+		<?php endif; endif; ?>
 	</aside>
 </div>

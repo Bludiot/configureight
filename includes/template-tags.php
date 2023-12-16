@@ -69,13 +69,16 @@ function page_loader() {
 		return null;
 	}
 
-	if ( plugin() && ! plugin()->page_loader() ) {
-		return null;
-	} else {
-		ob_start();
-		include( THEME_DIR . 'views/utility/loader.php' );
-		return ob_get_clean();
+	if ( plugin() ) {
+		if ( ! plugin()->page_loader() ) {
+			return null;
+		} else {
+			ob_start();
+			include( THEME_DIR . 'views/utility/loader.php' );
+			return ob_get_clean();
+		}
 	}
+	return null;
 }
 
 /**
@@ -89,20 +92,23 @@ function page_loader() {
 function favicon_tag() {
 
 	// If plugin has icon URL.
-	if ( plugin() && plugin()->favicon_src() ) {
+	if ( plugin() ) {
 
-		// Get icon src.
-		$favicon = plugin()->favicon_src();
+		if ( plugin()->favicon_src() ) {
 
-		// Get the image file extension.
-		$info = pathinfo( $favicon );
-		$type = $info['extension'];
+			// Get icon src.
+			$favicon = plugin()->favicon_src();
 
-		return sprintf(
-			'<link rel="icon" href="%s" type="image/%s">',
-			$favicon,
-			$type
-		);
+			// Get the image file extension.
+			$info = pathinfo( $favicon );
+			$type = $info['extension'];
+
+			return sprintf(
+				'<link rel="icon" href="%s" type="image/%s">',
+				$favicon,
+				$type
+			);
+		}
 	}
 	return null;
 }
@@ -203,49 +209,49 @@ function config_styles() {
 
 	$styles = '<style>:root {';
 
-	// Loader image overlay.
-	if ( plugin() && ! empty( plugin()->loader_bg_color() ) ) {
-		$styles .= sprintf(
-			'--cfe-loader-overlay--bg-color: %s;',
-			plugin()->loader_bg_color()
-		);
-	}
-
-	// Loader image text.
-	if ( plugin() && ! empty( plugin()->loader_text_color() ) ) {
-		$styles .= sprintf(
-			'--cfe-loader--text-color: %s;',
-			plugin()->loader_text_color()
-		);
-	}
-
-	// General spacing.
-	if ( plugin() && ! empty( plugin()->horz_spacing() ) ) {
-		$styles .= sprintf(
-			'--cfe-spacing--horz: %srem;',
-			plugin()->horz_spacing()
-		);
-	}
-	if ( plugin() && ! empty( plugin()->vert_spacing() ) ) {
-		$styles .= sprintf(
-			'--cfe-spacing--vert: %srem;',
-			plugin()->vert_spacing()
-		);
-	}
-
-	// Body color.
-	if ( plugin() &&
-		! empty( plugin()->color_body() ) &&
-		'#ffffff' != plugin()->color_body()
-	) {
-		$styles .= sprintf(
-			'--cfe-bg-color: %s;',
-			plugin()->color_body()
-		);
-	}
-
-	// Header logo width.
 	if ( plugin() ) {
+
+		// Loader image overlay.
+		if ( ! empty( plugin()->loader_bg_color() ) ) {
+			$styles .= sprintf(
+				'--cfe-loader-overlay--bg-color: %s;',
+				plugin()->loader_bg_color()
+			);
+		}
+
+		// Loader image text.
+		if ( ! empty( plugin()->loader_text_color() ) ) {
+			$styles .= sprintf(
+				'--cfe-loader--text-color: %s;',
+				plugin()->loader_text_color()
+			);
+		}
+
+		// General spacing.
+		if ( ! empty( plugin()->horz_spacing() ) ) {
+			$styles .= sprintf(
+				'--cfe-spacing--horz: %srem;',
+				plugin()->horz_spacing()
+			);
+		}
+		if ( ! empty( plugin()->vert_spacing() ) ) {
+			$styles .= sprintf(
+				'--cfe-spacing--vert: %srem;',
+				plugin()->vert_spacing()
+			);
+		}
+
+		// Body color.
+		if ( ! empty( plugin()->color_body() ) &&
+			'#ffffff' != plugin()->color_body()
+		) {
+			$styles .= sprintf(
+				'--cfe-bg-color: %s;',
+				plugin()->color_body()
+			);
+		}
+
+		// Header logo width.
 		$styles .= sprintf(
 			'--cfe-site-logo--max-width: %s;',
 			plugin()->logo_width_std() . 'px'
@@ -254,27 +260,27 @@ function config_styles() {
 			'--cfe-site-logo--max-width--mobile: %s;',
 			plugin()->logo_width_mob() . 'px'
 		);
-	}
 
-	// Cover image overlay.
-	if ( plugin() && ! empty( plugin()->cover_overlay() ) ) {
-		$styles .= sprintf(
-			'--cfe-cover-overlay--bg-color: %s;',
-			plugin()->cover_overlay()
-		);
-	}
+		// Cover image overlay.
+		if ( ! empty( plugin()->cover_overlay() ) ) {
+			$styles .= sprintf(
+				'--cfe-cover-overlay--bg-color: %s;',
+				plugin()->cover_overlay()
+			);
+		}
 
-	// Cover image text.
-	if ( plugin() && ! empty( plugin()->cover_text_color() ) ) {
-		$styles .= sprintf(
-			'--cfe-cover--text-color: %s;',
-			plugin()->cover_text_color()
-		);
-	}
+		// Cover image text.
+		if ( ! empty( plugin()->cover_text_color() ) ) {
+			$styles .= sprintf(
+				'--cfe-cover--text-color: %s;',
+				plugin()->cover_text_color()
+			);
+		}
 
-	// Cover image text shadow.
-	if ( plugin() && ! plugin()->cover_text_shadow() ) {
-		$styles .= '--cfe-cover--text-shadow: none;';
+		// Cover image text shadow.
+		if ( ! plugin()->cover_text_shadow() ) {
+			$styles .= '--cfe-cover--text-shadow: none;';
+		}
 	}
 
 	/**
@@ -323,15 +329,17 @@ function config_styles() {
  */
 function custom_css() {
 
-	if ( plugin() && empty( plugin()->custom_css() ) ) {
-		return null;
+	if ( plugin() ) {
+		if ( empty( plugin()->custom_css() ) ) {
+			return null;
+		}
+
+		$style  = '<style>';
+		$style .= plugin()->custom_css();
+		$style .= '</style>';
+
+		return $style;
 	}
-
-	$style  = '<style>';
-	$style .= plugin()->custom_css();
-	$style .= '</style>';
-
-	return $style;
 }
 
 /**
@@ -540,7 +548,7 @@ function body_classes() {
 						$classes[] = 'template-sidebar';
 					}
 				}
-			} elseif ( plugin() && 'none' === plugin()->sidebar_in_page() ) {
+			} elseif ( 'none' === plugin()->sidebar_in_page() ) {
 				if (
 					! str_contains( page()->template(), 'sidebar-side' ) &&
 					! str_contains( page()->template(), 'sidebar-bottom' ) &&
@@ -584,8 +592,10 @@ function body_classes() {
 	$classes[]    = "main-nav-{$nav_position}";
 
 	// Sticky sidebar.
-	if ( plugin() && plugin()->sidebar_sticky() ) {
-		$classes[] = 'has-sticky-sidebar';
+	if ( plugin() ) {
+		if ( plugin()->sidebar_sticky() ) {
+			$classes[] = 'has-sticky-sidebar';
+		}
 	}
 
 	// Search pages.
@@ -658,8 +668,10 @@ function page_schema() {
 		is_main_loop() ||
 		( is_home() && ! site()->homepage() )
 	) {
-		if ( plugin() && 'news' == plugin()->loop_type() ) {
-			$itemtype = 'WebPage';
+		if ( plugin() ) {
+			if ( 'news' == plugin()->loop_type() ) {
+				$itemtype = 'WebPage';
+			}
 		} else {
 			$itemtype = 'Blog';
 		}
@@ -803,8 +815,10 @@ function cover_header() {
 
 	// Full cover down icon.
 	$icon = 'angle-down-light';
-	if ( plugin() && plugin()->cover_icon() ) {
-		$icon = plugin()->cover_icon();
+	if ( plugin() ) {
+		if ( plugin()->cover_icon() ) {
+			$icon = plugin()->cover_icon();
+		}
 	}
 
 	if ( full_cover() ) {
@@ -888,23 +902,26 @@ function site_logo() {
  */
 function menu_toggle( $toggle = '' ) {
 
-	// If an icon option is set (plugin default is bars).
-	if ( plugin() && 'none' != plugin()->main_nav_icon() ) {
+	if ( plugin() ) {
 
-		// Bars icon.
-		$icon  = 'bars';
-		$class = 'nav-icon-bars';
+		// If an icon option is set (plugin default is bars).
+		if ( 'none' != plugin()->main_nav_icon() ) {
 
-		// Dots icon.
-		if ( 'dots' == plugin()->main_nav_icon() ) {
-			$icon  = 'dots-h';
-			$class = 'nav-icon-dots';
+			// Bars icon.
+			$icon  = 'bars';
+			$class = 'nav-icon-bars';
+
+			// Dots icon.
+			if ( 'dots' == plugin()->main_nav_icon() ) {
+				$icon  = 'dots-h';
+				$class = 'nav-icon-dots';
+			}
+			return icon( $icon, true, $class );
+
+		// If no icon option and custom text in the tag..
+		} elseif ( 'none' == plugin()->main_nav_icon() && ! empty( $toggle ) ) {
+			return $toggle;
 		}
-		return icon( $icon, true, $class );
-
-	// If no icon option and custom text in the tag..
-	} elseif ( 'none' == plugin()->main_nav_icon() && ! empty( $toggle ) ) {
-		return $toggle;
 	}
 
 	// Default, text.
@@ -1262,8 +1279,10 @@ function posts_loop_header() {
 	// Conditional heading & description.
 	if ( is_home() ) {
 		$heading  = lang()->get( 'Blog' ) . $loop_page;
-		if ( plugin() && plugin()->loop_type() ) {
-			$heading = ucwords( plugin()->loop_type() . $loop_page );
+		if ( plugin() ) {
+			if ( plugin()->loop_type() ) {
+				$heading = ucwords( plugin()->loop_type() . $loop_page );
+			}
 		}
 
 	} elseif ( is_main_loop() ) {
@@ -1734,10 +1753,12 @@ function get_author() {
  */
 function get_loop_pagination() {
 
-	if ( plugin() && 'numerical' == plugin()->loop_paged() ) {
-		ob_start();
-		include( THEME_DIR . 'views/navigation/paged-numerical.php' );
-		return ob_get_clean();
+	if ( plugin() ) {
+		if ( 'numerical' == plugin()->loop_paged() ) {
+			ob_start();
+			include( THEME_DIR . 'views/navigation/paged-numerical.php' );
+			return ob_get_clean();
+		}
 	} else {
 		ob_start();
 		include( THEME_DIR . 'views/navigation/paged-prev-next.php' );

@@ -45,8 +45,10 @@ $loop_data = loop_data();
 $main_view = 'page-view';
 if ( is_loop_page() ) {
 	$main_view = 'loop-view list-view';
-	if ( plugin() && 'grid' == plugin()->loop_style() ) {
-		$main_view = 'loop-view grid-view';
+	if ( plugin() ) {
+		if ( 'grid' == plugin()->loop_style() ) {
+			$main_view = 'loop-view grid-view';
+		}
 	}
 }
 
@@ -124,11 +126,11 @@ if ( is_loop_page() ) {
 
 	<?php include( THEME_DIR . 'views/footer/footer.php' ); ?>
 
-	<?php if ( plugin() && plugin()->to_top_button() ) : ?>
+	<?php if ( plugin() ) : if ( plugin()->to_top_button() ) : ?>
 	<a href="#" id="to-top" class="hide-if-no-js">
 		<?php echo icon( 'angle-up' ); ?>
 	</a>
-	<?php endif; ?>
+	<?php endif; endif; ?>
 	<?php
 	echo user_toolbar();
 

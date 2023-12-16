@@ -45,26 +45,32 @@ $loop_data = loop_data();
 
 // Category icon.
 $cat_icon = '';
-if ( plugin() && plugin()->loop_icons() ) {
-	$cat_icon = sprintf(
-		'<span class="theme-icon category-icon loop-category-icon loop-full-category-icon" role="icon">%s</span>',
-		icon( 'folder' )
-	);
+if ( plugin() ) {
+	if ( plugin()->loop_icons() ) {
+		$cat_icon = sprintf(
+			'<span class="theme-icon loop-icon category-icon loop-category-icon loop-full-category-icon" role="icon">%s</span>',
+			icon( 'folder' )
+		);
+	}
 }
 
 // Tags icon.
 $tags_icon = '';
-if ( plugin() && plugin()->loop_icons() ) {
-	$tags_icon = sprintf(
-		'<span class="theme-icon tags-icon loop-tags-icon loop-full-tags-icon" role="icon">%s</span>',
-		icon( 'tag' )
-	);
+if ( plugin() ) {
+	if ( plugin()->loop_icons() ) {
+		$tags_icon = sprintf(
+			'<span class="theme-icon loop-icon tags-icon loop-tags-icon loop-full-tags-icon" role="icon">%s</span>',
+			icon( 'tag' )
+		);
+	}
 }
 
 // Schema article itemtype.
 $article_type = 'BlogPosting';
-if ( plugin() && 'news' == plugin()->loop_type() ) {
-	$article_type = 'NewsArticle';
+if ( plugin() ) {
+	if ( 'news' == plugin()->loop_type() ) {
+		$article_type = 'NewsArticle';
+	}
 }
 
 // User avatar.
@@ -171,11 +177,11 @@ $tags_list = function() use ( $post, $tags_icon ) {
 				</h3>
 				<?php endif; ?>
 
-				<?php if ( plugin() && plugin()->loop_date() ) : ?>
+				<?php if ( plugin() ) : if ( plugin()->loop_date() ) : ?>
 				<p class="post-info-date">
 					<?php echo $post->date(); ?>
 				</p>
-				<?php endif; ?>
+				<?php endif; endif; ?>
 
 				<?php if ( $post->tags( true ) ) {
 					echo $tags_list();

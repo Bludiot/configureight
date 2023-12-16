@@ -18,38 +18,40 @@ use function CFE_Tags\{
 };
 
 $copyright = '';
-if ( plugin() && plugin()->copyright() ) {
+if ( plugin() ) {
+	if ( plugin()->copyright() ) {
 
-	$year = '';
-	if ( plugin()->copy_date() ) {
-		$year = sprintf(
-			' <span itemprop="copyrightYear">%s</span>',
-			date( 'Y' )
-		);
-	}
-
-	$get_text = plugin()->copy_text();
-	if ( ! empty( $get_text ) ) {
-
-		$text = $get_text;
-		if ( strstr( $get_text, '%copy%' ) ) {
-			$text = str_replace( '%copy%', '&copy;', $text );
-		}
-		if ( strstr( $get_text, '%year%' ) ) {
-			$text = str_replace( '%year%', $year, $text );
+		$year = '';
+		if ( plugin()->copy_date() ) {
+			$year = sprintf(
+				' <span itemprop="copyrightYear">%s</span>',
+				date( 'Y' )
+			);
 		}
 
-		$copyright = sprintf(
-			'<p class="copyright" itemscope="itemscope" itemtype="https://schema.org/CreativeWork">%s</p>',
-			$text
-		);
-	} else {
-		$copyright = sprintf(
-			'<p class="copyright" itemscope="itemscope" itemtype="https://schema.org/CreativeWork">&copy;%s <span itemprop="copyrightHolder">%s.</span> %s</p>',
-			$year,
-			$site->title(),
-			$L->get( 'copyright-message' )
-		);
+		$get_text = plugin()->copy_text();
+		if ( ! empty( $get_text ) ) {
+
+			$text = $get_text;
+			if ( strstr( $get_text, '%copy%' ) ) {
+				$text = str_replace( '%copy%', '&copy;', $text );
+			}
+			if ( strstr( $get_text, '%year%' ) ) {
+				$text = str_replace( '%year%', $year, $text );
+			}
+
+			$copyright = sprintf(
+				'<p class="copyright" itemscope="itemscope" itemtype="https://schema.org/CreativeWork">%s</p>',
+				$text
+			);
+		} else {
+			$copyright = sprintf(
+				'<p class="copyright" itemscope="itemscope" itemtype="https://schema.org/CreativeWork">&copy;%s <span itemprop="copyrightHolder">%s.</span> %s</p>',
+				$year,
+				$site->title(),
+				$L->get( 'copyright-message' )
+			);
+		}
 	}
 }
 
@@ -77,8 +79,12 @@ if ( plugin() && plugin()->copyright() ) {
 		} ?>
 
 		<?php
-		if ( ! plugin() || ( plugin() && plugin()->footer_social() ) ) {
+		if ( ! plugin() ) {
 			echo social_nav();
+		} elseif ( plugin() ) {
+			if ( plugin()->footer_social() ) {
+				echo social_nav();
+			}
 		} ?>
 		<?php echo $copyright; ?>
 	</div>
