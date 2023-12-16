@@ -19,11 +19,13 @@ The Configure 8 theme began under a different name as a starter theme, a boilerp
 
 ## Configuration
 
-This theme requires its companion plugin to be installed. Find this at [https://github.com/Bludiot/configureight-plugin](https://github.com/Bludiot/configureight-plugin).
+This theme requires its companion plugin to be installed in order to access theme options. Find this at [https://github.com/Bludiot/configureight-plugin](https://github.com/Bludiot/configureight-plugin).
 
 ## Compatibility
 
 Configure 8 has been tested on Bludit version 3.15.0, running PHP 8.2.4. The minimum PHP version required is PHP 7.4. The standard plugin hooks are provided.
+
+The theme can be used without its companion plugin, if so desired.
 
 ### Bludit Version 4
 
