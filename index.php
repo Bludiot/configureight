@@ -76,6 +76,14 @@ if ( is_loop_page() ) {
 	);
 }
 
+// Cover header class.
+$cover_class = 'page-cover cover-overlay';
+if ( plugin() ) {
+	if ( 'blend' == plugin()->cover_style() ) {
+		$cover_class = 'page-cover cover-blend';
+	}
+}
+
 ?>
 <!DOCTYPE html>
 <html dir="<?php echo $dir; ?>" class="no-js" lang="<?php echo current_lang(); ?>" xmlns:og="http://opengraphprotocol.org/schema/" data-web-page>
@@ -93,13 +101,14 @@ if ( is_loop_page() ) {
 		<?php plugins_hook( 'pageBegin' ); ?>
 
 		<?php if ( 'search' != $url->whereAmI() && ! full_cover() && has_cover() ) : ?>
-		<figure class="page-cover page-cover-singular">
-			<img src="<?php echo get_cover_src(); ?>" />
-			<div class="cover-overlay"></div>
-			<figcaption>
-				<?php echo cover_header(); ?>
-			</figcaption>
-		</figure>
+		<div class="<?php echo $cover_class; ?>">
+			<figure>
+				<img src="<?php echo get_cover_src(); ?>" />
+				<figcaption>
+					<?php echo cover_header(); ?>
+				</figcaption>
+			</figure>
+		</div>
 		<?php endif; ?>
 
 		<div id="content" class="wrapper-general content-wrapper" data-content-wrapper>

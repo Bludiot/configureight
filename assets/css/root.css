@@ -82,6 +82,8 @@
   --cfe-site-header--bg-color: #ffffff;
   --cfe-site-logo--min-width: 80px;
   --cfe-cover--description--font-size: 1.3125rem;
+  --cfe-cover-overlay--bg-color: rgba( $color: black, $alpha: 0.625 );
+  --cfe-cover-blend--bg-color: #3e6caf;
   --cfe-site-nav--max-width: 50vw;
   --cfe-site-nav--item--font-size: var( --cfe-font-size );
   --cfe-site-nav--item--font-weight: 600;

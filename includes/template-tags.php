@@ -269,6 +269,14 @@ function config_styles() {
 			);
 		}
 
+		// Cover image blend.
+		if ( ! empty( plugin()->cover_blend() ) ) {
+			$styles .= sprintf(
+				'--cfe-cover-blend--bg-color: %s;',
+				plugin()->cover_blend()
+			);
+		}
+
 		// Cover image text.
 		if ( ! empty( plugin()->cover_text_color() ) ) {
 			$styles .= sprintf(

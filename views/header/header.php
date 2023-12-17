@@ -75,20 +75,29 @@ if ( ! empty( site()->slogan() ) && ! ctype_space( site()->slogan() ) ) {
 	);
 }
 
-// Background image.
-$header_image = '';
+// Header class.
+$header_class = 'site-header';
 if ( full_cover() ) {
-	$header_image = sprintf(
-		'style="background-image: url( %s )"',
-		get_cover_src()
-	);
+	$header_class = 'site-header full-cover-header';
+}
+
+// Full cover class.
+$full_cover_class = 'full-cover-image cover-overlay';
+if ( plugin() ) {
+	if ( 'blend' == plugin()->cover_style() ) {
+		$full_cover_class = 'full-cover-image cover-blend';
+	}
 }
 
 ?>
-<header id="masthead" class="site-header" role="banner" itemscope="itemscope" itemtype="https://schema.org/Organization" data-site-header <?php echo $header_image; ?>>
+<header id="masthead" class="<?php echo $header_class; ?>" role="banner" itemscope="itemscope" itemtype="https://schema.org/Organization" data-site-header>
 
 	<?php if ( full_cover() ) : ?>
-	<div class="cover-overlay"></div>
+	<div class="<?php echo $full_cover_class; ?>">
+		<figure>
+			<img src="<?php echo get_cover_src(); ?>" role="presentation">
+		</figure>
+	</div>
 	<?php endif; ?>
 
 	<?php
@@ -96,7 +105,7 @@ if ( full_cover() ) {
 	if ( plugin()->header_search() && getPlugin( 'Search_Forms' ) ) :
 
 	$form_args = [
-		'label'       => false
+		'label' => false
 	];
 	?>
 	<div id="search-bar" class="hide-if-no-js" aria-expanded="false">
