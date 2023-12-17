@@ -423,6 +423,10 @@
 
 		.site-header-wrap {
 			z-index: 500;
+
+			&.header-scrolled {
+				padding: var( --cfe-site-header-wrap--scrolled--padding, var( --cfe-site-header-wrap--padding, calc( var( --cfe-spacing--vert ) / 4 ) var( --cfe-spacing--horz ) ) );
+			}
 		}
 
 		.site-header:not( .full-cover-header ) {

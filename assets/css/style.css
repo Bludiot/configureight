@@ -1203,6 +1203,9 @@ h3 + .search-form {
 .js .has-sticky-header .site-header-wrap {
   z-index: 500;
 }
+.js .has-sticky-header .site-header-wrap.header-scrolled {
+  padding: var(--cfe-site-header-wrap--scrolled--padding, var(--cfe-site-header-wrap--padding, calc(var(--cfe-spacing--vert) / 4) var(--cfe-spacing--horz)));
+}
 .js .has-sticky-header .site-header:not(.full-cover-header) {
   position: sticky;
   top: 0;
