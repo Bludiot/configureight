@@ -930,6 +930,7 @@ h3 + .search-form {
 
 .site-header-wrap {
   position: relative;
+  z-index: 50;
   display: var(--cfe-site-header-wrap--display, flex);
   flex-direction: var(--cfe-site-header-wrap--flex-direction, row);
   align-items: var(--cfe-site-header-wrap--align-items, center);
@@ -1012,7 +1013,7 @@ h3 + .search-form {
 .page-cover.post-cover {
   margin: var(--cfe-post-cover--margin, 2rem 0 0 0);
 }
-.page-cover:before, .page-cover:after {
+.page-cover:after {
   content: "";
   display: block;
   position: absolute;
@@ -1020,8 +1021,6 @@ h3 + .search-form {
   left: 0;
   width: 100%;
   height: 100%;
-}
-.page-cover:after {
   background-color: var(--cfe-cover-overlay--bg-color);
 }
 .page-cover figure {
@@ -1037,9 +1036,6 @@ h3 + .search-form {
   -o-object-position: center center;
      object-position: center center;
 }
-.page-cover.cover-blend:before {
-  background-color: var(--cfe-cover-blend--bg-color);
-}
 .page-cover.cover-blend:after {
   background-color: var(--cfe-cover-blend--bg-color);
   mix-blend-mode: multiply;
@@ -1047,21 +1043,11 @@ h3 + .search-form {
 .page-cover.cover-blend img {
   filter: grayscale(100%);
 }
-.page-cover figcaption {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: var(--cfe-cover--title--text-color, #ffffff);
-}
 
 .cover-header {
-  position: relative;
+  position: absolute;
+  bottom: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   display: flex;
@@ -1072,6 +1058,11 @@ h3 + .search-form {
   z-index: 100;
   text-align: center;
   pointer-events: none;
+}
+@media screen and (max-width: 960px) {
+  .cover-header {
+    height: 50%;
+  }
 }
 .cover-header * {
   max-width: 640px;
@@ -1187,7 +1178,7 @@ h3 + .search-form {
   text-shadow: var(--cfe-cover--text-shadow, var(--cfe-text-shadow));
 }
 .template-full-cover .cover-header {
-  transform: translateY(-2vw);
+  height: 85%;
 }
 .template-full-cover .cover-title {
   font-size: var(--cfe-cover--full--title--font-size, clamp(2.375rem, 3vw + 1rem, 5vw));
@@ -1474,6 +1465,18 @@ body.rtl.sidebar-left .content-wrapper {
 
 .home .loop-view {
   padding: var(--cfe-spacing--vert, 2rem) var(--cfe-spacing--horz, 2rem) 0 var(--cfe-spacing--horz, 2rem);
+}
+
+.page-header-wrap {
+  width: 100%;
+  max-width: var(--cfe-wrapper--general--max-width);
+}
+.page-header-wrap.full-width-header {
+  margin: 0 auto;
+  padding: 0 var(--cfe-spacing--horz, 2rem);
+}
+.page-header-wrap.full-width-header + div .content-wrapper {
+  margin-top: 0;
 }
 
 .page-header h1,

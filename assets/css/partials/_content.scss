@@ -54,6 +54,20 @@ body {
 	padding: var( --cfe-spacing--vert, 2rem ) var( --cfe-spacing--horz, 2rem ) 0 var( --cfe-spacing--horz, 2rem );
 }
 
+.page-header-wrap {
+	width: 100%;
+	max-width: var( --cfe-wrapper--general--max-width );
+
+	&.full-width-header {
+		margin: 0 auto;
+		padding: 0 var( --cfe-spacing--horz, 2rem );
+
+		+ div .content-wrapper {
+			margin-top: 0;
+		}
+	}
+}
+
 .page-header {
 	h1,
 	h2 {

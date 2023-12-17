@@ -761,8 +761,12 @@ function cover_header() {
 
 	$loop_data   = loop_data();
 	$heading_el  = 'h1';
-	$page_title  = page()->title();
-	$description = page()->description();
+	$page_title  = '';
+	$description = '';
+	if ( is_page() ) {
+		$page_title  = page()->title();
+		$description = page()->description();
+	}
 
 	// Site title is `h1` on front page; only one per page.
 	if ( is_home() || is_front_page() ) {
@@ -804,6 +808,21 @@ function cover_header() {
 		$class       = 'tag-page-description';
 		$page_title  = $get_tag->name();
 		$description = text_replace( 'posts-loop-desc-tag', $get_tag->name() );
+	} elseif ( is_search() ) {
+
+		$slug  = url()->slug();
+		$terms = '';
+		if ( str_contains( $slug, 'search/' ) ) {
+			$terms = str_replace( 'search/', '', $slug );
+			$terms = str_replace( '+', ' ', $terms );
+		}
+
+		$page_title  = lang()->get( 'Search Results' );
+		$description = sprintf(
+			'%s "%s"',
+			lang()->get( 'Searching' ),
+			 $terms
+		);
 	}
 
 	$html = '<div class="cover-header" data-cover-header>';
