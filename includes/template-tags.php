@@ -385,6 +385,13 @@ function body_classes() {
 		$classes[] = 'toolbar-active';
 	}
 
+	// Sticky header.
+	if ( plugin() ) {
+		if ( plugin()->header_sticky() ) {
+			$classes[] = 'has-sticky-header';
+		}
+	}
+
 	// Home page.
 	if ( is_home() ) {
 		$classes[] = 'home';

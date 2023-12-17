@@ -179,50 +179,54 @@
 }
 
 .template-full-cover {
-	.site-navigation {
-		ul {
-			li {
-				color: var( --cfe-site-nav--list--text-color, var( --cfe-cover--text-color, $white ) );
-				text-shadow: var( --cfe-cover--text-shadow, var( --cfe-text-shadow ) );
+	.site-header-wrap {
+		&:not( .header-scrolled ) {
+			.site-navigation {
+				ul {
+					li {
+						color: var( --cfe-site-nav--list--text-color, var( --cfe-cover--text-color, $white ) );
+						text-shadow: var( --cfe-cover--text-shadow, var( --cfe-text-shadow ) );
 
-				a {
-					color: var( --cfe-site-nav--list--text-color, var( --cfe-cover--text-color, $white ) );
-					text-shadow: var( --cfe-cover--text-shadow, var( --cfe-text-shadow ) );
+						a {
+							color: var( --cfe-site-nav--list--text-color, var( --cfe-cover--text-color, $white ) );
+							text-shadow: var( --cfe-cover--text-shadow, var( --cfe-text-shadow ) );
 
-					&:hover,
-					&:focus {
-						color: var( --cfe-site-title--cover--link--action--text-color, var( --cfe-cover--text-color, $white ) );
-					}
-				}
+							&:hover,
+							&:focus {
+								color: var( --cfe-site-title--cover--link--action--text-color, var( --cfe-cover--text-color, $white ) );
+							}
+						}
 
-				button {
-					padding: unset;
-					border: none;
+						button {
+							padding: unset;
+							border: none;
 
-					svg {
-						height: 1em;
-						vertical-align: middle;
-						fill: var( --cfe-site-nav--list--text-color, var( --cfe-cover--text-color, $white ) );
-					}
+							svg {
+								height: 1em;
+								vertical-align: middle;
+								fill: var( --cfe-site-nav--list--text-color, var( --cfe-cover--text-color, $white ) );
+							}
 
-					&:hover {
-						svg {
-							fill: var( --cfe-site-title--cover--link--action--text-color, var( --cfe-cover--text-color, $white ) );
+							&:hover {
+								svg {
+									fill: var( --cfe-site-title--cover--link--action--text-color, var( --cfe-cover--text-color, $white ) );
+								}
+							}
 						}
 					}
-				}
-			}
 
-			ul {
-				li {
-					color: var( --cfe-site-nav--sub-list--text-color, $white );
-
-					a {
-						color: var( --cfe-site-nav--sub-list--text-color, $white );
-
-						&:hover,
-						&:focus {
+					ul {
+						li {
 							color: var( --cfe-site-nav--sub-list--text-color, $white );
+
+							a {
+								color: var( --cfe-site-nav--sub-list--text-color, $white );
+
+								&:hover,
+								&:focus {
+									color: var( --cfe-site-nav--sub-list--text-color, $white );
+								}
+							}
 						}
 					}
 				}

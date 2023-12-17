@@ -858,6 +858,9 @@ h3 + .search-form {
   position: relative;
   background-color: var(--cfe-site-header--bg-color, var(--cfe-bg-color));
 }
+.site-header.full-cover-header {
+  background-color: transparent !important;
+}
 .site-header #search-bar {
   position: absolute;
   top: 0;
@@ -931,12 +934,15 @@ h3 + .search-form {
 .site-header-wrap {
   position: relative;
   z-index: 50;
+  width: 100%;
+  max-width: 100%;
   display: var(--cfe-site-header-wrap--display, flex);
   flex-direction: var(--cfe-site-header-wrap--flex-direction, row);
   align-items: var(--cfe-site-header-wrap--align-items, center);
   justify-content: var(--cfe-site-header-wrap--justify-content, space-between);
   gap: var(--cfe-site-header-wrap--gap, 1rem);
   padding: var(--cfe-site-header-wrap--padding, calc(var(--cfe-spacing--vert) * 0.75) var(--cfe-spacing--horz));
+  transition: all 0.25s;
 }
 @media screen and (max-width: 960px) {
   .site-header-wrap {
@@ -1059,11 +1065,6 @@ h3 + .search-form {
   text-align: center;
   pointer-events: none;
 }
-@media screen and (max-width: 960px) {
-  .cover-header {
-    height: 50%;
-  }
-}
 .cover-header * {
   max-width: 640px;
   pointer-events: initial;
@@ -1163,22 +1164,27 @@ h3 + .search-form {
 .template-full-cover .full-cover-image.cover-blend img {
   filter: grayscale(100%);
 }
-.template-full-cover .site-title {
+.template-full-cover .site-header .site-header-wrap:not(.header-scrolled) .site-title {
   color: var(--cfe-cover--title--text-color, var(--cfe-cover--text-color, #ffffff));
   text-shadow: var(--cfe-cover--text-shadow, var(--cfe-text-shadow));
 }
-.template-full-cover .site-title a {
+.template-full-cover .site-header .site-header-wrap:not(.header-scrolled) .site-title a {
   color: var(--cfe-cover--title--text-color, var(--cfe-cover--text-color, #ffffff));
 }
-.template-full-cover .site-title a:hover, .template-full-cover .site-title a:focus {
+.template-full-cover .site-header .site-header-wrap:not(.header-scrolled) .site-title a:hover, .template-full-cover .site-header .site-header-wrap:not(.header-scrolled) .site-title a:focus {
   color: var(--cfe-site-cover--title--link--action--text-color, var(--cfe-cover--text-color, #ffffff));
 }
-.template-full-cover .site-description {
+.template-full-cover .site-header .site-header-wrap:not(.header-scrolled) .site-description {
   color: var(--cfe-cover--site-description--text-color, var(--cfe-cover--text-color, #ffffff));
   text-shadow: var(--cfe-cover--text-shadow, var(--cfe-text-shadow));
 }
 .template-full-cover .cover-header {
   height: 85%;
+}
+@media screen and (max-width: 960px) {
+  .template-full-cover .cover-header {
+    height: 50%;
+  }
 }
 .template-full-cover .cover-title {
   font-size: var(--cfe-cover--full--title--font-size, clamp(2.375rem, 3vw + 1rem, 5vw));
@@ -1192,6 +1198,30 @@ h3 + .search-form {
 .toolbar-active.template-full-cover .site-header,
 .toolbar-active.template-full-cover .full-cover-image {
   height: calc(100vh - var(--cfe-toolbar--height));
+}
+
+.js .has-sticky-header .site-header-wrap {
+  z-index: 500;
+}
+.js .has-sticky-header .site-header:not(.full-cover-header) {
+  position: sticky;
+  top: 0;
+  z-index: 500;
+}
+.js .has-sticky-header .site-header:not(.full-cover-header) .site-header-wrap {
+  background-color: var(--cfe-site-header--bg-color);
+  box-shadow: 0px 0px 7px 3px rgba(0, 0, 0, 0.5);
+}
+.js .has-sticky-header.toolbar-active .site-header:not(.full-cover-header) {
+  top: 2rem;
+}
+.js .has-sticky-header .full-cover-header .site-header-wrap {
+  position: fixed;
+  max-width: 100%;
+}
+.js .has-sticky-header .full-cover-header .site-header-wrap.header-scrolled {
+  background-color: var(--cfe-site-header--bg-color);
+  box-shadow: 0px 0px 7px 3px rgba(0, 0, 0, 0.5);
 }
 
 .nav-list {
@@ -1342,36 +1372,36 @@ h3 + .search-form {
   display: none;
 }
 
-.template-full-cover .site-navigation ul li {
+.template-full-cover .site-header-wrap:not(.header-scrolled) .site-navigation ul li {
   color: var(--cfe-site-nav--list--text-color, var(--cfe-cover--text-color, #ffffff));
   text-shadow: var(--cfe-cover--text-shadow, var(--cfe-text-shadow));
 }
-.template-full-cover .site-navigation ul li a {
+.template-full-cover .site-header-wrap:not(.header-scrolled) .site-navigation ul li a {
   color: var(--cfe-site-nav--list--text-color, var(--cfe-cover--text-color, #ffffff));
   text-shadow: var(--cfe-cover--text-shadow, var(--cfe-text-shadow));
 }
-.template-full-cover .site-navigation ul li a:hover, .template-full-cover .site-navigation ul li a:focus {
+.template-full-cover .site-header-wrap:not(.header-scrolled) .site-navigation ul li a:hover, .template-full-cover .site-header-wrap:not(.header-scrolled) .site-navigation ul li a:focus {
   color: var(--cfe-site-title--cover--link--action--text-color, var(--cfe-cover--text-color, #ffffff));
 }
-.template-full-cover .site-navigation ul li button {
+.template-full-cover .site-header-wrap:not(.header-scrolled) .site-navigation ul li button {
   padding: unset;
   border: none;
 }
-.template-full-cover .site-navigation ul li button svg {
+.template-full-cover .site-header-wrap:not(.header-scrolled) .site-navigation ul li button svg {
   height: 1em;
   vertical-align: middle;
   fill: var(--cfe-site-nav--list--text-color, var(--cfe-cover--text-color, #ffffff));
 }
-.template-full-cover .site-navigation ul li button:hover svg {
+.template-full-cover .site-header-wrap:not(.header-scrolled) .site-navigation ul li button:hover svg {
   fill: var(--cfe-site-title--cover--link--action--text-color, var(--cfe-cover--text-color, #ffffff));
 }
-.template-full-cover .site-navigation ul ul li {
+.template-full-cover .site-header-wrap:not(.header-scrolled) .site-navigation ul ul li {
   color: var(--cfe-site-nav--sub-list--text-color, #ffffff);
 }
-.template-full-cover .site-navigation ul ul li a {
+.template-full-cover .site-header-wrap:not(.header-scrolled) .site-navigation ul ul li a {
   color: var(--cfe-site-nav--sub-list--text-color, #ffffff);
 }
-.template-full-cover .site-navigation ul ul li a:hover, .template-full-cover .site-navigation ul ul li a:focus {
+.template-full-cover .site-header-wrap:not(.header-scrolled) .site-navigation ul ul li a:hover, .template-full-cover .site-header-wrap:not(.header-scrolled) .site-navigation ul ul li a:focus {
   color: var(--cfe-site-nav--sub-list--text-color, #ffffff);
 }
 

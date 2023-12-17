@@ -140,7 +140,7 @@ use function CFE_Tags\{
 		if ( plugin() ) {
 			if ( plugin()->header_search() && getPlugin( 'Search_Forms' ) ) {
 				printf(
-					'<li class="no-children hide-if-no-js"><button data-search-toggle-open  aria-controls="search-bar" aria-expanded="false">%s<span class="screen-reader-text">%s</span></button></li>',
+					'<li class="no-children hide-if-no-js"><a href="#search-bar"><button data-search-toggle-open  aria-controls="search-bar" aria-expanded="false">%s<span class="screen-reader-text">%s</span></button></a></li>',
 					icon( 'search' ),
 					$L->get( 'search-link-label' )
 				);

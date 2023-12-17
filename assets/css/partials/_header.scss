@@ -6,6 +6,10 @@
 	position: relative;
 	background-color: var( --cfe-site-header--bg-color, var( --cfe-bg-color ) );
 
+	&.full-cover-header {
+		background-color: transparent !important;
+	}
+
 	#search-bar {
 		position: absolute;
 		top: 0;
@@ -94,12 +98,15 @@
 .site-header-wrap {
 	position: relative;
 	z-index: 50;
+	width: 100%;
+	max-width: 100%;
 	display: var( --cfe-site-header-wrap--display, flex );
 	flex-direction: var( --cfe-site-header-wrap--flex-direction, row );
 	align-items: var( --cfe-site-header-wrap--align-items, center );
 	justify-content: var( --cfe-site-header-wrap--justify-content, space-between );
 	gap: var( --cfe-site-header-wrap--gap, 1rem );
 	padding: var( --cfe-site-header-wrap--padding, calc( var( --cfe-spacing--vert ) * .75 ) var( --cfe-spacing--horz ) );
+	transition: all .25s;
 
 	@media screen and ( max-width: $break_tablet ) {
 		flex-direction: var( --cfe-site-header-wrap--flex-direction-tablet, column );
@@ -231,10 +238,6 @@
 	// In case it overlaps somewhere.
 	pointer-events: none;
 
-	@media screen and ( max-width: $break_tablet ) {
-		height: 50%;
-	}
-
 	* {
 		max-width: 640px;
 
@@ -360,27 +363,37 @@
 		}
 	}
 
-	.site-title {
-		color: var( --cfe-cover--title--text-color, var( --cfe-cover--text-color, $white ) );
-		text-shadow: var( --cfe-cover--text-shadow, var( --cfe-text-shadow ) );
+	.site-header {
+		.site-header-wrap {
+			&:not( .header-scrolled ) {
+				.site-title {
+					color: var( --cfe-cover--title--text-color, var( --cfe-cover--text-color, $white ) );
+					text-shadow: var( --cfe-cover--text-shadow, var( --cfe-text-shadow ) );
 
-		a {
-			color: var( --cfe-cover--title--text-color, var( --cfe-cover--text-color, $white ) );
+					a {
+						color: var( --cfe-cover--title--text-color, var( --cfe-cover--text-color, $white ) );
 
-			&:hover,
-			&:focus {
-				color: var( --cfe-site-cover--title--link--action--text-color, var( --cfe-cover--text-color, $white ) );
+						&:hover,
+						&:focus {
+							color: var( --cfe-site-cover--title--link--action--text-color, var( --cfe-cover--text-color, $white ) );
+						}
+					}
+				}
+
+				.site-description {
+					color: var( --cfe-cover--site-description--text-color, var( --cfe-cover--text-color, $white ) );
+					text-shadow: var( --cfe-cover--text-shadow, var( --cfe-text-shadow ) );
+				}
 			}
 		}
 	}
 
-	.site-description {
-		color: var( --cfe-cover--site-description--text-color, var( --cfe-cover--text-color, $white ) );
-		text-shadow: var( --cfe-cover--text-shadow, var( --cfe-text-shadow ) );
-	}
-
 	.cover-header {
 		height: 85%;
+
+		@media screen and ( max-width: $break_tablet ) {
+			height: 50%;
+		}
 	}
 
 	.cover-title {
@@ -401,6 +414,44 @@
 		.site-header,
 		.full-cover-image {
 			height: calc( 100vh - var( --cfe-toolbar--height ) );
+		}
+	}
+}
+
+.js {
+	.has-sticky-header {
+
+		.site-header-wrap {
+			z-index: 500;
+		}
+
+		.site-header:not( .full-cover-header ) {
+			position: sticky;
+			top: 0;
+			z-index: 500;
+
+			.site-header-wrap {
+				background-color: var( --cfe-site-header--bg-color );
+				box-shadow: 0px 0px 7px 3px rgba( 0,0,0,0.5 );
+			}
+		}
+
+		&.toolbar-active {
+			.site-header:not( .full-cover-header ) {
+				top: 2rem;
+			}
+		}
+
+		.full-cover-header {
+			.site-header-wrap {
+				position: fixed;
+				max-width: 100%;
+
+				&.header-scrolled {
+					background-color: var( --cfe-site-header--bg-color );
+					box-shadow: 0px 0px 7px 3px rgba( 0,0,0,0.5 );
+				}
+			}
 		}
 	}
 }
