@@ -586,16 +586,26 @@ function has_cover() {
 	}
 
 	if ( is_page() ) {
+
 		if ( page()->coverImage() ) {
 			$cover = true;
+			if ( str_contains( page()->template(), 'no-cover' ) ) {
+				$cover = false;
+			}
 		} elseif ( $default ) {
+
 			if ( filter_var( $default, FILTER_VALIDATE_URL ) ) {
 				$cover = true;
 			} elseif ( file_exists( THEME_DIR . $default ) ) {
 				$cover = true;
 			}
+
+			if ( str_contains( page()->template(), 'no-cover' ) ) {
+				$cover = false;
+			}
 		}
 	} elseif ( $default ) {
+
 		if ( filter_var( $default, FILTER_VALIDATE_URL ) ) {
 			$cover = true;
 		} elseif ( file_exists( THEME_DIR . $default ) ) {

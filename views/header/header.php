@@ -133,8 +133,4 @@ if ( plugin() ) {
 	</figure>
 	<?php echo cover_header(); ?>
 </div>
-<?php elseif ( is_page() ) : ?>
-<div class="wrapper-general page-header-wrap full-width-header">
-	<?php echo page_header(); ?>
-</div>
 <?php endif; ?>
