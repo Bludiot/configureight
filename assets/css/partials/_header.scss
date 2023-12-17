@@ -316,6 +316,8 @@
 
 	.full-cover-image {
 		position: absolute;
+		top: 0;
+		left: 0;
 		width: 100vw;
 		height: 100vh;
 		overflow: hidden;
@@ -348,9 +350,6 @@
 		}
 
 		&.cover-blend {
-			&:before {
-				background-color: var( --cfe-cover-blend--bg-color );
-			}
 
 			&:after {
 				background-color: var( --cfe-cover-blend--bg-color );
