@@ -35,7 +35,6 @@
   --cfe-button--action--bg-color: #f879a1;
   --cfe-button--action-border-color: #f879a1;
   --cfe-button--text-color: #ffffff;
-  --cfe-site-header--bg-color: inherit;
   --cfe-site-nav--list--link--action--text-color: #401225;
   --cfe-site-nav--sub-list--bg-color: #401225;
   --cfe-site-nav--sub-list--action--bg-color: #f5487f;
@@ -56,6 +55,7 @@
     --cfe-heading-primary--text-color: #ffffff;
     --cfe-heading-primary--link--text-color: #ffffff;
     --cfe-heading-primary--link--action--text-color: #f5487f;
+    --cfe-site-header--bg-color: var( --cfe-bg-color );
     --cfe-site-nav--list--link--action--text-color: #ffffff;
     --cfe-form--action--border-color: #f879a1;
     --cfe-button--action--bg-color: #f879a1;

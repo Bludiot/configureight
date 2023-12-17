@@ -79,7 +79,7 @@
   --cfe-toolbar--link--text-color: #ffffff;
   --cfe-toolbar--link--action--bg-color: #555555;
   --cfe-toolbar--link--action--text-color: #ffffff;
-  --cfe-site-header--bg-color: #ffffff;
+  --cfe-site-header--bg-color: var( --cfe-bg-color );
   --cfe-site-logo--min-width: 80px;
   --cfe-cover--description--font-size: 1.3125rem;
   --cfe-cover-overlay--bg-color: rgba( $color: black, $alpha: 0.625 );

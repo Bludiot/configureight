@@ -104,9 +104,6 @@ $close_icon_action_bg: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/20
 	--cfe-button--action--bg-color: #{$fui_turquoise};
 	--cfe-button--text-color: #{$fui_clouds};
 
-	// Header.
-	--cfe-site-header--bg-color: inherit;
-
 	// Navigation.
 	--cfe-site-nav--sub-list--bg-color: #{$fui_midnight_blue};
 	--cfe-site-nav--sub-list--action--bg-color: #{$fui_wet_asphalt};
@@ -130,5 +127,6 @@ $close_icon_action_bg: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/20
 		--cfe-heading-primary--text-color: #{$fui_clouds};
 		--cfe-heading-primary--link--text-color: #{$fui_clouds};
 		--cfe-heading-primary--link--action--text-color: #{$fui_peter_river};
+		--cfe-site-header--bg-color: var( --cfe-bg-color );
 	}
 }

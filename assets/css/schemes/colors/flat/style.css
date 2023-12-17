@@ -36,7 +36,6 @@
   --cfe-button--bg-color: #16a085;
   --cfe-button--action--bg-color: #1abc9c;
   --cfe-button--text-color: #ecf0f1;
-  --cfe-site-header--bg-color: inherit;
   --cfe-site-nav--sub-list--bg-color: #2c3e50;
   --cfe-site-nav--sub-list--action--bg-color: #34495e;
   --cfe-site-nav--sub-list--text-color: #ecf0f1;
@@ -56,5 +55,6 @@
     --cfe-heading-primary--text-color: #ecf0f1;
     --cfe-heading-primary--link--text-color: #ecf0f1;
     --cfe-heading-primary--link--action--text-color: #3498db;
+    --cfe-site-header--bg-color: var( --cfe-bg-color );
   }
 }

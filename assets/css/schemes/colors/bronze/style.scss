@@ -87,9 +87,6 @@ $close_icon_action_bg: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/20
 	--cfe-button--action-border-color: #{$brz_blue};
 	--cfe-button--text-color: #{$white};
 
-	// Header.
-	--cfe-site-header--bg-color: inherit;
-
 	// Navigation.
 	--cfe-site-nav--list--link--action--text-color: #{$brz_blue};
 	--cfe-site-nav--sub-list--bg-color: #{$brz_blue};
@@ -113,6 +110,7 @@ $close_icon_action_bg: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/20
 		--cfe-heading-primary--text-color: #{$brz_white};
 		--cfe-heading-primary--link--text-color: #{$brz_white};
 		--cfe-heading-primary--link--action--text-color: #{$brz_bronze};
+		--cfe-site-header--bg-color: var( --cfe-bg-color );
 		--cfe-site-nav--list--link--action--text-color: #{$brz_white};
 		--cfe-form--action--border-color: #{$brz_nickel};
 		--cfe-button--action--bg-color: #{$brz_nickel};
