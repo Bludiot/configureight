@@ -428,7 +428,33 @@ function body_classes() {
 			} else {
 				$classes[] = 'loop-template-list';
 			}
-		} else {
+		} elseif ( is_main_loop() ) {
+			$classes[] = 'loop-template-list';
+		}
+
+		// Category loop template.
+		if ( plugin() && is_cat() ) {
+			if ( 'grid' == plugin()->cat_style() ) {
+				$classes[] = 'loop-template-grid';
+			} elseif ( 'full' == plugin()->cat_style() ) {
+				$classes[] = 'loop-template-full';
+			} else {
+				$classes[] = 'loop-template-list';
+			}
+		} elseif ( is_cat() )  {
+			$classes[] = 'loop-template-list';
+		}
+
+		// Tag loop template.
+		if ( plugin() && is_tag() ) {
+			if ( 'grid' == plugin()->cat_style() ) {
+				$classes[] = 'loop-template-grid';
+			} elseif ( 'full' == plugin()->cat_style() ) {
+				$classes[] = 'loop-template-full';
+			} else {
+				$classes[] = 'loop-template-list';
+			}
+		} elseif ( is_tag() )  {
 			$classes[] = 'loop-template-list';
 		}
 
@@ -1020,7 +1046,7 @@ function content_template() {
 			} else {
 				$template = 'views/content/posts-list.php';
 			}
-		} else {
+		} elseif ( is_main_loop() ) {
 			$template = 'views/content/posts-list.php';
 		}
 
@@ -1061,6 +1087,27 @@ function content_template() {
 		} else {
 			$template = 'views/content/post.php';
 		}
+	} elseif ( is_cat() && plugin() ) {
+		if ( 'grid' == plugin()->cat_style() ) {
+			$template = 'views/content/posts-grid.php';
+		} elseif ( 'full' == plugin()->cat_style() ) {
+			$template = 'views/content/posts-full.php';
+		} else {
+			$template = 'views/content/posts-list.php';
+		}
+	} elseif ( is_cat() ) {
+		$template = 'views/content/posts-list.php';
+
+	} elseif ( is_tag() && plugin() ) {
+		if ( 'grid' == plugin()->tag_style() ) {
+			$template = 'views/content/posts-grid.php';
+		} elseif ( 'full' == plugin()->tag_style() ) {
+			$template = 'views/content/posts-full.php';
+		} else {
+			$template = 'views/content/posts-list.php';
+		}
+	} elseif ( is_tag() ) {
+		$template = 'views/content/posts-list.php';
 
 	// Default to posts loop.
 	} else {
@@ -1092,10 +1139,24 @@ function loop_style() {
 	// Conditional template.
 	$template = 'list';
 	if ( plugin() ) {
-		if ( 'grid' === plugin()->loop_style() ) {
-			$template = 'grid';
-		} elseif ( 'full' === plugin()->loop_style() ) {
-			$template = 'full';
+		if ( is_main_loop() ) {
+			if ( 'grid' === plugin()->loop_style() ) {
+				$template = 'grid';
+			} elseif ( 'full' === plugin()->loop_style() ) {
+				$template = 'full';
+			}
+		} elseif ( is_cat() ) {
+			if ( 'grid' === plugin()->cat_style() ) {
+				$template = 'grid';
+			} elseif ( 'full' === plugin()->cat_style() ) {
+				$template = 'full';
+			}
+		} elseif ( is_tag() ) {
+			if ( 'grid' === plugin()->tag_style() ) {
+				$template = 'grid';
+			} elseif ( 'full' === plugin()->tag_style() ) {
+				$template = 'full';
+			}
 		}
 	}
 	return $template;

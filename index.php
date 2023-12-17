@@ -14,6 +14,10 @@ use function CFE_Func\{
 	plugins_hook,
 	current_lang,
 	is_loop_page,
+	is_main_loop,
+	is_cat,
+	is_tag,
+	is_search,
 	loop_data,
 	get_cover_src,
 	full_cover,
@@ -42,13 +46,29 @@ $loop_data = loop_data();
 
 // Layout class for the `<main>` element.
 $main_view = 'page-view';
-if ( is_loop_page() ) {
+if ( is_main_loop() ) {
 	$main_view = 'loop-view list-view';
 	if ( plugin() ) {
 		if ( 'grid' == plugin()->loop_style() ) {
 			$main_view = 'loop-view grid-view';
 		}
 	}
+} elseif ( is_cat() ) {
+	$main_view = 'loop-view list-view';
+	if ( plugin() ) {
+		if ( 'grid' == plugin()->cat_style() ) {
+			$main_view = 'loop-view grid-view';
+		}
+	}
+} elseif ( is_tag() ) {
+	$main_view = 'clist-view';
+	if ( plugin() ) {
+		if ( 'grid' == plugin()->tag_style() ) {
+			$main_view = 'loop-view grid-view';
+		}
+	}
+} elseif ( is_search() ) {
+	$main_view = 'loop-view search-view list-view';
 }
 
 // Get UUID

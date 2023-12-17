@@ -249,25 +249,6 @@ function is_home() {
 }
 
 /**
- * Is main loop
- *
- * Whether the current page is displaying
- * the main posts loop.
- *
- * Excludes category and tag loops.
- *
- * @since  1.0.0
- * @return boolean Returns true if in the main loop.
- */
-function is_main_loop() {
-
-	if ( 'blog' == url()->whereAmI() ) {
-		return true;
-	}
-	return false;
-}
-
-/**
  * Is category
  *
  * Whether the current page is displaying
@@ -296,6 +277,25 @@ function is_cat() {
 function is_tag() {
 
 	if ( 'tag' == url()->whereAmI() ) {
+		return true;
+	}
+	return false;
+}
+
+/**
+ * Is main loop
+ *
+ * Whether the current page is displaying
+ * the main posts loop.
+ *
+ * Excludes category and tag loops.
+ *
+ * @since  1.0.0
+ * @return boolean Returns true if in the main loop.
+ */
+function is_main_loop() {
+
+	if ( 'blog' == url()->whereAmI() && ! is_cat() && ! is_tag() ) {
 		return true;
 	}
 	return false;
