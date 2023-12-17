@@ -33,7 +33,11 @@ if ( plugin() ) {
 // Related style.
 $related_style = 'list';
 if ( plugin() ) {
-	$related_style = plugin()->related_style();
+	$related_style = plugin()->related_style() . ' cover-overlay';
+
+	if ( 'blend' == plugin()->cover_style() ) {
+		$related_style = plugin()->related_style() . ' cover-blend';
+	}
 }
 
 // Maximum posts class.
@@ -70,7 +74,6 @@ if ( plugin() ) {
 					<p class="related-title">
 						<?php echo $related->title(); ?>
 					</p>
-					<?php echo icon( 'dots-h', true, 'related-icon-read' ); ?>
 					<p class="related-description"><?php echo page_description( $related->key() ); ?></p>
 				</div>
 			</a>

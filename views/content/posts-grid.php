@@ -152,6 +152,14 @@ $tags_list = function() use ( $post, $tags_icon ) {
 	return '';
 };
 
+// Cover image class.
+$cover_class = 'post-cover cover-overlay';
+if ( plugin() ) {
+	if ( 'blend' == plugin()->cover_style() ) {
+		$cover_class = 'post-cover cover-blend';
+	}
+}
+
 ?>
 <article class="site-article" role="article" itemscope="itemscope" itemtype="<?php echo 'https://schema.org/' . $article_type; ?>" data-site-article>
 
@@ -163,7 +171,7 @@ $tags_list = function() use ( $post, $tags_icon ) {
 			</header>
 
 			<?php if ( $thumb_src ) : ?>
-			<figure class="post-cover">
+			<figure class="<?php echo $cover_class; ?>">
 				<img src="<?php echo $thumb_src; ?>" loading="lazy" />
 				<figcaption class="screen-reader-text"><?php echo $post->title(); ?></figcaption>
 			</figure>
