@@ -10,8 +10,7 @@
 	"loader-text"    : "Chargement",
 	"home-link-label" : "Maison",
 
-	"loop-data-description" : "Derniers messages de",
-	"posts-loop-desc-blog"  : "Derniers messages de",
+	"posts-loop-desc-blog"  : "Derniers messages de %replace%",
 	"posts-loop-desc-cat"   : "Messages dans la catégorie %replace%",
 	"posts-loop-desc-tag"   : "Articles tagués %replace%",
 	"post-read-time"        : "Temps de lecture: ",
