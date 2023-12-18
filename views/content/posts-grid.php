@@ -35,7 +35,7 @@ use function CFE_Tags\{
 };
 
 // If no posts.
-if ( empty( $content) ) {
+if ( empty( $content ) ) {
 	include( THEME_DIR . 'views/content/no-posts.php' );
 	return;
 }
