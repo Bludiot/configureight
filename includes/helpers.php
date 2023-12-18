@@ -165,10 +165,6 @@ function plugin() {
 	return $theme;
 }
 
-if ( ! isset( $themePlugin ) ) {
-	$themePlugin = plugin();
-}
-
 /**
  * User logged in
  *
@@ -242,6 +238,7 @@ function is_rtl( $langs = null, $rtl = [] ) {
  * @return boolean
  */
 function is_home() {
+
 	if ( 'home' == url()->whereAmI() ) {
 		return true;
 	}
@@ -325,6 +322,63 @@ function is_loop_page() {
 		$loop_page = true;
 	}
 	return $loop_page;
+}
+
+/**
+ * Loop not home
+ *
+ * If the main loop is not the website home.
+ *
+ * @since  1.0.0
+ * @return boolean Returns true if loop slug is set.
+ */
+function is_loop_not_home() {
+
+	if ( site()->getField( 'uriBlog' ) ) {
+		return true;
+	}
+	return false;
+}
+
+/**
+ * Is static loop
+ *
+ * If a static page has the same slug as the loop slug.
+ *
+ * @since  1.0.0
+ * @return boolean Return whether that page exists.
+ */
+function is_static_loop() {
+
+	if ( static_loop_page() ) {
+		return true;
+	}
+	return false;
+}
+
+/**
+ * Static loop page
+ *
+ * @since  1.0.0
+ * @return mixed Returns the static loop page object or
+ *               returns false if the page doesn't exist.
+ */
+function static_loop_page() {
+
+	// Get the blog slug setting.
+	$loop_field = site()->getField( 'uriBlog' );
+
+	// Remove slashes from field value, if set.
+	$loop_key   = str_replace( '/', '', $loop_field );
+
+	// Build a page using blog slug setting.
+	$loop_page  = buildPage( $loop_key );
+
+	// Return whether that page exists (could be built).
+	if ( $loop_page ) {
+		return $loop_page;
+	}
+	return false;
 }
 
 /**
@@ -469,21 +523,11 @@ function loop_data() {
 	// Posts loop type.
 	$loop_type = 'blog';
 	if ( plugin() ) {
-		if ( 'news' == plugin()->loop_type() ) {
-			$loop_type = 'news';
-		}
+		$loop_type = plugin()->loop_type();
 	}
 
-	// Blog not on front page.
-	$static_field = site()->getField( 'uriBlog' );
-	$static_key   = str_replace( '/', '', $static_field );
-
 	// Default loop description.
-	$description = sprintf(
-		'%s %s',
-		lang()->get( 'loop-data-description' ),
-		site()->title()
-	);
+	$description = text_replace( 'posts-loop-desc-blog', site()->title() );
 	if ( plugin() ) {
 		if ( ! empty( plugin()->loop_description() ) ) {
 			$description = plugin()->loop_description();
@@ -505,29 +549,28 @@ function loop_data() {
 		'cover'       => false,
 	];
 
-	if ( empty( $static_field ) || ! $pages->exists( $static_key ) ) {
+	if ( ! is_static_loop() ) {
 		return $data;
-
 	} else {
 
 		// Get data from the static loop page.
-		$loop_page = buildPage( $static_key );
+		$loop_page = static_loop_page();
 
 		// Description from the static loop page.
-		if (
-			! empty( $loop_page->description() ) ||
-			! ctype_space( $loop_page->description() )
-		) {
+		if ( ! empty( $loop_page->description() ) ) {
 			$description = $loop_page->description();
 		}
 
-		$data['location']    = 'page';
-		$data['key']         = $loop_page->key();
-		$data['slug']        = $loop_page->slug();
-		$data['template']    = $loop_page->template();
-		$data['title']       = $loop_page->title();
-		$data['description'] = $description;
-		$data['cover']       = $loop_page->coverImage();
+		$static_data = [
+			'location'    => 'page',
+			'key'         => $loop_page->key(),
+			'slug'        => $loop_page->slug(),
+			'template'    => $loop_page->template(),
+			'title'       => $loop_page->title(),
+			'description' => $description,
+			'cover'       => $loop_page->coverImage()
+		];
+		$data = array_merge( $data, $static_data );
 	}
 	return $data;
 }
@@ -573,10 +616,10 @@ function get_nav_position() {
  * @since  1.0.0
  * @return boolean
  */
-function has_cover() {
+function has_cover( $default = '' ) {
 
-	$cover   = false;
-	$default = '';
+	// Start false, conditionally true.
+	$cover = false;
 
 	// Default cover from theme plugin.
 	if ( plugin() ) {
@@ -585,14 +628,20 @@ function has_cover() {
 		}
 	}
 
+	// If on a singular post or page.
 	if ( is_page() ) {
 
+		// If the page has a cover image set.
 		if ( page()->coverImage() ) {
 			$cover = true;
+
+			// False if `no-cover` template.
 			if ( str_contains( page()->template(), 'no-cover' ) ) {
 				$cover = false;
 			}
-		} elseif ( $default ) {
+
+		// If the theme plugin has a default cover image set.
+		} elseif ( ! empty( $default ) ) {
 
 			if ( filter_var( $default, FILTER_VALIDATE_URL ) ) {
 				$cover = true;
@@ -600,10 +649,13 @@ function has_cover() {
 				$cover = true;
 			}
 
+			// False if `no-cover` template.
 			if ( str_contains( page()->template(), 'no-cover' ) ) {
 				$cover = false;
 			}
 		}
+
+	// If on a loop page.
 	} elseif ( $default ) {
 
 		if ( filter_var( $default, FILTER_VALIDATE_URL ) ) {
@@ -613,26 +665,6 @@ function has_cover() {
 		}
 	}
 	return $cover;
-}
-
-/**
- * Loop is static
- *
- * Checks if the the blog URI option
- * is set and if a static page slug
- * matches the URI setting.
- *
- * @since  1.0.0
- * @return boolean
- */
-function loop_is_static() {
-
-	$loop = loop_data();
-
-	if ( $loop['key'] && ! empty( $loop['key'] ) ) {
-		return true;
-	}
-	return false;
 }
 
 /**
@@ -653,7 +685,7 @@ function get_cover_src() {
 
 	// If in loop pages.
 	if ( is_main_loop() ) {
-		if ( loop_is_static() ) {
+		if ( is_static_loop() ) {
 			$loop = loop_data();
 
 			if ( ! empty( $loop['cover'] ) ) {
@@ -697,7 +729,7 @@ function full_cover() {
 
 	// No full cover if URL has the page parameter.
 
-	if ( is_main_loop() && loop_is_static() ) {
+	if ( is_main_loop() && is_static_loop() ) {
 		$build = buildPage( $loop['key'] );
 
 		if (

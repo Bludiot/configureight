@@ -17,11 +17,14 @@
 // Import namespaced functions.
 use function CFE_Func\{
 	site,
-	plugin
+	plugin,
+	lang,
+	loop_url
 };
 use function CFE_Tags\{
 	icon,
 	menu_toggle,
+	nav_loop_label,
 	social_nav
 };
 
@@ -30,21 +33,18 @@ use function CFE_Tags\{
 	<ul class="nav-list main-nav-list">
 		<?php
 
-		$home_uri  = $site->getField( 'homepage' );
-		$loop_uri  = $site->getField( 'uriBlog' );
+		$home_uri  = site()->getField( 'homepage' );
+		$loop_uri  = site()->getField( 'uriBlog' );
 
 		// Add loop before pages link if home is static content.
-		if ( ! empty( $home_uri ) && ! empty( $loop_uri ) ) {
-
-			// If `before` in theme plugin.
-			if ( plugin() ) {
-				if ( 'before' == plugin()->main_nav_loop() ) {
-					printf(
-						'<li class="no-children"><a href="%s">%s</a></li>',
-						$site->url() . str_replace( '/', '', $loop_uri ) . '/',
-						ucwords( str_replace( [ '/', '-', '_' ], ' ', $loop_uri ) )
-					);
-				}
+		// If `before` in theme plugin.
+		if ( plugin() ) {
+			if ( 'before' == plugin()->main_nav_loop() ) {
+				printf(
+					'<li class="no-children"><a href="%s">%s</a></li>',
+					loop_url(),
+					nav_loop_label()
+				);
 			}
 		}
 
@@ -72,12 +72,12 @@ use function CFE_Tags\{
 		 */
 		if (
 			$nav_item->slug() == $home_uri ||
-			$nav_item->slug() == str_replace( '/', '', $site->getField( 'uriBlog' ) )
+			$nav_item->slug() == str_replace( '/', '', site()->getField( 'uriBlog' ) )
 		) {
 			$nav_entry = '';
 
 		// Do not list the 404 error page.
-		} elseif ( $nav_item->slug() == str_replace( '/', '', $site->getField( 'pageNotFound' ) ) ) {
+		} elseif ( $nav_item->slug() == str_replace( '/', '', site()->getField( 'pageNotFound' ) ) ) {
 			$nav_entry = '';
 
 		// Parent item & children submenu.
@@ -115,24 +115,21 @@ use function CFE_Tags\{
 		endforeach;
 
 		// Add loop after pages link if home is static content.
-		if ( ! empty( $home_uri ) && ! empty( $loop_uri ) ) {
-
-			// If `after` in theme plugin.
-			if ( plugin() ) {
-				if ( 'after' == plugin()->main_nav_loop() ) {
-					printf(
-						'<li class="no-children"><a href="%s">%s</a></li>',
-						$site->url() . str_replace( '/', '', $loop_uri ) . '/',
-						ucwords( str_replace( [ '/', '-', '_' ], ' ', $loop_uri ) )
-					);
-				}
-			} else {
+		// If `after` in theme plugin.
+		if ( plugin() ) {
+			if ( 'after' == plugin()->main_nav_loop() ) {
 				printf(
 					'<li class="no-children"><a href="%s">%s</a></li>',
-					$site->url() . str_replace( '/', '', $loop_uri ) . '/',
-					ucwords( str_replace( [ '/', '-', '_' ], ' ', $loop_uri ) )
+					loop_url(),
+					nav_loop_label()
 				);
 			}
+		} else {
+			printf(
+				'<li class="no-children"><a href="%s">%s</a></li>',
+				loop_url(),
+				nav_loop_label()
+			);
 		}
 
 		// Add a home link if true in theme plugin.
@@ -140,14 +137,14 @@ use function CFE_Tags\{
 			if ( plugin()->main_nav_home() ) {
 				printf(
 					'<li class="no-children"><a href="%s">%s</a></li>',
-					$site->url(),
+					site()->url(),
 					$L->get( 'home-link-label' )
 				);
 			}
 		} else {
 			printf(
 				'<li class="no-children"><a href="%s">%s</a></li>',
-				$site->url(),
+				site()->url(),
 				$L->get( 'home-link-label' )
 			);
 		}

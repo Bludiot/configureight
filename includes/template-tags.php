@@ -34,6 +34,7 @@ use function CFE_Func\{
 	is_home,
 	is_loop_page,
 	is_main_loop,
+	static_loop_page,
 	is_cat,
 	is_tag,
 	is_search,
@@ -820,14 +821,7 @@ function cover_header() {
 		is_main_loop()
 	) {
 		$class       = 'loop-page-description';
-		$page_title  = lang()->get( 'Blog' );
-		if ( plugin() ) {
-			if ( ! empty( plugin()->loop_title() ) ) {
-				$page_title = ucwords( plugin()->loop_title() );
-			} elseif ( plugin()->loop_type() ) {
-				$page_title = ucwords( plugin()->loop_type() );
-			}
-		}
+		$page_title  = loop_label();
 		$description = loop_description();
 
 	} elseif ( is_cat() ) {
@@ -1303,6 +1297,54 @@ function loop_description() {
 function loop_cover() {
 	$loop_data = loop_data();
 	return $loop_data['cover'];
+}
+
+/**
+ * Loop label
+ *
+ * @since  1.0.0
+ * @return string
+ */
+function loop_label() {
+
+	$static = static_loop_page();
+	$label  = lang()->get( 'Blog' );
+	$field  = site()->getField( 'uriBlog' );
+
+	if ( plugin() ) {
+		if ( $static ) {
+			$label = str_replace( [ '/', '-', '_' ], ' ', $static->slug() );
+		} elseif ( plugin()->loop_title() ) {
+				$label = plugin()->loop_title();
+		} elseif ( $field && '/blog/' != $field ) {
+			$label = str_replace( [ '/', '-', '_' ], ' ', $field );
+		}
+	} elseif ( $static ) {
+		$label = str_replace( [ '/', '-', '_' ], ' ', $static->slug() );
+	} elseif ( $field ) {
+		$label = str_replace( [ '/', '-', '_' ], ' ', $field );
+	}
+	return ucwords( $label );
+}
+
+/**
+ * Navigation loop label
+ *
+ * @since  1.0.0
+ * @return string
+ */
+function nav_loop_label() {
+
+	if ( plugin() ) {
+		if ( plugin()->main_nav_loop_label() ) {
+			$label = ucwords( plugin()->main_nav_loop_label() );
+		} else {
+			$label = loop_label();
+		}
+	} else {
+		$label = loop_label();
+	}
+	return $label;
 }
 
 /**
