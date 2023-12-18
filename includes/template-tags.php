@@ -94,24 +94,34 @@ function favicon_tag() {
 
 	// If plugin has icon URL.
 	if ( plugin() ) {
-
 		if ( plugin()->favicon_src() ) {
 
 			// Get icon src.
 			$favicon = plugin()->favicon_src();
-
-			// Get the image file extension.
-			$info = pathinfo( $favicon );
-			$type = $info['extension'];
-
-			return sprintf(
-				'<link rel="icon" href="%s" type="image/%s">',
-				$favicon,
-				$type
-			);
 		}
+
+	// Use favicon.png in root content/uploads if found & set in options array.
+	} elseif ( file_exists( PATH_UPLOADS . $icon ) ) {
+		$favicon = DOMAIN_UPLOADS . 'favicon.png';
+
+	// Use favicon.png file in theme assets/images if found.
+	} elseif ( file_exists( PATH_THEMES . $site->theme() . '/assets/images/favicon.png' ) ) {
+		$favicon = DOMAIN_THEME . 'assets/images/favicon.png';
 	}
-	return null;
+
+	// Get the image file extension.
+	$info = pathinfo( $favicon );
+	$type = $info['extension'];
+
+	$tag = null;
+	if ( $favicon ) {
+		$tag = sprintf(
+			'<link rel="icon" href="%s" type="image/%s">',
+			$favicon,
+			$type
+		);
+	}
+	return $tag;
 }
 
 /**
@@ -730,14 +740,26 @@ function page_schema() {
  * Returns the page title and description
  *
  * @since  1.0.0
+ * @param  array $args Arguments to be passed.
+ * @param  array $defaults Default arguments.
  * @return string Returns the header markup.
  */
-function page_header() {
+function page_header( $args = null, $defaults = [] ) {
 
-	$wrapper     = 'header';
-	$heading     = 'h1';
-	$description = page()->description();
-	$sticky_icon = '';
+	// Default arguments.
+	$defaults = [
+		'wrapper'     => 'header',
+		'heading'     => 'h1',
+		'description' => page()->description(),
+		'sticky_icon' => ''
+	];
+
+	// Maybe override defaults.
+	if ( is_array( $args ) && $args ) {
+		$args = array_merge( $defaults, $args );
+	} else {
+		$args = $defaults;
+	}
 
 	/**
 	 * Do not use `<header>` element for the
@@ -747,38 +769,38 @@ function page_header() {
 	 * contain another `<header>` element.
 	 */
 	if ( full_cover() ) {
-		$wrapper = 'div';
+		$args['wrapper'] = 'div';
 	}
 
 	// Site title is `h1` on front page; only one per page.
 	if ( is_front_page() ) {
-		$heading = 'h2';
+		$args['heading'] = 'h2';
 	}
 
 	// If the page is sticky.
 	if ( page()->sticky() ) {
-		$sticky_icon = sticky_icon( 'false', 'sticky-icon-heading' ) . ' ';
+		$args['sticky_icon'] = sticky_icon( 'false', 'sticky-icon-heading' ) . ' ';
 	}
 
 	$html = sprintf(
 		'<%s class="page-header" data-page-header>',
-		$wrapper
+		$args['wrapper']
 	);
 	$html .= sprintf(
 		'<%s class="page-title">%s%s</%s>',
-		$heading,
-		$sticky_icon,
+		$args['heading'],
+		$args['sticky_icon'],
 		page()->title(),
-		$heading
+		$args['heading']
 	);
 
-	if ( ! empty( $description ) && ! ctype_space( $description ) ) {
+	if ( ! empty( $args['description'] ) && ! ctype_space( $args['description'] ) ) {
 		$html .= sprintf(
 			'<p class="page-description page-description-single">%s</p>',
-			$description
+			$args['description']
 		);
 	}
-	$html .= "</{$wrapper}>";
+	$html .= "</{$args['wrapper']}>";
 
 	return $html;
 }
@@ -789,22 +811,37 @@ function page_header() {
  * Returns the page title and description
  *
  * @since  1.0.0
+ * @param  array $args Arguments to be passed.
+ * @param  array $defaults Default arguments.
  * @return string Returns the header markup.
  */
-function cover_header() {
+function cover_header( $args = null, $defaults = [] ) {
 
-	$loop_data   = loop_data();
-	$heading_el  = 'h1';
-	$page_title  = '';
-	$description = '';
+	$loop_data = loop_data();
+
+	// Default arguments.
+	$defaults = [
+		'loop_data'   => $loop_data,
+		'heading_el'  => 'h1',
+		'page_title'  => '',
+		'description' => ''
+	];
+
+	// Maybe override defaults.
+	if ( is_array( $args ) && $args ) {
+		$args = array_merge( $defaults, $args );
+	} else {
+		$args = $defaults;
+	}
+
 	if ( is_page() ) {
-		$page_title  = page()->title();
-		$description = page()->description();
+		$args['page_title']  = page()->title();
+		$args['description'] = page()->description();
 	}
 
 	// Site title is `h1` on front page; only one per page.
 	if ( is_home() || is_front_page() ) {
-		$heading_el = 'h2';
+		$args['heading_el'] = 'h2';
 	}
 
 	// Conditional heading & description.
@@ -813,28 +850,28 @@ function cover_header() {
 		'page' == $loop_data['location']
 	) {
 		$class       = 'loop-page-description';
-		$page_title  = loop_title();
-		$description = loop_description();
+		$args['page_title']  = loop_title();
+		$args['description'] = loop_description();
 
 	} elseif (
 		is_home() ||
 		is_main_loop()
 	) {
-		$class       = 'loop-page-description';
-		$page_title  = loop_label();
-		$description = loop_description();
+		$class = 'loop-page-description';
+		$args['page_title']  = loop_label();
+		$args['description'] = loop_description();
 
 	} elseif ( is_cat() ) {
-		$get_cat     = new \Category( url()->slug() );
-		$class       = 'category-page-description';
-		$page_title  = $get_cat->name();
-		$description = text_replace( 'posts-loop-desc-cat', $get_cat->name() );
+		$get_cat = new \Category( url()->slug() );
+		$class   = 'category-page-description';
+		$args['page_title']  = $get_cat->name();
+		$args['description'] = text_replace( 'posts-loop-desc-cat', $get_cat->name() );
 
 	} elseif ( is_tag() ) {
-		$get_tag     = new \Tag( url()->slug() );
-		$class       = 'tag-page-description';
-		$page_title  = $get_tag->name();
-		$description = text_replace( 'posts-loop-desc-tag', $get_tag->name() );
+		$get_tag = new \Tag( url()->slug() );
+		$class   = 'tag-page-description';
+		$args['page_title']  = $get_tag->name();
+		$args['description'] = text_replace( 'posts-loop-desc-tag', $get_tag->name() );
 	} elseif ( is_search() ) {
 
 		$slug  = url()->slug();
@@ -844,26 +881,26 @@ function cover_header() {
 			$terms = str_replace( '+', ' ', $terms );
 		}
 
-		$page_title  = lang()->get( 'Search Results' );
-		$description = sprintf(
+		$args['page_title']  = lang()->get( 'Search Results' );
+		$args['description'] = sprintf(
 			'%s "%s"',
 			lang()->get( 'Searching' ),
 			 $terms
 		);
 	}
 
-	$html = '<div class="cover-header" data-cover-header>';
+	$html  = '<div class="cover-header" data-cover-header>';
 	$html .= sprintf(
 		'<%s class="cover-title">%s</%s>',
-		$heading_el,
-		$page_title,
-		$heading_el
+		$args['heading_el'],
+		$args['page_title'],
+		$args['heading_el']
 	);
 
-	if ( ! empty( $description ) && ! ctype_space( $description ) ) {
+	if ( ! empty( $args['description'] ) && ! ctype_space( $args['description'] ) ) {
 		$html .= sprintf(
 			'<p class="cover-description">%s</p>',
-			$description
+			$args['description']
 		);
 	}
 
@@ -900,7 +937,6 @@ function get_toolbar() {
 
 	ob_start();
 	include( THEME_DIR . 'views/utility/toolbar.php' );
-
 	return ob_get_clean();
 }
 
