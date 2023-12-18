@@ -30,6 +30,24 @@ use function CFE_Tags\{
 	<ul class="nav-list main-nav-list">
 		<?php
 
+		$home_uri  = $site->getField( 'homepage' );
+		$loop_uri  = $site->getField( 'uriBlog' );
+
+		// Add loop before pages link if home is static content.
+		if ( ! empty( $home_uri ) && ! empty( $loop_uri ) ) {
+
+			// If `before` in theme plugin.
+			if ( plugin() ) {
+				if ( 'before' == plugin()->main_nav_loop() ) {
+					printf(
+						'<li class="no-children"><a href="%s">%s</a></li>',
+						$site->url() . str_replace( '/', '', $loop_uri ) . '/',
+						ucwords( str_replace( [ '/', '-', '_' ], ' ', $loop_uri ) )
+					);
+				}
+			}
+		}
+
 		$max_items = 0;
 		if ( plugin() ) {
 			if ( plugin()->max_nav_items() ) {
@@ -45,8 +63,6 @@ use function CFE_Tags\{
 		foreach ( $nav_items as $nav_item ) :
 
 		$nav_entry = '';
-		$home_uri  = $site->getField( 'homepage' );
-		$loop_uri  = $site->getField( 'uriBlog' );
 
 		/**
 		 * Do not list static front page or
@@ -98,12 +114,12 @@ use function CFE_Tags\{
 		echo $nav_entry;
 		endforeach;
 
-		// Add loop link if home is static content.
+		// Add loop after pages link if home is static content.
 		if ( ! empty( $home_uri ) && ! empty( $loop_uri ) ) {
 
-			// If true in theme plugin.
+			// If `after` in theme plugin.
 			if ( plugin() ) {
-				if ( plugin()->main_nav_loop() ) {
+				if ( 'after' == plugin()->main_nav_loop() ) {
 					printf(
 						'<li class="no-children"><a href="%s">%s</a></li>',
 						$site->url() . str_replace( '/', '', $loop_uri ) . '/',
