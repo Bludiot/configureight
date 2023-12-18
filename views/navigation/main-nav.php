@@ -33,8 +33,8 @@ use function CFE_Tags\{
 	<ul class="nav-list main-nav-list">
 		<?php
 
-		$home_uri  = site()->getField( 'homepage' );
-		$loop_uri  = site()->getField( 'uriBlog' );
+		$home_uri = site()->getField( 'homepage' );
+		$loop_uri = site()->getField( 'uriBlog' );
 
 		// Add loop before pages link if home is static content.
 		// If `before` in theme plugin.
