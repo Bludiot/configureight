@@ -27,7 +27,6 @@ use function CFE_Tags\{
 	icon,
 	sticky_icon,
 	page_description,
-	loop_style_class,
 	has_tags,
 	get_author,
 	get_loop_pagination
@@ -135,7 +134,7 @@ $tags_list = function() use ( $post, $tags_icon ) {
 ?>
 <article id="<?php echo $post->uuid(); ?>" class="site-article" role="article" itemscope="itemscope" itemtype="<?php echo 'https://schema.org/' . $article_type; ?>" data-site-article>
 
-	<div class="post-loop-content <?php echo loop_style_class(); ?> post-<?php echo loop_type(); ?>-content">
+	<div class="post-loop-content post-<?php echo loop_style(); ?>-content post-<?php echo loop_type(); ?>-content">
 
 		<header class="page-header post-header post-in-loop-header" data-page-header>
 			<h2 class="page-title posts-loop-title">

@@ -1163,39 +1163,6 @@ function loop_style() {
 }
 
 /**
- * Loop style class
- *
- * For use in loop wrappers.
- *
- * @since  1.0.0
- * @return string Returns the loop style class.
- */
-function loop_style_class() {
-
-	$class = 'post-list-content';
-	if ( plugin() ) {
-		if ( is_main_loop() ) {
-			if ( 'grid' == loop_style() ) {
-				$class = 'post-grid-content';
-			} elseif ( 'full' == loop_style() ) {
-				$class = 'post-full-content';
-			}
-		} elseif ( is_cat() ) {
-			$class = sprintf(
-				'post-%s-content',
-				plugin()->cat_style()
-			);
-		} elseif ( is_tag() ) {
-			$class = sprintf(
-				'post-%s-content',
-				plugin()->tag_style()
-			);
-		}
-	}
-	return $class;
-}
-
-/**
  * Loop post count
  *
  * Gets loop post count from the loop data.
