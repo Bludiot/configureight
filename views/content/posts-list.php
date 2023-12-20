@@ -164,7 +164,7 @@ if ( plugin() ) {
 
 		<?php if ( $thumb_src ) : ?>
 		<div class="post-cover-wrap">
-			<figure class="<?php echo $cover_class; ?>"
+			<figure class="<?php echo $cover_class; ?>">
 				<a href="<?php echo $post->permalink(); ?>">
 					<img src="<?php echo $thumb_src; ?>" loading="lazy" />
 				</a>
