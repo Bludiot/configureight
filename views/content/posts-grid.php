@@ -155,7 +155,11 @@ $tags_list = function() use ( $post, $tags_icon ) {
 // Cover image class.
 $cover_class = 'post-cover cover-overlay';
 if ( plugin() ) {
-	if ( 'blend' == plugin()->cover_style() ) {
+	if (
+		'blend' == plugin()->cover_style() &&
+		is_array( plugin()->cover_blend_use() ) &&
+		in_array( 'loop', plugin()->cover_blend_use() )
+	) {
 		$cover_class = 'post-cover cover-blend';
 	}
 }

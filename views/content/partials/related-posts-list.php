@@ -33,7 +33,15 @@ if ( plugin() ) {
 // Related style.
 $related_style = 'list';
 if ( plugin() ) {
-	$related_style = plugin()->related_style();
+	$related_style = plugin()->related_style() . ' cover-overlay';
+
+	if (
+		'blend' == plugin()->cover_style() &&
+		is_array( plugin()->cover_blend_use() ) &&
+		in_array( 'related', plugin()->cover_blend_use() )
+	) {
+		$related_style = plugin()->related_style() . ' cover-blend';
+	}
 }
 
 // Use loop date.
@@ -67,11 +75,11 @@ if ( plugin() ) {
 		<?php foreach ( $get_related as $related ) : ?>
 		<article class="related-post">
 			<?php if ( $related->coverImage() ) : ?>
-			<figure class="related-cover">
-				<a href="<?php echo $related->permalink(); ?>">
+			<a href="<?php echo $related->permalink(); ?>">
+				<figure class="related-cover">
 					<img src="<?php echo $related->thumbCoverImage(); ?>" alt="">
-				</a>
-			</figure>
+				</figure>
+			</a>
 			<?php endif; ?>
 			<div class="related-content">
 				<p class="related-title"><a href="<?php echo $related->permalink(); ?>">

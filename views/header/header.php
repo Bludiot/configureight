@@ -90,7 +90,11 @@ if ( full_cover() ) {
 	$cover_class = 'full-cover-image cover-overlay';
 }
 if ( plugin() ) {
-	if ( 'blend' == plugin()->cover_style() ) {
+	if (
+		'blend' == plugin()->cover_style() &&
+		is_array( plugin()->cover_blend_use() ) &&
+		in_array( 'covers', plugin()->cover_blend_use() )
+	) {
 		$cover_class = 'page-cover cover-blend';
 
 		if ( full_cover() ) {

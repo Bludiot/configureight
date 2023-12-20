@@ -18,6 +18,8 @@ use function CFE_Func\{
 	plugin,
 	loop_data,
 	is_main_loop,
+	is_cat,
+	is_tag,
 	get_word_count
 };
 use function CFE_Tags\{
@@ -131,6 +133,23 @@ $tags_list = function() use ( $post, $tags_icon ) {
 	return '';
 };
 
+// Cover image class.
+$cover_class = 'post-cover cover-overlay';
+if ( plugin() ) {
+	if (
+		'blend' == plugin()->cover_style() &&
+		is_array( plugin()->cover_blend_use() )
+	) {
+		if ( is_main_loop() && in_array( 'loop', plugin()->cover_blend_use() ) ) {
+			$cover_class = 'post-cover cover-blend';
+		} elseif ( is_cat() && in_array( 'cat', plugin()->cover_blend_use() ) ) {
+			$cover_class = 'post-cover cover-blend';
+		} elseif ( is_tag() && in_array( 'tag', plugin()->cover_blend_use() ) ) {
+			$cover_class = 'post-cover cover-blend';
+		}
+	}
+}
+
 ?>
 <article id="<?php echo $post->uuid(); ?>" class="site-article" role="article" itemscope="itemscope" itemtype="<?php echo 'https://schema.org/' . $article_type; ?>" data-site-article>
 
@@ -144,12 +163,14 @@ $tags_list = function() use ( $post, $tags_icon ) {
 		</header>
 
 		<?php if ( $thumb_src ) : ?>
-		<figure class="post-cover">
-			<a href="<?php echo $post->permalink(); ?>">
-				<img src="<?php echo $thumb_src; ?>" loading="lazy" />
-			</a>
-			<figcaption class="screen-reader-text"><?php echo $post->title(); ?></figcaption>
-		</figure>
+		<div class="post-cover-wrap">
+			<figure class="<?php echo $cover_class; ?>"
+				<a href="<?php echo $post->permalink(); ?>">
+					<img src="<?php echo $thumb_src; ?>" loading="lazy" />
+				</a>
+				<figcaption class="screen-reader-text"><?php echo $post->title(); ?></figcaption>
+			</figure>
+		</div>
 		<?php endif; ?>
 
 		<footer class="post-info post-<?php echo loop_type(); ?>-info">

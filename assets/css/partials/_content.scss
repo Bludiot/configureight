@@ -198,6 +198,28 @@ body {
 			max-height: 320px;
 			object-fit: cover;
 		}
+
+		&:after {
+			content: '';
+			z-index: 5;
+			display: block;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+		}
+
+		&.cover-blend {
+			&:after {
+				background-color: var( --cfe-cover-blend--bg-color );
+				mix-blend-mode: multiply;
+			}
+
+			img {
+				filter: grayscale( 100% );
+			}
+		}
 	}
 
 	.post-info-category {
@@ -260,8 +282,16 @@ body {
 		}
 	}
 
-	.post-cover {
+	.post-cover-wrap {
 		grid-area: cover;
+	}
+
+	.post-cover {
+		position: relative;
+		width: 100%;
+		height: 100%;
+		max-width: 180px;
+		max-height: 180px;
 
 		@media screen and ( max-width: $break_phone ) {
 			margin: var( --cfe-post-cover--list--phone--margin, 1.5rem 0 0 0 );
@@ -772,12 +802,37 @@ body {
 
 	.related-cover {
 		position: relative;
+		width: 80px;
+		height: 80px;
+
+		&:after {
+			content: '';
+			display: block;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+		}
 
 		img {
 			display: block;
 			width: 80px;
 			height: 80px;
 			object-fit: cover;
+		}
+	}
+
+	&.cover-blend {
+		.related-cover {
+			&:after {
+				background-color: var( --cfe-cover-blend--bg-color );
+				mix-blend-mode: multiply;
+			}
+
+			img {
+				filter: grayscale( 100% );
+			}
 		}
 	}
 

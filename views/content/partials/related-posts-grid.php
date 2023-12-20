@@ -35,7 +35,11 @@ $related_style = 'list';
 if ( plugin() ) {
 	$related_style = plugin()->related_style() . ' cover-overlay';
 
-	if ( 'blend' == plugin()->cover_style() ) {
+	if (
+		'blend' == plugin()->cover_style() &&
+		is_array( plugin()->cover_blend_use() ) &&
+		in_array( 'related', plugin()->cover_blend_use() )
+	) {
 		$related_style = plugin()->related_style() . ' cover-blend';
 	}
 }
