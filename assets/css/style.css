@@ -1408,13 +1408,29 @@ h3 + .search-form {
   gap: var(--cfe-pagination-list--gap, 0 0.5em);
   justify-content: center;
 }
-.page-navigation .pagination-list.pagination-prev-next {
+.page-navigation .pagination-list.pagination-prev-next, .page-navigation .pagination-list.pagination-titles {
   justify-content: var(--cfe-pagination-list--prev-next--justify-content, space-between);
 }
-.page-navigation .pagination-list.pagination-titles {
-  justify-content: var(--cfe-pagination-list--titles--justify-content, space-between);
+.page-navigation .pagination-list.pagination-prev-next li, .page-navigation .pagination-list.pagination-titles li {
+  width: 100%;
+}
+.page-navigation .pagination-list.pagination-prev-next li#next-post, .page-navigation .pagination-list.pagination-titles li#next-post {
+  text-align: right;
+}
+.page-navigation .pagination-list.pagination-prev-next a {
+  display: var(--cfe-pagination-list--prev-next--link--display, inline-flex);
+  align-items: var(--cfe-pagination-list--prev-next--link--align-items, center);
+  gap: var(--cfe-pagination-list--prev-next--link--gap, 0.5em);
+}
+.page-navigation .pagination-list.pagination-prev-next a .theme-icon {
+  transform: translateY(1px);
+}
+.page-navigation .pagination-list.pagination-titles li#next-post a {
+  text-align: right;
+  justify-content: flex-end;
 }
 .page-navigation .pagination-list.pagination-titles a {
+  width: 100%;
   display: var(--cfe-pagination-list--titles--link--display, inline-flex);
   align-items: var(--cfe-pagination-list--titles--link--align-items, center);
   gap: var(--cfe-pagination-list--titles--link--gap, 0.5em);
@@ -1422,6 +1438,9 @@ h3 + .search-form {
   font-weight: var(--cfe-pagination-list--titles--link--font-weight, 600);
   -webkit-text-decoration: var(--cfe-pagination-list--titles--link--text-decoration, none);
           text-decoration: var(--cfe-pagination-list--titles--link--text-decoration, none);
+}
+.page-navigation .pagination-list.pagination-titles a .theme-icon {
+  transform: translateY(-1px);
 }
 .page-navigation .pagination-list.pagination-numerical a {
   display: inline-block;
