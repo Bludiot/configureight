@@ -148,6 +148,14 @@ input[type="image"] {
 		border-color: var( --cfe-button--action-border-color, var( --cfe-button--border-color, ) );
 		color: var( --cfe-button--action--text-color, var( --cfe-button--text-color ) );
 	}
+
+	&.disabled,
+	&:disabled {
+		cursor: var( --cfe-button--disabled--cursor, not-allowed );
+		background-color: var( --cfe-button--disabled--bg-color, #eeeeee );
+		border-color: var( --cfe-button--disabled--border-color, #cccccc );
+		color: var( --cfe-button--disabled--text-color, #cccccc );
+	}
 }
 
 input[type="number"] {
