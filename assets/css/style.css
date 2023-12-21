@@ -977,6 +977,30 @@ h3 + .search-form {
   }
 }
 
+.logo-above-text .site-header-wrap {
+  align-items: var(--cfe-site-branding--logo-above--align-items, flex-start);
+}
+@media screen and (max-width: 960px) {
+  .logo-above-text .site-header-wrap {
+    align-items: var(--cfe-site-header-wrap--align-items--tablet, center);
+  }
+}
+.logo-above-text .site-branding {
+  flex-direction: var(--cfe-site-branding--logo-above--flex-direction, column);
+}
+
+.logo-below-text .site-header-wrap {
+  align-items: var(--cfe-site-branding--logo-below--align-items, flex-start);
+}
+@media screen and (max-width: 960px) {
+  .logo-below-text .site-header-wrap {
+    align-items: var(--cfe-site-header-wrap--align-items--tablet, center);
+  }
+}
+.logo-below-text .site-branding {
+  flex-direction: var(--cfe-site-branding--logo-below--flex-direction, column-reverse);
+}
+
 .site-logo {
   width: 100%;
   max-width: var(--cfe-site-logo--max-width, 60px);

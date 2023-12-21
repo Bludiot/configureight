@@ -650,6 +650,19 @@ function body_classes() {
 		}
 	}
 
+	// Logo location.
+	if ( site()->logo() && plugin() ) {
+		if ( 'above' == plugin()->logo_location() ) {
+			$classes[] = 'logo-above-text';
+		} elseif ( 'below' == plugin()->logo_location() ) {
+			$classes[] = 'logo-below-text';
+		} else {
+			$classes[] = 'logo-before-text';
+		}
+	} elseif ( site()->logo() ) {
+		$classes[] = 'logo-before-text';
+	}
+
 	// Search pages.
 	if ( is_search() ) {
 		$classes[] = 'search loop loop-style-blog loop-template-list';
