@@ -1411,6 +1411,18 @@ h3 + .search-form {
 .page-navigation .pagination-list.pagination-prev-next {
   justify-content: var(--cfe-pagination-list--prev-next--justify-content, space-between);
 }
+.page-navigation .pagination-list.pagination-titles {
+  justify-content: var(--cfe-pagination-list--titles--justify-content, space-between);
+}
+.page-navigation .pagination-list.pagination-titles a {
+  display: var(--cfe-pagination-list--titles--link--display, inline-flex);
+  align-items: var(--cfe-pagination-list--titles--link--align-items, center);
+  gap: var(--cfe-pagination-list--titles--link--gap, 0.5em);
+  font-size: var(--cfe-pagination-list--titles--link--font-size, var(--cfe-font-size, 1rem));
+  font-weight: var(--cfe-pagination-list--titles--link--font-weight, 600);
+  -webkit-text-decoration: var(--cfe-pagination-list--titles--link--text-decoration, none);
+          text-decoration: var(--cfe-pagination-list--titles--link--text-decoration, none);
+}
 .page-navigation .pagination-list.pagination-numerical a {
   display: inline-block;
   padding: 0 0.5em;

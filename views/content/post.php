@@ -46,4 +46,17 @@ if ( plugin() ) {
 	include( THEME_DIR . 'views/content/partials/related-posts-list.php' );
 } ?>
 
-<?php include( THEME_DIR . 'views/navigation/posts-prev-next.php' ); ?>
+<?php
+
+// Posts navigation.
+if ( plugin() ) {
+	if ( plugin()->posts_nav() ) {
+		if ( 'titles' == plugin()->posts_nav_type() ) {
+			include( THEME_DIR . 'views/navigation/posts-titles.php' );
+		} else {
+			include( THEME_DIR . 'views/navigation/posts-prev-next.php' );
+		}
+	}
+} else {
+	include( THEME_DIR . 'views/navigation/posts-prev-next.php' );
+} ?>
