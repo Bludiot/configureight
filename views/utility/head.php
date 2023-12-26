@@ -96,6 +96,9 @@ if ( has_cover() && ! empty( get_cover_src() ) ) {
 	echo scheme_stylesheet( 'colors' );
 	echo scheme_stylesheet( 'fonts' );
 	echo config_styles();
+	if ( plugin() ) {
+		plugins_hook( 'color_scheme_vars' );
+	}
 	echo custom_css();
 	?>
 
