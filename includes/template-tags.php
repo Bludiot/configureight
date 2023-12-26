@@ -50,7 +50,6 @@ use function CFE_Func\{
 	full_cover,
 	asset_min,
 	text_replace,
-	hex_to_rgb,
 	numbers_to_text
 };
 
@@ -146,7 +145,7 @@ function scheme_stylesheet( $type = '' ) {
 	$suffix = asset_min();
 
 	// Color scheme stylesheet.
-	if ( 'colors' === $type && 'default' != $colors ) {
+	if ( 'colors' === $type ) {
 		$html = helper() :: css( "assets/css/schemes/colors/{$colors}/style{$suffix}.css" );
 	}
 
@@ -253,11 +252,9 @@ function config_styles() {
 		}
 
 		// Body color.
-		if ( ! empty( plugin()->color_body() ) &&
-			'#ffffff' != plugin()->color_body()
-		) {
+		if ( ! empty( plugin()->color_body() ) ) {
 			$styles .= sprintf(
-				'--cfe-bg-color: %s;',
+				'--cfe-scheme-color--body: %s;',
 				plugin()->color_body()
 			);
 		}

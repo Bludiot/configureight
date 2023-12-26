@@ -922,45 +922,6 @@ function get_related( $max = 3, $similar = true ) {
 }
 
 /**
- * Convert a 3- or 6-digit hexadecimal color to an associative RGB array.
- *
- * @param  string $color The color in hex format.
- * @param  bool   $opacity Whether to return the RGB color is opaque.
- * @return string
- */
-function hex_to_rgb( $color, $opacity = false ) {
-
-	if ( empty( $color ) ) {
-		return false;
-	}
-
-	if ( '#' === $color[0] ) {
-		$color = substr( $color, 1 );
-	}
-
-	if ( 6 === strlen( $color ) ) {
-		$hex = array( $color[0] . $color[1], $color[2] . $color[3], $color[4] . $color[5] );
-	} elseif ( 3 === strlen( $color ) ) {
-		$hex = array( $color[0] . $color[0], $color[1] . $color[1], $color[2] . $color[2] );
-	} else {
-		return null;
-	}
-	$rgb = array_map( 'hexdec', $hex );
-
-	if ( $opacity ) {
-		if ( abs( $opacity ) > 1 ) {
-			$opacity = 1.0;
-		}
-		$output = 'rgba(' . implode( ',', $rgb ) . ',' . $opacity . ')';
-
-	} else {
-		$output = 'rgb(' . implode( ',', $rgb ) . ')';
-	}
-
-	return $output;
-}
-
-/**
  * Read numbers
  *
  * Converts an integer to its textual representation.
