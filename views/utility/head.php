@@ -21,7 +21,6 @@ use function CFE_Tags\{
 	load_font_files,
 	favicon_tag,
 	config_styles,
-	scheme_stylesheet,
 	custom_css
 };
 
@@ -92,15 +91,14 @@ if ( has_cover() && ! empty( get_cover_src() ) ) {
 		echo $helper :: css( "assets/css/style-rtl{$suffix}.css" );
 	}
 
-	// Configuration stylesheets.
-	echo scheme_stylesheet( 'colors' );
-	echo scheme_stylesheet( 'fonts' );
-	echo config_styles();
+	// Configuration styles.
 	if ( plugin() ) {
+		echo plugin()->scheme_stylesheet( 'colors' );
+		echo plugin()->scheme_stylesheet( 'fonts' );
+		echo config_styles();
 		plugins_hook( 'color_scheme_vars' );
-	}
-	echo custom_css();
-	?>
+		echo custom_css();
+	} ?>
 
 	<?php plugins_hook( 'siteHead' ); ?>
 </head>

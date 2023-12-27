@@ -124,85 +124,16 @@ function favicon_tag() {
 }
 
 /**
- * Load scheme stylesheet
- *
- * @since  1.0.0
- * @return string Returns a link tag for the `<head>`.
- */
-function scheme_stylesheet( $type = '' ) {
-
-	// Stop if no scheme type.
-	if ( empty( $type ) || ! plugin() ) {
-		return null;
-	}
-
-	// Get options from the theme plugin.
-	$colors = plugin()->color_scheme();
-	$fonts  = plugin()->font_scheme();
-	$html   = '';
-
-	// Get minified if not in debug mode.
-	$suffix = asset_min();
-
-	// Color scheme stylesheet.
-	if ( 'colors' === $type ) {
-		$html = helper() :: css( "assets/css/schemes/colors/{$colors}/style{$suffix}.css" );
-	}
-
-	// Typography scheme stylesheet.
-	if ( 'fonts' == $type && 'default' != $fonts ) {
-		$html .= helper() :: css( "assets/css/schemes/fonts/{$fonts}/style{$suffix}.css" );
-	}
-	return $html;
-}
-
-/**
  * Load font files
  *
  * @since  1.0.0
  * @return mixed Returns link tags for the `<head>` or null.
  */
 function load_font_files() {
-
-	// Stop if the theme plugin is not installed.
 	if ( ! plugin() ) {
 		return null;
 	}
-
-	// Get the font scheme setting.
-	$fonts = plugin()->font_scheme();
-
-	// Stop if default font, no directory exists.
-	if ( 'default' == $fonts || empty( plugin()->font_scheme() ) ) {
-		return null;
-	}
-	$valid = [ 'woff', 'woff2', 'otf', 'ttf' ];
-	$files = scandir( THEME_DIR . "assets/fonts/{$fonts}/" );
-	$tags  = '';
-
-	foreach ( $files as $font => $file ) {
-
-		$href = DOMAIN_THEME . "assets/fonts/{$fonts}/{$file}";
-		$tab = '	';
-
-		// Get the font file extension.
-		$info = pathinfo( $file );
-		$type = $info['extension'];
-		if ( 'ttf' == $info ) {
-			$type = 'truetype';
-		}
-
-		if ( ! in_array( $type, $valid ) ) {
-			$tags  .= '';
-		} else {
-			$tags .= sprintf(
-				'<link rel="preload" href="%s" as="font" type="font/%s" crossorigin="anonymous">',
-				$href,
-				$type
-			) . "\n" . $tab;
-		}
-	}
-	return $tags;
+	return plugin()->load_font_files();
 }
 
 /**
@@ -215,88 +146,88 @@ function load_font_files() {
  */
 function config_styles() {
 
-	$get_nav_pos = get_nav_position();
+	if ( ! plugin() ) {
+		return;
+	}
 
-	$styles = '<style>:root {';
+	$nav_pos = get_nav_position();
+	$styles  = '<style>:root {';
 
-	if ( plugin() ) {
-
-		// Loader image overlay.
-		if ( ! empty( plugin()->loader_bg_color() ) ) {
-			$styles .= sprintf(
-				'--cfe-loader-overlay--bg-color: %s;',
-				plugin()->loader_bg_color()
-			);
-		}
-
-		// Loader image text.
-		if ( ! empty( plugin()->loader_text_color() ) ) {
-			$styles .= sprintf(
-				'--cfe-loader--text-color: %s;',
-				plugin()->loader_text_color()
-			);
-		}
-
-		// General spacing.
-		if ( ! empty( plugin()->horz_spacing() ) ) {
-			$styles .= sprintf(
-				'--cfe-spacing--horz: %srem;',
-				plugin()->horz_spacing()
-			);
-		}
-		if ( ! empty( plugin()->vert_spacing() ) ) {
-			$styles .= sprintf(
-				'--cfe-spacing--vert: %srem;',
-				plugin()->vert_spacing()
-			);
-		}
-
-		// Body color.
-		if ( ! empty( plugin()->color_body() ) ) {
-			$styles .= sprintf(
-				'--cfe-scheme-color--body: %s;',
-				plugin()->color_body()
-			);
-		}
-
-		// Header logo width.
+	// Loader image overlay.
+	if ( ! empty( plugin()->loader_bg_color() ) ) {
 		$styles .= sprintf(
-			'--cfe-site-logo--max-width: %s;',
-			plugin()->logo_width_std() . 'px'
+			'--cfe-loader-overlay--bg-color: %s;',
+			plugin()->loader_bg_color()
 		);
+	}
+
+	// Loader image text.
+	if ( ! empty( plugin()->loader_text_color() ) ) {
 		$styles .= sprintf(
-			'--cfe-site-logo--max-width--mobile: %s;',
-			plugin()->logo_width_mob() . 'px'
+			'--cfe-loader--text-color: %s;',
+			plugin()->loader_text_color()
 		);
+	}
 
-		// Cover image overlay.
-		if ( ! empty( plugin()->cover_overlay() ) ) {
-			$styles .= sprintf(
-				'--cfe-cover-overlay--bg-color: %s;',
-				plugin()->cover_overlay()
-			);
-		}
+	// General spacing.
+	if ( ! empty( plugin()->horz_spacing() ) ) {
+		$styles .= sprintf(
+			'--cfe-spacing--horz: %srem;',
+			plugin()->horz_spacing()
+		);
+	}
+	if ( ! empty( plugin()->vert_spacing() ) ) {
+		$styles .= sprintf(
+			'--cfe-spacing--vert: %srem;',
+			plugin()->vert_spacing()
+		);
+	}
 
-		// Cover image blend.
-		if ( ! empty( plugin()->cover_blend() ) ) {
-			$styles .= sprintf(
-				'--cfe-cover-blend--bg-color: %s;',
-				plugin()->cover_blend()
-			);
-		}
+	// Body color.
+	if ( ! empty( plugin()->color_body() ) ) {
+		$styles .= sprintf(
+			'--cfe-scheme-color--body: %s;',
+			plugin()->color_body()
+		);
+	}
 
-		// Cover image text.
-		if ( ! empty( plugin()->cover_text_color() ) ) {
-			$styles .= sprintf(
-				'--cfe-cover--text-color: %s;',
-				plugin()->cover_text_color()
-			);
-		}
+	// Header logo width.
+	$styles .= sprintf(
+		'--cfe-site-logo--max-width: %s;',
+		plugin()->logo_width_std() . 'px'
+	);
+	$styles .= sprintf(
+		'--cfe-site-logo--max-width--mobile: %s;',
+		plugin()->logo_width_mob() . 'px'
+	);
 
-		// Cover image text shadow.
-		if ( ! plugin()->cover_text_shadow() ) {
-			$styles .= '--cfe-cover--text-shadow: none;';
-		}
+	// Cover image overlay.
+	if ( ! empty( plugin()->cover_overlay() ) ) {
+		$styles .= sprintf(
+			'--cfe-cover-overlay--bg-color: %s;',
+			plugin()->cover_overlay()
+		);
+	}
+
+	// Cover image blend.
+	if ( ! empty( plugin()->cover_blend() ) ) {
+		$styles .= sprintf(
+			'--cfe-cover-blend--bg-color: %s;',
+			plugin()->cover_blend()
+		);
+	}
+
+	// Cover image text.
+	if ( ! empty( plugin()->cover_text_color() ) ) {
+		$styles .= sprintf(
+			'--cfe-cover--text-color: %s;',
+			plugin()->cover_text_color()
+		);
+	}
+
+	// Cover image text shadow.
+	if ( ! plugin()->cover_text_shadow() ) {
+		$styles .= '--cfe-cover--text-shadow: none;';
 	}
 
 	/**
@@ -306,19 +237,19 @@ function config_styles() {
 	 * settings use left and right options so in RTL the flex
 	 * direction needs to adjust accordingly.
 	 */
-	if ( 'left' === $get_nav_pos ) {
+	if ( 'left' === $nav_pos ) {
 		if ( ! is_rtl() ) {
 			$styles .= '--cfe-site-header-wrap--flex-direction: row-reverse;';
 		}
 		$styles .= '--cfe-site-header-wrap--flex-direction-tablet: column;';
 
-	} elseif ( 'above' === $get_nav_pos ) {
+	} elseif ( 'above' === $nav_pos ) {
 		$styles .= '--cfe-site-header-wrap--flex-direction: column-reverse;';
 		$styles .= '--cfe-site-header-wrap--align-items: flex-start;';
 		$styles .= '--cfe-site-header-wrap--flex-direction-tablet: column-reverse;';
 		$styles .= '--cfe-site-header-wrap--justify-content--tablet: center;';
 
-	} elseif ( 'below' === $get_nav_pos ) {
+	} elseif ( 'below' === $nav_pos ) {
 		$styles .= '--cfe-site-header-wrap--flex-direction: column;';
 		$styles .= '--cfe-site-header-wrap--align-items: flex-start;';
 		$styles .= '--cfe-site-header-wrap--flex-direction-tablet: column;';
@@ -345,17 +276,18 @@ function config_styles() {
  */
 function custom_css() {
 
-	if ( plugin() ) {
-		if ( empty( plugin()->custom_css() ) ) {
-			return null;
-		}
-
-		$style  = '<style>';
-		$style .= plugin()->custom_css();
-		$style .= '</style>';
-
-		return $style;
+	if ( ! plugin() ) {
+		return null;
 	}
+
+	if ( empty( plugin()->custom_css() ) ) {
+		return null;
+	}
+	$style  = '<style>';
+	$style .= plugin()->custom_css();
+	$style .= '</style>';
+
+	return $style;
 }
 
 /**
