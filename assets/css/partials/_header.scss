@@ -4,7 +4,7 @@
 
 .site-header {
 	position: relative;
-	background-color: var( --cfe-site-header--bg-color, var( --cfe-bg-color ) );
+	background-color: var( --cfe-site-header--bg-color, var( --cfe-scheme-color--body ) );
 
 	&.full-cover-header {
 		background-color: transparent !important;
@@ -17,7 +17,7 @@
 		width: 100%;
 		padding: 2rem;
 		z-index: 5998;
-		background-color: var( --cfe-site-header--bg-color, var( --cfe-bg-color ) );
+		background-color: var( --cfe-site-header--bg-color, var( --cfe-scheme-color--body ) );
 		display: flex;
 		flex-wrap: nowrap;
 		gap: 0 0.25rem;
@@ -99,7 +99,7 @@
 	position: relative;
 	z-index: 50;
 	width: 100%;
-	max-width: 100%;
+	max-width: var(--cfe-wrapper--general--max-width, 100%);
 	display: var( --cfe-site-header-wrap--display, flex );
 	flex-direction: var( --cfe-site-header-wrap--flex-direction, row );
 	align-items: var( --cfe-site-header-wrap--align-items, center );
@@ -180,7 +180,7 @@
 	text-transform: var( --cfe-site-title--text-transform );
 	font-variant: var( --cfe-site-title--font-variant, var( --cfe-heading-primary--font-variant ) );
 	line-height: var( --cfe-site-title--line-height, 1.2 );
-	color: var( --cfe-site-title--text-color, var( --cfe-heading-primary--text-color, var( --cfe-text-color ) ) );
+	color: var( --cfe-site-title--text-color, var( --cfe-heading-primary--text-color, var( --cfe-scheme-color--text ) ) );
 
 	a {
 		font-weight: inherit;
@@ -197,7 +197,7 @@
 
 .site-description {
 	margin: var( --cfe-site-description--margin, 0 );
-	color: var( --cfe-site-description--text-color, var( --cfe-text-color ) );
+	color: var( --cfe-site-description--text-color, var( --cfe-scheme-color--text ) );
 }
 
 .page-cover {

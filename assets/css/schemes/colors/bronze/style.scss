@@ -104,13 +104,13 @@ $close_icon_action_bg: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/20
 
 @media ( prefers-color-scheme: dark ) {
 	:root {
-		--cfe-bg-color: #051b21;
-		--cfe-text-color: #{$brz_white};
+		--cfe-scheme-color--body: #051b21;
+		--cfe-scheme-color--text: #{$brz_white};
 		--cfe-link--action--text-color: #{$brz_nickel};
 		--cfe-heading-primary--text-color: #{$brz_white};
 		--cfe-heading-primary--link--text-color: #{$brz_white};
 		--cfe-heading-primary--link--action--text-color: #{$brz_bronze};
-		--cfe-site-header--bg-color: var( --cfe-bg-color );
+		--cfe-site-header--bg-color: var( --cfe-scheme-color--body );
 		--cfe-site-nav--list--link--action--text-color: #{$brz_white};
 		--cfe-form--action--border-color: #{$brz_nickel};
 		--cfe-button--action--bg-color: #{$brz_nickel};

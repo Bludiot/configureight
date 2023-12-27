@@ -67,7 +67,7 @@ button,
 	font-weight: var( --cfe-form-element--font-weight );
 	background-color: var( --cfe-form-element--bg-color );
 	border: var( --cfe-form-element--border, var( --cfe-box-border ) );
-	color: var( --cfe-form-element--text-color, var( --cfe-text-color ) );
+	color: var( --cfe-form-element--text-color, var( --cfe-scheme-color--text ) );
 
 	&:focus {
 		border-color: var( --cfe-form--action--border-color );
@@ -129,9 +129,9 @@ input[type="image"] {
 	word-spacing: var( --cfe-button--word-spacing );
 	text-decoration: var( --cfe-button--text-decoration );
 	text-transform: var( --cfe-button--text-transform );
-	background-color: var( --cfe-button--bg-color, var( --cfe-bg-color ) );
+	background-color: var( --cfe-button--bg-color, var( --cfe-scheme-color--body ) );
 	border-color: var( --cfe-button--border-color, var( --cfe-box-border-color ) );
-	color: var( --cfe-button--text-color, var( --cfe-text-color ) );
+	color: var( --cfe-button--text-color, var( --cfe-scheme-color--text ) );
 	text-decoration: var( --cfe-button--text-decoration, none );
 	transition: var( --cfe-button--transition--property, all ) var( --cfe-button--transition--duration, .15s ) var( --cfe-button--transition--function, ease-in-out );
 

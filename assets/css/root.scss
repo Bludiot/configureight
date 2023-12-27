@@ -27,12 +27,12 @@
 	// General.
 	--cfe-spacing--horz: 2rem;
 	--cfe-spacing--vert: 2rem;
-	--cfe-bg-color: #{$white};
+	--cfe-scheme-color--body: #{$white};
 	--cfe-font-size: 1rem;
-	--cfe-text-color: #{$text_color};
+	--cfe-scheme-color--text: #{$text_color};
 
-	--cfe-link--text-color: #{$blue};
-	--cfe-link--action--text-color: #{lighten( $blue, 12% )};
+	--cfe-link--text-color: var( --cfe-scheme-color--one, #{$blue} );
+	--cfe-link--action--text-color: var( --cfe-scheme-color--two, #{lighten( $blue, 12% )} );
 	--cfe-link--transition: all 0.15s;
 
 	--cfe-heading-primary--font-size: 2rem;
@@ -45,7 +45,7 @@
 
 	--cfe-box-border-style: solid;
 	--cfe-box-border-width: 1px;
-	--cfe-box-border-color: #{$pale_gray};
+	--cfe-box-border-color: var( --cfe-scheme-color--six, #{$pale_gray} );
 	--cfe-box-border: var( --cfe-box-border-style ) var( --cfe-box-border-width ) var( --cfe-box-border-color );
 
 	--cfe-text-shadow: 0.05em 0.05em 0.05em #{rgba( $color: black, $alpha: 0.625 )};
@@ -65,9 +65,9 @@
 	--cfe-form-element--border: solid 1px var( --cfe-form--border-color );
 	--cfe-label-field--margin: 0;
 	--cfe-form-element--font-weight: 400;
-	--cfe-form--border-color: #{$light_gray};
-	--cfe-form--action--border-color: #{$blue};
-	--cfe-form--placeholder-color: #{$light_gray};
+	--cfe-form--border-color: var( --cfe-scheme-color--five, #{$light_gray} );
+	--cfe-form--action--border-color: var( --cfe-scheme-color--one, #{$blue} );
+	--cfe-form--placeholder-color: var( --cfe-scheme-color--five, #{$light_gray} );
 
 	--cfe-textarea--min-height: 200px;
 	--cfe-textarea--margin: 1em 0 0;
@@ -77,8 +77,8 @@
 
 	--cfe-button--padding: 0.75em 1em;
 	--cfe-button--font-weight: 700;
-	--cfe-button--bg-color: var( --cfe-bg-color, inherit );
-	--cfe-button--action--bg-color: #{$dark_gray};
+	--cfe-button--bg-color: var( --cfe-scheme-color--body, inherit );
+	--cfe-button--action--bg-color: var( --cfe-scheme-color--three, #{$dark_gray} );
 	--cfe-button--border-color: var( --cfe-form--border-color );
 	--cfe-button--text-color: var( --cfe-form--text-color );
 	--cfe-button--action--text-color: #{$white};
@@ -94,16 +94,16 @@
 	--cfe-toolbar--padding: 0 1rem;
 	--cfe-toolbar--height: 2rem;
 	--cfe-toolbar--font-size: 0.875rem;
-	--cfe-toolbar--bg-color: #{$dark_gray};
+	--cfe-toolbar--bg-color: var( --cfe-scheme-color--three, #{$dark_gray} );
 	--cfe-toolbar--text-color: #{$white};
 	--cfe-toolbar--link--padding: 0 0.5em;
 	--cfe-toolbar--link--bg-color: inherit;
 	--cfe-toolbar--link--text-color: #{$white};
-	--cfe-toolbar--link--action--bg-color: #{$medium_gray};
+	--cfe-toolbar--link--action--bg-color: var( --cfe-scheme-color--four, #{$medium_gray} );
 	--cfe-toolbar--link--action--text-color: #{$white};
 
 	// Header.
-	--cfe-site-header--bg-color: var( --cfe-bg-color );
+	--cfe-site-header--bg-color: var( --cfe-scheme-color--body );
 	--cfe-site-logo--min-width: 80px;
 	--cfe-cover--description--font-size: 1.3125rem;
 	--cfe-cover-overlay--bg-color: rgba( $color: black, $alpha: 0.625 );
@@ -113,8 +113,8 @@
 	--cfe-site-nav--max-width: 50vw;
 	--cfe-site-nav--item--font-size: var( --cfe-font-size );
 	--cfe-site-nav--item--font-weight: 600;
-	--cfe-site-nav--sub-list--bg-color: #{$dark_gray};
-	--cfe-site-nav--sub-list--action--bg-color: #{$medium_gray};
+	--cfe-site-nav--sub-list--bg-color: var( --cfe-scheme-color--three, #{$dark_gray} );
+	--cfe-site-nav--sub-list--action--bg-color: var( --cfe-scheme-color--four, #{$medium_gray} );
 	--cfe-site-nav--sub-list--text-color: #{$white};
 	--cfe-site-nav--sub-list--action--text-color: #{$white};
 

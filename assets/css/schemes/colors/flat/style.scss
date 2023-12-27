@@ -85,8 +85,8 @@ $close_icon_action_bg: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/20
 :root {
 
 	// General.
-	--cfe-bg-color: #{lighten( $fui_clouds, 2.5% )};
-	--cfe-text-color: #{$fui_midnight_blue};
+	--cfe-scheme-color--body: #{lighten( $fui_clouds, 2.5% )};
+	--cfe-scheme-color--text: #{$fui_midnight_blue};
 	--cfe-link--text-color: #{$fui_belize_hole};
 	--cfe-link--action--text-color: #{$fui_carrot};
 	--cfe-heading-primary--text-color: #{$fui_wet_asphalt};
@@ -120,13 +120,13 @@ $close_icon_action_bg: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/20
 
 @media ( prefers-color-scheme: dark ) {
 	:root {
-		--cfe-bg-color: #{$near_black};
-		--cfe-text-color: #{$fui_clouds};
+		--cfe-scheme-color--body: #{$near_black};
+		--cfe-scheme-color--text: #{$fui_clouds};
 		--cfe-link--text-color: #{$fui_clouds};
 		--cfe-link--action--text-color: #{$fui_sunflower};
 		--cfe-heading-primary--text-color: #{$fui_clouds};
 		--cfe-heading-primary--link--text-color: #{$fui_clouds};
 		--cfe-heading-primary--link--action--text-color: #{$fui_peter_river};
-		--cfe-site-header--bg-color: var( --cfe-bg-color );
+		--cfe-site-header--bg-color: var( --cfe-scheme-color--body );
 	}
 }

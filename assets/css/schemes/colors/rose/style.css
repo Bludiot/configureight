@@ -20,7 +20,7 @@
 }
 
 :root {
-  --cfe-text-color: #1b0209;
+  --cfe-scheme-color--text: #1b0209;
   --cfe-link--text-color: #f5487f;
   --cfe-link--action--text-color: #f879a1;
   --cfe-heading-primary--text-color: #401225;
@@ -48,14 +48,14 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --cfe-bg-color: #1b0209;
-    --cfe-text-color: #ffffff;
+    --cfe-scheme-color--body: #1b0209;
+    --cfe-scheme-color--text: #ffffff;
     --cfe-link--text-color: #f5487f;
     --cfe-link--action--text-color: #ffffff;
     --cfe-heading-primary--text-color: #ffffff;
     --cfe-heading-primary--link--text-color: #ffffff;
     --cfe-heading-primary--link--action--text-color: #f5487f;
-    --cfe-site-header--bg-color: var( --cfe-bg-color );
+    --cfe-site-header--bg-color: var( --cfe-scheme-color--body );
     --cfe-site-nav--list--link--action--text-color: #ffffff;
     --cfe-form--action--border-color: #f879a1;
     --cfe-button--action--bg-color: #f879a1;

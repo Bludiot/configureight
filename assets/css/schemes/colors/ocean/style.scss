@@ -2,25 +2,8 @@
 /// Color Scheme: Ocean
 ///
 
-// General colors.
-$ocn_white       : #ffffff !default;
-$off_white   : #eeeeee !default;
-$black       : #000000 !default;
-$near_black  : #1e1e1e !default;
-$dark_gray   : #333333 !default;
-$medium_gray : #555555 !default;
-$light_gray  : #888888 !default;
-$pale_gray   : #cccccc !default;
-$red         : #dd0000 !default;
-$orange      : #ee6600 !default;
-$yellow      : #f8ce30 !default;
-$green       : #4b9960 !default;
-$blue        : #0044aa !default;
-$violet      :  #551a8b !default;
-$error       : $red !default;
-$notify      : $orange !default;
-$warning     : $yellow !default;
-$success     : $green !default;
+// Get general colors.
+@import '../../../modules/_utility';
 
 // Scheme colors.
 $ocn_white : #f8fafd;
@@ -71,7 +54,7 @@ $close_icon_action_bg: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/20
 :root {
 
 	// General.
-	--cfe-text-color: #{$ocn_black};
+	--cfe-scheme-color--text: #{$ocn_black};
 	--cfe-link--text-color: #{$ocn_blue};
 	--cfe-link--action--text-color: #{$ocn_light};
 	--cfe-heading-primary--text-color: #{$ocn_dark};
@@ -106,14 +89,14 @@ $close_icon_action_bg: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/20
 
 @media ( prefers-color-scheme: dark ) {
 	:root {
-		--cfe-bg-color: #{$ocn_black};
-		--cfe-text-color: #{$ocn_white};
+		--cfe-scheme-color--body: #{$ocn_black};
+		--cfe-scheme-color--text: #{$ocn_white};
 		--cfe-link--text-color: #{$ocn_light};
 		--cfe-link--action--text-color: #{$ocn_white};
 		--cfe-heading-primary--text-color: #{$ocn_white};
 		--cfe-heading-primary--link--text-color: #{$ocn_white};
 		--cfe-heading-primary--link--action--text-color: #{$ocn_light};
-		--cfe-site-header--bg-color: var( --cfe-bg-color );
+		--cfe-site-header--bg-color: var( --cfe-scheme-color--body );
 		--cfe-site-nav--list--link--action--text-color: #{$ocn_white};
 		--cfe-form--action--border-color: #{$ocn_light};
 		--cfe-button--action--bg-color: #{$ocn_light};

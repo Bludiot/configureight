@@ -103,13 +103,13 @@ $close_icon_action_bg: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/20
 
 @media ( prefers-color-scheme: dark ) {
 	:root {
-		--cfe-bg-color: #051b21;
-		--cfe-text-color: #{$white};
+		--cfe-scheme-color--body: #051b21;
+		--cfe-scheme-color--text: #{$white};
 		--cfe-link--action--text-color: #{$white};
 		--cfe-heading-primary--text-color: #{$white};
 		--cfe-heading-primary--link--text-color: #{$white};
 		--cfe-heading-primary--link--action--text-color: #{$apr_orange};
-		--cfe-site-header--bg-color: var( --cfe-bg-color );
+		--cfe-site-header--bg-color: var( --cfe-scheme-color--body );
 		--cfe-site-nav--list--link--action--text-color: #{$white};
 		--cfe-form--action--border-color: #{$apr_blush};
 		--cfe-button--action--bg-color: #{$apr_blush};

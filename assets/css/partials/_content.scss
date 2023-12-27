@@ -787,7 +787,7 @@ body {
 	word-spacing: var( --cfe-heading-secondary--word-spacing );
 	text-decoration: var( --cfe-heading-secondary--text-decoration );
 	text-transform: var( --cfe-heading-secondary--text-transform );
-	color: var( --cfe-heading-secondary--text-color, var( --cfe-text-color ) );
+	color: var( --cfe-heading-secondary--text-color, var( --cfe-scheme-color--text ) );
 }
 
 .related-style-list {

@@ -23,13 +23,13 @@ body {
 	letter-spacing: var( --cfe-letter-spacing, normal );
 	word-spacing: var( --cfe-word-spacing, normal );
 	line-height: var( --cfe-line-height, 1.5 );
-	background-color: var( --cfe-bg-color );
+	background-color: var( --cfe-scheme-color--body );
 	background-image: var( --cfe-bg-image );
 	background-repeat: var( --cfe-bg-repeat );
 	background-position: var( --cfe-bg-position );
 	background-size: var( --cfe-bg-size );
 	background-attachment: var( --cfe-bg-attachment );
-	color: var( --cfe-text-color );
+	color: var( --cfe-scheme-color--text );
 
 	&.toolbar-active {
 		margin-top: var( --cfe-toolbar--height );
@@ -153,7 +153,7 @@ h2 {
 	word-spacing: var( --cfe-heading-primary--word-spacing );
 	text-decoration: var( --cfe-heading-primary--text-decoration );
 	text-transform: var( --cfe-heading-primary--text-transform );
-	color: var( --cfe-heading-primary--text-color, var( --cfe-text-color ) );
+	color: var( --cfe-heading-primary--text-color, var( --cfe-scheme-color--text ) );
 
 	a {
 		font-weight: var( --cfe-heading-primary--link--font-weight, inherit );
@@ -179,7 +179,7 @@ h4 {
 	word-spacing: var( --cfe-heading-secondary--word-spacing );
 	text-decoration: var( --cfe-heading-secondary--text-decoration );
 	text-transform: var( --cfe-heading-secondary--text-transform );
-	color: var( --cfe-heading-secondary--text-color, var( --cfe-text-color ) );
+	color: var( --cfe-heading-secondary--text-color, var( --cfe-scheme-color--text ) );
 }
 
 // Theme icons.
@@ -215,8 +215,8 @@ h4 {
 	flex-direction: var( --cfe-loader--flex-direction, column );
 	align-items: var( --cfe-loader--align-items, center );
 	justify-content: var( --cfe-loader--justify-content, center );
-	background-color: var( --cfe-loader--bg-color, var( --cfe-bg-color ) );
-	color: var( --cfe-loader--text-color, var( --cfe-text-color ) );
+	background-color: var( --cfe-loader--bg-color, var( --cfe-scheme-color--body ) );
+	color: var( --cfe-loader--text-color, var( --cfe-scheme-color--text ) );
 
 	.loading-text {
 		font-family: var( --cfe-loader--text--font-family );
@@ -298,7 +298,7 @@ h4 {
 	background-color: var( --cfe-button--bg-color );
 	border: var( --cfe-form-element--border );
 	border-color: var( --cfe-button--border-color, var( --cfe-form--border-color ) );
-	color: var( --cfe-button--text-color, var( --cfe-text-color ) );
+	color: var( --cfe-button--text-color, var( --cfe-scheme-color--text ) );
 	border-radius: var( --cfe-to-top--border-radius, 50% );
 	transform: var( --cfe-to-top--transform, translateY(0) );
 	transition: var( --cfe-to-top--transition, opacity .5s, background-color .25s, transform .25s );

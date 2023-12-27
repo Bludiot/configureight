@@ -47,13 +47,13 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --cfe-bg-color: #051b21;
-    --cfe-text-color: #ffffff;
+    --cfe-scheme-color--body: #051b21;
+    --cfe-scheme-color--text: #ffffff;
     --cfe-link--action--text-color: #ffffff;
     --cfe-heading-primary--text-color: #ffffff;
     --cfe-heading-primary--link--text-color: #ffffff;
     --cfe-heading-primary--link--action--text-color: #c76919;
-    --cfe-site-header--bg-color: var( --cfe-bg-color );
+    --cfe-site-header--bg-color: var( --cfe-scheme-color--body );
     --cfe-site-nav--list--link--action--text-color: #ffffff;
     --cfe-form--action--border-color: #e6211c;
     --cfe-button--action--bg-color: #e6211c;
