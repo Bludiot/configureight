@@ -9,35 +9,44 @@ html {
 
 body {
 	display: var( --cfe-body--display, block );
+	overflow-x: var( --cfe-body--overflow-x, hidden );
+	overflow-y: var( --cfe-body--overflow-y );
 	position: var( --cfe-body--position, relative );
-	width: var( --cfe-body--width );
+	width: var( --cfe-body--width, 100% );
 	height: var( --cfe-body--height, 100% );
 	max-width: var( --cfe-body--max-width, 2048px );
+	max-height: var( --cfe-body--max-height );
 	margin: var( --cfe-body--margin, 0 auto );
 	padding: var( --cfe-body--padding, 0 );
-	font-family: var( --cfe-font-stack, var( --cfe-sans-stack, sans-serif ) );
-	font-size: var( --cfe-font-size, 1rem );
-	font-weight: var( --cfe-font-weight, normal );
-	font-style: var( --cfe-font-style, normal );
-	font-variant: var( --cfe-font-variant, normal );
-	letter-spacing: var( --cfe-letter-spacing, normal );
-	word-spacing: var( --cfe-word-spacing, normal );
-	line-height: var( --cfe-line-height, 1.5 );
-	background-color: var( --cfe-scheme-color--body );
-	background-image: var( --cfe-bg-image );
-	background-repeat: var( --cfe-bg-repeat );
-	background-position: var( --cfe-bg-position );
-	background-size: var( --cfe-bg-size );
-	background-attachment: var( --cfe-bg-attachment );
-	color: var( --cfe-scheme-color--text );
+	font-family: var( --cfe-body--font-family, var( --cfe-fonts--sans-stack, sans-serif ) );
+	font-size: var( --cfe-body--font-size, 1rem );
+	font-weight: var( --cfe-body--font-weight, normal );
+	font-style: var( --cfe-body--font-style, normal );
+	font-variant: var( --cfe-body--font-variant, normal );
+	text-decoration: var( --cfe-body--text-decoration );
+	text-transform: var( --cfe-body--text-transform );
+	letter-spacing: var( --cfe-body--letter-spacing, normal );
+	word-spacing: var( --cfe-body--word-spacing, normal );
+	line-height: var( --cfe-body--line-height, 1.5 );
+	background-color: var( --cfe-body--bg-color );
+	background-image: var( --cfe-body--bg-image );
+	background-repeat: var( --cfe-body--bg-repeat );
+	background-position: var( --cfe-body--bg-position );
+	background-size: var( --cfe-body--bg-size );
+	background-attachment: var( --cfe-body--bg-attachment );
+	color: var( --cfe-body--text-color );
+
+	&.serif:not( .monospace ) {
+		font-family: var( --cfe-fonts--serif-stack, serif );
+	}
+
+	&.monospace:not( .serif ) {
+		font-family: var( --cfe-fonts--monospace-stack, monospace );
+	}
 
 	&.toolbar-active {
 		margin-top: var( --cfe-toolbar--height );
 	}
-}
-
-.serif {
-	font-family: var( --cfe-serif-stack, serif );
 }
 
 ///
@@ -80,30 +89,36 @@ body {
 // General layout styles
 .wrapper-general {
 	display: var( --cfe-wrapper--general--display, block );
-	position: var( --cfe-wrapper--general--position, static );
+	position: var( --cfe-wrapper--general--position );
+	overflow-x: var( --cfe-wrapper--general--overflow-x );
+	overflow-y: var( --cfe-wrapper--general--overflow-y );
 	width: var( --cfe-wrapper--general--width, 100% );
 	max-width: var( --cfe-wrapper--general--max-width, 100% );
 	min-width: var( --cfe-wrapper--general--min-width );
 	height: var( --cfe-wrapper--general--height );
+	max-height: var( --cfe-wrapper--general--max-height );
 	min-height: var( --cfe-wrapper--general--min-height );
 	margin: var( --cfe-wrapper--general--margin, 0 );
 	padding: var( --cfe-wrapper--general--padding, 0 );
 }
 
 .page-wrap {
-	width: 100%;
+	display: var( --cfe-wrapper--page--display, block );
+	position: var( --cfe-wrapper--page--position );
+	overflow-x: var( --cfe-wrapper--page--overflow-x );
+	overflow-y: var( --cfe-wrapper--page--overflow-y );
+	width: var( --cfe-wrapper--page--width, 100% );
+	max-width: var( --cfe-wrapper--page--max-width, 100% );
+	min-width: var( --cfe-wrapper--page--min-width );
+	height: var( --cfe-wrapper--page--height );
+	max-height: var( --cfe-wrapper--page--max-height );
+	min-height: var( --cfe-wrapper--page--min-height );
+	margin: var( --cfe-wrapper--page--margin );
+	padding: var( --cfe-wrapper--page--padding );
 }
 
-// General element styles.
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-ul,
-ol {
+// General block text elements.
+h1, h2, h3, h4, h5, h6, p, ul, ol, blockquote, fieldset, table, pre {
 	margin: var( --cfe-element--margin, calc( var( --cfe-spacing--vert ) / 2 ) 0 0 0 );
 	padding: var( --cfe-element--padding );
 }
@@ -113,12 +128,14 @@ a {
 	position: var( --cfe-link--position );
 	font-size: var( --cfe-link--font-size, inherit );
 	font-weight: var( --cfe-link--font-weight, inherit );
-	font-style: var( --cfe-link--font-style, normal );
-	font-variant: var( --cfe-link--font-variant, normal );
-	text-decoration: var( --cfe-link--text-decoration, underline );
+	font-style: var( --cfe-link--font-style, inherit );
+	font-variant: var( --cfe-link--font-variant, inherit );
+	text-decoration: var( --cfe-link--text-decoration );
 	text-transform: var( --cfe-link--text-transform, inherit );
+	letter-spacing: var( --cfe-link--letter-spacing, inherit );
+	word-spacing: var( --cfe-link--word-spacing, inherit );
 	color: var( --cfe-link--text-color );
-	transition: var( --cfe-link--transition );
+	transition: var( --cfe-link--transition, all 0.15s );
 
 	&:hover,
 	&:focus {
@@ -130,6 +147,8 @@ a {
 		content: var( --cfe-link--before--content );
 		display: var( --cfe-link--before--display );
 		position: var( --cfe-link--before--position );
+		width: var( --cfe-link--before--width );
+		height: var( --cfe-link--before--height );
 		background-color: var( --cfe-link--before--bg-color );
 	}
 
@@ -137,27 +156,34 @@ a {
 		content: var( --cfe-link--after--content );
 		display: var( --cfe-link--after--display );
 		position: var( --cfe-link--after--position );
+		width: var( --cfe-link--after--width );
+		height: var( --cfe-link--after--height );
 		background-color: var( --cfe-link--after--bg-color );
 	}
 }
 
 h1,
 h2 {
-	font-family: var( --cfe-heading-primary--font-family );
-	font-size: var( --cfe-heading-primary--font-size );
+	font-family: var( --cfe-heading-primary--font-family, inherit );
+	font-size: var( --cfe-heading-primary--font-size, 2rem );
 	font-weight: var( --cfe-heading-primary--font-weight, 700 );
-	font-style: var( --cfe-heading-primary--font-style );
-	font-variant: var( --cfe-heading-primary--font-variant );
-	line-height: var( --cfe-heading-primary--line-height );
-	letter-spacing: var( --cfe-heading-primary--letter-spacing );
-	word-spacing: var( --cfe-heading-primary--word-spacing );
+	font-style: var( --cfe-heading-primary--font-style, inherit );
+	font-variant: var( --cfe-heading-primary--font-variant, inherit );
+	line-height: var( --cfe-heading-primary--line-height, inherit );
+	letter-spacing: var( --cfe-heading-primary--letter-spacing, -0.015em );
+	word-spacing: var( --cfe-heading-primary--word-spacing, -0.0325em );
 	text-decoration: var( --cfe-heading-primary--text-decoration );
 	text-transform: var( --cfe-heading-primary--text-transform );
-	color: var( --cfe-heading-primary--text-color, var( --cfe-scheme-color--text ) );
+	color: var( --cfe-heading-primary--text-color, var( --cfe-body--text-color ) );
 
 	a {
+		font-family: var( --cfe-heading-primary--link--font-family, inherit );
+		font-size: var( --cfe-heading-primary--link--font-size, inherit );
 		font-weight: var( --cfe-heading-primary--link--font-weight, inherit );
-		text-decoration: var( --cfe-link--text-decoration, none );
+		font-style: var( --cfe-heading-primary--link--font-style, inherit );
+		font-variant: var( --cfe-heading-primary--link--font-variant, inherit );
+		text-decoration: var( --cfe-heading-primary--link--text-decoration, none );
+		text-transform: var( --cfe-heading-primary--link--text-transform );
 		color: var( --cfe-heading-primary--link--text-color, var( --cfe-link--text-color ) );
 
 		&:hover,
@@ -169,17 +195,43 @@ h2 {
 
 h3,
 h4 {
-	font-family: var( --cfe-heading-secondary--font-family );
-	font-size: var( --cfe-heading-secondary--font-size );
-	font-weight: var( --cfe-heading-secondary--font-weight );
-	font-style: var( --cfe-heading-secondary--font-style );
-	font-variant: var( --cfe-heading-secondary--font-variant );
-	line-height: var( --cfe-heading-secondary--line-height );
-	letter-spacing: var( --cfe-heading-secondary--letter-spacing );
-	word-spacing: var( --cfe-heading-secondary--word-spacing );
+	font-family: var( --cfe-heading-secondary--font-family, inherit );
+	font-size: var( --cfe-heading-secondary--font-size, 1.375rem );
+	font-weight: var( --cfe-heading-secondary--font-weight, 700 );
+	font-style: var( --cfe-heading-secondary--font-style, inherit );
+	font-variant: var( --cfe-heading-secondary--font-variant, inherit );
+	line-height: var( --cfe-heading-secondary--line-height, inherit );
+	letter-spacing: var( --cfe-heading-secondary--letter-spacing, normal );
+	word-spacing: var( --cfe-heading-secondary--word-spacing, -0.0325em );
 	text-decoration: var( --cfe-heading-secondary--text-decoration );
 	text-transform: var( --cfe-heading-secondary--text-transform );
-	color: var( --cfe-heading-secondary--text-color, var( --cfe-scheme-color--text ) );
+	color: var( --cfe-heading-secondary--text-color, var( --cfe-body--text-color ) );
+
+	a {
+		font-family: var( --cfe-heading-secondary--link--font-family, inherit );
+		font-size: var( --cfe-heading-secondary--link--font-size, inherit );
+		font-weight: var( --cfe-heading-secondary--link--font-weight, inherit );
+		font-style: var( --cfe-heading-secondary--link--font-style, inherit );
+		font-variant: var( --cfe-heading-secondary--link--font-variant, inherit );
+		text-decoration: var( --cfe-heading-secondary--link--text-decoration, none );
+		text-transform: var( --cfe-heading-secondary--link--text-transform );
+		color: var( --cfe-heading-secondary--link--text-color, var( --cfe-link--text-color ) );
+
+		&:hover,
+		&:focus {
+			color: var( --cfe-heading-secondary--link--action--text-color, var( --cfe-link--action--text-color ) );
+		}
+	}
+}
+
+// Used for `ul` and `ol` elements.
+.inline-list {
+	display: var( --cfe-inline-list--display, inline-flex );
+	flex-direction: var( --cfe-inline-list--flex-direction, row );
+	flex-wrap: var( --cfe-inline-list--flex-wrap, wrap );
+	gap: var( --cfe-inline-list--gap, 0 0.5em );
+	margin: var( --cfe-inline-list--margin, 0 );
+	padding: var( --cfe-inline-list--padding, 0 );
 }
 
 // Theme icons.
@@ -208,31 +260,38 @@ h4 {
 	position: fixed;
 	top: 0;
 	left: 0;
-	width: 100%;
-	height: 100%;
+	width: 100vw;
+	height: 100vh;
 	z-index: var( --cfe-loader--z-index, 99999 );
 	display: var( --cfe-loader--display, flex );
 	flex-direction: var( --cfe-loader--flex-direction, column );
 	align-items: var( --cfe-loader--align-items, center );
 	justify-content: var( --cfe-loader--justify-content, center );
-	background-color: var( --cfe-loader--bg-color, var( --cfe-scheme-color--body ) );
-	color: var( --cfe-loader--text-color, var( --cfe-scheme-color--text ) );
+	background-color: var( --cfe-loader--bg-color, var( --cfe-body--bg-color ) );
+	color: var( --cfe-loader--text-color, var( --cfe-body--text-color ) );
 
 	.loading-text {
-		font-family: var( --cfe-loader--text--font-family );
-		font-size: var( --cfe-loader--text--font-size );
-		font-weight: var( --cfe-loader--text--font-weight );
-		line-height: var( --cfe-loader--text--line-height );
-		word-spacing: -0.0325em;
-		letter-spacing: var( --cfe-loader--text--letter-spacing, -0.015em );
-		text-transform: var( --cfe-loader--text--text-transform );
-		font-variant: var( --cfe-loader--text--font-variant );
+		font-family: var( --cfe-loader--text--font-family, var( --cfe-body--family ) );
+		font-size: var( --cfe-loader--text--font-size, 1.5rem );
+		font-weight: var( --cfe-loader--text--font-weight, 600 );
+		font-style: var( --cfe-loader--text--font-style, var( --cfe-body--font-style ) );
+		font-variant: var( --cfe-loader--text--font-variant, var( --cfe-body--font-variant ) );
+		line-height: var( --cfe-loader--text--line-height, 1 );
+		letter-spacing: var( --cfe-loader--text--letter-spacing, var( --cfe-body--letter-spacing ) );
+		word-spacing: var( --cfe-loader--text--word-spacing, var( --cfe-body--word-spacing ) );
+		text-decoration: var( --cfe-loader--text--text-decoration, var( --cfe-body--text-decoration ) );
+		text-transform: var( --cfe-loader--text--text-transform, var( --cfe-body--text-transform ) );
 	}
 
 	.loading-image {
+		display: var( --cfe-loader--image--display, block );
+		position: var( --cfe-loader--image--position );
+		overflow-x: var( --cfe-loader--image--overflow-x );
+		overflow-y: var( --cfe-loader--image--overflow-y );
 		width: var( --cfe-loader--image--width, 1.75rem );
 		height: var( --cfe-loader--image--height, 1.75rem );
 		margin: var( --cfe-loader--image--margin, 2rem 0 0 0 );
+		padding:  var( --cfe-loader--image--padding, 0 );
 		-webkit-animation: var( --cfe-loader--image--animation, spinner 1s infinite linear );
 		animation: var( --cfe-loader--image--animation, spinner 1s infinite linear );
 
@@ -244,44 +303,7 @@ h4 {
 	}
 }
 
-.inline-list {
-	display: var( --cfe-inline-list--display, inline-flex );
-	flex-direction: var( --cfe-inline-list--flex-direction, row );
-	gap: var( --cfe-inline-list--gap, 0 0.5em );
-	margin: var( --cfe-inline-list--margin, 0 );
-	padding: var( --cfe-inline-list--padding, 0 );
-}
-
-.search-form {
-	display: var( --cfe-sidebar--plugin--search--display, flex );
-	flex-wrap: var( --cfe-sidebar--plugin--search--flex-wrap, nowrap );
-	gap: var( --cfe-sidebar--plugin--search--gap, 0 0.25rem );
-
-	input[type="search"],
-	input[type="text"] {
-		width: 100%;
-		max-width: var( --cfe-form-element--max-width, 640px );
-	}
-
-	input[type="button"] {
-		text-indent: -999em;
-		position: var( --cfe-search--button--position );
-		display: var( --cfe-search--button--display, inline-block );
-		width: var( --cfe-search--button--width, 1.5em );
-		height: var( --cfe-search--button--height, 1.5em );
-		padding: var( --cfe-search--button--padding, 1.5em );
-		background-repeat: var( --cfe-search--button--background-repeat, no-repeat );
-		background-size: var( --cfe-search--button--background-size, 1.25em );
-		background-position: var( --cfe-search--button--background-position, center center );
-		background-image: var( --cfe-search--button--background-image, url( '#{$search_icon_bg}' ) );
-
-		&:hover,
-		&:focus {
-			background-image: var( --cfe-search--button--action--background-image, url( '#{$search_icon_action_bg}' ) );
-		}
-	}
-}
-
+// Optional "back to top" button.
 #to-top {
 	opacity: var( --cfe-to-top--opacity, 0 );
 	pointer-events: var( --cfe-to-top--pointer-events, none );
@@ -298,7 +320,7 @@ h4 {
 	background-color: var( --cfe-button--bg-color );
 	border: var( --cfe-form-element--border );
 	border-color: var( --cfe-button--border-color, var( --cfe-form--border-color ) );
-	color: var( --cfe-button--text-color, var( --cfe-scheme-color--text ) );
+	color: var( --cfe-button--text-color, var( --cfe-body--text-color ) );
 	border-radius: var( --cfe-to-top--border-radius, 50% );
 	transform: var( --cfe-to-top--transform, translateY(0) );
 	transition: var( --cfe-to-top--transition, opacity .5s, background-color .25s, transform .25s );
@@ -334,27 +356,27 @@ h4 {
 
 // Text selection.
 ::-o-selection {
-	color: var( --cfe-selection--text-color, #222222 );
-	background: var( --cfe-selection--bg-color, #ffdd00 );
+	color: var( --cfe-selection--text-color, $near_black );
+	background: var( --cfe-selection--bg-color, $yellow );
 	text-shadow: none;
 }
 ::-ms-selection {
-	color: var( --cfe-selection--text-color, #222222 );
-	background: var( --cfe-selection--bg-color, #ffdd00 );
+	color: var( --cfe-selection--text-color, $near_black );
+	background: var( --cfe-selection--bg-color, $yellow );
 	text-shadow: none;
 }
 ::-webkit-selection {
-	color: var( --cfe-selection--text-color, #222222 );
-	background: var( --cfe-selection--bg-color, #ffdd00 );
+	color: var( --cfe-selection--text-color, $near_black );
+	background: var( --cfe-selection--bg-color, $yellow );
 	text-shadow: none;
 }
 ::-moz-selection {
-	color: var( --cfe-selection--text-color, #222222 );
-	background: var( --cfe-selection--bg-color, #ffdd00 );
+	color: var( --cfe-selection--text-color, $near_black );
+	background: var( --cfe-selection--bg-color, $yellow );
 	text-shadow: none;
 }
 ::selection {
-	color: var( --cfe-selection--text-color, #222222 );
-	background: var( --cfe-selection--bg-color, #ffdd00 );
+	color: var( --cfe-selection--text-color, $near_black );
+	background: var( --cfe-selection--bg-color, $yellow );
 	text-shadow: none;
 }

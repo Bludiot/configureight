@@ -4,7 +4,7 @@
 
 .site-header {
 	position: relative;
-	background-color: var( --cfe-site-header--bg-color, var( --cfe-scheme-color--body ) );
+	background-color: var( --cfe-site-header--bg-color, var( --cfe-body--bg-color ) );
 
 	&.full-cover-header {
 		background-color: transparent !important;
@@ -17,7 +17,7 @@
 		width: 100%;
 		padding: 2rem;
 		z-index: 5998;
-		background-color: var( --cfe-site-header--bg-color, var( --cfe-scheme-color--body ) );
+		background-color: var( --cfe-site-header--bg-color, var( --cfe-body--bg-color ) );
 		display: flex;
 		flex-wrap: nowrap;
 		gap: 0 0.25rem;
@@ -180,7 +180,7 @@
 	text-transform: var( --cfe-site-title--text-transform );
 	font-variant: var( --cfe-site-title--font-variant, var( --cfe-heading-primary--font-variant ) );
 	line-height: var( --cfe-site-title--line-height, 1.2 );
-	color: var( --cfe-site-title--text-color, var( --cfe-heading-primary--text-color, var( --cfe-scheme-color--text ) ) );
+	color: var( --cfe-site-title--text-color, var( --cfe-heading-primary--text-color, var( --cfe-body--text-color ) ) );
 
 	a {
 		font-weight: inherit;
@@ -197,7 +197,7 @@
 
 .site-description {
 	margin: var( --cfe-site-description--margin, 0 );
-	color: var( --cfe-site-description--text-color, var( --cfe-scheme-color--text ) );
+	color: var( --cfe-site-description--text-color, var( --cfe-body--text-color ) );
 }
 
 .page-cover {
@@ -347,6 +347,7 @@
 		width: 100vw;
 		height: 100vh;
 		overflow: hidden;
+		background-color: var( --cfe-cover--bg-color, #121212 );
 
 		&:before,
 		&:after {

@@ -67,7 +67,7 @@ button,
 	font-weight: var( --cfe-form-element--font-weight );
 	background-color: var( --cfe-form-element--bg-color );
 	border: var( --cfe-form-element--border, var( --cfe-box-border ) );
-	color: var( --cfe-form-element--text-color, var( --cfe-scheme-color--text ) );
+	color: var( --cfe-form-element--text-color, var( --cfe-body--text-color ) );
 
 	&:focus {
 		border-color: var( --cfe-form--action--border-color );
@@ -129,9 +129,9 @@ input[type="image"] {
 	word-spacing: var( --cfe-button--word-spacing );
 	text-decoration: var( --cfe-button--text-decoration );
 	text-transform: var( --cfe-button--text-transform );
-	background-color: var( --cfe-button--bg-color, var( --cfe-scheme-color--body ) );
+	background-color: var( --cfe-button--bg-color, var( --cfe-body--bg-color ) );
 	border-color: var( --cfe-button--border-color, var( --cfe-box-border-color ) );
-	color: var( --cfe-button--text-color, var( --cfe-scheme-color--text ) );
+	color: var( --cfe-button--text-color, var( --cfe-body--text-color ) );
 	text-decoration: var( --cfe-button--text-decoration, none );
 	transition: var( --cfe-button--transition--property, all ) var( --cfe-button--transition--duration, .15s ) var( --cfe-button--transition--function, ease-in-out );
 
@@ -222,16 +222,16 @@ option {
 	color: var( --cfe-form--placeholder-color );
 }
 
-// Search form wrapper.
+// Search form.
 .search-form {
 	display: var( --cfe-search-form--display, flex );
-	flex-direction: var( --cfe-search-form--flex-direction );
+	flex-direction: var( --cfe-search-form--flex-direction, row );
 	align-items: var( --cfe-search-form--align-items );
 	justify-content: var( --cfe-search-form--justify-content );
 	flex-wrap: var( --cfe-search-form--flex-wrap, nowrap );
-	gap: var( --cfe-search-form--gap 0 0.5em );
+	gap: var( --cfe-search-form--gap, 0 0.25em );
 	margin: var( --cfe-search-form--margin, 1em 0 );
-	padding: var( --cfe-search-form--padding );
+	padding: var( --cfe-search-form--padding, 0 );
 	width: var( --cfe-search-form--width );
 	max-width: var( --cfe-search-form--max-width );
 
@@ -239,6 +239,30 @@ option {
 		width: var( --cfe-search-form--label--width, 100% );
 		font-size: var( --cfe-search-form--label--font-size, 1.5rem );
 		font-weight: var( --cfe-search-form--label--font-weight, 700 );
+	}
+
+	input[type="search"],
+	input[type="text"] {
+		width: 100%;
+		max-width: var( --cfe-form-element--max-width, 640px );
+	}
+
+	input[type="button"] {
+		text-indent: -999em;
+		position: var( --cfe-search--button--position );
+		display: var( --cfe-search--button--display, inline-block );
+		width: var( --cfe-search--button--width, 1.5em );
+		height: var( --cfe-search--button--height, 1.5em );
+		padding: var( --cfe-search--button--padding, 1.5em );
+		background-repeat: var( --cfe-search--button--background-repeat, no-repeat );
+		background-size: var( --cfe-search--button--background-size, 1.25em );
+		background-position: var( --cfe-search--button--background-position, center center );
+		background-image: var( --cfe-search--button--background-image, url( '#{$search_icon_bg}' ) );
+
+		&:hover,
+		&:focus {
+			background-image: var( --cfe-search--button--action--background-image, url( '#{$search_icon_action_bg}' ) );
+		}
 	}
 }
 

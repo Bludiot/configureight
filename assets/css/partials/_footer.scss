@@ -50,7 +50,7 @@
 		letter-spacing: var( --cfe-copyright--letter-spacing, var( --cfe-letter-spacing, normal ) );
 		word-spacing: var( --cfe-copyright--word-spacing, var( --cfe-word-spacing, normal ) );
 		line-height: var( --cfe-copyright--line-height, var( --cfe-line-height ) );
-		color: var( --cfe-copyright--text-color, var( --cfe-scheme-color--text ) );
+		color: var( --cfe-copyright--text-color, var( --cfe-body--text-color ) );
 	}
 
 	.search-form-wrap {
