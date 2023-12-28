@@ -4,6 +4,7 @@
 
 @import 'modules/_utility';
 @import 'modules/_reset';
+@import 'modules/_root';
 @import 'partials/_setup';
 @import 'partials/_forms';
 @import 'partials/_header';
@@ -12,7 +13,3 @@
 @import 'partials/_aside';
 @import 'partials/_users';
 @import 'partials/_footer';
-
-@media ( prefers-color-scheme: dark ) {
-	@import 'schemes/colors/dark/style';
-}
