@@ -156,7 +156,7 @@ function config_styles() {
 	// Loader image overlay.
 	if ( ! empty( plugin()->loader_bg_color() ) ) {
 		$styles .= sprintf(
-			'--cfe-loader-overlay--bg-color: %s;',
+			'--cfe-loader--bg-color: %s;',
 			plugin()->loader_bg_color()
 		);
 	}
@@ -180,14 +180,6 @@ function config_styles() {
 		$styles .= sprintf(
 			'--cfe-spacing--vert: %srem;',
 			plugin()->vert_spacing()
-		);
-	}
-
-	// Body color.
-	if ( ! empty( plugin()->color_body() ) ) {
-		$styles .= sprintf(
-			'--cfe-scheme-color--body: %s;',
-			plugin()->color_body()
 		);
 	}
 
@@ -1291,9 +1283,15 @@ function loop_label() {
 
 	if ( plugin() ) {
 		if ( $static ) {
-			$label = str_replace( [ '/', '-', '_' ], ' ', $static->slug() );
+			if ( 'title' == plugin()->main_nav_labels() ) {
+				$label = $static->title();
+			} else {
+				$label = ucwords(
+					str_replace( [ '-', '_' ], ' ', $static->slug() )
+				);
+			}
 		} elseif ( plugin()->loop_title() ) {
-				$label = plugin()->loop_title();
+			$label = plugin()->loop_title();
 		} elseif ( $field && '/blog/' != $field ) {
 			$label = str_replace( [ '/', '-', '_' ], ' ', $field );
 		}
