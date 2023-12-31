@@ -182,6 +182,21 @@ function user_logged_in() {
 }
 
 /**
+ * User role
+ *
+ * @since  1.0.0
+ * @return mixed Returns the logged-in user role or false.
+ */
+function user_role() {
+
+	if ( ! user_logged_in() ) {
+		return false;
+	}
+	$user = new \User( \Session :: get( 'username' ) );
+	return $user->role();
+}
+
+/**
  * Current language
  *
  * The language from site settings.
@@ -626,6 +641,8 @@ function has_cover( $default = '' ) {
 		if ( plugin()->cover_src() ) {
 			$default = plugin()->cover_src();
 		}
+	} else {
+		$default = get_cover_src();
 	}
 
 	// If on a singular post or page.
