@@ -16,6 +16,8 @@ use function CFE_Func\{
 	site,
 	plugin,
 	lang,
+	user_logged_in,
+	user_role,
 	loop_url
 };
 use function CFE_Tags\{
@@ -29,6 +31,21 @@ use function CFE_Tags\{
 <nav id="site-navigation" class="site-navigation" role="directory" itemscope itemtype="https://schema.org/SiteNavigationElement" data-site-navigation>
 	<ul class="nav-list main-nav-list">
 		<?php
+
+		// Link to admin menu tab if no pages selected.
+		if (
+			user_logged_in() &&
+			'admin' == user_role() &&
+			'none'  == plugin()->main_nav_loop() &&
+			! plugin()->main_nav_pages()
+		) {
+			$nav_tab = DOMAIN_ADMIN . 'configure-plugin/configureight#nav';
+			printf(
+				'<li class="no-children"><a href="%s">%s</a></li>',
+				$nav_tab,
+				lang()->get( 'Select Menu Pages' )
+			);
+		}
 
 		$home_uri = site()->getField( 'homepage' );
 		$loop_uri = site()->getField( 'uriBlog' );
