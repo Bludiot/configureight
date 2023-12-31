@@ -2,11 +2,8 @@
 /**
  * Main navigation template
  *
- * This is a starter plugin, a boilerplate,
- * so no mobile menu toggle is provided as
- * these can be styled and structured in
- * many ways. This is simply navigation
- * bones upon which to build.
+ * This file is used if the theme's companion
+ * plugin is installed.
  *
  * @package    Configure 8
  * @subpackage Templates
@@ -38,31 +35,33 @@ use function CFE_Tags\{
 
 		// Add loop before pages link if home is static content.
 		// If `before` in theme plugin.
-		if ( plugin() ) {
-			if ( 'before' == plugin()->main_nav_loop() ) {
-				printf(
-					'<li class="no-children"><a href="%s">%s</a></li>',
-					loop_url(),
-					nav_loop_label()
-				);
-			}
+		if ( 'before' == plugin()->main_nav_loop() ) {
+			printf(
+				'<li class="no-children"><a href="%s">%s</a></li>',
+				loop_url(),
+				nav_loop_label()
+			);
 		}
 
-		$max_items = 0;
-		if ( plugin() ) {
-			if ( plugin()->max_nav_items() ) {
-				$max_items = plugin()->max_nav_items();
-			}
+		// Pages selected in the plugin options.
+		$nav_pages = plugin()->main_nav_pages();
+		foreach ( $nav_pages as $nav_page ) :
+
+		// The `home` array key is not a page key/object.
+		if ( 'home' === $nav_page ) {
+			continue;
 		}
 
-		$nav_items = $staticContent;
-		if ( $max_items > 0 ) {
-			$nav_items = array_slice( $staticContent, 1, $max_items );
-		}
-
-		foreach ( $nav_items as $nav_item ) :
-
+		$nav_item  = buildPage( $nav_page );
 		$nav_entry = '';
+
+		if ( 'title' == plugin()->main_nav_labels() ) {
+			$label = $nav_item->title();
+		} else {
+			$label = ucwords(
+				str_replace( [ '-', '_' ], ' ', $nav_item->slug() )
+			);
+		}
 
 		/**
 		 * Do not list static front page or
@@ -81,16 +80,24 @@ use function CFE_Tags\{
 			$nav_entry = '';
 
 		// Parent item & children submenu.
-		} elseif ( $nav_item->hasChildren() ) {
+		} elseif ( $nav_item->hasChildren() && 'secondary' == plugin()->main_nav_children() ) {
 
 			$children = $nav_item->children();
 			$sub_menu = '<ul class="nav-list main-nav-sub-list">';
 
 			foreach ( $children as $child ) {
+
+				if ( 'title' == plugin()->main_nav_labels() ) {
+					$child_label = $child->title();
+				} else {
+					$child_label = ucwords(
+						str_replace( [ '-', '_' ], ' ', $child->slug() )
+					);
+				}
 				$sub_menu .= sprintf(
 					'<li><a href="%s">%s</a></li>',
 					$child->permalink(),
-					ucwords( str_replace( [ '-', '_' ], ' ', $child->slug() ) )
+					$child_label
 				);
 			}
 			$sub_menu .= '</ul>';
@@ -98,9 +105,17 @@ use function CFE_Tags\{
 			$nav_entry = sprintf(
 				'<li class="has-children"><a href="%s">%s %s</a>%s</li>',
 				$nav_item->permalink(),
-				ucwords( str_replace( [ '-', '_' ], ' ', $nav_item->slug() ) ),
+				$label,
 				icon( 'angle-down', true ),
 				$sub_menu
+			);
+
+		} elseif ( $nav_item->isChild() && 'primary' == plugin()->main_nav_children() ) {
+
+			$nav_entry = sprintf(
+				'<li class="no-children"><a href="%s">%s</a></li>',
+				$nav_item->permalink(),
+				$label
 			);
 
 		// Page without children.
@@ -108,7 +123,7 @@ use function CFE_Tags\{
 			$nav_entry = sprintf(
 				'<li class="no-children"><a href="%s">%s</a></li>',
 				$nav_item->permalink(),
-				ucwords( str_replace( [ '-', '_' ], ' ', $nav_item->slug() ) )
+				$label
 			);
 		}
 		echo $nav_entry;
@@ -116,15 +131,7 @@ use function CFE_Tags\{
 
 		// Add loop after pages link if home is static content.
 		// If `after` in theme plugin.
-		if ( plugin() ) {
-			if ( 'after' == plugin()->main_nav_loop() ) {
-				printf(
-					'<li class="no-children"><a href="%s">%s</a></li>',
-					loop_url(),
-					nav_loop_label()
-				);
-			}
-		} else {
+		if ( 'after' == plugin()->main_nav_loop() ) {
 			printf(
 				'<li class="no-children"><a href="%s">%s</a></li>',
 				loop_url(),
@@ -133,15 +140,7 @@ use function CFE_Tags\{
 		}
 
 		// Add a home link if true in theme plugin.
-		if ( plugin() ) {
-			if ( plugin()->main_nav_home() ) {
-				printf(
-					'<li class="no-children"><a href="%s">%s</a></li>',
-					site()->url(),
-					$L->get( 'home-link-label' )
-				);
-			}
-		} else {
+		if ( in_array( 'home', plugin()->main_nav_pages() ) ) {
 			printf(
 				'<li class="no-children"><a href="%s">%s</a></li>',
 				site()->url(),
@@ -150,18 +149,16 @@ use function CFE_Tags\{
 		}
 
 		// Add a search toggle button.
-		if ( plugin() ) {
-			if ( plugin()->header_search() && getPlugin( 'Search_Forms' ) ) {
-				printf(
-					'<li class="no-children hide-if-no-js"><a href="#search-bar"><button data-search-toggle-open  aria-controls="search-bar" aria-expanded="false">%s<span class="screen-reader-text">%s</span></button></a></li>',
-					icon( 'search' ),
-					$L->get( 'search-link-label' )
-				);
-			}
+		if ( plugin()->header_search() && getPlugin( 'Search_Forms' ) ) {
+			printf(
+				'<li class="no-children hide-if-no-js"><a href="#search-bar"><button data-search-toggle-open  aria-controls="search-bar" aria-expanded="false">%s<span class="screen-reader-text">%s</span></button></a></li>',
+				icon( 'search' ),
+				$L->get( 'search-link-label' )
+			);
 		}
 
 		// Add social links.
-		if ( plugin() ) : if ( plugin()->header_social() ) :
+		if ( plugin()->header_social() ) :
 
 			$links = $helper :: socialNetworks();
 			if ( $links ) :
@@ -180,7 +177,7 @@ use function CFE_Tags\{
 					</a>
 				</li>
 				<?php endforeach;
-		endif; endif; endif;
+		endif; endif;
 
 		?>
 	</ul>

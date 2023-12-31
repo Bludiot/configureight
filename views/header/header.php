@@ -127,7 +127,15 @@ if ( plugin() ) {
 			</div>
 		</div>
 
-		<?php include( THEME_DIR . 'views/navigation/main-nav.php' ); ?>
+		<?php
+		// Get main navigation if theme plugin.
+		if ( plugin() ) {
+			include( THEME_DIR . 'views/navigation/main-nav-options.php' );
+
+		// Get main navigation if no theme plugin.
+		} else {
+			include( THEME_DIR . 'views/navigation/main-nav-static.php' );
+		} ?>
 	</div>
 </header>
 <?php if ( has_cover() ) : ?>
