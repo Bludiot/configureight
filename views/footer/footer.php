@@ -33,11 +33,11 @@ if ( plugin() ) {
 		if ( ! empty( $get_text ) ) {
 
 			$text = $get_text;
-			if ( strstr( $get_text, '%copy%' ) ) {
-				$text = str_replace( '%copy%', '&copy;', $text );
+			if ( strstr( $get_text, '{{copy}}' ) ) {
+				$text = str_replace( '{{copy}}', '&copy;', $text );
 			}
-			if ( strstr( $get_text, '%year%' ) ) {
-				$text = str_replace( '%year%', $year, $text );
+			if ( strstr( $get_text, '{{year}}' ) ) {
+				$text = str_replace( '{{year}}', $year, $text );
 			}
 
 			$copyright = sprintf(
