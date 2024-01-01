@@ -48,10 +48,27 @@ if ( plugin() ) {
 }
 echo $style;
 
+// Loading icon.
+$icon_type = 'spinner-dots';
+$icon_show = true;
+if ( plugin() ) {
+	if ( 'spinner-dashes' == plugin()->loader_icon() ) {
+		$icon_type = 'spinner-dashes';
+	} elseif ( 'spinner-third' == plugin()->loader_icon() ) {
+		$icon_type = 'spinner-third';
+	}
+
+	if ( 'none' == plugin()->loader_icon() ) {
+		$icon_show = false;
+	}
+}
+
 ?>
 <div id="page-loader" class="page-loader hide-if-no-js">
 	<p class="loading-text"><?php echo $text; ?></p>
-	<div class="loading-image">
-		<?php echo icon( 'spinner' ); ?>
+	<?php if ( $icon_show ) : ?>
+	<div class="loading-image <?php echo $icon_type; ?>">
+		<?php echo icon( $icon_type ); ?>
 	</div>
+	<?php endif; ?>
 </div>
