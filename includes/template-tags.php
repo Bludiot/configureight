@@ -350,6 +350,14 @@ function body_classes() {
 		if ( is_main_loop() ) {
 			$loop_type = $loop_data['style'];
 			$classes[] = "loop-style-{$loop_type}";
+
+			// Loop first page.
+			if (
+				! isset( $_GET['page'] ) ||
+				isset( $_GET['page'] ) && $_GET['page'] < 2
+			) {
+				$classes[] = 'loop-first-page';
+			}
 		}
 
 		// Posts loop template.
