@@ -34,6 +34,7 @@ use function CFE_Func\{
 	is_home,
 	is_loop_page,
 	is_main_loop,
+	is_static_loop,
 	static_loop_page,
 	is_cat,
 	is_tag,
@@ -413,6 +414,23 @@ function body_classes() {
 			}
 		} else {
 			$classes[] = 'template-sidebar';
+		}
+
+		// Full cover first loop page if set in plugin.
+		if ( plugin() ) {
+			if (
+				is_main_loop() && ! is_static_loop() &&
+				(
+					'full_first' == plugin()->loop_cover() ||
+					'full_first_none' == plugin()->loop_cover()
+				)
+			) {
+				if ( isset( $_GET['page'] ) ) {
+					$classes[] = '';
+				} else {
+					$classes[] = 'template-full-cover';
+				}
+			}
 		}
 
 		// Templates for the static loop page.

@@ -515,6 +515,41 @@ function loop_url() {
 }
 
 /**
+ * Loop cover
+ *
+ * Whether to display a cover image on
+ * main loop pages.
+ *
+ * @since  1.0.0
+ * @return boolean Returns true if a cover should display.
+ */
+function loop_cover() {
+
+	// Always display if theme plugin not installed.
+	if ( ! plugin() ) {
+		return true;
+	}
+
+	if ( is_main_loop() && ! is_static_loop() ) {
+
+		if ( 'none' == plugin()->loop_cover() ) {
+			return false;
+		}
+		if ( 'first' == plugin()->loop_cover() ) {
+			if ( isset( $_GET['page'] ) ) {
+				return false;
+			}
+		}
+		if ( 'full_first_none' == plugin()->loop_cover() ) {
+			if ( isset( $_GET['page'] ) ) {
+				return false;
+			}
+		}
+	}
+	return true;
+}
+
+/**
  * Loop data
  *
  * Gets data for the loop, especially when
@@ -646,7 +681,9 @@ function has_cover( $default = '' ) {
 	}
 
 	// If on a singular post or page.
-	if ( is_page() ) {
+	if ( is_main_loop() && ! loop_cover() ) {
+		$cover = false;
+	} elseif ( is_page() ) {
 
 		// If the page has a cover image set.
 		if ( page()->coverImage() ) {
@@ -745,6 +782,20 @@ function full_cover() {
 	$loop = loop_data();
 
 	// No full cover if URL has the page parameter.
+	if ( plugin() ) {
+		if (
+			is_main_loop() && ! is_static_loop() &&
+			(
+				'full_first' == plugin()->loop_cover() ||
+				'full_first_none' == plugin()->loop_cover()
+			 )
+		) {
+			if ( isset( $_GET['page'] ) ) {
+				return false;
+			}
+			return true;
+		}
+	}
 
 	if ( is_main_loop() && is_static_loop() ) {
 		$build = buildPage( $loop['key'] );
@@ -761,8 +812,7 @@ function full_cover() {
 	}
 
 	if (
-		is_page() &&
-		has_cover() &&
+		is_page() && has_cover() &&
 		str_contains( page()->template(), 'full-cover' )
 	) {
 		return true;
