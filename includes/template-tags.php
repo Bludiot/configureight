@@ -874,7 +874,8 @@ function cover_header( $args = null, $defaults = [] ) {
 
 	if ( full_cover() ) {
 		$html .= sprintf(
-			'<a href="#content" class="button intro-scroll hide-if-no-js"><span class="screen-reader-text">%s</span>%s</a>',
+			'<a href="#content" class="button intro-scroll %s hide-if-no-js"><span class="screen-reader-text">%s</span>%s</a>',
+			$icon,
 			lang()->get( 'Scroll to content' ),
 			icon( $icon )
 		);
