@@ -195,7 +195,7 @@ $footer = implode( ' ', $footer );
 
 				<?php if ( $post->category() ) : ?>
 				<h3 class="post-info-category">
-					<?php echo $cat_icon; ?><a href="<?php echo $post->categoryPermalink(); ?>"><?php echo $post->category(); ?></a>
+					<a href="<?php echo $post->categoryPermalink(); ?>"><?php echo $cat_icon; ?><?php echo $post->category(); ?></a>
 				</h3>
 				<?php endif; ?>
 
