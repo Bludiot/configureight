@@ -114,7 +114,7 @@ $tags_list = function() use ( $post, $tags_icon ) {
 
 	if ( $post->tags( true ) ) {
 		$html = sprintf(
-			'%s<ul class="post-info-tags inline-list tags-list tags-list-horizontal tags-list-buttons inline-list">',
+			'<ul class="post-info-tags tags-list tags-list-horizontal tags-list-buttons inline-list"><li>%s</li>',
 			$tags_icon
 		);
 		foreach ( $tags as $tagKey => $tagName ) {
