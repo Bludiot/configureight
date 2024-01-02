@@ -32,6 +32,13 @@
 	box-shadow: var( --cfe-toolbar--box-shadow );
 	color: var( --cfe-toolbar--text-color );
 
+	@media ( prefers-color-scheme: dark ) {
+		background-color: var( --cfe-toolbar--bg-color--dark );
+		border: var( --cfe-toolbar--border--dark );
+		box-shadow: var( --cfe-toolbar--box-shadow--dark );
+		color: var( --cfe-toolbar--text-color--dark );
+	}
+
 	a {
 		display: var( --cfe-toolbar--link--display, inline-block );
 		margin: var( --cfe-toolbar--link--margin );
@@ -41,10 +48,20 @@
 		text-decoration: var( --cfe-toolbar--link--text-decoration, none );
 		transition: var( --cfe-toolbar--link--transition, var( --cfe-link--transition ) );
 
+		@media ( prefers-color-scheme: dark ) {
+			background-color: var( --cfe-toolbar--link--bg-color--dark );
+			color: var( --cfe-toolbar--link--text-color--dark );
+		}
+
 		&:hover,
 		&focus {
 			background-color: var( --cfe-toolbar--link--action--bg-color );
 			color: var( --cfe-toolbar--link--action--text-color );
+
+			@media ( prefers-color-scheme: dark ) {
+				background-color: var( --cfe-toolbar--link--action--bg-color--dark );
+				color: var( --cfe-toolbar--link--action--text-color--dark );
+			}
 		}
 
 		&:not( :last-of-type ) {

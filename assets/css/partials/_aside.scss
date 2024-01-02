@@ -26,6 +26,11 @@
 	background-color: var( --cfe-sidebar--default--bg-color, var( --cfe-sidebar--bg-color, inherit ) );
 	color: var( --cfe-sidebar--default--text-color, var( --cfe-sidebar--text-color, inherit ) );
 
+	@media ( prefers-color-scheme: dark ) {
+		background-color: var( --cfe-sidebar--default--bg-color--dark, var( --cfe-sidebar--bg-color--dark, inherit ) );
+		color: var( --cfe-sidebar--default--text-color--dark, var( --cfe-sidebar--text-color--dark, inherit ) );
+	}
+
 	@media screen and ( max-width: $break_tablet ) {
 		display: var( --cfe-sidebar--bottom--display, var( --cfe-sidebar--display, grid ) );
 		grid-template-columns: var( --cfe-sidebar--bottom--grid-template-columns, var( --cfe-sidebar--grid-template-columns, repeat( 2, 1fr ) ) );
@@ -35,6 +40,11 @@
 		padding: var( --cfe-sidebar--bottom--padding, var( --cfe-sidebar--padding, var( --cfe-spacing--vert, 2rem ) 0 0 0 ) );
 		background-color: var( --cfe-sidebar--bottom--bg-color, var( --cfe-sidebar--bg-color, inherit ) );
 		color: var( --cfe-sidebar--bottom--text-color, var( --cfe-sidebar--text-color, inherit ) );
+
+		@media ( prefers-color-scheme: dark ) {
+			background-color: var( --cfe-sidebar--bottom--bg-color--dark, var( --cfe-sidebar--bg-color--dark, inherit ) );
+			color: var( --cfe-sidebar--bottom--text-color--dark, var( --cfe-sidebar--text-color--dark, inherit ) );
+		}
 	}
 
 	@media screen and ( max-width: $break_phone ) {
@@ -91,9 +101,17 @@
 		text-transform: var( --cfe-sidebar--link--text-transform, var( --cfe-link--text-transform, inherit ) );
 		color: var( --cfe-sidebar--link--text-color, var( --cfe-link--text-color ) );
 
+		@media ( prefers-color-scheme: dark ) {
+			color: var( --cfe-sidebar--link--text-color--dark, var( --cfe-link--text-color--dark ) );
+		}
+
 		&:hover,
 		&:focus {
 			color: var( --cfe-sidebar--link--action--text-color, var( --cfe-link--action--text-color ) );
+
+			@media ( prefers-color-scheme: dark ) {
+				color: var( --cfe-sidebar--link--action--text-color--dark, var( --cfe-link--action--text-color--dark ) );
+			}
 		}
 	}
 
@@ -119,6 +137,11 @@
 		padding: var( --cfe-sidebar--bottom--padding, var( --cfe-sidebar--padding, var( --cfe-spacing--vert, 2rem ) 0 0 0 ) );
 		background-color: var( --cfe-sidebar--bottom--bg-color, var( --cfe-sidebar--bg-color, inherit ) );
 		color: var( --cfe-sidebar--bottom--text-color, var( --cfe-sidebar--text-color, inherit ) );
+
+		@media ( prefers-color-scheme: dark ) {
+			background-color: var( --cfe-sidebar--bottom--bg-color--dark, var( --cfe-sidebar--bg-color--dark, inherit ) );
+			color: var( --cfe-sidebar--bottom--text-color--dark, var( --cfe-sidebar--text-color--dark, inherit ) );
+		}
 
 		@media screen and ( max-width: $break_tablet ) {
 			grid-template-columns: var( --cfe-sidebar--bottom--tablet--grid-template-columns, var( --cfe-sidebar--bottom--grid-template-columns, var( --cfe-sidebar--grid-template-columns, repeat( 2, 1fr ) ) ) );

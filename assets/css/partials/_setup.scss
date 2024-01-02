@@ -9,7 +9,7 @@ html {
 
 body {
 	display: var( --cfe-body--display, block );
-	overflow-x: var( --cfe-body--overflow-x, hidden );
+	overflow-x: var( --cfe-body--overflow-x );
 	overflow-y: var( --cfe-body--overflow-y );
 	position: var( --cfe-body--position, relative );
 	width: var( --cfe-body--width, 100% );
@@ -35,6 +35,11 @@ body {
 	background-size: var( --cfe-body--bg-size );
 	background-attachment: var( --cfe-body--bg-attachment );
 	color: var( --cfe-body--text-color );
+
+	@media ( prefers-color-scheme: dark ) {
+		background-color: var( --cfe-body--bg-color--dark );
+		color: var( --cfe-body--text-color--dark );
+	}
 
 	&.serif:not( .monospace ) {
 		font-family: var( --cfe-fonts--serif-stack, serif );
@@ -137,9 +142,17 @@ a {
 	color: var( --cfe-link--text-color );
 	transition: var( --cfe-link--transition, all 0.15s );
 
+	@media ( prefers-color-scheme: dark ) {
+		color: var( --cfe-link--text-color--dark );
+	}
+
 	&:hover,
 	&:focus {
 		color: var( --cfe-link--action--text-color );
+
+		@media ( prefers-color-scheme: dark ) {
+			color: var( --cfe-link--action--text-color--dark );
+		}
 	}
 
 	// Pseudo elements for custom hover effects.
@@ -150,6 +163,10 @@ a {
 		width: var( --cfe-link--before--width );
 		height: var( --cfe-link--before--height );
 		background-color: var( --cfe-link--before--bg-color );
+
+		@media ( prefers-color-scheme: dark ) {
+			background-color: var( --cfe-link--before--bg-color--dark );
+		}
 	}
 
 	&:after {
@@ -159,6 +176,10 @@ a {
 		width: var( --cfe-link--after--width );
 		height: var( --cfe-link--after--height );
 		background-color: var( --cfe-link--after--bg-color );
+
+		@media ( prefers-color-scheme: dark ) {
+			background-color: var( --cfe-link--after--bg-color--dark );
+		}
 	}
 }
 
@@ -176,6 +197,10 @@ h2 {
 	text-transform: var( --cfe-heading-primary--text-transform );
 	color: var( --cfe-heading-primary--text-color, var( --cfe-body--text-color ) );
 
+	@media ( prefers-color-scheme: dark ) {
+		color: var( --cfe-heading-primary--text-color--dark, var( --cfe-body--text-color--dark ) );
+	}
+
 	a {
 		font-family: var( --cfe-heading-primary--link--font-family, inherit );
 		font-size: var( --cfe-heading-primary--link--font-size, inherit );
@@ -186,9 +211,17 @@ h2 {
 		text-transform: var( --cfe-heading-primary--link--text-transform );
 		color: var( --cfe-heading-primary--link--text-color, var( --cfe-link--text-color ) );
 
+		@media ( prefers-color-scheme: dark ) {
+			color: var( --cfe-heading-primary--link--text-color--dark, var( --cfe-link--text-color--dark ) );
+		}
+
 		&:hover,
 		&:focus {
 			color: var( --cfe-heading-primary--link--action--text-color, var( --cfe-link--action--text-color ) );
+
+			@media ( prefers-color-scheme: dark ) {
+				color: var( --cfe-heading-primary--link--action--text-color--dark, var( --cfe-link--action--text-color--dark ) );
+			}
 		}
 	}
 }
@@ -207,6 +240,10 @@ h4 {
 	text-transform: var( --cfe-heading-secondary--text-transform );
 	color: var( --cfe-heading-secondary--text-color, var( --cfe-body--text-color ) );
 
+	@media ( prefers-color-scheme: dark ) {
+		color: var( --cfe-heading-secondary--text-color--dark, var( --cfe-body--text-color--dark ) );
+	}
+
 	a {
 		font-family: var( --cfe-heading-secondary--link--font-family, inherit );
 		font-size: var( --cfe-heading-secondary--link--font-size, inherit );
@@ -217,9 +254,17 @@ h4 {
 		text-transform: var( --cfe-heading-secondary--link--text-transform );
 		color: var( --cfe-heading-secondary--link--text-color, var( --cfe-link--text-color ) );
 
+		@media ( prefers-color-scheme: dark ) {
+			color: var( --cfe-heading-secondary--link--text-color--dark, var( --cfe-link--text-color--dark ) );
+		}
+
 		&:hover,
 		&:focus {
 			color: var( --cfe-heading-secondary--link--action--text-color, var( --cfe-link--action--text-color ) );
+
+			@media ( prefers-color-scheme: dark ) {
+				color: var( --cfe-heading-secondary--link--action--text-color--dark, var( --cfe-link--action--text-color--dark ) );
+			}
 		}
 	}
 }
@@ -244,6 +289,11 @@ h4 {
 	line-height: var( --cfe-icon--line-height, 1 );
 	background-color: var( --cfe-icon--bg-color );
 	color: var( --cfe-icon--text-color, inherit );
+
+	@media ( prefers-color-scheme: dark ) {
+		background-color: var( --cfe-icon--bg-color--dark );
+		color: var( --cfe-icon--text-color--dark, inherit );
+	}
 
 	svg {
 		position: var( --cfe-icon--svg--position );
@@ -270,6 +320,11 @@ h4 {
 	background-color: var( --cfe-loader--bg-color, var( --cfe-body--bg-color ) );
 	color: var( --cfe-loader--text-color, var( --cfe-body--text-color ) );
 
+	@media ( prefers-color-scheme: dark ) {
+		background-color: var( --cfe-loader--bg-color--dark, var( --cfe-body--bg-color--dark ) );
+		color: var( --cfe-loader--text-color--dark, var( --cfe-body--text-color--dark ) );
+	}
+
 	.loading-text {
 		font-family: var( --cfe-loader--text--font-family, var( --cfe-body--family ) );
 		font-size: var( --cfe-loader--text--font-size, 1.5rem );
@@ -292,8 +347,13 @@ h4 {
 		height: var( --cfe-loader--image--height, 1.75rem );
 		margin: var( --cfe-loader--image--margin, 2rem 0 0 0 );
 		padding:  var( --cfe-loader--image--padding, 0 );
-		-webkit-animation: var( --cfe-loader--image--animation, spinner 1s infinite linear );
-		animation: var( --cfe-loader--image--animation, spinner 1s infinite linear );
+		-webkit-animation: spinner 1s infinite linear;
+		animation: spinner 1s infinite linear;
+
+		&.spinner-dashes {
+			-webkit-animation: spinner 1.5s infinite linear;
+			animation: spinner 1.5s infinite linear;
+		}
 
 		svg {
 			width: var( --cfe-loader--image--width, 1.75rem );
@@ -320,10 +380,16 @@ h4 {
 	background-color: var( --cfe-button--bg-color );
 	border: var( --cfe-form-element--border );
 	border-color: var( --cfe-button--border-color, var( --cfe-form--border-color ) );
-	color: var( --cfe-button--text-color, var( --cfe-body--text-color ) );
+	color: var( --cfe-to-top--text-color, var( --cfe-button--text-color ) );
 	border-radius: var( --cfe-to-top--border-radius, 50% );
 	transform: var( --cfe-to-top--transform, translateY(0) );
 	transition: var( --cfe-to-top--transition, opacity .5s, background-color .25s, transform .25s );
+
+	@media ( prefers-color-scheme: dark ) {
+		background-color: var( --cfe-button--bg-color--dark );
+		border-color: var( --cfe-button--border-color--dark, var( --cfe-form--border-color--dark ) );
+		color: var( --cfe-to-top--text-color--dark, var( --cfe-button--text-color--dark ) );
+	}
 
 	@media screen and ( max-width: $break_phone ) {
 		display: none;
@@ -336,9 +402,15 @@ h4 {
 
 	&:hover {
 		background-color: var( --cfe-to-top--action--bg-color, var( --cfe-button--action--bg-color, var( --cfe-button--bg-color ) ) );
-		border-color: var( --cfe-to-top--action--border-color, var( --cfe-button--action--border-color, var( --cfe-button--border-color, ) ) );
-		color: var( --cfe-to-top--action--text-color, var( --cfe-button--action--text-color, var( --cfe-button--text-color ) ) );
+		border-color: var( --cfe-to-top--action--border-color, var( --cfe-button--action--border-color, var( --cfe-button--border-color ) ) );
+		color: var( --cfe-to-top--action--text-color, var( --cfe-button--action--text-color ) );
 		transform: var( --cfe-to-top--action--transform, translateY( -0.25rem ) );
+
+		@media ( prefers-color-scheme: dark ) {
+			background-color: var( --cfe-to-top--action--bg-color--dark, var( --cfe-button--action--bg-color--dark, var( --cfe-button--bg-color--dark ) ) );
+			border-color: var( --cfe-to-top--action--border-color--dark, var( --cfe-button--action--border-color--dark, var( --cfe-button--border-color--dark ) ) );
+			color: var( --cfe-to-top--action--text-color--dark, var( --cfe-button--action--text-color--dark ) );
+		}
 	}
 
 	svg {
@@ -359,24 +431,117 @@ h4 {
 	color: var( --cfe-selection--text-color, $near_black );
 	background: var( --cfe-selection--bg-color, $yellow );
 	text-shadow: none;
+
+	@media ( prefers-color-scheme: dark ) {}
 }
 ::-ms-selection {
 	color: var( --cfe-selection--text-color, $near_black );
 	background: var( --cfe-selection--bg-color, $yellow );
 	text-shadow: none;
+
+	@media ( prefers-color-scheme: dark ) {}
 }
 ::-webkit-selection {
 	color: var( --cfe-selection--text-color, $near_black );
 	background: var( --cfe-selection--bg-color, $yellow );
 	text-shadow: none;
+
+	@media ( prefers-color-scheme: dark ) {}
 }
 ::-moz-selection {
 	color: var( --cfe-selection--text-color, $near_black );
 	background: var( --cfe-selection--bg-color, $yellow );
 	text-shadow: none;
+
+	@media ( prefers-color-scheme: dark ) {}
 }
 ::selection {
 	color: var( --cfe-selection--text-color, $near_black );
 	background: var( --cfe-selection--bg-color, $yellow );
 	text-shadow: none;
+
+	@media ( prefers-color-scheme: dark ) {}
+}
+
+// Tooltips
+.tooltipster-sidetip.cfe-tooltips .tooltipster-box,
+.tooltipster-follower.cfe-tooltips .tooltipster-box {
+	border: none;
+	border-radius: 0px;
+	box-shadow: none;
+}
+
+.tooltipster-sidetip.cfe-tooltips .tooltipster-content,
+.tooltipster-follower.cfe-tooltips .tooltipster-content {
+	background-color: #333333;
+	color: $white;
+	border-radius: 0px;
+	padding: 0.5em 0.625em;
+	line-height: 1;
+	font-size: 14px;
+	font-weight: 400;
+
+	@media ( prefers-color-scheme: dark ) {}
+}
+
+.tooltipster-sidetip .tooltipster-arrow-background {
+	border: 12px solid transparent;
+}
+
+.tooltipster-sidetip .tooltipster-arrow-border {
+	border: 12px solid transparent;
+	left: 0;
+	top: 0;
+}
+
+.tooltipster-sidetip.cfe-tooltips.tooltipster-bottom .tooltipster-arrow,
+.tooltipster-sidetip.cfe-tooltips.tooltipster-top .tooltipster-arrow {
+	bottom: -4px;
+	height: 12px;
+	margin-left: -12px;
+	width: 24px;
+}
+
+.tooltipster-sidetip.cfe-tooltips.tooltipster-bottom .tooltipster-arrow-border,
+.tooltipster-follower.cfe-tooltips.tooltipster-bottom .tooltipster-arrow-border {
+	border: none;
+}
+
+.tooltipster-sidetip.cfe-tooltips.tooltipster-left .tooltipster-arrow-border,
+.tooltipster-follower.cfe-tooltips.tooltipster-left .tooltipster-arrow-border {
+	border: none;
+}
+
+.tooltipster-sidetip.cfe-tooltips.tooltipster-right .tooltipster-arrow-border,
+.tooltipster-follower.cfe-tooltips.tooltipster-right .tooltipster-arrow-border {
+	border: none;
+}
+
+.tooltipster-sidetip.cfe-tooltips.tooltipster-top .tooltipster-arrow-border,
+.tooltipster-follower.cfe-tooltips.tooltipster-top .tooltipster-arrow-border {
+	border: none;
+}
+
+.tooltipster-sidetip.cfe-tooltips.tooltipster-bottom .tooltipster-arrow-background {
+	border-bottom-color: #333333;
+
+	@media ( prefers-color-scheme: dark ) {}
+}
+
+.tooltipster-sidetip.cfe-tooltips.tooltipster-left .tooltipster-arrow-background {
+	border-left-color: #333333;
+
+	@media ( prefers-color-scheme: dark ) {}
+}
+
+.tooltipster-sidetip.cfe-tooltips.tooltipster-right .tooltipster-arrow-background {
+	border-right-color: #333333;
+
+	@media ( prefers-color-scheme: dark ) {}
+}
+
+.tooltipster-sidetip.cfe-tooltips.tooltipster-top .tooltipster-arrow-background {
+	border-top-color: #333333;
+
+	@media ( prefers-color-scheme: dark ) {}
 }

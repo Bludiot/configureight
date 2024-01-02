@@ -12,6 +12,11 @@ form {
 	background-color: var( --cfe-form--bg-color );
 	border: var( --cfe-form--border );
 
+	@media ( prefers-color-scheme: dark ) {
+		background-color: var( --cfe-form--bg-color--dark );
+		border-color: var( --cfe-form--border-color--dark );
+	}
+
 	& * + * {
 		margin: var( --cfe-form--adjacent--margin, var( --cfe-element--margin, 1em 0 0 0 ) );
 	}
@@ -24,6 +29,11 @@ fieldset {
 	max-width: var( --cfe-fieldset--max-width );
 	background-color: var( --cfe-fieldset--bg-color );
 	border: var( --cfe-fieldset--border );
+
+	@media ( prefers-color-scheme: dark ) {
+		background-color: var( --cfe-fieldset--bg-color--dark );
+		border-color: var( --cfe-fieldset--border-color--dark, var( --cfe-form--border-color--dark ) );
+	}
 }
 
 legend {
@@ -44,6 +54,12 @@ legend {
 	background-color: var( --cfe-legend--bg-color );
 	border: var( --cfe-legend--border );
 	color: var( --cfe-legend--text-color );
+
+	@media ( prefers-color-scheme: dark ) {
+		background-color: var( --cfe-legend--bg-color--dark );
+		border-color: var( --cfe-legend--border-color--dark );
+		color: var( --cfe-legend--text-color--dark );
+	}
 }
 
 label {
@@ -66,12 +82,23 @@ button,
 	padding: var( --cfe-form-element--padding );
 	font-weight: var( --cfe-form-element--font-weight );
 	background-color: var( --cfe-form-element--bg-color );
-	border: var( --cfe-form-element--border, var( --cfe-box-border ) );
+	border: var( --cfe-form-element--border, var( --cfe-box--border ) );
 	color: var( --cfe-form-element--text-color, var( --cfe-body--text-color ) );
 
+	@media ( prefers-color-scheme: dark ) {
+		background-color: var( --cfe-form-element--bg-color--dark );
+		border-color: var( --cfe-form-element--border-color--dark, var( --cfe-box--border-color--dark ) );
+		color: var( --cfe-form-element--text-color--dark, var( --cfe-body--text-color--dark ) );
+	}
+
 	&:focus {
-		border-color: var( --cfe-form--action--border-color );
-		box-shadow: var( --cfe-form--action--box-shadow );
+		border-color: var( --cfe-form-element--action--border-color );
+		box-shadow: var( --cfe-form-element--action--box-shadow );
+
+		@media ( prefers-color-scheme: dark ) {
+			border-color: var( --cfe-form-element--action--border-color--dark );
+			box-shadow: var( --cfe-form-element--action--box-shadow--dark );
+		}
 	}
 }
 
@@ -130,10 +157,16 @@ input[type="image"] {
 	text-decoration: var( --cfe-button--text-decoration );
 	text-transform: var( --cfe-button--text-transform );
 	background-color: var( --cfe-button--bg-color, var( --cfe-body--bg-color ) );
-	border-color: var( --cfe-button--border-color, var( --cfe-box-border-color ) );
+	border-color: var( --cfe-button--border-color, var( --cfe-box--border-color ) );
 	color: var( --cfe-button--text-color, var( --cfe-body--text-color ) );
 	text-decoration: var( --cfe-button--text-decoration, none );
 	transition: var( --cfe-button--transition--property, all ) var( --cfe-button--transition--duration, .15s ) var( --cfe-button--transition--function, ease-in-out );
+
+	@media ( prefers-color-scheme: dark ) {
+		background-color: var( --cfe-button--bg-color--dark, var( --cfe-body--bg-color--dark ) );
+		border-color: var( --cfe-button--border-color--dark, var( --cfe-box--border-color--dark ) );
+		color: var( --cfe-button--text-color--dark, var( --cfe-body--text-color--dark ) );
+	}
 
 	svg {
 		width: var( --cfe-button--svg-icon--width );
@@ -145,8 +178,14 @@ input[type="image"] {
 	&:hover,
 	&:focus {
 		background-color: var( --cfe-button--action--bg-color, var( --cfe-button--bg-color ) );
-		border-color: var( --cfe-button--action-border-color, var( --cfe-button--border-color, ) );
+		border-color: var( --cfe-button--action--border-color, var( --cfe-button--border-color, ) );
 		color: var( --cfe-button--action--text-color, var( --cfe-button--text-color ) );
+
+		@media ( prefers-color-scheme: dark ) {
+			background-color: var( --cfe-button--action--bg-color--dark, var( --cfe-button--bg-color--dark ) );
+			border-color: var( --cfe-button--action--border-color--dark, var( --cfe-button--border-color--dark, ) );
+			color: var( --cfe-button--action--text-color--dark, var( --cfe-button--text-color--dark ) );
+		}
 	}
 
 	&.disabled,
@@ -155,6 +194,12 @@ input[type="image"] {
 		background-color: var( --cfe-button--disabled--bg-color, #eeeeee );
 		border-color: var( --cfe-button--disabled--border-color, #cccccc );
 		color: var( --cfe-button--disabled--text-color, #cccccc );
+
+		@media ( prefers-color-scheme: dark ) {
+			background-color: var( --cfe-button--disabled--bg-color--dark, #eeeeee );
+			border-color: var( --cfe-button--disabled--border-color--dark, #cccccc );
+			color: var( --cfe-button--disabled--text-color--dark, #cccccc );
+		}
 	}
 }
 
@@ -200,26 +245,50 @@ option {
 
 *::-webkit-input-placeholder {
 	color: var( --cfe-form--placeholder-color );
+
+	@media ( prefers-color-scheme: dark ) {
+		color: var( --cfe-form--placeholder-color--dark, var( --cfe-form--placeholder-color ) );
+	}
 }
 
 *::-o-placeholder {
 	color: var( --cfe-form--placeholder-color );
+
+	@media ( prefers-color-scheme: dark ) {
+		color: var( --cfe-form--placeholder-color--dark, var( --cfe-form--placeholder-color ) );
+	}
 }
 
 *:-moz-placeholder {
 	color: var( --cfe-form--placeholder-color );
+
+	@media ( prefers-color-scheme: dark ) {
+		color: var( --cfe-form--placeholder-color--dark, var( --cfe-form--placeholder-color ) );
+	}
 }
 
 *::-moz-placeholder {
 	color: var( --cfe-form--placeholder-color );
+
+	@media ( prefers-color-scheme: dark ) {
+		color: var( --cfe-form--placeholder-color--dark, var( --cfe-form--placeholder-color ) );
+	}
 }
 
 *:-ms-input-placeholder {
 	color: var( --cfe-form--placeholder-color );
+
+	@media ( prefers-color-scheme: dark ) {
+		color: var( --cfe-form--placeholder-color--dark, var( --cfe-form--placeholder-color ) );
+	}
 }
 
 *::placeholder {
 	color: var( --cfe-form--placeholder-color );
+
+	@media ( prefers-color-scheme: dark ) {
+		color: var( --cfe-form--placeholder-color--dark, var( --cfe-form--placeholder-color ) );
+	}
 }
 
 // Search form.

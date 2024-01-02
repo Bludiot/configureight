@@ -9,7 +9,7 @@ $break_small  : 480px !default;
 
 // General colors.
 $white       : #ffffff !default;
-$off_white   : #eeeeee !default;
+$off_white   : #e8e8e8 !default;
 $black       : #000000 !default;
 $near_black  : #1e1e1e !default;
 $dark_gray   : #333333 !default;
@@ -19,9 +19,9 @@ $pale_gray   : #cccccc !default;
 $red         : #dd0000 !default;
 $orange      : #ee6600 !default;
 $yellow      : #ffdd00 !default;
-$green       : #4b9960 !default;
+$green       : #00aa00 !default;
 $blue        : #0044aa !default;
-$violet      : #551a8b !default;
+$violet      : #551188 !default;
 $error       : $red !default;
 $notify      : $orange !default;
 $warning     : $yellow !default;
@@ -40,7 +40,7 @@ $fonts_monospace: 'Source Code Pro', 'Roboto Mono', 'Fira Code', 'Liberation Mon
 
 // SVG icon colors.
 @function svg_icon_color() {
-	@return '%23' + str-slice( '#{$text_color}', 2, -1 );
+	@return '%23' + str-slice( '#{$white}', 2, -1 );
 }
 @function svg_icon_action_color() {
 	@return '%23' + str-slice( '#{$white}', 2, -1 );

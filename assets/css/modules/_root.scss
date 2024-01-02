@@ -4,33 +4,45 @@
 
 @import '_utility';
 
+// Scheme colors.
+$color_body:  $white;
+$color_text:  $dark_gray;
+$color_one:   #0044aa;
+$color_two:   #0066cc;
+$color_three: $medium_gray;
+$color_four:  $light_gray;
+$color_five:  $dark_gray;
+$color_six:   $medium_gray;
+
+$color_body_dark:  $near_black;
+$color_text_dark:  $off_white;
+$color_one_dark:   $white;
+$color_two_dark:   $yellow;
+$color_three_dark: $dark_gray;
+$color_four_dark:  $medium_gray;
+$color_five_dark:  $medium_gray;
+$color_six_dark:   $light_gray;
+
 :root {
 
 	// Color schemes.
-	--cfe-scheme-color--body: #ffffff;
-	--cfe-scheme-color--text: #333333;
-	--cfe-scheme-color--one: #0044aa;
-	--cfe-scheme-color--two: #0066cc;
-	--cfe-scheme-color--three: #333333;
-	--cfe-scheme-color--four: #555555;
-	--cfe-scheme-color--five: #888888;
-	--cfe-scheme-color--six: #cccccc;
+	--cfe-scheme-color--body:  #{$color_body};
+	--cfe-scheme-color--text:  #{$color_text};
+	--cfe-scheme-color--one:   #{$color_one};
+	--cfe-scheme-color--two:   #{$color_two};
+	--cfe-scheme-color--three: #{$color_three};
+	--cfe-scheme-color--four:  #{$color_four};
+	--cfe-scheme-color--five:  #{$color_five};
+	--cfe-scheme-color--six:   #{$color_six};
 
-	--cfe-scheme-color--body--dark: #1e1e1e;
-	--cfe-scheme-color--text--dark: #eeeeee;
-	--cfe-scheme-color--one--dark: #ffffff;
-	--cfe-scheme-color--two--dark: #eeeeee;
-	--cfe-scheme-color--three--dark: #cccccc;
-	--cfe-scheme-color--four--dark: #888888;
-	--cfe-scheme-color--five--dark: #555555;
-	--cfe-scheme-color--six--dark: #333333;
-
-	@media ( prefers-color-scheme: dark ) {
-		--cfe-scheme-color--body: #1e1e1e;
-		--cfe-scheme-color--text: #eeeeee;
-		--cfe-scheme-color--one: #ffffff;
-		--cfe-scheme-color--two: #eeeeee;
-	}
+	--cfe-scheme-color--body--dark:  #{$color_body_dark};
+	--cfe-scheme-color--text--dark:  #{$color_text_dark};
+	--cfe-scheme-color--one--dark:   #{$color_one_dark};
+	--cfe-scheme-color--two--dark:   #{$color_two_dark};
+	--cfe-scheme-color--three--dark: #{$color_three_dark};
+	--cfe-scheme-color--four--dark:  #{$color_four_dark};
+	--cfe-scheme-color--five--dark:  #{$color_five_dark};
+	--cfe-scheme-color--six--dark:   #{$color_six_dark};
 
 	// Font stacks.
 	--cfe-fonts--sans-stack: #{$fonts_sans};
@@ -45,21 +57,27 @@
 	--cfe-wrapper--general--padding: 0;
 
 	// Layout elements.
-	--cfe-box-border-style: solid;
-	--cfe-box-border-width: 1px;
-	--cfe-box-border-color: var( --cfe-scheme-color--six );
-	--cfe-box-border: var( --cfe-box-border-style ) var( --cfe-box-border-width ) var( --cfe-box-border-color );
+	--cfe-box--border-style: solid;
+	--cfe-box--border-width: 1px;
+	--cfe-box--border-color: #{$light_gray};
+	--cfe-box--border-color--dark: #{$medium_gray};
+	--cfe-box--border: var( --cfe-box--border-style ) var( --cfe-box--border-width ) var( --cfe-box--border-color );
+	--cfe-box--border--dark: var( --cfe-box--border-style ) var( --cfe-box--border-width ) var( --cfe-box--border-color--dark );
 
 	// Body & general text.
 	--cfe-body--font-family: var( --cfe-fonts--sans-stack );
 	--cfe-body--font-size: 1rem;
 	--cfe-body--bg-color: var( --cfe-scheme-color--body );
+	--cfe-body--bg-color--dark: var( --cfe-scheme-color--body--dark );
 	--cfe-body--text-color: var( --cfe-scheme-color--text );
+	--cfe-body--text-color--dark: var( --cfe-scheme-color--text--dark );
 	--cfe-text-shadow: 0.05em 0.05em 0.05em #{rgba( $color: black, $alpha: 0.625 )};
 
 	// Links.
 	--cfe-link--text-color: var( --cfe-scheme-color--one );
+	--cfe-link--text-color--dark: var( --cfe-scheme-color--one--dark );
 	--cfe-link--action--text-color: var( --cfe-scheme-color--two );
+	--cfe-link--action--text-color--dark: var( --cfe-scheme-color--two--dark );
 
 	// Headings.
 	--cfe-heading-primary--font-size: 2rem;
@@ -68,20 +86,31 @@
 	--cfe-heading-secondary--font-weight: 700;
 
 	// Forms & buttons.
+	--cfe-form--border-style: solid;
+	--cfe-form--border-width: 1px;
+	--cfe-form--border-color: var( --cfe-box--border-color );
+	--cfe-form--border-color--dark: var( --cfe-box--border-color--dark );
+	--cfe-form--action--border-color: var( --cfe-scheme-color--three );
+	--cfe-form--action--border-color--dark: var( --cfe-scheme-color--three--dark );
 	--cfe-fieldset--margin: 1em 0 0;
 	--cfe-fieldset--padding: 1em 1.5em;
-	--cfe-fieldset--border: solid 1px var( --cfe-form--border-color );
+	--cfe-fieldset--border: var( --cfe-form--border-style ) var( --cfe-form--border-width ) var( --cfe-form--border-color );
 	--cfe-legend--padding: 0 0.5em;
 	--cfe-legend-font-size: 1em;
 	--cfe-legend-font-weight: 700;
 
 	--cfe-form-element--padding: 0.5em 1em;
-	--cfe-form-element--border: solid 1px var( --cfe-form--border-color );
-	--cfe-label-field--margin: 0;
+	--cfe-form-element--border-style: solid;
+	--cfe-form-element--border-width: 1px;
+	--cfe-form-element--border-color: var( --cfe-scheme-color--text );
+	--cfe-form-element--border-color--dark: var( --cfe-scheme-color--text--dark );
+	--cfe-form-element--action--border-color: var( --cfe-scheme-color--two );
+	--cfe-form-element--action--border-color--dark: var( --cfe-scheme-color--two--dark );
+	--cfe-form-element--border: var( --cfe-form-element--border-style ) var( --cfe-form-element--border-width ) var( --cfe-form-element--border-color );
 	--cfe-form-element--font-weight: 400;
-	--cfe-form--border-color: var( --cfe-scheme-color--five );
-	--cfe-form--action--border-color: var( --cfe-scheme-color--one );
-	--cfe-form--placeholder-color: var( --cfe-scheme-color--five );
+	--cfe-form--placeholder-color: #{$light_gray};
+	--cfe-form--placeholder-color--dark: #{$light_gray};
+	--cfe-label-field--margin: 0;
 
 	--cfe-textarea--min-height: 200px;
 	--cfe-textarea--margin: 1em 0 0;
@@ -91,11 +120,18 @@
 
 	--cfe-button--padding: 0.75em 1em;
 	--cfe-button--font-weight: 700;
-	--cfe-button--bg-color: var( --cfe-body--bg-color, inherit );
-	--cfe-button--action--bg-color: var( --cfe-scheme-color--three );
-	--cfe-button--border-color: var( --cfe-form--border-color );
-	--cfe-button--text-color: var( --cfe-form--text-color );
+	--cfe-button--bg-color: var( --cfe-scheme-color--three );
+	--cfe-button--bg-color--dark: var( --cfe-scheme-color--three--dark );
+	--cfe-button--action--bg-color: var( --cfe-scheme-color--four );
+	--cfe-button--action--bg-color--dark: var( --cfe-scheme-color--four--dark );
+	--cfe-button--border-color: var( --cfe-form-element--border-color );
+	--cfe-button--border-color--dark: var( --cfe-form-element--border-color--dark );
+	--cfe-button--action--border-color: var( --cfe-form-element--border-color );
+	--cfe-button--action--border-color--dark: var( --cfe-form-element--border-color--dark );
+	--cfe-button--text-color: #{$white};
+	--cfe-button--text-color--dark: #{$white};
 	--cfe-button--action--text-color: #{$white};
+	--cfe-button--action--text-color--dark: #{$white};
 	--cfe-button--svg-icon--width: 1em;
 	--cfe-button--svg-icon--height: 1em;
 
@@ -103,33 +139,44 @@
 	--cfe-toolbar--padding: 0 1rem;
 	--cfe-toolbar--height: 2rem;
 	--cfe-toolbar--font-size: 0.875rem;
-	--cfe-toolbar--bg-color: var( --cfe-scheme-color--three );
+	--cfe-toolbar--bg-color: var( --cfe-scheme-color--body--dark );
+	--cfe-toolbar--bg-color--dark: var( --cfe-scheme-color--body--dark );
 	--cfe-toolbar--text-color: #{$white};
+	--cfe-toolbar--text-color--dark: #{$white};
 	--cfe-toolbar--link--padding: 0 0.5em;
 	--cfe-toolbar--link--bg-color: inherit;
+	--cfe-toolbar--link--bg-color--dark: inherit;
 	--cfe-toolbar--link--text-color: #{$white};
-	--cfe-toolbar--link--action--bg-color: var( --cfe-scheme-color--four );
+	--cfe-toolbar--link--text-color--dark: #{$white};
+	--cfe-toolbar--link--action--bg-color: var( --cfe-scheme-color--one );
+	--cfe-toolbar--link--action--bg-color--dark: var( --cfe-scheme-color--one--dark );
 	--cfe-toolbar--link--action--text-color: #{$white};
-	@media ( prefers-color-scheme: dark ) {
-		--cfe-toolbar--bg-color: var( --cfe-scheme-color--body--dark );
-		--cfe-toolbar--text-color: var( --cfe-scheme-color--two--dark );
-	}
+	--cfe-toolbar--link--action--text-color--dark: #{$white};
 
 	// Header.
 	--cfe-site-header--bg-color: var( --cfe-body--bg-color );
+	--cfe-site-header--bg-color--dark: var( --cfe-body--bg-color--dark );
 	--cfe-site-logo--min-width: 80px;
 	--cfe-cover--description--font-size: 1.3125rem;
-	--cfe-cover-overlay--bg-color: rgba( $color: black, $alpha: 0.625 );
+	--cfe-cover-overlay--bg-color: #{rgba( $color: black, $alpha: 0.625 )};
 	--cfe-cover-blend--bg-color: #3e6caf;
 
 	// Navigation.
 	--cfe-site-nav--max-width: 50vw;
 	--cfe-site-nav--item--font-size: var( --cfe-font-size );
 	--cfe-site-nav--item--font-weight: 600;
-	--cfe-site-nav--sub-list--bg-color: var( --cfe-scheme-color--three );
-	--cfe-site-nav--sub-list--action--bg-color: var( --cfe-scheme-color--four );
+	--cfe-site-nav--sub-list--bg-color: var( --cfe-scheme-color--five );
+	--cfe-site-nav--sub-list--bg-color--dark: var( --cfe-scheme-color--six--dark );
+	--cfe-site-nav--sub-list--action--bg-color: var( --cfe-scheme-color--six );
+	--cfe-site-nav--sub-list--action--bg-color--dark: var( --cfe-scheme-color--six--dark );
 	--cfe-site-nav--sub-list--text-color: #{$white};
+	--cfe-site-nav--sub-list--text-color--dark: #{$white};
 	--cfe-site-nav--sub-list--action--text-color: #{$white};
+	--cfe-site-nav--sub-list--action--text-color--dark: #{$white};
+	--cfe-pagination-list--numeric--link--border: var( --cfe-form--border-style ) var( --cfe-form--border-width ) transparent;
+	--cfe-pagination-list--numeric--link--border--dark: var( --cfe-form--border-style ) var( --cfe-form--border-width ) transparent;
+	--cfe-pagination-list--numeric--link--active--border: var( --cfe-form--border-style ) var( --cfe-form--border-width ) var( --cfe-scheme-color--two );
+	--cfe-pagination-list--numeric--link--active--border--dark: var( --cfe-form--border-style ) var( --cfe-form--border-width ) var( --cfe-scheme-color--two--dark );
 
 	// Content.
 	--cfe-content-wrap--padding: var( --cfe-spacing--vert ) var( --cfe-spacing--horz );
@@ -144,19 +191,33 @@
 	--cfe-categories-list--buttons--link--font-size: 0.8125rem;
 	--cfe-categories-list--buttons--link--font-weight: 600;
 	--cfe-categories-list--buttons--link--bg-color: var( --cfe-button--bg-color );
+	--cfe-categories-list--buttons--link--bg-color--dark: var( --cfe-button--bg-color--dark );
 	--cfe-categories-list--buttons--link--border-color: var( --cfe-button--border-color );
+	--cfe-categories-list--buttons--link--border-color--dark: var( --cfe-button--border-color--dark );
 	--cfe-categories-list--buttons--link--text-color: var( --cfe-button--text-color );
+	--cfe-categories-list--buttons--link--text-color--dark: var( --cfe-button--text-color--dark );
 	--cfe-categories-list--buttons--link--action--bg-color: var( --cfe-button--action--bg-color );
+	--cfe-categories-list--buttons--link--action--bg-color--dark: var( --cfe-button--action--bg-color--dark );
 	--cfe-categories-list--buttons--link--action--border-color: var( --cfe-button--border-color );
+	--cfe-categories-list--buttons--link--action--border-color--dark: var( --cfe-button--border-color--dark );
 	--cfe-categories-list--buttons--link--action--text-color: var( --cfe-button--action--text-color );
+	--cfe-categories-list--buttons--link--action--text-color--dark: var( --cfe-button--action--text-color--dark );
 
 	--cfe-tags-list--buttons--link--text-decoration: none;
 	--cfe-tags-list--buttons--link--font-size: 0.8125rem;
 	--cfe-tags-list--buttons--link--font-weight: 600;
 	--cfe-tags-list--buttons--link--bg-color: var( --cfe-button--bg-color );
 	--cfe-tags-list--buttons--link--border-color: var( --cfe-button--border-color );
+	--cfe-tags-list--buttons--link--border-color--dark: var( --cfe-button--border-color--dark );
 	--cfe-tags-list--buttons--link--text-color: var( --cfe-button--text-color );
-	--cfe-tags-list--buttons--link--action--bg-color: var( --cfe-button--action--bg-color );
-	--cfe-tags-list--buttons--link--action--border-color: var( --cfe-button--border-color );
+	--cfe-tags-list--buttons--link--text-color--dark: var( --cfe-button--text-color--dark );
 	--cfe-tags-list--buttons--link--action--text-color: var( --cfe-button--action--text-color );
+	--cfe-tags-list--buttons--link--action--text-color--dark: var( --cfe-button--action--text-color--dark );
+	--cfe-tags-list--buttons--link--action--bg-color: var( --cfe-button--action--bg-color );
+	--cfe-tags-list--buttons--link--action--bg-color--dark: var( --cfe-button--action--bg-color--dark );
+	--cfe-tags-list--buttons--link--action--border-color: var( --cfe-button--action--border-color );
+	--cfe-tags-list--buttons--link--action--border-color--dark: var( --cfe-button--action--border-color--dark );
+
+	// Sidebar.
+	--cfe-sidebar--link--font-weight: 600;
 }
