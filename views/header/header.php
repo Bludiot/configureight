@@ -113,7 +113,7 @@ if ( plugin() ) {
 
 		<?php echo SearchForms\form( [ 'label' => false ] ); ?>
 
-		<button data-search-toggle-close><span class="screen-reader-text"><?php lang()->p( 'search-bar-close' ); ?></span></button>
+		<button class="button" data-search-toggle-close><span class="screen-reader-text"><?php lang()->p( 'Close' ); ?></span></button>
 	</div>
 	<?php endif; endif; ?>
 
