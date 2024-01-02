@@ -168,9 +168,9 @@ use function CFE_Tags\{
 		// Add a search toggle button.
 		if ( plugin()->header_search() && getPlugin( 'Search_Forms' ) ) {
 			printf(
-				'<li class="no-children hide-if-no-js"><a href="#search-bar"><button data-search-toggle-open  aria-controls="search-bar" aria-expanded="false">%s<span class="screen-reader-text">%s</span></button></a></li>',
-				icon( 'search' ),
-				$L->get( 'search-link-label' )
+				'<li class="no-children hide-if-no-js"><a href="#search-bar" class="top-search-open" data-search-toggle-open aria-controls="search-bar" aria-expanded="false">%s<span class="screen-reader-text">%s</span></a></li>',
+				icon( 'search', true, 'top-search-icon' ),
+				$L->get( 'Submit' )
 			);
 		}
 
