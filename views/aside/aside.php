@@ -23,7 +23,9 @@ use function CFE_Tags\{
 // Sticky sidebar class.
 $sticky = '';
 if ( plugin() ) {
-	if ( plugin()->sidebar_sticky() ) {
+	if ( plugin()->sidebar_sticky() && plugin()->header_sticky() ) {
+		$sticky = 'sidebar-header-are-sticky';
+	} elseif ( plugin()->sidebar_sticky() ) {
 		$sticky = 'sidebar-is-sticky';
 	}
 }

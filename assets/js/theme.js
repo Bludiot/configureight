@@ -30,9 +30,15 @@
 
 		// Sticky sidebar.
 		if ( $.isFunction( $.fn.stick_in_parent ) ) {
-			if ( $( '.has-sticky-sidebar [data-page-sidebar]' ).length ) {
-				$( '.has-sticky-sidebar [data-page-sidebar]' ).stick_in_parent( {
+			if ( $( '.sidebar-is-sticky' ).length ) {
+				$( '.sidebar-is-sticky' ).stick_in_parent( {
 					offset_top      : 0,
+					inner_scrolling : false
+				} );
+			}
+			if ( $( '.sidebar-header-are-sticky' ).length ) {
+				$( '.sidebar-header-are-sticky' ).stick_in_parent( {
+					offset_top      : 100,
 					inner_scrolling : false
 				} );
 			}
