@@ -12,7 +12,8 @@
 		// Apply FitVids to main and aside.
 		$( '.page-content, .page-sidebar' ).fitVids();
 
-		$( 'a[data-search-toggle-open]' ).click( function() {
+		$( 'a[data-search-toggle-open]' ).click( function(e) {
+			e.preventDefault();
 			$( '#search-bar' ).attr( 'aria-expanded', 'true' ).addClass( 'active' );
 			$( this ).attr( 'aria-expanded', 'true' ).hide();
 		} );
