@@ -62,89 +62,91 @@ use function CFE_Tags\{
 
 		// Pages selected in the plugin options.
 		$nav_pages = plugin()->main_nav_pages();
-		foreach ( $nav_pages as $nav_page ) :
+		if ( $nav_pages[0] ) :
+			foreach ( $nav_pages as $nav_page ) :
 
-		// The `home` array key is not a page key/object.
-		if ( 'home' === $nav_page ) {
-			continue;
-		}
+			// The `home` array key is not a page key/object.
+			if ( 'home' === $nav_page ) {
+				continue;
+			}
 
-		$nav_item  = buildPage( $nav_page );
-		$nav_entry = '';
-
-		if ( 'title' == plugin()->main_nav_labels() ) {
-			$label = $nav_item->title();
-		} else {
-			$label = ucwords(
-				str_replace( [ '-', '_' ], ' ', $nav_item->slug() )
-			);
-		}
-
-		/**
-		 * Do not list static front page or
-		 * loop not on the home page because
-		 * they are added at the end of the
-		 * top-level entries.
-		 */
-		if (
-			$nav_item->slug() == $home_uri ||
-			$nav_item->slug() == str_replace( '/', '', site()->getField( 'uriBlog' ) )
-		) {
+			$nav_item  = buildPage( $nav_page );
 			$nav_entry = '';
 
-		// Do not list the 404 error page.
-		} elseif ( $nav_item->slug() == str_replace( '/', '', site()->getField( 'pageNotFound' ) ) ) {
-			$nav_entry = '';
-
-		// Parent item & children submenu.
-		} elseif ( $nav_item->hasChildren() && 'secondary' == plugin()->main_nav_children() ) {
-
-			$children = $nav_item->children();
-			$sub_menu = '<ul class="nav-list main-nav-sub-list">';
-
-			foreach ( $children as $child ) {
-
-				if ( 'title' == plugin()->main_nav_labels() ) {
-					$child_label = $child->title();
-				} else {
-					$child_label = ucwords(
-						str_replace( [ '-', '_' ], ' ', $child->slug() )
-					);
-				}
-				$sub_menu .= sprintf(
-					'<li><a href="%s">%s</a></li>',
-					$child->permalink(),
-					$child_label
+			if ( 'title' == plugin()->main_nav_labels() ) {
+				$label = $nav_item->title();
+			} else {
+				$label = ucwords(
+					str_replace( [ '-', '_' ], ' ', $nav_item->slug() )
 				);
 			}
-			$sub_menu .= '</ul>';
 
-			$nav_entry = sprintf(
-				'<li class="has-children"><a href="%s">%s %s</a>%s</li>',
-				$nav_item->permalink(),
-				$label,
-				icon( 'angle-down', true ),
-				$sub_menu
-			);
+			/**
+			 * Do not list static front page or
+			 * loop not on the home page because
+			 * they are added at the end of the
+			 * top-level entries.
+			 */
+			if (
+				$nav_item->slug() == $home_uri ||
+				$nav_item->slug() == str_replace( '/', '', site()->getField( 'uriBlog' ) )
+			) {
+				$nav_entry = '';
 
-		} elseif ( $nav_item->isChild() && 'primary' == plugin()->main_nav_children() ) {
+			// Do not list the 404 error page.
+			} elseif ( $nav_item->slug() == str_replace( '/', '', site()->getField( 'pageNotFound' ) ) ) {
+				$nav_entry = '';
 
-			$nav_entry = sprintf(
-				'<li class="no-children"><a href="%s">%s</a></li>',
-				$nav_item->permalink(),
-				$label
-			);
+			// Parent item & children submenu.
+			} elseif ( $nav_item->hasChildren() && 'secondary' == plugin()->main_nav_children() ) {
 
-		// Page without children.
-		} elseif ( ! $nav_item->parent() ) {
-			$nav_entry = sprintf(
-				'<li class="no-children"><a href="%s">%s</a></li>',
-				$nav_item->permalink(),
-				$label
-			);
-		}
-		echo $nav_entry;
-		endforeach;
+				$children = $nav_item->children();
+				$sub_menu = '<ul class="nav-list main-nav-sub-list">';
+
+				foreach ( $children as $child ) {
+
+					if ( 'title' == plugin()->main_nav_labels() ) {
+						$child_label = $child->title();
+					} else {
+						$child_label = ucwords(
+							str_replace( [ '-', '_' ], ' ', $child->slug() )
+						);
+					}
+					$sub_menu .= sprintf(
+						'<li><a href="%s">%s</a></li>',
+						$child->permalink(),
+						$child_label
+					);
+				}
+				$sub_menu .= '</ul>';
+
+				$nav_entry = sprintf(
+					'<li class="has-children"><a href="%s">%s %s</a>%s</li>',
+					$nav_item->permalink(),
+					$label,
+					icon( 'angle-down', true ),
+					$sub_menu
+				);
+
+			} elseif ( $nav_item->isChild() && 'primary' == plugin()->main_nav_children() ) {
+
+				$nav_entry = sprintf(
+					'<li class="no-children"><a href="%s">%s</a></li>',
+					$nav_item->permalink(),
+					$label
+				);
+
+			// Page without children.
+			} elseif ( ! $nav_item->parent() ) {
+				$nav_entry = sprintf(
+					'<li class="no-children"><a href="%s">%s</a></li>',
+					$nav_item->permalink(),
+					$label
+				);
+			}
+			echo $nav_entry;
+			endforeach;
+		endif;
 
 		// Add loop after pages link if home is static content.
 		// If `after` in theme plugin.
