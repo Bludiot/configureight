@@ -393,7 +393,7 @@ h4 {
 		color: var( --cfe-to-top--text-color--dark, var( --cfe-button--text-color--dark ) );
 	}
 
-	@media screen and ( max-width: $break_phone ) {
+	@media screen and ( max-width: 640px ) {
 		display: none;
 	}
 

@@ -7,7 +7,7 @@ body {
 		display: flex;
 		gap: var( --cfe-spacing--vert, 2rem ) var( --cfe-spacing--horz, 2rem );
 
-		@media screen and ( max-width: $break_tablet ) {
+		@media screen and ( max-width: 960px ) {
 			flex-direction: column;
 		}
 	}
@@ -244,7 +244,7 @@ body {
 		font-style: var( --cfe-post-info-category--font-style, normal );
 		line-height: var( --cfe-post-info-category--line-height, 1 );
 
-		@media screen and ( max-width: $break_phone ) {
+		@media screen and ( max-width: 640px ) {
 			margin: var( --cfe-post-info-category--phone--margin, 1rem 0 0 0 );
 		}
 
@@ -282,7 +282,7 @@ body {
 	"cover header header"
 	"cover info info";
 
-	@media screen and ( max-width: $break_phone ) {
+	@media screen and ( max-width: 640px ) {
 		display: block;
 	}
 
@@ -308,7 +308,7 @@ body {
 		max-width: 180px;
 		max-height: 180px;
 
-		@media screen and ( max-width: $break_phone ) {
+		@media screen and ( max-width: 640px ) {
 			margin: var( --cfe-post-cover--list--phone--margin, 1.5rem 0 0 0 );
 		}
 
@@ -316,7 +316,7 @@ body {
 			max-width: 180px;
 			max-height: 180px;
 
-			@media screen and ( max-width: $break_phone ) {
+			@media screen and ( max-width: 640px ) {
 				max-width: unset;
 				max-height: 480px;
 			}
@@ -331,7 +331,7 @@ body {
 		font-size: var( --cfe-post-info-category--list--font-size, var( --cfe-heading-secondary--font-size ) );
 		font-weight: var( --cfe-post-info-category--list--font-weight, var( --cfe-heading-secondary--font-weight ) );
 
-		@media screen and ( max-width: $break_phone ) {
+		@media screen and ( max-width: 640px ) {
 			font-size: var( --cfe-post-info-category--phone--font-size, var( --cfe-post-info-category--list--font-size, var( --cfe-heading-secondary--font-size ) ) );
 		}
 	}
@@ -349,7 +349,7 @@ body {
 		"info    cover cover"
 		"....... content content";
 
-		@media screen and ( max-width: $break_phone ) {
+		@media screen and ( max-width: 640px ) {
 			display: block;
 		}
 
@@ -361,7 +361,7 @@ body {
 			grid-area: cover;
 			margin: var( --cfe-post-cover--news--full--margin, 0 );
 
-			@media screen and ( max-width: $break_phone ) {
+			@media screen and ( max-width: 640px ) {
 				margin: var( --cfe-post-cover--news--full--phone--margin, 1.5rem 0 0 0 );
 			}
 
@@ -905,7 +905,7 @@ body {
 	gap: 0.25rem;
 	margin: 1rem 0 0 0;
 
-	@media screen and ( max-width: $break_phone ) {
+	@media screen and ( max-width: 640px ) {
 		grid-template-columns: unset;
 		gap: 1rem;
 	}
@@ -995,7 +995,7 @@ body {
 		transform: scale( 100% );
 		transition: opacity .325s ease-in-out, transform .325s ease-in-out;
 
-		@media screen and ( max-width: $break_phone ) {
+		@media screen and ( max-width: 640px ) {
 			font-size: calc( var( --cfe-heading-secondary--font-size ) * 1.25 );
 		}
 
@@ -1014,7 +1014,7 @@ body {
 		font-size: 0%;
 		transition: opacity .325s ease-in-out, transform .325s ease-in-out;
 
-		@media screen and ( max-width: $break_phone ) {
+		@media screen and ( max-width: 640px ) {
 			opacity: 1;
 			transform: scale( 100% );
 			font-size: var( --cfe-font-size, 1rem );
@@ -1028,7 +1028,7 @@ body {
 			transform: scale( 0% );
 			font-size: 0%;
 
-			@media screen and ( max-width: $break_phone ) {
+			@media screen and ( max-width: 640px ) {
 				opacity: 1;
 				font-size: calc( var( --cfe-heading-secondary--font-size ) * 1.25 );
 			}

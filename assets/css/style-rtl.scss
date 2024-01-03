@@ -36,7 +36,7 @@
 		left: auto;
 		right: 1rem;
 
-		@media screen and ( max-width: $break_tablet ) {
+		@media screen and ( max-width: 960px ) {
 			left: unset;
 			right: calc( 50% - 0.5rem );
 		}
@@ -47,7 +47,7 @@
 	right: 0;
 	left: auto;
 
-	@media screen and ( max-width: $break_tablet ) {
+	@media screen and ( max-width: 960px ) {
 		right: calc( -80px + 50% );
 	}
 }
@@ -60,7 +60,7 @@
 		right: auto;
 		left: 1rem;
 
-		@media screen and ( max-width: $break_tablet ) {
+		@media screen and ( max-width: 960px ) {
 			right: unset;
 			left: calc( 50% - 0.5rem );
 		}
@@ -71,7 +71,7 @@
 	left: 0;
 	right: auto;
 
-	@media screen and ( max-width: $break_tablet ) {
+	@media screen and ( max-width: 960px ) {
 		right: auto;
 		left: calc( -80px + 50% );
 	}

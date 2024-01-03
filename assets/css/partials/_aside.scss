@@ -42,7 +42,7 @@
 		color: var( --cfe-sidebar--bottom--text-color, var( --cfe-sidebar--text-color, inherit ) );
 	}
 
-	@media screen and ( max-width: $break_tablet ) {
+	@media screen and ( max-width: 960px ) {
 		display: var( --cfe-sidebar--bottom--display, var( --cfe-sidebar--display, grid ) );
 		grid-template-columns: var( --cfe-sidebar--bottom--grid-template-columns, var( --cfe-sidebar--grid-template-columns, repeat( 2, 1fr ) ) );
 		gap:  var( --cfe-sidebar--bottom--gap, var( --cfe-spacing--vert, 2rem ) var( --cfe-spacing--horz, 2rem ) );
@@ -62,7 +62,7 @@
 		display: var( --cfe-sidebar--bottom--tablet--display, var( --cfe-sidebar--bottom--display, var( --cfe-sidebar--display, block ) ) );
 	}
 
-	@media screen and ( max-width: $break_phone ) {
+	@media screen and ( max-width: 640px ) {
 		display: var( --cfe-sidebar--bottom--tablet--display, var( --cfe-sidebar--bottom--display, var( --cfe-sidebar--display, block ) ) );
 	}
 
@@ -76,13 +76,13 @@
 			@container page-wrap ( max-width: 960px ) {
 				margin-top: 0;
 			}
-			@media screen and ( max-width: $break_tablet ) {
+			@media screen and ( max-width: 960px ) {
 				margin-top: 0;
 			}
 			@container page-wrap ( max-width: 640px ) {
 				margin-top: var( --cfe-spacing--vert, 2rem );
 			}
-			@media screen and ( max-width: $break_phone ) {
+			@media screen and ( max-width: 640px ) {
 				margin-top: var( --cfe-spacing--vert, 2rem );
 			}
 		}
@@ -171,11 +171,11 @@
 			color: var( --cfe-sidebar--bottom--text-color--dark, var( --cfe-sidebar--text-color--dark, inherit ) );
 		}
 
-		@media screen and ( max-width: $break_tablet ) {
+		@media screen and ( max-width: 960px ) {
 			grid-template-columns: var( --cfe-sidebar--bottom--tablet--grid-template-columns, var( --cfe-sidebar--bottom--grid-template-columns, var( --cfe-sidebar--grid-template-columns, repeat( 2, 1fr ) ) ) );
 		}
 
-		@media screen and ( max-width: $break_phone ) {
+		@media screen and ( max-width: 640px ) {
 			display: var( --cfe-sidebar--bottom--tablet--display, var( --cfe-sidebar--bottom--display, var( --cfe-sidebar--display, block ) ) );
 		}
 	}
