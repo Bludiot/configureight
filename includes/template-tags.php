@@ -172,7 +172,7 @@ function config_styles() {
 
 	// General spacing.
 	$styles .= sprintf(
-		'--cfe-wrapper--general--max-width: %spx;',
+		'--cfe-wrapper--page--max-width: %spx;',
 		plugin()->content_width()
 	);
 	$styles .= sprintf(

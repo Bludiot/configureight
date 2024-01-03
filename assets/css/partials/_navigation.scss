@@ -145,6 +145,7 @@
 						color: var( --cfe-site-nav--sub-list--text-color, $white );
 
 						@media ( prefers-color-scheme: dark ) {
+							background-color: var( --cfe-site-nav--sub-list--bg-color-dark, inherit );
 							color: var( --cfe-site-nav--sub-list--text-color--dark, $white );
 						}
 

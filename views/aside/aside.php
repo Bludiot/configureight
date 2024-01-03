@@ -42,7 +42,7 @@ if ( plugin() ) {
 	);
 }
 ?>
-<div>
+<div id="page-sidebar-wrap">
 	<aside id="page-sidebar" class="page-sidebar <?php echo $sticky; ?>" data-page-sidebar>
 		<?php plugins_hook( 'siteSidebar' ); ?>
 

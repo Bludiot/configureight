@@ -108,6 +108,8 @@ body {
 }
 
 .page-wrap {
+	container-type: inline-size;
+	container-name: page-wrap;
 	display: var( --cfe-wrapper--page--display, block );
 	position: var( --cfe-wrapper--page--position );
 	overflow-x: var( --cfe-wrapper--page--overflow-x );
@@ -118,7 +120,7 @@ body {
 	height: var( --cfe-wrapper--page--height );
 	max-height: var( --cfe-wrapper--page--max-height );
 	min-height: var( --cfe-wrapper--page--min-height );
-	margin: var( --cfe-wrapper--page--margin );
+	margin: var( --cfe-wrapper--page--margin, 0 auto );
 	padding: var( --cfe-wrapper--page--padding );
 }
 

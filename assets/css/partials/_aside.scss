@@ -31,13 +31,24 @@
 		color: var( --cfe-sidebar--default--text-color--dark, var( --cfe-sidebar--text-color--dark, inherit ) );
 	}
 
+	@container page-wrap ( max-width: 960px ) {
+		display: var( --cfe-sidebar--bottom--display, var( --cfe-sidebar--display, grid ) );
+		grid-template-columns: var( --cfe-sidebar--bottom--grid-template-columns, var( --cfe-sidebar--grid-template-columns, repeat( 2, 1fr ) ) );
+		gap:  var( --cfe-sidebar--bottom--gap, var( --cfe-spacing--vert, 2rem ) var( --cfe-spacing--horz, 2rem ) );
+		width: var( --cfe-sidebar--bottom--width, var( --cfe-sidebar--width, 100% ) );
+		max-width: var( --cfe-sidebar--bottom--max-width, var( --cfe-sidebar--max-width ) );
+		margin: 0;
+		background-color: var( --cfe-sidebar--bottom--bg-color, var( --cfe-sidebar--bg-color, inherit ) );
+		color: var( --cfe-sidebar--bottom--text-color, var( --cfe-sidebar--text-color, inherit ) );
+	}
+
 	@media screen and ( max-width: $break_tablet ) {
 		display: var( --cfe-sidebar--bottom--display, var( --cfe-sidebar--display, grid ) );
 		grid-template-columns: var( --cfe-sidebar--bottom--grid-template-columns, var( --cfe-sidebar--grid-template-columns, repeat( 2, 1fr ) ) );
 		gap:  var( --cfe-sidebar--bottom--gap, var( --cfe-spacing--vert, 2rem ) var( --cfe-spacing--horz, 2rem ) );
 		width: var( --cfe-sidebar--bottom--width, var( --cfe-sidebar--width, 100% ) );
 		max-width: var( --cfe-sidebar--bottom--max-width, var( --cfe-sidebar--max-width ) );
-		padding: var( --cfe-sidebar--bottom--padding, var( --cfe-sidebar--padding, var( --cfe-spacing--vert, 2rem ) 0 0 0 ) );
+		margin: 0;
 		background-color: var( --cfe-sidebar--bottom--bg-color, var( --cfe-sidebar--bg-color, inherit ) );
 		color: var( --cfe-sidebar--bottom--text-color, var( --cfe-sidebar--text-color, inherit ) );
 
@@ -45,6 +56,10 @@
 			background-color: var( --cfe-sidebar--bottom--bg-color--dark, var( --cfe-sidebar--bg-color--dark, inherit ) );
 			color: var( --cfe-sidebar--bottom--text-color--dark, var( --cfe-sidebar--text-color--dark, inherit ) );
 		}
+	}
+
+	@container page-wrap ( max-width: 640px ) {
+		display: var( --cfe-sidebar--bottom--tablet--display, var( --cfe-sidebar--bottom--display, var( --cfe-sidebar--display, block ) ) );
 	}
 
 	@media screen and ( max-width: $break_phone ) {
@@ -57,6 +72,19 @@
 
 		&:not( :first-of-type ) {
 			margin-top: var( --cfe-sidebar--plugin--margin-top, calc( var( --cfe-spacing--vert ) * .75 ) );
+
+			@container page-wrap ( max-width: 960px ) {
+				margin-top: 0;
+			}
+			@media screen and ( max-width: $break_tablet ) {
+				margin-top: 0;
+			}
+			@container page-wrap ( max-width: 640px ) {
+				margin-top: var( --cfe-spacing--vert, 2rem );
+			}
+			@media screen and ( max-width: $break_phone ) {
+				margin-top: var( --cfe-spacing--vert, 2rem );
+			}
 		}
 
 		.plugin-content {
