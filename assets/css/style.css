@@ -374,8 +374,8 @@ b, strong, optgroup {
   --cfe-toolbar--link--bg-color--dark: inherit;
   --cfe-toolbar--link--text-color: #ffffff;
   --cfe-toolbar--link--text-color--dark: #ffffff;
-  --cfe-toolbar--link--action--bg-color: var( --cfe-scheme-color--one );
-  --cfe-toolbar--link--action--bg-color--dark: var( --cfe-scheme-color--one--dark );
+  --cfe-toolbar--link--action--bg-color: var( --cfe-scheme-color--five );
+  --cfe-toolbar--link--action--bg-color--dark: var( --cfe-scheme-color--five--dark );
   --cfe-toolbar--link--action--text-color: #ffffff;
   --cfe-toolbar--link--action--text-color--dark: #ffffff;
   --cfe-site-header--bg-color: var( --cfe-body--bg-color );
