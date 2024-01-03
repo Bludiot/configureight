@@ -171,27 +171,27 @@ function config_styles() {
 	}
 
 	// General spacing.
-	if ( ! empty( plugin()->horz_spacing() ) ) {
-		$styles .= sprintf(
-			'--cfe-spacing--horz: %srem;',
-			plugin()->horz_spacing()
-		);
-	}
-	if ( ! empty( plugin()->vert_spacing() ) ) {
-		$styles .= sprintf(
-			'--cfe-spacing--vert: %srem;',
-			plugin()->vert_spacing()
-		);
-	}
+	$styles .= sprintf(
+		'--cfe-wrapper--general--max-width: %spx;',
+		plugin()->content_width()
+	);
+	$styles .= sprintf(
+		'--cfe-spacing--horz: %srem;',
+		plugin()->horz_spacing()
+	);
+	$styles .= sprintf(
+		'--cfe-spacing--vert: %srem;',
+		plugin()->vert_spacing()
+	);
 
 	// Header logo width.
 	$styles .= sprintf(
-		'--cfe-site-logo--max-width: %s;',
-		plugin()->logo_width_std() . 'px'
+		'--cfe-site-logo--max-width: %spx;',
+		plugin()->logo_width_std()
 	);
 	$styles .= sprintf(
-		'--cfe-site-logo--max-width--mobile: %s;',
-		plugin()->logo_width_mob() . 'px'
+		'--cfe-site-logo--max-width--mobile: %spx;',
+		plugin()->logo_width_mob()
 	);
 
 	// Cover image overlay.
