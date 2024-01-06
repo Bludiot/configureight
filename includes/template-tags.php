@@ -306,6 +306,14 @@ function body_classes() {
 		$classes[] = 'ltr';
 	}
 
+	// Color scheme.
+	if ( plugin() ) {
+		$scheme    = plugin()->color_scheme();
+		$classes[] = "color-scheme-{$scheme}";
+	} else {
+		$classes[] = 'color-scheme-default';
+	}
+
 	// User logged in/out.
 	if ( user_logged_in() ) {
 		$classes[] = 'user-logged-in';
@@ -333,6 +341,21 @@ function body_classes() {
 	// Static front page.
 	if ( is_front_page() ) {
 		$classes[] = 'home front-page';
+
+		// If front page slider.
+		if ( plugin() ) {
+			if ( plugin()->posts_slider() ) {
+				$classes[] = 'has-slider has-front-page-slider';
+			}
+			if ( 'static' == plugin()->slider_content() ) {
+				$classes[] = 'has-static-slider';
+			} elseif ( 'id' == plugin()->slider_content() ) {
+				$classes[] = 'has-id-slider';
+			} else {
+				$slider_number = plugin()->slider_number();
+				$classes[] = "has-posts-slider slider-{$slider_number}-posts";
+			}
+		}
 	}
 
 	if ( is_home() || is_loop_page() ) {
