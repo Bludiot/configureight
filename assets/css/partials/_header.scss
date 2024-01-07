@@ -545,11 +545,11 @@
 			cursor: pointer;
 
 			&.slick-prev {
-				left: 3rem;
+				left: 2rem;
 			}
 
 			&.slick-next {
-				right: 3rem;
+				right: 2rem;
 			}
 
 			&:hover,
@@ -569,6 +569,60 @@
 	.slick-list {
 		width: 100%;
 		height: 100%;
+	}
+
+	.slick-dots {
+		list-style: none;
+		position: absolute;
+		bottom: 1rem;
+		left: 0;
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		gap: 0.8rem;
+
+		li {
+			button {
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				width: 0.8rem;
+				height: 0.8rem;
+				text-indent: -9999em;
+				padding: 0;
+				border-radius: 50%;
+				border-color: var( --cfe-cover--title--text-color, var( --cfe-cover--text-color, $white ) );
+				color: var( --cfe-cover--title--text-color, var( --cfe-cover--text-color, $white ) );
+
+				&:after {
+					content: '';
+					display: block;
+					width: 0.4rem;
+					height: 0.4rem;
+					border-radius: 50%;
+					background-color: var( --cfe-cover--title--text-color, var( --cfe-cover--text-color, $white ) );
+					opacity: 0;
+					transition: opacity .15s;
+				}
+
+				&:hover,
+				&:focus {
+					color: var( --cfe-site-cover--title--link--action--text-color, var( --cfe-cover--text-color, $white ) );
+
+					&:after {
+						opacity: 1;
+					}
+				}
+			}
+
+			&.slick-active {
+				button {
+					&:after {
+						opacity: 1;
+					}
+				}
+			}
+		}
 	}
 }
 

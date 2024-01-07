@@ -49,8 +49,10 @@ body {
 		font-family: var( --cfe-fonts--monospace-stack, monospace );
 	}
 
+	/// Using padding rather than margin for tooltips
+	/// the position on body at 0,0 in the viewport.
 	&.toolbar-active {
-		margin-top: var( --cfe-toolbar--height );
+		padding-top: var( --cfe-toolbar--height );
 	}
 }
 

@@ -34,6 +34,12 @@ if (
 	$cover_class = 'full-cover-image cover-blend';
 }
 
+// Link text.
+$link_text = lang()->get( 'Read More' );
+if ( ! empty( plugin()->slider_link_text() ) ) {
+	$link_text = plugin()->slider_link_text();
+}
+
 // Icons.
 $link_arrow = 'arrow-right-light';
 $prev_arrow = 'arrow-left-light';
@@ -63,6 +69,14 @@ if ( 'angle' == plugin()->slider_arrows() ) {
 	}
 }
 
+// Autoplay speed.
+$duration = plugin()->slider_duration();
+if ( str_contains( $duration, '.' ) ) {
+	$duration = str_replace( '.', '', plugin()->slider_duration() ) . '00';
+} else {
+	$duration = $duration . '000';
+}
+
 // Slider markup.
 if ( $posts ) : ?>
 <div id="front-page-slider" class="slider-wrap front-page-slider hide-if-no-js">
@@ -77,7 +91,7 @@ if ( $posts ) : ?>
 		<div class="cover-header" data-cover-header>
 			<h2 class="cover-title"><a href="<?php echo $slide->permalink(); ?>"><?php echo $slide->title(); ?></a></h2>
 			<p class="cover-description"><?php echo page_description( $slide->key() ); ?></p>
-			<a class="slider-more" href="<?php echo $slide->permalink(); ?>"><span><?php lang()->p( 'Read More' ); ?><span> <?php echo icon( $link_arrow, true, 'slider-more-icon' ); ?></a>
+			<a class="slider-more" href="<?php echo $slide->permalink(); ?>"><span><?php echo $link_text; ?><span> <?php echo icon( $link_arrow, true, 'slider-more-icon' ); ?></a>
 		</div>
 	</div>
 <?php endforeach; ?>
@@ -92,10 +106,10 @@ jQuery(document).ready( function($) {
 		arrows         : <?php echo ( 'none' != plugin()->slider_arrows() ? 'true' : 'false' ) ?>,
 		prevArrow      : '<?php echo icon( $prev_arrow, true, 'slick-prev' ); ?>',
         nextArrow      : '<?php echo icon( $next_arrow, true, 'slick-next' ); ?>',
-		dots           : true,
+		dots           : <?php echo ( plugin()->slider_dots() ? 'true' : 'false' ) ?>,
 		slidesToScroll : 1,
 		autoplay       : true,
-		autoplaySpeed  : 3000,
+		autoplaySpeed  : <?php echo $duration; ?>,
 		infinite       : true,
 		adaptiveHeight : false,
 		speed          : 800,
