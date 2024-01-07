@@ -138,6 +138,15 @@ if ( plugin() ) {
 		} ?>
 	</div>
 </header>
+<?php
+
+// Maybe use the slider template.
+if ( plugin() ) : if ( is_front_page() && plugin()->posts_slider() ) :
+include( THEME_DIR . 'views/header/front-slider.php' );
+return;
+endif; endif;
+
+?>
 <?php if ( has_cover() ) : ?>
 <div class="<?php echo $cover_class; ?>">
 	<figure>

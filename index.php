@@ -31,8 +31,7 @@ use function CFE_Tags\{
 	page_id,
 	cover_header,
 	content_template,
-	icon,
-	footer_scripts
+	icon
 };
 
 // Site direction.
@@ -142,8 +141,6 @@ if ( is_loop_page() ) {
 	<?php endif; endif; ?>
 	<?php
 	echo user_toolbar();
-
-	footer_scripts();
 
 	plugins_hook( 'siteBodyEnd' );
 	?>

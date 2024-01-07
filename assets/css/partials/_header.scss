@@ -369,7 +369,8 @@
 	color: var( --cfe-cover--description--text-color, var( --cfe-cover--text-color, $white ) );
 }
 
-.template-full-cover {
+.template-full-cover,
+.has-front-page-slider {
 
 	.site-header {
 		position: relative;
@@ -439,25 +440,23 @@
 
 	.site-header {
 		.site-header-wrap {
-			&:not( .header-scrolled ) {
-				.site-title {
+			.site-title {
+				color: var( --cfe-cover--title--text-color, var( --cfe-cover--text-color, $white ) );
+				text-shadow: var( --cfe-cover--text-shadow, var( --cfe-text-shadow ) );
+
+				a {
 					color: var( --cfe-cover--title--text-color, var( --cfe-cover--text-color, $white ) );
-					text-shadow: var( --cfe-cover--text-shadow, var( --cfe-text-shadow ) );
 
-					a {
-						color: var( --cfe-cover--title--text-color, var( --cfe-cover--text-color, $white ) );
-
-						&:hover,
-						&:focus {
-							color: var( --cfe-site-cover--title--link--action--text-color, var( --cfe-cover--text-color, $white ) );
-						}
+					&:hover,
+					&:focus {
+						color: var( --cfe-site-cover--title--link--action--text-color, var( --cfe-cover--text-color, $white ) );
 					}
 				}
+			}
 
-				.site-description {
-					color: var( --cfe-cover--site-description--text-color, var( --cfe-cover--text-color, $white ) );
-					text-shadow: var( --cfe-cover--text-shadow, var( --cfe-text-shadow ) );
-				}
+			.site-description {
+				color: var( --cfe-cover--site-description--text-color, var( --cfe-cover--text-color, $white ) );
+				text-shadow: var( --cfe-cover--text-shadow, var( --cfe-text-shadow ) );
 			}
 		}
 	}
@@ -483,10 +482,98 @@
 	}
 }
 
+.has-front-page-slider {
+	.front-page-slider {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100vw;
+		height: 100vh;
+		overflow: hidden;
+		background-color: var( --cfe-cover--bg-color, #121212 );
+
+		.page-slide {
+			position: relative;
+			opacity: 0;
+			transition: opacity 0.25s;
+
+			.slider-more {
+				margin: var( --cfe-cover--description-single--margin, 1rem auto 0 auto );
+				font-size: var( --cfe-cover--description--font-size );
+				font-weight: var( --cfe-cover--description-single--font-weight );
+				text-transform: var( --cfe-slider-more--text-transform, capitalize );
+				color: var( --cfe-cover--description--text-color, var( --cfe-cover--text-color, $white ) );
+				text-shadow: var( --cfe-cover--text-shadow, var( --cfe-text-shadow ) );
+
+				svg {
+					fill: currentColor;
+				}
+			}
+
+			.button {
+				&.slider-link {
+					display: inline-block;
+					margin: 1rem auto 0;
+					background: transparent;
+					border-color: var( --cfe-cover--title--text-color, var( --cfe-cover--text-color, $white ) );
+					color: var( --cfe-cover--title--text-color, var( --cfe-cover--text-color, $white ) );
+					text-shadow: var( --cfe-cover--text-shadow, var( --cfe-text-shadow ) );
+
+					&:hover,
+					&:focus {
+						color: var( --cfe-site-cover--title--link--action--text-color, var( --cfe-cover--text-color, $white ) );
+					}
+
+					svg {
+						fill: currentColor;
+					}
+				}
+			}
+		}
+
+		.slick-arrow {
+			z-index: 9000;
+			display: block;
+			position: absolute;
+			top: calc( 50% - 1rem );
+			width: 3rem;
+			height: 3rem;
+			border: none;
+			color: var( --cfe-cover--title--text-color, var( --cfe-cover--text-color, $white ) );
+			cursor: pointer;
+
+			&.slick-prev {
+				left: 3rem;
+			}
+
+			&.slick-next {
+				right: 3rem;
+			}
+
+			&:hover,
+			&:focus {
+				color: var( --cfe-site-cover--title--link--action--text-color, var( --cfe-cover--text-color, $white ) );
+			}
+
+			svg {
+				fill: currentColor;
+				width: 3rem;
+				height: 3rem;
+				max-width: 2rem;
+			}
+		}
+	}
+
+	.slick-list {
+		width: 100%;
+		height: 100%;
+	}
+}
+
 .toolbar-active {
+
 	&.template-full-cover {
-		.site-header,
-		.full-cover-image {
+		.site-header {
 			height: calc( 100vh - var( --cfe-toolbar--height ) );
 		}
 	}

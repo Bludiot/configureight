@@ -14,7 +14,8 @@ use function CFE_Func\{
 	site
 };
 use function CFE_Tags\{
-	social_nav
+	social_nav,
+	footer_scripts
 };
 
 $copyright = '';
@@ -89,3 +90,5 @@ if ( plugin() ) {
 		<?php echo $copyright; ?>
 	</div>
 </footer>
+<?php footer_scripts(); ?>
+

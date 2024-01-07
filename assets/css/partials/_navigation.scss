@@ -213,12 +213,20 @@
 	}
 }
 
-.template-full-cover {
+.template-full-cover,
+.has-front-page-slider {
 	.site-header-wrap {
-		&:not( .header-scrolled ) {
-			.site-navigation {
-				ul {
-					li {
+		.site-navigation {
+			ul {
+				li {
+					color: var( --cfe-site-nav--list--text-color, var( --cfe-cover--text-color, $white ) );
+					text-shadow: var( --cfe-cover--text-shadow, var( --cfe-text-shadow ) );
+
+					@media ( prefers-color-scheme: dark ) {
+						color: var( --cfe-site-nav--list--text-color--dark, var( --cfe-cover--text-color--dark, $white ) );
+					}
+
+					a {
 						color: var( --cfe-site-nav--list--text-color, var( --cfe-cover--text-color, $white ) );
 						text-shadow: var( --cfe-cover--text-shadow, var( --cfe-text-shadow ) );
 
@@ -226,64 +234,55 @@
 							color: var( --cfe-site-nav--list--text-color--dark, var( --cfe-cover--text-color--dark, $white ) );
 						}
 
-						a {
-							color: var( --cfe-site-nav--list--text-color, var( --cfe-cover--text-color, $white ) );
-							text-shadow: var( --cfe-cover--text-shadow, var( --cfe-text-shadow ) );
+						&:hover,
+						&:focus {
+							color: var( --cfe-site-title--cover--link--action--text-color, var( --cfe-cover--text-color, $white ) );
 
 							@media ( prefers-color-scheme: dark ) {
-								color: var( --cfe-site-nav--list--text-color--dark, var( --cfe-cover--text-color--dark, $white ) );
-							}
-
-							&:hover,
-							&:focus {
-								color: var( --cfe-site-title--cover--link--action--text-color, var( --cfe-cover--text-color, $white ) );
-
-								@media ( prefers-color-scheme: dark ) {
-									color: var( --cfe-site-title--cover--link--action--text-color--dark, var( --cfe-cover--text-color--dark, $white ) );
-								}
-							}
-						}
-
-						button {
-							padding: unset;
-							border: none;
-
-							svg {
-								height: 1em;
-								vertical-align: middle;
-								fill: var( --cfe-site-nav--list--text-color, var( --cfe-cover--text-color, $white ) );
-							}
-
-							&:hover {
-								svg {
-									fill: var( --cfe-site-title--cover--link--action--text-color, var( --cfe-cover--text-color, $white ) );
-								}
+								color: var( --cfe-site-title--cover--link--action--text-color--dark, var( --cfe-cover--text-color--dark, $white ) );
 							}
 						}
 					}
 
-					ul {
-						li {
+					button {
+						padding: unset;
+						border: none;
+
+						svg {
+							height: 1em;
+							vertical-align: middle;
+							fill: var( --cfe-site-nav--list--text-color, var( --cfe-cover--text-color, $white ) );
+						}
+
+						&:hover {
+							svg {
+								fill: var( --cfe-site-title--cover--link--action--text-color, var( --cfe-cover--text-color, $white ) );
+							}
+						}
+					}
+				}
+
+				ul {
+					li {
+						color: var( --cfe-site-nav--sub-list--text-color, $white );
+
+						@media ( prefers-color-scheme: dark ) {
+							color: var( --cfe-site-nav--sub-list--text-color--dark, $white );
+						}
+
+						a {
 							color: var( --cfe-site-nav--sub-list--text-color, $white );
 
 							@media ( prefers-color-scheme: dark ) {
 								color: var( --cfe-site-nav--sub-list--text-color--dark, $white );
 							}
 
-							a {
+							&:hover,
+							&:focus {
 								color: var( --cfe-site-nav--sub-list--text-color, $white );
 
 								@media ( prefers-color-scheme: dark ) {
 									color: var( --cfe-site-nav--sub-list--text-color--dark, $white );
-								}
-
-								&:hover,
-								&:focus {
-									color: var( --cfe-site-nav--sub-list--text-color, $white );
-
-									@media ( prefers-color-scheme: dark ) {
-										color: var( --cfe-site-nav--sub-list--text-color--dark, $white );
-									}
 								}
 							}
 						}

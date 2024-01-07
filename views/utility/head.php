@@ -81,6 +81,7 @@ if ( has_cover() && ! empty( get_cover_src() ) ) {
 	echo $helper :: css(
 		[
 			"assets/css/vendor/lightbox{$suffix}.css",
+			"assets/css/vendor/slider{$suffix}.css",
 			"assets/css/style{$suffix}.css"
 		],
 		DOMAIN_THEME

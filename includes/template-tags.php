@@ -2001,9 +2001,14 @@ function social_nav( $wrap = true ) {
 function footer_scripts() {
 
 	$suffix = asset_min();
-
-	echo helper() :: js( "assets/js/fitvids{$suffix}.js" );
-	echo helper() :: js( "assets/js/lightbox{$suffix}.js" );
-	echo helper() :: js( "assets/js/sticky{$suffix}.js" );
-	echo helper() :: js( "assets/js/theme{$suffix}.js" );
+	echo helper() :: js(
+		[
+			"assets/js/fitvids{$suffix}.js",
+			"assets/js/slider{$suffix}.js",
+			"assets/js/lightbox{$suffix}.js",
+			"assets/js/sticky{$suffix}.js",
+			"assets/js/theme{$suffix}.js"
+		],
+		DOMAIN_THEME
+	);
 }

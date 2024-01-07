@@ -36,7 +36,7 @@ use function CFE_Tags\{
 		$max_items = 12;
 
 		if ( $max_items > 0 ) {
-			$nav_items = array_slice( $staticContent, 1, $max_items );
+			$nav_items = array_slice( $staticContent, 0, $max_items );
 		}
 
 		foreach ( $nav_items as $nav_item ) :
