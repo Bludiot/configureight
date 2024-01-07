@@ -83,6 +83,9 @@ jQuery(window).scroll( function () {
     // If scrolled to 150px.
     if ( scroll >= 110 ) {
         jQuery( '.site-header-wrap' ).addClass( 'header-scrolled' );
+
+		jQuery( '#search-bar' ).attr( 'aria-expanded', 'false' ).removeClass( 'active' );
+		jQuery( 'a[data-search-toggle-open]' ).attr( 'aria-expanded', 'false' ).show();
     } else {
         jQuery( '.site-header-wrap' ).removeClass( 'header-scrolled' );
     }
