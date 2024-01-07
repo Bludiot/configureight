@@ -124,6 +124,7 @@ jQuery(document).ready( function($) {
 		adaptiveHeight : false,
 		speed          : 800,
 		pauseOnHover   : false,
+		pauseOnFocus   : false,
 		fade           : <?php echo ( 'slide' == plugin()->slider_animate() ? 'false' : 'true' ) ?>,
 		cssEase        : 'ease-in-out',
 		rtl            : <?php echo ( is_rtl() ? 'true' : 'false' ); ?>

@@ -605,8 +605,7 @@
 					transition: opacity .15s;
 				}
 
-				&:hover,
-				&:focus {
+				&:hover {
 					color: var( --cfe-site-cover--title--link--action--text-color, var( --cfe-cover--text-color, $white ) );
 
 					&:after {

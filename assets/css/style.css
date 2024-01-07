@@ -1926,10 +1926,10 @@ h3 + .search-form {
   opacity: 0;
   transition: opacity 0.15s;
 }
-.has-front-page-slider .slick-dots li button:hover, .has-front-page-slider .slick-dots li button:focus {
+.has-front-page-slider .slick-dots li button:hover {
   color: var(--cfe-site-cover--title--link--action--text-color, var(--cfe-cover--text-color, #ffffff));
 }
-.has-front-page-slider .slick-dots li button:hover:after, .has-front-page-slider .slick-dots li button:focus:after {
+.has-front-page-slider .slick-dots li button:hover:after {
   opacity: 1;
 }
 .has-front-page-slider .slick-dots li.slick-active button:after {
