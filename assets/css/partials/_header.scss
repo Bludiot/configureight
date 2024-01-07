@@ -532,7 +532,9 @@
 		}
 
 		.slick-arrow {
-			z-index: 9000;
+
+			// Below sticky header.
+			z-index: 400;
 			display: block;
 			position: absolute;
 			top: calc( 50% - 1rem );
@@ -625,6 +627,42 @@
 
 					@media ( prefers-color-scheme: dark ) {
 						background-color: var( --cfe-site-header--bg-color--dark, var( --cfe-body--bg-color--dark ) );
+					}
+
+					.site-title {
+						color: var( --cfe-site-title--text-color, var( --cfe-heading-primary--text-color, var( --cfe-body--text-color ) ) );
+						text-shadow: none;
+
+						@media ( prefers-color-scheme: dark ) {
+							color: var( --cfe-site-title--text-color--dark, var( --cfe-heading-primary--text-color--dark, var( --cfe-body--text-color--dark ) ) );
+						}
+
+						a {
+							color: var( --cfe-site-title--link--text-color, inherit );
+							text-shadow: none;
+
+							@media ( prefers-color-scheme: dark ) {
+								color: var( --cfe-site-title--link--text-color--dark, inherit );
+							}
+
+							&:hover,
+							&:focus {
+								color: var( --cfe-site-title--link--action--text-color, inherit );
+
+								@media ( prefers-color-scheme: dark ) {
+									color: var( --cfe-site-title--link--action--text-color--dark, inherit );
+								}
+							}
+						}
+					}
+
+					.site-description {
+						color: var( --cfe-site-description--text-color, var( --cfe-body--text-color ) );
+						text-shadow: none;
+
+						@media ( prefers-color-scheme: dark ) {
+							color: var( --cfe-site-description--text-color--dark, var( --cfe-body--text-color--dark ) );
+						}
 					}
 				}
 			}

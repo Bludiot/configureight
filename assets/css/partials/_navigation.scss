@@ -293,6 +293,90 @@
 	}
 }
 
+.js {
+	.has-sticky-header {
+		&.template-full-cover,
+		&.has-front-page-slider {
+			.site-header-wrap.header-scrolled {
+				.site-navigation {
+					ul {
+						li {
+							color: var( --cfe-site-nav--list--text-color );
+							text-shadow: none;
+
+							@media ( prefers-color-scheme: dark ) {
+								color: var( --cfe-site-nav--list--text-color--dark );
+							}
+
+							a {
+								color: var( --cfe-site-nav--list--link--text-color, var( --cfe-link--text-color ) );
+								text-shadow: none;
+
+								@media ( prefers-color-scheme: dark ) {
+									color: var( --cfe-site-nav--list--link--text-color--dark, var( --cfe-link--text-color--dark ) );
+								}
+
+								&:hover,
+								&:focus {
+									color: var( --cfe-site-nav--list--link--action--text-color, var( --cfe-site-nav--list--link--text-color, var( --cfe-link--action--text-color ) ) );
+
+									@media ( prefers-color-scheme: dark ) {
+										color: var( --cfe-site-nav--list--link--action--text-color--dark, var( --cfe-site-nav--list--link--text-color--dark, var( --cfe-link--action--text-color--dark ) ) );
+									}
+								}
+							}
+
+							button {
+								padding: unset;
+								border: none;
+
+								svg {
+									height: 1em;
+									vertical-align: middle;
+									fill: currentColor;
+								}
+
+								&:hover {
+									svg {
+										fill: currentColor;
+									}
+								}
+							}
+						}
+
+						ul {
+							li {
+								color: var( --cfe-site-nav--sub-list--text-color );
+
+								@media ( prefers-color-scheme: dark ) {
+									color: var( --cfe-site-nav--sub-list--text-color--dark );
+								}
+
+								a {
+									color: var( --cfe-site-nav--sub-list--text-color );
+
+									@media ( prefers-color-scheme: dark ) {
+										color: var( --cfe-site-nav--sub-list--text-color--dark );
+									}
+
+									&:hover,
+									&:focus {
+										color: var( --cfe-site-nav--sub-list--text-color );
+
+										@media ( prefers-color-scheme: dark ) {
+											color: var( --cfe-site-nav--sub-list--text-color--dark );
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
 .page-navigation {
 	width: var( --cfe-page-nav--width, 100% );
 	margin: var( --cfe-page-nav--margin, 2rem 0 0 0 );
