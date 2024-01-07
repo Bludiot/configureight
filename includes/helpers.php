@@ -795,6 +795,10 @@ function full_cover() {
 			}
 			return true;
 		}
+
+		if ( is_front_page() && plugin()->posts_slider() ) {
+			return true;
+		}
 	}
 
 	if ( is_main_loop() && is_static_loop() ) {
