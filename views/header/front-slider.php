@@ -20,8 +20,11 @@ use function CFE_Tags\{
 };
 
 // Get published posts, full objects.
-$posts = $pages->getPublishedDB();
-$posts = array_slice( $posts, 0, plugin()->slider_number() );
+$content = $pages->getPublishedDB();
+if ( 'static' == plugin()->slider_content() ) {
+	$content = plugin()->slider_pages();
+}
+$content = array_slice( $content, 0, plugin()->slider_number() );
 
 // Cover image class.
 $cover_class = 'full-cover-image cover-overlay';
@@ -78,10 +81,17 @@ if ( str_contains( $duration, '.' ) ) {
 }
 
 // Slider markup.
-if ( $posts ) : ?>
+if ( $content[0] ) : ?>
 <div id="front-page-slider" class="slider-wrap front-page-slider hide-if-no-js">
-<?php foreach ( $posts as $post ) :
-	$slide = new Page( $post );
+<?php
+foreach ( $content as $slide ) :
+
+	$slide = new Page( $slide );
+
+	// Skip if no cover image.
+	if ( ! $slide->coverImage() ) {
+		continue;
+	}
 
 	?>
 	<div class="<?php echo $cover_class; ?> page-slide">
