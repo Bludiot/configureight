@@ -19,8 +19,13 @@ use function CFE_Tags\{
 	icon
 };
 
-// Get published posts, full objects.
+// Get published & sticky posts, full objects.
 $content = $pages->getPublishedDB();
+$sticky  = $pages->getStickyDB();
+if ( $sticky[0] ) {
+	$content = array_merge( $sticky, $content );
+}
+
 if ( 'static' == plugin()->slider_content() ) {
 	$content = plugin()->slider_pages();
 }
