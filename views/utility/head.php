@@ -17,6 +17,13 @@ use function CFE_Func\{
 	has_cover,
 	get_cover_src
 };
+use function CFE_Meta\{
+	meta_tags_standard,
+	meta_tags_schema,
+	meta_tags_open_graph,
+	meta_tags_twitter,
+	meta_tags_dublin_core
+};
 use function CFE_Tags\{
 	load_font_files,
 	favicon_tag,
@@ -45,6 +52,7 @@ if ( has_cover() && ! empty( get_cover_src() ) ) {
 ?>
 <?php plugins_hook( 'beforeAll' ); ?>
 <head data-site-head>
+
 	<meta charset="<?php echo CHARSET; ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
@@ -58,24 +66,34 @@ if ( has_cover() && ! empty( get_cover_src() ) ) {
 	<?php
 
 	// Change `<html>` 'no-js' class to 'js' if JavaScript is enabled.
-	echo "<script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>\n";
+	echo "<script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>\r";
 	echo $helper :: jquery();
-	?>
 
-	<?php echo favicon_tag(); ?>
-
-	<?php
+	echo "\r" . favicon_tag() . "\r\r";
 
 	// Meta tags.
 	if ( plugin() ) {
-		plugins_hook( 'meta_tags' );
+		plugins_hook( 'meta_tags' ) . "\r\r";
 	} else {
-		echo $helper :: metaTagTitle();
+		echo $helper :: metaTagTitle() . "\r\r";
 	}
-	echo $helper :: metaTagDescription();
-	?>
 
-	<?php
+	// Metadata tags.
+	echo "\r\r" . meta_tags_standard() . "\r";
+	if ( plugin() ) {
+		if ( plugin()->meta_use_schema() ) {
+			echo meta_tags_schema() . "\r";
+		}
+		if ( plugin()->meta_use_og() ) {
+			echo meta_tags_open_graph() . "\r";
+		}
+		if ( plugin()->meta_use_twitter() ) {
+			echo meta_tags_twitter() . "\r";
+		}
+		if ( plugin()->meta_use_dublin() ) {
+			echo meta_tags_dublin_core() . "\r";
+		}
+	}
 
 	// Core frontend stylesheets.
 	echo $helper :: css(
@@ -98,7 +116,7 @@ if ( has_cover() && ! empty( get_cover_src() ) ) {
 		echo config_styles();
 		plugins_hook( 'color_scheme_vars' );
 		echo custom_css();
-	} ?>
+	}
 
-	<?php plugins_hook( 'siteHead' ); ?>
+	plugins_hook( 'siteHead' ); ?>
 </head>
