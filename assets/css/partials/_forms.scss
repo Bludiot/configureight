@@ -317,21 +317,7 @@ option {
 	}
 
 	input[type="button"] {
-		text-indent: -999em;
-		position: var( --cfe-search--button--position );
 		display: var( --cfe-search--button--display, inline-block );
-		width: var( --cfe-search--button--width, 1.5em );
-		height: var( --cfe-search--button--height, 1.5em );
-		padding: var( --cfe-search--button--padding, 1.5em );
-		background-repeat: var( --cfe-search--button--background-repeat, no-repeat );
-		background-size: var( --cfe-search--button--background-size, 1.25em );
-		background-position: var( --cfe-search--button--background-position, center center );
-		background-image: var( --cfe-search--button--background-image, url( '#{$search_icon_bg}' ) );
-
-		&:hover,
-		&:focus {
-			background-image: var( --cfe-search--button--action--background-image, url( '#{$search_icon_action_bg}' ) );
-		}
 	}
 }
 
@@ -359,6 +345,28 @@ h3 + .search-form {
 	input[type="search"] {
 		&:focus {
 			z-index: 1;
+		}
+	}
+}
+
+.search-has-icon {
+	.search-form {
+		input[type="button"] {
+			text-indent: -999em;
+			position: var( --cfe-search--button--position );
+			display: var( --cfe-search--button--display, inline-block );
+			width: var( --cfe-search--button--width, 1.5em );
+			height: var( --cfe-search--button--height, 1.5em );
+			padding: var( --cfe-search--button--padding, 1.5em );
+			background-repeat: var( --cfe-search--button--background-repeat, no-repeat );
+			background-size: var( --cfe-search--button--background-size, 1.25em );
+			background-position: var( --cfe-search--button--background-position, center center );
+			background-image: var( --cfe-search--button--background-image, url( '#{$search_icon_bg}' ) );
+
+			&:hover,
+			&:focus {
+				background-image: var( --cfe-search--button--action--background-image, url( '#{$search_icon_action_bg}' ) );
+			}
 		}
 	}
 }

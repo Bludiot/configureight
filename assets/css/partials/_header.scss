@@ -95,19 +95,28 @@
 		}
 
 		input[type="button"] {
-			text-indent: -999em;
 			display: inline-block;
-			background-repeat: no-repeat;
-			background-size: 1.25em;
-			background-position: center center;
-			width: 1.5em;
-			height: 1.5em;
-			padding: 1.5em;
-			background-image: url( '#{$search_icon_bg}' );
+		}
+	}
+}
 
-			&:hover,
-			&:focus {
-				background-image: url( '#{$search_icon_action_bg}' );
+.search-has-icon {
+	.site-header {
+		.search-form-wrap {
+			input[type="button"] {
+				text-indent: -999em;
+				background-repeat: no-repeat;
+				background-size: 1.25em;
+				background-position: center center;
+				width: 1.5em;
+				height: 1.5em;
+				padding: 1.5em;
+				background-image: url( '#{$search_icon_bg}' );
+
+				&:hover,
+				&:focus {
+					background-image: url( '#{$search_icon_action_bg}' );
+				}
 			}
 		}
 	}

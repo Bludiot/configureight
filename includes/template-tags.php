@@ -615,6 +615,13 @@ function body_classes() {
 		}
 	}
 
+	// Search icon.
+	if ( plugin() ) {
+		if ( plugin()->search_icon() ) {
+			$classes[] = 'search-has-icon';
+		}
+	}
+
 	// Logo location.
 	if ( site()->logo() && plugin() ) {
 		if ( 'above' == plugin()->logo_location() ) {
