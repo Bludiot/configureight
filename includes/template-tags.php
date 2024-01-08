@@ -15,11 +15,6 @@ if ( ! defined( 'BLUDIT' ) ) {
 	die( 'You are not allowed direct access to this file.' );
 }
 
-// Alias namespaces.
-use CFE\Classes\{
-	Front as Front
-};
-
 // Import namespaced functions.
 use function CFE_Func\{
 	helper,
