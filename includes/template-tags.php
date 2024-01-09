@@ -317,8 +317,10 @@ function body_classes() {
 	}
 
 	// User toolbar.
-	if ( user_logged_in() && plugin() && false != user_toolbar() ) {
-		$classes[] = 'toolbar-active';
+	if ( user_logged_in() && plugin() ) {
+		if ( plugin()->user_toolbar() ) {
+			$classes[] = 'toolbar-active';
+		}
 	}
 
 	// Sticky header.
@@ -934,10 +936,14 @@ function get_toolbar() {
  */
 function user_toolbar() {
 
+	if ( ! plugin() ) {
+		return false;
+	}
+
 	if (
-		user_logged_in() && plugin() &&
-		( 'enabled' == plugin()->show_user_toolbar() ||
-		'frontend' == plugin()->show_user_toolbar() )
+		user_logged_in() &&
+		( 'enabled' == plugin()->user_toolbar() ||
+		'frontend'  == plugin()->user_toolbar() )
 	) {
 		return get_toolbar();
 	}
