@@ -24,6 +24,7 @@ $get_related = get_related();
 $heading    = $L->get( 'Related Posts' );
 $heading_el = 'h2';
 if ( plugin() ) {
+	$heading = '';
 	if ( ! empty( plugin()->related_heading() ) ) {
 		$heading = plugin()->related_heading();
 	}
@@ -64,12 +65,14 @@ if ( plugin() ) {
 ?>
 <div class="related-posts">
 
-	<?php printf(
-		'<%s class="related-posts-heading">%s</%s>',
-		$heading_el,
-		ucwords( $heading ),
-		$heading_el
-	); ?>
+	<?php if ( ! empty( $heading ) ) {
+		printf(
+			'<%s class="related-posts-heading">%s</%s>',
+			$heading_el,
+			ucwords( $heading ),
+			$heading_el
+		);
+	} ?>
 
 	<div class="related-loop related-style-<?php echo $related_style; ?> <?php echo $max; ?>">
 		<?php foreach ( $get_related as $related ) : ?>
