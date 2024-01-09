@@ -265,6 +265,7 @@
 				ul {
 					li {
 						color: var( --cfe-site-nav--sub-list--text-color, $white );
+						text-shadow: var( --cfe-site-nav--sub-list--text-shadow, none );
 
 						@media ( prefers-color-scheme: dark ) {
 							color: var( --cfe-site-nav--sub-list--text-color--dark, $white );
@@ -272,6 +273,7 @@
 
 						a {
 							color: var( --cfe-site-nav--sub-list--text-color, $white );
+							text-shadow: var( --cfe-site-nav--sub-list--text-shadow, none );
 
 							@media ( prefers-color-scheme: dark ) {
 								color: var( --cfe-site-nav--sub-list--text-color--dark, $white );

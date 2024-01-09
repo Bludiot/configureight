@@ -2264,6 +2264,7 @@ h3 + .search-form {
 .template-full-cover .site-header-wrap .site-navigation ul ul li,
 .has-front-page-slider .site-header-wrap .site-navigation ul ul li {
   color: var(--cfe-site-nav--sub-list--text-color, #ffffff);
+  text-shadow: var(--cfe-site-nav--sub-list--text-shadow, none);
 }
 @media (prefers-color-scheme: dark) {
   .template-full-cover .site-header-wrap .site-navigation ul ul li,
@@ -2274,6 +2275,7 @@ h3 + .search-form {
 .template-full-cover .site-header-wrap .site-navigation ul ul li a,
 .has-front-page-slider .site-header-wrap .site-navigation ul ul li a {
   color: var(--cfe-site-nav--sub-list--text-color, #ffffff);
+  text-shadow: var(--cfe-site-nav--sub-list--text-shadow, none);
 }
 @media (prefers-color-scheme: dark) {
   .template-full-cover .site-header-wrap .site-navigation ul ul li a,
