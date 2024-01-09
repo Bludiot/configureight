@@ -169,11 +169,13 @@ function plugin() {
  * User logged in
  *
  * @since  1.0.0
+ * @global object $login The Login class.
  * @return boolean Returns true if the current user is logged in.
  */
 function user_logged_in() {
 
-	$login = new \Login();
+	// Access global variables.
+	global $login;
 
 	if ( $login->isLogged() ) {
 		return true;

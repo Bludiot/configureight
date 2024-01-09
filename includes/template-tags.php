@@ -940,11 +940,11 @@ function user_toolbar() {
 		return false;
 	}
 
-	if (
-		user_logged_in() &&
-		( 'enabled' == plugin()->user_toolbar() ||
-		'frontend'  == plugin()->user_toolbar() )
-	) {
+	if ( ! user_logged_in() ) {
+		return false;
+	}
+
+	if ( 'enabled' == plugin()->user_toolbar() || 'frontend'  == plugin()->user_toolbar() ) {
 		return get_toolbar();
 	}
 	return false;

@@ -93,6 +93,9 @@ if ( ! min_php_version() ) {
 require_once( THEME_DIR . 'includes/classes/autoload.php' );
 Autoload\classes();
 
+// Access Login class from the front end.
+$login = new \Login();
+
 // Required theme functions.
 require( THEME_DIR . 'includes/helpers.php' );
 require( THEME_DIR . 'includes/meta-data.php' );
