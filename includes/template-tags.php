@@ -326,6 +326,11 @@ function body_classes() {
 		}
 	}
 
+	// Cover image.
+	if ( has_cover() ) {
+		$classes[] = 'has-cover-image';
+	}
+
 	// Sticky header.
 	if ( plugin() ) {
 		if ( plugin()->header_sticky() ) {
