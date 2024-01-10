@@ -221,7 +221,7 @@ function meta_description() {
 	if ( is_page() ) {
 		$desc = page_description( page()->key() );
 
-	} elseif ( is_main_loop() ) {
+	} elseif ( is_home() || is_main_loop() ) {
 		$desc = loop_description();
 
 	} elseif ( is_cat() ) {
