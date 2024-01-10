@@ -477,7 +477,7 @@ h4 {
 
 .tooltipster-sidetip.cfe-tooltips .tooltipster-content,
 .tooltipster-follower.cfe-tooltips .tooltipster-content {
-	background-color: #333333;
+	background-color: var( --cfe-tooltip--bg-color, var( --cfe-body--bg-color--dark, #333333 ) );
 	color: $white;
 	border-radius: 0px;
 	padding: 0.5em 0.625em;
@@ -527,25 +527,25 @@ h4 {
 }
 
 .tooltipster-sidetip.cfe-tooltips.tooltipster-bottom .tooltipster-arrow-background {
-	border-bottom-color: #333333;
+	border-bottom-color: var( --cfe-tooltip--bg-color, var( --cfe-body--bg-color--dark, #333333 ) );
 
 	@media ( prefers-color-scheme: dark ) {}
 }
 
 .tooltipster-sidetip.cfe-tooltips.tooltipster-left .tooltipster-arrow-background {
-	border-left-color: #333333;
+	border-left-color: var( --cfe-tooltip--bg-color, var( --cfe-body--bg-color--dark, #333333 ) );
 
 	@media ( prefers-color-scheme: dark ) {}
 }
 
 .tooltipster-sidetip.cfe-tooltips.tooltipster-right .tooltipster-arrow-background {
-	border-right-color: #333333;
+	border-right-color: var( --cfe-tooltip--bg-color, var( --cfe-body--bg-color--dark, #333333 ) );
 
 	@media ( prefers-color-scheme: dark ) {}
 }
 
 .tooltipster-sidetip.cfe-tooltips.tooltipster-top .tooltipster-arrow-background {
-	border-top-color: #333333;
+	border-top-color: var( --cfe-tooltip--bg-color, var( --cfe-body--bg-color--dark, #333333 ) );
 
 	@media ( prefers-color-scheme: dark ) {}
 }
