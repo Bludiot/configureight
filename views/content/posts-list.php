@@ -28,6 +28,7 @@ use function CFE_Tags\{
 	loop_type,
 	icon,
 	sticky_icon,
+	article_type,
 	page_description,
 	has_tags,
 	get_author,
@@ -62,14 +63,6 @@ if ( plugin() ) {
 			'<span class="theme-icon loop-icon tags-icon loop-tags-icon loop-full-tags-icon" role="icon">%s</span>',
 			icon( 'tag' )
 		);
-	}
-}
-
-// Schema article itemtype.
-$article_type = 'BlogPosting';
-if ( plugin() ) {
-	if ( 'news' == plugin()->loop_type() ) {
-		$article_type = 'NewsArticle';
 	}
 }
 
@@ -151,7 +144,7 @@ if ( plugin() ) {
 }
 
 ?>
-<article id="<?php echo $post->uuid(); ?>" class="site-article" role="article" itemscope="itemscope" itemtype="<?php echo 'https://schema.org/' . $article_type; ?>" data-site-article>
+<article id="<?php echo $post->uuid(); ?>" class="site-article" role="article" itemscope="itemscope" itemtype="<?php echo 'https://schema.org/' . article_type(); ?>" data-site-article>
 
 	<div class="post-loop-content post-<?php echo loop_style(); ?>-content post-<?php echo loop_type(); ?>-content">
 
