@@ -16,7 +16,8 @@ use function CFE_Func\{
 	site,
 	plugin,
 	lang,
-	loop_url
+	loop_url,
+	is_loop_not_home
 };
 use function CFE_Tags\{
 	icon,
@@ -94,11 +95,13 @@ use function CFE_Tags\{
 		endforeach;
 
 		// Add loop after pages link if home is static content.
-		printf(
-			'<li class="no-children"><a href="%s">%s</a></li>',
-			loop_url(),
-			nav_loop_label()
-		);
+		if ( is_loop_not_home() ) {
+			printf(
+				'<li class="no-children"><a href="%s">%s</a></li>',
+				loop_url(),
+				nav_loop_label()
+			);
+		}
 
 		// Add a home link if true in theme plugin.
 		printf(
