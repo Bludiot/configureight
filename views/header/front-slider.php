@@ -21,7 +21,7 @@ use function CFE_Tags\{
 
 // Get published & sticky posts, full objects.
 $slider = $pages->getPublishedDB();
-$sticky  = $pages->getStickyDB();
+$sticky = $pages->getStickyDB();
 if ( $sticky[0] ) {
 	$slider = array_merge( $sticky, $slider );
 }
