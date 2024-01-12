@@ -20,16 +20,21 @@ use function CFE_Tags\{
 };
 
 // Get published & sticky posts, full objects.
-$content = $pages->getPublishedDB();
+$slider = $pages->getPublishedDB();
 $sticky  = $pages->getStickyDB();
 if ( $sticky[0] ) {
-	$content = array_merge( $sticky, $content );
+	$slider = array_merge( $sticky, $slider );
 }
 
+// Get static pages.
 if ( 'static' == plugin()->slider_content() ) {
-	$content = plugin()->slider_pages();
+	$slider = $staticContent;
 }
-$content = array_slice( $content, 0, plugin()->slider_number() );
+
+// Maximum recent posts.
+if ( 'recent' == plugin()->slider_content() ) {
+	$slider = array_slice( $slider, 0, plugin()->slider_number() );
+}
 
 // Cover image class.
 $cover_class = 'full-cover-image cover-overlay';
@@ -86,12 +91,24 @@ if ( str_contains( $duration, '.' ) ) {
 }
 
 // Slider markup.
-if ( $content[0] ) : ?>
+if ( $slider[0] ) : ?>
 <div id="front-page-slider" class="slider-wrap front-page-slider hide-if-no-js">
 <?php
-foreach ( $content as $slide ) :
+foreach ( $slider as $slide ) :
 
-	$slide = new Page( $slide );
+	// Get recent post object.
+	if ( 'recent' == plugin()->slider_content() ) {
+		$slide = new \Page( $slide );
+	}
+
+	// Static pages already return object.
+	if ( 'static' == plugin()->slider_content() ) {
+
+		// Skip pages not selected.
+		if ( ! in_array( $slide->key(), plugin()->slider_pages() ) ) {
+			continue;
+		}
+	}
 
 	// Skip if no cover image.
 	if ( ! $slide->coverImage() ) {
