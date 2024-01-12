@@ -22,7 +22,7 @@ use function CFE_Tags\{
 // Get published & sticky posts, full objects.
 $slider = $pages->getPublishedDB();
 $sticky = $pages->getStickyDB();
-if ( $sticky[0] ) {
+if ( isset( $sticky[0] ) ) {
 	$slider = array_merge( $sticky, $slider );
 }
 
@@ -91,7 +91,7 @@ if ( str_contains( $duration, '.' ) ) {
 }
 
 // Slider markup.
-if ( $slider[0] ) : ?>
+if ( isset( $slider[0] ) ) : ?>
 <div id="front-page-slider" class="slider-wrap front-page-slider hide-if-no-js">
 <?php
 foreach ( $slider as $slide ) :
