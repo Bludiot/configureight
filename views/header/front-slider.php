@@ -19,6 +19,10 @@ use function CFE_Tags\{
 	icon
 };
 
+// Option variables.
+$recent = ( 'recent' == plugin()->slider_content() ? true : false );
+$static = ( 'static' == plugin()->slider_content() ? true : false );
+
 // Get published & sticky posts, full objects.
 $slider = $pages->getPublishedDB();
 $sticky = $pages->getStickyDB();
@@ -27,12 +31,12 @@ if ( isset( $sticky[0] ) ) {
 }
 
 // Get static pages.
-if ( 'static' == plugin()->slider_content() ) {
+if ( $static ) {
 	$slider = $staticContent;
 }
 
 // Maximum recent posts.
-if ( 'recent' == plugin()->slider_content() ) {
+if ( $recent ) {
 	$slider = array_slice( $slider, 0, plugin()->slider_number() );
 }
 
@@ -97,12 +101,12 @@ if ( isset( $slider[0] ) ) : ?>
 foreach ( $slider as $slide ) :
 
 	// Get recent post object.
-	if ( 'recent' == plugin()->slider_content() ) {
+	if ( $recent ) {
 		$slide = new \Page( $slide );
 	}
 
 	// Static pages already return object.
-	if ( 'static' == plugin()->slider_content() ) {
+	if ( $static ) {
 
 		// Skip pages not selected.
 		if ( ! in_array( $slide->key(), plugin()->slider_pages() ) ) {
