@@ -42,7 +42,6 @@ if ( $recent ) {
 
 // Cover image class.
 $cover_class = 'full-cover-image cover-overlay';
-
 if (
 	'blend' == plugin()->cover_style() &&
 	is_array( plugin()->cover_blend_use() ) &&
@@ -94,8 +93,32 @@ if ( str_contains( $duration, '.' ) ) {
 	$duration = $duration . '000';
 }
 
+// Loading icon.
+$icon_type = 'spinner-dots';
+$icon_show = true;
+if ( plugin() ) {
+	if ( 'spinner-dashes' == plugin()->slider_icon() ) {
+		$icon_type = 'spinner-dashes';
+	} elseif ( 'spinner-third' == plugin()->slider_icon() ) {
+		$icon_type = 'spinner-third';
+	}
+
+	if ( 'none' == plugin()->slider_icon() ) {
+		$icon_show = false;
+	}
+}
+
 // Slider markup.
 if ( isset( $slider[0] ) ) : ?>
+<div id="slider-loading">
+	<?php if ( $icon_show ) : ?>
+	<p class="loading-text"><?php lang()->p( 'Loading Slides' ); ?></p>
+	<div class="loading-image <?php echo $icon_type; ?>">
+		<?php echo icon( $icon_type ); ?>
+	</div>
+	<?php endif; ?>
+</div>
+
 <div id="front-page-slider" class="slider-wrap front-page-slider hide-if-no-js">
 <?php
 foreach ( $slider as $slide ) :
@@ -158,5 +181,6 @@ jQuery(document).ready( function($) {
 
 	// Show slides when page is loaded.
 	$( '.page-slide' ).css( 'opacity', '1' );
+	$( '#slider-loading' ).hide();
 });
 </script>

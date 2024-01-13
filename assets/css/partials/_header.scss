@@ -492,6 +492,46 @@
 }
 
 .has-front-page-slider {
+
+	#slider-loading {
+		z-index: 15;
+		position: absolute;
+		top: 0;
+		width: 100vw;
+		height: 100vh;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		font-size: var( --cfe-cover--description--font-size );
+		font-weight: var( --cfe-cover--description-single--font-weight );
+		color: var( --cfe-cover--text-color, $white );
+
+		.loading-image {
+			display: var( --cfe-loader--image--display, block );
+			position: var( --cfe-loader--image--position );
+			overflow-x: var( --cfe-loader--image--overflow-x );
+			overflow-y: var( --cfe-loader--image--overflow-y );
+			width: var( --cfe-loader--image--width, 1.75rem );
+			height: var( --cfe-loader--image--height, 1.75rem );
+			margin: var( --cfe-loader--image--margin, 2rem 0 0 0 );
+			padding:  var( --cfe-loader--image--padding, 0 );
+			-webkit-animation: spinner 1s infinite linear;
+			animation: spinner 1s infinite linear;
+
+			&.spinner-dashes {
+				-webkit-animation: spinner 1.5s infinite linear;
+				animation: spinner 1.5s infinite linear;
+			}
+
+			svg {
+				width: var( --cfe-loader--image--width, 1.75rem );
+				height: var( --cfe-loader--image--height, 1.75rem );
+				fill: var( --cfe-loader--image--fill, currentColor );
+			}
+		}
+	}
+
 	.front-page-slider {
 		position: absolute;
 		top: 0;
@@ -499,7 +539,15 @@
 		width: 100vw;
 		height: 100vh;
 		overflow: hidden;
-		background-color: var( --cfe-cover--bg-color, #121212 );
+		background-color: var( --cfe-cover--bg-color, var( --cfe-body--bg-color--dark ) );
+
+		@media ( prefers-color-scheme: dark ) {
+			background-color: var( --cfe-cover--bg-color--dark, var( --cfe-body--bg-color--dark ) );
+		}
+
+		.slick-list {
+			z-index: 10;
+		}
 
 		.page-slide {
 			position: relative;
