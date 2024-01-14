@@ -27,7 +27,19 @@ use function CFE_Tags\{
 	social_nav
 };
 
+$menu_icon  = icon( 'bars', false );
+$menu_class = 'screen-reader-text';
+if ( 'dots' == plugin()->main_nav_icon() ) {
+	$menu_icon  = icon( 'dots-h', false );
+	$menu_class = 'screen-reader-text';
+} elseif ( 'none' == plugin()->main_nav_icon() ) {
+	$menu_icon  = '';
+	$menu_class = '';
+}
+
 ?>
+<button id="menu-toggle" data-menu-toggle-open aria-controls="mobile-nav" aria-expanded="false"><?php echo $menu_icon; ?><span class="menu-toggle-text <?php echo $menu_class; ?>"><?php lang()->p( 'Menu' ); ?></span></button>
+
 <nav id="site-navigation" class="site-navigation" role="directory" itemscope itemtype="https://schema.org/SiteNavigationElement" data-site-navigation>
 	<ul class="nav-list main-nav-list">
 		<?php

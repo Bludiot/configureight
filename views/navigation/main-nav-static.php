@@ -27,6 +27,8 @@ use function CFE_Tags\{
 };
 
 ?>
+<button id="menu-toggle" data-menu-toggle-open aria-controls="mobile-nav" aria-expanded="false"><?php echo icon( 'bars', false ); ?><span class="screen-reader-text"><?php lang()->p( 'Menu' ); ?></span></button>
+
 <nav id="site-navigation" class="site-navigation" role="directory" itemscope itemtype="https://schema.org/SiteNavigationElement" data-site-navigation>
 	<ul class="nav-list main-nav-list">
 		<?php

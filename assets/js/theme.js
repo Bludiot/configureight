@@ -12,6 +12,21 @@
 		// Apply FitVids to main and aside.
 		$( '.page-content, .page-sidebar' ).fitVids();
 
+		$( 'button[data-menu-toggle-open]' ).click( function(e) {
+			e.preventDefault();
+			$( 'html' ).css( 'height', '100vh' ).css( 'overflow-y', 'hidden' );
+			$( '#mobile-nav' ).attr( 'aria-expanded', 'true' ).css( 'display', 'flex' );
+			$( this ).attr( 'aria-expanded', 'true' );
+		} );
+
+		$( 'button[data-menu-toggle-close]' ).click( function(e) {
+			e.preventDefault();
+			$( 'html, body' ).scrollTop( 0 );
+			$( 'html' ).css( 'height', '100%' ).css( 'overflow-y', 'auto' );
+			$( '#mobile-nav' ).attr( 'aria-expanded', 'false' ).css( 'display', 'none' );
+			$( 'button[data-menu-toggle-open]' ).attr( 'aria-expanded', 'true' );
+		} );
+
 		$( 'a[data-search-toggle-open]' ).click( function(e) {
 			e.preventDefault();
 			$( '#search-bar' ).attr( 'aria-expanded', 'true' ).addClass( 'active' );

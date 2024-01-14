@@ -106,6 +106,16 @@ if ( is_loop_page() ) {
 
 	<?php include( THEME_DIR . 'views/header/header.php' ); ?>
 
+	<?php
+	// Get main navigation if theme plugin.
+	if ( plugin() ) {
+		include( THEME_DIR . 'views/navigation/mobile-nav-options.php' );
+
+	// Get main navigation if no theme plugin.
+	} else {
+		include( THEME_DIR . 'views/navigation/mobile-nav-static.php' );
+	} ?>
+
 	<div id="<?php echo page_id(); ?>" class="page-wrap" data-page-wrap itemscope="itemscope" itemtype="<?php page_schema(); ?>">
 
 		<?php plugins_hook( 'pageBegin' ); ?>
