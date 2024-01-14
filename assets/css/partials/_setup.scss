@@ -140,6 +140,7 @@ a {
 	font-style: var( --cfe-link--font-style, inherit );
 	font-variant: var( --cfe-link--font-variant, inherit );
 	text-decoration: var( --cfe-link--text-decoration );
+	text-underline-offset: var( --cfe-link--text-underline-offset );
 	text-transform: var( --cfe-link--text-transform, inherit );
 	letter-spacing: var( --cfe-link--letter-spacing, inherit );
 	word-spacing: var( --cfe-link--word-spacing, inherit );
