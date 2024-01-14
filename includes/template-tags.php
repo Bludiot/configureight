@@ -189,6 +189,12 @@ function config_styles() {
 		plugin()->logo_width_mob()
 	);
 
+	// Cover image desaturation.
+	$styles .= sprintf(
+		'--cfe-cover-img--grayscale: %s;',
+		plugin()->cover_desaturate() . '%'
+	);
+
 	// Cover image overlay.
 	if ( ! empty( plugin()->cover_overlay() ) ) {
 		$styles .= sprintf(

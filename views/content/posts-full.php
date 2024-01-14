@@ -20,6 +20,9 @@ use function CFE_Func\{
 	lang,
 	plugin,
 	loop_data,
+	is_main_loop,
+	is_cat,
+	is_tag,
 	get_word_count
 };
 use function CFE_Tags\{

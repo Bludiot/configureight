@@ -32,6 +32,7 @@ if ( plugin() ) {
 
 // Related style.
 $related_style = 'list';
+$cover_image_class = '';
 if ( plugin() ) {
 	$related_style = plugin()->related_style() . ' cover-overlay';
 
@@ -41,6 +42,9 @@ if ( plugin() ) {
 		in_array( 'related', plugin()->cover_blend_use() )
 	) {
 		$related_style = plugin()->related_style() . ' cover-blend';
+	}
+	if ( in_array( 'related', plugin()->cover_desaturate_use() ) ) {
+		$cover_image_class = 'desaturate';
 	}
 }
 
@@ -71,7 +75,7 @@ if ( plugin() ) {
 			<a href="<?php echo $related->permalink(); ?>">
 				<?php if ( $related->coverImage() ) : ?>
 				<figure class="related-cover">
-					<img src="<?php echo $related->thumbCoverImage(); ?>" alt="">
+					<img class="<?php echo $cover_image_class; ?>" src="<?php echo $related->thumbCoverImage(); ?>" alt="">
 				</figure>
 				<?php endif; ?>
 				<div class="related-content">

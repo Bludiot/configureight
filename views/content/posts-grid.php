@@ -20,6 +20,9 @@ use function CFE_Func\{
 	lang,
 	plugin,
 	loop_data,
+	is_main_loop,
+	is_cat,
+	is_tag,
 	get_word_count
 };
 use function CFE_Tags\{
@@ -145,15 +148,28 @@ $tags_list = function() use ( $post, $tags_icon ) {
 	return '';
 };
 
-// Cover image class.
-$cover_class = 'post-cover cover-overlay';
+// Cover image classes.
+$cover_wrap_class  = 'post-cover cover-overlay';
+$cover_image_class = '';
 if ( plugin() ) {
 	if (
 		'blend' == plugin()->cover_style() &&
-		is_array( plugin()->cover_blend_use() ) &&
-		in_array( 'loop', plugin()->cover_blend_use() )
+		is_array( plugin()->cover_blend_use() )
 	) {
-		$cover_class = 'post-cover cover-blend';
+		if ( is_main_loop() && in_array( 'loop', plugin()->cover_blend_use() ) ) {
+			$cover_wrap_class = 'post-cover cover-blend';
+		} elseif ( is_cat() && in_array( 'cat', plugin()->cover_blend_use() ) ) {
+			$cover_wrap_class = 'post-cover cover-blend';
+		} elseif ( is_tag() && in_array( 'tag', plugin()->cover_blend_use() ) ) {
+			$cover_wrap_class = 'post-cover cover-blend';
+		}
+	}
+	if ( is_main_loop() && in_array( 'loop', plugin()->cover_desaturate_use() ) ) {
+		$cover_image_class = 'desaturate';
+	} elseif ( is_cat() && in_array( 'cat', plugin()->cover_desaturate_use() ) ) {
+		$cover_image_class = 'desaturate';
+	} elseif ( is_tag() && in_array( 'tag', plugin()->cover_desaturate_use() ) ) {
+		$cover_image_class = 'desaturate';
 	}
 }
 
@@ -168,8 +184,8 @@ if ( plugin() ) {
 			</header>
 
 			<?php if ( $thumb_src ) : ?>
-			<figure class="<?php echo $cover_class; ?>">
-				<img src="<?php echo $thumb_src; ?>" loading="lazy" />
+			<figure class="<?php echo $cover_wrap_class; ?>">
+				<img class="<?php echo $cover_image_class; ?>" src="<?php echo $thumb_src; ?>" loading="lazy" />
 				<figcaption class="screen-reader-text"><?php echo $post->title(); ?></figcaption>
 			</figure>
 			<?php endif; ?>

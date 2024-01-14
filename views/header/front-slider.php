@@ -40,14 +40,18 @@ if ( $recent ) {
 	$slider = array_slice( $slider, 0, plugin()->slider_number() );
 }
 
-// Cover image class.
-$cover_class = 'full-cover-image cover-overlay';
+// Cover image classes.
+$cover_wrap_class  = 'full-cover-image cover-overlay';
+$cover_image_class = '';
 if (
 	'blend' == plugin()->cover_style() &&
 	is_array( plugin()->cover_blend_use() ) &&
 	in_array( 'slider', plugin()->cover_blend_use() )
 ) {
-	$cover_class = 'full-cover-image cover-blend';
+	$cover_wrap_class = 'full-cover-image cover-blend';
+}
+if ( in_array( 'slider', plugin()->cover_desaturate_use() ) ) {
+	$cover_image_class = 'desaturate';
 }
 
 // Link text.
@@ -143,9 +147,9 @@ foreach ( $slider as $slide ) :
 	}
 
 	?>
-	<div class="<?php echo $cover_class; ?> page-slide">
+	<div class="<?php echo $cover_wrap_class; ?> page-slide">
 		<figure>
-			<img src="<?php echo $slide->coverImage(); ?>" role="presentation">
+			<img class="<?php echo $cover_image_class; ?>" src="<?php echo $slide->coverImage(); ?>" role="presentation">
 		</figure>
 		<div class="cover-header" data-cover-header>
 			<h2 class="cover-title"><a href="<?php echo $slide->permalink(); ?>"><?php echo $slide->title(); ?></a></h2>

@@ -84,10 +84,11 @@ if ( ! empty( site()->slogan() ) && ! ctype_space( site()->slogan() ) ) {
 	);
 }
 
-// Cover image class.
-$cover_class = 'page-cover cover-overlay';
+// Cover image classes.
+$cover_wrap_class  = 'page-cover cover-overlay';
+$cover_image_class = '';
 if ( full_cover() ) {
-	$cover_class = 'full-cover-image cover-overlay';
+	$cover_wrap_class = 'full-cover-image cover-overlay';
 }
 if ( plugin() ) {
 	if (
@@ -95,11 +96,14 @@ if ( plugin() ) {
 		is_array( plugin()->cover_blend_use() ) &&
 		in_array( 'covers', plugin()->cover_blend_use() )
 	) {
-		$cover_class = 'page-cover cover-blend';
+		$cover_wrap_class = 'page-cover cover-blend';
 
 		if ( full_cover() ) {
-			$cover_class = 'full-cover-image cover-blend';
+			$cover_wrap_class = 'full-cover-image cover-blend';
 		}
+	}
+	if ( in_array( 'covers', plugin()->cover_desaturate_use() ) ) {
+		$cover_image_class = 'desaturate';
 	}
 }
 
@@ -148,9 +152,9 @@ endif; endif;
 
 ?>
 <?php if ( has_cover() ) : ?>
-<div class="<?php echo $cover_class; ?>">
+<div class="<?php echo $cover_wrap_class; ?>">
 	<figure>
-		<img src="<?php echo get_cover_src(); ?>" role="presentation">
+		<img class="<?php echo $cover_image_class; ?>" src="<?php echo get_cover_src(); ?>" role="presentation">
 	</figure>
 	<?php echo cover_header(); ?>
 </div>
