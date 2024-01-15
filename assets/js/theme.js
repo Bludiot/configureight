@@ -22,7 +22,7 @@
 		$( 'button[data-menu-toggle-close]' ).click( function(e) {
 			e.preventDefault();
 			$( 'html, body' ).scrollTop( 0 );
-			$( 'html' ).css( 'height', '100%' ).css( 'overflow-y', 'auto' );
+			$( 'html' ).css( 'height', 'initial' ).css( 'overflow-y', 'initial' );
 			$( '#mobile-nav' ).attr( 'aria-expanded', 'false' ).css( 'display', 'none' );
 			$( 'button[data-menu-toggle-open]' ).attr( 'aria-expanded', 'true' );
 		} );
