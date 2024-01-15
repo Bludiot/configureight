@@ -378,6 +378,10 @@ b, strong, optgroup {
   --cfe-toolbar--link--action--bg-color--dark: var( --cfe-scheme-color--five--dark );
   --cfe-toolbar--link--action--text-color: #ffffff;
   --cfe-toolbar--link--action--text-color--dark: #ffffff;
+  --cfe-toolbar--submenu--link--action--bg-color: var( --cfe-scheme-color--six );
+  --cfe-toolbar--submenu--link--action--bg-color--dark: var( --cfe-scheme-color--six--dark );
+  --cfe-toolbar--submenu--link--text-color: #ffffff;
+  --cfe-toolbar--submenu--link--text-color--dark: #ffffff;
   --cfe-site-header--bg-color: var( --cfe-body--bg-color );
   --cfe-site-header--bg-color--dark: var( --cfe-body--bg-color--dark );
   --cfe-site-logo--min-width: 80px;
@@ -606,7 +610,7 @@ a:after {
 
 h1,
 h2 {
-  font-family: var(--cfe-heading-primary--font-family, inherit);
+  font-family: var(--cfe-heading-primary--font-family, var(--cfe-fonts--display-stack, inherit));
   font-size: var(--cfe-heading-primary--font-size, 2rem);
   font-weight: var(--cfe-heading-primary--font-weight, 700);
   font-style: var(--cfe-heading-primary--font-style, inherit);
@@ -658,7 +662,7 @@ h2 a:focus {
 
 h3,
 h4 {
-  font-family: var(--cfe-heading-secondary--font-family, inherit);
+  font-family: var(--cfe-heading-secondary--font-family, var(--cfe-fonts--display-stack, inherit));
   font-size: var(--cfe-heading-secondary--font-size, 1.375rem);
   font-weight: var(--cfe-heading-secondary--font-weight, 700);
   font-style: var(--cfe-heading-secondary--font-style, inherit);
@@ -2103,8 +2107,11 @@ h3 + .search-form {
   font-family: var(--cfe-site-nav--item--font-family);
   font-size: var(--cfe-site-nav--item--font-size);
   font-weight: var(--cfe-site-nav--item--font-weight);
-  text-transform: var(--cfe-site-nav--item--text-transform);
+  font-style: var(--cfe-site-nav--font-style, normal);
   font-variant: var(--cfe-site-nav--item--font-variant);
+  text-transform: var(--cfe-site-nav--item--text-transform);
+  letter-spacing: var(--cfe-site-nav--letter-spacing, normal);
+  word-spacing: var(--cfe-site-nav--word-spacing, normal);
   line-height: 1.2;
   color: var(--cfe-site-nav--list--text-color, inherit);
 }
@@ -3719,7 +3726,8 @@ body.rtl.sidebar-left .content-wrapper {
 .page-sidebar h2,
 .page-sidebar h3 {
   margin: var(--cfe-sidebar--heading--margin, 0);
-  font-family: var(--cfe-sidebar--heading--font-family, var(--cfe-heading-secondary--font-family));
+  padding: var(--cfe-sidebar--heading--padding, 0);
+  font-family: var(--cfe-sidebar--heading--font-family, var(--cfe-heading-secondary--font-family, var(--cfe-fonts--display-stack, inherit)));
   font-size: var(--cfe-sidebar--heading--font-size, var(--cfe-heading-secondary--font-size));
   font-weight: var(--cfe-sidebar--heading--font-weight, var(--cfe-heading-secondary--font-weight));
   font-style: var(--cfe-sidebar--heading--font-style, var(--cfe-heading-secondary--font-style));

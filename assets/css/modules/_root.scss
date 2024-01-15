@@ -152,6 +152,10 @@ $color_six_dark:   $light_gray;
 	--cfe-toolbar--link--action--bg-color--dark: var( --cfe-scheme-color--five--dark );
 	--cfe-toolbar--link--action--text-color: #{$white};
 	--cfe-toolbar--link--action--text-color--dark: #{$white};
+	--cfe-toolbar--submenu--link--action--bg-color: var( --cfe-scheme-color--six );
+	--cfe-toolbar--submenu--link--action--bg-color--dark: var( --cfe-scheme-color--six--dark );
+	--cfe-toolbar--submenu--link--text-color: #{$white};
+	--cfe-toolbar--submenu--link--text-color--dark: #{$white};
 
 	// Header.
 	--cfe-site-header--bg-color: var( --cfe-body--bg-color );

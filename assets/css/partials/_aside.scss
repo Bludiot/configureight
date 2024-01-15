@@ -108,7 +108,8 @@
 	h2,
 	h3 {
 		margin: var( --cfe-sidebar--heading--margin, 0 );
-		font-family: var( --cfe-sidebar--heading--font-family, var( --cfe-heading-secondary--font-family ) );
+		padding: var( --cfe-sidebar--heading--padding, 0 );
+		font-family: var( --cfe-sidebar--heading--font-family, var( --cfe-heading-secondary--font-family, var( --cfe-fonts--display-stack, inherit ) ) );
 		font-size: var( --cfe-sidebar--heading--font-size, var( --cfe-heading-secondary--font-size ) );
 		font-weight: var( --cfe-sidebar--heading--font-weight, var( --cfe-heading-secondary--font-weight ) );
 		font-style: var( --cfe-sidebar--heading--font-style, var( --cfe-heading-secondary--font-style ) );

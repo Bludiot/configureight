@@ -190,7 +190,7 @@ a {
 
 h1,
 h2 {
-	font-family: var( --cfe-heading-primary--font-family, inherit );
+	font-family: var( --cfe-heading-primary--font-family, var( --cfe-fonts--display-stack, inherit ) );
 	font-size: var( --cfe-heading-primary--font-size, 2rem );
 	font-weight: var( --cfe-heading-primary--font-weight, 700 );
 	font-style: var( --cfe-heading-primary--font-style, inherit );
@@ -233,7 +233,7 @@ h2 {
 
 h3,
 h4 {
-	font-family: var( --cfe-heading-secondary--font-family, inherit );
+	font-family: var( --cfe-heading-secondary--font-family, var( --cfe-fonts--display-stack, inherit ) );
 	font-size: var( --cfe-heading-secondary--font-size, 1.375rem );
 	font-weight: var( --cfe-heading-secondary--font-weight, 700 );
 	font-style: var( --cfe-heading-secondary--font-style, inherit );
