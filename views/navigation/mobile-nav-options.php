@@ -178,31 +178,7 @@ use function CFE_Tags\{
 					site()->url(),
 					$L->get( 'home-link-label' )
 				);
-			}
-
-			// Add social links.
-			if ( plugin()->header_social() ) :
-
-				$links = $helper :: socialNetworks();
-				if ( $links ) :
-				foreach ( $links as $link => $label ) :
-
-					// Get icon SVG file.
-					$icon = '';
-					$file = THEME_DIR . 'assets/images/svg-icons/' . $link . '.svg';
-					if ( file_exists( $file ) ) {
-						$icon = file_get_contents( $file );
-					} ?>
-					<li>
-						<a href="<?php echo site()->{$link}(); ?>" target="_blank" rel="noreferrer noopener" title="<?php echo $label; ?>">
-							<span class="theme-icon social-icon"><?php echo $icon; ?></span>
-							<span class="screen-reader-text social-label"><?php echo $label; ?></span>
-						</a>
-					</li>
-					<?php endforeach;
-			endif; endif;
-
-			?>
+			} ?>
 		</ul>
 	</nav>
 </div>
