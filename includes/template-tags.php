@@ -37,6 +37,7 @@ use function CFE_Func\{
 	is_page,
 	is_front_page,
 	page_type,
+	sticky,
 	favicon_exists,
 	loop_data,
 	loop_is_static,
@@ -1521,6 +1522,10 @@ function icon( $filename = '', $wrap = false, $class = '' ) {
  * @return mixed Echoes the icon, or returns the icon or empty.
  */
 function sticky_icon( $echo = '', $class = '', $title = '' ) {
+
+	if ( is_search() ) {
+		return false;
+	}
 
 	$icon = '';
 	if ( page()->sticky() ) {
