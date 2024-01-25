@@ -49,10 +49,18 @@ if ( has_cover() && ! empty( get_cover_src() ) ) {
 	);
 }
 
+$noindex = 'max-image-preview:large';
+if ( plugin() ) {
+	if ( plugin()->meta_noindex() ) {
+		$noindex = 'noindex, nofollow';
+	}
+}
+
 ?>
 <?php plugins_hook( 'beforeAll' ); ?>
 <head data-site-head>
 
+	<meta name='robots' content='<?php echo $noindex; ?>' />
 	<meta charset="<?php echo CHARSET; ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
