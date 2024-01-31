@@ -526,6 +526,10 @@ function body_classes() {
 
 		$classes[] = page_type();
 
+		if ( full_cover() ) {
+			$classes[] = 'template-full-cover';
+		}
+
 		// Page templates.
 		if ( page()->template() ) {
 			$templates = explode( ' ', page()->template() );
@@ -535,6 +539,8 @@ function body_classes() {
 				// Exclude `full-cover` template if no cover image or paged.
 				if ( str_contains( page()->template(), 'full-cover' ) ) {
 					if ( ! has_cover() ) {
+						$classes[] = '';
+					} elseif ( full_cover() ) {
 						$classes[] = '';
 					} elseif ( isset( $_GET['page'] ) ) {
 						$classes[] = '';

@@ -817,11 +817,31 @@ function full_cover() {
 		}
 	}
 
-	if (
-		is_page() && has_cover() &&
-		str_contains( page()->template(), 'full-cover' )
-	) {
-		return true;
+	if ( is_page() && has_cover() ) {
+
+		if ( plugin() ) {
+			if ( 'page' == page_type() && 'full' == plugin()->cover_in_page() ) {
+				if ( str_contains( page()->template(), 'no-cover' ) ) {
+					return false;
+				} elseif ( str_contains( page()->template(), 'default-cover' ) ) {
+					return false;
+				} else {
+					return true;
+				}
+			} elseif ( 'full' == plugin()->cover_in_post() ) {
+				if ( str_contains( page()->template(), 'no-cover' ) ) {
+					return false;
+				} elseif ( str_contains( page()->template(), 'default-cover' ) ) {
+					return false;
+				} else {
+					return true;
+				}
+			}
+		}
+
+		if ( str_contains( page()->template(), 'full-cover' ) ) {
+			return true;
+		}
 	}
 	return false;
 }
