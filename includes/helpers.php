@@ -696,6 +696,26 @@ function has_cover( $default = '' ) {
 				$cover = false;
 			}
 
+			if ( plugin() ) {
+				if ( 'page' == page_type() && 'none' == plugin()->cover_in_page() ) {
+					if ( str_contains( page()->template(), 'full-cover' ) ) {
+						return true;
+					} elseif ( str_contains( page()->template(), 'default-cover' ) ) {
+						return true;
+					} else {
+						return false;
+					}
+				} elseif ( 'none' == plugin()->cover_in_post() ) {
+					if ( str_contains( page()->template(), 'full-cover' ) ) {
+						return true;
+					} elseif ( str_contains( page()->template(), 'default-cover' ) ) {
+						return true;
+					} else {
+						return false;
+					}
+				}
+			}
+
 		// If the theme plugin has a default cover image set.
 		} elseif ( ! empty( $default ) ) {
 
