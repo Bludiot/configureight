@@ -19,6 +19,7 @@
 use function CFE_Func\{
 	lang,
 	plugin,
+	plugins_hook,
 	loop_data,
 	is_main_loop,
 	is_cat,
@@ -239,6 +240,13 @@ $footer = implode( ' ', $footer );
 					echo $tags_list();
 				} ?>
 			</footer>
+
+			<?php if ( $page->custom( 'page_gallery' ) ) : ?>
+			<div class="page-gallery">
+				<h2><?php $L->p( 'Image Gallery' ); ?></h2>
+				<?php plugins_hook( 'page_gallery' ); ?>
+			</div>
+			<?php endif; ?>
 	</div>
 
 </article>

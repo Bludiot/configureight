@@ -11,6 +11,7 @@
 // Import namespaced functions.
 use function CFE_Func\{
 	plugin,
+	plugins_hook,
 	full_cover,
 	has_cover,
 	get_related
@@ -29,6 +30,13 @@ use function CFE_Tags\{
 	<div class="page-content" itemprop="articleBody" data-page-content>
 		<?php echo $page->content(); ?>
 	</div>
+
+	<?php if ( $page->custom( 'page_gallery' ) ) : ?>
+	<div class="page-gallery">
+		<h2><?php $L->p( 'Image Gallery' ); ?></h2>
+		<?php plugins_hook( 'page_gallery' ); ?>
+	</div>
+	<?php endif; ?>
 </article>
 
 <?php

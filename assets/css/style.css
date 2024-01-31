@@ -3600,6 +3600,44 @@ body.rtl.sidebar-left .content-wrapper {
   font-size: var(--cfe-font-size, 1rem);
 }
 
+.page-gallery {
+  margin: var(--cfe-spacing--vert, 2rem) 0 0 0;
+  padding: var(--cfe-spacing--vert, 2rem) 0 0 0;
+  border-top: var(--cfe-box--border);
+}
+@media (prefers-color-scheme: dark) {
+  .page-gallery {
+    border-top: var(--cfe-box--border--dark);
+  }
+}
+.page-gallery h2 {
+  margin: 0;
+}
+
+.page-gallery-list {
+  list-style: none;
+  margin: var(--cfe-element--margin, calc(var(--cfe-spacing--vert) / 2) 0 0 0);
+  padding: 0;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.25rem;
+}
+@container page-wrap ( max-width: 640px ) {
+  .page-gallery-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (max-width: 640px) {
+  .page-gallery-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.page-gallery-thumb {
+  display: block;
+}
+
 .page-sidebar {
   position: var(--cfe-sidebar--default--position, var(--cfe-sidebar--position));
   display: var(--cfe-sidebar--default--display, var(--cfe-sidebar--display, flex));
