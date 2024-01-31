@@ -248,6 +248,7 @@
 	overflow: hidden;
 	margin: var( --cfe-page-cover-single--margin, 0 auto 0 auto );
 	max-width: 2048px;
+	background-color: var( --cfe-scheme-color--body--dark, #{$near_black} );
 
 	&.post-cover {
 		margin: var( --cfe-post-cover--margin, 2rem 0 0 0 );

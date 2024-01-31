@@ -1628,6 +1628,7 @@ h3 + .search-form {
   overflow: hidden;
   margin: var(--cfe-page-cover-single--margin, 0 auto 0 auto);
   max-width: 2048px;
+  background-color: var(--cfe-scheme-color--body--dark, #1e1e1e);
 }
 .page-cover.post-cover {
   margin: var(--cfe-post-cover--margin, 2rem 0 0 0);
@@ -2679,7 +2680,7 @@ h3 + .search-form {
 }
 
 .site-footer .social-navigation {
-  margin: 1em 0 0 0;
+  margin: calc(var(--cfe-spacing--vert) / 2) 0;
 }
 .site-footer .social-navigation .social-nav-list {
   justify-content: center;
@@ -3943,5 +3944,8 @@ body.rtl.sidebar-left .content-wrapper {
 .site-footer .search-form-wrap {
   width: 100%;
   max-width: var(--cfe-form-element--max-width, 640px);
-  margin: 0 auto;
+  margin: calc(var(--cfe-spacing--vert) / 2) auto;
+}
+.site-footer .search-form-wrap .search-form {
+  margin: 0;
 }

@@ -70,6 +70,10 @@
 	.search-form-wrap {
 		width: 100%;
 		max-width: var( --cfe-form-element--max-width, 640px );
-		margin: 0 auto;
+		margin: calc( var( --cfe-spacing--vert ) / 2 ) auto;
+
+		.search-form {
+			margin: 0;
+		}
 	}
 }

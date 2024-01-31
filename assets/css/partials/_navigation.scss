@@ -687,7 +687,7 @@
 
 .site-footer {
 	.social-navigation {
-		margin: 1em 0 0 0;
+		margin: calc( var( --cfe-spacing--vert ) / 2 ) 0;
 
 		.social-nav-list {
 			justify-content: center;
