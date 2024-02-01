@@ -223,6 +223,8 @@ $color_six_dark:   $light_gray;
 	--cfe-tags-list--buttons--link--action--border-color: var( --cfe-button--action--border-color );
 	--cfe-tags-list--buttons--link--action--border-color--dark: var( --cfe-button--action--border-color--dark );
 
+	--cfe-modal-overlay--bg-color: #{rgba( $color: black, $alpha: 0.85 )};
+
 	// Sidebar.
 	--cfe-sidebar--link--font-weight: 600;
 }

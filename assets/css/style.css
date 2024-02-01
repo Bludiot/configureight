@@ -439,6 +439,7 @@ b, strong, optgroup {
   --cfe-tags-list--buttons--link--action--bg-color--dark: var( --cfe-button--action--bg-color--dark );
   --cfe-tags-list--buttons--link--action--border-color: var( --cfe-button--action--border-color );
   --cfe-tags-list--buttons--link--action--border-color--dark: var( --cfe-button--action--border-color--dark );
+  --cfe-modal-overlay--bg-color: rgba(0, 0, 0, 0.85);
   --cfe-sidebar--link--font-weight: 600;
 }
 
@@ -3261,7 +3262,7 @@ body.rtl.sidebar-left .content-wrapper {
   gap: 0 0.75em;
 }
 .tags-list.tags-list-horizontal.tags-list-buttons {
-  gap: var(--cfe-tags-list--buttons--gap, 0 0.1875em);
+  gap: var(--cfe-tags-list--buttons--gap, 0.25em);
 }
 .tags-list.tags-list-horizontal.inline-list {
   display: inline-flex;

@@ -225,6 +225,12 @@ function config_styles() {
 		$styles .= '--cfe-cover--text-shadow: none;';
 	}
 
+	// Modal content (lightbox).
+	$styles .= sprintf(
+		'--cfe-modal-overlay--bg-color: %s;',
+		plugin()->modal_bg_color()
+	);
+
 	/**
 	 * Main navigation position
 	 *
@@ -1335,6 +1341,7 @@ function loop_title() {
  */
 function loop_description() {
 	$loop_data = loop_data();
+	
 	return $loop_data['description'];
 }
 
@@ -1448,8 +1455,9 @@ function posts_loop_header() {
 		}
 
 	} elseif ( is_main_loop() ) {
-		$class   = 'loop-page-description';
-		$heading = ucwords( $loop_data['slug'] . $loop_page );
+		$class       = 'loop-page-description';
+		$heading     = ucwords( $loop_data['slug'] . $loop_page );
+		$description = loop_description();
 
 	} elseif ( is_cat() ) {
 		$get_cat     = new \Category( url()->slug() );

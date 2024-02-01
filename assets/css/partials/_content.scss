@@ -713,7 +713,7 @@ body {
 		gap: 0 0.75em;
 
 		&.tags-list-buttons {
-			gap: var( --cfe-tags-list--buttons--gap, 0 0.1875em );
+			gap: var( --cfe-tags-list--buttons--gap, 0.25em );
 		}
 
 		&.inline-list {
