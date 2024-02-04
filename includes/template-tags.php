@@ -180,6 +180,20 @@ function config_styles() {
 		plugin()->vert_spacing()
 	);
 
+	// Font weights.
+	$styles .= sprintf(
+		'--cfe-body--font-weight: %s;',
+		plugin()->wght_text()
+	);
+	$styles .= sprintf(
+		'--cfe-heading-primary--font-weight: %s;',
+		plugin()->wght_primary()
+	);
+	$styles .= sprintf(
+		'--cfe-heading-secondary--font-weight: %s;',
+		plugin()->wght_secondary()
+	);
+
 	// Header logo width.
 	$styles .= sprintf(
 		'--cfe-site-logo--max-width: %spx;',
