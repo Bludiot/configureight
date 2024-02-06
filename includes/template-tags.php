@@ -194,6 +194,20 @@ function config_styles() {
 		plugin()->wght_secondary()
 	);
 
+	// Letter spacing.
+	$styles .= sprintf(
+		'--cfe-body--letter-spacing: %sem;',
+		plugin()->space_text()
+	);
+	$styles .= sprintf(
+		'--cfe-heading-primary--letter-spacing: %sem;',
+		plugin()->space_primary()
+	);
+	$styles .= sprintf(
+		'--cfe-heading-secondary--letter-spacing: %sem;',
+		plugin()->space_secondary()
+	);
+
 	// Header logo width.
 	$styles .= sprintf(
 		'--cfe-site-logo--max-width: %spx;',
