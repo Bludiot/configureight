@@ -559,6 +559,11 @@ function body_classes() {
 	if ( is_page() ) {
 
 		$classes[] = page_type();
+		$classes[] = sprintf(
+			'%s-%s',
+			page_type(),
+			page()->key()
+		);
 
 		if ( full_cover() ) {
 			$classes[] = 'template-full-cover';
