@@ -12,7 +12,8 @@
 use function CFE_Func\{
 	plugin,
 	lang,
-	is_rtl
+	is_rtl,
+	page
 };
 use function CFE_Tags\{
 	page_description,
@@ -52,12 +53,6 @@ if (
 }
 if ( in_array( 'slider', plugin()->cover_desaturate_use() ) ) {
 	$cover_image_class = 'desaturate';
-}
-
-// Link text.
-$link_text = lang()->get( 'Read More' );
-if ( ! empty( plugin()->slider_link_text() ) ) {
-	$link_text = plugin()->slider_link_text();
 }
 
 // Icons.
@@ -144,6 +139,14 @@ foreach ( $slider as $slide ) :
 	// Skip if no cover image.
 	if ( ! $slide->coverImage() ) {
 		continue;
+	}
+
+	// Link text.
+	$link_text = lang()->get( 'Read More' );
+	if ( $slide->custom( 'read_more' ) ) {
+		$link_text = $slide->custom( 'read_more' );
+	} elseif ( ! empty( plugin()->slider_link_text() ) ) {
+		$link_text = plugin()->slider_link_text();
 	}
 
 	?>
