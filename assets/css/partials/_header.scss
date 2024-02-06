@@ -13,90 +13,95 @@
 	&.full-cover-header {
 		background-color: transparent !important;
 	}
+}
 
-	#search-bar {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		padding: 2rem;
-		z-index: 5998;
-		background-color: var( --cfe-site-header--bg-color, var( --cfe-body--bg-color ) );
-		display: flex;
+#search-bar {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	padding: 2rem;
+	z-index: 5998;
+	background-color: var( --cfe-site-header--bg-color, var( --cfe-body--bg-color ) );
+	display: flex;
+	flex-wrap: nowrap;
+	gap: 0 0.25rem;
+
+	// Clear the toolbar in transform.
+	transform: translateY( calc( -100% - 4rem ) );
+	opacity: 0;
+	transition: transform .25s, opacity .625s;
+
+	@media ( prefers-color-scheme: dark ) {
+		background-color: var( --cfe-site-header--bg-color--dark, var( --cfe-body--bg-color--dark ) );
+	}
+
+	&.active {
+		transform: translateY( 0% );
+		opacity: 1;
+		box-shadow: 0px 0px 7px 3px rgba( $color: black, $alpha: 0.5 );
+	}
+
+	button[ data-search-toggle-close ] {
+		text-indent: -999em;
+		display: inline-block;
+		background-color: var( --cfe-button--bg-color );
+		background-repeat: no-repeat;
+		background-size: 1.5em;
+		background-position: 1em center;
+		width: 1.5em;
+		height: 1.5em;
+		padding: 1.5em;
+		background-image: url( '#{$close_icon_bg}' );
+
+		@media ( prefers-color-scheme: dark ) {
+			background-color: var( --cfe-button--bg-color--dark );
+		}
+
+		&:hover,
+		&:focus {
+			background-image: url( '#{$close_icon_action_bg}' );
+			background-color: var( --cfe-button--action--bg-color, var( --cfe-button--bg-color ) );
+			border-color: var( --cfe-button--action-border-color, var( --cfe-button--border-color ) );
+			color: var( --cfe-button--action--text-color, var(--cfe-button--text-color ) );
+
+			@media ( prefers-color-scheme: dark ) {
+				background-color: var( --cfe-button--action--bg-color--dark, var( --cfe-button--bg-color--dark ) );
+				border-color: var( --cfe-button--action-border-color--dark, var( --cfe-button--border-color--dark ) );
+				color: var( --cfe-button--action--text-color--dark, var(--cfe-button--text-color--dark ) );
+			}
+		}
+
+		svg {
+			height: 1em;
+			fill: currentColor;
+		}
+	}
+}
+
+.toolbar-active #search-bar {
+	top: var( --cfe-toolbar--height );
+}
+
+.search-form-wrap {
+	width: 100%;
+
+	.search-form {
+		margin: 0;
 		flex-wrap: nowrap;
 		gap: 0 0.25rem;
 
-		// Clear the toolbar in transform.
-		transform: translateY( calc( -100% - 4rem ) );
-		opacity: 0;
-		transition: transform .25s, opacity .625s;
-
-		@media ( prefers-color-scheme: dark ) {
-			background-color: var( --cfe-site-header--bg-color--dark, var( --cfe-body--bg-color--dark ) );
-		}
-
-		&.active {
-			transform: translateY( 0% );
-			opacity: 1;
-		}
-
-		button[ data-search-toggle-close ] {
-			text-indent: -999em;
-			display: inline-block;
-			background-color: var( --cfe-button--bg-color );
-			background-repeat: no-repeat;
-			background-size: 1.5em;
-			background-position: 1em center;
-			width: 1.5em;
-			height: 1.5em;
-			padding: 1.5em;
-			background-image: url( '#{$close_icon_bg}' );
-
-			@media ( prefers-color-scheme: dark ) {
-				background-color: var( --cfe-button--bg-color--dark );
-			}
-
-			&:hover,
-			&:focus {
-				background-image: url( '#{$close_icon_action_bg}' );
-				background-color: var( --cfe-button--action--bg-color, var( --cfe-button--bg-color ) );
-				border-color: var( --cfe-button--action-border-color, var( --cfe-button--border-color ) );
-				color: var( --cfe-button--action--text-color, var(--cfe-button--text-color ) );
-
-				@media ( prefers-color-scheme: dark ) {
-					background-color: var( --cfe-button--action--bg-color--dark, var( --cfe-button--bg-color--dark ) );
-					border-color: var( --cfe-button--action-border-color--dark, var( --cfe-button--border-color--dark ) );
-					color: var( --cfe-button--action--text-color--dark, var(--cfe-button--text-color--dark ) );
-				}
-			}
-
-			svg {
-				height: 1em;
-				fill: currentColor;
-			}
+		#search-submit {
+			margin: 0 !important;
 		}
 	}
 
-	.search-form-wrap {
-		width: 100%;
+	input[type="search"] {
+		max-width: 100%;
+	}
 
-		.search-form {
-			margin: 0;
-			flex-wrap: nowrap;
-			gap: 0 0.25rem;
-
-			#search-submit {
-				margin: 0 !important;
-			}
-		}
-
-		input[type="search"] {
-			max-width: 100%;
-		}
-
-		input[type="button"] {
-			display: inline-block;
-		}
+	input[type="button"] {
+		display: inline-block;
 	}
 }
 

@@ -69,6 +69,7 @@ img {
 
 hr {
   display: block;
+  width: 100%;
   box-sizing: content-box;
   height: 0;
   border: 0;
@@ -1411,8 +1412,9 @@ h3 + .search-form {
 .site-header.full-cover-header {
   background-color: transparent !important;
 }
-.site-header #search-bar {
-  position: absolute;
+
+#search-bar {
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -1427,15 +1429,16 @@ h3 + .search-form {
   transition: transform 0.25s, opacity 0.625s;
 }
 @media (prefers-color-scheme: dark) {
-  .site-header #search-bar {
+  #search-bar {
     background-color: var(--cfe-site-header--bg-color--dark, var(--cfe-body--bg-color--dark));
   }
 }
-.site-header #search-bar.active {
+#search-bar.active {
   transform: translateY(0%);
   opacity: 1;
+  box-shadow: 0px 0px 7px 3px rgba(0, 0, 0, 0.5);
 }
-.site-header #search-bar button[data-search-toggle-close] {
+#search-bar button[data-search-toggle-close] {
   text-indent: -999em;
   display: inline-block;
   background-color: var(--cfe-button--bg-color);
@@ -1448,42 +1451,47 @@ h3 + .search-form {
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path fill='%23ffffff' d='M193.94 256L296.5 153.44l21.15-21.15c3.12-3.12 3.12-8.19 0-11.31l-22.63-22.63c-3.12-3.12-8.19-3.12-11.31 0L160 222.06 36.29 98.34c-3.12-3.12-8.19-3.12-11.31 0L2.34 120.97c-3.12 3.12-3.12 8.19 0 11.31L126.06 256 2.34 379.71c-3.12 3.12-3.12 8.19 0 11.31l22.63 22.63c3.12 3.12 8.19 3.12 11.31 0L160 289.94 262.56 392.5l21.15 21.15c3.12 3.12 8.19 3.12 11.31 0l22.63-22.63c3.12-3.12 3.12-8.19 0-11.31L193.94 256z'/></svg>");
 }
 @media (prefers-color-scheme: dark) {
-  .site-header #search-bar button[data-search-toggle-close] {
+  #search-bar button[data-search-toggle-close] {
     background-color: var(--cfe-button--bg-color--dark);
   }
 }
-.site-header #search-bar button[data-search-toggle-close]:hover, .site-header #search-bar button[data-search-toggle-close]:focus {
+#search-bar button[data-search-toggle-close]:hover, #search-bar button[data-search-toggle-close]:focus {
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path fill='%23ffffff' d='M193.94 256L296.5 153.44l21.15-21.15c3.12-3.12 3.12-8.19 0-11.31l-22.63-22.63c-3.12-3.12-8.19-3.12-11.31 0L160 222.06 36.29 98.34c-3.12-3.12-8.19-3.12-11.31 0L2.34 120.97c-3.12 3.12-3.12 8.19 0 11.31L126.06 256 2.34 379.71c-3.12 3.12-3.12 8.19 0 11.31l22.63 22.63c3.12 3.12 8.19 3.12 11.31 0L160 289.94 262.56 392.5l21.15 21.15c3.12 3.12 8.19 3.12 11.31 0l22.63-22.63c3.12-3.12 3.12-8.19 0-11.31L193.94 256z'/></svg>");
   background-color: var(--cfe-button--action--bg-color, var(--cfe-button--bg-color));
   border-color: var(--cfe-button--action-border-color, var(--cfe-button--border-color));
   color: var(--cfe-button--action--text-color, var(--cfe-button--text-color));
 }
 @media (prefers-color-scheme: dark) {
-  .site-header #search-bar button[data-search-toggle-close]:hover, .site-header #search-bar button[data-search-toggle-close]:focus {
+  #search-bar button[data-search-toggle-close]:hover, #search-bar button[data-search-toggle-close]:focus {
     background-color: var(--cfe-button--action--bg-color--dark, var(--cfe-button--bg-color--dark));
     border-color: var(--cfe-button--action-border-color--dark, var(--cfe-button--border-color--dark));
     color: var(--cfe-button--action--text-color--dark, var(--cfe-button--text-color--dark));
   }
 }
-.site-header #search-bar button[data-search-toggle-close] svg {
+#search-bar button[data-search-toggle-close] svg {
   height: 1em;
   fill: currentColor;
 }
-.site-header .search-form-wrap {
+
+.toolbar-active #search-bar {
+  top: var(--cfe-toolbar--height);
+}
+
+.search-form-wrap {
   width: 100%;
 }
-.site-header .search-form-wrap .search-form {
+.search-form-wrap .search-form {
   margin: 0;
   flex-wrap: nowrap;
   gap: 0 0.25rem;
 }
-.site-header .search-form-wrap .search-form #search-submit {
+.search-form-wrap .search-form #search-submit {
   margin: 0 !important;
 }
-.site-header .search-form-wrap input[type=search] {
+.search-form-wrap input[type=search] {
   max-width: 100%;
 }
-.site-header .search-form-wrap input[type=button] {
+.search-form-wrap input[type=button] {
   display: inline-block;
 }
 

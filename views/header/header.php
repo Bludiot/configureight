@@ -108,18 +108,19 @@ if ( plugin() ) {
 }
 
 ?>
+
+<?php
+if ( plugin() ) :
+if ( plugin()->header_search() && getPlugin( 'Search_Forms' ) ) : ?>
+<div id="search-bar" class="hide-if-no-js" aria-expanded="false">
+
+	<?php echo SearchForms\form( [ 'label' => false ] ); ?>
+
+	<button class="button" data-search-toggle-close><span class="screen-reader-text"><?php lang()->p( 'Close' ); ?></span></button>
+</div>
+<?php endif; endif; ?>
+
 <header id="masthead" class="<?php echo $header_class; ?>" role="banner" data-site-header>
-
-	<?php
-	if ( plugin() ) :
-	if ( plugin()->header_search() && getPlugin( 'Search_Forms' ) ) : ?>
-	<div id="search-bar" class="hide-if-no-js" aria-expanded="false">
-
-		<?php echo SearchForms\form( [ 'label' => false ] ); ?>
-
-		<button class="button" data-search-toggle-close><span class="screen-reader-text"><?php lang()->p( 'Close' ); ?></span></button>
-	</div>
-	<?php endif; endif; ?>
 
 	<div class="wrapper-general site-header-wrap">
 
