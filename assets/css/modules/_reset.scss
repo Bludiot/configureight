@@ -11,7 +11,7 @@
  *:before, *:after { font-size: inherit; }
  img, object, embed, video { max-width: 100%; }
  img { height: auto; -ms-interpolation-mode: bicubic; border: 0; }
- hr { display: block; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; height: 0; border: 0; border-top: 1px solid #ccc; margin: 1em 0; padding: 0; }
+ hr { display: block; width: 100%; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; height: 0; border: 0; border-top: 1px solid #ccc; margin: 1em 0; padding: 0; }
  a, a:hover, a:active, a:focus { outline: none; background-color: transparent; }
  small { font-size: 85%; }
  ol { list-style-type: decimal; }
