@@ -3642,6 +3642,28 @@ body.rtl.sidebar-left .content-wrapper {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+.page-gallery-list img {
+  display: block;
+}
+.page-gallery-list.cover-blend li {
+  position: relative;
+}
+.page-gallery-list.cover-blend li:after {
+  content: "";
+  z-index: 5;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--cfe-cover-blend--bg-color);
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+.page-gallery-list.cover-blend li img {
+  filter: grayscale(100%);
+}
 
 .page-gallery-thumb {
   display: block;
