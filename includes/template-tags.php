@@ -560,7 +560,7 @@ function body_classes() {
 
 		$classes[] = page_type();
 		$classes[] = sprintf(
-			'%s-%s',
+			'%s--%s',
 			page_type(),
 			page()->key()
 		);
