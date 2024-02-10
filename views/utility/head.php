@@ -106,8 +106,8 @@ if ( plugin() ) {
 	// Core frontend stylesheets.
 	echo $helper :: css(
 		[
-			"assets/css/vendor/lightbox{$suffix}.css",
-			"assets/css/vendor/slider{$suffix}.css",
+			"assets/css/lightbox{$suffix}.css",
+			"assets/css/slider{$suffix}.css",
 			"assets/css/style{$suffix}.css"
 		],
 		DOMAIN_THEME

@@ -1,3 +1,9 @@
+///
+/// Lightbox (modal) styles
+///
+
+@import '../modules/_utility';
+
 body.compensate-for-scrollbar {
     overflow: hidden;
 }
@@ -50,15 +56,15 @@ body.compensate-for-scrollbar {
 }
 
 .fancybox-bg {
-    background: rgb(30, 30, 30);
-    opacity: 0;
+    background: var( --cfe-modal-overlay--bg-color, rgb( 0, 0, 0, 0.85 ) );
+    opacity: 1;
     transition-duration: inherit;
     transition-property: opacity;
     transition-timing-function: cubic-bezier(.47, 0, .74, .71);
 }
 
 .fancybox-is-open .fancybox-bg {
-    opacity: .9;
+    opacity: 1;
     transition-timing-function: cubic-bezier(.22, .61, .36, 1);
 }
 
@@ -84,7 +90,7 @@ body.compensate-for-scrollbar {
 }
 
 .fancybox-infobar {
-    color: #ccc;
+    color: $white;
     font-size: 13px;
     -webkit-font-smoothing: subpixel-antialiased;
     height: 44px;
@@ -167,7 +173,7 @@ body.compensate-for-scrollbar {
 }
 
 .fancybox-content {
-    background: #fff;
+    background-color: $white;
     display: inline-block;
     margin: 0;
     max-width: 100%;
@@ -266,7 +272,7 @@ body.compensate-for-scrollbar {
 }
 
 .fancybox-slide--iframe .fancybox-content {
-    background: #fff;
+    background: $white;
 }
 
 .fancybox-video,
@@ -289,7 +295,7 @@ body.compensate-for-scrollbar {
 }
 
 .fancybox-error {
-    background: #fff;
+    background: $white;
     cursor: default;
     max-width: 400px;
     padding: 40px;
@@ -330,7 +336,7 @@ body.compensate-for-scrollbar {
 }
 
 .fancybox-button:hover {
-    color: #fff;
+    color: $white;
 }
 
 .fancybox-button:focus {
@@ -377,8 +383,8 @@ body.compensate-for-scrollbar {
 }
 
 .fancybox-progress {
-    background: #ff5268;
-    height: 2px;
+    background-color: var( --cfe-scheme-color--one--dark, $white );
+    height: 4px;
     left: 0;
     position: absolute;
     right: 0;
@@ -409,7 +415,7 @@ body.compensate-for-scrollbar {
 }
 
 .fancybox-close-small:hover {
-    color: #fff;
+    color: $white;
     opacity: 1;
 }
 
@@ -504,7 +510,7 @@ body.compensate-for-scrollbar {
 }
 
 .fancybox-caption a:hover {
-    color: #fff;
+    color: $white;
     text-decoration: underline;
 }
 
@@ -514,7 +520,7 @@ body.compensate-for-scrollbar {
     animation: fancybox-rotate 1s linear infinite;
     background: transparent;
     border: 4px solid #888;
-    border-bottom-color: #fff;
+    border-bottom-color: $white;
     border-radius: 50%;
     height: 50px;
     left: 50%;
@@ -717,7 +723,7 @@ body.compensate-for-scrollbar {
 
 .fancybox-share__button:visited,
 .fancybox-share__button:link {
-    color: #fff;
+    color: $white;
 }
 
 .fancybox-share__button:hover {
@@ -758,7 +764,7 @@ body.compensate-for-scrollbar {
 }
 
 .fancybox-share__button svg path {
-    fill: #fff;
+    fill: $white;
 }
 
 .fancybox-share__input {
@@ -776,7 +782,7 @@ body.compensate-for-scrollbar {
 /* Thumbs */
 
 .fancybox-thumbs {
-    background: #ddd;
+    background-color: var( --cfe-scheme-color--body--dark, #1e1e1e );
     bottom: 0;
     display: none;
     margin: 0;
@@ -827,7 +833,7 @@ body.compensate-for-scrollbar {
 }
 
 .fancybox-thumbs-y .fancybox-thumbs__list::-webkit-scrollbar-track {
-    background: #fff;
+    background: $white;
     border-radius: 10px;
     box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
 }
@@ -859,7 +865,7 @@ body.compensate-for-scrollbar {
 }
 
 .fancybox-thumbs__list a::before {
-    border: 6px solid #ff5268;
+    border: 5px solid var( --cfe-scheme-color--one--dark, $white );
     bottom: 0;
     content: '';
     left: 0;
@@ -892,14 +898,4 @@ body.compensate-for-scrollbar {
     .fancybox-thumbs__list a {
         max-width: calc(100% - 10px);
     }
-}
-
-// Theme modifications.
-.fancybox-bg {
-    background: var( --cfe-modal-overlay--bg-color, rgb( 0, 0, 0, 0.85 ) );
-    opacity: 1;
-}
-
-.fancybox-is-open .fancybox-bg {
-    opacity: 1;
 }
