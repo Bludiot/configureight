@@ -342,14 +342,6 @@ function body_classes() {
 		$classes[] = 'ltr';
 	}
 
-	// Color scheme.
-	if ( plugin() ) {
-		$scheme    = plugin()->color_scheme();
-		$classes[] = "color-scheme-{$scheme}";
-	} else {
-		$classes[] = 'color-scheme-default';
-	}
-
 	// User logged in/out.
 	if ( user_logged_in() ) {
 		$classes[] = 'user-logged-in';
@@ -552,6 +544,44 @@ function body_classes() {
 			}
 		} else {
 			$classes[] = 'sidebar-right';
+		}
+	}
+
+	/**
+	 * Color scheme
+	 *
+	 * Excludes pages with a manually applied color scheme.
+	 */
+	if ( plugin() ) {
+		$scheme = plugin()->color_scheme();
+		if ( is_page() ) {
+			$template = page()->template();
+			if ( $template && ! str_contains( $template, 'color-scheme' ) ) {
+				$classes[] = "template-color-scheme-{$scheme}";
+			} elseif ( empty( $template ) ) {
+				$classes[] = "template-color-scheme-{$scheme}";
+			}
+		} else {
+			$classes[] = "template-color-scheme-{$scheme}";
+		}
+	}
+
+	/**
+	 * Font scheme
+	 *
+	 * Excludes pages with a manually applied font scheme.
+	 */
+	if ( plugin() ) {
+		$scheme = plugin()->font_scheme();
+		if ( is_page() ) {
+			$template = page()->template();
+			if ( $template && ! str_contains( $template, 'font-scheme' ) ) {
+				$classes[] = "template-font-scheme-{$scheme}";
+			} elseif ( empty( $template ) ) {
+				$classes[] = "template-font-scheme-{$scheme}";
+			}
+		} else {
+			$classes[] = "template-font-scheme-{$scheme}";
 		}
 	}
 
