@@ -1087,8 +1087,20 @@ body {
 		grid-template-columns: repeat( 2, 1fr );
 	}
 
-	img {
-		display: block;
+	figure {
+		overflow: hidden;
+
+		img {
+			display: block;
+			transform: scale( 100% );
+			transition: transform .25s ease-in-out;
+		}
+
+		&:hover {
+			img {
+				transform: scale( 110% );
+			}
+		}
 	}
 
 	&.cover-blend {

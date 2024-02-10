@@ -3642,8 +3642,16 @@ body.rtl.sidebar-left .content-wrapper {
     grid-template-columns: repeat(2, 1fr);
   }
 }
-.page-gallery-list img {
+.page-gallery-list figure {
+  overflow: hidden;
+}
+.page-gallery-list figure img {
   display: block;
+  transform: scale(100%);
+  transition: transform 0.25s ease-in-out;
+}
+.page-gallery-list figure:hover img {
+  transform: scale(110%);
 }
 .page-gallery-list.cover-blend li {
   position: relative;
