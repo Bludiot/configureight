@@ -21,6 +21,12 @@ use function CFE_Tags\{
 	sticky_icon
 };
 
+// Gallery heading.
+$gallery_heading = $L->get( 'Image Gallery' );
+if ( ! empty( $page->custom( 'gallery_heading' ) ) ) {
+	$gallery_heading = $page->custom( 'gallery_heading' );
+}
+
 ?>
 <article class="site-article" role="article" data-site-article>
 
@@ -34,7 +40,7 @@ use function CFE_Tags\{
 
 	<?php if ( $page->custom( 'page_gallery' ) ) : ?>
 	<div class="page-gallery">
-		<h2><?php $L->p( 'Image Gallery' ); ?></h2>
+		<h2><?php echo $gallery_heading; ?></h2>
 		<?php plugins_hook( 'page_gallery' ); ?>
 	</div>
 	<?php endif; ?>

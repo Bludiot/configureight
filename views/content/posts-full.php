@@ -163,6 +163,12 @@ $footer = [
 ];
 $footer = implode( ' ', $footer );
 
+// Gallery heading.
+$gallery_heading = $L->get( 'Image Gallery' );
+if ( ! empty( $page->custom( 'gallery_heading' ) ) ) {
+	$gallery_heading = $page->custom( 'gallery_heading' );
+}
+
 ?>
 <article id="<?php echo $post->uuid(); ?>" class="site-article" role="article" itemscope="itemscope" itemtype="<?php echo 'https://schema.org/' . article_type(); ?>" data-site-article>
 
@@ -243,7 +249,7 @@ $footer = implode( ' ', $footer );
 
 			<?php if ( $page->custom( 'page_gallery' ) ) : ?>
 			<div class="page-gallery">
-				<h2><?php $L->p( 'Image Gallery' ); ?></h2>
+				<h2><?php echo $gallery_heading; ?></h2>
 				<?php plugins_hook( 'page_gallery' ); ?>
 			</div>
 			<?php endif; ?>
