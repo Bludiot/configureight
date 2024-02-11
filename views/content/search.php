@@ -97,20 +97,23 @@ if ( $post->thumbCoverImage() ) {
 // Tags list.
 $tags_list = function() use ( $post, $tags_icon ) {
 
+	global $L;
 	$tags  = $post->tags( true );
 	$links = [];
-	$sep   = ' ';
+	$sep   = ', ';
 
 	if ( $post->tags( true ) ) {
 		$html = sprintf(
-			'%s<ul class="post-info-tags inline-list tags-list tags-list-horizontal tags-list-buttons inline-list">',
+			'%s<ul class="post-info-tags inline-list tags-list tags-list-horizontal inline-list">',
 			$tags_icon
 		);
 		foreach ( $tags as $tagKey => $tagName ) {
 
 			$links[] = sprintf(
-				'<li><a href="%s" class="tag-list-entry" rel="tag">%s</a></li>',
+				'<li><a href="%s" class="tag-list-entry tooltip" rel="tag" title="%s %s" data-tooltip>%s</a></li>',
 				DOMAIN_TAGS . $tagKey,
+				$L->get( 'Tagged:' ),
+				$tagName,
 				$tagName
 			);
 		}
