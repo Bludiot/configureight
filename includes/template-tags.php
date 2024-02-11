@@ -1844,9 +1844,25 @@ function footer_scripts() {
 			"assets/js/fitvids{$suffix}.js",
 			"assets/js/slider{$suffix}.js",
 			"assets/js/lightbox{$suffix}.js",
+			"assets/js/tooltips{$suffix}.js",
 			"assets/js/sticky{$suffix}.js",
 			"assets/js/theme{$suffix}.js"
 		],
 		DOMAIN_THEME
 	);
+
+	?>
+	<script>
+	jQuery(document).ready( function($) {
+
+		// Tooltips.
+		$( '[data-tooltip]' ).tooltipster({
+			distance : 5,
+			delay : 150,
+			animationDuration : 150,
+			theme : 'cfe-tooltips'
+		});
+	});
+	</script>
+	<?php
 }

@@ -108,6 +108,7 @@ if ( plugin() ) {
 		[
 			"assets/css/lightbox{$suffix}.css",
 			"assets/css/slider{$suffix}.css",
+			"assets/css/tooltips{$suffix}.css",
 			"assets/css/style{$suffix}.css"
 		],
 		DOMAIN_THEME
