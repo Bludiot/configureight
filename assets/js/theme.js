@@ -62,7 +62,7 @@
 		// Lightbox.
 		if ( $.isFunction( $.fn.fancybox ) ) {
 			$( '.page-content img' ).wrap( function() {
-				return '<a href=' + this.src + ' data-fancybox></a>';
+				return '<a href=' + this.src + ' data-fancybox="page-images"></a>';
 			} );
 		}
 
