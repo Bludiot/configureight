@@ -73,15 +73,6 @@ body {
 }
 
 .page-header {
-	h1,
-	h2 {
-		font-size: var( --cfe-page-header--heading--font-size, var( --cfe-heading-primary--font-size, 2rem ) );
-
-		a {
-			font-weight: var( --cfe-page-header--heading--link--font-weight, inherit );
-		}
-	}
-
 	&.post-header {
 		h2 {
 			margin: 0;
@@ -243,10 +234,15 @@ body {
 
 	.post-info-category {
 		margin: var( --cfe-post-info-category--margin, 0 );
-		font-size: var( --cfe-post-info-category--font-size, 1.5rem );
-		font-weight: var( --cfe-post-info-category--font-weight, 700 );
-		font-style: var( --cfe-post-info-category--font-style, normal );
+		font-size: var( --cfe-post-info-category--font-size, var( --cfe-heading-secondary--font-size, 1.375rem ) );
+		font-weight: var( --cfe-post-info-category--font-weight, var( --cfe-heading-secondary--font-weight, 700 ));
+		font-style: var( --cfe-post-info-category--font-style, var( --cfe-heading-secondary--font-style, inherit ) );
+		font-variant: var( --cfe-post-info-category--font-variant, var( --cfe-heading-secondary--font-variant, inherit ) );
 		line-height: var( --cfe-post-info-category--line-height, 1 );
+		letter-spacing: var( --cfe-post-info-category--letter-spacing, var( --cfe-heading-secondary--letter-spacing, normal ) );
+		word-spacing: var( --cfe-post-info-category--word-spacing, var( --cfe-heading-secondary--word-spacing, -0.0325em ) );
+		text-decoration: var( --cfe-post-info-category--text-decoration, var( --cfe-heading-secondary--text-decoration ) );
+		text-transform: var( --cfe-post-info-category--text-transform, var( --cfe-heading-secondary--text-transform ) );
 
 		@media screen and ( max-width: 640px ) {
 			margin: var( --cfe-post-info-category--phone--margin, 1rem 0 0 0 );
@@ -298,6 +294,7 @@ body {
 			font-size: var( --cfe-post-header--list--heading--font-size );
 			font-weight: var( --cfe-post-header--list--heading--font-weight );
 			line-height: var( --cfe-post-header--list--heading--line-height );
+			letter-spacing: var( --cfe-post-header--list--heading--letter-spacing );
 		}
 	}
 
@@ -477,8 +474,11 @@ body {
 		.page-title {
 			font-size: 1.25rem;
 			font-size: clamp( 1.25rem, 2vw, 2rem );
+			font-size: var( --cfe-post-header--grid--heading--font-size, clamp( 1.25rem, 2vw, 2rem ) );
+			font-weight: var( --cfe-post-header--grid--heading--font-weight );
 			line-height: 1.2;
-			line-height: clamp( 1.2em, 1.5vw, 1.4em );
+			line-height: var( --cfe-post-header--grid--heading--line-height, clamp( 1.2em, 1.5vw, 1.4em ) );
+			letter-spacing: var( --cfe-post-header--grid--heading--letter-spacing );
 			text-align: center;
 			color: $white;
 		}

@@ -186,10 +186,12 @@ $color_six_dark:   $light_gray;
 	--cfe-content-wrap--padding: var( --cfe-spacing--vert ) var( --cfe-spacing--horz );
 	--cfe-page-main--padding: 0;
 
-	--cfe-page-header--heading--font-size: 2rem;
-	--cfe-post-header--list--heading--font-size: 1.75rem;
-	--cfe-post-header--list--heading--font-weight: 700;
+	--cfe-post-header--list--heading--font-size: var( --cfe-heading-secondary--font-size );
+	--cfe-post-header--list--heading--font-weight: var( --cfe-heading-secondary--font-weight );
 	--cfe-post-header--list--heading--line-height: 1.2;
+	--cfe-post-header--list--heading--letter-spacing: var( --cfe-heading-secondary--letter-spacing );
+	--cfe-post-header--grid--heading--font-weight: var( --cfe-heading-secondary--font-weight );
+	--cfe-post-header--grid--heading--letter-spacing: var( --cfe-heading-secondary--letter-spacing );
 
 	--cfe-categories-list--buttons--link--text-decoration: none;
 	--cfe-categories-list--buttons--link--font-size: 0.8125rem;

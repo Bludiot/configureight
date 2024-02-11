@@ -406,10 +406,12 @@ b, strong, optgroup {
   --cfe-pagination-list--numeric--link--active--border--dark: var( --cfe-form--border-style ) var( --cfe-form--border-width ) var( --cfe-scheme-color--two--dark );
   --cfe-content-wrap--padding: var( --cfe-spacing--vert ) var( --cfe-spacing--horz );
   --cfe-page-main--padding: 0;
-  --cfe-page-header--heading--font-size: 2rem;
-  --cfe-post-header--list--heading--font-size: 1.75rem;
-  --cfe-post-header--list--heading--font-weight: 700;
+  --cfe-post-header--list--heading--font-size: var( --cfe-heading-secondary--font-size );
+  --cfe-post-header--list--heading--font-weight: var( --cfe-heading-secondary--font-weight );
   --cfe-post-header--list--heading--line-height: 1.2;
+  --cfe-post-header--list--heading--letter-spacing: var( --cfe-heading-secondary--letter-spacing );
+  --cfe-post-header--grid--heading--font-weight: var( --cfe-heading-secondary--font-weight );
+  --cfe-post-header--grid--heading--letter-spacing: var( --cfe-heading-secondary--letter-spacing );
   --cfe-categories-list--buttons--link--text-decoration: none;
   --cfe-categories-list--buttons--link--font-size: 0.8125rem;
   --cfe-categories-list--buttons--link--font-weight: 600;
@@ -690,9 +692,9 @@ h4 a {
   font-weight: var(--cfe-heading-secondary--link--font-weight, inherit);
   font-style: var(--cfe-heading-secondary--link--font-style, inherit);
   font-variant: var(--cfe-heading-secondary--link--font-variant, inherit);
-  -webkit-text-decoration: var(--cfe-heading-secondary--link--text-decoration, none);
-          text-decoration: var(--cfe-heading-secondary--link--text-decoration, none);
-  text-transform: var(--cfe-heading-secondary--link--text-transform);
+  -webkit-text-decoration: var(--cfe-heading-secondary--link--text-decoration, inherit);
+          text-decoration: var(--cfe-heading-secondary--link--text-decoration, inherit);
+  text-transform: var(--cfe-heading-secondary--link--text-transform, inherit);
   color: var(--cfe-heading-secondary--link--text-color, var(--cfe-link--text-color));
 }
 @media (prefers-color-scheme: dark) {
@@ -1586,14 +1588,17 @@ h3 + .search-form {
 
 .site-title {
   margin: var(--cfe-site-title--margin, 0);
-  font-family: var(--cfe-site-title--font-family, var(--cfe-heading-primary--font-family));
-  font-size: var(--cfe-site-title--font-size, 1.625rem);
-  font-weight: var(--cfe-site-title--font-weight, bold);
-  word-spacing: var(--cfe-site-title--word-spacing, -0.0325em);
-  letter-spacing: var(--cfe-site-title--letter-spacing, -0.015em);
-  text-transform: var(--cfe-site-title--text-transform);
-  font-variant: var(--cfe-site-title--font-variant, var(--cfe-heading-primary--font-variant));
+  font-family: var(--cfe-site-title--font-family, var(--cfe-heading-secondary--font-family));
+  font-size: var(--cfe-site-title--font-size, var(--cfe-heading-secondary--font-size, 1.375rem));
+  font-weight: var(--cfe-site-title--font-weight, var(--cfe-heading-secondary--font-weight, 700));
+  font-style: var(--cfe-site-title--font-style, var(--cfe-heading-secondary--font-style, inherit));
+  font-variant: var(--cfe-site-title--font-variant, var(--cfe-heading-secondary--font-variant, inherit));
   line-height: var(--cfe-site-title--line-height, 1.2);
+  letter-spacing: var(--cfe-site-title--letter-spacing, var(--cfe-heading-secondary--letter-spacing, normal));
+  word-spacing: var(--cfe-site-title--word-spacing, var(--cfe-heading-secondary--word-spacing, -0.0325em));
+  -webkit-text-decoration: var(--cfe-site-title--text-decoration, var(--cfe-heading-secondary--text-decoration));
+          text-decoration: var(--cfe-site-title--text-decoration, var(--cfe-heading-secondary--text-decoration));
+  text-transform: var(--cfe-site-title--text-transform, var(--cfe-heading-secondary--text-transform));
   color: var(--cfe-site-title--text-color, var(--cfe-heading-primary--text-color, var(--cfe-body--text-color)));
 }
 @media (prefers-color-scheme: dark) {
@@ -1606,7 +1611,6 @@ h3 + .search-form {
   color: var(--cfe-site-title--link--text-color, inherit);
   -webkit-text-decoration: var(--cfe-site-title--link--text-decoration, none);
           text-decoration: var(--cfe-site-title--link--text-decoration, none);
-  font-variant: var(--cfe-site-title--font-variant, var(--cfe-heading-primary--font-variant));
 }
 @media (prefers-color-scheme: dark) {
   .site-title a {
@@ -2749,14 +2753,6 @@ body.rtl.sidebar-left .content-wrapper {
   margin-top: 0;
 }
 
-.page-header h1,
-.page-header h2 {
-  font-size: var(--cfe-page-header--heading--font-size, var(--cfe-heading-primary--font-size, 2rem));
-}
-.page-header h1 a,
-.page-header h2 a {
-  font-weight: var(--cfe-page-header--heading--link--font-weight, inherit);
-}
 .page-header.post-header h2 {
   margin: 0;
 }
@@ -2886,10 +2882,16 @@ body.rtl.sidebar-left .content-wrapper {
 }
 .post-loop-content .post-info-category {
   margin: var(--cfe-post-info-category--margin, 0);
-  font-size: var(--cfe-post-info-category--font-size, 1.5rem);
-  font-weight: var(--cfe-post-info-category--font-weight, 700);
-  font-style: var(--cfe-post-info-category--font-style, normal);
+  font-size: var(--cfe-post-info-category--font-size, var(--cfe-heading-secondary--font-size, 1.375rem));
+  font-weight: var(--cfe-post-info-category--font-weight, var(--cfe-heading-secondary--font-weight, 700));
+  font-style: var(--cfe-post-info-category--font-style, var(--cfe-heading-secondary--font-style, inherit));
+  font-variant: var(--cfe-post-info-category--font-variant, var(--cfe-heading-secondary--font-variant, inherit));
   line-height: var(--cfe-post-info-category--line-height, 1);
+  letter-spacing: var(--cfe-post-info-category--letter-spacing, var(--cfe-heading-secondary--letter-spacing, normal));
+  word-spacing: var(--cfe-post-info-category--word-spacing, var(--cfe-heading-secondary--word-spacing, -0.0325em));
+  -webkit-text-decoration: var(--cfe-post-info-category--text-decoration, var(--cfe-heading-secondary--text-decoration));
+          text-decoration: var(--cfe-post-info-category--text-decoration, var(--cfe-heading-secondary--text-decoration));
+  text-transform: var(--cfe-post-info-category--text-transform, var(--cfe-heading-secondary--text-transform));
 }
 @media screen and (max-width: 640px) {
   .post-loop-content .post-info-category {
@@ -2933,6 +2935,7 @@ body.rtl.sidebar-left .content-wrapper {
   font-size: var(--cfe-post-header--list--heading--font-size);
   font-weight: var(--cfe-post-header--list--heading--font-weight);
   line-height: var(--cfe-post-header--list--heading--line-height);
+  letter-spacing: var(--cfe-post-header--list--heading--letter-spacing);
 }
 .post-list-content .post-cover-wrap {
   grid-area: cover;
@@ -3076,8 +3079,11 @@ body.rtl.sidebar-left .content-wrapper {
 .post-grid-content .post-header .page-title {
   font-size: 1.25rem;
   font-size: clamp(1.25rem, 2vw, 2rem);
+  font-size: var(--cfe-post-header--grid--heading--font-size, clamp(1.25rem, 2vw, 2rem));
+  font-weight: var(--cfe-post-header--grid--heading--font-weight);
   line-height: 1.2;
-  line-height: clamp(1.2em, 1.5vw, 1.4em);
+  line-height: var(--cfe-post-header--grid--heading--line-height, clamp(1.2em, 1.5vw, 1.4em));
+  letter-spacing: var(--cfe-post-header--grid--heading--letter-spacing);
   text-align: center;
   color: #ffffff;
 }

@@ -255,8 +255,8 @@ h4 {
 		font-weight: var( --cfe-heading-secondary--link--font-weight, inherit );
 		font-style: var( --cfe-heading-secondary--link--font-style, inherit );
 		font-variant: var( --cfe-heading-secondary--link--font-variant, inherit );
-		text-decoration: var( --cfe-heading-secondary--link--text-decoration, none );
-		text-transform: var( --cfe-heading-secondary--link--text-transform );
+		text-decoration: var( --cfe-heading-secondary--link--text-decoration, inherit );
+		text-transform: var( --cfe-heading-secondary--link--text-transform, inherit );
 		color: var( --cfe-heading-secondary--link--text-color, var( --cfe-link--text-color ) );
 
 		@media ( prefers-color-scheme: dark ) {
