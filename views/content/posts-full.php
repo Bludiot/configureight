@@ -199,9 +199,11 @@ if ( ! empty( $page->custom( 'gallery_heading' ) ) ) {
 
 			<footer class="<?php echo $footer; ?>">
 
-				<?php if ( $post->category() ) : ?>
+				<?php if ( $post->category() ) :
+					$cat_title_tag = lang()->get( "Browse the {$post->category()} category" );
+				?>
 				<h3 class="post-info-category">
-					<a href="<?php echo $post->categoryPermalink(); ?>"><?php echo $cat_icon; ?><?php echo $post->category(); ?></a>
+					<a href="<?php echo $post->categoryPermalink(); ?>" title="<?php echo $cat_title_tag; ?>" data-tooltip><?php echo $cat_icon; ?><?php echo $post->category(); ?></a>
 				</h3>
 				<?php endif; ?>
 

@@ -182,34 +182,16 @@ if ( 'dots' == plugin()->main_nav_icon() ) {
 		// Add a search toggle button.
 		if ( plugin()->header_search() && getPlugin( 'Search_Forms' ) ) {
 			printf(
-				'<li class="no-children hide-if-no-js"><a href="#search-bar" class="top-search-open" data-search-toggle-open aria-controls="search-bar" aria-expanded="false">%s<span class="screen-reader-text">%s</span></a></li>',
+				'<li class="no-children hide-if-no-js"><a href="#search-bar" class="top-search-open" data-search-toggle-open aria-controls="search-bar" aria-expanded="false" title="%s" data-tooltip>%s<span class="screen-reader-text">%s</span></a></li>',
+				$L->get( 'Search This Site' ),
 				icon( 'search', true, 'top-search-icon' ),
-				$L->get( 'Submit' )
+				$L->get( 'Search' )
 			);
 		}
 
 		// Add social links.
-		if ( plugin()->header_social() ) :
-
-			$links = $helper :: socialNetworks();
-			if ( $links ) :
-			foreach ( $links as $link => $label ) :
-
-				// Get icon SVG file.
-				$icon = '';
-				$file = THEME_DIR . 'assets/images/svg-icons/' . $link . '.svg';
-				if ( file_exists( $file ) ) {
-					$icon = file_get_contents( $file );
-				} ?>
-				<li>
-					<a href="<?php echo site()->{$link}(); ?>" target="_blank" rel="noreferrer noopener" title="<?php echo $label; ?>">
-						<span class="theme-icon social-icon"><?php echo $icon; ?></span>
-						<span class="screen-reader-text social-label"><?php echo $label; ?></span>
-					</a>
-				</li>
-				<?php endforeach;
-		endif; endif;
-
-		?>
+		if ( plugin()->header_social() ) {
+			social_nav( false, true );
+		} ?>
 	</ul>
 </nav>
