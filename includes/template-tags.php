@@ -993,7 +993,7 @@ function cover_header( $args = null, $defaults = [] ) {
 		$html .= sprintf(
 			'<a href="#content" class="button intro-scroll %s hide-if-no-js"><span class="screen-reader-text">%s</span>%s</a>',
 			$icon,
-			lang()->get( 'Scroll to content' ),
+			lang()->get( 'Scroll to Content' ),
 			icon( $icon )
 		);
 	}
@@ -1797,7 +1797,7 @@ function next_key() {
  * @param  boolean $wrap Whether to wrap the list in a `<nav>` element.
  * @return string
  */
-function social_nav( $wrap = true ) {
+function social_nav( $wrap = true, $items_only = false ) {
 
 	$links = helper() :: socialNetworks();
 	if ( $links ) :
@@ -1805,25 +1805,31 @@ function social_nav( $wrap = true ) {
 	if ( $wrap ) {
 		echo '<nav class="social-navigation" data-page-navigation>';
 	}
-	?>
-		<ul class="nav-list social-nav-list">
-			<?php foreach ( $links as $link => $label ) :
+		if ( ! $items_only ) {
+			echo '<ul class="nav-list social-nav-list">';
+		}
+			foreach ( $links as $link => $label ) :
 
 			// Get icon SVG file.
 			$icon = '';
 			$file = THEME_DIR . 'assets/images/svg-icons/' . $link . '.svg';
 			if ( file_exists( $file ) ) {
 				$icon = file_get_contents( $file );
-			} ?>
+			}
+			if ( 'Twitter' === $label ) {
+				$label = 'X/Twitter';
+			}
+			?>
 			<li>
-				<a href="<?php echo site()->{$link}(); ?>" target="_blank" rel="noreferrer noopener" title="<?php echo $label; ?>">
+				<a href="<?php echo site()->{$link}(); ?>" target="_blank" rel="noreferrer noopener" title="<?php echo $label; ?>" data-tooltip>
 					<span class="theme-icon social-icon"><?php echo $icon; ?></span>
 					<span class="screen-reader-text social-label"><?php echo $label; ?></span>
 				</a>
 			</li>
-			<?php endforeach; ?>
-		</ul>
-	<?php
+			<?php endforeach;
+		if ( ! $items_only ) {
+			echo '</ul>';
+		}
 	if ( $wrap ) {
 		echo '</nav>';
 	}
