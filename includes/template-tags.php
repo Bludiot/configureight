@@ -547,6 +547,16 @@ function body_classes() {
 		}
 	}
 
+	// Cover color blend is available.
+	if ( plugin() ) {
+		if (
+			'blend' == plugin()->cover_style() &&
+			in_array( 'galleries', plugin()->cover_blend_use() )
+		) {
+			$classes[] = 'cover-blend-active';
+		}
+	}
+
 	/**
 	 * Color scheme
 	 *

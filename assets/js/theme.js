@@ -43,6 +43,9 @@
 			$( 'html, body' ).animate( { scrollTop : $( '#content' ).offset().top }, 350 );
 		} );
 
+		// Add cover blend class to table galleries.
+		$( '.cover-blend-active table.page-gallery tr' ).addClass( 'cover-blend' );
+
 		// Sticky sidebar.
 		if ( $.isFunction( $.fn.stick_in_parent ) ) {
 			if ( $( '.sidebar-is-sticky' ).length ) {
