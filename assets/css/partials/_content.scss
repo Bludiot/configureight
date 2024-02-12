@@ -1034,30 +1034,13 @@ div.page-gallery {
 		margin: 0;
 	}
 
-	ul {
-		margin: var( --cfe-element--margin, calc( var( --cfe-spacing--vert ) / 2 ) 0 0 0 );
-	}
-
-	tr:not( :first-of-type ) {
-		margin-top: 0.25rem;
-	}
-
 	ul,
 	tr {
 		list-style: none;
 		padding: 0;
 		width: 100%;
 		display: grid;
-		grid-template-columns: repeat( 3, auto );
 		gap: 0.25rem;
-
-		@container page-wrap ( max-width: 640px ) {
-			grid-template-columns: repeat( 2, auto );
-		}
-
-		@media screen and ( max-width: 640px ) {
-			grid-template-columns: repeat( 2, auto );
-		}
 
 		figure,
 		td {
@@ -1067,6 +1050,7 @@ div.page-gallery {
 
 			img {
 				display: block;
+				width: 100%;
 				transform: scale( 100% );
 				transition: transform .25s ease-in-out;
 			}
@@ -1104,6 +1088,29 @@ div.page-gallery {
 		}
 	}
 
+	ul {
+		margin: var( --cfe-element--margin, calc( var( --cfe-spacing--vert ) / 2 ) 0 0 0 );
+		grid-template-columns: repeat( 3, 1fr );
+
+		@container page-wrap ( max-width: 640px ) {
+			display: flex;
+			flex-direction: column;
+		}
+
+		@media screen and ( max-width: 640px ) {
+			display: flex;
+			flex-direction: column;
+		}
+	}
+
+	tr {
+		grid-template-columns: repeat( 6, auto );
+
+		&:not( :first-of-type ) {
+			margin-top: 0.25rem; // Same as grid gap.
+		}
+	}
+
 	@container page-wrap ( max-width: 640px ) {
 		tbody {
 			display: flex;
@@ -1124,21 +1131,6 @@ div.page-gallery {
 		}
 		@media screen and ( max-width: 640px ) {
 			display: inline-flex;
-		}
-	}
-
-	&.page-gallery-4 {
-		ul,
-		tr {
-			grid-template-columns: repeat( 4, auto );
-
-			@container page-wrap ( max-width: 640px ) {
-				grid-template-columns: repeat( 2, auto );
-			}
-
-			@media screen and ( max-width: 640px ) {
-				grid-template-columns: repeat( 2, auto );
-			}
 		}
 	}
 }

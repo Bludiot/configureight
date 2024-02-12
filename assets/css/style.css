@@ -3597,32 +3597,13 @@ div.page-gallery {
 .page-gallery h2 {
   margin: 0;
 }
-.page-gallery ul {
-  margin: var(--cfe-element--margin, calc(var(--cfe-spacing--vert) / 2) 0 0 0);
-}
-.page-gallery tr:not(:first-of-type) {
-  margin-top: 0.25rem;
-}
 .page-gallery ul,
 .page-gallery tr {
   list-style: none;
   padding: 0;
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(3, auto);
   gap: 0.25rem;
-}
-@container page-wrap ( max-width: 640px ) {
-  .page-gallery ul,
-  .page-gallery tr {
-    grid-template-columns: repeat(2, auto);
-  }
-}
-@media screen and (max-width: 640px) {
-  .page-gallery ul,
-  .page-gallery tr {
-    grid-template-columns: repeat(2, auto);
-  }
 }
 .page-gallery ul figure,
 .page-gallery ul td,
@@ -3637,6 +3618,7 @@ div.page-gallery {
 .page-gallery tr figure img,
 .page-gallery tr td img {
   display: block;
+  width: 100%;
   transform: scale(100%);
   transition: transform 0.25s ease-in-out;
 }
@@ -3674,6 +3656,28 @@ div.page-gallery {
 .page-gallery tr.cover-blend td img {
   filter: grayscale(100%);
 }
+.page-gallery ul {
+  margin: var(--cfe-element--margin, calc(var(--cfe-spacing--vert) / 2) 0 0 0);
+  grid-template-columns: repeat(3, 1fr);
+}
+@container page-wrap ( max-width: 640px ) {
+  .page-gallery ul {
+    display: flex;
+    flex-direction: column;
+  }
+}
+@media screen and (max-width: 640px) {
+  .page-gallery ul {
+    display: flex;
+    flex-direction: column;
+  }
+}
+.page-gallery tr {
+  grid-template-columns: repeat(6, auto);
+}
+.page-gallery tr:not(:first-of-type) {
+  margin-top: 0.25rem;
+}
 @container page-wrap ( max-width: 640px ) {
   .page-gallery tbody {
     display: flex;
@@ -3694,22 +3698,6 @@ div.page-gallery {
 @media screen and (max-width: 640px) {
   .page-gallery tr {
     display: inline-flex;
-  }
-}
-.page-gallery.page-gallery-4 ul,
-.page-gallery.page-gallery-4 tr {
-  grid-template-columns: repeat(4, auto);
-}
-@container page-wrap ( max-width: 640px ) {
-  .page-gallery.page-gallery-4 ul,
-  .page-gallery.page-gallery-4 tr {
-    grid-template-columns: repeat(2, auto);
-  }
-}
-@media screen and (max-width: 640px) {
-  .page-gallery.page-gallery-4 ul,
-  .page-gallery.page-gallery-4 tr {
-    grid-template-columns: repeat(2, auto);
   }
 }
 
