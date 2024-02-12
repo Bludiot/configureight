@@ -1048,15 +1048,15 @@ div.page-gallery {
 		padding: 0;
 		width: 100%;
 		display: grid;
-		grid-template-columns: repeat( 3, 1fr );
+		grid-template-columns: repeat( 3, auto );
 		gap: 0.25rem;
 
 		@container page-wrap ( max-width: 640px ) {
-			grid-template-columns: repeat( 2, 1fr );
+			grid-template-columns: repeat( 2, auto );
 		}
 
 		@media screen and ( max-width: 640px ) {
-			grid-template-columns: repeat( 2, 1fr );
+			grid-template-columns: repeat( 2, auto );
 		}
 
 		figure,
@@ -1124,6 +1124,21 @@ div.page-gallery {
 		}
 		@media screen and ( max-width: 640px ) {
 			display: inline-flex;
+		}
+	}
+
+	&.page-gallery-4 {
+		ul,
+		tr {
+			grid-template-columns: repeat( 4, auto );
+
+			@container page-wrap ( max-width: 640px ) {
+				grid-template-columns: repeat( 2, auto );
+			}
+
+			@media screen and ( max-width: 640px ) {
+				grid-template-columns: repeat( 2, auto );
+			}
 		}
 	}
 }

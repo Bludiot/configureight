@@ -3609,19 +3609,19 @@ div.page-gallery {
   padding: 0;
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, auto);
   gap: 0.25rem;
 }
 @container page-wrap ( max-width: 640px ) {
   .page-gallery ul,
   .page-gallery tr {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, auto);
   }
 }
 @media screen and (max-width: 640px) {
   .page-gallery ul,
   .page-gallery tr {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, auto);
   }
 }
 .page-gallery ul figure,
@@ -3694,6 +3694,22 @@ div.page-gallery {
 @media screen and (max-width: 640px) {
   .page-gallery tr {
     display: inline-flex;
+  }
+}
+.page-gallery.page-gallery-4 ul,
+.page-gallery.page-gallery-4 tr {
+  grid-template-columns: repeat(4, auto);
+}
+@container page-wrap ( max-width: 640px ) {
+  .page-gallery.page-gallery-4 ul,
+  .page-gallery.page-gallery-4 tr {
+    grid-template-columns: repeat(2, auto);
+  }
+}
+@media screen and (max-width: 640px) {
+  .page-gallery.page-gallery-4 ul,
+  .page-gallery.page-gallery-4 tr {
+    grid-template-columns: repeat(2, auto);
   }
 }
 
