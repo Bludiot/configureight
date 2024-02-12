@@ -1443,7 +1443,7 @@ function loop_title() {
  */
 function loop_description() {
 	$loop_data = loop_data();
-	
+
 	return $loop_data['description'];
 }
 
