@@ -61,9 +61,7 @@
 
 		// Lightbox.
 		if ( $.isFunction( $.fn.fancybox ) ) {
-			$( '.page-content img' ).wrap( function() {
-				return '<a href=' + this.src + ' data-fancybox="page-images"></a>';
-			} );
+			$( '.page-content [href$=".jpg"], .page-content [href$=".jpeg"], .page-content [href$=".png"], .page-content [href$=".gif"]' ).attr( 'data-fancybox', 'page-content-gallery' );
 		}
 
 		// Scroll to top button/link.
