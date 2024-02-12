@@ -15,9 +15,14 @@
 use function CFE_Func\{
 	site,
 	plugin,
+	url,
 	lang,
 	user_logged_in,
 	user_role,
+	is_home,
+	is_front_page,
+	static_loop_page,
+	is_main_loop,
 	loop_url
 };
 use function CFE_Tags\{
@@ -64,9 +69,17 @@ if ( 'dots' == plugin()->main_nav_icon() ) {
 
 		// Add loop before pages link if home is static content.
 		// If `before` in theme plugin.
-		if ( 'before' == plugin()->main_nav_loop() ) {
+		if ( 'before' == plugin()->main_nav_loop() && static_loop_page() ) {
+
+			// Item class, look if current.
+			$item_class = 'no-children';
+			if ( is_main_loop() ) {
+				$item_class = 'no-children current-menu-item';
+			}
+
 			printf(
-				'<li class="no-children"><a href="%s">%s</a></li>',
+				'<li class="%s"><a href="%s">%s</a></li>',
+				$item_class,
 				loop_url(),
 				nav_loop_label()
 			);
@@ -132,8 +145,15 @@ if ( 'dots' == plugin()->main_nav_icon() ) {
 				}
 				$sub_menu .= '</ul>';
 
+				// Item class, look if current.
+				$item_class = 'has-children';
+				if ( url()->slug() == $nav_item->key() ) {
+					$item_class = 'has-children current-menu-item';
+				}
+
 				$nav_entry = sprintf(
-					'<li class="has-children"><a href="%s">%s %s</a>%s</li>',
+					'<li class="%s"><a href="%s">%s %s</a>%s</li>',
+					$item_class,
 					$nav_item->permalink(),
 					$label,
 					icon( 'angle-down', true ),
@@ -142,16 +162,31 @@ if ( 'dots' == plugin()->main_nav_icon() ) {
 
 			} elseif ( $nav_item->isChild() && 'primary' == plugin()->main_nav_children() ) {
 
+				// Item class, look if current.
+				$item_class = 'no-children';
+				if ( url()->slug() == $nav_item->key() ) {
+					$item_class = 'no-children current-menu-item';
+				}
+
 				$nav_entry = sprintf(
-					'<li class="no-children"><a href="%s">%s</a></li>',
+					'<li class="%s"><a href="%s">%s</a></li>',
+					$item_class,
 					$nav_item->permalink(),
 					$label
 				);
 
 			// Page without children.
 			} elseif ( ! $nav_item->parent() ) {
+
+				// Item class, look if current.
+				$item_class = 'no-children';
+				if ( url()->slug() == $nav_item->key() ) {
+					$item_class = 'no-children current-menu-item';
+				}
+
 				$nav_entry = sprintf(
-					'<li class="no-children"><a href="%s">%s</a></li>',
+					'<li class="%s"><a href="%s">%s</a></li>',
+					$item_class,
 					$nav_item->permalink(),
 					$label
 				);
@@ -162,9 +197,17 @@ if ( 'dots' == plugin()->main_nav_icon() ) {
 
 		// Add loop after pages link if home is static content.
 		// If `after` in theme plugin.
-		if ( 'after' == plugin()->main_nav_loop() ) {
+		if ( 'after' == plugin()->main_nav_loop() && static_loop_page() ) {
+
+			// Item class, look if current.
+			$item_class = 'no-children';
+			if ( is_main_loop() ) {
+				$item_class = 'no-children current-menu-item';
+			}
+
 			printf(
-				'<li class="no-children"><a href="%s">%s</a></li>',
+				'<li class="%s"><a href="%s">%s</a></li>',
+				$item_class,
 				loop_url(),
 				nav_loop_label()
 			);
@@ -172,8 +215,16 @@ if ( 'dots' == plugin()->main_nav_icon() ) {
 
 		// Add a home link if true in theme plugin.
 		if ( in_array( 'home', plugin()->main_nav_pages() ) ) {
+
+			// Item class, look if current.
+			$item_class = 'no-children';
+			if ( is_home() || is_front_page() ) {
+				$item_class = 'no-children current-menu-item';
+			}
+
 			printf(
-				'<li class="no-children"><a href="%s">%s</a></li>',
+				'<li class="%s"><a href="%s">%s</a></li>',
+				$item_class,
 				site()->url(),
 				$L->get( 'home-link-label' )
 			);

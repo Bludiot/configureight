@@ -15,8 +15,12 @@
 use function CFE_Func\{
 	site,
 	plugin,
+	url,
 	lang,
 	loop_url,
+	is_home,
+	is_front_page,
+	is_main_loop,
 	is_loop_not_home
 };
 use function CFE_Tags\{
@@ -77,8 +81,15 @@ use function CFE_Tags\{
 			}
 			$sub_menu .= '</ul>';
 
+			// Item class, look if current.
+			$item_class = 'has-children';
+			if ( url()->slug() == $nav_item->key() ) {
+				$item_class = 'has-children current-menu-item';
+			}
+
 			$nav_entry = sprintf(
-				'<li class="has-children"><a href="%s">%s %s</a>%s</li>',
+				'<li class="%s"><a href="%s">%s %s</a>%s</li>',
+				$item_class,
 				$nav_item->permalink(),
 				ucwords( str_replace( [ '-', '_' ], ' ', $nav_item->slug() ) ),
 				icon( 'angle-down', true ),
@@ -87,8 +98,16 @@ use function CFE_Tags\{
 
 		// Page without children.
 		} elseif ( ! $nav_item->parent() ) {
+
+			// Item class, look if current.
+			$item_class = 'no-children';
+			if ( url()->slug() == $nav_item->key() ) {
+				$item_class = 'no-children current-menu-item';
+			}
+
 			$nav_entry = sprintf(
-				'<li class="no-children"><a href="%s">%s</a></li>',
+				'<li class="%s"><a href="%s">%s</a></li>',
+				$item_class,
 				$nav_item->permalink(),
 				ucwords( str_replace( [ '-', '_' ], ' ', $nav_item->slug() ) )
 			);
@@ -98,16 +117,29 @@ use function CFE_Tags\{
 
 		// Add loop after pages link if home is static content.
 		if ( is_loop_not_home() ) {
+
+			// Item class, look if current.
+			$item_class = 'no-children';
+			if ( is_main_loop() ) {
+				$item_class = 'no-children current-menu-item';
+			}
+
 			printf(
-				'<li class="no-children"><a href="%s">%s</a></li>',
+				'<li class="%s"><a href="%s">%s</a></li>',
+				$item_class,
 				loop_url(),
 				nav_loop_label()
 			);
 		}
 
-		// Add a home link if true in theme plugin.
+		// Add a home link.
+		$item_class = 'no-children';
+		if ( is_home() || is_front_page() ) {
+			$item_class = 'no-children current-menu-item';
+		}
 		printf(
-			'<li class="no-children"><a href="%s">%s</a></li>',
+			'<li class="%s"><a href="%s">%s</a></li>',
+			$item_class,
 			site()->url(),
 			$L->get( 'home-link-label' )
 		);
