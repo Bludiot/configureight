@@ -1586,6 +1586,13 @@ h3 + .search-form {
   display: var(--cfe-site-logo--display, block);
 }
 
+.header-scrolled .standard-logo {
+  display: block !important;
+}
+.header-scrolled .cover-logo {
+  display: none;
+}
+
 .site-title {
   margin: var(--cfe-site-title--margin, 0);
   font-family: var(--cfe-site-title--font-family, var(--cfe-heading-secondary--font-family));
