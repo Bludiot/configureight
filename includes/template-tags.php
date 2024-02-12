@@ -180,33 +180,44 @@ function config_styles() {
 		plugin()->vert_spacing()
 	);
 
-	// Font weights.
-	$styles .= sprintf(
-		'--cfe-body--font-weight: %s;',
-		plugin()->wght_text()
-	);
-	$styles .= sprintf(
-		'--cfe-heading-primary--font-weight: %s;',
-		plugin()->wght_primary()
-	);
-	$styles .= sprintf(
-		'--cfe-heading-secondary--font-weight: %s;',
-		plugin()->wght_secondary()
-	);
+	// Maybe use font style options.
+	$use_font_styles = true;
+	if ( is_page() ) {
+		if ( page()->template() && str_contains( page()->template(), 'font-scheme' ) ) {
+			$use_font_styles = false;
+		}
+	}
 
-	// Letter spacing.
-	$styles .= sprintf(
-		'--cfe-body--letter-spacing: %sem;',
-		plugin()->space_text()
-	);
-	$styles .= sprintf(
-		'--cfe-heading-primary--letter-spacing: %sem;',
-		plugin()->space_primary()
-	);
-	$styles .= sprintf(
-		'--cfe-heading-secondary--letter-spacing: %sem;',
-		plugin()->space_secondary()
-	);
+	if ( $use_font_styles ) {
+
+		// Font weights.
+		$styles .= sprintf(
+			'--cfe-body--font-weight: %s;',
+			plugin()->wght_text()
+		);
+		$styles .= sprintf(
+			'--cfe-heading-primary--font-weight: %s;',
+			plugin()->wght_primary()
+		);
+		$styles .= sprintf(
+			'--cfe-heading-secondary--font-weight: %s;',
+			plugin()->wght_secondary()
+		);
+
+		// Letter spacing.
+		$styles .= sprintf(
+			'--cfe-body--letter-spacing: %sem;',
+			plugin()->space_text()
+		);
+		$styles .= sprintf(
+			'--cfe-heading-primary--letter-spacing: %sem;',
+			plugin()->space_primary()
+		);
+		$styles .= sprintf(
+			'--cfe-heading-secondary--letter-spacing: %sem;',
+			plugin()->space_secondary()
+		);
+	}
 
 	// Header logo width.
 	$styles .= sprintf(
@@ -368,6 +379,13 @@ function body_classes() {
 	if ( plugin() ) {
 		if ( plugin()->header_sticky() ) {
 			$classes[] = 'has-sticky-header';
+		} elseif ( is_page() ) {
+			if (
+				page()->template() &&
+				str_contains( page()->template(), 'sticky-header' )
+			) {
+				$classes[] = 'has-sticky-header';
+			}
 		}
 	}
 
