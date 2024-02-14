@@ -30,12 +30,6 @@ use function CFE_Tags\{
 <div id="mobile-nav" aria-expanded="false">
 
 	<div id="mobile-nav-top">
-		<?php
-		if ( plugin()->header_search() && getPlugin( 'Search_Forms' ) ) : ?>
-		<div id="mobile-search-bar" class="hide-if-no-js" aria-expanded="false">
-			<?php echo SearchForms\form( [ 'label' => false ] ); ?>
-		</div>
-		<?php endif; ?>
 		<div id="menu-close">
 			<button class="button" data-menu-toggle-close><?php echo icon( 'close', false ); ?><span class="screen-reader-text"><?php lang()->p( 'Close' ); ?></span></button>
 		</div>

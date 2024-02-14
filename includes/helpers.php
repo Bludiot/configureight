@@ -762,10 +762,23 @@ function get_cover_src() {
 	// If in loop pages.
 	if ( is_main_loop() ) {
 		if ( is_static_loop() ) {
-			$loop = loop_data();
+			$loop  = loop_data();
+			$build = buildPage( $loop['slug'] );
+			$uuid   = $build->uuid();
+			$dir    = PATH_UPLOADS_PAGES . $uuid . DS;
+			$files  = \Filesystem :: listFiles( $dir, '*', '*', true, 0 );
+			$images = [];
 
-			if ( ! empty( $loop['cover'] ) ) {
-				$src  = $loop['cover'];
+			// Get the URL for each full-size image.
+			foreach ( $files as $file ) {
+				$images[] = DOMAIN_UPLOADS_PAGES . $uuid . '/' . str_replace( $dir, '', $file );
+			}
+
+			if ( $build->custom( 'random_cover' ) ) {
+				$rand = array_rand( $images );
+				$src  = $images[$rand];
+			} elseif ( ! empty( $loop['cover'] ) ) {
+				$src = $loop['cover'];
 			} else {
 				$src = $default;
 			}

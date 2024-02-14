@@ -83,22 +83,22 @@
 			}
 		});
 
+		// Add "scrolled" class to header wrap.
+		$(window).scroll( function () {
+
+			var scroll = $(window).scrollTop();
+			var size   = $(window).width();
+
+			if ( size > 960 ) {
+				if ( scroll >= 110 ) {
+					$( '.site-header-wrap' ).addClass( 'header-scrolled' );
+				} else {
+					$( '.site-header-wrap' ).removeClass( 'header-scrolled' );
+				}
+			}
+		});
+
 		// Page loader.
 		$( '#page-loader' ).delay( 500 ).fadeOut( 500 );
 	});
 })(jQuery);
-
-/**
- * Add "scrolled" class to header wrap.
- */
-jQuery(window).scroll( function () {
-
-    var scroll = jQuery(window).scrollTop();
-
-    // If scrolled to 150px.
-    if ( scroll >= 110 ) {
-        jQuery( '.site-header-wrap' ).addClass( 'header-scrolled' );
-    } else {
-        jQuery( '.site-header-wrap' ).removeClass( 'header-scrolled' );
-    }
-});

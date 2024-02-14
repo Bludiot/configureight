@@ -2,93 +2,83 @@
 /// Content styles
 ///
 
-body {
-	.content-wrapper {
-		display: flex;
-		gap: var( --cfe-spacing--vert, 2rem ) var( --cfe-spacing--horz, 2rem );
-
-		@media screen and ( max-width: 960px ) {
-			flex-direction: column;
-		}
-	}
-
-	&.sidebar-left {
-		.content-wrapper {
-			flex-direction: row-reverse;
-		}
-	}
-
-	&.template-sidebar-bottom {
-		.content-wrapper {
-			flex-direction: column;
-		}
-	}
-
-	/// Because of left-right sidebar option in the theme plugin,
-	/// reverse flexbox flipping in RTL languages.
-	&.rtl {
-		.content-wrapper {
-			flex-direction: row-reverse;
-		}
-
-		&.sidebar-left {
-			.content-wrapper {
-				flex-direction: row;
-			}
-		}
-	}
-}
-
 .content-wrapper {
-	width: 100%;
-	margin: var( --cfe-spacing--vert, 2rem ) auto;
-	padding: 0 var( --cfe-spacing--horz, 2rem );
+	position: var( --cfe-content-wrapper--position );
+	width: var( --cfe-content-wrapper--width, 100% );
+	max-width: var( --cfe-content-wrapper--max-width, 100% );
+	height: var( --cfe-content-wrapper--height );
+	margin: var( --cfe-content-wrapper--margin, var( --cfe-spacing--vert, 2rem ) auto );
+	padding: var( --cfe-content-wrapper--padding, 0 var( --cfe-spacing--horz, 2rem ) );
+	display: var( --cfe-content-wrapper--display, flex );
+	flex-direction: var( --cfe-content-wrapper--flex-direction, row );
+	flex-wrap: var( --cfe-content-wrapper--flex-wrap, nowrap );
+	align-items: var( --cfe-content-wrapper--align-items );
+	justify-content: var( --cfe-content-wrapper--justify-content );
+	gap: var( --cfe-content-wrapper--gap, var( --cfe-spacing--vert, 2rem ) var( --cfe-spacing--horz, 2rem ) );
 
 	@container page-wrap ( max-width: 960px ) {
 		flex-direction: column;
 	}
+
+	@media screen and ( max-width: 960px ) {
+		flex-direction: column;
+	}
+}
+
+.sidebar-left {
+	.content-wrapper {
+		flex-direction: row-reverse;
+	}
+}
+
+.template-sidebar-bottom {
+	.content-wrapper {
+		flex-direction: column;
+	}
+}
+
+/// Because of left-right sidebar option in the theme plugin,
+/// reverse flexbox flipping in RTL languages.
+.rtl {
+	.content-wrapper {
+		flex-direction: row-reverse;
+	}
+
+	&.sidebar-left {
+		.content-wrapper {
+			flex-direction: row;
+		}
+	}
 }
 
 .page-main {
-	width: 100%;
-	padding: var( --cfe-page-main--padding );
-}
-
-.home .loop-view {
-	padding: var( --cfe-spacing--vert, 2rem ) var( --cfe-spacing--horz, 2rem ) 0 var( --cfe-spacing--horz, 2rem );
-}
-
-.page-header-wrap {
-	width: 100%;
-	max-width: var( --cfe-wrapper--general--max-width );
-
-	&.full-width-header {
-		margin: 0 auto;
-		padding: 0 var( --cfe-spacing--horz, 2rem );
-
-		+ div .content-wrapper {
-			margin-top: 0;
-		}
-	}
-}
-
-.page-header {
-	&.post-header {
-		h2 {
-			margin: 0;
-		}
-	}
-}
-
-.page-subtitle {
-	font-family: var( --cfe-page-subtitle--font-family );
-	font-size: var( --cfe-page-subtitle--font-size, 1.5em );
+	position: var( --cfe-main--position );
+	width: var( --cfe-main--width, 100% );
+	max-width: var( --cfe-main--max-width, 100% );
+	height: var( --cfe-main--height );
+	margin: var( --cfe-main--margin );
+	padding: var( --cfe-main--padding );
+	display: var( --cfe-main--display );
 }
 
 .page-info {
+	position: var( --cfe-page-info--position );
+	width: var( --cfe-page-info--width );
+	max-width: var( --cfe-page-info--max-width );
+	height: var( --cfe-page-info--height );
+	max-height: var( --cfe-page-info--max-height );
+	margin: var( --cfe-page-info--margin );
+	padding: var( --cfe-page-info--padding );
+	display: var( --cfe-page-info--display );
 	font-family: var( --cfe-page-info--font-family );
 	font-size: var( --cfe-page-info--font-size, 0.85em );
+	font-weight: var( --cfe-page-info--font-weight );
+	font-style: var( --cfe-page-info--font-style );
 	line-height: var( --cfe-page-info--line-height );
+	letter-spacing: var( --cfe-page-info--letter-spacing, normal );
+	word-spacing: var( --cfe-page-info--word-spacing, normal );
+	text-decoration: var( --cfe-page-info--text-decoration );
+	text-transform: var( --cfe-page-info--text-transform );
 
 	.page-info-entry {
 		&:not( :last-of-type ) {
@@ -99,38 +89,51 @@ body {
 
 .page-description {
 	margin: var( --cfe-page-description--margin, 0 );
+	padding: var( --cfe-page-description--padding, 0 );
+	font-family: var( --cfe-page-description--font-family );
+	font-size: var( --cfe-page-description--font-size );
+	font-weight: var( --cfe-page-description--font-weight );
+	font-variant: var( --cfe-page-description--font-variant );
+	font-style: var( --cfe-page-description--font-style );
+	line-height: var( --cfe-page-description--line-height );
+	letter-spacing: var( --cfe-page-description--letter-spacing, normal );
+	word-spacing: var( --cfe-page-description--word-spacing, normal );
+	text-decoration: var( --cfe-page-description--text-decoration );
+	text-transform: var( --cfe-page-description--text-transform );
 
 	&.page-description-single {
-		margin: var( --cfe-page-description-single--margin, 0 );
-		font-size: var( --cfe-page-description-single--font-size, 1.25rem );
+		margin: var( --cfe-page-description--single--margin, 1rem 0 0 0 );
+		font-family: var( --cfe-page-description--single--font-family );
+		font-size: var( --cfe-page-description--single--font-size, 1.25rem );
+		font-weight: var( --cfe-page-description--single--font-weight );
+		font-variant: var( --cfe-page-description--single--font-variant );
+		font-style: var( --cfe-page-description--single--font-style );
+		line-height: var( --cfe-page-description--single--line-height );
+		letter-spacing: var( --cfe-page-description--single--letter-spacing, normal );
+		word-spacing: var( --cfe-page-description--single--word-spacing, normal );
 	}
 }
 
 .loop {
-	main {
-		article {
-			margin: var( --cfe-news-article--full--margin, var( --cfe-spacing--vert, 2rem ) 0 0 0 );
+	article {
+		margin: var( --cfe-loop--article--margin, var( --cfe-spacing--vert, 2rem ) 0 0 0 );
 
-			&:not( :first-of-type ) {
-				padding: var( --cfe-news-article--full--padding, var( --cfe-spacing--vert, 2rem ) 0 0 0 );
-				border-top: var( --cfe-news-article--full--border-top, var( --cfe-box--border ) );
+		&:not( :first-of-type ) {
+			padding: var( --cfe-loop--article--padding, var( --cfe-spacing--vert, 2rem ) 0 0 0 );
+			border-top: var( --cfe-loop--article--border-top, var( --cfe-box--border ) );
 
-				@media ( prefers-color-scheme: dark ) {
-					border-top: var( --cfe-box--border--dark );
-				}
+			@media ( prefers-color-scheme: dark ) {
+				border-top: var( --cfe-box--border--dark );
 			}
 		}
 	}
 
 	&.loop-template-grid {
-
-		main {
-			article {
-				margin: 0;
-				padding: 0;
-				border: none;
-				aspect-ratio: 3/2;
-			}
+		article {
+			margin: 0;
+			padding: 0;
+			border: none;
+			aspect-ratio: 3/2;
 		}
 	}
 
@@ -167,7 +170,7 @@ body {
 	}
 }
 
-.posts-loop-heading {
+.loop-page-heading {
 	margin: var( --cfe-posts-loop--heading--margin, 0 );
 	font-family: var( --cfe-posts-loop--heading--font-family, var( --cfe-heading-primary--font-family ) );
 	font-size: var( --cfe-posts-loop--heading--font-size, var( --cfe-heading-primary--font-size ) );
@@ -183,6 +186,7 @@ body {
 
 .loop-wrap {
 	&.loop-wrap-grid {
+		margin: var( --cfe-spacing--horz, 2rem ) 0 0 0;
 		display: grid;
 		grid-template-columns: repeat( 3, 1fr );
 		gap: 0.25rem;
@@ -273,7 +277,6 @@ body {
 
 // Default loop template
 .post-list-content {
-
 	max-width: 100%;
 	display: grid;
 	gap: 1rem 1.5rem;
@@ -291,6 +294,7 @@ body {
 
 		h1,
 		h2 {
+			margin: 0;
 			font-size: var( --cfe-post-header--list--heading--font-size );
 			font-weight: var( --cfe-post-header--list--heading--font-weight );
 			line-height: var( --cfe-post-header--list--heading--line-height );
@@ -310,6 +314,8 @@ body {
 		max-height: 180px;
 
 		@media screen and ( max-width: 640px ) {
+			max-width: 100%;
+			max-height: 100%;
 			margin: var( --cfe-post-cover--list--phone--margin, 1.5rem 0 0 0 );
 		}
 
@@ -340,6 +346,10 @@ body {
 
 // Full loop content.
 .post-full-content {
+
+	.page-title {
+		margin: 0;
+	}
 
 	// News style loop.
 	&.post-news-content {
@@ -472,6 +482,7 @@ body {
 		transition: all .25s ease-in-out;
 
 		.page-title {
+			margin: 0;
 			font-size: 1.25rem;
 			font-size: clamp( 1.25rem, 2vw, 2rem );
 			font-size: var( --cfe-post-header--grid--heading--font-size, clamp( 1.25rem, 2vw, 2rem ) );

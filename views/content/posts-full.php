@@ -27,7 +27,7 @@ use function CFE_Func\{
 	get_word_count
 };
 use function CFE_Tags\{
-	posts_loop_header,
+	loop_page_header,
 	loop_style,
 	loop_type,
 	icon,
@@ -97,7 +97,7 @@ if ( $user->profilePicture() ) {
 	);
 }
 
-echo posts_loop_header();
+echo loop_page_header();
 
 // If posts, print for each.
 foreach ( $content as $post ) :
@@ -173,7 +173,7 @@ if ( ! empty( $page->custom( 'gallery_heading' ) ) ) {
 }
 
 ?>
-<article id="<?php echo $post->uuid(); ?>" class="site-article" role="article" itemscope="itemscope" itemtype="<?php echo 'https://schema.org/' . article_type(); ?>" data-site-article>
+<article id="<?php echo $post->uuid(); ?>" class="site-article loop-article" role="article" itemscope="itemscope" itemtype="<?php echo 'https://schema.org/' . article_type(); ?>" data-site-article>
 
 	<div class="post-loop-content post-<?php echo loop_style(); ?>-content post-<?php echo loop_type(); ?>-content">
 

@@ -196,6 +196,10 @@ function config_styles() {
 			plugin()->wght_text()
 		);
 		$styles .= sprintf(
+			'--cfe-display--font-weight: %s;',
+			plugin()->wght_display()
+		);
+		$styles .= sprintf(
 			'--cfe-heading-primary--font-weight: %s;',
 			plugin()->wght_primary()
 		);
@@ -208,6 +212,10 @@ function config_styles() {
 		$styles .= sprintf(
 			'--cfe-body--letter-spacing: %sem;',
 			plugin()->space_text()
+		);
+		$styles .= sprintf(
+			'--cfe-display--letter-spacing: %sem;',
+			plugin()->space_display()
 		);
 		$styles .= sprintf(
 			'--cfe-heading-primary--letter-spacing: %sem;',
@@ -954,7 +962,7 @@ function cover_header( $args = null, $defaults = [] ) {
 		is_main_loop() &&
 		'page' == $loop_data['location']
 	) {
-		$class       = 'loop-page-description';
+		$class = 'loop-page-description';
 		$args['page_title']  = loop_title();
 		$args['description'] = loop_description();
 
@@ -1004,7 +1012,7 @@ function cover_header( $args = null, $defaults = [] ) {
 
 	if ( ! empty( $args['description'] ) && ! ctype_space( $args['description'] ) ) {
 		$html .= sprintf(
-			'<p class="cover-description">%s</p>',
+			'<p class="page-description cover-description">%s</p>',
 			$args['description']
 		);
 	}
@@ -1078,6 +1086,10 @@ function user_toolbar() {
  * @return mixed Returns null if no standard logo set.
  */
 function site_logo() {
+
+	if ( ! plugin() ) {
+		return;
+	}
 
 	$standard = plugin()->standard_logo_src();
 	$cover    = plugin()->cover_logo_src();
@@ -1515,15 +1527,15 @@ function nav_loop_label() {
 }
 
 /**
- * Posts loop header
+ * Loop page header
  *
- * prints a header section in a posts loop
+ * Prints a header section in a posts loop
  * page: posts, category, tag.
  *
  * @since  1.0.0
  * @return mixed
  */
-function posts_loop_header() {
+function loop_page_header() {
 
 	// Null if in search results (global errors).
 	if ( is_search() ) {
@@ -1549,16 +1561,23 @@ function posts_loop_header() {
 
 	// Conditional heading & description.
 	if ( is_home() ) {
-		$heading  = lang()->get( 'Blog' ) . $loop_page;
+		$class       = 'posts-page-description';
+		$heading     = ucwords( $loop_data['title'] . $loop_page );
+		$description = loop_description();
 		if ( plugin() ) {
 			if ( plugin()->loop_type() ) {
-				$heading = ucwords( plugin()->loop_type() . $loop_page );
+				$heading = sprintf(
+					'%s %s%s',
+					ucwords( plugin()->loop_type() ),
+					lang()->get( 'Posts' ),
+					ucwords( $loop_page )
+				);
 			}
 		}
 
 	} elseif ( is_main_loop() ) {
-		$class       = 'loop-page-description';
-		$heading     = ucwords( $loop_data['slug'] . $loop_page );
+		$class       = 'posts-page-description';
+		$heading     = ucwords( $loop_data['title'] . $loop_page );
 		$description = loop_description();
 
 	} elseif ( is_cat() ) {
@@ -1575,18 +1594,18 @@ function posts_loop_header() {
 	}
 
 	// SEt up the header markup.
-	$html = '<header class="page-header posts-loop-header">';
+	$html = '<header class="page-header loop-page-header">';
 
 	if ( ! empty( $heading ) && ! ctype_space( $heading ) ) {
 		$html .= sprintf(
-			'<h3 class="posts-loop-heading">%s</h3>',
+			'<h3 class="loop-page-heading">%s</h3>',
 			$heading
 		);
 	}
 
 	if ( ! empty( $description ) && ! ctype_space( $description ) ) {
 		$html .= sprintf(
-			'<p class="page-description %s">%s</p>',
+			'<p class="page-description loop-page-description %s">%s</p>',
 			$class,
 			$description
 		);

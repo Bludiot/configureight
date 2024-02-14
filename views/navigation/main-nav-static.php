@@ -142,16 +142,6 @@ use function CFE_Tags\{
 			$item_class,
 			site()->url(),
 			$L->get( 'home-link-label' )
-		);
-
-		// Add a search toggle button if the Search Forms plugin is installed.
-		if ( getPlugin( 'Search_Forms' ) ) {
-			printf(
-				'<li class="no-children hide-if-no-js"><a href="#search-bar" class="top-search-open" data-search-toggle-open aria-controls="search-bar" aria-expanded="false" title="%s" data-tooltip>%s<span class="screen-reader-text">%s</span></a></li>',
-				$L->get( 'Search This Site' ),
-				icon( 'search', true, 'top-search-icon' ),
-				$L->get( 'Search' )
-			);
-		} ?>
+		); ?>
 	</ul>
 </nav>

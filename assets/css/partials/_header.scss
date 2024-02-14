@@ -365,7 +365,7 @@
 
 .cover-title {
 	margin: 0;
-	line-height: 1.2;
+	line-height: var( --cfe-cover--title--line-height, 1.2 );
 	font-size: var( --cfe-cover--title--font-size, clamp( 2.25rem, 2.5vw + 1rem, 3.25vw ) );
 	font-weight: var( --cfe-cover--title--font-weight, var( --cfe-heading-primary--font-weight, 700 ) );
 	color: var( --cfe-cover--title--text-color, var( --cfe-cover--text-color, $white ) );
@@ -497,7 +497,7 @@
 	}
 
 	.cover-description {
-		&.page-description-single {
+		&.page-description--single {
 			margin:  var( --cfe-cover--description-single--margin, 1rem 0 0 0 );
 			font-size: var( --cfe-cover--description--font-size );
 			font-weight: var( --cfe-cover--description-single--font-weight );
@@ -702,6 +702,10 @@
 			top: 0;
 			z-index: 500;
 
+			@media screen and ( max-width: 960px ) {
+				position: unset;;
+			}
+
 			.site-header-wrap {
 				background-color: var( --cfe-site-header--bg-color );
 
@@ -725,6 +729,10 @@
 			.site-header-wrap {
 				position: fixed;
 				max-width: 100%;
+
+				@media screen and ( max-width: 960px ) {
+					position: unset;;
+				}
 
 				&.header-scrolled {
 					background-color: var( --cfe-site-header--bg-color );

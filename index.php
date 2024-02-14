@@ -60,7 +60,7 @@ if ( is_main_loop() ) {
 		}
 	}
 } elseif ( is_tag() ) {
-	$main_view = 'clist-view';
+	$main_view = 'list-view';
 	if ( plugin() ) {
 		if ( 'grid' == plugin()->tag_style() ) {
 			$main_view = 'loop-view grid-view';

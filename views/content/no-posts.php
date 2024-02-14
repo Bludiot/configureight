@@ -18,7 +18,7 @@
 			$L->get( 'no-search-heading' )
 		);
 		printf(
-			'<p class="page-subtitle">%s</p>',
+			'<p class="page-description page-description-single">%s</p>',
 			$L->get( 'no-search-message' )
 		);
 	} else {
@@ -27,7 +27,7 @@
 			$L->get( 'no-posts-heading' )
 		);
 		printf(
-			'<p class="page-subtitle">%s</p>',
+			'<p class="page-description page-description-single">%s</p>',
 			$L->get( 'no-posts-message' )
 		);
 	} ?>

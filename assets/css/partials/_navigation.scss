@@ -30,13 +30,13 @@
 		li {
 			position: relative;
 			margin: var( --cfe-site-nav--item--margin, 0 );
-			font-family: var( --cfe-site-nav--item--font-family );
+			font-family: var( --cfe-site-nav--item--font-family, var( --cfe-display--font-family ) );
 			font-size: var( --cfe-site-nav--item--font-size );
-			font-weight: var( --cfe-site-nav--item--font-weight );
+			font-weight: var( --cfe-site-nav--item--font-weight, var( --cfe-display--font-weight ) );
 			font-style: var( --cfe-site-nav--font-style, normal );
 			font-variant: var( --cfe-site-nav--item--font-variant );
 			text-transform: var( --cfe-site-nav--item--text-transform );
-			letter-spacing: var( --cfe-site-nav--letter-spacing, normal );
+			letter-spacing: var( --cfe-site-nav--letter-spacing, var( --cfe-display--letter-spacing ) );
 			word-spacing: var( --cfe-site-nav--word-spacing, normal );
 			line-height: 1.2;
 			color: var( --cfe-site-nav--list--text-color, inherit );

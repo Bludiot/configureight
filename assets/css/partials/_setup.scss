@@ -331,16 +331,16 @@ h4 {
 	}
 
 	.loading-text {
-		font-family: var( --cfe-loader--text--font-family, var( --cfe-body--family ) );
-		font-size: var( --cfe-loader--text--font-size, 1.5rem );
-		font-weight: var( --cfe-loader--text--font-weight, 600 );
-		font-style: var( --cfe-loader--text--font-style, var( --cfe-body--font-style ) );
-		font-variant: var( --cfe-loader--text--font-variant, var( --cfe-body--font-variant ) );
-		line-height: var( --cfe-loader--text--line-height, 1 );
-		letter-spacing: var( --cfe-loader--text--letter-spacing, var( --cfe-body--letter-spacing ) );
-		word-spacing: var( --cfe-loader--text--word-spacing, var( --cfe-body--word-spacing ) );
-		text-decoration: var( --cfe-loader--text--text-decoration, var( --cfe-body--text-decoration ) );
-		text-transform: var( --cfe-loader--text--text-transform, var( --cfe-body--text-transform ) );
+		font-family: var( --cfe-loader--text--font-family, var( --cfe-heading-secondary--font-family ) );
+		font-size: var( --cfe-loader--text--font-size, var( --cfe-heading-secondary--font-size, 1.375rem ) );
+		font-weight: var( --cfe-loader--text--font-weight, var( --cfe-heading-secondary--font-weight ) );
+		font-style: var( --cfe-loader--text--font-style, var( --cfe-heading-secondary--font-style ) );
+		font-variant: var( --cfe-loader--text--font-variant, var( --cfe-heading-secondary--font-variant ) );
+		line-height: var( --cfe-loader--text--line-height, var( --cfe-heading-secondary--line-height ) );
+		letter-spacing: var( --cfe-loader--text--letter-spacing, var( --cfe-heading-secondary--letter-spacing ) );
+		word-spacing: var( --cfe-loader--text--word-spacing, var( --cfe-heading-secondary--word-spacing ) );
+		text-decoration: var( --cfe-loader--text--text-decoration, var( --cfe-heading-secondary--text-decoration ) );
+		text-transform: var( --cfe-loader--text--text-transform, var( --cfe-heading-secondary--text-transform ) );
 	}
 
 	.loading-image {

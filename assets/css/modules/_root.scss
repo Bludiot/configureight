@@ -48,6 +48,7 @@ $color_six_dark:   $light_gray;
 	--cfe-fonts--sans-stack: #{$fonts_sans};
 	--cfe-fonts--serif-stack: #{$fonts_serif};
 	--cfe-fonts--monospace-stack: #{$fonts_monospace};
+	--cfe-fonts--display-stack: #{$fonts_sans};
 
 	// Layout general.
 	--cfe-spacing--horz: 2rem;
@@ -71,6 +72,11 @@ $color_six_dark:   $light_gray;
 	--cfe-body--bg-color--dark: var( --cfe-scheme-color--body--dark );
 	--cfe-body--text-color: var( --cfe-scheme-color--text );
 	--cfe-body--text-color--dark: var( --cfe-scheme-color--text--dark );
+
+	--cfe-display--font-family: var( --cfe-fonts--display-stack );
+	--cfe-display--font-weight: 600;
+	--cfe-display--letter-spacing: normal;
+
 	--cfe-text-shadow: 0.05em 0.05em 0.05em #{rgba( $color: black, $alpha: 0.625 )};
 
 	// Links.
@@ -92,14 +98,14 @@ $color_six_dark:   $light_gray;
 	--cfe-form--border-color--dark: var( --cfe-box--border-color--dark );
 	--cfe-form--action--border-color: var( --cfe-scheme-color--three );
 	--cfe-form--action--border-color--dark: var( --cfe-scheme-color--three--dark );
-	--cfe-fieldset--margin: 1em 0 0;
-	--cfe-fieldset--padding: 1em 1.5em;
+	--cfe-fieldset--margin: 1rem 0 0;
+	--cfe-fieldset--padding: 1rem 1.5rem;
 	--cfe-fieldset--border: var( --cfe-form--border-style ) var( --cfe-form--border-width ) var( --cfe-form--border-color );
 	--cfe-legend--padding: 0 0.5em;
 	--cfe-legend-font-size: 1em;
 	--cfe-legend-font-weight: 700;
 
-	--cfe-form-element--padding: 0.5em 1em;
+	--cfe-form-element--padding: 0.5rem 1rem;
 	--cfe-form-element--border-style: solid;
 	--cfe-form-element--border-width: 1px;
 	--cfe-form-element--border-color: var( --cfe-scheme-color--text );
@@ -113,13 +119,12 @@ $color_six_dark:   $light_gray;
 	--cfe-label-field--margin: 0;
 
 	--cfe-textarea--min-height: 200px;
-	--cfe-textarea--margin: 1em 0 0;
-	--cfe-textarea--padding: 1em;
-	--cfe-select--margin: 1em 0 0;
-	--cfe-select--padding: 0.5em 1em;
+	--cfe-textarea--margin: 1rem 0 0;
+	--cfe-textarea--padding: 1rem;
+	--cfe-select--margin: 1rem 0 0;
+	--cfe-select--padding: 0.5rem 1rem;
 
-	--cfe-button--padding: 0.75em 1em;
-	--cfe-button--font-weight: 700;
+	--cfe-button--padding: 0.75rem 1rem;
 	--cfe-button--bg-color: var( --cfe-scheme-color--three );
 	--cfe-button--bg-color--dark: var( --cfe-scheme-color--three--dark );
 	--cfe-button--action--bg-color: var( --cfe-scheme-color--four );
@@ -168,7 +173,6 @@ $color_six_dark:   $light_gray;
 	// Navigation.
 	--cfe-site-nav--max-width: 50vw;
 	--cfe-site-nav--item--font-size: var( --cfe-font-size );
-	--cfe-site-nav--item--font-weight: 600;
 	--cfe-site-nav--sub-list--bg-color: var( --cfe-scheme-color--five );
 	--cfe-site-nav--sub-list--bg-color--dark: var( --cfe-scheme-color--five--dark );
 	--cfe-site-nav--sub-list--action--bg-color: var( --cfe-scheme-color--six );
@@ -184,7 +188,7 @@ $color_six_dark:   $light_gray;
 
 	// Content.
 	--cfe-content-wrap--padding: var( --cfe-spacing--vert ) var( --cfe-spacing--horz );
-	--cfe-page-main--padding: 0;
+	--cfe-main--padding: 0;
 
 	--cfe-post-header--list--heading--font-size: var( --cfe-heading-secondary--font-size );
 	--cfe-post-header--list--heading--font-weight: var( --cfe-heading-secondary--font-weight );

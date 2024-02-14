@@ -3,16 +3,17 @@
 ///
 
 .page-sidebar {
-	position: var( --cfe-sidebar--default--position, var( --cfe-sidebar--position ) );
-	display: var( --cfe-sidebar--default--display, var( --cfe-sidebar--display, flex ) );
-	flex-direction: var( --cfe-sidebar--default--flex-direction, var( --cfe-sidebar--flex-direction, column ) );
-	flex-wrap: var( --cfe-sidebar--default--flex-wrap, var( --cfe-sidebar--flex-wrap ) );
-	align-items: var( --cfe-sidebar--default--align-items, var( --cfe-sidebar--align-items ) );
-	justify-content: var( --cfe-sidebar--default--justify-content, var( --cfe-sidebar--justify-content ) );
-	width: var( --cfe-sidebar--default--width, var( --cfe-sidebar--width, 320px ) );
-	max-width: var( --cfe-sidebar--default--max-width, var( --cfe-sidebar--max-width ) );
-	margin: var( --cfe-sidebar--default--margin, var( --cfe-sidebar--margin, var( --cfe-spacing--vert, 2rem ) 0 0 0 ) );
-	padding: var( --cfe-sidebar--default--padding, var( --cfe-sidebar--padding ) );
+	position: var( --cfe-sidebar--position, var( --cfe-sidebar--position ) );
+	display: var( --cfe-sidebar--display, var( --cfe-sidebar--display, flex ) );
+	flex-direction: var( --cfe-sidebar--flex-direction, var( --cfe-sidebar--flex-direction, column ) );
+	flex-wrap: var( --cfe-sidebar--flex-wrap, var( --cfe-sidebar--flex-wrap ) );
+	align-items: var( --cfe-sidebar--align-items, var( --cfe-sidebar--align-items ) );
+	justify-content: var( --cfe-sidebar--justify-content, var( --cfe-sidebar--justify-content ) );
+	width: var( --cfe-sidebar--width, var( --cfe-sidebar--width, 320px ) );
+	max-width: var( --cfe-sidebar--max-width, var( --cfe-sidebar--max-width ) );
+	height: var( --cfe-sidebar--height );
+	margin: var( --cfe-sidebar--margin, var( --cfe-sidebar--margin, var( --cfe-spacing--vert, 2rem ) 0 0 0 ) );
+	padding: var( --cfe-sidebar--padding, var( --cfe-sidebar--padding ) );
 	font-family: var( --cfe-sidebar--font-family, inherit );
 	font-size: var( --cfe-sidebar--font-size, inherit );
 	font-weight: var( --cfe-sidebar--font-weight, inherit );
@@ -23,12 +24,12 @@
 	word-spacing: var( --cfe-sidebar--word-spacing, inherit );
 	text-decoration: var( --cfe-sidebar--text-decoration, inherit );
 	text-transform: var( --cfe-sidebar--text-transform, inherit );
-	background-color: var( --cfe-sidebar--default--bg-color, var( --cfe-sidebar--bg-color, inherit ) );
-	color: var( --cfe-sidebar--default--text-color, var( --cfe-sidebar--text-color, inherit ) );
+	background-color: var( --cfe-sidebar--bg-color, var( --cfe-sidebar--bg-color, inherit ) );
+	color: var( --cfe-sidebar--text-color, var( --cfe-sidebar--text-color, inherit ) );
 
 	@media ( prefers-color-scheme: dark ) {
-		background-color: var( --cfe-sidebar--default--bg-color--dark, var( --cfe-sidebar--bg-color--dark, inherit ) );
-		color: var( --cfe-sidebar--default--text-color--dark, var( --cfe-sidebar--text-color--dark, inherit ) );
+		background-color: var( --cfe-sidebar--bg-color--dark, var( --cfe-sidebar--bg-color--dark, inherit ) );
+		color: var( --cfe-sidebar--text-color--dark, var( --cfe-sidebar--text-color--dark, inherit ) );
 	}
 
 	@container page-wrap ( max-width: 960px ) {
@@ -68,7 +69,12 @@
 
 	.plugin {
 		width: var( --cfe-sidebar--plugin--width, 100% );
+		max-width: var( --cfe-sidebar--plugin--max-width, 100% );
+		height: var( --cfe-sidebar--plugin--height, 100% );
 		margin: var( --cfe-sidebar--plugin--margin, 0 );
+		padding: var( --cfe-sidebar--plugin--padding, 0 );
+		display: var( --cfe-sidebar--plugin--display );
+		position: var( --cfe-sidebar--plugin--position );
 
 		&:not( :first-of-type ) {
 			margin-top: var( --cfe-sidebar--plugin--margin-top, calc( var( --cfe-spacing--vert ) * .75 ) );
@@ -88,12 +94,11 @@
 		}
 
 		.plugin-content {
-			margin: var( --cfe-plugin-content--margin0 );
+			margin: var( --cfe-plugin-content--margin, 0 );
 			margin-top: var( --cfe-sidebar--plugin--margin-top, calc( var( --cfe-spacing--vert ) * .5 ) );
 		}
 
 		&.plugin-tags {
-
 			ul {
 				display: var( --cfe-sidebar--plugin--tags--list--display, flex );
 				flex-direction: var( --cfe-sidebar--plugin--tags--list--flex-direction );
