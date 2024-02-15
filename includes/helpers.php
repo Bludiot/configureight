@@ -663,6 +663,45 @@ function get_nav_position() {
 }
 
 /**
+ * Has logo
+ *
+ * @since  1.0.0
+ * @param  string $type The logo type, standard or cover.
+ * @return boolean
+ */
+function has_logo( $type = 'standard' ) {
+
+	// Start false, conditionally true.
+	$logo = false;
+
+	// If plugin options.
+	if ( plugin() ) {
+
+		$standard = plugin()->standard_logo_src();
+		$cover    = plugin()->cover_logo_src();
+		$std_svg  = plugin()->logo_standard_svg();
+		$cov_svg  = plugin()->logo_cover_svg();
+
+		if ( 'standard' == $type ) {
+			if ( $standard || $std_svg ) {
+				$logo = true;
+			}
+		} elseif ( 'cover' == $type ) {
+			if ( $cover || $cov_svg ) {
+				$logo = true;
+			}
+		}
+	} elseif ( ! empty( site()->logo() ) ) {
+		if ( 'standard' == $type ) {
+			$logo = true;
+		} elseif ( 'cover' == $type ) {
+			$logo = false;
+		}
+	}
+	return $logo;
+}
+
+/**
  * Has cover image
  *
  * @since  1.0.0

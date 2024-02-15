@@ -39,6 +39,7 @@ use function CFE_Func\{
 	page_type,
 	sticky,
 	favicon_exists,
+	has_logo,
 	loop_data,
 	loop_is_static,
 	get_nav_position,
@@ -1083,22 +1084,25 @@ function user_toolbar() {
  * Print site logo
  *
  * @since  1.0.0
- * @return mixed Returns null if no standard logo set.
+ * @return mixed Returns null if theme plugin not installed.
  */
 function site_logo() {
 
-	if ( ! plugin() ) {
-		return;
+	if ( ! has_logo() ) {
+		return null;
 	}
 
-	$standard  = plugin()->standard_logo_src();
-	$cover     = plugin()->cover_logo_src();
-	$std_svg   = plugin()->logo_standard_svg();
-	$cover_svg = plugin()->logo_cover_svg();
+	// Get logo(s) from plugin uploads or SVG.
+	if ( plugin() ) :
+
+	$standard = plugin()->standard_logo_src();
+	$cover    = plugin()->cover_logo_src();
+	$std_svg  = plugin()->logo_standard_svg();
+	$cov_svg  = plugin()->logo_cover_svg();
 
 	?>
 	<div class="site-logo" data-site-logo>
-		<figure class="standard-logo" style="display: <?php echo ( ( $cover || $cover_svg ) && full_cover() ? 'none' : 'block' ); ?>">
+		<figure class="standard-logo" style="display: <?php echo ( ( $cover || $cov_svg ) && full_cover() ? 'none' : 'block' ); ?>">
 			<a href="<?php echo site_domain(); ?>">
 			<?php if ( ! empty( $std_svg ) ) : ?>
 				<?php echo htmlspecialchars_decode( $std_svg ); ?>
@@ -1108,11 +1112,11 @@ function site_logo() {
 			</a>
 			<figcaption class="screen-reader-text"><?php echo site()->title(); ?></figcaption>
 		</figure>
-		<?php if ( $cover && full_cover() ) : ?>
+		<?php if ( has_logo( 'cover' ) && full_cover() ) : ?>
 		<figure class="cover-logo">
 			<a href="<?php echo site_domain(); ?>">
-			<?php if ( ! empty( $cover_svg ) ) : ?>
-				<?php echo htmlspecialchars_decode( $cover_svg ); ?>
+			<?php if ( ! empty( $cov_svg ) ) : ?>
+				<?php echo htmlspecialchars_decode( $cov_svg ); ?>
 			<?php else : ?>
 				<img src="<?php echo plugin()->cover_logo_src(); ?>" alt="<?php echo site()->title(); ?>">
 			<?php endif; ?>
@@ -1122,6 +1126,18 @@ function site_logo() {
 		<?php endif; ?>
 	</div>
 	<?php
+
+	// Use default logo upload if theme plugin is not installed.
+	else : ?>
+	<div class="site-logo" data-site-logo>
+		<figure class="standard-logo">
+			<a href="<?php echo site_domain(); ?>">
+				<img src="<?php echo site()->logo(); ?>" alt="<?php echo site()->title(); ?>">
+			</a>
+			<figcaption class="screen-reader-text"><?php echo site()->title(); ?></figcaption>
+		</figure>
+	</div>
+	<?php endif;
 }
 
 /**
