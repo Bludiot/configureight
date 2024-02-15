@@ -1091,25 +1091,31 @@ function site_logo() {
 		return;
 	}
 
-	$standard = plugin()->standard_logo_src();
-	$cover    = plugin()->cover_logo_src();
-
-	if ( empty( plugin()->standard_logo_src() ) ) {
-		return null;
-	}
+	$standard  = plugin()->standard_logo_src();
+	$cover     = plugin()->cover_logo_src();
+	$std_svg   = plugin()->logo_standard_svg();
+	$cover_svg = plugin()->logo_cover_svg();
 
 	?>
 	<div class="site-logo" data-site-logo>
-		<figure class="standard-logo" style="display: <?php echo ( $cover && full_cover() ? 'none' : 'block' ); ?>">
+		<figure class="standard-logo" style="display: <?php echo ( ( $cover || $cover_svg ) && full_cover() ? 'none' : 'block' ); ?>">
 			<a href="<?php echo site_domain(); ?>">
+			<?php if ( ! empty( $std_svg ) ) : ?>
+				<?php echo htmlspecialchars_decode( $std_svg ); ?>
+			<?php else : ?>
 				<img src="<?php echo plugin()->standard_logo_src(); ?>" alt="<?php echo site()->title(); ?>">
+			<?php endif; ?>
 			</a>
 			<figcaption class="screen-reader-text"><?php echo site()->title(); ?></figcaption>
 		</figure>
 		<?php if ( $cover && full_cover() ) : ?>
 		<figure class="cover-logo">
 			<a href="<?php echo site_domain(); ?>">
+			<?php if ( ! empty( $cover_svg ) ) : ?>
+				<?php echo htmlspecialchars_decode( $cover_svg ); ?>
+			<?php else : ?>
 				<img src="<?php echo plugin()->cover_logo_src(); ?>" alt="<?php echo site()->title(); ?>">
+			<?php endif; ?>
 			</a>
 			<figcaption class="screen-reader-text"><?php echo site()->title(); ?></figcaption>
 		</figure>
