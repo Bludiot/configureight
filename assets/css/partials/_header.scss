@@ -193,6 +193,7 @@
 	}
 
 	svg {
+		vertical-align: middle;
 		fill: var( --cfe-site-title--text-color, var( --cfe-heading-primary--text-color, var( --cfe-body--text-color ) ) );
 
 		@media ( prefers-color-scheme: dark ) {
