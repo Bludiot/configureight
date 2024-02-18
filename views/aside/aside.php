@@ -41,9 +41,11 @@ if ( plugin() ) {
 		plugin()->sb_social_heading()
 	);
 }
+
 ?>
 <div id="page-sidebar-wrap">
 	<aside id="page-sidebar" class="page-sidebar <?php echo $sticky; ?>" data-page-sidebar>
+		<?php plugins_hook( 'site_sidebar_before' ); ?>
 		<?php plugins_hook( 'siteSidebar' ); ?>
 
 		<?php if ( plugin() ) : if ( plugin()->sidebar_social() ) : ?>
@@ -54,5 +56,6 @@ if ( plugin() ) {
 			</div>
 		</div>
 		<?php endif; endif; ?>
+		<?php plugins_hook( 'site_sidebar_after' ); ?>
 	</aside>
 </div>
