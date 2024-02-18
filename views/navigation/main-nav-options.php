@@ -98,6 +98,11 @@ if ( 'dots' == plugin()->main_nav_icon() ) {
 			$nav_item  = buildPage( $nav_page );
 			$nav_entry = '';
 
+			// Stop if page not in pages database.
+			if ( ! $nav_item ) {
+				continue;
+			}
+
 			if ( 'title' == plugin()->main_nav_labels() ) {
 				$label = $nav_item->title();
 			} else {
