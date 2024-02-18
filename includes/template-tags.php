@@ -909,10 +909,12 @@ function page_header( $args = null, $defaults = [] ) {
 	);
 
 	if ( ! empty( $args['description'] ) && ! ctype_space( $args['description'] ) ) {
-		$html .= sprintf(
-			'<p class="page-description page-description-single">%s</p>',
-			$args['description']
-		);
+		if ( ! str_contains( page()->template(), 'no-page-description' ) ) {
+			$html .= sprintf(
+				'<p class="page-description page-description-single">%s</p>',
+				$args['description']
+			);
+		}
 	}
 	$html .= "</{$args['wrapper']}>";
 
@@ -1013,7 +1015,7 @@ function cover_header( $args = null, $defaults = [] ) {
 
 	if ( ! empty( $args['description'] ) && ! ctype_space( $args['description'] ) ) {
 		$html .= sprintf(
-			'<p class="page-description cover-description">%s</p>',
+			'<p class="cover-description">%s</p>',
 			$args['description']
 		);
 	}
@@ -1023,6 +1025,8 @@ function cover_header( $args = null, $defaults = [] ) {
 	if ( plugin() ) {
 		if ( plugin()->cover_icon() ) {
 			$icon = plugin()->cover_icon();
+		} else {
+			$icon = '';
 		}
 	}
 
