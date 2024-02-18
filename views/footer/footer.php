@@ -11,7 +11,8 @@
 // Import namespaced functions.
 use function CFE_Func\{
 	plugin,
-	site
+	site,
+	plugins_hook
 };
 use function CFE_Tags\{
 	social_nav,
@@ -43,7 +44,7 @@ if ( plugin() ) {
 
 			$copyright = sprintf(
 				'<p class="copyright" itemscope="itemscope" itemtype="https://schema.org/CreativeWork">%s</p>',
-				$text
+				htmlspecialchars_decode( $text )
 			);
 		} else {
 			$copyright = sprintf(
@@ -59,15 +60,14 @@ if ( plugin() ) {
 ?>
 <footer id="site-footer" class="site-footer" data-site-footer>
 	<div class="wrapper-general site-footer-wrap">
+		<?php if ( ! empty( site()->footer() ) && plugin()->footer_text() ) : ?>
 		<div class="site-footer-text">
-			<?php
-			if ( ! empty( site()->footer() ) ) {
-				printf(
-					'<p>%s</p>',
-					site()->footer()
-				);
-			} ?>
+			<?php printf(
+				'<p>%s</p>',
+				site()->footer()
+			); ?>
 		</div>
+		<?php endif; ?>
 
 		<?php
 		if ( plugin() ) {
@@ -90,5 +90,8 @@ if ( plugin() ) {
 		<?php echo $copyright; ?>
 	</div>
 </footer>
-<?php footer_scripts(); ?>
+<?php
 
+footer_scripts();
+
+plugins_hook( 'footer_code' );
