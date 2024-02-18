@@ -4,6 +4,7 @@
 
 .site-header {
 	position: relative;
+	z-index: 500;
 	background-color: var( --cfe-site-header--bg-color, var( --cfe-body--bg-color ) );
 
 	@media ( prefers-color-scheme: dark ) {
@@ -264,6 +265,7 @@
 
 .page-cover {
 	position: relative;
+	z-index: 250;
 	overflow: hidden;
 	margin: var( --cfe-page-cover-single--margin, 0 auto 0 auto );
 	max-width: 2048px;
@@ -406,6 +408,7 @@
 .has-front-page-slider {
 
 	.site-header {
+		z-index: unset;
 		position: relative;
 		display: flex;
 		flex-direction: column;

@@ -1421,6 +1421,7 @@ h3 + .search-form {
 
 .site-header {
   position: relative;
+  z-index: 500;
   background-color: var(--cfe-site-header--bg-color, var(--cfe-body--bg-color));
 }
 @media (prefers-color-scheme: dark) {
@@ -1663,6 +1664,7 @@ h3 + .search-form {
 
 .page-cover {
   position: relative;
+  z-index: 250;
   overflow: hidden;
   margin: var(--cfe-page-cover-single--margin, 0 auto 0 auto);
   max-width: 2048px;
@@ -1777,6 +1779,7 @@ h3 + .search-form {
 
 .template-full-cover .site-header,
 .has-front-page-slider .site-header {
+  z-index: unset;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -2205,7 +2208,6 @@ h3 + .search-form {
   fill: var(--cfe-link--text-color);
 }
 .site-navigation:not(.mobile-navigation) ul li ul {
-  z-index: 1000;
   display: block;
   position: absolute;
   top: calc(100% - 2px);
