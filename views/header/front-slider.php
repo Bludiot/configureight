@@ -11,6 +11,7 @@
 // Import namespaced functions.
 use function CFE_Func\{
 	plugin,
+	site,
 	lang,
 	is_rtl,
 	page
@@ -107,6 +108,16 @@ if ( plugin() ) {
 	}
 }
 
+// Down icon.
+$icon_down = 'angle-down-light';
+if ( plugin() ) {
+	if ( plugin()->cover_icon() ) {
+		$icon_down = plugin()->cover_icon();
+	} else {
+		$icon_down = '';
+	}
+}
+
 // Slider markup.
 if ( isset( $slider[0] ) ) : ?>
 <div id="slider-loading">
@@ -149,15 +160,32 @@ foreach ( $slider as $slide ) :
 		$link_text = plugin()->slider_link_text();
 	}
 
+	// Link markup.
+	if ( $slide->key() == site()->homepage() ) {
+		$link = sprintf(
+			'<a href="#content" class="button intro-scroll %s hide-if-no-js"><span class="screen-reader-text">%s</span>%s</a>',
+			$icon_down,
+			lang()->get( 'Scroll to Content' ),
+			icon( $icon_down )
+		);
+	} else {
+		$link = sprintf(
+			'<a class="slider-more" href="%s"><span>%s</span> %s</a>',
+			$slide->permalink() . '/',
+			$link_text,
+			icon( $link_arrow, true, 'slider-more-icon' )
+		);
+	}
+
 	?>
 	<div class="<?php echo $cover_wrap_class; ?> page-slide">
 		<figure>
 			<img class="<?php echo $cover_image_class; ?>" src="<?php echo $slide->coverImage(); ?>" role="presentation">
 		</figure>
 		<div class="cover-header" data-cover-header>
-			<h2 class="cover-title"><a href="<?php echo $slide->permalink(); ?>"><?php echo $slide->title(); ?></a></h2>
+			<h2 class="cover-title"><a href="<?php echo $slide->permalink() . '/'; ?>"><?php echo $slide->title(); ?></a></h2>
 			<p class="cover-description"><?php echo page_description( $slide->key() ); ?></p>
-			<a class="slider-more" href="<?php echo $slide->permalink(); ?>"><span><?php echo $link_text; ?><span> <?php echo icon( $link_arrow, true, 'slider-more-icon' ); ?></a>
+			<?php echo $link; ?>
 		</div>
 	</div>
 <?php endforeach; ?>
