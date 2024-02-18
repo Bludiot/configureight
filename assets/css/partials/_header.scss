@@ -187,6 +187,10 @@
 		max-width: var( --cfe-site-logo--max-width--mobile, 80px );
 	}
 
+	a {
+		display: block;
+	}
+
 	img {
 		width: 100%;
 		display: var( --cfe-site-logo--display, block );

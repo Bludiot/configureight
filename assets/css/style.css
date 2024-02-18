@@ -861,6 +861,21 @@ h4 a:focus {
   fill: var(--cfe-to-top--svg--fill, currentColor);
 }
 
+code {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+@media (prefers-color-scheme: dark) {
+  code {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
+code.select {
+  -webkit-user-select: all;
+     -moz-user-select: all;
+          user-select: all;
+}
+
 .avatar {
   vertical-align: var(--cfe-avatar--vertical-align, middle);
   border-radius: var(--cfe-avatar--border-radius, 50%);
@@ -1571,6 +1586,9 @@ h3 + .search-form {
   .site-logo {
     max-width: var(--cfe-site-logo--max-width--mobile, 80px);
   }
+}
+.site-logo a {
+  display: block;
 }
 .site-logo img {
   width: 100%;
@@ -4079,7 +4097,7 @@ div.page-gallery {
   padding: var(--cfe-site-footer-text--padding, 0);
   text-align: var(--cfe-site-footer-text--text-align, center);
   font-family: var(--cfe-site-footer-text--font-family, inherit);
-  font-size: var(--cfe-site-footer-text--font-size, inherit);
+  font-size: var(--cfe-site-footer-text--font-size, 1.25rem);
   font-weight: var(--cfe-site-footer-text--font-weight, inherit);
   font-style: var(--cfe-site-footer-text--font-style, inherit);
   font-variant: var(--cfe-site-footer-text--font-variant, inherit);

@@ -425,6 +425,18 @@ h4 {
 	}
 }
 
+code {
+	background-color: rgba( $color: black, $alpha: 0.1 );
+
+	@media ( prefers-color-scheme: dark ) {
+		background-color: rgba( $color: white, $alpha: 0.1 );
+	}
+}
+
+code.select {
+	user-select: all;
+}
+
 // User avatar.
 .avatar {
 	vertical-align: var( --cfe-avatar--vertical-align, middle );
