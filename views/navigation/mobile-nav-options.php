@@ -120,6 +120,12 @@ use function CFE_Tags\{
 				} elseif ( $nav_item->hasChildren() && 'secondary' == plugin()->main_nav_children() ) {
 
 					$children = $nav_item->children();
+
+					// Sort by position.
+					usort( $children, function( $a, $b ) {
+						return $a->position() > $b->position();
+					} );
+
 					$sub_menu = '<ul class="nav-list main-nav-sub-list">';
 
 					foreach ( $children as $child ) {
