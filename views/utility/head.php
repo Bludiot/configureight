@@ -18,6 +18,7 @@ use function CFE_Func\{
 	get_cover_src
 };
 use function CFE_Meta\{
+	meta_url,
 	meta_tags_standard,
 	meta_tags_schema,
 	meta_tags_open_graph,
@@ -77,7 +78,9 @@ if ( plugin() ) {
 	echo "<script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>\r";
 	echo $helper :: jquery();
 
-	echo "\r" . favicon_tag() . "\r\r";
+	echo "\r" . favicon_tag() . "\r\r"; ?>
+	<link rel="canonical" href="<?php echo meta_url(); ?>" />
+	<?php
 
 	// Meta tags.
 	if ( plugin() ) {
@@ -127,5 +130,5 @@ if ( plugin() ) {
 		echo custom_css();
 	}
 
-	plugins_hook( 'siteHead' ); ?>
+	echo plugins_hook( 'siteHead' ); ?>
 </head>
