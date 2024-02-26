@@ -2922,6 +2922,15 @@ h3 + .search-form {
   gap: 0.25rem;
 }
 
+.posts-loop-title a {
+  color: var(--cfe-heading-primary--text-color, var(--cfe-body--text-color));
+}
+@media (prefers-color-scheme: dark) {
+  .posts-loop-title a {
+    color: var(--cfe-heading-primary--text-color--dark, var(--cfe-body--text-color--dark));
+  }
+}
+
 .post-loop-content {
   height: 100%;
 }

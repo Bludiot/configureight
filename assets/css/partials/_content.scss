@@ -193,6 +193,16 @@
 	}
 }
 
+.posts-loop-title {
+	a {
+		color: var( --cfe-heading-primary--text-color, var( --cfe-body--text-color ) );
+
+		@media ( prefers-color-scheme: dark ) {
+			color: var( --cfe-heading-primary--text-color--dark, var( --cfe-body--text-color--dark ) );
+		}
+	}
+}
+
 // Includes list, full, and grid templates.
 .post-loop-content {
 	height: 100%;
