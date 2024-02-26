@@ -148,8 +148,15 @@ if ( 'dots' == plugin()->main_nav_icon() ) {
 							str_replace( [ '-', '_' ], ' ', $child->slug() )
 						);
 					}
+
+					// Item class, look if current.
+					$item_class = 'submenu-item';
+					if ( str_contains( url()->slug(), $child->key() ) ) {
+						$item_class = 'submenu-item current-menu-item';
+					}
 					$sub_menu .= sprintf(
-						'<li><a href="%s">%s</a></li>',
+						'<li class="%s"><a href="%s">%s</a></li>',
+						$item_class,
 						$child->permalink(),
 						$child_label
 					);
