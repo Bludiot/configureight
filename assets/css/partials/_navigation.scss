@@ -599,6 +599,29 @@
 								}
 							}
 
+							&.current-menu-item {
+								& > a {
+									&:before {
+										background-color: var( --cfe-site-nav--list--link--current--indicator--bg-color, var( --cfe-site-nav--list--link--text-color, var( --cfe-link--text-color ) ) );
+
+										@media ( prefers-color-scheme: dark ) {
+											background-color: var( --cfe-site-nav--list--link--current--indicator--bg-color--dark, var( --cfe-site-nav--list--link--text-color--dark, var( --cfe-link--text-color--dark ) ) );
+										}
+									}
+
+									&:hover,
+									&:focus {
+										&:before {
+											background-color: var( --cfe-site-nav--list--link--current--action--indicator--bg-color, var( --cfe-site-nav--list--link--action--text-color, var( --cfe-site-nav--list--link--text-color, var( --cfe-link--action--text-color ) ) ) );
+
+											@media ( prefers-color-scheme: dark ) {
+												background-color: var( --cfe-site-nav--list--link--current--action--indicator--bg-color--dark, var( --cfe-site-nav--list--link--action--text-color--dark, var( --cfe-site-nav--list--link--text-color--dark, var( --cfe-link--action--text-color--dark ) ) ) );
+											}
+										}
+									}
+								}
+							}
+
 							button {
 								padding: unset;
 								border: none;

@@ -2677,6 +2677,22 @@ h3 + .search-form {
     color: var(--cfe-site-nav--list--link--action--text-color--dark, var(--cfe-site-nav--list--link--text-color--dark, var(--cfe-link--action--text-color--dark)));
   }
 }
+.js .has-sticky-header.template-full-cover .site-header-wrap.header-scrolled .site-navigation ul li.current-menu-item > a:before, .js .has-sticky-header.has-front-page-slider .site-header-wrap.header-scrolled .site-navigation ul li.current-menu-item > a:before {
+  background-color: var(--cfe-site-nav--list--link--current--indicator--bg-color, var(--cfe-site-nav--list--link--text-color, var(--cfe-link--text-color)));
+}
+@media (prefers-color-scheme: dark) {
+  .js .has-sticky-header.template-full-cover .site-header-wrap.header-scrolled .site-navigation ul li.current-menu-item > a:before, .js .has-sticky-header.has-front-page-slider .site-header-wrap.header-scrolled .site-navigation ul li.current-menu-item > a:before {
+    background-color: var(--cfe-site-nav--list--link--current--indicator--bg-color--dark, var(--cfe-site-nav--list--link--text-color--dark, var(--cfe-link--text-color--dark)));
+  }
+}
+.js .has-sticky-header.template-full-cover .site-header-wrap.header-scrolled .site-navigation ul li.current-menu-item > a:hover:before, .js .has-sticky-header.template-full-cover .site-header-wrap.header-scrolled .site-navigation ul li.current-menu-item > a:focus:before, .js .has-sticky-header.has-front-page-slider .site-header-wrap.header-scrolled .site-navigation ul li.current-menu-item > a:hover:before, .js .has-sticky-header.has-front-page-slider .site-header-wrap.header-scrolled .site-navigation ul li.current-menu-item > a:focus:before {
+  background-color: var(--cfe-site-nav--list--link--current--action--indicator--bg-color, var(--cfe-site-nav--list--link--action--text-color, var(--cfe-site-nav--list--link--text-color, var(--cfe-link--action--text-color))));
+}
+@media (prefers-color-scheme: dark) {
+  .js .has-sticky-header.template-full-cover .site-header-wrap.header-scrolled .site-navigation ul li.current-menu-item > a:hover:before, .js .has-sticky-header.template-full-cover .site-header-wrap.header-scrolled .site-navigation ul li.current-menu-item > a:focus:before, .js .has-sticky-header.has-front-page-slider .site-header-wrap.header-scrolled .site-navigation ul li.current-menu-item > a:hover:before, .js .has-sticky-header.has-front-page-slider .site-header-wrap.header-scrolled .site-navigation ul li.current-menu-item > a:focus:before {
+    background-color: var(--cfe-site-nav--list--link--current--action--indicator--bg-color--dark, var(--cfe-site-nav--list--link--action--text-color--dark, var(--cfe-site-nav--list--link--text-color--dark, var(--cfe-link--action--text-color--dark))));
+  }
+}
 .js .has-sticky-header.template-full-cover .site-header-wrap.header-scrolled .site-navigation ul li button, .js .has-sticky-header.has-front-page-slider .site-header-wrap.header-scrolled .site-navigation ul li button {
   padding: unset;
   border: none;
