@@ -103,7 +103,9 @@ if ( 'dots' == plugin()->main_nav_icon() ) {
 				continue;
 			}
 
-			if ( 'title' == plugin()->main_nav_labels() ) {
+			if ( $nav_item->custom( 'menu_label' ) ) {
+				$label =  ucwords( $nav_item->custom( 'menu_label' ) );
+			} elseif ( 'title' == plugin()->main_nav_labels() ) {
 				$label = $nav_item->title();
 			} else {
 				$label = ucwords(
@@ -141,7 +143,9 @@ if ( 'dots' == plugin()->main_nav_icon() ) {
 
 				foreach ( $children as $child ) {
 
-					if ( 'title' == plugin()->main_nav_labels() ) {
+					if ( $child->custom( 'menu_label' ) ) {
+						$child_label =  ucwords( $child->custom( 'menu_label' ) );
+					} elseif ( 'title' == plugin()->main_nav_labels() ) {
 						$child_label = $child->title();
 					} else {
 						$child_label = ucwords(
