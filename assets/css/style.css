@@ -4153,6 +4153,114 @@ div.page-gallery {
   border: var(--cfe-toolbar--profile-pic--border);
   border-radius: var(--cfe-toolbar--profile-pic--border-radius, var(--cfe-avatar--border-radius, 50%));
 }
+.user-toolbar ul {
+  list-style: none;
+  margin: 0;
+}
+.user-toolbar ul.user-toolbar-nav-list {
+  display: flex;
+  gap: 0;
+  padding: 0;
+}
+.user-toolbar ul li {
+  position: relative;
+  margin: 0;
+  padding: var(--cfe-toolbar--link--padding);
+  max-height: 2rem;
+  font-size: var(--cfe-toolbar--font-size);
+  font-weight: var(--cfe-toolbar--font-weight);
+  background-color: var(--cfe-toolbar--link--bg-color);
+  color: var(--cfe-toolbar--link--text-color);
+}
+.user-toolbar ul li.has-submenu {
+  display: inline-flex;
+  align-items: center;
+  gap: 0 0.5em;
+  cursor: pointer;
+}
+.user-toolbar ul li:hover, .user-toolbar ul li:focus {
+  background-color: var(--cfe-toolbar--link--action--bg-color);
+  color: var(--cfe-toolbar--link--action--text-color);
+}
+.user-toolbar ul li:hover ul {
+  left: 0;
+}
+.user-toolbar ul li:hover ul.user-actions-sublist {
+  left: auto;
+  right: 0;
+}
+.user-toolbar ul li span {
+  display: inline-block;
+}
+.user-toolbar ul li span.svg-icon {
+  cursor: pointer;
+}
+.user-toolbar ul li a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  text-decoration: none;
+  color: var(--cfe-toolbar--link--text-color);
+}
+.user-toolbar ul li a:hover {
+  background-color: var(--cfe-toolbar--link--action--bg-color);
+  color: var(--cfe-toolbar--link--action--text-color);
+}
+.user-toolbar ul li a.user-toolbar-logo-link {
+  height: var(--cfe-toolbar--height);
+  display: inline-flex;
+  align-items: center;
+}
+.user-toolbar ul ul {
+  display: block;
+  position: absolute;
+  top: 100%;
+  left: -9999em;
+  padding: 0.5rem 0;
+  width: 160px;
+  background-color: var(--cfe-toolbar--submenu--bg-color, inherit);
+}
+.user-toolbar ul ul.user-actions-sublist {
+  left: auto;
+  right: -9999em;
+}
+.user-toolbar ul ul li {
+  margin: 0;
+  max-height: 100%;
+  padding: 0;
+  background-color: transparent;
+  color: transparent;
+}
+.user-toolbar ul ul li a {
+  display: block;
+  padding: 0 1rem;
+  background-color: var(--cfe-toolbar--submenu--link--bg-color, inherit);
+  color: var(--cfe-toolbar--submenu--link--text-color, inherit);
+}
+@media (prefers-color-scheme: dark) {
+  .user-toolbar ul ul li a {
+    background-color: var(--cfe-toolbar--submenu--link--bg-color--dark, inherit);
+  }
+}
+.user-toolbar ul ul li a:hover, .user-toolbar ul ul li a:focus {
+  background-color: var(--cfe-toolbar--submenu--link--action--bg-color, inherit);
+  color: var(--cfe-toolbar--submenu--link--action--text-color, inherit);
+}
+@media (prefers-color-scheme: dark) {
+  .user-toolbar ul ul li a:hover, .user-toolbar ul ul li a:focus {
+    background-color: var(--cfe-toolbar--submenu--link--action--bg-color--dark, inherit);
+    color: var(--cfe-toolbar--submenu--link--action--text-color--dark, inherit);
+  }
+}
+.user-toolbar ul img {
+  display: inline-block;
+}
+.user-toolbar ul img.toolbar-avatar {
+  margin: 0 0.5em;
+}
+.user-toolbar .user-toolbar-logo {
+  max-height: 24px;
+}
 
 .site-footer {
   width: var(--cfe-site-footer-text--width, 100%);
