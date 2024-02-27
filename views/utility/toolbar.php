@@ -27,6 +27,12 @@ use function CFE_Tags\{
 	icon
 };
 
+// Toolbar class.
+$class = 'user-toolbar';
+if ( ! plugin()->toolbar_mobile() ) {
+	$class = 'user-toolbar toolbar-mobile-hidden';
+}
+
 // Edit link.
 $edit_link = '';
 if ( is_page() ) {
@@ -78,7 +84,7 @@ if ( $user->profilePicture() ) {
 }
 
 ?>
-<section class="user-toolbar" data-user-toolbar>
+<section class="<?php echo $class; ?>" data-user-toolbar>
 	<nav class="user-toolbar-nav toolbar-user-action">
 		<ul class="user-toolbar-nav-list">
 			<li class="top-level-item has-submenu"><a href="<?php echo DOMAIN_ADMIN;?>"><?php echo icon( 'gauge', true ); lang()->p( 'Admin' ); echo icon( 'angle-down', true ); ?></a>

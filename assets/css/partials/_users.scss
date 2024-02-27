@@ -32,6 +32,12 @@
 	box-shadow: var( --cfe-toolbar--box-shadow );
 	color: var( --cfe-toolbar--text-color );
 
+	&.toolbar-mobile-hidden {
+		@media screen and ( max-width: 960px ) {
+			display: none;
+		}
+	}
+
 	@media ( prefers-color-scheme: dark ) {
 		background-color: var( --cfe-toolbar--bg-color--dark );
 		border: var( --cfe-toolbar--border--dark );
@@ -43,6 +49,7 @@
 		display: var( --cfe-toolbar--link--display, inline-block );
 		margin: var( --cfe-toolbar--link--margin );
 		padding: var( --cfe-toolbar--link--padding );
+		white-space: var( --cfe-toolbar--link--white-space, nowrap );
 		background-color: var( --cfe-toolbar--link--bg-color );
 		color: var( --cfe-toolbar--link--text-color );
 		text-decoration: var( --cfe-toolbar--link--text-decoration, none );
@@ -71,7 +78,6 @@
 		&#profile-link {
 			display: var( --cfe-toolbar--profile-link--display, inline-flex );
 			align-items: var( --cfe-toolbar--profile-link--align-items, center );
-			transform: var( --cfe-toolbar--profile-link--transform, translateY( 4px ) );
 
 			img {
 				display: var( --cfe-toolbar--profile-pic--display, block );

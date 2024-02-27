@@ -377,6 +377,10 @@ function body_classes() {
 		) {
 			$classes[] = 'toolbar-active';
 		}
+
+		if ( ! plugin()->toolbar_mobile() ) {
+			$classes[] = 'toolbar-mobile-hidden';
+		}
 	}
 
 	// Cover image.
