@@ -727,40 +727,44 @@ function has_cover( $default = '' ) {
 	} elseif ( is_page() ) {
 
 		// If the page has a cover image set.
-		if ( page()->coverImage() ) {
+		if ( ! plugin() && page()->coverImage() ) {
 			$cover = true;
+		}
 
-			// False if `no-cover` template.
-			if ( str_contains( page()->template(), 'no-cover' ) ) {
-				$cover = false;
-			}
+		// False if `no-cover` template.
+		if ( str_contains( page()->template(), 'no-cover' ) ) {
+			$cover = false;
+		}
 
-			if ( plugin() ) {
-				if ( 'page' == page_type() && 'none' == plugin()->cover_in_page() ) {
-					if ( str_contains( page()->template(), 'full-cover' ) ) {
+		if ( plugin() ) {
+			if ( 'page' == page_type() ) {
+				if ( 'none' == plugin()->cover_in_page() ) {
+					if ( str_contains( page()->template(), 'full-cover' ) && plugin()->cover_src() ) {
 						$cover = true;
-					} elseif ( str_contains( page()->template(), 'default-cover' ) ) {
+					} elseif ( str_contains( page()->template(), 'default-cover' ) && plugin()->cover_src() ) {
+						$cover = true;
+					} elseif ( page()->custom( 'random_cover' ) && plugin()->cover_src() ) {
 						$cover = true;
 					} else {
 						$cover = false;
 					}
-				} elseif ( 'none' == plugin()->cover_in_post() ) {
-					if ( str_contains( page()->template(), 'full-cover' ) ) {
-						$cover = true;
-					} elseif ( str_contains( page()->template(), 'default-cover' ) ) {
-						$cover = true;
-					} else {
-						$cover = false;
-					}
+				} elseif ( plugin()->cover_src() ) {
+					$cover = true;
 				}
-			}
-		} elseif ( plugin() ) {
-			$cover = true;
-
-			if ( 'page' == page_type() && 'none' == plugin()->cover_in_page() ) {
-				$cover = false;
-			} elseif ( 'none' == plugin()->cover_in_post() ) {
-				$cover = false;
+			} else {
+				if ( 'none' == plugin()->cover_in_post() ) {
+					if ( str_contains( page()->template(), 'full-cover' ) && plugin()->cover_src() ) {
+						$cover = true;
+					} elseif ( str_contains( page()->template(), 'default-cover' ) && plugin()->cover_src() ) {
+						$cover = true;
+					} elseif ( page()->custom( 'random_cover' ) && plugin()->cover_src() ) {
+						$cover = true;
+					} else {
+						$cover = false;
+					}
+				} elseif ( plugin()->cover_src() ) {
+					$cover = true;
+				}
 			}
 
 		// If the theme plugin has a default cover image set.
