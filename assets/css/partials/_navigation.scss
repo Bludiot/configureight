@@ -691,6 +691,7 @@
 				display: inline-flex;
 				width: 100%;
 
+				&#next-post,
 				&#next-page {
 					justify-content: flex-end;
 				}
@@ -710,15 +711,6 @@
 		}
 
 		&.pagination-titles {
-			li {
-				&#next-post {
-					a {
-						text-align: right;
-						justify-content: flex-end;
-					}
-				}
-			}
-
 			a {
 				width: 100%;
 				display: var( --cfe-pagination-list--titles--link--display, inline-flex );

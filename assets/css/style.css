@@ -2752,7 +2752,7 @@ h3 + .search-form {
   display: inline-flex;
   width: 100%;
 }
-.page-navigation .pagination-list.pagination-prev-next li#next-page, .page-navigation .pagination-list.pagination-titles li#next-page {
+.page-navigation .pagination-list.pagination-prev-next li#next-post, .page-navigation .pagination-list.pagination-prev-next li#next-page, .page-navigation .pagination-list.pagination-titles li#next-post, .page-navigation .pagination-list.pagination-titles li#next-page {
   justify-content: flex-end;
 }
 .page-navigation .pagination-list.pagination-prev-next a {
@@ -2762,10 +2762,6 @@ h3 + .search-form {
 }
 .page-navigation .pagination-list.pagination-prev-next a .theme-icon {
   transform: translateY(1px);
-}
-.page-navigation .pagination-list.pagination-titles li#next-post a {
-  text-align: right;
-  justify-content: flex-end;
 }
 .page-navigation .pagination-list.pagination-titles a {
   width: 100%;

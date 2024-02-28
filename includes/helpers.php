@@ -601,7 +601,7 @@ function loop_data() {
 		'slug'        => str_replace( '/', '', site()->getField( 'uriBlog' ) ),
 		'template'    => false,
 		'style'       => $loop_type,
-		'title'       => false,
+		'title'       => $loop_type,
 		'description' => $description,
 		'cover'       => false,
 	];
