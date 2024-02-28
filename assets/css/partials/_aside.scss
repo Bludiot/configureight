@@ -150,13 +150,13 @@
 	}
 
 	ul {
-		margin: var( --cfe-sidebar--ul--margin, var( --cfe-sidebar--list--margin ) );
-		padding: var( --cfe-sidebar--ul--padding, var( --cfe-sidebar--list--padding ) );
+		margin: var( --cfe-sidebar--ul--margin, var( --cfe-sidebar--list--margin, 1rem 0 0 0 ) );
+		padding: var( --cfe-sidebar--ul--padding, var( --cfe-sidebar--list--padding, 0 ) );
 		list-style: var( --cfe-sidebar--ul--list-style, var( --cfe-sidebar--list--list-style, none ) );
 	}
 
 	ol {
-		margin: var( --cfe-sidebar--ol--margin, var( --cfe-sidebar--list--margin ) );
+		margin: var( --cfe-sidebar--ol--margin, var( --cfe-sidebar--list--margin, 1rem 0 0 0 ) );
 		padding: var( --cfe-sidebar--ol--padding, var( --cfe-sidebar--list--padding, 0 0 0 1em ) );
 	}
 }
