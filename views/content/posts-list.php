@@ -93,7 +93,7 @@ if ( $post->coverImage() ) {
 		$thumb_src = plugin()->cover_src();
 	}
 } else {
-	$thumb_src = DOMAIN_THEME . 'assets/images/transparent.png';
+	$thumb_src = false;
 }
 
 // Tags list.

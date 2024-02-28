@@ -688,10 +688,11 @@
 			justify-content: var( --cfe-pagination-list--prev-next--justify-content, space-between );
 
 			li {
+				display: inline-flex;
 				width: 100%;
 
-				&#next-post {
-					text-align: right;
+				&#next-page {
+					justify-content: flex-end;
 				}
 			}
 		}

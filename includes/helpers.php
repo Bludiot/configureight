@@ -66,7 +66,12 @@ function plugins_hook( $name = '' ) {
 	} else {
 		$hook = helper()->plugins( $name );
 	}
-	echo $hook;
+
+	if ( $hook ) {
+		echo $hook;
+	} else {
+		return false;
+	}
 }
 
 /**

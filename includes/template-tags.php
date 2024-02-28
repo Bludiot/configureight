@@ -98,11 +98,11 @@ function favicon_tag() {
 		}
 
 	// Use favicon.png in root content/uploads if found & set in options array.
-	} elseif ( file_exists( PATH_UPLOADS . $icon ) ) {
+	} elseif ( file_exists( PATH_UPLOADS . 'favicon.png' ) ) {
 		$favicon = DOMAIN_UPLOADS . 'favicon.png';
 
 	// Use favicon.png file in theme assets/images if found.
-	} elseif ( file_exists( PATH_THEMES . $site->theme() . '/assets/images/favicon.png' ) ) {
+	} elseif ( file_exists( PATH_THEMES . site()->theme() . '/assets/images/favicon.png' ) ) {
 		$favicon = DOMAIN_THEME . 'assets/images/favicon.png';
 	}
 

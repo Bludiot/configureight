@@ -60,7 +60,7 @@ if ( plugin() ) {
 ?>
 <footer id="site-footer" class="site-footer" data-site-footer>
 	<div class="wrapper-general site-footer-wrap">
-		<?php if ( ! empty( site()->footer() ) && plugin()->footer_text() ) : ?>
+		<?php if ( ! empty( site()->footer() ) && plugin() && plugin()->footer_text() ) : ?>
 		<div class="site-footer-text">
 			<?php printf(
 				'<p>%s</p>',
@@ -94,4 +94,6 @@ if ( plugin() ) {
 
 footer_scripts();
 
-plugins_hook( 'footer_code' );
+if ( plugin() ) {
+	plugins_hook( 'footer_code' );
+}
