@@ -415,7 +415,10 @@ function meta_tags_open_graph() {
 	) . "\r";
 
 	// Type tag.
-	$html .= '<meta property="og:type" content="website" />' . "\r";
+	$html .= sprintf(
+		'<meta property="og:type" content="%s" />',
+		( is_page() ? 'article' : 'website' )
+	) . "\r";
 
 	// Site title.
 	$html .= sprintf(
