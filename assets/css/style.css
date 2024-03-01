@@ -1536,7 +1536,7 @@ h3 + .search-form {
 
 .site-header-wrap {
   position: relative;
-  z-index: 50;
+  z-index: 150;
   width: 100%;
   max-width: 100%;
   display: var(--cfe-site-header-wrap--display, flex);
