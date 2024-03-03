@@ -440,6 +440,20 @@ function is_search() {
 }
 
 /**
+ * Is 404
+ *
+ * @since  1.0.0
+ * @return boolean
+ */
+function is_404() {
+
+	if ( url()->notFound() ) {
+		return true;
+	}
+	return false;
+}
+
+/**
  * Page type
  *
  * Whether the page object is static or not.

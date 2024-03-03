@@ -2885,6 +2885,10 @@ h3 + .search-form {
   display: var(--cfe-main--display);
 }
 
+.url-error-page .page-main {
+  max-width: 640px;
+}
+
 .page-info {
   position: var(--cfe-page-info--position);
   width: var(--cfe-page-info--width);

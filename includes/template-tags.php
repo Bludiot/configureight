@@ -35,6 +35,7 @@ use function CFE_Func\{
 	is_tag,
 	is_search,
 	is_page,
+	is_404,
 	is_front_page,
 	page_type,
 	sticky,
@@ -629,12 +630,14 @@ function body_classes() {
 	// If singular content.
 	if ( is_page() ) {
 
-		$classes[] = page_type();
-		$classes[] = sprintf(
-			'%s--%s',
-			page_type(),
-			page()->key()
-		);
+		if ( page()->key() ) {
+			$classes[] = page_type();
+			$classes[] = sprintf(
+				'%s--%s',
+				page_type(),
+				page()->key()
+			);
+		}
 
 		if ( full_cover() ) {
 			$classes[] = 'template-full-cover';
@@ -735,6 +738,11 @@ function body_classes() {
 		} else {
 			$classes[] = 'sidebar-right';
 		}
+	}
+
+	// $)$ error page.
+	if ( is_404() ) {
+		$classes[] = 'url-error-page';
 	}
 
 	// Main navigation position.
@@ -1742,7 +1750,7 @@ function article_type() {
 function page_description( $key = '' ) {
 
 	if ( empty( $key ) ) {
-		$key = $page->key();
+		$key = page()->key();
 	}
 
 	$page = buildPage( $key );
