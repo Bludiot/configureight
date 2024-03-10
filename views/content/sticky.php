@@ -57,6 +57,6 @@ if ( plugin() ) {
 			include( THEME_DIR . 'views/content/partials/related-posts-list.php' );
 		}
 	}
-} else {
+} elseif ( get_related() ) {
 	include( THEME_DIR . 'views/content/partials/related-posts-list.php' );
 } ?>

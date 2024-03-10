@@ -1103,13 +1103,16 @@ function get_related( $max = 3, $similar = true ) {
 		$related = [];
 		try {
 			for ( $i = 0; $i < $max; $i++ ) {
+
+				if ( ! array_key_exists( $i, $allCatPages ) ) {
+					continue;
+				}
 				$item = new \Page( $allCatPages[$i] );
 				if ( $item->published() ) {
 					$related[] = $item;
 				}
 			}
-		}
-		catch( \Exception $e ) {
+		} catch( \Exception $e ) {
 			// Do exception?
 		}
 		return $related;
