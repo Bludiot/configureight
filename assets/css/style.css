@@ -414,36 +414,6 @@ b, strong, optgroup {
   --cfe-post-header--list--heading--letter-spacing: var( --cfe-heading-secondary--letter-spacing );
   --cfe-post-header--grid--heading--font-weight: var( --cfe-heading-secondary--font-weight );
   --cfe-post-header--grid--heading--letter-spacing: var( --cfe-heading-secondary--letter-spacing );
-  --cfe-categories-list--buttons--link--text-decoration: none;
-  --cfe-categories-list--buttons--link--font-size: 0.8125rem;
-  --cfe-categories-list--buttons--link--font-weight: 600;
-  --cfe-categories-list--buttons--link--bg-color: var( --cfe-button--bg-color );
-  --cfe-categories-list--buttons--link--bg-color--dark: var( --cfe-button--bg-color--dark );
-  --cfe-categories-list--buttons--link--border-color: var( --cfe-button--border-color );
-  --cfe-categories-list--buttons--link--border-color--dark: var( --cfe-button--border-color--dark );
-  --cfe-categories-list--buttons--link--text-color: var( --cfe-button--text-color );
-  --cfe-categories-list--buttons--link--text-color--dark: var( --cfe-button--text-color--dark );
-  --cfe-categories-list--buttons--link--action--bg-color: var( --cfe-button--action--bg-color );
-  --cfe-categories-list--buttons--link--action--bg-color--dark: var( --cfe-button--action--bg-color--dark );
-  --cfe-categories-list--buttons--link--action--border-color: var( --cfe-button--border-color );
-  --cfe-categories-list--buttons--link--action--border-color--dark: var( --cfe-button--border-color--dark );
-  --cfe-categories-list--buttons--link--action--text-color: var( --cfe-button--action--text-color );
-  --cfe-categories-list--buttons--link--action--text-color--dark: var( --cfe-button--action--text-color--dark );
-  --cfe-tags-list--buttons--link--text-decoration: none;
-  --cfe-tags-list--buttons--link--font-size: 0.8125rem;
-  --cfe-tags-list--buttons--link--font-weight: 600;
-  --cfe-tags-list--buttons--link--bg-color: var( --cfe-button--bg-color );
-  --cfe-tags-list--buttons--link--bg-color--dark: var( --cfe-button--bg-color--dark );
-  --cfe-tags-list--buttons--link--border-color: var( --cfe-button--border-color );
-  --cfe-tags-list--buttons--link--border-color--dark: var( --cfe-button--border-color--dark );
-  --cfe-tags-list--buttons--link--text-color: var( --cfe-button--text-color );
-  --cfe-tags-list--buttons--link--text-color--dark: var( --cfe-button--text-color--dark );
-  --cfe-tags-list--buttons--link--action--text-color: var( --cfe-button--action--text-color );
-  --cfe-tags-list--buttons--link--action--text-color--dark: var( --cfe-button--action--text-color--dark );
-  --cfe-tags-list--buttons--link--action--bg-color: var( --cfe-button--action--bg-color );
-  --cfe-tags-list--buttons--link--action--bg-color--dark: var( --cfe-button--action--bg-color--dark );
-  --cfe-tags-list--buttons--link--action--border-color: var( --cfe-button--action--border-color );
-  --cfe-tags-list--buttons--link--action--border-color--dark: var( --cfe-button--action--border-color--dark );
   --cfe-modal-overlay--bg-color: rgba(0, 0, 0, 0.85);
   --cfe-sidebar--link--font-weight: 600;
 }
@@ -2971,18 +2941,18 @@ h3 + .search-form {
 }
 .loop .post-info .theme-icon.tags-icon {
   margin: 0 0.75em 0 0;
-  color: var(--cfe-tag-icon--loop--color, var(--cfe-tags-list--buttons--link--bg-color));
+  color: var(--cfe-tag-icon--loop--color);
 }
 @media (prefers-color-scheme: dark) {
   .loop .post-info .theme-icon.tags-icon {
-    color: var(--cfe-tag-icon--loop--color--dark, var(--cfe-tags-list--buttons--link--bg-color--dark));
+    color: var(--cfe-tag-icon--loop--color--dark);
   }
 }
 .loop .post-info .theme-icon.tags-icon svg {
   width: 1.25em;
   height: 1.25em;
   vertical-align: middle;
-  fill: var(--cfe-tag-icon--loop--svg--fill, var(--cfe-tags-list--buttons--link--bg-color));
+  fill: var(--cfe-tag-icon--loop--svg--fill);
 }
 
 .loop-page-heading {
@@ -3406,42 +3376,8 @@ h3 + .search-form {
   flex-wrap: wrap;
   gap: 0 0.75em;
 }
-.categories-list.categories-list-horizontal.categories-list-buttons {
-  gap: var(--cfe-categories-list--buttons--gap, 0 0.1875em);
-}
 .categories-list.categories-list-horizontal.inline-list {
   display: inline-flex;
-}
-.categories-list.categories-list-buttons a {
-  padding: var(--cfe-categories-list--buttons--link--padding, 0.175em 0.325em 0.325em 0.325em);
-  line-height: var(--cfe-categories-list--buttons--link--line-height, 1);
-  font-family: var(--cfe-categories-list--buttons--link--font-family);
-  font-size: var(--cfe-categories-list--buttons--link--font-size);
-  font-weight: var(--cfe-categories-list--buttons--link--font-weight);
-  -webkit-text-decoration: var(--cfe-categories-list--buttons--link--text-decoration);
-          text-decoration: var(--cfe-categories-list--buttons--link--text-decoration);
-  background-color: var(--cfe-categories-list--buttons--link--bg-color);
-  border: var(--cfe-categories-list--buttons--link--border, solid 1px var(--cfe-categories-list--buttons--link--border-color));
-  color: var(--cfe-categories-list--buttons--link--text-color);
-}
-@media (prefers-color-scheme: dark) {
-  .categories-list.categories-list-buttons a {
-    background-color: var(--cfe-categories-list--buttons--link--bg-color--dark);
-    border: var(--cfe-categories-list--buttons--link--border, solid 1px var(--cfe-categories-list--buttons--link--border-color--dark));
-    color: var(--cfe-categories-list--buttons--link--text-color--dark);
-  }
-}
-.categories-list.categories-list-buttons a:hover, .categories-list.categories-list-buttons a:focus {
-  background-color: var(--cfe-categories-list--buttons--link--action--bg-color);
-  border: var(--cfe-article--categories-lis--action--border, solid 1px var(--cfe-categories-list--buttons--link--action--border-color));
-  color: var(--cfe-categories-list--buttons--link--action--text-color);
-}
-@media (prefers-color-scheme: dark) {
-  .categories-list.categories-list-buttons a:hover, .categories-list.categories-list-buttons a:focus {
-    background-color: var(--cfe-categories-list--buttons--link--action--bg-color--dark);
-    border: var(--cfe-article--categories-lis--action--border, solid 1px var(--cfe-categories-list--buttons--link--action--border-color--dark));
-    color: var(--cfe-categories-list--buttons--link--action--text-color--dark);
-  }
 }
 
 .tags-list {
