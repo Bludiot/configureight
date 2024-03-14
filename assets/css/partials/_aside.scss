@@ -113,6 +113,29 @@
 		word-spacing: var( --cfe-sidebar--heading--word-spacing, var( --cfe-heading-secondary--word-spacing, -0.0325em ) );
 		text-decoration: var( --cfe-sidebar--heading--text-decoration, var( --cfe-heading-secondary--text-decoration ) );
 		text-transform: var( --cfe-sidebar--heading--text-transform, var( --cfe-heading-secondary--text-transform ) );
+
+		a {
+			font-size: inherit;
+			font-weight: inherit;
+			font-style: inherit;
+			font-variant: inherit;
+			text-decoration: inherit;
+			text-transform: inherit;
+			color: inherit;
+
+			@media ( prefers-color-scheme: dark ) {
+				color: inherit;
+			}
+
+			&:hover,
+			&:focus {
+				color: inherit;
+
+				@media ( prefers-color-scheme: dark ) {
+					color: inherit;
+				}
+			}
+		}
 	}
 
 	a {
