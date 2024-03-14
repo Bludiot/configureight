@@ -57,7 +57,7 @@ use CFE\Classes\{
 
 // Stop if accessed directly.
 if ( ! defined( 'BLUDIT' ) ) {
-	die( $L->get( 'direct-access' ) );
+	die( $L->get( 'You are not allowed direct access to this file.' ) );
 }
 
 /**
