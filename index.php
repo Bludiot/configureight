@@ -18,6 +18,7 @@ use function CFE_Func\{
 	is_cat,
 	is_tag,
 	is_search,
+	profiles,
 	loop_data,
 	get_cover_src,
 	full_cover,
@@ -124,8 +125,10 @@ if ( is_loop_page() ) {
 
 			<main class="page-main <?php echo $main_view; ?>" <?php echo $main_data_attr; ?> itemscope itemprop="mainContentOfPage">
 				<?php
-				if ( 'search' == $url->whereAmI() ) {
+				if ( ( getPlugin( 'Search_Forms' ) || getPlugin( 'pluginSearch' ) ) && 'search' == $url->whereAmI() ) {
 					include( THEME_DIR . 'views/content/search.php' );
+				} elseif ( profiles() && profiles()->users_slug() == $url->whereAmI() ) {
+					include( THEME_DIR . 'views/content/user.php' );
 				} else {
 					include( THEME_DIR . content_template() );
 				} ?>

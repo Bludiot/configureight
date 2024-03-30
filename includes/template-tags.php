@@ -37,6 +37,8 @@ use function CFE_Func\{
 	is_page,
 	is_404,
 	is_front_page,
+	profiles,
+	user_slug,
 	page_type,
 	sticky,
 	favicon_exists,
@@ -579,6 +581,14 @@ function body_classes() {
 		}
 	}
 
+	// User profiles.
+	if ( profiles() ) {
+		$users_slug = profiles()->users_slug();
+		if ( $users_slug == url()->whereAmI() ) {
+			$classes[] = 'page profile-page';
+		}
+	}
+
 	// Cover color blend is available.
 	if ( plugin() ) {
 		if (
@@ -740,7 +750,7 @@ function body_classes() {
 		}
 	}
 
-	// $)$ error page.
+	// 404 error page.
 	if ( is_404() ) {
 		$classes[] = 'url-error-page';
 	}
@@ -805,8 +815,15 @@ function body_classes() {
 function page_schema() {
 
 	if ( is_search() ) {
-			echo 'SearchResultsPage';
+			echo 'https://schema.org/SearchResultsPage';
 			return;
+	}
+
+	if ( profiles() ) {
+		if ( profiles()->users_slug() == url()->whereAmI() ) {
+			echo 'https://schema.org/ProfilePage';
+			return;
+		}
 	}
 
 	// Change page slugs and template names as needed.
@@ -991,15 +1008,25 @@ function cover_header( $args = null, $defaults = [] ) {
 
 	} elseif ( is_cat() ) {
 		$get_cat = new \Category( url()->slug() );
-		$class   = 'category-page-description';
+		$class = 'category-page-description';
 		$args['page_title']  = $get_cat->name();
 		$args['description'] = text_replace( 'posts-loop-desc-cat', $get_cat->name() );
 
 	} elseif ( is_tag() ) {
 		$get_tag = new \Tag( url()->slug() );
-		$class   = 'tag-page-description';
+		$class = 'tag-page-description';
 		$args['page_title']  = $get_tag->name();
 		$args['description'] = text_replace( 'posts-loop-desc-tag', $get_tag->name() );
+	} elseif ( profiles() ) {
+		if ( profiles()->users_slug() == url()->whereAmI() ) {
+			$user    = user_slug();
+			$tagline = profiles()->getValue( 'tagline_' . $user );
+			$class = 'user-page-description';
+			$args['page_title']  = \UPRO_Tags\user_display_name( $user );
+			if ( $tagline ) {
+				$args['description'] = htmlspecialchars_decode( $tagline );
+			}
+		}
 	} elseif ( is_search() ) {
 
 		$slug  = url()->slug();
@@ -1206,6 +1233,12 @@ function page_id() {
 	// Null if in search results (global errors).
 	if ( is_search() ) {
 		return null;
+	}
+
+	if ( profiles() ) {
+		if ( profiles()->users_slug() == url()->whereAmI() ) {
+			return null;
+		}
 	}
 
 	// Conditional page ID, static or not.
