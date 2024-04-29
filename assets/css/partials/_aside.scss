@@ -73,8 +73,8 @@
 		height: var( --cfe-sidebar--plugin--height, 100% );
 		margin: var( --cfe-sidebar--plugin--margin, 0 );
 		padding: var( --cfe-sidebar--plugin--padding, 0 );
-		display: var( --cfe-sidebar--plugin--display );
-		position: var( --cfe-sidebar--plugin--position );
+		display: var( --cfe-sidebar--plugin--display, block );
+		position: var( --cfe-sidebar--plugin--position, static );
 
 		&:not( :first-of-type ) {
 			margin-top: var( --cfe-sidebar--plugin--margin-top, calc( var( --cfe-spacing--vert ) * .75 ) );
