@@ -27,8 +27,24 @@ if ( ! empty( $page->custom( 'gallery_heading' ) ) ) {
 	$gallery_heading = $page->custom( 'gallery_heading' );
 }
 
+// If author box.
+$profiles = getPlugin( 'User_Profiles' );
+$author   = 'no-author-box';
+if ( $profiles ) {
+	if (
+		'post' == $profiles->author_display() ||
+		'both' == $profiles->author_display()
+	) {
+		if ( 'before' == $profiles->author_location() ) {
+			$author = 'has-author-box author-box-before-content';
+		} else {
+			$author = 'has-author-box author-box-after-content';
+		}
+	}
+}
+
 ?>
-<article class="site-article" role="article" data-site-article>
+<article class="site-article <?php echo $author; ?>" role="article" data-site-article>
 
 	<?php if ( ! has_cover() ) {
 		echo page_header();
