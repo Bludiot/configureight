@@ -416,6 +416,8 @@ b, strong, optgroup {
   --cfe-post-header--grid--heading--letter-spacing: var( --cfe-heading-secondary--letter-spacing );
   --cfe-modal-overlay--bg-color: rgba(0, 0, 0, 0.85);
   --cfe-sidebar--link--font-weight: 600;
+  --upro-body--bg-color: var( --cfe-scheme-color--body );
+  --upro-body--bg-color--dark: var( --cfe-scheme-color--body--dark );
 }
 
 html {

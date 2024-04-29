@@ -200,4 +200,8 @@ $color_six_dark:   $light_gray;
 
 	// Sidebar.
 	--cfe-sidebar--link--font-weight: 600;
+
+	// User Profiles plugin.
+	--upro-body--bg-color: var( --cfe-scheme-color--body );
+	--upro-body--bg-color--dark: var( --cfe-scheme-color--body--dark );
 }
