@@ -669,7 +669,7 @@ function loop_data() {
 		'url'         => loop_url(),
 		'slug'        => str_replace( '/', '', site()->getField( 'uriBlog' ) ),
 		'template'    => false,
-		'style'       => $loop_type,
+		'type'       => $loop_type,
 		'title'       => $loop_type,
 		'description' => $description,
 		'cover'       => false,

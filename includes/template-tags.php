@@ -443,8 +443,8 @@ function body_classes() {
 
 		// Posts loop type.
 		if ( is_main_loop() ) {
-			$loop_type = $loop_data['style'];
-			$classes[] = "loop-style-{$loop_type}";
+			$loop_type = $loop_data['type'];
+			$classes[] = "loop-type-{$loop_type}";
 
 			// Loop first page.
 			if (
@@ -788,7 +788,7 @@ function body_classes() {
 
 	// Search pages.
 	if ( is_search() ) {
-		$classes[] = 'search loop loop-style-blog loop-template-list';
+		$classes[] = 'search loop loop-type-search loop-template-list';
 
 		// Sidebar position.
 		if ( plugin() ) {
@@ -1080,47 +1080,6 @@ function cover_header( $args = null, $defaults = [] ) {
 	$html .= '</div>';
 
 	return $html;
-}
-
-/**
- * Get user toolbar
- *
- * Includes the toolbar file if user is
- * logged in and theme plugin value is true.
- *
- * @since  1.0.0
- * @return mixed Returns the toolbar markup or null.
- */
-function get_toolbar() {
-
-	ob_start();
-	include( THEME_DIR . 'views/utility/toolbar.php' );
-	return ob_get_clean();
-}
-
-/**
- * Print user toolbar
- *
- * @since  1.0.0
- * @return mixed Returns the `get_toolbar()` function or false.
- */
-function user_toolbar() {
-
-	if ( ! plugin() ) {
-		return false;
-	}
-
-	if ( ! user_logged_in() ) {
-		return false;
-	}
-
-	if (
-		'enabled'  == plugin()->user_toolbar() ||
-		'frontend' == plugin()->user_toolbar()
-	) {
-		return get_toolbar();
-	}
-	return false;
 }
 
 /**
@@ -1500,7 +1459,7 @@ function loop_template() {
  */
 function loop_type() {
 	$loop_data = loop_data();
-	return $loop_data['style'];
+	return $loop_data['type'];
 }
 
 /**

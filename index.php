@@ -152,10 +152,6 @@ if ( is_loop_page() ) {
 		<?php echo icon( 'angle-up' ); ?>
 	</a>
 	<?php endif; endif; ?>
-	<?php
-	echo user_toolbar();
-
-	plugins_hook( 'siteBodyEnd' );
-	?>
+	<?php plugins_hook( 'siteBodyEnd' ); ?>
 </body>
 </html>
