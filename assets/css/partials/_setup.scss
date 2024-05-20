@@ -291,6 +291,7 @@ h4 {
 }
 
 // Theme icons.
+.svg-icon,
 .theme-icon {
 	position: var( --cfe-icon--position );
 	display: var( --cfe-icon--display, inline-block );
@@ -428,6 +429,21 @@ h4 {
 		width: var( --cfe-to-top--svg--width, 1.5rem );
 		height: var( --cfe-to-top--svg--height, 1.5rem );
 		fill: var( --cfe-to-top--svg--fill, currentColor );
+	}
+}
+
+pre {
+	white-space: pre-wrap;
+	white-space: break-spaces;
+	padding: 1em;
+	background-color: rgba( $color: black, $alpha: 0.0625 );
+
+	@media ( prefers-color-scheme: dark ) {
+		background-color: rgba( $color: white, $alpha: 0.0625 );
+	}
+
+	&.select {
+		user-select: all;
 	}
 }
 

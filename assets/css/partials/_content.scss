@@ -1123,9 +1123,11 @@ div.page-gallery {
 	tr {
 		@container page-wrap ( max-width: 640px ) {
 			display: inline-flex;
+			flex-wrap: wrap;
 		}
 		@media screen and ( max-width: 640px ) {
 			display: inline-flex;
+			flex-wrap: wrap;
 		}
 	}
 }
