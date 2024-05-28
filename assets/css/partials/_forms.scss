@@ -3,8 +3,8 @@
 ///
 
 form {
-	position: var( --cfe-form--position );
-	display: var( --cfe-form--display );
+	position: var( --cfe-form--position, static );
+	display: var( --cfe-form--display, block );
 	margin: var( --cfe-form--margin );
 	padding: var( --cfe-form--padding );
 	width: var( --cfe-form--width );
@@ -25,8 +25,8 @@ form {
 fieldset {
 	margin: var( --cfe-fieldset--margin );
 	padding: var( --cfe-fieldset--padding );
-	width: var( --cfe-fieldset--width );
-	max-width: var( --cfe-fieldset--max-width );
+	width: var( --cfe-fieldset--width, 100% );
+	max-width: var( --cfe-fieldset--max-width, 100% );
 	background-color: var( --cfe-fieldset--bg-color );
 	border: var( --cfe-fieldset--border );
 
