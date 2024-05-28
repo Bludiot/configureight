@@ -63,6 +63,14 @@ if ( $profiles ) {
 </article>
 
 <?php
+// Support for comment plugins.
+if ( getPlugin( 'Post_Comments' ) ) {
+	echo Post_Comments\form();
+} elseif ( getPlugin( 'easyComments' ) ) {
+	easyComments();
+} ?>
+
+<?php
 
 // Related posts.
 if ( plugin() ) {
