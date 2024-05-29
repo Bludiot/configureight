@@ -102,19 +102,6 @@ button,
 	}
 }
 
-label + input:not([type="checkbox"]):not([type="radio"]),
-label ~ input:not([type="checkbox"]):not([type="radio"]),
-label + button,
-label ~ button,
-label + textarea,
-label ~ textarea,
-label + select,
-label ~ select {
-	display: var( --cfe-label-field--display, block );
-	margin: var( --cfe-label-field--margin, 0 );
-	padding: var( --cfe-label-field--padding, 0 );
-}
-
 input[type="text"],
 input[type="email"],
 input[type="text"],
