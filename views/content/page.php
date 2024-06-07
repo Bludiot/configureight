@@ -59,3 +59,11 @@ if ( $profiles ) {
 	</div>
 	<?php endif; ?>
 </article>
+
+<?php
+// Support for comment plugins.
+if ( getPlugin( 'Post_Comments' ) ) {
+	plugins_hook( 'comments_full' );
+} elseif ( getPlugin( 'easyComments' ) ) {
+	easyComments();
+} ?>

@@ -64,7 +64,7 @@ if ( $profiles ) {
 <?php
 // Support for comment plugins.
 if ( getPlugin( 'Post_Comments' ) ) {
-	echo Post_Comments\form();
+	plugins_hook( 'comments_full' );
 } elseif ( getPlugin( 'easyComments' ) ) {
 	easyComments();
 } ?>
