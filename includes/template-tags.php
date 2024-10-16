@@ -1017,16 +1017,6 @@ function cover_header( $args = null, $defaults = [] ) {
 		$class = 'tag-page-description';
 		$args['page_title']  = $get_tag->name();
 		$args['description'] = text_replace( 'posts-loop-desc-tag', $get_tag->name() );
-	} elseif ( profiles() ) {
-		if ( profiles()->users_slug() == url()->whereAmI() ) {
-			$user    = user_slug();
-			$tagline = profiles()->getValue( 'tagline_' . $user );
-			$class = 'user-page-description';
-			$args['page_title']  = \UPRO_Tags\user_display_name( $user );
-			if ( $tagline ) {
-				$args['description'] = htmlspecialchars_decode( $tagline );
-			}
-		}
 	} elseif ( is_search() ) {
 
 		$slug  = url()->slug();
@@ -1042,6 +1032,16 @@ function cover_header( $args = null, $defaults = [] ) {
 			lang()->get( 'Searching' ),
 			 $terms
 		);
+	} elseif ( profiles() ) {
+		if ( profiles()->users_slug() == url()->whereAmI() ) {
+			$user    = user_slug();
+			$tagline = profiles()->getValue( 'tagline_' . $user );
+			$class = 'user-page-description';
+			$args['page_title']  = \UPRO_Tags\user_display_name( $user );
+			if ( $tagline ) {
+				$args['description'] = htmlspecialchars_decode( $tagline );
+			}
+		}
 	}
 
 	$html  = '<div class="cover-header" data-cover-header>';
