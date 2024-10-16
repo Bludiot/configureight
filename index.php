@@ -124,6 +124,9 @@ if ( is_loop_page() ) {
 		<div id="content" class="wrapper-general content-wrapper" data-content-wrapper>
 
 			<main class="page-main <?php echo $main_view; ?>" <?php echo $main_data_attr; ?> itemscope itemprop="mainContentOfPage">
+
+				<?php plugins_hook( 'breadcrumbs' ); ?>
+
 				<?php
 				if ( ( getPlugin( 'Search_Forms' ) || getPlugin( 'pluginSearch' ) ) && 'search' == $url->whereAmI() ) {
 					include( THEME_DIR . 'views/content/search.php' );
