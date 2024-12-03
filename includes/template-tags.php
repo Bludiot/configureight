@@ -759,13 +759,6 @@ function body_classes() {
 	$nav_position = get_nav_position();
 	$classes[]    = "main-nav-{$nav_position}";
 
-	// Sticky sidebar.
-	if ( plugin() ) {
-		if ( plugin()->sidebar_sticky() ) {
-			$classes[] = 'has-sticky-sidebar';
-		}
-	}
-
 	// Search icon.
 	if ( plugin() ) {
 		if ( plugin()->search_icon() ) {
@@ -1939,7 +1932,6 @@ function footer_scripts() {
 			"assets/js/slider{$suffix}.js",
 			"assets/js/lightbox{$suffix}.js",
 			"assets/js/tooltips{$suffix}.js",
-			"assets/js/sticky{$suffix}.js",
 			"assets/js/theme{$suffix}.js"
 		],
 		DOMAIN_THEME

@@ -46,22 +46,6 @@
 		// Add cover blend class to table galleries.
 		$( '.cover-blend-active table.page-gallery tr' ).addClass( 'cover-blend' );
 
-		// Sticky sidebar.
-		if ( $.isFunction( $.fn.stick_in_parent ) ) {
-			if ( $( '.sidebar-is-sticky' ).length ) {
-				$( '.sidebar-is-sticky' ).stick_in_parent( {
-					offset_top      : 0,
-					inner_scrolling : false
-				} );
-			}
-			if ( $( '.sidebar-header-are-sticky' ).length ) {
-				$( '.sidebar-header-are-sticky' ).stick_in_parent( {
-					offset_top      : 100,
-					inner_scrolling : false
-				} );
-			}
-		}
-
 		// Lightbox.
 		if ( $.isFunction( $.fn.fancybox ) ) {
 			$( '.page-content [href$=".jpg"], .page-content [href$=".jpeg"], .page-content [href$=".png"], .page-content [href$=".gif"]' ).attr( 'data-fancybox', 'page-content-gallery' );

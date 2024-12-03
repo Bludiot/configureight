@@ -2,9 +2,6 @@
 /**
  * Aside/sidebar content template
  *
- * Sidebar wrapping element is necessary for
- * the jQuery sticky option.
- *
  * @package    Configure 8
  * @subpackage Templates
  * @category   Aside
@@ -20,16 +17,6 @@ use function CFE_Tags\{
 	social_nav
 };
 
-// Sticky sidebar class.
-$sticky = '';
-if ( plugin() ) {
-	if ( plugin()->sidebar_sticky() && plugin()->header_sticky() ) {
-		$sticky = 'sidebar-header-are-sticky';
-	} elseif ( plugin()->sidebar_sticky() ) {
-		$sticky = 'sidebar-is-sticky';
-	}
-}
-
 // Social nave heading.
 $social_heading = sprintf(
 	'<h2>%s</h2>',
@@ -43,19 +30,17 @@ if ( plugin() ) {
 }
 
 ?>
-<div id="page-sidebar-wrap">
-	<aside id="page-sidebar" class="page-sidebar <?php echo $sticky; ?>" data-page-sidebar>
-		<?php if ( plugin() ) { plugins_hook( 'site_sidebar_before' ); } ?>
-		<?php plugins_hook( 'siteSidebar' ); ?>
+<aside id="page-sidebar" class="page-sidebar" data-page-sidebar>
+	<?php if ( plugin() ) { plugins_hook( 'site_sidebar_before' ); } ?>
+	<?php plugins_hook( 'siteSidebar' ); ?>
 
-		<?php if ( plugin() ) : if ( plugin()->sidebar_social() ) : ?>
-		<div class="plugin plugin-social-nav">
-			<?php echo $social_heading; ?>
-			<div class="plugin-content">
-				<?php echo social_nav(); ?>
-			</div>
+	<?php if ( plugin() ) : if ( plugin()->sidebar_social() ) : ?>
+	<div class="plugin plugin-social-nav">
+		<?php echo $social_heading; ?>
+		<div class="plugin-content">
+			<?php echo social_nav(); ?>
 		</div>
-		<?php endif; endif; ?>
-		<?php if ( plugin() ) { plugins_hook( 'site_sidebar_after' ); } ?>
-	</aside>
-</div>
+	</div>
+	<?php endif; endif; ?>
+	<?php if ( plugin() ) { plugins_hook( 'site_sidebar_after' ); } ?>
+</aside>
