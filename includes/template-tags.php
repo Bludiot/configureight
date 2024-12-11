@@ -772,7 +772,9 @@ function body_classes() {
 
 	// Logo location.
 	if ( site()->logo() && plugin() ) {
-		if ( 'above' == plugin()->logo_location() ) {
+		if ( 'after' == plugin()->logo_location() ) {
+			$classes[] = 'logo-after-text';
+		} elseif ( 'above' == plugin()->logo_location() ) {
 			$classes[] = 'logo-above-text';
 		} elseif ( 'below' == plugin()->logo_location() ) {
 			$classes[] = 'logo-below-text';
