@@ -168,6 +168,10 @@ function config_styles() {
 			'--cfe-loader--text-color: %s;',
 			plugin()->loader_text_color()
 		);
+		$styles .= sprintf(
+			'--cfe-loader--image--fill: %s;',
+			plugin()->loader_text_color()
+		);
 	}
 
 	// General spacing.
