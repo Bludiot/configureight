@@ -3915,7 +3915,7 @@ div.page-gallery {
 .page-sidebar .plugin {
   width: var(--cfe-sidebar--plugin--width, 100%);
   max-width: var(--cfe-sidebar--plugin--max-width, 100%);
-  height: var(--cfe-sidebar--plugin--height, 100%);
+  height: var(--cfe-sidebar--plugin--height, auto);
   margin: var(--cfe-sidebar--plugin--margin, 0);
   padding: var(--cfe-sidebar--plugin--padding, 0);
   display: var(--cfe-sidebar--plugin--display, block);
