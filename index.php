@@ -152,7 +152,11 @@ if ( is_loop_page() ) {
 
 	<?php include( THEME_DIR . 'views/footer/footer.php' ); ?>
 
-	<?php if ( plugin() ) : if ( plugin()->to_top_button() ) : ?>
+	<?php if ( plugin() ) :
+	if (
+		'enabled'  == plugin()->to_top_button() ||
+		'frontend' == plugin()->to_top_button()
+	) : ?>
 	<a href="#" id="to-top" class="hide-if-no-js" title="<?php $L->p( 'Back to Top' ); ?>" data-tooltip>
 		<?php echo icon( 'angle-up' ); ?>
 	</a>
