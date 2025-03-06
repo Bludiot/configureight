@@ -382,10 +382,12 @@
 
 		.post-header {
 			grid-area: header;
+			width: 100%;
 		}
 
 		.post-cover {
 			grid-area: cover;
+			width: 100%;
 			margin: var( --cfe-post-cover--news--full--margin, 0 );
 
 			@media screen and ( max-width: 640px ) {
@@ -399,13 +401,17 @@
 
 		.post-in-loop-content {
 			grid-area: content;
+			width: 100%;
 			margin: var( --cfe-post-cover--news--full--margin, 0 );
 		}
 
 		.post-info {
 			grid-area: info;
-			width: var( --cfe-post-info--news--full--width, 20% );
-			min-width: var( --cfe-post-info--news--full--min-width, 180px );
+			width: var( --cfe-post-info--news--full--width, 180px );
+
+			@media screen and ( max-width: 640px ) {
+				width: 100%;
+			}
 
 			.post-info-date {
 				margin: var( --cfe-post-info-date--news--full--margin, 0 );
@@ -435,24 +441,25 @@
 		}
 
 		.post-info {
+			margin: var( --cfe-post-info--blog--full--margin, var( --cfe-element--margin, 1rem 0 0 0 ) );
 
 			p {
-				margin: var( --cfe-post-info--news--full--p--margin, var( --cfe-element--margin ) );
+				margin: var( --cfe-post-info--blog--full--p--margin, var( --cfe-element--margin ) );
 
 				& + p {
-					margin: var( --cfe-post-info--news--full--p-p--margin, 0 );
+					margin: var( --cfe-post-info--blog--full--p-p--margin, 0 );
 				}
 			}
 
 			.post-info-author {
-				margin: var( --cfe-post-info-details--news--full--margin );
+				margin: var( --cfe-post-info-details--blog--full--margin );
 			}
 
 			.post-info-date {
-				margin: var( --cfe-post-info-date--news--full--margin, 0 );
-				font-size: var( --cfe-post-info-date--news--full--font-size );
-				font-weight: var( --cfe-post-info-date--news--full--font-weight );
-				line-height: var( --cfe-post-info-date--news--full--line-height );
+				margin: var( --cfe-post-info-date--blog--full--margin, 0 );
+				font-size: var( --cfe-post-info-date--blog--full--font-size );
+				font-weight: var( --cfe-post-info-date--blog--full--font-weight );
+				line-height: var( --cfe-post-info-date--blog--full--line-height );
 			}
 
 			.post-info-details {
@@ -467,6 +474,10 @@
 				}
 			}
 		}
+	}
+
+	.content-break-text {
+		font-weight: var( --cfe-content-break-text--font-weight, 600 );
 	}
 }
 
@@ -548,6 +559,12 @@
 
 	.tags-list {
 		margin: 0;
+		justify-content: center;
+
+		li {
+			line-height: 1.2;
+			font-size: 0.75em;
+		}
 	}
 
 	.post-cover {
