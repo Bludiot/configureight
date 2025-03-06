@@ -1223,6 +1223,106 @@ function page_id() {
 }
 
 /**
+ * Content break text
+ *
+ * @since  1.0.0
+ * @return string
+ */
+function content_break_string() {
+
+	if ( defined( 'PAGE_BREAK' ) ) {
+		return PAGE_BREAK;
+	} else {
+		return '<!-- pagebreak -->';
+	}
+}
+
+/**
+ * Page content with page break
+ *
+ * @since  1.0.0
+ * @param  mixed $key Page key
+ * @return mixed Returns page preview, page content, or false.
+ */
+function content_break( $key = false ) {
+
+	// Stop if no page key.
+	if ( ! $key ) {
+		return false;
+	}
+
+	// Build the page object.
+	$page = buildPage( $key );
+	if ( ! $page ) {
+		return false;
+	}
+
+	// Get page content.
+	$break   = content_break_string();
+	$content = $page->content();
+
+	// Break link text.
+	if ( plugin() ) {
+		if ( ! empty( plugin()->loop_break_text() ) ) {
+			$link = plugin()->loop_break_text();
+		} else {
+			$link = lang()->get( 'Read Full Article' );
+		}
+	} else {
+		$link = lang()->get( 'Read Full Article' );
+	}
+
+	// Break link icon with RTL support.
+	if ( plugin() ) {
+		if ( plugin()->loop_break_icon() ) {
+			if ( is_rtl() ) {
+				$icon = plugin()->loop_break_icon() . '-left';
+			} else {
+				$icon = plugin()->loop_break_icon() . '-right';
+			}
+		} else {
+			$icon = false;
+		}
+	} else {
+		if ( is_rtl() ) {
+			$icon = 'arrow-left';
+		} else {
+			$icon = 'arrow-right';
+		}
+	}
+
+	/**
+	 * Content output
+	 *
+	 * If the post/page has a page break tag
+	 * from the content editor then the content
+	 * before the break is returned with a
+	 * link to the full content.
+	 */
+	if ( str_contains( $content, $break ) ) {
+		$preview = explode( $break, $content );
+
+		$html  = $preview[0];
+		if ( $icon ) {
+			$html .= sprintf(
+				'<p><a href="%s"><span class="content-break-text">%s</span> %s</a></p>',
+				$page->permalink(),
+				$link,
+				icon( $icon, true )
+			);
+		} else {
+			$html .= sprintf(
+				'<p><a href="%s"><span class="content-break-text">%s</span></a></p>',
+				$page->permalink(),
+				$link
+			);
+		}
+		return $html;
+	}
+	return $content;
+}
+
+/**
  * Content template
  *
  * @since  1.0.0

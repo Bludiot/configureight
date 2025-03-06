@@ -34,6 +34,7 @@ use function CFE_Tags\{
 	sticky_icon,
 	article_type,
 	page_description,
+	content_break,
 	has_tags,
 	get_author,
 	get_loop_pagination
@@ -194,70 +195,80 @@ if ( ! empty( $page->custom( 'gallery_heading' ) ) ) {
 		<?php endif; ?>
 
 		<div class="post-in-loop-content" itemprop="articleBody" data-post-content>
-			<?php echo $post->content(); ?>
+			<?php
+			// Get teaser or full content.
+			if ( plugin() ) {
+				if ( plugin()->loop_break() ) {
+					echo content_break( $post->key() );
+				} else {
+					echo $post->content();
+				}
+			} else {
+				echo $post->content();
+			} ?>
 		</div>
 
-			<footer class="<?php echo $footer; ?>">
+		<footer class="<?php echo $footer; ?>">
 
-				<?php if ( $post->category() ) :
-					$cat_title_tag = lang()->get( "Browse the {$post->category()} category" );
-				?>
-				<h3 class="post-info-category">
-					<a href="<?php echo $post->categoryPermalink(); ?>" title="<?php echo $cat_title_tag; ?>" data-tooltip><?php echo $cat_icon; ?><?php echo $post->category(); ?></a>
-				</h3>
+			<?php if ( $post->category() ) :
+				$cat_title_tag = lang()->get( "Browse the {$post->category()} category" );
+			?>
+			<h3 class="post-info-category">
+				<a href="<?php echo $post->categoryPermalink(); ?>" title="<?php echo $cat_title_tag; ?>" data-tooltip><?php echo $cat_icon; ?><?php echo $post->category(); ?></a>
+			</h3>
+			<?php endif; ?>
+
+			<?php if ( plugin() ) : if ( plugin()->loop_byline() ) : ?>
+			<p><span class="post-info-author">
+				<?php echo get_author(); ?>
+			</span></p>
+			<?php endif; endif; ?>
+
+			<?php if ( plugin() ) : if ( plugin()->loop_date() ) : ?>
+			<p class="post-info-date">
+				<?php echo $post->date(); ?>
+			</p>
+			<?php endif; endif; ?>
+
+			<?php
+			if ( plugin() ) :
+			if (
+				plugin()->loop_word_count() ||
+				plugin()->loop_read_time()
+			) :
+			?>
+			<p class="post-info-details">
+
+				<?php if ( plugin()->loop_word_count() ) : ?>
+				<span class="post-info-word-count">
+					<?php lang()->p( 'post-word-count' ); echo get_word_count( $post->key() ); ?>
+				</span>
 				<?php endif; ?>
 
-				<?php if ( plugin() ) : if ( plugin()->loop_byline() ) : ?>
-				<p><span class="post-info-author">
-					<?php echo get_author(); ?>
-				</span></p>
-				<?php endif; endif; ?>
+				<?php if ( plugin()->loop_word_count() && plugin()->loop_read_time() ) : ?>
+				<span class="post-info-separator"></span>
+				<?php endif; ?>
 
-				<?php if ( plugin() ) : if ( plugin()->loop_date() ) : ?>
-				<p class="post-info-date">
-					<?php echo $post->date(); ?>
-				</p>
-				<?php endif; endif; ?>
+				<?php if ( plugin()->loop_read_time() ) : ?>
+				<span class="post-info-read-time">
+					<?php lang()->p( 'post-read-time' ); echo $post->readingTime(); ?>
+				</span>
+				<?php endif; ?>
 
-				<?php
-				if ( plugin() ) :
-				if (
-					plugin()->loop_word_count() ||
-					plugin()->loop_read_time()
-				) :
-				?>
-				<p class="post-info-details">
+			</p>
+			<?php endif; endif; ?>
 
-					<?php if ( plugin()->loop_word_count() ) : ?>
-					<span class="post-info-word-count">
-						<?php lang()->p( 'post-word-count' ); echo get_word_count( $post->key() ); ?>
-					</span>
-					<?php endif; ?>
+			<?php if ( $post->tags( true ) ) {
+				echo $tags_list();
+			} ?>
+		</footer>
 
-					<?php if ( plugin()->loop_word_count() && plugin()->loop_read_time() ) : ?>
-					<span class="post-info-separator"></span>
-					<?php endif; ?>
-
-					<?php if ( plugin()->loop_read_time() ) : ?>
-					<span class="post-info-read-time">
-						<?php lang()->p( 'post-read-time' ); echo $post->readingTime(); ?>
-					</span>
-					<?php endif; ?>
-
-				</p>
-				<?php endif; endif; ?>
-
-				<?php if ( $post->tags( true ) ) {
-					echo $tags_list();
-				} ?>
-			</footer>
-
-			<?php if ( $page->custom( 'page_gallery' ) ) : ?>
-			<div class="page-gallery">
-				<h2><?php echo $gallery_heading; ?></h2>
-				<?php plugins_hook( 'page_gallery' ); ?>
-			</div>
-			<?php endif; ?>
+		<?php if ( $page->custom( 'page_gallery' ) ) : ?>
+		<div class="page-gallery">
+			<h2><?php echo $gallery_heading; ?></h2>
+			<?php plugins_hook( 'page_gallery' ); ?>
+		</div>
+		<?php endif; ?>
 	</div>
 
 </article>
