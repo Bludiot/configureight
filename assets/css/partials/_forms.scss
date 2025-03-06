@@ -77,7 +77,7 @@ button,
 	position: var( --cfe-form-element--position );
 	display: var( --cfe-form-element--display );
 	width: var( --cfe-form-element--width, 100% );
-	max-width: var( --cfe-form-element--max-width, 640px );
+	max-width: var( --cfe-form-element--max-width, 100% );
 	margin: var( --cfe-form-element--margin );
 	padding: var( --cfe-form-element--padding );
 	font-weight: var( --cfe-form-element--font-weight );
