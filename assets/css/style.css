@@ -2405,7 +2405,8 @@ h3 + .search-form {
 }
 #menu-toggle svg {
   fill: currentColor;
-  width: 2rem;
+  max-width: 2rem;
+  max-height: 2rem;
 }
 #menu-toggle .menu-toggle-text {
   font-family: var(--cfe-site-nav--item--font-family);

@@ -1177,21 +1177,40 @@ function menu_toggle( $toggle = '' ) {
 			$icon  = 'bars';
 			$class = 'nav-icon-bars';
 
-			// Dots icon.
-			if ( 'dots' == plugin()->main_nav_icon() ) {
+			// Dots icons.
+			if ( 'dots-h' === plugin()->main_nav_icon() ) {
 				$icon  = 'dots-h';
-				$class = 'nav-icon-dots';
+				$class = 'nav-icon-dots-horz';
+			} elseif ( 'dots-v' === plugin()->main_nav_icon() ) {
+				$icon  = 'dots-v';
+				$class = 'nav-icon-dots-vert';
 			}
-			return icon( $icon, true, $class );
+
+			return sprintf(
+				'<button id="menu-toggle" data-menu-toggle-open aria-controls="mobile-nav" aria-expanded="false">%s<span class="menu-toggle-text screen-reader-text">%s</span></button>',
+				icon( $icon, false, $class ),
+				lang()->get( 'Menu' )
+			);
 
 		// If no icon option and custom text in the tag..
 		} elseif ( 'none' == plugin()->main_nav_icon() && ! empty( $toggle ) ) {
-			return $toggle;
+			return sprintf(
+				'<button id="menu-toggle" data-menu-toggle-open aria-controls="mobile-nav" aria-expanded="false"><span class="menu-toggle-text">%s</span></button>',
+				$toggle
+			);
+		} else {
+			return sprintf(
+				'<button id="menu-toggle" data-menu-toggle-open aria-controls="mobile-nav" aria-expanded="false"><span class="menu-toggle-text">%s</span></button>',
+				lang()->get( 'Menu' )
+			);
 		}
 	}
 
 	// Default, text.
-	return lang()->get( 'Menu' );
+	return sprintf(
+		'<button id="menu-toggle" data-menu-toggle-open aria-controls="mobile-nav" aria-expanded="false"><span class="menu-toggle-text">%s</span></button>',
+		lang()->get( 'Menu' )
+	);
 }
 
 /**
