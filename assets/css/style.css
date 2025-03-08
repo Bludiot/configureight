@@ -825,6 +825,11 @@ h4 a:focus {
   height: var(--cfe-loader--image--height, 1.75rem);
   fill: var(--cfe-loader--image--fill, currentColor);
 }
+@media (prefers-color-scheme: dark) {
+  #page-loader .loading-image svg {
+    fill: var(--cfe-loader--image--fill--dark, currentColor);
+  }
+}
 
 #to-top {
   opacity: var(--cfe-to-top--opacity, 0);

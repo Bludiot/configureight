@@ -155,7 +155,12 @@ function config_styles() {
 	$styles  = '<style>:root {';
 
 	// Loader image overlay.
-	if ( ! empty( plugin()->loader_bg_color() ) ) {
+	if ( plugin()->use_dark_scheme() ) {
+		$styles .= sprintf(
+			'--cfe-loader--bg-color--dark: %s;',
+			plugin()->loader_bg_color_dark()
+		);
+	} else {
 		$styles .= sprintf(
 			'--cfe-loader--bg-color: %s;',
 			plugin()->loader_bg_color()
@@ -163,11 +168,23 @@ function config_styles() {
 	}
 
 	// Loader image text.
-	if ( ! empty( plugin()->loader_text_color() ) ) {
+	if ( plugin()->use_dark_scheme() ) {
+		$styles .= sprintf(
+			'--cfe-loader--text-color: %s;',
+			plugin()->loader_text_color_dark()
+		);
+	} else {
 		$styles .= sprintf(
 			'--cfe-loader--text-color: %s;',
 			plugin()->loader_text_color()
 		);
+	}
+	if ( plugin()->use_dark_scheme() ) {
+		$styles .= sprintf(
+			'--cfe-loader--image--fill: %s;',
+			plugin()->loader_text_color_dark()
+		);
+	} else {
 		$styles .= sprintf(
 			'--cfe-loader--image--fill: %s;',
 			plugin()->loader_text_color()

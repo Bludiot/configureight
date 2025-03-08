@@ -27,27 +27,6 @@ if ( plugin() ) {
 	$text = lang()->get( 'loader-text' );
 }
 
-// Loader styles.
-$style = '';
-if ( plugin() ) {
-	if (
-		! empty( plugin()->loader_bg_color() ) ||
-		! empty( plugin()->loader_text_color() )
-	) {
-		$style = '<style>:root{';
-
-		if ( ! empty( plugin()->loader_bg_color() ) ) {
-			$style .= '--cfe-loader--bg-color:' . plugin()->loader_bg_color() . ';';
-		}
-
-		if ( ! empty( plugin()->loader_text_color() ) ) {
-			$style .= '--cfe-loader--text-color:' . plugin()->loader_text_color() . ';';
-		}
-		$style .= '}</style>';
-	}
-}
-echo $style;
-
 // Loading icon.
 $icon_type = 'spinner-dots';
 $icon_show = true;
