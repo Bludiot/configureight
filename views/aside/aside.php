@@ -17,16 +17,18 @@ use function CFE_Tags\{
 	social_nav
 };
 
-// Social nave heading.
+// Social nav heading.
 $social_heading = sprintf(
 	'<h2>%s</h2>',
 	$L->get( 'Social Links' )
 );
 if ( plugin() ) {
-	$social_heading = sprintf(
-		'<h2>%s</h2>',
-		plugin()->sb_social_heading()
-	);
+	if ( plugin()->sb_social_heading() ) {
+		$social_heading = sprintf(
+			'<h2>%s</h2>',
+			plugin()->sb_social_heading()
+		);
+	}
 }
 
 ?>

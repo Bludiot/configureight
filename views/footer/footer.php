@@ -12,12 +12,27 @@
 use function CFE_Func\{
 	plugin,
 	site,
-	plugins_hook
+	plugins_hook,
+	helper
 };
 use function CFE_Tags\{
 	social_nav,
 	footer_scripts
 };
+
+// Social nav heading.
+$social_links   = helper() :: socialNetworks();
+$social_heading = null;
+if ( $social_links ) {
+	if ( plugin() ) {
+		if ( ! empty( plugin()->ftr_social_heading() ) ) {
+			$social_heading = sprintf(
+				'<h4 class="footer-socials-heading">%s</h4>',
+				plugin()->ftr_social_heading()
+			);
+		}
+	}
+}
 
 $copyright = '';
 if ( plugin() ) {
@@ -80,6 +95,7 @@ if ( plugin() ) {
 		} ?>
 
 		<?php
+		echo $social_heading;
 		if ( ! plugin() ) {
 			echo social_nav();
 		} elseif ( plugin() ) {
