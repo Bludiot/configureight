@@ -77,11 +77,12 @@ use function CFE_Tags\{
 
 		// Pages selected in the plugin options.
 		$nav_pages = plugin()->main_nav_pages();
-		if ( $nav_pages[0] ) :
-			foreach ( $nav_pages as $nav_page ) :
+		foreach ( $nav_pages as $nav_page ) :
 
-			// The `home` array key is not a page key/object.
 			if ( 'home' === $nav_page ) {
+				continue;
+			}
+			if ( 'foobar' == $nav_page ) {
 				continue;
 			}
 
@@ -204,8 +205,7 @@ use function CFE_Tags\{
 				);
 			}
 			echo $nav_entry;
-			endforeach;
-		endif;
+		endforeach;
 
 		// Add loop after pages link if home is static content.
 		// If `after` in theme plugin.
