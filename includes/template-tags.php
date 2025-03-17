@@ -1298,7 +1298,9 @@ function content_break( $key = false ) {
 	$content = $page->content();
 
 	// Break link text.
-	if ( plugin() ) {
+	if ( $page->custom( 'read_more' ) ) {
+		$link = $page->custom( 'read_more' );
+	} elseif ( plugin() ) {
 		if ( ! empty( plugin()->loop_break_text() ) ) {
 			$link = plugin()->loop_break_text();
 		} else {
