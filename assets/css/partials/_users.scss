@@ -47,7 +47,7 @@
 			background-color: var( --cfe-toolbar--link--bg-color );
 			color: var( --cfe-toolbar--link--text-color );
 
-			@media ( max-width: 960px ) {
+			@media ( max-width: 992px ) {
 				padding: var( --cfe-toolbar--link--mobile--padding );
 				max-height: var( --cfe-toolbar--mobile--height );
 			}
@@ -59,6 +59,11 @@
 				align-items: center;
 				gap: 0 0.5em;
 				cursor: pointer;
+			}
+
+			a {
+				font-size: var( --cfe-toolbar--font-size );
+				font-weight: var( --cfe-toolbar--font-weight );
 			}
 
 			&:hover,
@@ -84,10 +89,13 @@
 				display: inline-block;
 
 				&.svg-icon {
+					width: auto;
 					cursor: pointer;
 
 					svg {
-						@media ( max-width: 960px ) {
+						width: unset !important;
+
+						@media ( max-width: 992px ) {
 							height: 1.25rem;
 						}
 					}

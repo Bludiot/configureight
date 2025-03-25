@@ -414,12 +414,14 @@ b, strong, optgroup {
   --cfe-button--svg-icon--height: 1em;
   --cfe-toolbar--padding: 0 1rem;
   --cfe-toolbar--height: 2rem;
-  --cfe-toolbar--font-size: 0.875rem;
+  --cfe-toolbar--mobile--height: 3rem;
+  --cfe-toolbar--font-size: 1rem;
   --cfe-toolbar--bg-color: var( --cfe-scheme-color--body--dark );
   --cfe-toolbar--bg-color--dark: var( --cfe-scheme-color--body--dark );
   --cfe-toolbar--text-color: #ffffff;
   --cfe-toolbar--text-color--dark: #ffffff;
   --cfe-toolbar--link--padding: 0 0.5em;
+  --cfe-toolbar--link--mobile--padding: 0 0.75em;
   --cfe-toolbar--link--bg-color: inherit;
   --cfe-toolbar--link--bg-color--dark: inherit;
   --cfe-toolbar--link--text-color: #ffffff;
@@ -4121,7 +4123,7 @@ div.page-gallery {
   background-color: var(--cfe-toolbar--link--bg-color);
   color: var(--cfe-toolbar--link--text-color);
 }
-@media (max-width: 960px) {
+@media (max-width: 992px) {
   .user-toolbar ul li {
     padding: var(--cfe-toolbar--link--mobile--padding);
     max-height: var(--cfe-toolbar--mobile--height);
@@ -4132,6 +4134,10 @@ div.page-gallery {
   align-items: center;
   gap: 0 0.5em;
   cursor: pointer;
+}
+.user-toolbar ul li a {
+  font-size: var(--cfe-toolbar--font-size);
+  font-weight: var(--cfe-toolbar--font-weight);
 }
 .user-toolbar ul li:hover, .user-toolbar ul li:focus {
   background-color: var(--cfe-toolbar--link--action--bg-color);
@@ -4148,9 +4154,13 @@ div.page-gallery {
   display: inline-block;
 }
 .user-toolbar ul li span.svg-icon {
+  width: auto;
   cursor: pointer;
 }
-@media (max-width: 960px) {
+.user-toolbar ul li span.svg-icon svg {
+  width: unset !important;
+}
+@media (max-width: 992px) {
   .user-toolbar ul li span.svg-icon svg {
     height: 1.25rem;
   }

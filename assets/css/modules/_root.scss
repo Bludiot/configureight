@@ -143,12 +143,14 @@ $color_six_dark:   $light_gray;
 	// User toolbar.
 	--cfe-toolbar--padding: 0 1rem;
 	--cfe-toolbar--height: 2rem;
-	--cfe-toolbar--font-size: 0.875rem;
+	--cfe-toolbar--mobile--height: 3rem;
+	--cfe-toolbar--font-size: 1rem;
 	--cfe-toolbar--bg-color: var( --cfe-scheme-color--body--dark );
 	--cfe-toolbar--bg-color--dark: var( --cfe-scheme-color--body--dark );
 	--cfe-toolbar--text-color: #{$white};
 	--cfe-toolbar--text-color--dark: #{$white};
 	--cfe-toolbar--link--padding: 0 0.5em;
+	--cfe-toolbar--link--mobile--padding: 0 0.75em;
 	--cfe-toolbar--link--bg-color: inherit;
 	--cfe-toolbar--link--bg-color--dark: inherit;
 	--cfe-toolbar--link--text-color: #{$white};
