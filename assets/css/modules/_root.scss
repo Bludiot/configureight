@@ -44,6 +44,21 @@ $color_six_dark:   $light_gray;
 	--cfe-scheme-color--five--dark:  #{$color_five_dark};
 	--cfe-scheme-color--six--dark:   #{$color_six_dark};
 
+	// General colors
+	--cfe-text-color--red: #{$red};
+	--cfe-text-color--orange: #{$orange};
+	--cfe-text-color--yellow: #{$yellow};
+	--cfe-text-color--green: #{$green};
+	--cfe-text-color--blue: #{$blue};
+	--cfe-text-color--violet: #{$violet};
+
+	--cfe-bg-color--red: #{$red};
+	--cfe-bg-color--orange: #{$orange};
+	--cfe-bg-color--yellow: #{$yellow};
+	--cfe-bg-color--green: #{$green};
+	--cfe-bg-color--blue: #{$blue};
+	--cfe-bg-color--violet: #{$violet};
+
 	// Font stacks.
 	--cfe-fonts--sans-stack: #{$fonts_sans};
 	--cfe-fonts--serif-stack: #{$fonts_serif};

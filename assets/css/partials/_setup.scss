@@ -280,6 +280,22 @@ h4 {
 	}
 }
 
+.text-success {
+	color: var( --cfe-text-color--green, $success );
+}
+
+.text-info {
+	color: var( --cfe-text-color--blue, $blue );
+}
+
+.text-warning {
+	color: var( --cfe-text-color--orange, $notify );
+}
+
+.text-danger {
+	color: var( --cfe-text-color--red, $danger );
+}
+
 // Used for `ul` and `ol` elements.
 .inline-list {
 	display: var( --cfe-inline-list--display, inline-flex );

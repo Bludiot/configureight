@@ -335,6 +335,18 @@ b, strong, optgroup {
   --cfe-scheme-color--four--dark: #555555;
   --cfe-scheme-color--five--dark: #555555;
   --cfe-scheme-color--six--dark: #888888;
+  --cfe-text-color--red: #dd0000;
+  --cfe-text-color--orange: #ee6600;
+  --cfe-text-color--yellow: #ffdd00;
+  --cfe-text-color--green: #00aa00;
+  --cfe-text-color--blue: #0044aa;
+  --cfe-text-color--violet: #551188;
+  --cfe-bg-color--red: #dd0000;
+  --cfe-bg-color--orange: #ee6600;
+  --cfe-bg-color--yellow: #ffdd00;
+  --cfe-bg-color--green: #00aa00;
+  --cfe-bg-color--blue: #0044aa;
+  --cfe-bg-color--violet: #551188;
   --cfe-fonts--sans-stack: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
   --cfe-fonts--serif-stack: NonBreakingSpaceOverride, Hoefler Text, Baskerville Old Face, Garamond, Times, Times New Roman, serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
   --cfe-fonts--monospace-stack: Source Code Pro, Roboto Mono, Fira Code, Liberation Mono, Inconsolata, Menlo, Monaco, Consolas, Cascadia Mono, Segoe UI Mono, Oxygen Mono, Ubuntu Monospace, Fira Mono, Droid Sans Mono, Courier New, Courier, ui-monospace, monospace, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
@@ -735,6 +747,22 @@ h4 a:focus {
   h4 a:focus {
     color: var(--cfe-heading-secondary--link--action--text-color--dark, var(--cfe-link--action--text-color--dark));
   }
+}
+
+.text-success {
+  color: var(--cfe-text-color--green, #00aa00);
+}
+
+.text-info {
+  color: var(--cfe-text-color--blue, #0044aa);
+}
+
+.text-warning {
+  color: var(--cfe-text-color--orange, #ee6600);
+}
+
+.text-danger {
+  color: var(--cfe-text-color--red, #dd0000);
 }
 
 .inline-list {
