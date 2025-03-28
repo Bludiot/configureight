@@ -334,7 +334,13 @@ function config_styles() {
 			$styles .= '--cfe-site-header-wrap--flex-direction: row-reverse;';
 		}
 	}
-	$styles .= '}</style>';
+	$styles .= '}';
+
+	if ( ! plugin()->toolbar_mobile() ) {
+		$styles .= '@media (max-width: 767.98px) { .user-toolbar { display: none; } body, body.toolbar-active { padding-top: 0 !important; } }</style>';
+		$styles .= '<style>body { padding-top: var( --cfe-toolbar--height ); } nav.navbar.d-block { display: block !important; }';
+	}
+	$styles .= '</style>';
 
 	return $styles;
 }
