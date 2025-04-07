@@ -1,12 +1,13 @@
 {
 	"author"      : "Bludiot",
-	"email"       : "santa@north.pole",
+	"email"       : "",
 	"website"     : "https://github.com/Bludiot/configureight",
 	"version"     : "1.0.0",
 	"releaseDate" : "",
 	"license"     : "Nope",
-	"compatible"  : "3.15.0",
+	"compatible"  : "3.16.2",
 	"notes"       : "A theme for Bludit CMS with many configurable options.",
 	"plugin"      : "configureight",
-	"admin_theme" : "configureight"
+	"admin_theme" : "configureight",
+	"breadcrumbs" : true
 }
