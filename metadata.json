@@ -10,5 +10,6 @@
 	"plugin"      : "configureight",
 	"admin_theme" : "configureight",
 	"breadcrumbs" : true,
+	"comments"    : true,
 	"profiles"    : true
 }
