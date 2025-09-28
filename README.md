@@ -23,7 +23,7 @@ This theme requires its companion plugin to be installed in order to access them
 
 ## Compatibility
 
-Configure 8 has been tested on Bludit version 3.15.0, running PHP 8.2.4. The minimum PHP version required is PHP 7.4. The standard plugin hooks are provided.
+The minimum PHP version required is PHP 7.4. The standard plugin hooks are provided.
 
 The theme can be used without its companion plugin, if so desired.
 
