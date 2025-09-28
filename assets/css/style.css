@@ -46,13 +46,17 @@ html {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   overflow-y: scroll;
-  font-size: 100%;
+  font: clamp(1rem, 1rem + 0.5vw, 2rem)/1.4 system-ui, sans-serif;
+  tab-size: 4;
+  hanging-punctuation: first allow-end last;
+  word-break: break-word;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
   text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  interpolate-size: allow-keywords;
 }
 
 body {
@@ -118,6 +122,9 @@ ol ol {
 input {
   line-height: normal;
 }
+input :not(:where([type=submit], [type=checkbox], [type=radio], [type=button], [type=reset])) {
+  inline-size: 100%;
+}
 
 input, textarea, select, button {
   border: solid 1px #ccc;
@@ -173,6 +180,10 @@ input::-webkit-inner-spin-button {
 
 textarea {
   overflow: auto;
+  field-sizing: content;
+  min-block-size: 5lh;
+  inline-size: 100%;
+  max-inline-size: 100%;
 }
 
 button, input, optgroup, select, textarea {
@@ -247,12 +258,15 @@ audio:not([controls]) {
   height: 0;
 }
 
-svg:not(:root) {
+svg {
+  fill: currentColor;
+}
+svg :not(:root) {
   overflow: hidden;
 }
 
-[hidden], template {
-  display: none;
+[hidden] {
+  display: none !important;
 }
 
 sub, sup {
@@ -292,6 +306,25 @@ b, strong, optgroup {
   height: 0;
   overflow: hidden;
   zoom: 1;
+}
+
+[role=region][aria-labelledby][tabindex] {
+  overflow: auto;
+}
+
+:target {
+  scroll-margin: 3rlh;
+}
+
+[aria-disabled=true i], [disabled] {
+  cursor: not-allowed;
+}
+
+[disabled], label:has(input[disabled]) {
+  opacity: 0.5;
+}
+[disabled] [disabled], label:has(input[disabled]) [disabled] {
+  opacity: 1;
 }
 
 @-webkit-keyframes spinner {
