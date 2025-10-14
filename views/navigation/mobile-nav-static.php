@@ -75,7 +75,7 @@ use function CFE_Tags\{
 
 				// Sort by position.
 				usort( $children, function( $a, $b ) {
-					return $a->position() > $b->position();
+					return $a->position() <=> $b->position();
 				} );
 
 				$sub_menu = '<ul class="nav-list main-nav-sub-list">';
