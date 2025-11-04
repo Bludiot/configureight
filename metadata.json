@@ -9,6 +9,7 @@
 	"notes"       : "A theme for Bludit CMS with many configurable options.",
 	"plugin"      : "configureight",
 	"admin_theme" : "configureight",
+	"meta_data"   : true,
 	"breadcrumbs" : true,
 	"comments"    : true,
 	"profiles"    : true
