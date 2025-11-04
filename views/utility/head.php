@@ -83,8 +83,8 @@ if ( plugin() ) {
 	<?php
 
 	// Meta tags.
-	if ( plugin() ) {
-		plugins_hook( 'meta_tags' ) . "\r\r";
+	if ( getPlugin( 'Meta_Data' ) ) {
+		plugins_hook( 'meta_tags_title' ) . "\r\r";
 	} else {
 		echo $helper :: metaTagTitle() . "\r\r";
 	}
