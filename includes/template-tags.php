@@ -1666,8 +1666,6 @@ function loop_label() {
 					str_replace( [ '-', '_' ], ' ', $static->slug() )
 				);
 			}
-		} elseif ( plugin()->loop_title() ) {
-			$label = plugin()->loop_title();
 		} elseif ( $field && '/blog/' != $field ) {
 			$label = str_replace( [ '/', '-', '_' ], ' ', $field );
 		}
