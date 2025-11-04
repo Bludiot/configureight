@@ -689,9 +689,10 @@ function loop_data() {
 
 	// Default loop description.
 	$description = text_replace( 'posts-loop-desc-blog', site()->title() );
-	if ( plugin() ) {
-		if ( ! empty( plugin()->loop_description() ) ) {
-			$description = plugin()->loop_description();
+	if ( getPlugin( 'Meta_Data' ) ) {
+		$meta = getPlugin( 'Meta_Data' );
+		if ( ! empty( $meta->loop_desc() ) ) {
+			$description = $meta->loop_desc();
 		}
 	}
 
