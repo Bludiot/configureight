@@ -252,6 +252,41 @@ function is_rtl( $langs = null, $rtl = [] ) {
 }
 
 /**
+ * Meta URL
+ *
+ * @since  1.0.0
+ * @return string
+ */
+function meta_url() {
+
+	// Default to site domain.
+	$url = site_domain();
+
+	if ( is_front_page() ) {
+		$url = site_domain();
+
+	} elseif ( is_main_loop() && is_static_loop() ) {
+		$url = DOMAIN_BASE . static_loop_page()->slug() . '/';
+
+	} elseif ( is_main_loop() && is_loop_not_home() ) {
+		$url = DOMAIN_BASE . str_replace( '/', '', site()->getField( 'uriBlog' ) ) . '/';
+
+	} elseif ( is_page() ) {
+		$url = site_domain() . url()->slug();
+
+	} elseif ( is_cat() ) {
+		$url = DOMAIN_CATEGORIES . url()->slug();
+
+	} elseif ( is_tag() ) {
+		$url = DOMAIN_TAGS . url()->slug();
+
+	} elseif ( is_search() ) {
+		$url = site_domain() . 'search/';
+	}
+	return $url;
+}
+
+/**
  * Is home
  *
  * If the main loop is on the front page.

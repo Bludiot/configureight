@@ -98,5 +98,4 @@ $login = new \Login();
 
 // Required theme functions.
 require( THEME_DIR . 'includes/helpers.php' );
-require( THEME_DIR . 'includes/meta-data.php' );
 require( THEME_DIR . 'includes/template-tags.php' );

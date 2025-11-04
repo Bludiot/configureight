@@ -13,17 +13,10 @@ use function CFE_Func\{
 	plugin,
 	plugins_hook,
 	is_rtl,
+	meta_url,
 	asset_min,
 	has_cover,
 	get_cover_src
-};
-use function CFE_Meta\{
-	meta_url,
-	meta_tags_standard,
-	meta_tags_schema,
-	meta_tags_open_graph,
-	meta_tags_twitter,
-	meta_tags_dublin_core
 };
 use function CFE_Tags\{
 	load_font_files,
@@ -90,21 +83,10 @@ if ( plugin() ) {
 	}
 
 	// Metadata tags.
-	echo "\r\r" . meta_tags_standard() . "\r";
-	if ( plugin() ) {
-		if ( plugin()->meta_use_schema() ) {
-			echo meta_tags_schema() . "\r";
-		}
-		if ( plugin()->meta_use_og() ) {
-			echo meta_tags_open_graph() . "\r";
-		}
-		if ( plugin()->meta_use_twitter() ) {
-			echo meta_tags_twitter() . "\r";
-		}
-		if ( plugin()->meta_use_dublin() ) {
-			echo meta_tags_dublin_core() . "\r";
-		}
+	if ( getPlugin( 'Meta_Data' ) ) {
+		plugins_hook( 'meta_tags_title' ) . "\r\r";
 	}
+	echo "\r";
 
 	// Core frontend stylesheets.
 	echo $helper :: css(
