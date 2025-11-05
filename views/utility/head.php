@@ -75,9 +75,11 @@ if ( plugin() ) {
 	<link rel="canonical" href="<?php echo meta_url(); ?>" />
 	<?php
 
-	// Metadata tags.
-	if ( getPlugin( 'Meta_Data' ) ) {
-		plugins_hook( 'meta_tags_title' ) . "\r\r";
+	// Metadata tag.
+	if ( getPlugin( 'Meta_Data' ) && $plugins['title_tag'] ) {
+		plugins_hook( 'title_tag' ) . "\r\r";
+	} else {
+		echo $helper :: metaTagTitle();
 	}
 	echo "\r";
 
