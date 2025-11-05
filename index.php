@@ -125,7 +125,7 @@ if ( is_loop_page() ) {
 
 			<main class="page-main <?php echo $main_view; ?>" <?php echo $main_data_attr; ?> itemscope itemprop="mainContentOfPage">
 
-				<?php if ( getPlugin( 'Breadcrumbs' ) ) {
+				<?php if ( getPlugin( 'Breadcrumbs' ) && $plugins['breadcrumbs'] ) {
 					plugins_hook( 'breadcrumbs' );
 				} ?>
 
