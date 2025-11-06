@@ -64,7 +64,7 @@ if ( $profiles ) {
 
 <?php
 // Support for comment plugins.
-if ( getPlugin( 'Post_Comments' ) ) {
+if ( getPlugin( 'Post_Comments' ) && array_key_exists( 'comments_full', $plugins ) ) {
 	plugins_hook( 'comments_full' );
 } elseif ( getPlugin( 'easyComments' ) ) {
 	easyComments();

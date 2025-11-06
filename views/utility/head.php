@@ -76,7 +76,7 @@ if ( plugin() ) {
 	<?php
 
 	// Metadata tag.
-	if ( getPlugin( 'Meta_Data' ) && $plugins['title_tag'] ) {
+	if ( getPlugin( 'Meta_Data' ) && array_key_exists( 'title_tag', $plugins ) ) {
 		plugins_hook( 'title_tag' ) . "\r\r";
 	} else {
 		echo $helper :: metaTagTitle();
