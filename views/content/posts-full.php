@@ -24,6 +24,7 @@ use function CFE_Func\{
 	is_main_loop,
 	is_cat,
 	is_tag,
+	get_cover_src,
 	get_word_count
 };
 use function CFE_Tags\{
@@ -120,6 +121,8 @@ if ( $post->sticky() ) {
 $thumb_src = '';
 if ( $post->coverImage() ) {
 	$thumb_src = $post->coverImage();
+} elseif ( get_cover_src() ) {
+	$thumb_src = get_cover_src();
 } elseif ( plugin() ) {
 	if ( plugin()->cover_src() ) {
 		$thumb_src = plugin()->cover_src();
