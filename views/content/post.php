@@ -59,6 +59,10 @@ if ( $profiles ) {
 		<?php plugins_hook( 'page_gallery' ); ?>
 	</div>
 	<?php endif; ?>
+
+	<?php if ( getPlugin( 'User_Profiles' ) && array_key_exists( 'author_box', $plugins ) ) {
+		plugins_hook( 'author_box' );
+	} ?>
 </article>
 
 <?php

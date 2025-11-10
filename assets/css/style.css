@@ -3929,6 +3929,11 @@ div.page-gallery {
   }
 }
 
+.author-box {
+  margin: var(--cfe-spacing--vert, 2rem) 0 0 0;
+  border-top: var(--cfe-box--border);
+}
+
 .page-sidebar {
   position: var(--cfe-sidebar--position, var(--cfe-sidebar--position));
   display: var(--cfe-sidebar--display, var(--cfe-sidebar--display, flex));
