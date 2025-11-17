@@ -1625,6 +1625,7 @@ h3 + .search-form {
     flex-direction: var(--cfe-site-header-wrap--flex-direction-tablet, column);
     justify-content: var(--cfe-site-header-wrap--justify-content--tablet, center);
     align-items: var(--cfe-site-header-wrap--align-items--tablet, center);
+    padding: var(--cfe-site-header-wrap--padding, calc(var(--cfe-spacing--vert) * 1.5) var(--cfe-spacing--horz));
   }
 }
 
@@ -2460,11 +2461,13 @@ h3 + .search-form {
 @media screen and (max-width: 960px) {
   #menu-toggle {
     display: block;
+    top: 3rem;
   }
 }
 @media screen and (max-width: 640px) {
   #menu-toggle {
     position: static;
+    top: 2rem;
   }
 }
 #menu-toggle svg {
