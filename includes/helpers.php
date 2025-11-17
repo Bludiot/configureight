@@ -964,7 +964,13 @@ function get_cover_src() {
 
 	// If on a singular page.
 	} elseif ( is_page() ) {
-		if ( page()->coverImage() ) {
+		if ( plugin() ) {
+			if ( page()->custom( 'random_cover' ) ) {
+				$src = plugin()->random_cover_image();
+			} else {
+				$src = $default;
+			}
+		} elseif ( page()->coverImage() ) {
 			$src = page()->coverImage();
 		} elseif ( $default ) {
 			$src = $default;
