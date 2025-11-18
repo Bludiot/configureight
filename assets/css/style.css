@@ -4119,6 +4119,10 @@ div.page-gallery {
   padding: var(--cfe-sidebar--ol--padding, var(--cfe-sidebar--list--padding, 0 0 0 1em));
 }
 
+.template-sidebar-bottom .page-sidebar .plugin:not(:first-of-type) {
+  margin: var(--cfe-sidebar--plugin--margin, 0);
+}
+
 .template-sidebar-bottom .page-sidebar {
   display: var(--cfe-sidebar--bottom--display, var(--cfe-sidebar--display, grid));
   grid-template-columns: var(--cfe-sidebar--bottom--grid-template-columns, var(--cfe-sidebar--grid-template-columns, repeat(3, 1fr)));

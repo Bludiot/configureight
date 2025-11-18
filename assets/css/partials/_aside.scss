@@ -175,6 +175,16 @@
 
 .template-sidebar-bottom {
 	.page-sidebar {
+		.plugin {
+			&:not( :first-of-type ) {
+				margin: var( --cfe-sidebar--plugin--margin, 0 );
+			}
+		}
+	}
+}
+
+.template-sidebar-bottom {
+	.page-sidebar {
 		display: var( --cfe-sidebar--bottom--display, var( --cfe-sidebar--display, grid ) );
 		grid-template-columns: var( --cfe-sidebar--bottom--grid-template-columns, var( --cfe-sidebar--grid-template-columns, repeat( 3, 1fr ) ) );
 		gap:  var( --cfe-sidebar--bottom--gap, var( --cfe-spacing--vert, 2rem ) var( --cfe-spacing--horz, 2rem ) );
