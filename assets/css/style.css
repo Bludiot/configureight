@@ -534,6 +534,7 @@ body {
   font-weight: var(--cfe-body--font-weight, normal);
   font-style: var(--cfe-body--font-style, normal);
   font-variant: var(--cfe-body--font-variant, normal);
+  font-stretch: var(--cfe-body--font-stretch, normal);
   text-decoration: var(--cfe-body--text-decoration);
   text-transform: var(--cfe-body--text-transform);
   letter-spacing: var(--cfe-body--letter-spacing, normal);
@@ -634,6 +635,7 @@ a {
   font-weight: var(--cfe-link--font-weight, inherit);
   font-style: var(--cfe-link--font-style, inherit);
   font-variant: var(--cfe-link--font-variant, inherit);
+  font-stretch: var(--cfe-link--font-stretch, inherit);
   text-decoration: var(--cfe-link--text-decoration);
   text-underline-offset: var(--cfe-link--text-underline-offset);
   text-transform: var(--cfe-link--text-transform, inherit);
@@ -689,6 +691,7 @@ h2 {
   font-weight: var(--cfe-heading-primary--font-weight, 700);
   font-style: var(--cfe-heading-primary--font-style, inherit);
   font-variant: var(--cfe-heading-primary--font-variant, inherit);
+  font-stretch: var(--cfe-heading-primary--font-stretch, normal);
   line-height: var(--cfe-heading-primary--line-height, inherit);
   letter-spacing: var(--cfe-heading-primary--letter-spacing, -0.015em);
   word-spacing: var(--cfe-heading-primary--word-spacing, -0.0325em);
@@ -709,6 +712,7 @@ h2 a {
   font-weight: var(--cfe-heading-primary--link--font-weight, inherit);
   font-style: var(--cfe-heading-primary--link--font-style, inherit);
   font-variant: var(--cfe-heading-primary--link--font-variant, inherit);
+  font-stretch: var(--cfe-heading-primary--link--font-stretch, inherit);
   text-decoration: var(--cfe-heading-primary--link--text-decoration, none);
   text-transform: var(--cfe-heading-primary--link--text-transform);
   color: var(--cfe-heading-primary--link--text-color, var(--cfe-link--text-color));
@@ -739,6 +743,7 @@ h4 {
   font-weight: var(--cfe-heading-secondary--font-weight, 700);
   font-style: var(--cfe-heading-secondary--font-style, inherit);
   font-variant: var(--cfe-heading-secondary--font-variant, inherit);
+  font-stretch: var(--cfe-heading-secondary--font-stretch, inherit);
   line-height: var(--cfe-heading-secondary--line-height, inherit);
   letter-spacing: var(--cfe-heading-secondary--letter-spacing, normal);
   word-spacing: var(--cfe-heading-secondary--word-spacing, -0.0325em);
@@ -759,6 +764,7 @@ h4 a {
   font-weight: var(--cfe-heading-secondary--link--font-weight, inherit);
   font-style: var(--cfe-heading-secondary--link--font-style, inherit);
   font-variant: var(--cfe-heading-secondary--link--font-variant, inherit);
+  font-stretch: var(--cfe-heading-secondary--link--font-stretch, normal);
   text-decoration: var(--cfe-heading-secondary--link--text-decoration, inherit);
   text-transform: var(--cfe-heading-secondary--link--text-transform, inherit);
   color: var(--cfe-heading-secondary--link--text-color, var(--cfe-link--text-color));
@@ -779,6 +785,28 @@ h4 a:focus {
   h4 a:hover,
   h4 a:focus {
     color: var(--cfe-heading-secondary--link--action--text-color--dark, var(--cfe-link--action--text-color--dark));
+  }
+}
+
+h5,
+h6 {
+  font-family: var(--cfe-heading-tertiary--font-family, inherit);
+  font-size: var(--cfe-heading-tertiary--font-size, 1.375rem);
+  font-weight: var(--cfe-heading-tertiary--font-weight, 700);
+  font-style: var(--cfe-heading-tertiary--font-style, inherit);
+  font-variant: var(--cfe-heading-tertiary--font-variant, inherit);
+  font-stretch: var(--cfe-heading-tertiary--font-stretch, inherit);
+  line-height: var(--cfe-heading-tertiary--line-height, inherit);
+  letter-spacing: var(--cfe-heading-tertiary--letter-spacing, normal);
+  word-spacing: var(--cfe-heading-tertiary--word-spacing, -0.0325em);
+  text-decoration: var(--cfe-heading-tertiary--text-decoration);
+  text-transform: var(--cfe-heading-tertiary--text-transform);
+  color: var(--cfe-heading-tertiary--text-color, var(--cfe-body--text-color));
+}
+@media (prefers-color-scheme: dark) {
+  h5,
+  h6 {
+    color: var(--cfe-heading-tertiary--text-color--dark, var(--cfe-body--text-color--dark));
   }
 }
 
