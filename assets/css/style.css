@@ -2750,13 +2750,13 @@ h3 + .search-form {
 .template-full-cover .site-header-wrap .site-navigation ul ul li a:hover, .template-full-cover .site-header-wrap .site-navigation ul ul li a:focus,
 .has-front-page-slider .site-header-wrap .site-navigation ul ul li a:hover,
 .has-front-page-slider .site-header-wrap .site-navigation ul ul li a:focus {
-  color: var(--cfe-site-nav--sub-list--text-color, #ffffff);
+  color: var(--cfe-site-nav--sub-list--action--text-color, var(--cfe-site-nav--sub-list--text-color, #ffffff));
 }
 @media (prefers-color-scheme: dark) {
   .template-full-cover .site-header-wrap .site-navigation ul ul li a:hover, .template-full-cover .site-header-wrap .site-navigation ul ul li a:focus,
   .has-front-page-slider .site-header-wrap .site-navigation ul ul li a:hover,
   .has-front-page-slider .site-header-wrap .site-navigation ul ul li a:focus {
-    color: var(--cfe-site-nav--sub-list--text-color--dark, #ffffff);
+    color: var(--cfe-site-nav--sub-list--action--text-color--dark, var(--cfe-site-nav--sub-list--text-color, #ffffff));
   }
 }
 
@@ -2831,11 +2831,11 @@ h3 + .search-form {
   }
 }
 .js .has-sticky-header.template-full-cover .site-header-wrap.header-scrolled .site-navigation ul ul li a:hover, .js .has-sticky-header.template-full-cover .site-header-wrap.header-scrolled .site-navigation ul ul li a:focus, .js .has-sticky-header.has-front-page-slider .site-header-wrap.header-scrolled .site-navigation ul ul li a:hover, .js .has-sticky-header.has-front-page-slider .site-header-wrap.header-scrolled .site-navigation ul ul li a:focus {
-  color: var(--cfe-site-nav--sub-list--text-color);
+  color: var(--cfe-site-nav--sub-list--action--text-color, var(--cfe-site-nav--sub-list--text-color, #ffffff));
 }
 @media (prefers-color-scheme: dark) {
   .js .has-sticky-header.template-full-cover .site-header-wrap.header-scrolled .site-navigation ul ul li a:hover, .js .has-sticky-header.template-full-cover .site-header-wrap.header-scrolled .site-navigation ul ul li a:focus, .js .has-sticky-header.has-front-page-slider .site-header-wrap.header-scrolled .site-navigation ul ul li a:hover, .js .has-sticky-header.has-front-page-slider .site-header-wrap.header-scrolled .site-navigation ul ul li a:focus {
-    color: var(--cfe-site-nav--sub-list--text-color--dark);
+    color: var(--cfe-site-nav--sub-list--action--text-color--dark, var(--cfe-site-nav--sub-list--text-color--dark, #ffffff));
   }
 }
 

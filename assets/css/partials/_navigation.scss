@@ -555,10 +555,10 @@
 
 							&:hover,
 							&:focus {
-								color: var( --cfe-site-nav--sub-list--text-color, $white );
+								color: var( --cfe-site-nav--sub-list--action--text-color, var( --cfe-site-nav--sub-list--text-color, $white ) );
 
 								@media ( prefers-color-scheme: dark ) {
-									color: var( --cfe-site-nav--sub-list--text-color--dark, $white );
+									color: var( --cfe-site-nav--sub-list--action--text-color--dark, var( --cfe-site-nav--sub-list--text-color, $white ) );
 								}
 							}
 						}
@@ -660,10 +660,10 @@
 
 									&:hover,
 									&:focus {
-										color: var( --cfe-site-nav--sub-list--text-color );
+										color: var( --cfe-site-nav--sub-list--action--text-color, var( --cfe-site-nav--sub-list--text-color, $white ) );
 
 										@media ( prefers-color-scheme: dark ) {
-											color: var( --cfe-site-nav--sub-list--text-color--dark );
+											color: var( --cfe-site-nav--sub-list--action--text-color--dark, var( --cfe-site-nav--sub-list--text-color--dark, $white ) );
 										}
 									}
 								}
