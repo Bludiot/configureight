@@ -52,7 +52,7 @@ if ( $profiles ) {
 		<?php echo $page->content(); ?>
 	</div>
 
-	<?php if ( $page->custom( 'page_gallery' ) ) : ?>
+	<?php if ( plugin() && $page->custom( 'page_gallery' ) ) : ?>
 	<div class="page-gallery">
 		<h2><?php echo $gallery_heading; ?></h2>
 		<?php plugins_hook( 'page_gallery' ); ?>

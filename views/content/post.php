@@ -53,7 +53,7 @@ if ( $profiles ) {
 		<?php echo $page->content(); ?>
 	</div>
 
-	<?php if ( $page->custom( 'page_gallery' ) ) : ?>
+	<?php if ( plugin() && $page->custom( 'page_gallery' ) ) : ?>
 	<div class="page-gallery">
 		<h2><?php echo $gallery_heading; ?></h2>
 		<?php plugins_hook( 'page_gallery' ); ?>
@@ -67,10 +67,12 @@ if ( $profiles ) {
 
 <?php
 // Support for comment plugins.
-if ( getPlugin( 'Post_Comments' ) && array_key_exists( 'comments_full', $plugins ) ) {
-	plugins_hook( 'comments_full' );
-} elseif ( getPlugin( 'easyComments' ) ) {
-	easyComments();
+if ( $page->allowComments() ) {
+	if ( getPlugin( 'Post_Comments' ) && array_key_exists( 'comments_full', $plugins ) ) {
+		plugins_hook( 'comments_full' );
+	} elseif ( getPlugin( 'easyComments' ) ) {
+		easyComments();
+	}
 } ?>
 
 <?php
