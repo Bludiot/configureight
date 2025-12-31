@@ -24,6 +24,7 @@ use function CFE_Func\{
 	is_main_loop,
 	is_cat,
 	is_tag,
+	page_images,
 	get_cover_src,
 	get_word_count
 };
@@ -112,29 +113,39 @@ if ( $post->sticky() ) {
 		sticky_icon(
 			'false',
 			'sticky-icon-heading',
-			$L->get( 'Post is sticky' )
+			lang()->get( 'Post is sticky' )
 		)
 	);
 }
 
-// Thumbnail image.
-$thumb_src = '';
+// Cover image.
+$cover = '';
 if ( $post->coverImage() ) {
-	$thumb_src = $post->coverImage();
+	$cover = $post->coverImage();
 } elseif ( get_cover_src() ) {
-	$thumb_src = get_cover_src();
+	$cover = get_cover_src();
 } elseif ( plugin() ) {
 	if ( plugin()->cover_src() ) {
-		$thumb_src = plugin()->cover_src();
+		$cover = plugin()->cover_src();
 	}
 } else {
-	$thumb_src = DOMAIN_THEME . 'assets/images/transparent.png';
+	$cover = DOMAIN_THEME . 'assets/images/transparent.png';
+}
+
+// Maybe get a random cover image.
+if ( $post->custom( 'random_cover' ) ) {
+	$images = page_images( $post->key() );
+	if ( is_array( $images ) ) {
+		if ( isset( $images[0] ) ) {
+			$random = array_rand( $images );
+			$cover  = $images[$random];
+		}
+	}
 }
 
 // Tags list.
 $tags_list = function() use ( $post, $tags_icon ) {
 
-	global $L;
 	$tags  = $post->tags( true );
 	$links = [];
 	$sep   = ', ';
@@ -149,7 +160,7 @@ $tags_list = function() use ( $post, $tags_icon ) {
 			$links[] = sprintf(
 				'<li><a href="%s" class="tag-list-entry tooltip" rel="tag" title="%s %s" data-tooltip>%s</a>',
 				DOMAIN_TAGS . $tagKey,
-				$L->get( 'Tagged:' ),
+				lang()->get( 'Tagged:' ),
 				$tagName,
 				$tagName
 			);
@@ -171,7 +182,7 @@ $footer = [
 $footer = implode( ' ', $footer );
 
 // Gallery heading.
-$gallery_heading = $L->get( 'Image Gallery' );
+$gallery_heading = lang()->get( 'Image Gallery' );
 if ( ! empty( $page->custom( 'gallery_heading' ) ) ) {
 	$gallery_heading = $page->custom( 'gallery_heading' );
 }
@@ -188,10 +199,10 @@ if ( ! empty( $page->custom( 'gallery_heading' ) ) ) {
 			<p><?php echo page_description( $post->key() ); ?></p>
 		</header>
 
-		<?php if ( $thumb_src ) : ?>
+		<?php if ( $cover ) : ?>
 		<figure class="post-cover">
 			<a href="<?php echo $post->permalink(); ?>">
-				<img src="<?php echo $thumb_src; ?>" loading="lazy" />
+				<img src="<?php echo $cover; ?>" loading="lazy" />
 			</a>
 			<figcaption class="screen-reader-text"><?php echo $post->title(); ?></figcaption>
 		</figure>

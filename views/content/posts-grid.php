@@ -23,6 +23,7 @@ use function CFE_Func\{
 	is_main_loop,
 	is_cat,
 	is_tag,
+	page_images,
 	get_cover_src,
 	get_word_count
 };
@@ -109,18 +110,29 @@ if ( $post->sticky() ) {
 	);
 }
 
-// Thumbnail image.
-$thumb_src = '';
+// Cover image.
+$cover = '';
 if ( $post->coverImage() ) {
-	$thumb_src = $post->coverImage();
+	$cover = $post->coverImage();
 } elseif ( get_cover_src() ) {
-	$thumb_src = get_cover_src();
+	$cover = get_cover_src();
 } elseif ( plugin() ) {
 	if ( plugin()->cover_src() ) {
-		$thumb_src = plugin()->cover_src();
+		$cover = plugin()->cover_src();
 	}
 } else {
-	$thumb_src = DOMAIN_THEME . 'assets/images/transparent.png';
+	$cover = DOMAIN_THEME . 'assets/images/transparent.png';
+}
+
+// Maybe get a random cover image.
+if ( $post->custom( 'random_cover' ) ) {
+	$images = page_images( $post->key() );
+	if ( is_array( $images ) ) {
+		if ( isset( $images[0] ) ) {
+			$random = array_rand( $images );
+			$cover  = $images[$random];
+		}
+	}
 }
 
 // Tags list.
@@ -186,9 +198,9 @@ if ( plugin() ) {
 				<h2 class="page-title posts-loop-title"><?php echo $sticky . $post->title(); ?></h2>
 			</header>
 
-			<?php if ( $thumb_src ) : ?>
+			<?php if ( $cover ) : ?>
 			<figure class="<?php echo $cover_wrap_class; ?>">
-				<img class="<?php echo $cover_image_class; ?>" src="<?php echo $thumb_src; ?>" loading="lazy" />
+				<img class="<?php echo $cover_image_class; ?>" src="<?php echo $cover; ?>" loading="lazy" />
 				<figcaption class="screen-reader-text"><?php echo $post->title(); ?></figcaption>
 			</figure>
 			<?php endif; ?>

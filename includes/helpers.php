@@ -812,9 +812,53 @@ function has_logo( $type = 'standard' ) {
 }
 
 /**
+ * Page images
+ *
+ * @since  1.0.0
+ * @param  mixed $key The page key from which to get images.
+ * @return mixed Returns an array of image URLs or false.
+ */
+function page_images( $key = false ) {
+
+	if ( ! $key ) {
+		return false;
+	}
+
+	$page  = buildPage( $key );
+	if ( ! $page ) {
+		return false;
+	}
+
+	$uuid  = $page->uuid();
+	$dir   = PATH_UPLOADS_PAGES . $uuid . DS;
+	$list  = \Filesystem :: listFiles( $dir, '*', '*', true, 0 );
+	$files = [];
+
+	foreach ( $list as $file ) {
+		$allowed = [
+			'jpg',
+			'jpeg',
+			'png',
+			'gif',
+			'webp',
+			'heif',
+			'avif',
+			'tiff'
+		];
+		$ext = pathinfo( $file, PATHINFO_EXTENSION );
+		if ( ! in_array( $ext, $allowed ) ) {
+			continue;
+		}
+		$files[] = DOMAIN_UPLOADS_PAGES . $uuid . '/' . str_replace( $dir, '', $file );
+	}
+	return $files;
+}
+
+/**
  * Has cover image
  *
  * @since  1.0.0
+ * @param  string $default The default cover image.
  * @return boolean
  */
 function has_cover( $default = '' ) {
