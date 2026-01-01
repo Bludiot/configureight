@@ -102,10 +102,8 @@ if ( $post->coverImage() ) {
 if ( $post->custom( 'random_cover' ) ) {
 	$images = page_images( $post->key() );
 	if ( is_array( $images ) ) {
-		if ( isset( $images[0] ) ) {
-			$random = array_rand( $images );
-			$cover  = $images[$random];
-		}
+		$random = array_rand( $images );
+		$cover  = $images[$random];
 	}
 }
 
