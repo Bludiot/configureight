@@ -90,8 +90,6 @@ if ( $post->sticky() ) {
 $cover = '';
 if ( $post->coverImage() ) {
 	$cover = $post->coverImage();
-} elseif ( get_cover_src() ) {
-	$cover = get_cover_src();
 } elseif ( plugin() ) {
 	if ( plugin()->cover_src() ) {
 		$cover = plugin()->cover_src();
