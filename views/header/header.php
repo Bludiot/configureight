@@ -16,7 +16,11 @@ use function CFE_Func\{
 	site_domain,
 	plugin,
 	lang,
+	page,
 	is_front_page,
+	is_main_loop,
+	is_static_loop,
+	static_loop_page,
 	is_page,
 	has_cover,
 	get_cover_src,
@@ -91,7 +95,19 @@ if ( full_cover() ) {
 	$cover_wrap_class = 'full-cover-image cover-overlay';
 }
 if ( plugin() ) {
-	if (
+	if ( is_main_loop() && is_static_loop() && str_contains( static_loop_page()->template(), 'cover-blend' ) ) {
+		$cover_wrap_class = 'page-cover cover-blend';
+
+		if ( full_cover() ) {
+			$cover_wrap_class = 'full-cover-image cover-blend';
+		}
+	} elseif ( is_page() && str_contains( page()->template(), 'cover-blend' ) ) {
+		$cover_wrap_class = 'page-cover cover-blend';
+
+		if ( full_cover() ) {
+			$cover_wrap_class = 'full-cover-image cover-blend';
+		}
+	} elseif (
 		'blend' == plugin()->cover_style() &&
 		is_array( plugin()->cover_blend_use() ) &&
 		in_array( 'covers', plugin()->cover_blend_use() )
