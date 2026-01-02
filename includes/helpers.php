@@ -23,7 +23,8 @@ if ( ! defined( 'BLUDIT' ) ) {
  *
  * @since  1.0.0
  * @param  integer $ver The minimum version for which to check.
- * @return boolean
+ * @return boolean Returns true if the version is greater than or
+ *                 or equal to the version check.
  */
 function bludit_min( $ver = 3 ) {
 
@@ -36,11 +37,11 @@ function bludit_min( $ver = 3 ) {
 /**
  * Helper class instance
  *
- * Theme helper class is changed tp
+ * Theme helper class is changed to
  * HTML in Bludit version 4.0.
  *
  * @since  1.0.0
- * @return object
+ * @return object Returns an instance of the relevant helper class.
  */
 function helper() {
 
@@ -57,21 +58,24 @@ function helper() {
  *
  * @since  1.0.0
  * @param  string $name The hook name.
- * @return mixed
+ * @return mixed Returns the hook method or false
+ *               if the hook is not registered.
  */
 function plugins_hook( $name = '' ) {
+
+	// Access global variables.
+	global $plugins;
+
+	if ( ! array_key_exists( $name, $plugins ) ) {
+		return false;
+	}
 
 	if ( bludit_min( 4 ) ) {
 		$hook = execPluginsByHook( $name );
 	} else {
 		$hook = helper()->plugins( $name );
 	}
-
-	if ( $hook ) {
-		echo $hook;
-	} else {
-		return false;
-	}
+	return $hook;
 }
 
 /**
@@ -82,7 +86,7 @@ function plugins_hook( $name = '' ) {
  *
  * @since  1.0.0
  * @global object $site Site class
- * @return object
+ * @return object Returns an instance of the class.
  */
 function site() {
 	global $site;
@@ -97,7 +101,7 @@ function site() {
  *
  * @since  1.0.0
  * @global object $url Url class
- * @return object
+ * @return object Returns an instance of the class.
  */
 function url() {
 	global $url;
@@ -112,7 +116,7 @@ function url() {
  *
  * @since  1.0.0
  * @global object $L Language class
- * @return object
+ * @return object Returns an instance of the class.
  */
 function lang() {
 	global $L;
@@ -127,7 +131,7 @@ function lang() {
  *
  * @since  1.0.0
  * @global object $page Page class
- * @return object
+ * @return object Returns an instance of the class.
  */
 function page() {
 	global $page;
@@ -156,10 +160,13 @@ function site_domain() {
  *
  * This function is used to get settings from the
  * theme plugin instead of the provided global
- * variable. The variable changes in Bludit 4.0.
+ * variable ($themePlugin).
+ * The variable changes in Bludit 4.0.
  *
  * @since  1.0.0
- * @return object
+ * @return mixed Returns an instance of the theme
+ *               companion plugin class or false if
+ *               the plugin is not activated.
  */
 function plugin() {
 
@@ -209,7 +216,7 @@ function user_role() {
  * The language from site settings.
  *
  * @since  1.0.0
- * @return string
+ * @return string Returns the language short version.
  */
 function current_lang() {
 	return lang()->currentLanguageShortVersion();
@@ -252,12 +259,12 @@ function is_rtl( $langs = null, $rtl = [] ) {
 }
 
 /**
- * Meta URL
+ * Current URL
  *
  * @since  1.0.0
- * @return string
+ * @return string Returns a URL.
  */
-function meta_url() {
+function current_url() {
 
 	// Default to site domain.
 	$url = site_domain();
@@ -292,7 +299,7 @@ function meta_url() {
  * If the main loop is on the front page.
  *
  * @since  1.0.0
- * @return boolean
+ * @return boolean Returns true if loop on front.
  */
 function is_home() {
 
@@ -309,7 +316,7 @@ function is_home() {
  * the category loop.
  *
  * @since  1.0.0
- * @return boolean Returns true if in the main loop.
+ * @return boolean Returns true if in a category loop.
  */
 function is_cat() {
 
@@ -326,7 +333,7 @@ function is_cat() {
  * the tag loop.
  *
  * @since  1.0.0
- * @return boolean Returns true if in the main loop.
+ * @return boolean Returns true if in a tag loop.
  */
 function is_tag() {
 
@@ -478,7 +485,7 @@ function is_search() {
  * Is 404
  *
  * @since  1.0.0
- * @return boolean
+ * @return boolean Returns true if on the 404 page.
  */
 function is_404() {
 
@@ -824,15 +831,19 @@ function page_images( $key = false ) {
 		return false;
 	}
 
-	$page  = buildPage( $key );
+	$page = buildPage( $key );
 	if ( ! $page ) {
 		return false;
 	}
 
 	$uuid  = $page->uuid();
 	$dir   = PATH_UPLOADS_PAGES . $uuid . DS;
-	$list  = \Filesystem :: listFiles( $dir, '*', '*', true, 0 );
+	$list  = \Filesystem :: listFiles( $dir, '*', '*', false, false );
 	$files = [];
+
+	if ( ! isset( $list[0] ) ) {
+		return false;
+	}
 
 	foreach ( $list as $file ) {
 		$allowed = [
