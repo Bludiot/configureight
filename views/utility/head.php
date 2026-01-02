@@ -13,7 +13,7 @@ use function CFE_Func\{
 	plugin,
 	plugins_hook,
 	is_rtl,
-	meta_url,
+	current_url,
 	asset_min,
 	has_cover,
 	get_cover_src
@@ -72,7 +72,7 @@ if ( plugin() ) {
 	echo $helper :: jquery();
 
 	echo "\r" . favicon_tag() . "\r\r"; ?>
-	<link rel="canonical" href="<?php echo meta_url(); ?>" />
+	<link rel="canonical" href="<?php echo current_url(); ?>" />
 	<?php
 
 	// Metadata tag.
