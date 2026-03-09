@@ -28,7 +28,6 @@
 
 	"search-label-text"  : "Suchen",
 	"search-button-text" : "Suchen",
-	"search-placeholder" : "Geben Sie mindestens %replace% Zeichen ein&hellip;",
 
 	"copyright-message"     : "Alle Rechte vorbehalten"
 }
