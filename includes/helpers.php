@@ -234,15 +234,15 @@ function is_rtl( $langs = null, $rtl = [] ) {
 
 	$rtl = [
 		'ar',
+		'dv',
 		'fa',
 		'he',
-		'ks',
 		'ku',
-		'pa',
 		'ps',
 		'sd',
 		'ug',
-		'ur'
+		'ur',
+		'yi'
 	];
 
 	// Maybe override defaults.
