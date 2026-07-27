@@ -1119,14 +1119,23 @@ function site_logo() {
 	// Get logo(s) from plugin uploads or SVG.
 	if ( plugin() ) :
 
-	$standard = plugin()->standard_logo_src();
-	$cover    = plugin()->cover_logo_src();
-	$std_svg  = plugin()->logo_standard_svg();
-	$cov_svg  = plugin()->logo_cover_svg();
+	$standard   = plugin()->standard_logo_src();
+	$cover      = plugin()->cover_logo_src();
+	$dark_mode  = plugin()->use_dark_scheme();
+	$dark_cover = plugin()->cover_logo_dark_mode();
+	$std_svg    = plugin()->logo_standard_svg();
+	$cov_svg    = plugin()->logo_cover_svg();
+	$mode_class = 'standard-logo-dark';
+	if ( $dark_mode || $dark_cover ) {
+		$mode_class = 'cover-logo-dark';
+	}
+	if ( full_cover() ) {
+		$mode_class = ' logo-over-cover';
+	}
 
 	?>
-	<div class="site-logo" data-site-logo>
-		<figure class="standard-logo" style="display: <?php echo ( ( $cover || $cov_svg ) && full_cover() ? 'none' : 'block' ); ?>">
+	<div class="site-logo <?php echo $mode_class; ?>" data-site-logo>
+		<figure class="standard-logo">
 			<a href="<?php echo site_domain(); ?>">
 			<?php if ( ! empty( $std_svg ) ) : ?>
 				<?php echo htmlspecialchars_decode( $std_svg ); ?>
@@ -1136,7 +1145,7 @@ function site_logo() {
 			</a>
 			<figcaption class="screen-reader-text"><?php echo site()->title(); ?></figcaption>
 		</figure>
-		<?php if ( has_logo( 'cover' ) && full_cover() ) : ?>
+		<?php if ( has_logo( 'cover' ) ) : ?>
 		<figure class="cover-logo">
 			<a href="<?php echo site_domain(); ?>">
 			<?php if ( ! empty( $cov_svg ) ) : ?>
@@ -1152,7 +1161,7 @@ function site_logo() {
 	<?php
 
 	// Use default logo upload if theme plugin is not installed.
-	else : ?>
+	elseif ( site()->logo() ) : ?>
 	<div class="site-logo" data-site-logo>
 		<figure class="standard-logo">
 			<a href="<?php echo site_domain(); ?>">

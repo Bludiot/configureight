@@ -53,15 +53,16 @@ if ( plugin() ) {
 ?>
 <?php plugins_hook( 'beforeAll' ); ?>
 <head data-site-head>
+	<!-- Always keep a cool head. -->
 
 	<meta name='robots' content='<?php echo $noindex; ?>' />
-	<meta charset="<?php echo CHARSET; ?>">
-	<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+	<meta charset="<?php echo CHARSET; ?>" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 
 	<?php // Preconnect and preload files. ?>
 	<link rel="preconnect" href="//fonts.adobe.com" />
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 	<?php echo load_font_files(); ?>
 	<?php echo $load_cover; ?>
 
